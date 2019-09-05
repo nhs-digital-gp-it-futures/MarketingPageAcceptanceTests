@@ -4,17 +4,16 @@ using Xunit.Abstractions;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
-    public sealed class Common
+    public sealed class Common : PageAction
     {
-        private readonly IWebDriver driver;
-        private readonly ITestOutputHelper helper;
-
-        public Common(IWebDriver driver, ITestOutputHelper helper)
+        
+        public Common(IWebDriver driver, ITestOutputHelper helper) : base (driver, helper)
         {
-            this.driver = driver;
-            this.helper = helper;
         }
 
+        /// <summary>
+        /// Ensure the page has loaded up correctly
+        /// </summary>
         public void WaitForPageLoad()
         {
             throw new NotImplementedException();
