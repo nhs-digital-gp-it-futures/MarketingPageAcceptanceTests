@@ -9,8 +9,8 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 {
     public abstract class PageAction
     {
-        private readonly IWebDriver driver;
-        private readonly ITestOutputHelper helper;
+        internal readonly IWebDriver driver;
+        internal readonly ITestOutputHelper helper;
 
         internal readonly WebDriverWait wait;
         internal PageCollection pages;
