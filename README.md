@@ -12,6 +12,14 @@ All environment variables used in this repo are at Process level (i.e. in the sa
 | MPURL | `http://publicbrowse.nhs.net` | `http://10.0.75.1:3000`<sup>2</sup> |
 | HUBURL | `http://localhost:4444/wd/hub` | `http://localhost:4444/wd/hub` |
 
+To set a process level environment variable in a CLI see the below table
+
+| CLI | Command | Example |
+|---------------|--------------------|---------------
+|`bash` | `export` | `export BROWSER=chrome` |
+| `cmd` | `set` | `set BROWSER=chrome`|
+| `PowerShell` | `$env:` | `$env:BROWSER = "chrome"` |
+
 <sup>1</sup> - `chrome-local` should only be used for debugging. It will use the local instance of chrome rather than the Selenium Grid nodes to run the tests
 
 <sup>2</sup> - `10.0.75.1:3000` is the external address when running the Marketing Page locally, this way the nodes in the hub can connect to it without issue
