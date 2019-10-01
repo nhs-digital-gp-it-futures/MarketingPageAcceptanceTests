@@ -12,7 +12,9 @@ namespace MarketingPageAcceptanceTests.Actions
         {
             PageActionCollection = new PageActionCollection
             {
-                Common = new Common(driver, helper)
+                Common = new Common(driver, helper),
+                Dashboard = new Dashboard(driver, helper),
+                EditFeatures = new EditFeatures(driver, helper)
             };
         }
 

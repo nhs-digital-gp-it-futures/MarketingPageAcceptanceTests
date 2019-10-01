@@ -1,5 +1,6 @@
 ﻿using System;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using Xunit.Abstractions;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
@@ -9,14 +10,6 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         
         public Common(IWebDriver driver, ITestOutputHelper helper) : base (driver, helper)
         {
-        }
-
-        /// <summary>
-        /// Ensure the page has loaded up correctly
-        /// </summary>
-        public void WaitForPageLoad()
-        {
-            throw new NotImplementedException();
         }
     }
 }

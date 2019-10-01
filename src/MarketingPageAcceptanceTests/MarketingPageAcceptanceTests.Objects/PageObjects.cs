@@ -6,7 +6,12 @@ namespace MarketingPageAcceptanceTests.Objects
     {
         public PageObjects()
         {
-            Pages = new PageCollection();
+            Pages = new PageCollection
+            {
+                Dashboard = new Pages.Dashboard(),
+                EditFeatures = new Pages.EditFeatures(),
+                Common = new Pages.Common()
+            };
         }
 
         public PageCollection Pages { get; set; }
