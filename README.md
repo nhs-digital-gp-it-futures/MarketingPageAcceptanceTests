@@ -9,8 +9,9 @@ All environment variables used in this repo are at Process level (i.e. in the sa
 | Variable | Example | Default |
 |---------------|------------------|------------------|
 | BROWSER | `chrome` | `chrome-local`<sup>1</sup> |
-| MPURL | `http://publicbrowse.nhs.net` | `http://10.0.75.1:3000`<sup>2</sup> |
+| MPURL | `http://publicbrowse.nhs.net` | `http://10.0.75.1:3001`<sup>2</sup> |
 | HUBURL | `http://localhost:4444/wd/hub` | `http://localhost:4444/wd/hub` |
+| APIURL | `http://localhost:8080` | `http://10.0.75.1:8080` |
 
 To set a process level environment variable in a CLI see the below table
 
@@ -22,4 +23,4 @@ To set a process level environment variable in a CLI see the below table
 
 <sup>1</sup> - `chrome-local` should only be used for debugging. It will use the local instance of chrome rather than the Selenium Grid nodes to run the tests
 
-<sup>2</sup> - `10.0.75.1:3000` is the external address when running the Marketing Page locally, this way the nodes in the hub can connect to it without issue
+<sup>2</sup> - `10.0.75.1:3001` is the external address when running the Marketing Page locally, this way the nodes in the hub can connect to it without issue
