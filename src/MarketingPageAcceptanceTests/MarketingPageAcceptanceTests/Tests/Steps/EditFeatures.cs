@@ -1,4 +1,6 @@
-﻿using MarketingPageAcceptanceTests.Utils;
+﻿using FluentAssertions;
+using MarketingPageAcceptanceTests.Actions.Utils;
+using MarketingPageAcceptanceTests.Utils;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,6 +12,8 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
     [FeatureFile("./Tests/Gherkin/EditFeatures.txt")]
     public sealed class EditFeatures : UITest, IDisposable
     {
+        string featureString = "";
+
         public EditFeatures(ITestOutputHelper helper) : base(helper)
         {
             
@@ -24,7 +28,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         [And("it does not exceed the maximum character count")] 
         public void DoesNotExceedCharacterCount()
         {
-            pages.EditFeatures.AddTextToFeature(50);
+            featureString = pages.EditFeatures.AddTextToFeature(50);
         }
 
         [And("it does exceed the maximum character count")]
@@ -89,6 +93,13 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         public void FeaturesSectionMarkedIncomplete()
         {
             pages.Dashboard.SectionIncomplete("Features");
+        }
+
+        [And("the database contains the Feature Text")]
+        public void AssertFeatureInDb()
+        {
+            var features = SqlHelper.GetSolutionFeatures(solutionId, connectionString);
+            features.Should().Contain(featureString);
         }
     }
 }

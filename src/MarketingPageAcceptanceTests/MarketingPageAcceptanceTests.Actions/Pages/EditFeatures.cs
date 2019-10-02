@@ -8,6 +8,8 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 {
     public sealed class EditFeatures : PageAction
     {
+        private string randomString = "";
+
         public EditFeatures(IWebDriver driver, ITestOutputHelper helper) : base(driver, helper)
         {
         }
@@ -16,10 +18,9 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// Add random characters to a text field
         /// </summary>
         /// <param name="characterCount">The number of characters to add</param>
-        public void AddTextToFeature(int characterCount = 100)
+        public string AddTextToFeature(int characterCount = 100)
         {
-            var characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!£$%^&*(){}:@~<>?|\\[];'#,./";
-            var randomString = "";
+            var characters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!£$%^&*(){}:@~<>?|[];#,./";            
 
             var random = new Random();
             for(int i = 0; i<= characterCount; i++)
@@ -29,6 +30,8 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
             driver.FindElements(pages.EditFeatures.FeatureText).First().Clear();
             driver.FindElements(pages.EditFeatures.FeatureText).First().SendKeys(randomString);
+
+            return randomString;
         }
 
         /// <summary>
