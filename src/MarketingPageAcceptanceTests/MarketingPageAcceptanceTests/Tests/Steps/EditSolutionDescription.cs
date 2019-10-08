@@ -23,12 +23,16 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         public void DoesNotExceedMaximum()
         {
             pages.SolutionDescription.SummaryAddText(10);
+            pages.SolutionDescription.DescriptionAddText(10);
+            pages.SolutionDescription.LinkAddText(10);
         }
 
         [And("it does exceed the maximum")]
         public void DoesExceedMaximum()
         {
             pages.SolutionDescription.SummaryAddText(11);
+            pages.SolutionDescription.DescriptionAddText(11);
+            pages.SolutionDescription.LinkAddText(11);
         }
 
         [When("the Supplier attempts to save")]
@@ -43,6 +47,8 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
             pages.Dashboard.PageDisplayed();
             pages.Dashboard.SectionCompleteStatus("Solution description");
             pages.SolutionDescription.DbContainsSummary(solutionId, connectionString).Should().BeTrue();
+            pages.SolutionDescription.DbContainsDescription(solutionId, connectionString).Should().BeTrue();
+            pages.SolutionDescription.DbContainsLink(solutionId, connectionString).Should().BeTrue();
         }
 
         [Then("the Section is not saved")]
@@ -50,6 +56,8 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         {
             pages.SolutionDescription.PageDisplayed();
             pages.SolutionDescription.DbContainsSummary(solutionId, connectionString).Should().BeFalse();
+            pages.SolutionDescription.DbContainsDescription(solutionId, connectionString).Should().BeFalse();
+            pages.SolutionDescription.DbContainsLink(solutionId, connectionString).Should().BeFalse();
         }
 
         [And("an indication is given to the Supplier as to why")]
@@ -70,22 +78,10 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
             SupplierAttemptsSave();
         }
 
-        [And("data is present")]
-        public void PrePopulatedDataPresent()
-        {
-            throw new NotImplementedException();
-        }
-
         [Then("the Solution Description Section is marked as Incomplete")]
         public void SolutionDescriptionMarkedIncomplete()
         {
             pages.Dashboard.SectionIncomplete("Solution description");
-        }
-
-        [Then("the Solution Description Section is marked as Complete")]
-        public void SolutionDescriptionMarkedComplete()
-        {
-            pages.Dashboard.SectionCompleteStatus("Solution description");
         }
 
         [Given("validation has been triggered")]

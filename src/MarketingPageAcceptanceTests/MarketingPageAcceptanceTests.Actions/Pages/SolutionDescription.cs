@@ -11,6 +11,8 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
     {
         string summary = "";
         string href;
+        string description = "";
+        string link = "";
 
         public SolutionDescription(IWebDriver driver, ITestOutputHelper helper) : base(driver, helper)
         {
@@ -20,6 +22,18 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             summary = RandomString(numChars);
             driver.FindElement(pages.SolutionDescription.Summary).SendKeys(summary);
+        }
+
+        public void DescriptionAddText(int numChars)
+        {
+            description = RandomString(numChars);
+            driver.FindElement(pages.SolutionDescription.Description).SendKeys(description);
+        }
+
+        public void LinkAddText(int numChars)
+        {
+            link = RandomString(numChars);
+            driver.FindElement(pages.SolutionDescription.Link).SendKeys(link);
         }
 
         private string RandomString(int characters)
@@ -49,6 +63,18 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             return solutionDescription.Contains(summary);
         }
 
+        public bool DbContainsLink(string solutionId, string connectionString)
+        {
+            var solutionDescription = SqlHelper.GetSolutionFeatures(solutionId, connectionString);
+            return solutionDescription.Contains(description);
+        }
+
+        public bool DbContainsDescription(string solutionId, string connectionString)
+        {
+            var solutionDescription = SqlHelper.GetSolutionFeatures(solutionId, connectionString);
+            return solutionDescription.Contains(link);
+        }
+
         public void PageDisplayed()
         {
             wait.Until(s => s.FindElement(pages.SolutionDescription.Summary).Displayed && s.FindElement(pages.SolutionDescription.Description).Displayed);
@@ -59,6 +85,32 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             try
             {
                 driver.FindElement(pages.SolutionDescription.SummaryError);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool DescriptionErrorDisplayed()
+        {
+            try
+            {
+                driver.FindElement(pages.SolutionDescription.DescriptionError);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool LinkErrorDisplayed()
+        {
+            try
+            {
+                driver.FindElement(pages.SolutionDescription.LinkError);
                 return true;
             }
             catch

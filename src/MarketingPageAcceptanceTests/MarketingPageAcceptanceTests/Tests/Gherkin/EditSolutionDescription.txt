@@ -22,13 +22,6 @@ Scenario: Solution Description Section marked as Incomplete Mandatory Data Missi
 	When the Marketing Page Form is presented 
 	Then the Solution Description Section is marked as Incomplete
 
-@ignore
-Scenario: Solution Description Type Section marked as Complete Mandatory Data Present
-	Given the Solution Description Section requires Mandatory Data
-	And data is present
-	When the Marketing Page Form is presented 
-	Then the Solution Description Section is marked as Complete
-
 Scenario: Validation Error Message Anchors
 	Given validation has been triggered
 	When the User selects an error link in the Error Summary
