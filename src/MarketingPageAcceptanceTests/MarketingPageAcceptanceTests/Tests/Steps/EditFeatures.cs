@@ -34,7 +34,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         [And("it does exceed the maximum character count")]
         public void DoesExceedCharacterCount()
         {
-            pages.EditFeatures.AddTextToFeature(101);
+            featureString = pages.EditFeatures.AddTextToFeature(101);
         }
 
         [When("the Supplier attempts to save")]
@@ -100,6 +100,13 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         {
             var features = SqlHelper.GetSolutionFeatures(solutionId, connectionString);
             features.Should().Contain(featureString);
+        }
+
+        [And("the database does not contain the Feature Text")]
+        public void AssertFeatureNotInDb()
+        {
+            var features = SqlHelper.GetSolutionFeatures(solutionId, connectionString);
+            features.Should().NotContain(featureString);
         }
     }
 }

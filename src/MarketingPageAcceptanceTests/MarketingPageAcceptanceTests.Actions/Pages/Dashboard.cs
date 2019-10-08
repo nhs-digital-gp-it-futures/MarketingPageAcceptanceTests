@@ -48,6 +48,21 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             wait.Until(s => s.FindElement(pages.Common.PageTitle).Text.Contains(sectionTitle));
         }
 
+        public bool SectionHasStatus(string section)
+        {
+            try
+            {
+                driver.FindElements(pages.Dashboard.Sections)
+                    .Single(s => s.FindElement(pages.Dashboard.SectionTitle).Text.Contains(section))
+                    .FindElement(pages.Dashboard.Statuses);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         /// <summary>
         /// Ensure a section has a status of COMPLETE
         /// </summary>
