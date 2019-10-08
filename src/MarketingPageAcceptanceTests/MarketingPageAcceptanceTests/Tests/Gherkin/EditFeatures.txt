@@ -16,6 +16,7 @@ Scenario: Feature does exceed maximum
 	When the Supplier attempts to save 
 	Then the Section is not saved 
 	And an indication is given to the Supplier as to why
+	And the database does not contain the Feature Text	
 
 Scenario: Features Section marked as Complete -  No Mandatory Data
 	Given the Features Section has no Mandatory Data

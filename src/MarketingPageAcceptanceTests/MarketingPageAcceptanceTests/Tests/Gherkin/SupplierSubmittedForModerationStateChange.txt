@@ -1,0 +1,10 @@
+﻿Feature: Supplier Submitted for Moderation - State Change
+	As a Supplier or Authority User
+	I want the State of the Marketing Page to change after Submission of the Marketing Page
+
+@ignore
+Scenario: State Change after Supplier Submission
+	Given that a Marketing Page has been submitted
+	When the Supplier submits their Marketing Page
+	Then the Marketing Page state will change
+	And the State will reflect that the Supplier data has been submitted for moderation 

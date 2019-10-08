@@ -10,5 +10,6 @@ namespace MarketingPageAcceptanceTests.Actions.Collections
         public Common Common { get; set; }
         public Dashboard Dashboard { get; set; }
         public EditFeatures EditFeatures { get; set; }
+        public SolutionDescription SolutionDescription { get; internal set; }
     }
 }
