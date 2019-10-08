@@ -75,10 +75,13 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         public void PrePopulatedDataNotPresent()
         {
             pages.SolutionDescription.ClearAllFields();
+            pages.SolutionDescription.DescriptionAddText(10);
+            pages.SolutionDescription.LinkAddText(10);
             SupplierAttemptsSave();
         }
 
         [Then("the Solution Description Section is marked as Incomplete")]
+        [Then("the status is set to INCOMPLETE")]
         public void SolutionDescriptionMarkedIncomplete()
         {
             pages.Dashboard.SectionIncomplete("Solution description");
@@ -101,6 +104,33 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         public void UserNavigatedToRelevantSection()
         {
             pages.SolutionDescription.UrlContainsValidationLinkDetails();
+        }
+
+        [And("the non mandatory data is saved to the database")]
+        public void NonMandatoryDataSaved()
+        {
+            pages.SolutionDescription.DbContainsDescription(solutionId, connectionString);
+            pages.SolutionDescription.DbContainsLink(solutionId, connectionString);
+        }
+
+        [Given("the Solution Description Section has completed data saved")]
+        public void SolutionDescriptionCompleted()
+        {
+            pages.SolutionDescription.SummaryAddText(10);
+            pages.SolutionDescription.DescriptionAddText(10);
+            pages.SolutionDescription.LinkAddText(10);
+            SupplierAttemptsSave();
+            pages.Dashboard.PageDisplayed();
+            pages.Dashboard.SectionCompleteStatus("Solution description");
+        }
+
+        [When("the Mandatory fields data is deleted")]
+        public void DeleteMandatoryData()
+        {
+            pages.Dashboard.NavigateToSection("Solution description");
+            pages.SolutionDescription.ClearMandatoryFields();
+            SupplierAttemptsSave();
+            MarketingPageFormPresented();
         }
     }
 }

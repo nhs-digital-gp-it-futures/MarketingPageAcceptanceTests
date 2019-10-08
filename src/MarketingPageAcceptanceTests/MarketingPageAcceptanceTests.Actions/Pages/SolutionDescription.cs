@@ -65,14 +65,15 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public bool DbContainsLink(string solutionId, string connectionString)
         {
-            var solutionDescription = SqlHelper.GetSolutionFeatures(solutionId, connectionString);
-            return solutionDescription.Contains(description);
+            var solutionLink = SqlHelper.GetSolutionFeatures(solutionId, connectionString);
+            var aboutUrl = SqlHelper.GetSolutionAboutLink(solutionId, connectionString);
+            return solutionLink.Contains(link) && aboutUrl.Contains(link);
         }
 
         public bool DbContainsDescription(string solutionId, string connectionString)
         {
             var solutionDescription = SqlHelper.GetSolutionFeatures(solutionId, connectionString);
-            return solutionDescription.Contains(link);
+            return solutionDescription.Contains(description);
         }
 
         public void PageDisplayed()
@@ -138,6 +139,11 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void UrlContainsValidationLinkDetails()
         {
             driver.Url.Should().Contain(href);
+        }
+
+        public void ClearMandatoryFields()
+        {
+            driver.FindElement(pages.SolutionDescription.Summary).Clear();
         }
     }
 }
