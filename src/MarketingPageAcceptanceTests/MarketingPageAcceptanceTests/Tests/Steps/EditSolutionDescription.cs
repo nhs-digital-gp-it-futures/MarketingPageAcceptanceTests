@@ -22,17 +22,17 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         [And("it does not exceed the maximum")]
         public void DoesNotExceedMaximum()
         {
-            pages.SolutionDescription.SummaryAddText(10);
-            pages.SolutionDescription.DescriptionAddText(10);
-            pages.SolutionDescription.LinkAddText(10);
+            pages.SolutionDescription.SummaryAddText(300);
+            pages.SolutionDescription.DescriptionAddText(1000);
+            pages.SolutionDescription.LinkAddText(1000);
         }
 
         [And("it does exceed the maximum")]
         public void DoesExceedMaximum()
         {
-            pages.SolutionDescription.SummaryAddText(11);
-            pages.SolutionDescription.DescriptionAddText(11);
-            pages.SolutionDescription.LinkAddText(11);
+            pages.SolutionDescription.SummaryAddText(301);
+            pages.SolutionDescription.DescriptionAddText(1001);
+            pages.SolutionDescription.LinkAddText(1001);
         }
 
         [When("the Supplier attempts to save")]
