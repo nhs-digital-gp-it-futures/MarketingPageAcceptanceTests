@@ -17,10 +17,16 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         [Given("that Marketing Page data has been saved")]
         public void MarketingPageDataSaved()
         {
-            throw new NotImplementedException();
+            pages.SolutionDescription.SummaryAddText(300);
+            pages.SolutionDescription.DescriptionAddText(1000);
+            pages.SolutionDescription.LinkAddText(1000);
         }
 
         [When("the Catalogue User chooses to preview the Marketing Page")]
+        public void MarketingPageVisited()
+        {
+           pages.Dashboard.NavigateToPreviewPage();
+        }
         [When("a User previews the Marketing Page")]
         [When("the User previews the Marketing Page")]
         public void CatalogueUserPreviewsMarketingPage()

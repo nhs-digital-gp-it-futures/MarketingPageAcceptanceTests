@@ -11,7 +11,8 @@ namespace MarketingPageAcceptanceTests.Objects
                 Dashboard = new Pages.Dashboard(),
                 EditFeatures = new Pages.EditFeatures(),
                 SolutionDescription = new Pages.SolutionDescription(),
-                Common = new Pages.Common()
+                Common = new Pages.Common(),
+                PreviewPage = new Pages.PreviewPage()
             };
         }
 
