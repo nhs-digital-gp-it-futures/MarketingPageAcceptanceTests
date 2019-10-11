@@ -20,36 +20,20 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void SummaryAddText(int numChars)
         {
-            summary = RandomString(numChars);
+            summary = random.GetRandomString(numChars);
             driver.FindElement(pages.SolutionDescription.Summary).SendKeys(summary);
         }
 
         public void DescriptionAddText(int numChars)
         {
-            description = RandomString(numChars);
+            description = random.GetRandomString(numChars);
             driver.FindElement(pages.SolutionDescription.Description).SendKeys(description);
         }
 
         public void LinkAddText(int numChars)
         {
-            link = RandomString(numChars);
+            link = random.GetRandomString(numChars);
             driver.FindElement(pages.SolutionDescription.Link).SendKeys(link);
-        }
-
-        private string RandomString(int characters)
-        {
-            string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!£$%^&*()_-+=";
-
-            string randomString = "";
-
-            Random rand = new Random();
-
-            for (int i = 0; i < characters; i++)
-            {
-                randomString += chars[rand.Next(chars.Length)];
-            }
-
-            return randomString;
         }
 
         public void SaveAndReturn()
