@@ -8,7 +8,7 @@ namespace MarketingPageAcceptanceTests.Objects.Utils
     public class RandomGenerator
     {
         private Random random = new Random();
-        private const string Characters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!£$%^&*(){}:@~<>?|[];#,./";
+        private const string AllCharacters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!£$%^&*(){}:@~<>?|[];#,./";
 
         /// <summary>
         /// </summary>
@@ -19,7 +19,7 @@ namespace MarketingPageAcceptanceTests.Objects.Utils
             string randomString = "";
             for (int i = 0; i <= stringLength; i++)
             {
-                randomString += Characters[random.Next(Characters.Length)];
+                randomString += AllCharacters[random.Next(AllCharacters.Length)];
             }
 
             return randomString;
