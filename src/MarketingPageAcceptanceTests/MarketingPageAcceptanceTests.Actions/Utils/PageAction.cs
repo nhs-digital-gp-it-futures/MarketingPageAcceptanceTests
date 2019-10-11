@@ -12,7 +12,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
     {
         internal readonly IWebDriver driver;
         internal readonly ITestOutputHelper helper;
-        internal RandomGenerator random;
+        internal RandomGenerator random = new RandomGenerator();
         internal readonly WebDriverWait wait;
         internal PageCollection pages;
 
@@ -27,9 +27,6 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
             // Initialize the page objects
             pages = new PageObjects().Pages;
-
-            // Initialize random generator
-            random = new RandomGenerator();
         }
         
     }
