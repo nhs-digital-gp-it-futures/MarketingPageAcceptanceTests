@@ -37,10 +37,47 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
             return result;
         }
 
+        public static int GetSolutionStatus(string solutionId, string connectionString)
+        {
+            var query = "SELECT SupplierStatusId from [dbo].[Solution] where Id=@solutionId";
+            
+            SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@solutionId", solutionId)
+            };
+
+            var result = SqlReader.Read<int>(connectionString, query, parameters, GetSupplierStatus);
+
+            return result;
+        }
+
+        private static int GetSupplierStatus(IDataReader dr)
+        {
+            dr.Read();
+            int.TryParse(dr["SupplierStatusId"].ToString(), out int result);
+            return result;
+        }
+
+        public static void ResetSolutionStatus(string solutionId, string connectionString)
+        {
+            var query = $"UPDATE Solution set SupplierStatusId=1 where Id=@solutionId";
+
+            SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@solutionId", solutionId)
+            };
+
+            SqlReader.Read(connectionString, query, parameters, NullReturn);
+        }
+
         private static string GetAboutUrl(IDataReader dr)
         {
             dr.Read();
             return dr["AboutUrl"].ToString();
+        }
+
+        private static string NullReturn(IDataReader dr)
+        {
+            dr.Read();
+            return dr.ToString();
         }
     }
 
