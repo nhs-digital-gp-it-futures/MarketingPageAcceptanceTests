@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using FluentAssertions;
 using OpenQA.Selenium;
@@ -47,5 +48,10 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                 .FindElement(pages.PreviewPage.SectionData).Text;
         }
 
+        public IList<string> GetFeaturesText()
+        {
+            var features = driver.FindElement(pages.PreviewPage.FeaturesSection).FindElements(By.CssSelector("li label.nhsuk-label")).Select(s => s.Text);
+            return features.ToList();
+        }
     }
 }

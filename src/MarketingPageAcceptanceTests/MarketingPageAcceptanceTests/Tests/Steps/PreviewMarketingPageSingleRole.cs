@@ -16,6 +16,8 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         private string description = String.Empty;
         private string link = String.Empty;
 
+        private string featureString = String.Empty;
+
         public PreviewMarketingPageSingleRole(ITestOutputHelper helper) : base(helper)
         {
             pages.Dashboard.NavigateToSection("Solution description");
@@ -31,6 +33,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         }
 
         [When("the Catalogue User chooses to preview the Marketing Page")]
+        [When("the User previews the Marketing Page")]
         public void MarketingPageVisited()
         {
            pages.Dashboard.NavigateToPreviewPage();
@@ -48,12 +51,6 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
             this.summary.Should().BeEquivalentTo(pages.PreviewPage.GetSolutionSummaryText());
             this.description.Should().BeEquivalentTo(pages.PreviewPage.GetSolutionAboutText());
             this.link.Should().BeEquivalentTo(pages.PreviewPage.GetSolutionLinkText());
-        }
- 
-        [When("the User previews the Marketing Page")]
-        public void CatalogueUserPreviewsMarketingPage()
-        {
-            throw new NotImplementedException();
         }
         
         [And("any saved data will be visible on the Marketing Page Preview")]
@@ -83,13 +80,25 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         [Given("that the Solution Description and Features section are the only sections completed")]
         public void SolutionDescriptionAndFeaturesCompleted()
         {
-            throw new NotImplementedException();
+            // Solution Description section
+            MarketingPageDataSaved();
+
+            // Features Section
+            pages.Dashboard.NavigateToSection("Features");
+            pages.EditFeatures.PageDisplayed();
+            featureString = pages.EditFeatures.AddTextToFeature(50);
+            pages.EditFeatures.ClickSaveAndReturn();
+            pages.Dashboard.PageDisplayed();
         }
 
         [Then("the Solution Description and Features section are displayed on the preview")]
         public void SolutionDescriptionAndFeaturesDisplayedPreview()
         {
-            throw new NotImplementedException();
+            // Solution description sections
+            SavedDataVisible();
+
+            // Features Section
+            pages.PreviewPage.GetFeaturesText().Should().Contain(featureString);
         }
     }
 }

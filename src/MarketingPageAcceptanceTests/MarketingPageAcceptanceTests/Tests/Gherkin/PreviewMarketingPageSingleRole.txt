@@ -16,7 +16,6 @@ Scenario: Titles Shown or hidden
 	Then the Sections and the Mandatory Question are displayed on the preview regardless of whether any data has been added to the section
 	And the Section and the Question for non-Mandatory data are displayed only if the User has saved data to the section
 
-@ignore
 Scenario: Solution Description and Features 
 	Given that the Solution Description and Features section are the only sections completed 
 	When the User previews the Marketing Page
