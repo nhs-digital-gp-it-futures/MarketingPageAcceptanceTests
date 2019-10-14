@@ -28,6 +28,5 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             // Initialize the page objects
             pages = new PageObjects().Pages;
         }
-        
     }
 }

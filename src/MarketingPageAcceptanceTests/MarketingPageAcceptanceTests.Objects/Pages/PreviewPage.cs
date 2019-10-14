@@ -8,10 +8,10 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
 {
     public sealed class PreviewPage
     {
-        public By PageTitle => By.TagName("h1");
-
-        public By PreviewSection => CustomBy.DataTestId("preview-section");
-
+        /// <summary>
+        /// contains Summary, About and Link section
+        /// </summary>
+        public By SolutionDescriptionContainer => CustomBy.DataTestId("preview-section-solution-description");
         public By SolutionDescriptionSummarySection => CustomBy.DataTestId("preview-section-question-solution-summary");
 
         public By SolutionDescriptionAboutSection =>
