@@ -28,10 +28,5 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             // Initialize the page objects
             pages = new PageObjects().Pages;
         }
-        public void GoBackOnePage()
-        {
-            driver.Navigate().Back();
-        }
-
     }
 }

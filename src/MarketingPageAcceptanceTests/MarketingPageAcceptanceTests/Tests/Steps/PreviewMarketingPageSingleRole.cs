@@ -72,7 +72,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         public void SectionAndQuestionDisplayedOnlyIfUserSavedToSection()
         {
             // go back to dashboard and make sure the page loaded.
-            pages.PreviewPage.GoBackOnePage();
+            pages.Common.GoBackOnePage();
             pages.Dashboard.PageDisplayed();
             pages.Dashboard.NavigateToSection("Solution description");
             var linkText = pages.SolutionDescription.LinkAddText(50).TrimStart();
