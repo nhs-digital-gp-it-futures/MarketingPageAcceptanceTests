@@ -115,5 +115,18 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                 .Where(section => section.FindElement(pages.Dashboard.Requirement).Text.Equals("Mandatory"))
                 .ToList();
         }
+
+        /// <summary>
+        /// returns a list of all sections labeled as mandatory in alphabetical order
+        /// </summary>
+        /// <returns></returns>
+        public IList<string> GetMandatorySectionsNames()
+        {
+            return driver.FindElements(pages.Dashboard.Sections)
+                .Where(section => section.FindElement(pages.Dashboard.Requirement).Text.Equals("Mandatory"))
+                .Select(section => section.FindElement(pages.Dashboard.SectionTitle).Text)
+                .OrderBy(name => name.ToLower())
+                .ToList();
+        }
     }
 }
