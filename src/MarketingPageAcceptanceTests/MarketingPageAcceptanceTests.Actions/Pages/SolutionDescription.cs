@@ -18,22 +18,25 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
         }
 
-        public void SummaryAddText(int numChars)
+        public string SummaryAddText(int numChars)
         {
             summary = random.GetRandomString(numChars);
             driver.FindElement(pages.SolutionDescription.Summary).SendKeys(summary);
+            return summary;
         }
 
-        public void DescriptionAddText(int numChars)
+        public string DescriptionAddText(int numChars)
         {
             description = random.GetRandomString(numChars);
             driver.FindElement(pages.SolutionDescription.Description).SendKeys(description);
+            return description;
         }
 
-        public void LinkAddText(int numChars)
+        public string LinkAddText(int numChars)
         {
             link = random.GetRandomString(numChars);
             driver.FindElement(pages.SolutionDescription.Link).SendKeys(link);
+            return link;
         }
 
         public void SaveAndReturn()

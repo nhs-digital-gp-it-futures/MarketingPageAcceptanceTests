@@ -53,7 +53,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// </summary>
         public void NavigateToPreviewPage()
         {
-            driver.FindElement(pages.Dashboard.PreviewPage).Click();
+            driver.FindElement(pages.Dashboard.PreviewPage).FindElement(By.ClassName("nhsuk-button")).Click();
         }
 
         public bool SectionHasStatus(string section)

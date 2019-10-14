@@ -7,7 +7,7 @@ using Xunit.Abstractions;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
-    class PreviewPage : PageAction
+   public sealed class PreviewPage : PageAction
     {
         public PreviewPage(IWebDriver driver, ITestOutputHelper helper) : base(driver, helper)
         {
@@ -15,7 +15,37 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void PageDisplayed()
         {
-            driver.FindElement(pages.PreviewPage.PageTitle).Text.Should().Contain("Preview Page");
+            wait.Until(s => s.FindElement(pages.PreviewPage.SolutionDescriptionSummarySection).Displayed);
         }
+
+        public string GetSolutionSummaryText()
+        {
+            return driver.FindElement(pages.PreviewPage.SolutionDescriptionSummarySection)
+                .FindElement(pages.PreviewPage.SectionData).Text;
+        }
+
+        public string GetSolutionSummaryTitle()
+        {
+            return driver.FindElement(pages.PreviewPage.SolutionDescriptionSummarySection)
+                .FindElement(pages.PreviewPage.SectionTitle).Text;
+        }
+
+        public string GetSolutionAboutText()
+        {
+            return driver.FindElement(pages.PreviewPage.SolutionDescriptionAboutSection)
+                .FindElement(pages.PreviewPage.SectionData).Text;
+        }
+
+        public string GetSolutionAboutTitle()
+        {
+            return driver.FindElement(pages.PreviewPage.SolutionDescriptionAboutSection)
+                .FindElement(pages.PreviewPage.SectionTitle).Text;
+        }
+        public string GetSolutionLinkText()
+        {
+            return driver.FindElement(pages.PreviewPage.SolutionDescriptionLinkSection)
+                .FindElement(pages.PreviewPage.SectionData).Text;
+        }
+
     }
 }
