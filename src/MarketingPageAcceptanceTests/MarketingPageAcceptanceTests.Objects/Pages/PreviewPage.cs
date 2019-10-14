@@ -25,5 +25,6 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
         public By SectionTitle => CustomBy.DataTestId("preview-question-title");
 
         public By SectionData => CustomBy.DataTestId("preview-question-data");
+        public By FeaturesSection => CustomBy.DataTestId("preview-section-features");
     }
 }
