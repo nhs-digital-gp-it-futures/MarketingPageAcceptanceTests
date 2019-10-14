@@ -25,7 +25,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
         /// <returns></returns>
         public async Task GetSolutionDetails()
         {
-            solutionInfo = await client.GetStringAsync(uri).ConfigureAwait(continueOnCapturedContext: false);            
+            solutionInfo = await client.GetStringAsync(uri).ConfigureAwait(continueOnCapturedContext: false);
         }
 
         /// <summary>

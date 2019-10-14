@@ -15,7 +15,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         [Given("that a Supplier has chosen to manage Marketing Page Information")]
         public void SupplierManageMarketingPageInfo()
         {
-            
+
         }
 
         [Given("the Section has a content validation status")]

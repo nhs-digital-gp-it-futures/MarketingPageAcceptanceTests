@@ -3,7 +3,7 @@
 	I want to submit my Marketing Page for Moderation
 	So that my Marketing Page can be approved and published
 
-@ignore
+
 Scenario: Mandatory Data Present - Submit
 	Given that a Supplier has provided all mandatory data on the Marketing Page
 	When the User chooses to Submit their Marketing Page for Moderation

@@ -68,7 +68,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
 
         [Given("the Solution Description Section requires Mandatory Data")]
         public void SolutionDescriptionSectionRequiresMandatoryData()
-        {            
+        {
         }
 
         [And("the pre-populated data is not present")]

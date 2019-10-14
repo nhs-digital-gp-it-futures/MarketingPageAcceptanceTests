@@ -40,7 +40,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
         public static int GetSolutionStatus(string solutionId, string connectionString)
         {
             var query = "SELECT SupplierStatusId from [dbo].[Solution] where Id=@solutionId";
-            
+
             SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@solutionId", solutionId)
             };

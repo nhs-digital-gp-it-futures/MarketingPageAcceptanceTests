@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using OpenQA.Selenium.Internal;
 
 namespace MarketingPageAcceptanceTests.Objects.Utils
 {

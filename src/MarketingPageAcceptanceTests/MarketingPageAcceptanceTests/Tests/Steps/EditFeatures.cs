@@ -2,8 +2,6 @@
 using MarketingPageAcceptanceTests.Actions.Utils;
 using MarketingPageAcceptanceTests.Utils;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit.Abstractions;
 using Xunit.Gherkin.Quick;
 
@@ -16,7 +14,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
 
         public EditFeatures(ITestOutputHelper helper) : base(helper)
         {
-            
+
         }
 
         [Given("the Supplier has entered a Feature")]
@@ -25,7 +23,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
             pages.Dashboard.NavigateToSection("Features");
         }
 
-        [And("it does not exceed the maximum character count")] 
+        [And("it does not exceed the maximum character count")]
         public void DoesNotExceedCharacterCount()
         {
             featureString = pages.EditFeatures.AddTextToFeature(50);
