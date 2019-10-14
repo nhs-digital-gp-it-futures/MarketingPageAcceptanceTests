@@ -1,8 +1,5 @@
 ﻿using MarketingPageAcceptanceTests.Utils;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml.Serialization;
 using FluentAssertions;
 using Xunit.Abstractions;
 using Xunit.Gherkin.Quick;
@@ -20,12 +17,13 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
 
         public PreviewMarketingPageSingleRole(ITestOutputHelper helper) : base(helper)
         {
-            pages.Dashboard.NavigateToSection("Solution description");
+
         }
 
         [Given("that Marketing Page data has been saved")]
         public void MarketingPageDataSaved()
         {
+            pages.Dashboard.NavigateToSection("Solution description");
             summary = pages.SolutionDescription.SummaryAddText(300).TrimStart();
             description = pages.SolutionDescription.DescriptionAddText(1000).TrimStart(); 
             link = pages.SolutionDescription.LinkAddText(1000).TrimStart();
@@ -34,6 +32,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
 
         [When("the Catalogue User chooses to preview the Marketing Page")]
         [When("the User previews the Marketing Page")]
+        [When("a User previews the Marketing Page")]
         public void MarketingPageVisited()
         {
            pages.Dashboard.NavigateToPreviewPage();
@@ -52,29 +51,34 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
             this.description.Should().BeEquivalentTo(pages.PreviewPage.GetSolutionAboutText());
             this.link.Should().BeEquivalentTo(pages.PreviewPage.GetSolutionLinkText());
         }
-        
-        [And("any saved data will be visible on the Marketing Page Preview")]
-        public void SavedDataVisibleOnMarketingPagePreview()
-        {
-            throw new NotImplementedException();
-        }
 
         [Given("that the Marketing Page has Mandatory Data")]
         public void MarketingPageMandatoryData()
         {
-            throw new NotImplementedException();
+            pages.Dashboard.GetMandatorySections().Count.Should().BeGreaterThan(0);
         }        
-        
+        /// <summary>
+        /// Will pass if "Solution description" and "Summary" is present atm,
+        /// hopefully this will be replaced with something more dynamic in the future.
+        /// </summary>
         [Then("the Sections and the Mandatory Question are displayed on the preview regardless of whether any data has been added to the section")]
         public void SectionsAndMandatoryQuestionDisplayed()
         {
-            throw new NotImplementedException();
+            pages.PreviewPage.GetSolutionDescriptionContainerTitle().Should().BeEquivalentTo("Solution description");
+            pages.PreviewPage.GetSolutionSummaryTitle().Should().BeEquivalentTo("Summary");
         }
 
         [And("the Section and the Question for non-Mandatory data are displayed only if the User has saved data to the section")]
         public void SectionAndQuestionDisplayedOnlyIfUserSavedToSection()
         {
-            throw new NotImplementedException();
+            // go back to dashboard and make sure the page loaded.
+            pages.Common.GoBackOnePage();
+            pages.Dashboard.PageDisplayed();
+            pages.Dashboard.NavigateToSection("Solution description");
+            var linkText = pages.SolutionDescription.LinkAddText(50).TrimStart();
+            pages.SolutionDescription.SaveAndReturn();
+            pages.Dashboard.NavigateToPreviewPage();
+            pages.PreviewPage.GetSolutionLinkText().Should().BeEquivalentTo(linkText);
         }
 
         [Given("that the Solution Description and Features section are the only sections completed")]

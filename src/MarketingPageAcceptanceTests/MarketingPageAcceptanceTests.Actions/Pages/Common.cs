@@ -11,5 +11,9 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public Common(IWebDriver driver, ITestOutputHelper helper) : base (driver, helper)
         {
         }
+        public void GoBackOnePage()
+        {
+            driver.Navigate().Back();
+        }
     }
 }

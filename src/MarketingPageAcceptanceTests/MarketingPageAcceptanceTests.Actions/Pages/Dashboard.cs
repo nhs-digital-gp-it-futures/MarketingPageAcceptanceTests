@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using OpenQA.Selenium;
@@ -106,6 +107,14 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             var section = driver.FindElements(pages.Dashboard.Sections)
                 .Single(s => s.FindElement(pages.Dashboard.SectionTitle).Text == sectionName);
             section.FindElement(pages.Dashboard.Statuses).Text.Should().Be(status);
+        }
+
+        public IList<IWebElement> GetMandatorySections()
+        {
+            // get all sections that are mandatory
+            return driver.FindElements(pages.Dashboard.Sections)
+                .Where(section => section.FindElement(pages.Dashboard.Requirement).Text.Equals("Mandatory"))
+                .ToList();
         }
     }
 }

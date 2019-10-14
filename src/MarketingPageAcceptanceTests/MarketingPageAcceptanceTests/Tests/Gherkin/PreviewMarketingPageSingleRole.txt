@@ -9,7 +9,6 @@ Scenario: Data provided
 	Then the Marketing Page Preview is displayed 
 	And any saved data will be visible on the Marketing Page Preview
 
-@ignore
 Scenario: Titles Shown or hidden
 	Given that the Marketing Page has Mandatory Data
 	When a User previews the Marketing Page
