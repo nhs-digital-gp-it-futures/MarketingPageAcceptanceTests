@@ -1,8 +1,6 @@
 ﻿using FluentAssertions;
 using MarketingPageAcceptanceTests.Utils;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit.Abstractions;
 using Xunit.Gherkin.Quick;
 
@@ -38,7 +36,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         {
             pages.Dashboard.AllSectionsContainStatus();
         }
-    
+
         [Then("the Section content validation status is displayed")]
         public void SectionContentValidationStatusDisplayed()
         {

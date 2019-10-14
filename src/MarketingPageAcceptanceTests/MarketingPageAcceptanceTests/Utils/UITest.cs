@@ -45,8 +45,8 @@ namespace MarketingPageAcceptanceTests.Utils
 
             // Setup a HttpClient and get the details of the solution used for this test
             resetDb = new ResetDbEntry(url, apiUrl);
-            resetDb.GetSolutionDetails().Wait();      
-            
+            resetDb.GetSolutionDetails().Wait();
+
             pages = new PageActions(driver, helper).PageActionCollection;
 
             // Navigate to the site url
@@ -70,7 +70,7 @@ namespace MarketingPageAcceptanceTests.Utils
             driver.Close();
             driver.Quit();
 
-            resetDb.PutSolutionDetails().Wait();            
+            resetDb.PutSolutionDetails().Wait();
             resetDb.Dispose();
 
             // Reset the solution status

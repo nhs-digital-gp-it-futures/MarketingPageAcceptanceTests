@@ -1,6 +1,6 @@
-﻿using MarketingPageAcceptanceTests.Utils;
+﻿using FluentAssertions;
+using MarketingPageAcceptanceTests.Utils;
 using System;
-using FluentAssertions;
 using Xunit.Abstractions;
 using Xunit.Gherkin.Quick;
 
@@ -25,7 +25,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         {
             pages.Dashboard.NavigateToSection("Solution description");
             summary = pages.SolutionDescription.SummaryAddText(300).TrimStart();
-            description = pages.SolutionDescription.DescriptionAddText(1000).TrimStart(); 
+            description = pages.SolutionDescription.DescriptionAddText(1000).TrimStart();
             link = pages.SolutionDescription.LinkAddText(1000).TrimStart();
             pages.SolutionDescription.SaveAndReturn();
         }
@@ -35,7 +35,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         [When("a User previews the Marketing Page")]
         public void MarketingPageVisited()
         {
-           pages.Dashboard.NavigateToPreviewPage();
+            pages.Dashboard.NavigateToPreviewPage();
         }
 
         [Then("the Marketing Page Preview is displayed")]
@@ -56,7 +56,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         public void MarketingPageMandatoryData()
         {
             pages.Dashboard.GetMandatorySections().Count.Should().BeGreaterThan(0);
-        }        
+        }
         /// <summary>
         /// Will pass if "Solution description" and "Summary" is present atm,
         /// hopefully this will be replaced with something more dynamic in the future.

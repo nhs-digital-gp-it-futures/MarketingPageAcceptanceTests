@@ -19,5 +19,6 @@ namespace MarketingPageAcceptanceTests.Utils
     }
     public static class ConnectionString
     {
-        internal const string GPitFutures = @"Server={0};Initial Catalog=buyingcatalogue;Persist Security Info=false;User Id=NHSD;Password={1}";        
-    }}
+        internal const string GPitFutures = @"Server={0};Initial Catalog=buyingcatalogue;Persist Security Info=false;User Id=NHSD;Password={1}";
+    }
+}

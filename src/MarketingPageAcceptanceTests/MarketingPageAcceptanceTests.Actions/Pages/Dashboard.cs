@@ -1,8 +1,7 @@
-﻿using System;
+﻿using FluentAssertions;
+using OpenQA.Selenium;
 using System.Collections.Generic;
 using System.Linq;
-using FluentAssertions;
-using OpenQA.Selenium;
 using Xunit.Abstractions;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
@@ -29,7 +28,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             var sections = driver.FindElements(pages.Dashboard.Sections);
 
             // Assert that each section has a status displayed (does not consider the content of the status)
-            foreach(var section in sections)
+            foreach (var section in sections)
             {
                 section.FindElement(pages.Dashboard.Statuses).Displayed.Should().BeTrue();
             }
@@ -42,7 +41,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void NavigateToSection(string sectionTitle)
         {
             driver.FindElements(pages.Dashboard.Sections)
-                .Single(s => s.FindElement(pages.Dashboard.SectionTitle).Text.Contains(sectionTitle))
+                .Single(s => s.FindElement(pages.Dashboard.SectionTitle).Text.ToLower().Contains(sectionTitle.ToLower()))
                 .FindElement(pages.Dashboard.SectionTitle)
                 .Click();
 

@@ -1,7 +1,7 @@
-﻿using MarketingPageAcceptanceTests.Utils;
+﻿using FluentAssertions;
+using MarketingPageAcceptanceTests.Actions.Utils;
+using MarketingPageAcceptanceTests.Utils;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit.Abstractions;
 using Xunit.Gherkin.Quick;
 
@@ -17,39 +17,54 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         [Given("that a Supplier has provided all mandatory data on the Marketing Page")]
         public void SupplierProvidedAllMandatoryData()
         {
-            throw new NotImplementedException();
+            pages.Dashboard.NavigateToSection("Solution description");
+            pages.SolutionDescription.SummaryAddText(100);
+            pages.SolutionDescription.SaveAndReturn();
+
         }
 
         [When("the User chooses to Submit their Marketing Page for Moderation")]
         public void SubmitForModeration()
         {
-            throw new NotImplementedException();
+            pages.Dashboard.NavigateToPreviewPage();
+            pages.PreviewPage.PageDisplayed();
+            pages.PreviewPage.SubmitForModeration();
         }
 
         [Then("the Marketing Page will be submitted for Moderation")]
         public void SubmittedForModerationSuccess()
         {
-            throw new NotImplementedException();
+
+            SqlHelper.GetSolutionStatus(solutionId, connectionString).Should().Be(2);
         }
 
         [And("the User remains on the Preview Page")]
         public void RemainOnPreviewPage()
         {
-            throw new NotImplementedException();
+            driver.Url.Should().Contain("/preview");
         }
 
         [Given("that a Supplier has not provided all mandatory data on the Marketing Page")]
         public void SupplierHasNotProvidedAllMandatoryData()
         {
-            throw new NotImplementedException();
+            pages.Dashboard.NavigateToSection("Solution Description");
+            pages.SolutionDescription.SummaryAddText(300);
+            pages.SolutionDescription.DescriptionAddText(50);
+            pages.SolutionDescription.LinkAddText(50);
+            pages.SolutionDescription.ClearMandatoryFields();
+            pages.SolutionDescription.SaveAndReturn();
         }
 
         [Then("the Marketing Page will not be submitted for Moderation")]
         public void MarketingPageNotSubmittedForModeration()
         {
-            throw new NotImplementedException();
+            pages.Dashboard.NavigateToPreviewPage();
+            pages.PreviewPage.PageDisplayed();
+            pages.PreviewPage.SubmitForModeration();
+            pages.PreviewPage.PageDisplayed();
+            SqlHelper.GetSolutionStatus(solutionId, connectionString).Should().NotBe(2);
         }
-        
+
         [And("the User will be notified that the submission was unsuccessful")]
         public void UnsuccessfulNotificationDisplayed()
         {

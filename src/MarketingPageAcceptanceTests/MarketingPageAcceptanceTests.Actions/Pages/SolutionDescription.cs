@@ -1,7 +1,6 @@
 ﻿using FluentAssertions;
 using MarketingPageAcceptanceTests.Actions.Utils;
 using OpenQA.Selenium;
-using System;
 using System.Linq;
 using Xunit.Abstractions;
 
@@ -117,7 +116,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void ClickValidationMessage()
         {
             var errorLink = driver.FindElements(pages.SolutionDescription.ErrorSummaryLinks).First();
-            
+
             href = errorLink.GetAttribute("href");
 
             errorLink.Click();

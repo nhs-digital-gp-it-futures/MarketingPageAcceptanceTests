@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using FluentAssertions;
+﻿using FluentAssertions;
 using OpenQA.Selenium;
+using System.Collections.Generic;
 using Xunit.Abstractions;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
@@ -68,7 +66,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             var features = driver.FindElements(pages.EditFeatures.FeatureText);
 
-            foreach(var feature in features)
+            foreach (var feature in features)
             {
                 feature.Clear();
             }
