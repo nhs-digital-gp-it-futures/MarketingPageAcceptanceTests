@@ -48,6 +48,14 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             wait.Until(s => s.FindElement(pages.Common.PageTitle).Text.Contains(sectionTitle));
         }
 
+        /// <summary>
+        /// Navigate to the PreviewPage
+        /// </summary>
+        public void NavigateToPreviewPage()
+        {
+            driver.FindElement(pages.Dashboard.PreviewPage).FindElement(By.ClassName("nhsuk-button")).Click();
+        }
+
         public bool SectionHasStatus(string section)
         {
             try

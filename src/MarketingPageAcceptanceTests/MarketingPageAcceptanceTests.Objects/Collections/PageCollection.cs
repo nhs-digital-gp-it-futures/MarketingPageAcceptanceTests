@@ -8,5 +8,7 @@ namespace MarketingPageAcceptanceTests.Objects.Collections
         public EditFeatures EditFeatures { get; internal set; }
         public Common Common { get; internal set; }
         public SolutionDescription SolutionDescription { get; internal set; }
+
+        public PreviewPage PreviewPage { get; internal set; }
     }
 }

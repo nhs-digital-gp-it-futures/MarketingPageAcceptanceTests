@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Serialization;
+using FluentAssertions;
 using Xunit.Abstractions;
 using Xunit.Gherkin.Quick;
 
@@ -10,26 +12,46 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
     [FeatureFile("./Tests/Gherkin/PreviewMarketingPageSingleRole.txt")]
     public sealed class PreviewMarketingPageSingleRole : UITest, IDisposable
     {
+        private string summary = String.Empty;
+        private string description = String.Empty;
+        private string link = String.Empty;
+
         public PreviewMarketingPageSingleRole(ITestOutputHelper helper) : base(helper)
         {
+            pages.Dashboard.NavigateToSection("Solution description");
         }
 
         [Given("that Marketing Page data has been saved")]
         public void MarketingPageDataSaved()
         {
-            throw new NotImplementedException();
+            summary = pages.SolutionDescription.SummaryAddText(300).TrimStart();
+            description = pages.SolutionDescription.DescriptionAddText(1000).TrimStart(); 
+            link = pages.SolutionDescription.LinkAddText(1000).TrimStart();
+            pages.SolutionDescription.SaveAndReturn();
         }
 
         [When("the Catalogue User chooses to preview the Marketing Page")]
-        [When("a User previews the Marketing Page")]
-        [When("the User previews the Marketing Page")]
-        public void CatalogueUserPreviewsMarketingPage()
+        public void MarketingPageVisited()
         {
-            throw new NotImplementedException();
+           pages.Dashboard.NavigateToPreviewPage();
         }
 
         [Then("the Marketing Page Preview is displayed")]
-        public void MarketingPagePreviewDisplayed() 
+        public void MarketingPageDisplayed()
+        {
+            pages.PreviewPage.PageDisplayed();
+        }
+
+        [And("any saved data will be visible on the Marketing Page Preview")]
+        public void SavedDataVisible()
+        {
+            this.summary.Should().BeEquivalentTo(pages.PreviewPage.GetSolutionSummaryText());
+            this.description.Should().BeEquivalentTo(pages.PreviewPage.GetSolutionAboutText());
+            this.link.Should().BeEquivalentTo(pages.PreviewPage.GetSolutionLinkText());
+        }
+ 
+        [When("the User previews the Marketing Page")]
+        public void CatalogueUserPreviewsMarketingPage()
         {
             throw new NotImplementedException();
         }
