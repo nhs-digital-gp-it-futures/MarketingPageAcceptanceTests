@@ -17,6 +17,8 @@ namespace MarketingPageAcceptanceTests.Utils
         internal string solutionId;
         internal readonly string connectionString;
 
+        internal readonly int initialSupplierStatus;
+
         internal ITestOutputHelper helper;
 
         public UITest(ITestOutputHelper helper)
@@ -27,6 +29,8 @@ namespace MarketingPageAcceptanceTests.Utils
             var (url, hubUrl, browser, apiUrl, databaseName, dbPassword) = EnvironmentVariables.Get();
             connectionString = String.Format(ConnectionString.GPitFutures, databaseName, dbPassword);
             solutionId = url.Split('/').Last();
+
+            initialSupplierStatus = SqlHelper.GetSolutionStatus(solutionId, connectionString);
 
             if (!System.Diagnostics.Debugger.IsAttached)
             {
@@ -66,8 +70,11 @@ namespace MarketingPageAcceptanceTests.Utils
             driver.Close();
             driver.Quit();
 
-            resetDb.PutSolutionDetails().Wait();
+            resetDb.PutSolutionDetails().Wait();            
             resetDb.Dispose();
+
+            // Reset the solution status
+            SqlHelper.ResetSolutionStatus(solutionId, connectionString);
         }
     }
 }
