@@ -14,6 +14,16 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
         }
 
+        /// <summary>
+        /// Awful, will get replaced with a proper method once preview page contains a way to go to dashboard.
+        /// </summary>
+        public void NavigateToDashboard()
+        {
+            var oldUrl = driver.Url;
+            var newUrl = oldUrl.Replace("/preview", "");
+            driver.Url = newUrl;
+            driver.Navigate().Refresh();
+        }
         public void PageDisplayed()
         {
             wait.Until(s => s.FindElement(pages.PreviewPage.SolutionDescriptionSummarySection).Displayed);
@@ -52,6 +62,12 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             var features = driver.FindElement(pages.PreviewPage.FeaturesSection).FindElements(By.CssSelector("li label.nhsuk-label")).Select(s => s.Text);
             return features.ToList();
+        }
+
+        public string GetSolutionDescriptionContainerTitle()
+        {
+            return driver.FindElement(pages.PreviewPage.SolutionDescriptionContainer)
+                .FindElement(By.ClassName("nhsuk_title")).Text;
         }
     }
 }
