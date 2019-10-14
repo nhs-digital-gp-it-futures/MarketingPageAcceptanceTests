@@ -71,7 +71,9 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         [And("the Section and the Question for non-Mandatory data are displayed only if the User has saved data to the section")]
         public void SectionAndQuestionDisplayedOnlyIfUserSavedToSection()
         {
-            pages.PreviewPage.NavigateToDashboard();
+            // go back to dashboard and make sure the page loaded.
+            pages.PreviewPage.GoBackOnePage();
+            pages.Dashboard.PageDisplayed();
             pages.Dashboard.NavigateToSection("Solution description");
             var linkText = pages.SolutionDescription.LinkAddText(50).TrimStart();
             pages.SolutionDescription.SaveAndReturn();

@@ -13,17 +13,6 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public PreviewPage(IWebDriver driver, ITestOutputHelper helper) : base(driver, helper)
         {
         }
-
-        /// <summary>
-        /// Awful, will get replaced with a proper method once preview page contains a way to go to dashboard.
-        /// </summary>
-        public void NavigateToDashboard()
-        {
-            var oldUrl = driver.Url;
-            var newUrl = oldUrl.Replace("/preview", "");
-            driver.Url = newUrl;
-            driver.Navigate().Refresh();
-        }
         public void PageDisplayed()
         {
             wait.Until(s => s.FindElement(pages.PreviewPage.SolutionDescriptionSummarySection).Displayed);
