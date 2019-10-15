@@ -16,12 +16,10 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
 
         public By SolutionDescriptionLinkSection => CustomBy.DataTestId("preview-section-question-solution-link");
 
-        public By SolutionDescriptionFeaturesSection =>
-            CustomBy.DataTestId("preview-section-question-solution-description");
-
         public By SectionTitle => CustomBy.DataTestId("preview-question-title");
 
         public By SectionData => CustomBy.DataTestId("preview-question-data");
+
         public By FeaturesSection => CustomBy.DataTestId("preview-section-features");
 
         public By SubmitForModeration => By.CssSelector("a[role=button].nhsuk-button");
