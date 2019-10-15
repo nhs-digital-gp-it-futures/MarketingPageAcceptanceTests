@@ -45,20 +45,19 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public bool DbContainsSummary(string solutionId, string connectionString)
         {
-            var solutionDescription = SqlHelper.GetSolutionFeatures(solutionId, connectionString);
-            return solutionDescription.Contains(summary);
+            var solutionDescription = SqlHelper.GetSolutionSummary(solutionId, connectionString);
+            return solutionDescription.Contains(summary.TrimStart());
         }
 
         public bool DbContainsLink(string solutionId, string connectionString)
-        {
-            var solutionLink = SqlHelper.GetSolutionFeatures(solutionId, connectionString);
+        {   
             var aboutUrl = SqlHelper.GetSolutionAboutLink(solutionId, connectionString);
-            return solutionLink.Contains(link) && aboutUrl.Contains(link);
+            return aboutUrl.Contains(link);
         }
 
         public bool DbContainsDescription(string solutionId, string connectionString)
         {
-            var solutionDescription = SqlHelper.GetSolutionFeatures(solutionId, connectionString);
+            var solutionDescription = SqlHelper.GetSolutionDescription(solutionId, connectionString);
             return solutionDescription.Contains(description);
         }
 
