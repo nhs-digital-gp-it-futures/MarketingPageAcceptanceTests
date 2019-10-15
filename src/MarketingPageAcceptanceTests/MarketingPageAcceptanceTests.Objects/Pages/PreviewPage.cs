@@ -9,13 +9,16 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
         /// contains Summary, About and Link section
         /// </summary>
         public By SolutionDescriptionContainer => CustomBy.DataTestId("preview-section-solution-description");
-        public By SolutionDescriptionSummarySection => CustomBy.DataTestId("preview-section-question-solution-summary");
+        public By SolutionDescriptionSummarySection => CustomBy.DataTestId("preview-section-question-summary");
 
         public By SolutionDescriptionAboutSection =>
-            CustomBy.DataTestId("preview-section-question-solution-description");
+            CustomBy.DataTestId("preview-section-question-description");
 
-        public By SolutionDescriptionLinkSection => CustomBy.DataTestId("preview-section-question-solution-link");
+        public By SolutionDescriptionLinkSection => CustomBy.DataTestId("preview-section-question-link");
 
+        public By SolutionDescriptionFeaturesSection =>
+            CustomBy.DataTestId("preview-question-solution-description");
+      
         public By SectionTitle => CustomBy.DataTestId("preview-question-title");
 
         public By SectionData => CustomBy.DataTestId("preview-question-data");

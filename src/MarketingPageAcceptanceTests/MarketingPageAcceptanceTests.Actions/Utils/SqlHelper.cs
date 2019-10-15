@@ -18,6 +18,44 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
             return result;
         }
 
+        public static string GetSolutionSummary(string solutionId, string connectionString)
+        {
+            var query = "SELECT Summary from [dbo].[Solution] where Id=@solutionId";
+
+            SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@solutionId", solutionId)
+            };
+
+            var result = SqlReader.Read<string>(connectionString, query, parameters, GetSolutionSummary);
+
+            return result;
+        }
+
+        public static string GetSolutionDescription(string solutionId, string connectionString)
+        {
+            var query = "SELECT FullDescription from [dbo].[Solution] where Id=@solutionId";
+
+            SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@solutionId", solutionId)
+            };
+
+            var result = SqlReader.Read<string>(connectionString, query, parameters, GetSolutionDescription);
+
+            return result;
+        }
+
+        private static string GetSolutionSummary(IDataReader dr)
+        {
+            dr.Read();
+            return dr["Summary"].ToString();
+        }
+
+        private static string GetSolutionDescription(IDataReader dr)
+        {
+            dr.Read();
+            return dr["FullDescription"].ToString();
+        }
+
         private static string GetFeatures(IDataReader dr)
         {
             dr.Read();
