@@ -1,7 +1,6 @@
 ﻿using MarketingPageAcceptanceTests.Actions.Collections;
 using MarketingPageAcceptanceTests.Actions.Pages;
 using OpenQA.Selenium;
-using System;
 using Xunit.Abstractions;
 
 namespace MarketingPageAcceptanceTests.Actions
@@ -14,7 +13,9 @@ namespace MarketingPageAcceptanceTests.Actions
             {
                 Common = new Common(driver, helper),
                 Dashboard = new Dashboard(driver, helper),
-                EditFeatures = new EditFeatures(driver, helper)
+                EditFeatures = new EditFeatures(driver, helper),
+                SolutionDescription = new SolutionDescription(driver, helper),
+                PreviewPage = new PreviewPage(driver, helper)
             };
         }
 

@@ -1,5 +1,6 @@
 ﻿using MarketingPageAcceptanceTests.Objects;
 using MarketingPageAcceptanceTests.Objects.Collections;
+using MarketingPageAcceptanceTests.Objects.Utils;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -11,7 +12,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
     {
         internal readonly IWebDriver driver;
         internal readonly ITestOutputHelper helper;
-
+        internal RandomGenerator random = new RandomGenerator();
         internal readonly WebDriverWait wait;
         internal PageCollection pages;
 
@@ -27,6 +28,5 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             // Initialize the page objects
             pages = new PageObjects().Pages;
         }
-        
     }
 }

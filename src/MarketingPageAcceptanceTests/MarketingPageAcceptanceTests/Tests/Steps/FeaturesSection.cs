@@ -3,7 +3,7 @@ using System;
 using Xunit.Abstractions;
 using Xunit.Gherkin.Quick;
 
-namespace MarketingPageAcceptanceTests.Steps
+namespace MarketingPageAcceptanceTests.Tests.Steps
 {
     [FeatureFile("./Tests/Gherkin/FeaturesSection.txt")]
     public sealed class FeaturesSection : UITest, IDisposable
@@ -15,7 +15,7 @@ namespace MarketingPageAcceptanceTests.Steps
         [Given("that a Supplier has chosen to manage Marketing Page Information")]
         public void SupplierManageMarketingPageInfo()
         {
-            
+
         }
 
         [Given("the Section has a content validation status")]

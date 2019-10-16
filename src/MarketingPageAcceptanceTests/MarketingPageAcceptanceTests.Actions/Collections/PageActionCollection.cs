@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MarketingPageAcceptanceTests.Actions.Pages;
+﻿using MarketingPageAcceptanceTests.Actions.Pages;
 
 namespace MarketingPageAcceptanceTests.Actions.Collections
 {
@@ -10,5 +7,7 @@ namespace MarketingPageAcceptanceTests.Actions.Collections
         public Common Common { get; set; }
         public Dashboard Dashboard { get; set; }
         public EditFeatures EditFeatures { get; set; }
+        public SolutionDescription SolutionDescription { get; internal set; }
+        public PreviewPage PreviewPage { get; internal set; }
     }
 }

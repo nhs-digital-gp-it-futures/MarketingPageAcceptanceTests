@@ -12,6 +12,8 @@ All environment variables used in this repo are at Process level (i.e. in the sa
 | MPURL | `http://publicbrowse.nhs.net` | `http://10.0.75.1:3001`<sup>2</sup> |
 | HUBURL | `http://localhost:4444/wd/hub` | `http://localhost:4444/wd/hub` |
 | APIURL | `http://localhost:8080` | `http://10.0.75.1:8080` |
+| DATABASENAME | `localhost` | `localhost` |
+| DBPASSWORD | `Password123` | `DisruptTheMarket1!` |
 
 To set a process level environment variable in a CLI see the below table
 

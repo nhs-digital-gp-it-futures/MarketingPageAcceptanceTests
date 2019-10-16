@@ -1,34 +1,38 @@
-﻿using System;
-using System.Linq;
-using FluentAssertions;
+﻿using FluentAssertions;
 using OpenQA.Selenium;
+using System.Collections.Generic;
 using Xunit.Abstractions;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
     public sealed class EditFeatures : PageAction
     {
+
         public EditFeatures(IWebDriver driver, ITestOutputHelper helper) : base(driver, helper)
         {
         }
 
         /// <summary>
-        /// Add random characters to a text field
+        /// Add random characters to a random text field
         /// </summary>
         /// <param name="characterCount">The number of characters to add</param>
-        public void AddTextToFeature(int characterCount = 100)
+        public string AddTextToFeature(int characterCount = 100)
         {
-            var characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!£$%^&*(){}:@~<>?|\\[];'#,./";
-            var randomString = "";
+            var randomTextField = GetRandomTextField();
+            string randomString = random.GetRandomString(characterCount);
+            randomTextField.Clear();
+            randomTextField.SendKeys(randomString);
+            return randomString;
+        }
 
-            var random = new Random();
-            for(int i = 0; i<= characterCount; i++)
-            {
-                randomString += characters[random.Next(characters.Length)];
-            }
-
-            driver.FindElements(pages.EditFeatures.FeatureText).First().Clear();
-            driver.FindElements(pages.EditFeatures.FeatureText).First().SendKeys(randomString);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>Returns a random text field</returns>
+        private IWebElement GetRandomTextField()
+        {
+            IList<IWebElement> textFields = driver.FindElements(pages.EditFeatures.FeatureText); //driver.FindElements(pages.EditFeatures.FeatureList).ToList();
+            return textFields[random.GetRandomPositionInArrayOfLength(textFields.Count)];
         }
 
         /// <summary>
@@ -52,7 +56,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// </summary>
         public void PageDisplayed()
         {
-            wait.Until(s => s.FindElements(pages.EditFeatures.FeatureText).Count > 0);
+            wait.Until(s => s.FindElements(pages.EditFeatures.FeatureText).Count == 10);
         }
 
         /// <summary>
@@ -62,7 +66,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             var features = driver.FindElements(pages.EditFeatures.FeatureText);
 
-            foreach(var feature in features)
+            foreach (var feature in features)
             {
                 feature.Clear();
             }

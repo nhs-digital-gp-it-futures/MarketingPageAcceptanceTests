@@ -1,7 +1,7 @@
-﻿using System;
-using System.Linq;
-using FluentAssertions;
+﻿using FluentAssertions;
 using OpenQA.Selenium;
+using System.Collections.Generic;
+using System.Linq;
 using Xunit.Abstractions;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
@@ -28,7 +28,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             var sections = driver.FindElements(pages.Dashboard.Sections);
 
             // Assert that each section has a status displayed (does not consider the content of the status)
-            foreach(var section in sections)
+            foreach (var section in sections)
             {
                 section.FindElement(pages.Dashboard.Statuses).Displayed.Should().BeTrue();
             }
@@ -41,11 +41,34 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void NavigateToSection(string sectionTitle)
         {
             driver.FindElements(pages.Dashboard.Sections)
-                .Single(s => s.FindElement(pages.Dashboard.SectionTitle).Text.Contains(sectionTitle))
+                .Single(s => s.FindElement(pages.Dashboard.SectionTitle).Text.ToLower().Contains(sectionTitle.ToLower()))
                 .FindElement(pages.Dashboard.SectionTitle)
                 .Click();
 
             wait.Until(s => s.FindElement(pages.Common.PageTitle).Text.Contains(sectionTitle));
+        }
+
+        /// <summary>
+        /// Navigate to the PreviewPage
+        /// </summary>
+        public void NavigateToPreviewPage()
+        {
+            driver.FindElement(pages.Dashboard.PreviewPage).FindElement(By.ClassName("nhsuk-button")).Click();
+        }
+
+        public bool SectionHasStatus(string section)
+        {
+            try
+            {
+                driver.FindElements(pages.Dashboard.Sections)
+                    .Single(s => s.FindElement(pages.Dashboard.SectionTitle).Text.Contains(section))
+                    .FindElement(pages.Dashboard.Statuses);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -54,7 +77,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// <param name="sectionName">Case sensitive name of a section</param>
         public void SectionCompleteStatus(string sectionName)
         {
-            SectionStatus(sectionName, "COMPLETE");
+            AssertSectionStatus(sectionName, "COMPLETE");
         }
 
         public void ShouldDisplaySections()
@@ -70,7 +93,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// <param name="sectionName">Case sensitive name of a section</param>
         public void SectionIncomplete(string sectionName)
         {
-            SectionStatus(sectionName, "INCOMPLETE");
+            AssertSectionStatus(sectionName, "INCOMPLETE");
         }
 
         /// <summary>
@@ -78,11 +101,34 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// </summary>
         /// <param name="sectionName">Case sensitive name of a section</param>
         /// <param name="status">Case sensitive expected status</param>
-        private void SectionStatus(string sectionName, string status)
+        private void AssertSectionStatus(string sectionName, string status)
         {
             var section = driver.FindElements(pages.Dashboard.Sections)
                 .Single(s => s.FindElement(pages.Dashboard.SectionTitle).Text == sectionName);
             section.FindElement(pages.Dashboard.Statuses).Text.Should().Be(status);
+        }
+
+        /// <summary>
+        /// Gets all mandatory sections
+        /// </summary>
+        public IList<IWebElement> GetMandatorySections()
+        { 
+            return driver.FindElements(pages.Dashboard.Sections)
+                .Where(section => section.FindElement(pages.Dashboard.Requirement).Text.Equals("Mandatory"))
+                .ToList();
+        }
+
+        /// <summary>
+        /// returns a list of all section names labeled as mandatory in alphabetical order
+        /// </summary>
+        /// <returns></returns>
+        public IList<string> GetMandatorySectionsNames()
+        {
+            return driver.FindElements(pages.Dashboard.Sections)
+                .Where(section => section.FindElement(pages.Dashboard.Requirement).Text.Equals("Mandatory"))
+                .Select(section => section.FindElement(pages.Dashboard.SectionTitle).Text)
+                .OrderBy(name => name.ToLower())
+                .ToList();
         }
     }
 }
