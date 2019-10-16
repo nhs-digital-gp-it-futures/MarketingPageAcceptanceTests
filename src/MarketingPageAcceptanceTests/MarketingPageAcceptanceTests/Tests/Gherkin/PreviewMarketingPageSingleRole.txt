@@ -1,4 +1,4 @@
-﻿Feature: Preview Marketing Page  - single role
+﻿Feature: Preview Marketing Page - single role
 	As a Catalogue User
 	I want to see what the Marketing Page looks like to a Buyer
 	So that I can ensure the information is correct
