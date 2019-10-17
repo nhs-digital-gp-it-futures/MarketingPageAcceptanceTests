@@ -19,3 +19,10 @@ Scenario: Solution Description and Features
 	Given that the Solution Description and Features section are the only sections completed 
 	When the User previews the Marketing Page
 	Then the Solution Description and Features section are displayed on the preview
+
+@ignore
+Scenario: Link Navigation
+	Given that the user enters an absolute path URL
+	When the User previews the Marketing Page
+	And Clicks the About URL
+	Then a new browser window is opened with the correct URL

@@ -79,7 +79,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         {
             pages.Dashboard.NavigateToPreviewPage();
             MarketingPageNotSubmittedForModeration();
-            pages.PreviewPage.AssertSubmitForReviewErrorMessageAppeared();
+            UnsuccessfulNotificationDisplayed();
         }
 
         [When("the User selects an error link in the Error Summary")]
@@ -91,7 +91,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         [Then("the User will be navigated to the relevant section on the page")]
         public void NavigatedToRelevantSection()
         {
-            driver.Url.Should().Contain("#summary");
+            driver.Url.Should().Contain(ExpectedSectionLinkInErrorMessage);
         }
     }
 }

@@ -63,7 +63,6 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void SubmitForModeration()
         {
-            wait.Until(s => s.FindElement(pages.PreviewPage.SubmitForModeration).Displayed);
             driver.FindElement(pages.PreviewPage.SubmitForModeration).Click();
         }
 
