@@ -50,7 +50,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         }
 
         public bool DbContainsLink(string solutionId, string connectionString)
-        {   
+        {
             var aboutUrl = SqlHelper.GetSolutionAboutLink(solutionId, connectionString);
             return aboutUrl.Contains(link);
         }

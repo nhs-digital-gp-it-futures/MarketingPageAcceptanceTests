@@ -3,7 +3,6 @@ using MarketingPageAcceptanceTests.Actions.Collections;
 using MarketingPageAcceptanceTests.Actions.Utils;
 using OpenQA.Selenium;
 using System;
-using System.Linq;
 using Xunit.Abstractions;
 using Xunit.Gherkin.Quick;
 

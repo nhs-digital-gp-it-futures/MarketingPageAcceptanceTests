@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MarketingPageAcceptanceTests.Actions.Utils
+﻿namespace MarketingPageAcceptanceTests.Actions.Utils
 {
     internal static class Queries
     {

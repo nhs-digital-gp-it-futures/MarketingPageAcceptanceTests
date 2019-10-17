@@ -48,7 +48,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
         {
             // Create a new solution that is absolutely bare bones
             var solutionQuery = Queries.CreateNewSolution;
-            
+
             SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@solutionId", solution.Id),
                 new SqlParameter("@solutionName", solution.Name),
@@ -70,7 +70,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
         public static void DeleteSolution(string solutionId, string connectionString)
         {
             // Remove automated solution
-            var solutionQuery = Queries.DeleteSolution;         
+            var solutionQuery = Queries.DeleteSolution;
 
             SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@solutionId", solutionId)

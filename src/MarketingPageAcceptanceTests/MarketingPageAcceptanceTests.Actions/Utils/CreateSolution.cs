@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MarketingPageAcceptanceTests.Actions.Utils
 {
@@ -27,7 +25,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
             Random rand = new Random();
 
             string result = "";
-            for (int i = 0; i<length; i++)
+            for (int i = 0; i < length; i++)
             {
                 result += characters[rand.Next(characters.Length)];
             }

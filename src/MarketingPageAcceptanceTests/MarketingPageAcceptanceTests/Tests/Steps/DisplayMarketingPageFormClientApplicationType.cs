@@ -1,7 +1,5 @@
 ﻿using MarketingPageAcceptanceTests.Utils;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit.Abstractions;
 using Xunit.Gherkin.Quick;
 
@@ -14,7 +12,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         {
         }
 
-        [Given("that a Supplier has chosen to manage Marketing Page Information")]    
+        [Given("that a Supplier has chosen to manage Marketing Page Information")]
         public void SupplierManageInformation()
         {
             throw new NotImplementedException();
@@ -37,7 +35,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         {
             throw new NotImplementedException();
         }
-        
+
         [Then("the Section content validation status is displayed")]
         public void ValidationStatusDisplayed()
         {
