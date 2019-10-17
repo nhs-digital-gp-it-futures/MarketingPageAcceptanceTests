@@ -10,6 +10,8 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
     [FeatureFile("./Tests/Gherkin/SupplierSubmitForModeration.txt")]
     public sealed class SupplierSubmitForModeration : UITest, IDisposable
     {
+        private string ExpectedSectionLinkInErrorMessage = string.Empty;
+
         public SupplierSubmitForModeration(ITestOutputHelper helper) : base(helper)
         {
         }
@@ -41,24 +43,17 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         [And("the User remains on the Preview Page")]
         public void RemainOnPreviewPage()
         {
-            driver.Url.Should().Contain("/preview");
+            driver.Url.ToLower().Should().Contain("preview");
         }
 
         [Given("that a Supplier has not provided all mandatory data on the Marketing Page")]
         public void SupplierHasNotProvidedAllMandatoryData()
-        {
-            pages.Dashboard.NavigateToSection("Solution Description");
-            pages.SolutionDescription.SummaryAddText(300);
-            pages.SolutionDescription.DescriptionAddText(50);
-            pages.SolutionDescription.LinkAddText(50);
-            pages.SolutionDescription.ClearMandatoryFields();
-            pages.SolutionDescription.SaveAndReturn();
+        {   
         }
 
         [Then("the Marketing Page will not be submitted for Moderation")]
         public void MarketingPageNotSubmittedForModeration()
-        {
-            pages.Dashboard.NavigateToPreviewPage();
+        {   
             pages.PreviewPage.PageDisplayed();
             pages.PreviewPage.SubmitForModeration();
             pages.PreviewPage.PageDisplayed();
@@ -68,31 +63,35 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         [And("the User will be notified that the submission was unsuccessful")]
         public void UnsuccessfulNotificationDisplayed()
         {
-            throw new NotImplementedException();
+            pages.PreviewPage.AssertSubmitForReviewErrorMessageAppeared();
+            ExpectedSectionLinkInErrorMessage = pages.PreviewPage.GetFirstErrorMessage().GetAttribute("href");
         }
 
         [And("they will be informed why")]
         public void UnsuccessfulNotificationCorrect()
         {
-            throw new NotImplementedException();
+            pages.PreviewPage.GetFirstErrorMessage().Text.Should()
+                .BeEquivalentTo(pages.PreviewPage.MandatoryFieldsToErrorMessages["summary"]);
         }
 
         [Given("validation has been triggered")]
         public void ValidationTriggered()
         {
-            throw new NotImplementedException();
+            pages.Dashboard.NavigateToPreviewPage();
+            MarketingPageNotSubmittedForModeration();
+            UnsuccessfulNotificationDisplayed();
         }
 
         [When("the User selects an error link in the Error Summary")]
         public void SelectErrorLink()
         {
-            throw new NotImplementedException();
+            pages.PreviewPage.ClickOnErrorLink();
         }
 
         [Then("the User will be navigated to the relevant section on the page")]
         public void NavigatedToRelevantSection()
         {
-            throw new NotImplementedException();
+            driver.Url.Should().Contain(ExpectedSectionLinkInErrorMessage);
         }
     }
 }

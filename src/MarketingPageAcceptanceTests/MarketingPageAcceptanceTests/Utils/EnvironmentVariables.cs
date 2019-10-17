@@ -10,7 +10,7 @@ namespace MarketingPageAcceptanceTests.Utils
             var hubUrl = Environment.GetEnvironmentVariable("HUBURL") ?? "http://localhost:4444/wd/hub";
             var browser = Environment.GetEnvironmentVariable("BROWSER") ?? "chrome-local";
 
-            var databaseName = Environment.GetEnvironmentVariable("DATABASENAME") ?? "localhost";
+            var databaseName = Environment.GetEnvironmentVariable("DATABASENAME") ?? "127.0.0.1,1433";
             var dbPassword = Environment.GetEnvironmentVariable("DBPASSWORD") ?? "DisruptTheMarket1!";
 
             return (url, hubUrl, browser, databaseName, dbPassword);
