@@ -26,7 +26,7 @@ namespace MarketingPageAcceptanceTests.Utils
             var solution = CreateSolution.CreateNewSolution();
 
             // Get process only environment variables
-            var (url, hubUrl, browser, apiUrl, databaseName, dbPassword) = EnvironmentVariables.Get();
+            var (url, hubUrl, browser, databaseName, dbPassword) = EnvironmentVariables.Get();
             connectionString = String.Format(ConnectionString.GPitFutures, databaseName, dbPassword);
             solutionId = solution.Id;
 

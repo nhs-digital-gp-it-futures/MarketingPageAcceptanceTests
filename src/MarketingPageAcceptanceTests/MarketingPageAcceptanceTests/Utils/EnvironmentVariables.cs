@@ -4,17 +4,16 @@ namespace MarketingPageAcceptanceTests.Utils
 {
     internal class EnvironmentVariables
     {
-        internal static (string, string, string, string, string, string) Get()
+        internal static (string, string, string, string, string) Get()
         {
             var url = Environment.GetEnvironmentVariable("MPURL") ?? "http://10.0.75.1:3001";
             var hubUrl = Environment.GetEnvironmentVariable("HUBURL") ?? "http://localhost:4444/wd/hub";
             var browser = Environment.GetEnvironmentVariable("BROWSER") ?? "chrome-local";
-            var apiUrl = Environment.GetEnvironmentVariable("APIURL") ?? "http://10.0.75.1:8080";
 
             var databaseName = Environment.GetEnvironmentVariable("DATABASENAME") ?? "localhost";
             var dbPassword = Environment.GetEnvironmentVariable("DBPASSWORD") ?? "DisruptTheMarket1!";
 
-            return (url, hubUrl, browser, apiUrl, databaseName, dbPassword);
+            return (url, hubUrl, browser, databaseName, dbPassword);
         }
     }
     public static class ConnectionString
