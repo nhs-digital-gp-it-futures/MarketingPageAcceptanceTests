@@ -3,7 +3,6 @@ using MarketingPageAcceptanceTests.Actions.Collections;
 using MarketingPageAcceptanceTests.Actions.Utils;
 using OpenQA.Selenium;
 using System;
-using System.Linq;
 using Xunit.Abstractions;
 using Xunit.Gherkin.Quick;
 
@@ -13,11 +12,8 @@ namespace MarketingPageAcceptanceTests.Utils
     {
         internal readonly IWebDriver driver;
         internal readonly PageActionCollection pages;
-        internal readonly ResetDbEntry resetDb;
         internal string solutionId;
         internal readonly string connectionString;
-
-        internal readonly int initialSupplierStatus;
 
         internal ITestOutputHelper helper;
 
@@ -25,12 +21,14 @@ namespace MarketingPageAcceptanceTests.Utils
         {
             this.helper = helper;
 
-            // Get process only environment variables
-            var (url, hubUrl, browser, apiUrl, databaseName, dbPassword) = EnvironmentVariables.Get();
-            connectionString = String.Format(ConnectionString.GPitFutures, databaseName, dbPassword);
-            solutionId = url.Split('/').Last();
+            var solution = CreateSolution.CreateNewSolution();
 
-            initialSupplierStatus = SqlHelper.GetSolutionStatus(solutionId, connectionString);
+            // Get process only environment variables
+            var (url, hubUrl, browser, databaseName, dbPassword) = EnvironmentVariables.Get();
+            connectionString = String.Format(ConnectionString.GPitFutures, databaseName, dbPassword);
+            solutionId = solution.Id;
+
+            SqlHelper.CreateBlankSolution(solution, connectionString);
 
             if (!System.Diagnostics.Debugger.IsAttached)
             {
@@ -43,14 +41,10 @@ namespace MarketingPageAcceptanceTests.Utils
                 driver = BrowserFactory.GetBrowser("chrome-local", "");
             }
 
-            // Setup a HttpClient and get the details of the solution used for this test
-            resetDb = new ResetDbEntry(url, apiUrl);
-            resetDb.GetSolutionDetails().Wait();
-
             pages = new PageActions(driver, helper).PageActionCollection;
 
             // Navigate to the site url
-            driver.Navigate().GoToUrl(url);
+            driver.Navigate().GoToUrl($"{url}/{solutionId}");
 
             pages.Dashboard.PageDisplayed();
         }
@@ -70,11 +64,7 @@ namespace MarketingPageAcceptanceTests.Utils
             driver.Close();
             driver.Quit();
 
-            resetDb.PutSolutionDetails().Wait();
-            resetDb.Dispose();
-
-            // Reset the solution status
-            SqlHelper.ResetSolutionStatus(solutionId, connectionString);
+            SqlHelper.DeleteSolution(solutionId, connectionString);
         }
     }
 }

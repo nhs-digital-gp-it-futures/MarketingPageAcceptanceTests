@@ -8,7 +8,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
     {
         public static string GetSolutionFeatures(string solutionId, string connectionString)
         {
-            var query = "SELECT Features from [dbo].[MarketingDetail] where SolutionId=@solutionId";
+            var query = Queries.GetMarketingDetail;
             SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@solutionId", solutionId)
             };
@@ -20,7 +20,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
 
         public static string GetSolutionSummary(string solutionId, string connectionString)
         {
-            var query = "SELECT Summary from [dbo].[Solution] where Id=@solutionId";
+            var query = Queries.GetSolution;
 
             SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@solutionId", solutionId)
@@ -33,7 +33,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
 
         public static string GetSolutionDescription(string solutionId, string connectionString)
         {
-            var query = "SELECT FullDescription from [dbo].[Solution] where Id=@solutionId";
+            var query = Queries.GetSolution;
 
             SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@solutionId", solutionId)
@@ -42,6 +42,56 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
             var result = SqlReader.Read<string>(connectionString, query, parameters, GetSolutionDescription);
 
             return result;
+        }
+
+        public static void CreateBlankSolution(Solution solution, string connectionString)
+        {
+            // Create a new solution that is absolutely bare bones
+            var solutionQuery = Queries.CreateNewSolution;
+
+            SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@solutionId", solution.Id),
+                new SqlParameter("@solutionName", solution.Name),
+                new SqlParameter("@solutionVersion", solution.Version)
+            };
+
+            SqlReader.Read<string>(connectionString, solutionQuery, parameters, NewSolution);
+
+            // Create a record in the MarketingDetail table for the new solution
+            var marketingDetailQuery = Queries.CreateMarketingDetail;
+
+            SqlParameter[] newParameters = new SqlParameter[] {
+                new SqlParameter("@solutionId", solution.Id)
+            };
+
+            SqlReader.Read<string>(connectionString, marketingDetailQuery, newParameters, NewSolution);
+        }
+
+        public static void DeleteSolution(string solutionId, string connectionString)
+        {
+            // Remove automated solution
+            var solutionQuery = Queries.DeleteSolution;
+
+            SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@solutionId", solutionId)
+            };
+
+            SqlReader.Read<string>(connectionString, solutionQuery, parameters, NewSolution);
+
+            // remove marketing detail related to the above solution
+            var marketingDetailQuery = Queries.DeleteMarketingDetail;
+
+            SqlParameter[] newParameters = new SqlParameter[] {
+                new SqlParameter("@solutionId", solutionId)
+            };
+
+            SqlReader.Read<string>(connectionString, marketingDetailQuery, newParameters, NewSolution);
+        }
+
+        private static string NewSolution(IDataReader dr)
+        {
+            dr.Read();
+            return dr.ToString();
         }
 
         private static string GetSolutionSummary(IDataReader dr)
@@ -64,7 +114,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
 
         internal static string GetSolutionAboutLink(string solutionId, string connectionString)
         {
-            var query = "SELECT AboutUrl from[dbo].[MarketingDetail] where SolutionId=@solutionId";
+            var query = Queries.GetMarketingDetail;
 
             SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@solutionId", solutionId)
@@ -77,7 +127,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
 
         public static int GetSolutionStatus(string solutionId, string connectionString)
         {
-            var query = "SELECT SupplierStatusId from [dbo].[Solution] where Id=@solutionId";
+            var query = Queries.GetSolution;
 
             SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@solutionId", solutionId)
@@ -95,27 +145,10 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
             return result;
         }
 
-        public static void ResetSolutionStatus(string solutionId, string connectionString)
-        {
-            var query = $"UPDATE Solution set SupplierStatusId=1 where Id=@solutionId";
-
-            SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("@solutionId", solutionId)
-            };
-
-            SqlReader.Read(connectionString, query, parameters, NullReturn);
-        }
-
         private static string GetAboutUrl(IDataReader dr)
         {
             dr.Read();
             return dr["AboutUrl"].ToString();
-        }
-
-        private static string NullReturn(IDataReader dr)
-        {
-            dr.Read();
-            return dr.ToString();
         }
     }
 

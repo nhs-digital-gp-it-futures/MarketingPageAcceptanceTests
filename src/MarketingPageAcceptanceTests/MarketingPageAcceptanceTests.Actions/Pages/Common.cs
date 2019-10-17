@@ -1,4 +1,8 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using FluentAssertions;
+using OpenQA.Selenium;
 using Xunit.Abstractions;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
@@ -12,6 +16,21 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void GoBackOnePage()
         {
             driver.Navigate().Back();
+        }
+
+        public bool DidWindowOpenWithCorrectUrl(string url, IEnumerable<string> previousHandles)
+        {
+            // Get the new window by comparing two lists of window handles and switching to the difference
+            var currentHandles = GetWindowHandles();
+            var newWindow = currentHandles.Except(previousHandles);
+            driver.SwitchTo().Window(newWindow.First());
+
+            return driver.Url.Contains(url);
+        }
+
+        public IEnumerable<string> GetWindowHandles()
+        {
+            return driver.WindowHandles;
         }
     }
 }

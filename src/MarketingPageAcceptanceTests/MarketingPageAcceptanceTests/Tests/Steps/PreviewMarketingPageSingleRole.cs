@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using MarketingPageAcceptanceTests.Utils;
 using System;
+using System.Collections.Generic;
 using Xunit.Abstractions;
 using Xunit.Gherkin.Quick;
 
@@ -12,12 +13,13 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         private string summary = String.Empty;
         private string description = String.Empty;
         private string link = String.Empty;
-
         private string featureString = String.Empty;
+        private string absoluteURLLink = "https://www.google.com";
+
+        private IEnumerable<string> windowHandles;
 
         public PreviewMarketingPageSingleRole(ITestOutputHelper helper) : base(helper)
         {
-
         }
 
         [Given("that Marketing Page data has been saved")]
@@ -103,6 +105,28 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
 
             // Features Section
             pages.PreviewPage.GetFeaturesText().Should().Contain(featureString);
+        }
+
+        [Given("that the user enters an absolute path URL in the link field on the solution description page")]
+        public void UserEntersAbsolutePathURL()
+        {
+            pages.Dashboard.NavigateToSection("Solution description");
+            pages.SolutionDescription.LinkAddText(0, absoluteURLLink);
+            pages.SolutionDescription.SaveAndReturn();
+        }
+
+        [And("clicks the About URL on the Preview Page")]
+        public void UserClicksAboutUrlInPreview()
+        {
+            windowHandles = pages.Common.GetWindowHandles();
+
+            pages.PreviewPage.GetSolutionLink().Click();            
+        }
+
+        [Then("a new browser window is opened with the correct URL")]
+        public void NewBrowserWindowIsOpenedWithCorrectURL()
+        {
+            pages.Common.DidWindowOpenWithCorrectUrl(absoluteURLLink, windowHandles).Should().BeTrue();
         }
     }
 }

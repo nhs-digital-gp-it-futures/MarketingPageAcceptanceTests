@@ -1,15 +1,20 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+using FluentAssertions;
 using OpenQA.Selenium;
+using System.Collections.Generic;
+using System.Linq;
 using Xunit.Abstractions;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
     public sealed class PreviewPage : PageAction
     {
+        public Dictionary<string, string> MandatoryFieldsToErrorMessages { get; private set; }
+
         public PreviewPage(IWebDriver driver, ITestOutputHelper helper) : base(driver, helper)
         {
+            ConstructErrorMapping();
         }
+
         /// <summary>
         /// Assures the page is displayed
         /// </summary>
@@ -53,6 +58,12 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                 .FindElement(pages.PreviewPage.SectionData).Text;
         }
 
+        public IWebElement GetSolutionLink()
+        {
+            return driver.FindElement(pages.PreviewPage.SolutionDescriptionLinkSection)
+                .FindElement(pages.PreviewPage.SectionData);
+        }
+        
         /// <returns>list of features</returns>
         public IList<string> GetFeaturesText()
         {
@@ -74,5 +85,33 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             driver.FindElement(pages.PreviewPage.SubmitForModeration).Click();
         }
+
+        private IEnumerable<IWebElement> GetErrorMessages()
+        {
+            return driver.FindElements(pages.PreviewPage.ErrorMessages);
+        }
+
+        public IWebElement GetFirstErrorMessage()
+        {
+            return GetErrorMessages().First();
+        }
+
+        public void AssertSubmitForReviewErrorMessageAppeared()
+        {
+            GetFirstErrorMessage().Displayed.Should().Be(true);
+        }
+
+        public void ClickOnErrorLink()
+        {
+            GetFirstErrorMessage().Click();
+        }
+        private void ConstructErrorMapping()
+        {
+            MandatoryFieldsToErrorMessages = new Dictionary<string, string>
+            {
+                { "summary", "Solution Summary is a required field error message" }
+            };
+        }
+
     }
 }

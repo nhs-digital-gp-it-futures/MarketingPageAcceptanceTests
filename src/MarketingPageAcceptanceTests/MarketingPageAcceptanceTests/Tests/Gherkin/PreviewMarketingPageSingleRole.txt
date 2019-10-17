@@ -1,4 +1,4 @@
-﻿Feature: Preview Marketing Page  - single role
+﻿Feature: Preview Marketing Page - single role
 	As a Catalogue User
 	I want to see what the Marketing Page looks like to a Buyer
 	So that I can ensure the information is correct
@@ -19,3 +19,9 @@ Scenario: Solution Description and Features
 	Given that the Solution Description and Features section are the only sections completed 
 	When the User previews the Marketing Page
 	Then the Solution Description and Features section are displayed on the preview
+
+Scenario: Link Navigation
+	Given that the user enters an absolute path URL in the link field on the solution description page
+	When the User previews the Marketing Page
+	And clicks the About URL on the Preview Page
+	Then a new browser window is opened with the correct URL
