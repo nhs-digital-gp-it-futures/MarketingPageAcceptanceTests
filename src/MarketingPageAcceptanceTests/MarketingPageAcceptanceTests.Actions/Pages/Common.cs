@@ -13,5 +13,17 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             driver.Navigate().Back();
         }
+
+        public bool didWindowOpenWithCorrectUrl(string url)
+        {
+            foreach (var winHandle in driver.WindowHandles)
+            {
+                driver.SwitchTo().Window(winHandle);
+
+                return driver.Url.ToLower().Equals(url.ToLower());
+            }
+
+            return false;
+        }
     }
 }

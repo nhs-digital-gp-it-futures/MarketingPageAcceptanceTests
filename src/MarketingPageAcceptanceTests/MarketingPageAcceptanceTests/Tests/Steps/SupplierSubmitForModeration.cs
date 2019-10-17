@@ -48,12 +48,12 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
 
         [Given("that a Supplier has not provided all mandatory data on the Marketing Page")]
         public void SupplierHasNotProvidedAllMandatoryData()
-        {   
+        {
         }
 
         [Then("the Marketing Page will not be submitted for Moderation")]
         public void MarketingPageNotSubmittedForModeration()
-        {   
+        {
             pages.PreviewPage.PageDisplayed();
             pages.PreviewPage.SubmitForModeration();
             pages.PreviewPage.PageDisplayed();

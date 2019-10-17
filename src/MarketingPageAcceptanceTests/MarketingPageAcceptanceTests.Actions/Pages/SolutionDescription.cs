@@ -31,9 +31,10 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             return description;
         }
 
-        public string LinkAddText(int numChars)
+        public string LinkAddText(int numChars, string input = null)
         {
-            link = random.GetRandomString(numChars);
+
+            link = input ?? random.GetRandomString(numChars);
             driver.FindElement(pages.SolutionDescription.Link).SendKeys(link);
             return link;
         }

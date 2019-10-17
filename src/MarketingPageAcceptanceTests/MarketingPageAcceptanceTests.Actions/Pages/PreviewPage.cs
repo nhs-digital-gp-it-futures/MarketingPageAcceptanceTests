@@ -1,14 +1,14 @@
-﻿using OpenQA.Selenium;
+﻿using FluentAssertions;
+using OpenQA.Selenium;
 using System.Collections.Generic;
 using System.Linq;
-using FluentAssertions;
 using Xunit.Abstractions;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
     public sealed class PreviewPage : PageAction
     {
-        public Dictionary<string, string> MandatoryFieldsToErrorMessages {get; private set; }
+        public Dictionary<string, string> MandatoryFieldsToErrorMessages { get; private set; }
 
         public PreviewPage(IWebDriver driver, ITestOutputHelper helper) : base(driver, helper)
         {
@@ -49,6 +49,12 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                 .FindElement(pages.PreviewPage.SectionData).Text;
         }
 
+        public IWebElement GetSolutionLink()
+        {
+            return driver.FindElement(pages.PreviewPage.SolutionDescriptionLinkSection)
+                .FindElement(pages.PreviewPage.SectionData);
+        }
+
         public IList<string> GetFeaturesText()
         {
             var features = driver.FindElement(pages.PreviewPage.FeaturesSection).FindElements(By.CssSelector("li label.nhsuk-label")).Select(s => s.Text);
@@ -68,7 +74,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         private IEnumerable<IWebElement> GetErrorMessages()
         {
-           return driver.FindElements(pages.PreviewPage.ErrorMessages);
+            return driver.FindElements(pages.PreviewPage.ErrorMessages);
         }
 
         public IWebElement GetFirstErrorMessage()

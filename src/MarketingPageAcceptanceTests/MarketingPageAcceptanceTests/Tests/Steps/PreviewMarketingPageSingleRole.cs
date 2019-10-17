@@ -12,12 +12,11 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         private string summary = String.Empty;
         private string description = String.Empty;
         private string link = String.Empty;
-
         private string featureString = String.Empty;
+        private string absoluteURLLink = "https://google.com";
 
         public PreviewMarketingPageSingleRole(ITestOutputHelper helper) : base(helper)
         {
-
         }
 
         [Given("that Marketing Page data has been saved")]
@@ -103,6 +102,27 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
 
             // Features Section
             pages.PreviewPage.GetFeaturesText().Should().Contain(featureString);
+        }
+
+        [Given("that the user enters an absolute path URL in the link field on the solution description page")]
+        public void UserEntersAbsolutePathURL()
+        {
+            pages.Dashboard.NavigateToSection("Solution description");
+            pages.SolutionDescription.LinkAddText(0, absoluteURLLink);
+            pages.SolutionDescription.SaveAndReturn();
+        }
+
+        [And("clicks the About URL on the Preview Page")]
+        public void UserClicksAboutUrlInPreview()
+        {
+            pages.PreviewPage.GetSolutionLink().Click();
+
+        }
+
+        [Then("a new browser window is opened with the correct URL")]
+        public void NewBrowserWindowIsOpenedWithCorrectURL()
+        {
+            pages.Common.didWindowOpenWithCorrectUrl(absoluteURLLink).Should().BeTrue();
         }
     }
 }
