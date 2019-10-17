@@ -43,24 +43,17 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         [And("the User remains on the Preview Page")]
         public void RemainOnPreviewPage()
         {
-            driver.Url.Should().Contain("/preview");
+            driver.Url.ToLower().Should().Contain("preview");
         }
 
         [Given("that a Supplier has not provided all mandatory data on the Marketing Page")]
         public void SupplierHasNotProvidedAllMandatoryData()
-        {
-            pages.Dashboard.NavigateToSection("Solution description");
-            pages.SolutionDescription.SummaryAddText(300);
-            pages.SolutionDescription.DescriptionAddText(50);
-            pages.SolutionDescription.LinkAddText(50);
-            pages.SolutionDescription.ClearMandatoryFields();
-            pages.SolutionDescription.SaveAndReturn();
+        {   
         }
 
         [Then("the Marketing Page will not be submitted for Moderation")]
         public void MarketingPageNotSubmittedForModeration()
-        {
-            pages.Dashboard.NavigateToPreviewPage();
+        {   
             pages.PreviewPage.PageDisplayed();
             pages.PreviewPage.SubmitForModeration();
             pages.PreviewPage.PageDisplayed();
@@ -84,6 +77,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         [Given("validation has been triggered")]
         public void ValidationTriggered()
         {
+            pages.Dashboard.NavigateToPreviewPage();
             MarketingPageNotSubmittedForModeration();
             pages.PreviewPage.AssertSubmitForReviewErrorMessageAppeared();
         }
