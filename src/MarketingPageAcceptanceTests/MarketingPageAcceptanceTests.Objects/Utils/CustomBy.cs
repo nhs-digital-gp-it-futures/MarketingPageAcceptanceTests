@@ -9,9 +9,9 @@ namespace MarketingPageAcceptanceTests.Objects.Utils
         /// </summary>
         /// <param name="locator">string that must be contained within the data-test-id attribute</param>
         /// <returns>By clause that can be used to find one or more elements with the data-test-id attribute</returns>
-        public static By DataTestId(string locator)
+        public static By DataTestId(string locator, string childTag = null)
         {
-            return CssSelector($"[data-test-id={locator}]");
+            return CssSelector($"[data-test-id={locator}] {childTag}");
         }
     }
 }

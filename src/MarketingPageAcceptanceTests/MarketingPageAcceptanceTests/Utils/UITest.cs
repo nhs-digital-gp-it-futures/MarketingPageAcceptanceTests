@@ -17,20 +17,20 @@ namespace MarketingPageAcceptanceTests.Utils
         internal string solutionId;
         internal readonly string connectionString;
 
-        internal readonly int initialSupplierStatus;
-
         internal ITestOutputHelper helper;
 
         public UITest(ITestOutputHelper helper)
         {
             this.helper = helper;
 
+            var solution = CreateSolution.CreateNewSolution();
+
             // Get process only environment variables
             var (url, hubUrl, browser, apiUrl, databaseName, dbPassword) = EnvironmentVariables.Get();
             connectionString = String.Format(ConnectionString.GPitFutures, databaseName, dbPassword);
-            solutionId = url.Split('/').Last();
+            solutionId = solution.Id;
 
-            initialSupplierStatus = SqlHelper.GetSolutionStatus(solutionId, connectionString);
+            SqlHelper.CreateBlankSolution(solution, connectionString);
 
             if (!System.Diagnostics.Debugger.IsAttached)
             {
@@ -43,14 +43,10 @@ namespace MarketingPageAcceptanceTests.Utils
                 driver = BrowserFactory.GetBrowser("chrome-local", "");
             }
 
-            // Setup a HttpClient and get the details of the solution used for this test
-            resetDb = new ResetDbEntry(url, apiUrl);
-            resetDb.GetSolutionDetails().Wait();
-
             pages = new PageActions(driver, helper).PageActionCollection;
 
             // Navigate to the site url
-            driver.Navigate().GoToUrl(url);
+            driver.Navigate().GoToUrl($"{url}/{solutionId}");
 
             pages.Dashboard.PageDisplayed();
         }
@@ -70,11 +66,7 @@ namespace MarketingPageAcceptanceTests.Utils
             driver.Close();
             driver.Quit();
 
-            resetDb.PutSolutionDetails().Wait();
-            resetDb.Dispose();
-
-            // Reset the solution status
-            SqlHelper.ResetSolutionStatus(solutionId, connectionString);
+            SqlHelper.DeleteSolution(solutionId, connectionString);
         }
     }
 }

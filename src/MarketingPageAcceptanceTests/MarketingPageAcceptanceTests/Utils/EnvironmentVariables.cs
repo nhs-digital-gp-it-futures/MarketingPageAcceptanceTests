@@ -6,7 +6,7 @@ namespace MarketingPageAcceptanceTests.Utils
     {
         internal static (string, string, string, string, string, string) Get()
         {
-            var url = Environment.GetEnvironmentVariable("MPURL") ?? "http://10.0.75.1:3001/S100000-001";
+            var url = Environment.GetEnvironmentVariable("MPURL") ?? "http://10.0.75.1:3001";
             var hubUrl = Environment.GetEnvironmentVariable("HUBURL") ?? "http://localhost:4444/wd/hub";
             var browser = Environment.GetEnvironmentVariable("BROWSER") ?? "chrome-local";
             var apiUrl = Environment.GetEnvironmentVariable("APIURL") ?? "http://10.0.75.1:8080";
