@@ -12,7 +12,6 @@ namespace MarketingPageAcceptanceTests.Utils
     {
         internal readonly IWebDriver driver;
         internal readonly PageActionCollection pages;
-        internal readonly ResetDbEntry resetDb;
         internal string solutionId;
         internal readonly string connectionString;
 
