@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using MarketingPageAcceptanceTests.Utils;
 using System;
+using System.Collections.Generic;
 using Xunit.Abstractions;
 using Xunit.Gherkin.Quick;
 
@@ -13,7 +14,9 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         private string description = String.Empty;
         private string link = String.Empty;
         private string featureString = String.Empty;
-        private string absoluteURLLink = "https://google.com";
+        private string absoluteURLLink = "https://www.google.com";
+
+        private IEnumerable<string> windowHandles;
 
         public PreviewMarketingPageSingleRole(ITestOutputHelper helper) : base(helper)
         {
@@ -115,14 +118,15 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         [And("clicks the About URL on the Preview Page")]
         public void UserClicksAboutUrlInPreview()
         {
-            pages.PreviewPage.GetSolutionLink().Click();
+            windowHandles = pages.Common.GetWindowHandles();
 
+            pages.PreviewPage.GetSolutionLink().Click();            
         }
 
         [Then("a new browser window is opened with the correct URL")]
         public void NewBrowserWindowIsOpenedWithCorrectURL()
         {
-            pages.Common.didWindowOpenWithCorrectUrl(absoluteURLLink).Should().BeTrue();
+            pages.Common.DidWindowOpenWithCorrectUrl(absoluteURLLink, windowHandles).Should().BeTrue();
         }
     }
 }

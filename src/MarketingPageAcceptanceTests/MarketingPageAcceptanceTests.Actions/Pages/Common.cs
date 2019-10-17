@@ -1,4 +1,8 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using FluentAssertions;
+using OpenQA.Selenium;
 using Xunit.Abstractions;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
@@ -14,16 +18,19 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             driver.Navigate().Back();
         }
 
-        public bool didWindowOpenWithCorrectUrl(string url)
+        public bool DidWindowOpenWithCorrectUrl(string url, IEnumerable<string> previousHandles)
         {
-            foreach (var winHandle in driver.WindowHandles)
-            {
-                driver.SwitchTo().Window(winHandle);
+            // Get the new window by comparing two lists of window handles and switching to the difference
+            var currentHandles = GetWindowHandles();
+            var newWindow = currentHandles.Except(previousHandles);
+            driver.SwitchTo().Window(newWindow.First());
 
-                return driver.Url.ToLower().Equals(url.ToLower());
-            }
+            return driver.Url.Contains(url);
+        }
 
-            return false;
+        public IEnumerable<string> GetWindowHandles()
+        {
+            return driver.WindowHandles;
         }
     }
 }
