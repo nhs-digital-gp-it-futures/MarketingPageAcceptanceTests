@@ -8,8 +8,11 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 {
     public sealed class Dashboard : PageAction
     {
+        public IDictionary<string, int> SectionNameToNumOfMandatoryFields { get; internal set; }
+
         public Dashboard(IWebDriver driver, ITestOutputHelper helper) : base(driver, helper)
         {
+            SectionNameToNumOfMandatoryFields = new Dictionary<string, int>();
         }
 
         /// <summary>
@@ -129,6 +132,25 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                 .Select(section => section.FindElement(pages.Dashboard.SectionTitle).Text)
                 .OrderBy(name => name.ToLower())
                 .ToList();
+        }
+
+        private int GetNumberOfRequiredFields()
+        {
+            List<IWebElement> fields = driver.FindElements(pages.Common.MandatoryFieldSymbol).ToList();
+            fields.RemoveAll(field => !field.Text.Trim().Contains("*"));
+            return fields.Count;
+        }
+
+        public void ConstructSectionToNumFieldsMapping()
+        {
+            foreach (var section in GetMandatorySections())
+            {
+                var sectionTitle = section.FindElement(pages.Dashboard.SectionTitle);
+                var name = sectionTitle.Text;
+                sectionTitle.Click();
+                SectionNameToNumOfMandatoryFields.Add(name, GetNumberOfRequiredFields());
+                driver.Navigate().Back();
+            }
         }
     }
 }

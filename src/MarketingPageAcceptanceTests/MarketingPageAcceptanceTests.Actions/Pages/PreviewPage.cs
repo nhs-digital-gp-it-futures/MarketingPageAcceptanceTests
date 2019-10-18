@@ -112,6 +112,24 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                 { "summary", "Solution Summary is a required field error message" }
             };
         }
+        private int GetSectionFieldsCount(string sectionName)
+        {
+            return driver.FindElement(
+                    By.CssSelector(ConvertToSectionCssSelector(sectionName)))
+                .FindElements(pages.PreviewPage.SectionTitle)
+                .Count;
+
+        }
+
+        private string ConvertToSectionCssSelector(string sectionName)
+        {
+            return $"[data-test-id=preview-section-{sectionName.ToLower().Replace(" ", "-")}";
+        }
+
+        public void AssertSectionHasMandatoryFields(string sectionName, int numFields)
+        {
+            GetSectionFieldsCount(sectionName).Should().Be(numFields);
+        }
 
     }
 }
