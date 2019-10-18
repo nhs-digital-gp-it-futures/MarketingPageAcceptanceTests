@@ -20,6 +20,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
 
         public PreviewMarketingPageSingleRole(ITestOutputHelper helper) : base(helper)
         {
+            pages.Dashboard.ConstructSectionToNumFieldsMapping();
         }
 
         [Given("that Marketing Page data has been saved")]
@@ -57,7 +58,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         [Given("that the Marketing Page has Mandatory Data")]
         public void MarketingPageMandatoryData()
         {
-            pages.Dashboard.GetMandatorySections().Count.Should().BeGreaterThan(0);
+            pages.Dashboard.SectionNameToNumOfMandatoryFields.Count.Should().BeGreaterThan(0);
         }
         /// <summary>
         /// Will pass if "Solution description" and "Summary" is present atm,
@@ -66,8 +67,11 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         [Then("the Sections and the Mandatory Question are displayed on the preview regardless of whether any data has been added to the section")]
         public void SectionsAndMandatoryQuestionDisplayed()
         {
-            pages.PreviewPage.GetSolutionDescriptionContainerTitle().Should().BeEquivalentTo("Solution description");
-            pages.PreviewPage.GetSolutionSummaryTitle().Should().BeEquivalentTo("Summary");
+            var items = pages.Dashboard.SectionNameToNumOfMandatoryFields;
+            foreach (var item in items)
+            {
+                pages.PreviewPage.AssertSectionHasMandatoryFields(item.Key, item.Value);
+            }
         }
 
         [And("the Section and the Question for non-Mandatory data are displayed only if the User has saved data to the section")]
