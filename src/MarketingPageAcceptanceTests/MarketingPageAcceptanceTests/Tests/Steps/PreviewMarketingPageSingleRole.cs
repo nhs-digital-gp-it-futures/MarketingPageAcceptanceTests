@@ -14,7 +14,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         private string description = String.Empty;
         private string link = String.Empty;
         private string featureString = String.Empty;
-        private string absoluteURLLink = "https://www.google.com";
+        private readonly string absoluteURLLink = "https://www.google.com";
 
         private IEnumerable<string> windowHandles;
 
