@@ -13,11 +13,6 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  BROWSER: chrome
-  DATABASENAME: gpitfuture-sql-test.database.windows.net
-  DBPASSWORD: DisruptTheMarket1!
-  HUBURL: http://selenium-hub:4444/wd/hub
-  MPURL: https://test.mp-buyingcatalogue.com
 
 steps:
 - task: NuGetToolInstaller@1
@@ -57,7 +52,7 @@ steps:
     export DBPASSWORD=DisruptTheMarket1! &&
     export HUBURL=http://selenium-hub:4444/wd/hub &&
     export MPURL=https://test.mp-buyingcatalogue.com &&
-    dotnet test $(solution) -v n'
+    dotnet test $(solution)'
 
 - task: DockerCompose@0
   inputs:
