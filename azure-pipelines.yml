@@ -48,7 +48,7 @@ steps:
     targetType: 'inline'
     script: '
     export BROWSER=chrome &&
-    export SERVERURL=gpitfuture-sql-test.database.windows.net &&
+    export SERVERURL=gpitfuture-sql-test.database.windows.net,1433 &&
     export DATABASENAME=gpitfuture-db-test &&
     export DBUSER=$(DBUSER) &&
     export DBPASSWORD=$(DBPASSWORD) &&
