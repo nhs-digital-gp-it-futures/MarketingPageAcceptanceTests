@@ -50,8 +50,8 @@ steps:
     export BROWSER=chrome &&
     export SERVERURL=gpitfuture-sql-test.database.windows.net,1433 &&
     export DATABASENAME=gpitfuture-db-test &&
-    export DBUSER=$(DBUSER) &&
-    export DBPASSWORD=$(DBPASSWORD) &&
+    export DBUSER=$DBUSER &&
+    export DBPASSWORD=$DBPASSWORD &&
     export HUBURL=http://selenium-hub:4444/wd/hub &&
     export MPURL=https://test.mp-buyingcatalogue.com &&
     dotnet test $(solution)'
