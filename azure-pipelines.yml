@@ -51,7 +51,13 @@ steps:
 - task: Bash@3
   inputs:
     targetType: 'inline'
-    script: 'dotnet test $(solution) -v n'
+    script: '
+    export BROWSER=chrome &&
+    export DATABASENAME=gpitfuture-sql-test.database.windows.net &&
+    export DBPASSWORD=DisruptTheMarket1! &&
+    export HUBURL=http://selenium-hub:4444/wd/hub &&
+    export MPURL=https://test.mp-buyingcatalogue.com &&
+    dotnet test $(solution) -v n'
 
 - task: DockerCompose@0
   inputs:
