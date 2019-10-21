@@ -42,5 +42,5 @@ steps:
     export DBPASSWORD=$DBPASSWORD &&
     export HUBURL=http://localhost:4444/wd/hub &&
     export MPURL=https://test.mp-buyingcatalogue.com &&
-    dotnet test $(solution) -t
+    dotnet test $(solution) -t &&
     dotnet test $(solution)'
