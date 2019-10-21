@@ -45,8 +45,6 @@ namespace MarketingPageAcceptanceTests.Utils
 
             // Navigate to the site url
             driver.Navigate().GoToUrl($"{url}/{solutionId}");
-
-            pages.Dashboard.PageDisplayed();
         }
 
         #region common steps        
