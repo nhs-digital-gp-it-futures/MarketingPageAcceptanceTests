@@ -33,8 +33,8 @@ steps:
     azureContainerRegistry: '{"loginServer":"buyingcat01.azurecr.io", "id" : "/subscriptions/7b12a8a2-f06f-456f-b6f9-aa2d92e0b2ec/resourceGroups/BCadminrepo/providers/Microsoft.ContainerRegistry/registries/buyingcat01"}'
     dockerComposeFile: '**/docker-compose.yml'
     action: 'Run a Docker Compose command'
-    dockerComposeCommand: 'up'
-    arguments: '--scale chrome=4 -d'
+    dockerComposeCommand: 'up --scale chrome=4 -d'
+    arguments: ''
 
 - task: VSBuild@1
   inputs:
