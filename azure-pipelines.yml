@@ -30,7 +30,7 @@ steps:
     action: 'Run a Docker Compose command'
     dockerComposeCommand: 'up --scale chrome=4 -d'
     arguments: ''
-
+    
 #- task: VSBuild@1
 #  inputs:
 #    solution: '$(solution)'
