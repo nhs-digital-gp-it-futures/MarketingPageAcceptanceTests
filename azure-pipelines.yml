@@ -13,6 +13,11 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  BROWSER: chrome
+  DATABASENAME: gpitfuture-sql-test.database.windows.net
+  DBPASSWORD: DisruptTheMarket1!
+  HUBURL: http://selenium-hub:4444/wd/hub
+  MPURL: https://test.mp-buyingcatalogue.com
 
 steps:
 - task: NuGetToolInstaller@1
@@ -20,6 +25,16 @@ steps:
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
+
+- task: DockerCompose@0
+  inputs:
+    containerregistrytype: 'Azure Container Registry'
+    azureSubscription: 'NHSAPP-BuyingCatalogue'
+    azureContainerRegistry: '{"loginServer":"buyingcat01.azurecr.io", "id" : "/subscriptions/7b12a8a2-f06f-456f-b6f9-aa2d92e0b2ec/resourceGroups/BCadminrepo/providers/Microsoft.ContainerRegistry/registries/buyingcat01"}'
+    dockerComposeFile: '**/docker-compose.yml'
+    action: 'Run a Docker Compose command'
+    dockerComposeCommand: 'up'
+    arguments: '--scale chrome=4 -d'
 
 - task: VSBuild@1
   inputs:
@@ -32,3 +47,13 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: DockerCompose@0
+  inputs:
+    containerregistrytype: 'Azure Container Registry'
+    azureSubscription: 'NHSAPP-BuyingCatalogue'
+    azureContainerRegistry: '{"loginServer":"buyingcat01.azurecr.io", "id" : "/subscriptions/7b12a8a2-f06f-456f-b6f9-aa2d92e0b2ec/resourceGroups/BCadminrepo/providers/Microsoft.ContainerRegistry/registries/buyingcat01"}'
+    dockerComposeFile: '**/docker-compose.yml'
+    action: 'Run a Docker Compose command'
+    dockerComposeCommand: 'down'
+    arguments: '--remove-orphans'
