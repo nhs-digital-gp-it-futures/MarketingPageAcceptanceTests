@@ -43,5 +43,4 @@ steps:
     export HUBURL=http://localhost:4444/wd/hub &&
     export MPURL=https://test.mp-buyingcatalogue.com &&
     dotnet build $(solution) &&
-    dotnet test $(solution) -t &&
-    dotnet test $(solution)'
+    dotnet test $(solution) -v n'
