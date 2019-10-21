@@ -47,13 +47,10 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-
 - task: DockerCompose@0
   inputs:
     containerregistrytype: 'Azure Container Registry'
     azureSubscription: 'NHSAPP-BuyingCatalogue'
-    azureContainerRegistry: '{"loginServer":"buyingcat01.azurecr.io", "id" : "/subscriptions/7b12a8a2-f06f-456f-b6f9-aa2d92e0b2ec/resourceGroups/BCadminrepo/providers/Microsoft.ContainerRegistry/registries/buyingcat01"}'
+    azureContainerRegistry: '{"loginServer":"gpitfutureaksdev.azurecr.io", "id" : "/subscriptions/7b12a8a2-f06f-456f-b6f9-aa2d92e0b2ec/resourceGroups/gpitfuture-aks-dev/providers/Microsoft.ContainerRegistry/registries/gpitfutureaksdev"}'
     dockerComposeFile: '**/docker-compose.yml'
     action: 'Run a Docker Compose command'
-    dockerComposeCommand: 'down'
-    arguments: '--remove-orphans'
