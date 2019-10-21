@@ -81,7 +81,7 @@ steps:
     export DATABASENAME=gpitfuture-db-test &&
     export DBUSER=$DBUSER &&
     export DBPASSWORD=$DBPASSWORD &&
-    export HUBURL=http://selenium-hub:4444/wd/hub &&
+    export HUBURL=http://localhost:4444/wd/hub &&
     export MPURL=https://test.mp-buyingcatalogue.com &&
     dotnet test $(solution)'
 
