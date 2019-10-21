@@ -62,5 +62,5 @@ steps:
     azureSubscription: 'NHSAPP-BuyingCatalogue'
     azureContainerRegistry: '{"loginServer":"gpitfutureaksdev.azurecr.io", "id" : "/subscriptions/7b12a8a2-f06f-456f-b6f9-aa2d92e0b2ec/resourceGroups/gpitfuture-aks-dev/providers/Microsoft.ContainerRegistry/registries/gpitfutureaksdev"}'
     dockerComposeFile: '**/docker-compose.yml'
-    action: 'down'
-    arguments: '--remove-orphans'
+    action: 'Run a Docker Compose command'
+    dockerComposeCommand: 'down --remove-orphans'    
