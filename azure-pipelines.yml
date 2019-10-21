@@ -48,8 +48,10 @@ steps:
     targetType: 'inline'
     script: '
     export BROWSER=chrome &&
-    export DATABASENAME=gpitfuture-sql-test.database.windows.net &&
-    export DBPASSWORD=DisruptTheMarket1! &&
+    export SERVERURL=gpitfuture-sql-test.database.windows.net &&
+    export DATABASENAME=gpitfuture-db-test &&
+    export DBUSER=$(DBUSER) &&
+    export DBPASSWORD=$(DBPASSWORD) &&
     export HUBURL=http://selenium-hub:4444/wd/hub &&
     export MPURL=https://test.mp-buyingcatalogue.com &&
     dotnet test $(solution)'
