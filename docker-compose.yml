@@ -23,5 +23,3 @@ services:
     environment:
       - HUB_HOST=selenium-hub
       - HUB_PORT=4444
-
-# run with `docker-compose up -d --scale chrome=x` where x is the total number of chrome nodes required
