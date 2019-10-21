@@ -25,52 +25,11 @@ steps:
   inputs:
     containerregistrytype: 'Azure Container Registry'
     azureSubscription: 'NHSAPP-BuyingCatalogue'
-    azureContainerRegistry: '{"loginServer":"gpitfutureaksdev.azurecr.io", "id" : "/subscriptions/7b12a8a2-f06f-456f-b6f9-aa2d92e0b2ec/resourceGroups/gpitfuture-aks-dev/providers/Microsoft.ContainerRegistry/registries/gpitfutureaksdev"}'
+    azureContainerRegistry: '{"loginServer":"buyingcat01.azurecr.io", "id" : "/subscriptions/7b12a8a2-f06f-456f-b6f9-aa2d92e0b2ec/resourceGroups/BCadminrepo/providers/Microsoft.ContainerRegistry/registries/buyingcat01"}'
     dockerComposeFile: '**/docker-compose.yml'
-    action: 'Build services'
-    additionalImageTags: 'marketingacceptancetests'
-
-- task: DockerCompose@0
-  inputs:
-    containerregistrytype: 'Azure Container Registry'
-    azureSubscription: 'NHSAPP-BuyingCatalogue'
-    azureContainerRegistry: '{"loginServer":"gpitfutureaksdev.azurecr.io", "id" : "/subscriptions/7b12a8a2-f06f-456f-b6f9-aa2d92e0b2ec/resourceGroups/gpitfuture-aks-dev/providers/Microsoft.ContainerRegistry/registries/gpitfutureaksdev"}'
-    dockerComposeFile: '**/docker-compose.yml'
-    action: 'push services'
-    additionalImageTags: 'marketingacceptancetests'
-
-- task: DockerCompose@0
-  inputs:
-    containerregistrytype: 'Azure Container Registry'
-    azureSubscription: 'NHSAPP-BuyingCatalogue'
-    azureContainerRegistry: '{"loginServer":"gpitfutureaksdev.azurecr.io", "id" : "/subscriptions/7b12a8a2-f06f-456f-b6f9-aa2d92e0b2ec/resourceGroups/gpitfuture-aks-dev/providers/Microsoft.ContainerRegistry/registries/gpitfutureaksdev"}'
-    dockerComposeFile: '**/docker-compose.yml'
-    action: 'Run services'
-    additionalImageTags: 'marketingacceptancetests'
-
-#- task: DockerCompose@0
-#  inputs:
-#    containerregistrytype: 'Azure Container Registry'
-#    azureSubscription: 'NHSAPP-BuyingCatalogue'
-#    azureContainerRegistry: '{"loginServer":"buyingcat01.azurecr.io", "id" : "/subscriptions/7b12a8a2-f06f-456f-b6f9-aa2d92e0b2ec/resourceGroups/BCadminrepo/providers/Microsoft.ContainerRegistry/registries/buyingcat01"}'
-#    dockerComposeFile: '**/docker-compose.yml'
-#    action: 'Run a Docker Compose command'
-#    dockerComposeCommand: 'up --scale chrome=4 -d'
-#    arguments: ''
-
-
-    
-#- task: VSBuild@1
-#  inputs:
-#    solution: '$(solution)'
-#    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-#    platform: '$(buildPlatform)'
-#    configuration: '$(buildConfiguration)'
-
-#- task: VSTest@2
-#  inputs:
-#    platform: '$(buildPlatform)'
-#    configuration: '$(buildConfiguration)'
+    action: 'Run a Docker Compose command'
+    dockerComposeCommand: 'up --scale chrome=4 -d'
+    arguments: ''
 
 - task: Bash@3
   inputs:
@@ -84,12 +43,3 @@ steps:
     export HUBURL=http://localhost:4444/wd/hub &&
     export MPURL=https://test.mp-buyingcatalogue.com &&
     dotnet test $(solution)'
-
-#- task: DockerCompose@0
-#  inputs:
-#    containerregistrytype: 'Azure Container Registry'
-#    azureSubscription: 'NHSAPP-BuyingCatalogue'
-#    azureContainerRegistry: '{"loginServer":"gpitfutureaksdev.azurecr.io", "id" : "/subscriptions/7b12a8a2-f06f-456f-b6f9-aa2d92e0b2ec/resourceGroups/gpitfuture-aks-dev/providers/Microsoft.ContainerRegistry/registries/gpitfutureaksdev"}'
-#    dockerComposeFile: '**/docker-compose.yml'
-#    action: 'Run a Docker Compose command'
-#    dockerComposeCommand: 'down --remove-orphans'    
