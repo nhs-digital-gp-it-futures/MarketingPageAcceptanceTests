@@ -63,7 +63,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             return driver.FindElement(pages.PreviewPage.SolutionDescriptionLinkSection)
                 .FindElement(pages.PreviewPage.SectionData);
         }
-        
+
         /// <returns>list of features</returns>
         public IList<string> GetFeaturesText()
         {

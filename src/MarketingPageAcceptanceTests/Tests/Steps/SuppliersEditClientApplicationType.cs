@@ -1,5 +1,7 @@
-﻿using MarketingPageAcceptanceTests.Utils;
+﻿using FluentAssertions;
+using MarketingPageAcceptanceTests.Utils;
 using System;
+using System.Collections.Generic;
 using Xunit.Abstractions;
 using Xunit.Gherkin.Quick;
 
@@ -8,6 +10,9 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
     [FeatureFile(@".\Tests\Gherkin\SuppliersEditClientApplicationType.txt")]
     public sealed class SuppliersEditClientApplicationType : UITest, IDisposable
     {
+        private IList<string> checkboxesSelected;
+        private IList<string> allAppTypes;
+
         public SuppliersEditClientApplicationType(ITestOutputHelper helper) : base(helper)
         {
         }
@@ -15,66 +20,73 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         [Given("that a Client Application Type is selected")]
         public void ClientApplicationTypeSelected()
         {
-            throw new NotImplementedException();
+            pages.Dashboard.NavigateToSection("Client application type");
+            pages.ClientApplicationTypes.PageDisplayed().Should().BeTrue();
+            checkboxesSelected = pages.ClientApplicationTypes.SelectRandomCheckbox();
         }
         [When("the section is saved")]
         public void SectionSaved()
         {
-            throw new NotImplementedException();
+            pages.ClientApplicationTypes.SaveAndReturn();
+            pages.Dashboard.PageDisplayed();
         }
 
         [Then("the selected Client Application Type sub-category is available on the Marketing Page Form")]
         public void ClientApplicationTypeAvailable()
         {
-            throw new NotImplementedException();
+            // Check for link HREF containing the checkbox value from the sub dashboard
+            pages.Dashboard.SectionsAvailable(checkboxesSelected).Should().BeTrue();
         }
 
         [Given("that a Client Application Type is not selected")]
         public void ClientApplicationTypeNotSelected()
         {
-            throw new NotImplementedException();
+            pages.Dashboard.NavigateToSection("Client application type");
+            pages.ClientApplicationTypes.PageDisplayed().Should().BeTrue();
+            allAppTypes = pages.ClientApplicationTypes.GetAppTypes();
         }
 
         [Then("no Client Application Type sub-category is available on the Marketing Page Form")]
         public void ClientApplicationTypeNotAvailable()
         {
-            throw new NotImplementedException();
         }
 
         [And("there is a guidance message informing the User they need to select a Client Application Type")]
         public void GuidanceMessageForApplicationTypeDisplayed()
         {
-            throw new NotImplementedException();
+            pages.Dashboard.SectionsContainDefaultMessage(allAppTypes, "Select from client application types");
         }
 
         [Given("the Client Application Type Section requires Mandatory Data")]
         public void ClientApplicationTypeSectionRequiresMandatoryData()
         {
-            throw new NotImplementedException();
         }
+
         [Given("that a User has not provided at least one Client Application Type")]
         [And("a Supplier has not saved any data on the Client Application Type Section")]
         public void SupplierNotSavedDataClientApplicationType()
         {
-            throw new NotImplementedException();
         }
 
         [Then("the Client Application Type Section is marked as Incomplete")]
         public void ClientApplicationTypeSectionIncomplete()
         {
-            throw new NotImplementedException();
+            pages.Dashboard.SectionIncomplete("Client application type");
         }
 
         [And("a Supplier has saved any data on the Client Application Type Section")]
         public void SupplierHasSavedDataClientApplicationType()
         {
-            throw new NotImplementedException();
+            pages.Dashboard.NavigateToSection("Client application type");
+            pages.ClientApplicationTypes.PageDisplayed().Should().BeTrue();
+            pages.ClientApplicationTypes.SelectRandomCheckbox();
+            pages.ClientApplicationTypes.SaveAndReturn();
         }
 
         [Then("the Client Application Type Section is marked as Complete")]
         public void ClientApplicationTypeSectionComplete()
         {
-            throw new NotImplementedException();
+            pages.Dashboard.SectionCompleteStatus("Client application type");
         }
 
         [Given("that data has been saved in this section")]

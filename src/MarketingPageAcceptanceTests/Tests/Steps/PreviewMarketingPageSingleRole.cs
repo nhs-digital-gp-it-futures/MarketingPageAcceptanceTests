@@ -20,7 +20,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
 
         public PreviewMarketingPageSingleRole(ITestOutputHelper helper) : base(helper)
         {
-            pages.Dashboard.ConstructSectionToNumFieldsMapping();
+            pages.Dashboard.ConstructSectionToNumFieldsMapping(url);
         }
 
         [Given("that Marketing Page data has been saved")]
@@ -124,7 +124,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         {
             windowHandles = pages.Common.GetWindowHandles();
 
-            pages.PreviewPage.GetSolutionLink().Click();            
+            pages.PreviewPage.GetSolutionLink().Click();
         }
 
         [Then("a new browser window is opened with the correct URL")]

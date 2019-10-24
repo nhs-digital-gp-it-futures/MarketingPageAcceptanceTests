@@ -1,8 +1,6 @@
-﻿using System;
+﻿using OpenQA.Selenium;
 using System.Collections.Generic;
 using System.Linq;
-using FluentAssertions;
-using OpenQA.Selenium;
 using Xunit.Abstractions;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages

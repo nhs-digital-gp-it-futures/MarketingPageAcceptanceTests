@@ -14,5 +14,7 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
         public By PreviewPage => CustomBy.DataTestId("dashboard-preview-button", "a");
 
         public By Requirement => CustomBy.DataTestId("dashboard-section-requirement");
+
+        public By DefaultMessage => CustomBy.DataTestId("dashboard-section-default-message");
     }
 }

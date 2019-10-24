@@ -14,6 +14,7 @@ namespace MarketingPageAcceptanceTests.Utils
         internal readonly PageActionCollection pages;
         internal string solutionId;
         internal readonly string connectionString;
+        internal readonly string url;
 
         internal ITestOutputHelper helper;
 
@@ -43,8 +44,12 @@ namespace MarketingPageAcceptanceTests.Utils
 
             pages = new PageActions(driver, helper).PageActionCollection;
 
+
+            this.url = $"{url}/{solutionId}";
             // Navigate to the site url
-            driver.Navigate().GoToUrl($"{url}/{solutionId}");
+            driver.Navigate().GoToUrl(this.url);
+
+            pages.Dashboard.PageDisplayed();
         }
 
         #region common steps        

@@ -1,8 +1,10 @@
 ﻿using FluentAssertions;
 using OpenQA.Selenium;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit.Abstractions;
+using static MarketingPageAcceptanceTests.Actions.Utils.ElementExtensions;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
@@ -33,22 +35,83 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             // Assert that each section has a status displayed (does not consider the content of the status)
             foreach (var section in sections)
             {
-                section.FindElement(pages.Dashboard.Statuses).Displayed.Should().BeTrue();
+                if (!section.ContainsElement(pages.Dashboard.DefaultMessage))
+                {
+                    section.FindElement(pages.Dashboard.Statuses).Displayed.Should().BeTrue();
+                }
             }
+        }
+
+        public bool SectionsAvailable(IList<string> checkboxesSelected)
+        {
+            foreach (var cb in checkboxesSelected)
+            {
+                try
+                {
+                    // Find link that has the saved checkbox value in the href attribute. Return false if any are not found
+                    driver.FindElements(pages.Dashboard.SectionTitle)
+                        .Single(s => s.FindElement(By.TagName("a")).GetAttribute("href").Contains(cb));
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public bool SectionsHaveStatusIndicator(IList<string> checkboxesSelected)
+        {
+            foreach (var cb in checkboxesSelected)
+            {
+                try
+                {
+                    // Find Status indicator on chosen section
+                    driver.FindElements(pages.Dashboard.Sections)
+                        .Single(s => s.FindElement(pages.Dashboard.SectionTitle).Text.ToLower().Contains(cb.ToLower()))
+                        .FindElement(pages.Dashboard.Statuses);
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public void SectionsContainDefaultMessage(IList<string> allAppTypes, string message)
+        {
+            foreach (var section in allAppTypes)
+            {
+                GetSectionDefaultMessage(section).Should().Be(message);
+            }
+        }
+
+        public string GetSectionDefaultMessage(string sectionTitle)
+        {
+            return driver.FindElements(pages.Dashboard.Sections)
+                .Single(s => s.FindElement(pages.Dashboard.SectionTitle).Text.ToLower().Contains(sectionTitle.ToLower()))
+                .FindElement(pages.Dashboard.DefaultMessage).Text;
         }
 
         /// <summary>
         /// Navigate to a section
         /// </summary>
         /// <param name="sectionTitle">Case sensitive name of a section</param>
-        public void NavigateToSection(string sectionTitle)
+        public void NavigateToSection(string sectionTitle, bool subDashboard = false)
         {
             driver.FindElements(pages.Dashboard.Sections)
                 .Single(s => s.FindElement(pages.Dashboard.SectionTitle).Text.ToLower().Contains(sectionTitle.ToLower()))
                 .FindElement(pages.Dashboard.SectionTitle)
                 .Click();
-
-            wait.Until(s => s.FindElement(pages.Common.PageTitle).Text.Contains(sectionTitle));
+            if (subDashboard)
+            {
+                wait.Until(s => s.FindElement(pages.Common.SubDashboardTitle).Text.Contains(sectionTitle));
+            }
+            else
+            {
+                wait.Until(s => s.FindElement(pages.Common.PageTitle).Text.Contains(sectionTitle));
+            }
         }
 
         /// <summary>
@@ -57,6 +120,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void NavigateToPreviewPage()
         {
             driver.FindElement(pages.Dashboard.PreviewPage).Click();
+            new PreviewPage(driver, helper).PageDisplayed();
         }
 
         public bool SectionHasStatus(string section)
@@ -115,8 +179,9 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// Gets all mandatory sections
         /// </summary>
         public IList<IWebElement> GetMandatorySections()
-        { 
+        {
             return driver.FindElements(pages.Dashboard.Sections)
+                .Where(section => section.ContainsElement(pages.Dashboard.Requirement))
                 .Where(section => section.FindElement(pages.Dashboard.Requirement).Text.Equals("Mandatory"))
                 .ToList();
         }
@@ -128,6 +193,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public IList<string> GetMandatorySectionsNames()
         {
             return driver.FindElements(pages.Dashboard.Sections)
+                .Where(section => section.ContainsElement(pages.Dashboard.Requirement))
                 .Where(section => section.FindElement(pages.Dashboard.Requirement).Text.Equals("Mandatory"))
                 .Select(section => section.FindElement(pages.Dashboard.SectionTitle).Text)
                 .OrderBy(name => name.ToLower())
@@ -141,16 +207,23 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             return fields.Count;
         }
 
-        public void ConstructSectionToNumFieldsMapping()
+        public void ConstructSectionToNumFieldsMapping(string url)
         {
-            foreach (var section in GetMandatorySections())
-            {
-                var sectionTitle = section.FindElement(pages.Dashboard.SectionTitle);
-                var name = sectionTitle.Text;
-                sectionTitle.Click();
-                SectionNameToNumOfMandatoryFields.Add(name, GetNumberOfRequiredFields());
-                driver.Navigate().Back();
+            var mandatorySectionNames = GetMandatorySectionsNames();
+
+            foreach (var section in mandatorySectionNames)
+            {   
+                driver.FindElements(pages.Dashboard.Sections)
+                    .Single(s => s.FindElement(pages.Dashboard.SectionTitle).Text.Equals(section))
+                    .FindElement(pages.Dashboard.SectionTitle).Click();
+
+                wait.Until(s => s.FindElement(pages.Common.PageTitle).Text.ToLower().Contains(section.ToLower()));
+
+                SectionNameToNumOfMandatoryFields.Add(section, GetNumberOfRequiredFields());
+                driver.Navigate().GoToUrl(url);
             }
         }
+
+        
     }
 }
