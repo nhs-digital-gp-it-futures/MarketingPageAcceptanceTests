@@ -14,7 +14,8 @@ namespace MarketingPageAcceptanceTests.Objects
                 Common = new Pages.Common(),
                 PreviewPage = new Pages.PreviewPage(),
                 ClientApplicationTypes = new Pages.ClientApplicationTypes(),
-                BrowserBasedDashboard = new Pages.BrowserBasedDashboard()
+                BrowserBasedDashboard = new Pages.BrowserBasedDashboard(),
+                BrowsersSupported = new Pages.BrowsersSupported()
             };
         }
 

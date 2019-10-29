@@ -11,5 +11,6 @@ namespace MarketingPageAcceptanceTests.Actions.Collections
         public PreviewPage PreviewPage { get; internal set; }
         public ClientApplicationTypes ClientApplicationTypes { get; set; }
         public BrowserSubDashboard BrowserSubDashboard { get; set; }
+        public BrowsersSupported BrowsersSupported { get; set; }
     }
 }

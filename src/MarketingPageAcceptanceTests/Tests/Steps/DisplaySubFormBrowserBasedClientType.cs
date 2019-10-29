@@ -54,7 +54,8 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         [And("the Supplier is able to access the Browser Based Client Type Sub-Sections")]
         public void SupplierAbleToAccessSubSections()
         {
-            throw new NotImplementedException();
+            pages.BrowserSubDashboard.OpenSection("Browsers supported");
+            pages.Common.GoBackOnePage();
         }
 
         [Given("each Section has a content validation status")]

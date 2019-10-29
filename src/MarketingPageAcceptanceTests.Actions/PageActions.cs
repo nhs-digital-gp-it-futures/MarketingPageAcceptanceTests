@@ -17,7 +17,8 @@ namespace MarketingPageAcceptanceTests.Actions
                 SolutionDescription = new SolutionDescription(driver, helper),
                 PreviewPage = new PreviewPage(driver, helper),
                 ClientApplicationTypes = new ClientApplicationTypes(driver, helper),
-                BrowserSubDashboard = new BrowserSubDashboard(driver, helper)
+                BrowserSubDashboard = new BrowserSubDashboard(driver, helper),
+                BrowsersSupported = new BrowsersSupported(driver, helper)
             };
         }
 

@@ -3,7 +3,6 @@
 	I want to manage Marketing Page Information for the Browser Based Client Type Section
 	So that I can ensure the information is correct
 
-@ignore
 Scenario: Sub Sections presented
 	Given that a Supplier has chosen to manage the Browser Based Client Application Type Section
 	When the User has selected Browser Based as a Client Application Type

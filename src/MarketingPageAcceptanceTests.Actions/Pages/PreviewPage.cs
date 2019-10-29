@@ -27,7 +27,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public string GetSolutionSummaryText()
         {
             return driver.FindElement(pages.PreviewPage.SolutionDescriptionSummarySection)
-                .FindElement(pages.PreviewPage.SectionData).Text;
+                .FindElement(pages.PreviewPage.SectionDataText).Text;
         }
 
         /// <returns>the title of the mandatory field</returns>
@@ -41,7 +41,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public string GetSolutionAboutText()
         {
             return driver.FindElement(pages.PreviewPage.SolutionDescriptionAboutSection)
-                .FindElement(pages.PreviewPage.SectionData).Text;
+                .FindElement(pages.PreviewPage.SectionDataText).Text;
         }
 
         /// <returns>the title of a non-mandatory field - About the solution</returns>
@@ -55,13 +55,13 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public string GetSolutionLinkText()
         {
             return driver.FindElement(pages.PreviewPage.SolutionDescriptionLinkSection)
-                .FindElement(pages.PreviewPage.SectionData).Text;
+                .FindElement(pages.PreviewPage.SectionDataLink).Text;
         }
 
         public IWebElement GetSolutionLink()
         {
             return driver.FindElement(pages.PreviewPage.SolutionDescriptionLinkSection)
-                .FindElement(pages.PreviewPage.SectionData);
+                .FindElement(pages.PreviewPage.SectionDataLink);
         }
 
         /// <returns>list of features</returns>
@@ -123,7 +123,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         private string ConvertToSectionCssSelector(string sectionName)
         {
-            return $"[data-test-id=preview-section-{sectionName.ToLower().Replace(" ", "-")}";
+            return $"[data-test-id=preview-{sectionName.ToLower().Replace(" ", "-")}";
         }
 
         public void AssertSectionHasMandatoryFields(string sectionName, int numFields)

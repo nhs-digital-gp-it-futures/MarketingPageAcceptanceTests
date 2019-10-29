@@ -28,28 +28,34 @@ namespace MarketingPageAcceptanceTests.Utils
             var (url, hubUrl, browser, serverUrl, databaseName, dbUser, dbPassword) = EnvironmentVariables.Get();
             connectionString = String.Format(ConnectionString.GPitFutures, serverUrl, databaseName, dbUser, dbPassword);
             solutionId = solution.Id;
+            this.url = $"{url}/{solutionId}";
 
             SqlHelper.CreateBlankSolution(solution, connectionString);
+
+            driver = GetDriver(browser, hubUrl);
+
+            pages = new PageActions(driver, helper).PageActionCollection;
+
+            // Navigate to the site url
+            driver.Navigate().GoToUrl(this.url);
+            pages.Dashboard.PageDisplayed();
+        }
+
+        private IWebDriver GetDriver(string browser, string hubUrl)
+        {
+            IWebDriver _driver;
 
             if (!System.Diagnostics.Debugger.IsAttached)
             {
                 // Initialize the browser and get the page action collections
-                driver = BrowserFactory.GetBrowser(browser, hubUrl);
+                _driver = BrowserFactory.GetBrowser(browser, hubUrl);
             }
             else
             {
                 // If debugging, run against the local chrome instance
-                driver = BrowserFactory.GetBrowser("chrome-local", "");
+                _driver = BrowserFactory.GetBrowser("chrome-local", "");
             }
-
-            pages = new PageActions(driver, helper).PageActionCollection;
-
-
-            this.url = $"{url}/{solutionId}";
-            // Navigate to the site url
-            driver.Navigate().GoToUrl(this.url);
-
-            pages.Dashboard.PageDisplayed();
+            return _driver;
         }
 
         #region common steps        

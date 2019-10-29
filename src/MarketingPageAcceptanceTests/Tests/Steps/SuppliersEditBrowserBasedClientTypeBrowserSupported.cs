@@ -8,45 +8,54 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
     [FeatureFile(@".\Tests\Gherkin\SuppliersEditBrowserBasedClientTypeBrowserSupported.txt")]
     public sealed class SuppliersEditBrowserBasedClientTypeBrowserSupported : UITest, IDisposable
     {
+        int browsersSupported;
         public SuppliersEditBrowserBasedClientTypeBrowserSupported(ITestOutputHelper helper) : base(helper)
         {
         }
 
         [Given("that an answer is provided to all questions")]
+        [Given("that data has been saved in this section")]
         public void AnswersProvidedAllQuestions()
         {
-            throw new NotImplementedException();
+            pages.Dashboard.NavigateToSection("Client application type");
+            pages.ClientApplicationTypes.SelectCheckbox("Browser based");
+            pages.ClientApplicationTypes.SaveAndReturn();
+            pages.Dashboard.NavigateToSection("Browser based", true);
+            pages.BrowserSubDashboard.OpenSection("Browsers supported");
+
+            browsersSupported = new Random().Next(8);
+            pages.BrowsersSupported.SelectRandomCheckboxes(browsersSupported);
+            pages.BrowsersSupported.SelectRandomRadioButton();
         }
 
         [When("a User saves the page")]
         public void SavesPage()
         {
-            throw new NotImplementedException();
+            pages.BrowsersSupported.SaveAndReturn();
         }
 
         [Then("the Section is marked as 'complete' on the Browser Based Client Type Sub-Form")]
         public void SectionMarkedComplete()
         {
-            throw new NotImplementedException();
+            pages.Dashboard.SectionCompleteStatus("Browsers supported");
         }
 
         [Given("that an answer is not provided to both questions")]
         [Given("that a User has not provided answers for both questions")]
         public void AnswersNotProvided()
         {
-            throw new NotImplementedException();
+            pages.Dashboard.NavigateToSection("Client application type");
+            pages.ClientApplicationTypes.SelectCheckbox("Browser based");
+            pages.ClientApplicationTypes.SaveAndReturn();
+            pages.Dashboard.NavigateToSection("Browser based", true);
+
+            pages.BrowserSubDashboard.OpenSection("Browsers supported");
         }
 
         [Then("the Section is marked as 'incomplete' on the Browser Based Client Type Sub-Form")]
         public void SectionMarkedIncomplete()
         {
-            throw new NotImplementedException();
-        }
-
-        [Given("that data has been saved in this section")]
-        public void DataSavedInSection()
-        {
-            throw new NotImplementedException();
+            pages.Dashboard.SectionIncomplete("Browsers supported");
         }
 
         [Then("data will be presented on the Preview of the Marketing Page")]
