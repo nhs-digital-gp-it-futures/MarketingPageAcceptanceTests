@@ -96,14 +96,14 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         [And("the database contains the Feature Text")]
         public void AssertFeatureInDb()
         {
-            var features = SqlHelper.GetSolutionFeatures(solutionId, connectionString);
+            var features = SqlHelper.GetSolutionFeatures(solution.Id, connectionString);
             features.Should().Contain(featureString);
         }
 
         [And("the database does not contain the Feature Text")]
         public void AssertFeatureNotInDb()
         {
-            var features = SqlHelper.GetSolutionFeatures(solutionId, connectionString);
+            var features = SqlHelper.GetSolutionFeatures(solution.Id, connectionString);
             features.Should().NotContain(featureString);
         }
     }

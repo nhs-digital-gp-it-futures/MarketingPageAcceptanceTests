@@ -20,5 +20,6 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
         public By SubmitForModeration => CustomBy.DataTestId("preview-submit-button", "a");
         public By ErrorMessages =>
             By.CssSelector("ul.nhsuk-list.nhsuk-error-summary__list li a");
+        public By PageTitle => By.CssSelector("div.nhsuk-grid-column-full h1");
     }
 }

@@ -20,7 +20,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// </summary>
         public void PageDisplayed()
         {
-            wait.Until(s => s.FindElement(pages.PreviewPage.SolutionDescriptionSummarySection).Displayed);
+            wait.Until(s => s.FindElement(pages.PreviewPage.PageTitle).Displayed);
         }
 
         /// <returns>value of mandatory field - summary of a solution</returns>

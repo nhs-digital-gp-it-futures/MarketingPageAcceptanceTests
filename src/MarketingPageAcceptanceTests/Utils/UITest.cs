@@ -5,6 +5,7 @@ using OpenQA.Selenium;
 using System;
 using Xunit.Abstractions;
 using Xunit.Gherkin.Quick;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace MarketingPageAcceptanceTests.Utils
 {
@@ -12,50 +13,32 @@ namespace MarketingPageAcceptanceTests.Utils
     {
         internal readonly IWebDriver driver;
         internal readonly PageActionCollection pages;
-        internal string solutionId;
         internal readonly string connectionString;
         internal readonly string url;
+        internal Solution solution;
 
         internal ITestOutputHelper helper;
 
         public UITest(ITestOutputHelper helper)
-        {
+        {   
             this.helper = helper;
 
-            var solution = CreateSolution.CreateNewSolution();
+            solution = CreateSolution.CreateNewSolution();
 
             // Get process only environment variables
-            var (url, hubUrl, browser, serverUrl, databaseName, dbUser, dbPassword) = EnvironmentVariables.Get();
+            var (serverUrl, databaseName, dbUser, dbPassword) = EnvironmentVariables.GetDbConnectionDetails();
             connectionString = String.Format(ConnectionString.GPitFutures, serverUrl, databaseName, dbUser, dbPassword);
-            solutionId = solution.Id;
-            this.url = $"{url}/{solutionId}";
-
             SqlHelper.CreateBlankSolution(solution, connectionString);
 
-            driver = GetDriver(browser, hubUrl);
+            driver = new BrowserFactory().Driver;
 
             pages = new PageActions(driver, helper).PageActionCollection;
 
+            var url = EnvironmentVariables.GetUrl();
+            this.url = $"{url}/{solution.Id}";
             // Navigate to the site url
             driver.Navigate().GoToUrl(this.url);
             pages.Dashboard.PageDisplayed();
-        }
-
-        private IWebDriver GetDriver(string browser, string hubUrl)
-        {
-            IWebDriver _driver;
-
-            if (!System.Diagnostics.Debugger.IsAttached)
-            {
-                // Initialize the browser and get the page action collections
-                _driver = BrowserFactory.GetBrowser(browser, hubUrl);
-            }
-            else
-            {
-                // If debugging, run against the local chrome instance
-                _driver = BrowserFactory.GetBrowser("chrome-local", "");
-            }
-            return _driver;
         }
 
         #region common steps        
@@ -73,7 +56,7 @@ namespace MarketingPageAcceptanceTests.Utils
             driver.Close();
             driver.Quit();
 
-            SqlHelper.DeleteSolution(solutionId, connectionString);
+            SqlHelper.DeleteSolution(solution.Id, connectionString);
         }
     }
 }

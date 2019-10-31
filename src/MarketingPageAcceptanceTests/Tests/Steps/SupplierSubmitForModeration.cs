@@ -37,7 +37,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         public void SubmittedForModerationSuccess()
         {
 
-            SqlHelper.GetSolutionStatus(solutionId, connectionString).Should().Be(2);
+            SqlHelper.GetSolutionStatus(solution.Id, connectionString).Should().Be(2);
         }
 
         [And("the User remains on the Preview Page")]
@@ -57,7 +57,7 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
             pages.PreviewPage.PageDisplayed();
             pages.PreviewPage.SubmitForModeration();
             pages.PreviewPage.PageDisplayed();
-            SqlHelper.GetSolutionStatus(solutionId, connectionString).Should().NotBe(2);
+            SqlHelper.GetSolutionStatus(solution.Id, connectionString).Should().NotBe(2);
         }
 
         [And("the User will be notified that the submission was unsuccessful")]
