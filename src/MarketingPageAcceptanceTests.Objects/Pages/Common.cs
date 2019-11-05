@@ -8,5 +8,7 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
         public By PageTitle => CustomBy.DataTestId("section-title");
 
         public By MandatoryFieldSymbol => By.CssSelector("div.nhsuk-form-group > label");
+
+        public By SubDashboardTitle => CustomBy.DataTestId("sub-dashboard-title");
     }
 }

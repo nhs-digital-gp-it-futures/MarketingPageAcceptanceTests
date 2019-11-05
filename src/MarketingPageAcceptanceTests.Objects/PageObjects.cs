@@ -12,7 +12,10 @@ namespace MarketingPageAcceptanceTests.Objects
                 EditFeatures = new Pages.EditFeatures(),
                 SolutionDescription = new Pages.SolutionDescription(),
                 Common = new Pages.Common(),
-                PreviewPage = new Pages.PreviewPage()
+                PreviewPage = new Pages.PreviewPage(),
+                ClientApplicationTypes = new Pages.ClientApplicationTypes(),
+                BrowserBasedDashboard = new Pages.BrowserBasedDashboard(),
+                BrowsersSupported = new Pages.BrowsersSupported()
             };
         }
 

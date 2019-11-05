@@ -8,11 +8,9 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 {
     public sealed class PreviewPage : PageAction
     {
-        public Dictionary<string, string> MandatoryFieldsToErrorMessages { get; private set; }
-
         public PreviewPage(IWebDriver driver, ITestOutputHelper helper) : base(driver, helper)
         {
-            ConstructErrorMapping();
+            
         }
 
         /// <summary>
@@ -20,14 +18,14 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// </summary>
         public void PageDisplayed()
         {
-            wait.Until(s => s.FindElement(pages.PreviewPage.SolutionDescriptionSummarySection).Displayed);
+            wait.Until(s => s.FindElement(pages.PreviewPage.PageTitle).Displayed);
         }
 
         /// <returns>value of mandatory field - summary of a solution</returns>
         public string GetSolutionSummaryText()
         {
             return driver.FindElement(pages.PreviewPage.SolutionDescriptionSummarySection)
-                .FindElement(pages.PreviewPage.SectionData).Text;
+                .FindElement(pages.PreviewPage.SectionDataText).Text;
         }
 
         /// <returns>the title of the mandatory field</returns>
@@ -41,7 +39,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public string GetSolutionAboutText()
         {
             return driver.FindElement(pages.PreviewPage.SolutionDescriptionAboutSection)
-                .FindElement(pages.PreviewPage.SectionData).Text;
+                .FindElement(pages.PreviewPage.SectionDataText).Text;
         }
 
         /// <returns>the title of a non-mandatory field - About the solution</returns>
@@ -55,15 +53,15 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public string GetSolutionLinkText()
         {
             return driver.FindElement(pages.PreviewPage.SolutionDescriptionLinkSection)
-                .FindElement(pages.PreviewPage.SectionData).Text;
+                .FindElement(pages.PreviewPage.SectionDataLink).Text;
         }
 
         public IWebElement GetSolutionLink()
         {
             return driver.FindElement(pages.PreviewPage.SolutionDescriptionLinkSection)
-                .FindElement(pages.PreviewPage.SectionData);
+                .FindElement(pages.PreviewPage.SectionDataLink);
         }
-        
+
         /// <returns>list of features</returns>
         public IList<string> GetFeaturesText()
         {
@@ -86,32 +84,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             driver.FindElement(pages.PreviewPage.SubmitForModeration).Click();
         }
 
-        private IEnumerable<IWebElement> GetErrorMessages()
-        {
-            return driver.FindElements(pages.PreviewPage.ErrorMessages);
-        }
-
-        public IWebElement GetFirstErrorMessage()
-        {
-            return GetErrorMessages().First();
-        }
-
-        public void AssertSubmitForReviewErrorMessageAppeared()
-        {
-            GetFirstErrorMessage().Displayed.Should().Be(true);
-        }
-
-        public void ClickOnErrorLink()
-        {
-            GetFirstErrorMessage().Click();
-        }
-        private void ConstructErrorMapping()
-        {
-            MandatoryFieldsToErrorMessages = new Dictionary<string, string>
-            {
-                { "summary", "Solution Summary is a required field error message" }
-            };
-        }
+        
         private int GetSectionFieldsCount(string sectionName)
         {
             return driver.FindElement(
@@ -123,7 +96,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         private string ConvertToSectionCssSelector(string sectionName)
         {
-            return $"[data-test-id=preview-section-{sectionName.ToLower().Replace(" ", "-")}";
+            return $"[data-test-id=preview-{sectionName.ToLower().Replace(" ", "-")}";
         }
 
         public void AssertSectionHasMandatoryFields(string sectionName, int numFields)

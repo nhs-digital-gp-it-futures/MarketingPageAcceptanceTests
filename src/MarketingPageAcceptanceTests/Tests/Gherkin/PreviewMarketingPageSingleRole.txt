@@ -9,12 +9,6 @@ Scenario: Data provided
 	Then the Marketing Page Preview is displayed 
 	And any saved data will be visible on the Marketing Page Preview
 
-Scenario: Titles Shown or hidden
-	Given that the Marketing Page has Mandatory Data
-	When a User previews the Marketing Page
-	Then the Sections and the Mandatory Question are displayed on the preview regardless of whether any data has been added to the section
-	And the Section and the Question for non-Mandatory data are displayed only if the User has saved data to the section
-
 Scenario: Solution Description and Features 
 	Given that the Solution Description and Features section are the only sections completed 
 	When the User previews the Marketing Page

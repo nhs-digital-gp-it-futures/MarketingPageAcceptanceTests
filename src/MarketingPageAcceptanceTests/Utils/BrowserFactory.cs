@@ -7,24 +7,47 @@ using System.IO;
 
 namespace MarketingPageAcceptanceTests.Utils
 {
-    internal sealed class BrowserFactory
+    public sealed class BrowserFactory
     {
-        internal static IWebDriver GetBrowser(string browser, string huburl)
+        public IWebDriver Driver { get; }
+
+        public BrowserFactory()
         {
-            switch (browser.ToLower())
+            var browser = EnvironmentVariables.GetBrowser();
+            var hubUrl = EnvironmentVariables.GetHubUrl();
+            Driver = GetBrowser(browser, hubUrl);
+        }
+
+        private IWebDriver GetBrowser(string browser, string huburl)
+        {
+            IWebDriver driver;
+
+            if (System.Diagnostics.Debugger.IsAttached)
             {
-                case "chrome":
-                case "googlechrome":
-                    return GetChromeDriver(huburl);
-                case "firefox":
-                case "ff":
-                case "mozilla":
-                    return GetFirefoxDriver(huburl);
-                case "chrome-local":
-                    return GetLocalChromeDriver();
+                driver = GetLocalChromeDriver();
+            }
+            else
+            {
+                switch (browser.ToLower())
+                {
+                    case "chrome":
+                    case "googlechrome":
+                        driver = GetChromeDriver(huburl);
+                        break;
+                    case "firefox":
+                    case "ff":
+                    case "mozilla":
+                        driver = GetFirefoxDriver(huburl);
+                        break;
+                    case "chrome-local":
+                        driver = GetLocalChromeDriver();
+                        break;
+                    default:
+                        throw new WebDriverException($"Browser {browser} not supported");
+                }
             }
 
-            throw new WebDriverException($"Browser {browser} not supported");
+            return driver;
         }
 
         private static IWebDriver GetLocalChromeDriver()

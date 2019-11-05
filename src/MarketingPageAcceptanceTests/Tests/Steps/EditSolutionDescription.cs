@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using MarketingPageAcceptanceTests.Actions.Utils;
 using MarketingPageAcceptanceTests.Utils;
 using System;
 using Xunit.Abstractions;
@@ -46,18 +47,18 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         {
             pages.Dashboard.PageDisplayed();
             pages.Dashboard.SectionCompleteStatus("Solution description");
-            pages.SolutionDescription.DbContainsSummary(solutionId, connectionString).Should().BeTrue();
-            pages.SolutionDescription.DbContainsDescription(solutionId, connectionString).Should().BeTrue();
-            pages.SolutionDescription.DbContainsLink(solutionId, connectionString).Should().BeTrue();
+            pages.SolutionDescription.DbContainsSummary(solution.Id, connectionString).Should().BeTrue();
+            pages.SolutionDescription.DbContainsDescription(solution.Id, connectionString).Should().BeTrue();
+            pages.SolutionDescription.DbContainsLink(solution.Id, connectionString).Should().BeTrue();
         }
 
         [Then("the Section is not saved")]
         public void SectionNotSaved()
         {
             pages.SolutionDescription.PageDisplayed();
-            pages.SolutionDescription.DbContainsSummary(solutionId, connectionString).Should().BeFalse();
-            pages.SolutionDescription.DbContainsDescription(solutionId, connectionString).Should().BeFalse();
-            pages.SolutionDescription.DbContainsLink(solutionId, connectionString).Should().BeFalse();
+            pages.SolutionDescription.DbContainsSummary(solution.Id, connectionString).Should().BeFalse();
+            pages.SolutionDescription.DbContainsDescription(solution.Id, connectionString).Should().BeFalse();
+            pages.SolutionDescription.DbContainsLink(solution.Id, connectionString).Should().BeFalse();
         }
 
         [And("an indication is given to the Supplier as to why")]
@@ -109,8 +110,8 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         [And("the non mandatory data is saved to the database")]
         public void NonMandatoryDataSaved()
         {
-            pages.SolutionDescription.DbContainsDescription(solutionId, connectionString);
-            pages.SolutionDescription.DbContainsLink(solutionId, connectionString);
+            pages.SolutionDescription.DbContainsDescription(solution.Id, connectionString);
+            pages.SolutionDescription.DbContainsLink(solution.Id, connectionString);
         }
 
         [Given("the Solution Description Section has completed data saved")]
@@ -131,6 +132,23 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
             pages.SolutionDescription.ClearMandatoryFields();
             SupplierAttemptsSave();
             MarketingPageFormPresented();
+        }
+
+        [Given("that a Supplier has not provided a Summary Description")]
+        public void SummaryNotProvided()
+        {   
+        }
+
+        [Then("the Section is not saved because it is mandatory")]
+        public void SectionIsNotSaved()
+        {
+
+        }
+
+        [And("an indication is given to the Supplier as to why")]
+        public void ValidationDisplayed()
+        {
+
         }
     }
 }
