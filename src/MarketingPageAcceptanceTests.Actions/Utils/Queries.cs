@@ -8,6 +8,7 @@
 
         internal const string CreateMarketingDetail = "INSERT INTO MarketingDetail (SolutionId) values (@solutionId)";
         internal const string GetMarketingDetail = "SELECT Features, AboutUrl from [dbo].[MarketingDetail] where SolutionId=@solutionId";
+        internal const string UpdateMarketingDetail = "UPDATE MarketingDetail SET Features=@features, ClientApplication=@clientApplication, AboutUrl=@aboutUrl WHERE SolutionId=@solutionId";
         internal const string DeleteMarketingDetail = "DELETE from MarketingDetail where SolutionId=@solutionId";
     }
 }

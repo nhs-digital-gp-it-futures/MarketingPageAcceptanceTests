@@ -42,6 +42,11 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             }
         }
 
+        public void SubmitForModeration()
+        {
+            driver.FindElement(pages.Dashboard.SubmitForModerationButton).Click();
+        }
+
         public bool SectionsAvailable(IList<string> checkboxesSelected)
         {
             foreach (var cb in checkboxesSelected)
@@ -77,6 +82,35 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                 }
             }
             return true;
+        }
+
+        public void ErrorSectionDisplayed()
+        {
+            wait.Until(s => s.FindElement(pages.Dashboard.ErrorSection).Displayed);
+        }
+
+        public void ErrorMessagesDisplayed(int numSections)
+        {
+            var errorMessages = GetErrorMessages();
+            errorMessages.Should().HaveCount(numSections);
+
+        }
+
+        private IEnumerable<IWebElement> GetErrorMessages()
+        {
+            return driver.FindElements(pages.Dashboard.ErrorMessages);
+        }
+
+        public string ClickOnErrorLink()
+        {
+            var errorMessages = GetErrorMessages().ToList();
+            var index = new Random().Next(errorMessages.Count());
+
+            var linkHref = errorMessages[index].GetAttribute("href");
+
+            errorMessages[index].Click();
+
+            return linkHref;
         }
 
         public void SectionsContainDefaultMessage(IList<string> allAppTypes, string message)

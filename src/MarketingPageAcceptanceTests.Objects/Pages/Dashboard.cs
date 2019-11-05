@@ -16,5 +16,11 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
         public By Requirement => CustomBy.DataTestId("dashboard-section-requirement");
 
         public By DefaultMessage => CustomBy.DataTestId("dashboard-section-default-message");
+
+        public By SubmitForModerationButton => CustomBy.DataTestId("dashboard-submit-for-moderation-button", "a.nhsuk-button");
+
+        public By ErrorMessages => By.CssSelector("ul.nhsuk-list.nhsuk-error-summary__list li a");
+
+        public By ErrorSection => By.ClassName("nhsuk-error-summary");
     }
 }

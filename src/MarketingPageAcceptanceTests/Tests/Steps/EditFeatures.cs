@@ -106,5 +106,11 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
             var features = SqlHelper.GetSolutionFeatures(solution.Id, connectionString);
             features.Should().NotContain(featureString);
         }
+
+        [And("the User is provided with a validation error message")]
+        public void UserProvidedWithValidationErrorMessage()
+        {
+
+        }
     }
 }

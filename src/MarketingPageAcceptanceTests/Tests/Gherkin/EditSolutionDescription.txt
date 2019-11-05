@@ -33,3 +33,10 @@ Scenario: Validation Error Message Anchors
 	Given validation has been triggered
 	When the User selects an error link in the Error Summary
 	Then the User will be navigated to the relevant section on the page
+
+@ignore
+Scenario: No Summary
+	Given that a Supplier has not provided a Summary Description
+	When the Supplier attempts to save 
+	Then the Section is not saved because it is mandatory
+	And an indication is given to the Supplier as to why

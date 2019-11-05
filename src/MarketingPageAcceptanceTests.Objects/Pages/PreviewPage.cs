@@ -18,8 +18,7 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
         public By SectionDataLink => CustomBy.DataTestId("preview-question-data-link");
         public By FeaturesSection => CustomBy.DataTestId("preview-features");
         public By SubmitForModeration => CustomBy.DataTestId("preview-submit-button", "a");
-        public By ErrorMessages =>
-            By.CssSelector("ul.nhsuk-list.nhsuk-error-summary__list li a");
+        
         public By PageTitle => By.CssSelector("div.nhsuk-grid-column-full h1");
     }
 }

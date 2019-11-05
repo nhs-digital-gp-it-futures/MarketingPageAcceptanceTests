@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using MarketingPageAcceptanceTests.Actions.Utils;
 using MarketingPageAcceptanceTests.Utils;
 using System;
 using Xunit.Abstractions;
@@ -131,6 +132,23 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
             pages.SolutionDescription.ClearMandatoryFields();
             SupplierAttemptsSave();
             MarketingPageFormPresented();
+        }
+
+        [Given("that a Supplier has not provided a Summary Description")]
+        public void SummaryNotProvided()
+        {   
+        }
+
+        [Then("the Section is not saved because it is mandatory")]
+        public void SectionIsNotSaved()
+        {
+
+        }
+
+        [And("an indication is given to the Supplier as to why")]
+        public void ValidationDisplayed()
+        {
+
         }
     }
 }

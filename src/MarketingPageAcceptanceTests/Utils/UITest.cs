@@ -23,7 +23,10 @@ namespace MarketingPageAcceptanceTests.Utils
         {   
             this.helper = helper;
 
-            solution = CreateSolution.CreateNewSolution();
+            if (solution is null)
+            {
+                solution = CreateSolution.CreateNewSolution();
+            }
 
             // Get process only environment variables
             var (serverUrl, databaseName, dbUser, dbPassword) = EnvironmentVariables.GetDbConnectionDetails();

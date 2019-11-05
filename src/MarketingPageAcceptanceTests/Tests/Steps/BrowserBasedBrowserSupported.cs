@@ -5,11 +5,11 @@ using Xunit.Gherkin.Quick;
 
 namespace MarketingPageAcceptanceTests.Tests.Steps
 {
-    [FeatureFile(@".\Tests\Gherkin\SuppliersEditBrowserBasedClientTypeBrowserSupported.txt")]
-    public sealed class SuppliersEditBrowserBasedClientTypeBrowserSupported : UITest, IDisposable
+    [FeatureFile(@".\Tests\Gherkin\BrowserBasedBrowserSupported.txt")]
+    public sealed class BrowserBasedBrowserSupported : UITest, IDisposable
     {
-        int browsersSupported;
-        public SuppliersEditBrowserBasedClientTypeBrowserSupported(ITestOutputHelper helper) : base(helper)
+        int browsersSupportedCount;
+        public BrowserBasedBrowserSupported(ITestOutputHelper helper) : base(helper)
         {
         }
 
@@ -23,8 +23,8 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
             pages.Dashboard.NavigateToSection("Browser based", true);
             pages.BrowserSubDashboard.OpenSection("Browsers supported");
 
-            browsersSupported = new Random().Next(8);
-            pages.BrowsersSupported.SelectRandomCheckboxes(browsersSupported);
+            browsersSupportedCount = new Random().Next(8);
+            pages.BrowsersSupported.SelectRandomCheckboxes(browsersSupportedCount);
             pages.BrowsersSupported.SelectRandomRadioButton();
         }
 
@@ -71,15 +71,19 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         }
 
         [Then("the Submission will trigger validation")]
+        [Then("the Section is not saved because it is mandatory to answer both questions")]
         public void SubmissionTriggersValidation()
         {
             throw new NotImplementedException();
         }
 
         [And("the User will be informed that they need to answer the Browsers Supported section before they can submit")]
+        [And("an indication is given to the Supplier as to why")]
         public void BrowserSupportedValidationMessageDisplayed()
         {
             throw new NotImplementedException();
         }
+
+        
     }
 }

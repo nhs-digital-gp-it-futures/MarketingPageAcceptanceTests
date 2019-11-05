@@ -67,6 +67,27 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
             SqlReader.Read<string>(connectionString, marketingDetailQuery, newParameters, NewSolution);
         }
 
+        public static void UpdateMarketingDetails(MarketingDetail marketingDetail, string connectionString)
+        {
+            var query = Queries.UpdateMarketingDetail;
+
+            SqlParameter[] newParameters = new SqlParameter[]
+            {
+                new SqlParameter("@solutionId", marketingDetail.SolutionId),
+                new SqlParameter("@clientApplication", marketingDetail.ClientApplication),
+                new SqlParameter("@features", marketingDetail.Features),
+                new SqlParameter("@aboutUrl", marketingDetail.AboutUrl)
+            };
+
+            SqlReader.Read(connectionString, query, newParameters, UpdateMarketing);
+        }
+
+        private static string UpdateMarketing(IDataReader dr)
+        {
+            dr.Read();
+            return dr.ToString();
+        }
+
         public static void DeleteSolution(string solutionId, string connectionString)
         {
             // Remove automated solution

@@ -14,36 +14,41 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
 
         public SupplierSubmitForModeration(ITestOutputHelper helper) : base(helper)
         {
+            
         }
 
         [Given("that a Supplier has provided all mandatory data on the Marketing Page")]
         public void SupplierProvidedAllMandatoryData()
         {
+            SqlHelper.UpdateMarketingDetails(CreateSolution.CreateCompleteMarketingDetail(solution), connectionString);
+            driver.Navigate().Refresh();
             pages.Dashboard.NavigateToSection("Solution description");
             pages.SolutionDescription.SummaryAddText(100);
             pages.SolutionDescription.SaveAndReturn();
-
         }
 
         [When("the User chooses to Submit their Marketing Page for Moderation")]
         public void SubmitForModeration()
-        {
-            pages.Dashboard.NavigateToPreviewPage();
-            pages.PreviewPage.PageDisplayed();
-            pages.PreviewPage.SubmitForModeration();
+        {   
+            pages.Dashboard.SubmitForModeration();
         }
 
         [Then("the Marketing Page will be submitted for Moderation")]
         public void SubmittedForModerationSuccess()
         {
-
             SqlHelper.GetSolutionStatus(solution.Id, connectionString).Should().Be(2);
         }
 
-        [And("the User remains on the Preview Page")]
-        public void RemainOnPreviewPage()
+        [And("the User will be informed that Submission was successful")]
+        public void SuccessfulInformation()
         {
-            driver.Url.ToLower().Should().Contain("preview");
+
+        }
+
+        [And("the User remains on the Marketing Page Dashboard")]
+        public void RemainOnDashboard()
+        {
+            driver.Url.Should().Contain("/submitForModeration");
         }
 
         [Given("that a Supplier has not provided all mandatory data on the Marketing Page")]
@@ -53,31 +58,26 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
 
         [Then("the Marketing Page will not be submitted for Moderation")]
         public void MarketingPageNotSubmittedForModeration()
-        {
-            pages.PreviewPage.PageDisplayed();
-            pages.PreviewPage.SubmitForModeration();
-            pages.PreviewPage.PageDisplayed();
+        {   
+            pages.Dashboard.SubmitForModeration();            
             SqlHelper.GetSolutionStatus(solution.Id, connectionString).Should().NotBe(2);
         }
-
+        
         [And("the User will be notified that the submission was unsuccessful")]
         public void UnsuccessfulNotificationDisplayed()
         {
-            pages.PreviewPage.AssertSubmitForReviewErrorMessageAppeared();
-            ExpectedSectionLinkInErrorMessage = pages.PreviewPage.GetFirstErrorMessage().GetAttribute("href");
+            pages.Dashboard.ErrorSectionDisplayed();
         }
 
         [And("they will be informed why")]
         public void UnsuccessfulNotificationCorrect()
         {
-            pages.PreviewPage.GetFirstErrorMessage().Text.Should()
-                .BeEquivalentTo(pages.PreviewPage.MandatoryFieldsToErrorMessages["summary"]);
+            pages.Dashboard.ErrorMessagesDisplayed(2);
         }
 
         [Given("validation has been triggered")]
         public void ValidationTriggered()
-        {
-            pages.Dashboard.NavigateToPreviewPage();
+        {   
             MarketingPageNotSubmittedForModeration();
             UnsuccessfulNotificationDisplayed();
         }
@@ -85,12 +85,12 @@ namespace MarketingPageAcceptanceTests.Tests.Steps
         [When("the User selects an error link in the Error Summary")]
         public void SelectErrorLink()
         {
-            pages.PreviewPage.ClickOnErrorLink();
+            ExpectedSectionLinkInErrorMessage = pages.Dashboard.ClickOnErrorLink();
         }
 
         [Then("the User will be navigated to the relevant section on the page")]
         public void NavigatedToRelevantSection()
-        {
+        {  
             driver.Url.Should().Contain(ExpectedSectionLinkInErrorMessage);
         }
     }

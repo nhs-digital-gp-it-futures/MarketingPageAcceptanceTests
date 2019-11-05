@@ -25,3 +25,10 @@ Scenario: Validation on Submission
 	When the User submits their Marketing Page for moderation
 	Then the Submission will trigger validation
 	And the User will be informed that they need to answer the Browsers Supported section before they can submit
+
+@ignore
+Scenario: No Response 
+	Given that an answer is not provided to both questions
+	When a User saves the page
+	Then the Section is not saved because it is mandatory to answer both questions
+	And an indication is given to the Supplier as to why
