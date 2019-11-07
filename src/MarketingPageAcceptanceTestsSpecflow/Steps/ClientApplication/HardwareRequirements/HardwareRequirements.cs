@@ -16,8 +16,8 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.HardwareR
             _context = context;
         }
 
-        [Given(@"the Supplier has entered text")]
-        public void GivenTheSupplierHasEnteredText()
+        [Given(@"the Supplier has entered text on the (.*) page")]
+        public void GivenTheSupplierHasEnteredText(string page)
         {
             _context.Pending();
         }
