@@ -27,7 +27,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserSu
             _test.pages.Dashboard.NavigateToSection("Browser based", true);
             _test.pages.BrowserSubDashboard.OpenSection("Browsers supported");
 
-            browsersSupportedCount = new Random().Next(8);
+            browsersSupportedCount = new Random().Next(1, 8);
             _test.pages.BrowsersSupported.SelectRandomCheckboxes(browsersSupportedCount);
             _test.pages.BrowsersSupported.SelectRandomRadioButton();
         }
