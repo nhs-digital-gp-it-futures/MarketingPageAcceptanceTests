@@ -1,7 +1,9 @@
 ﻿using MarketingPageAcceptanceTests.Actions;
 using MarketingPageAcceptanceTests.Actions.Collections;
 using MarketingPageAcceptanceTests.Actions.Utils;
+using MarketingPageAcceptanceTests.TestData.Solutions;
 using OpenQA.Selenium;
+using System;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Utils
 {
@@ -13,10 +15,12 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
         internal string url;
         internal Solution solution;
 
-
         public UITest()
         {
             solution = CreateSolution.CreateNewSolution();
+            Console.WriteLine(solution.Id);
+            Console.WriteLine(solution.Name);
+            Console.WriteLine(solution.Version);
             var (serverUrl, databaseName, dbUser, dbPassword) = EnvironmentVariables.GetDbConnectionDetails();
             connectionString = string.Format(ConnectionString.GPitFutures, serverUrl, databaseName, dbUser, dbPassword);
             SqlHelper.CreateBlankSolution(solution, connectionString);

@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarketingPageAcceptanceTest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarketingPageAcceptanceTestsSpecflow", "MarketingPageAcceptanceTestsSpecflow\MarketingPageAcceptanceTestsSpecflow.csproj", "{93B33C80-43B2-4230-8933-F2D624632077}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketingPageAcceptanceTests.TestData", "MarketingPageAcceptanceTests.TestData\MarketingPageAcceptanceTests.TestData.csproj", "{5A267B58-F223-4C98-89CC-18E773523B7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{93B33C80-43B2-4230-8933-F2D624632077}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93B33C80-43B2-4230-8933-F2D624632077}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93B33C80-43B2-4230-8933-F2D624632077}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A267B58-F223-4C98-89CC-18E773523B7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A267B58-F223-4C98-89CC-18E773523B7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A267B58-F223-4C98-89CC-18E773523B7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A267B58-F223-4C98-89CC-18E773523B7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
