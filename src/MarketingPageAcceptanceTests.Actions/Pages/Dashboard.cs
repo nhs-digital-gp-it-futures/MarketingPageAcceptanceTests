@@ -12,7 +12,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
     {
         public IDictionary<string, int> SectionNameToNumOfMandatoryFields { get; internal set; }
 
-        public Dashboard(IWebDriver driver, ITestOutputHelper helper) : base(driver, helper)
+        public Dashboard(IWebDriver driver) : base(driver)
         {
             SectionNameToNumOfMandatoryFields = new Dictionary<string, int>();
         }
@@ -21,7 +21,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// Ensure the Marketing Page Dashboard is displayed by checking that some Dashboard Sections are displayed
         /// </summary>
         public void PageDisplayed()
-        {
+        {            
             wait.Until(s => s.FindElements(pages.Dashboard.Sections).Count > 0);
         }
 
@@ -84,35 +84,6 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             return true;
         }
 
-        public void ErrorSectionDisplayed()
-        {
-            wait.Until(s => s.FindElement(pages.Dashboard.ErrorSection).Displayed);
-        }
-
-        public void ErrorMessagesDisplayed(int numSections)
-        {
-            var errorMessages = GetErrorMessages();
-            errorMessages.Should().HaveCount(numSections);
-
-        }
-
-        private IEnumerable<IWebElement> GetErrorMessages()
-        {
-            return driver.FindElements(pages.Dashboard.ErrorMessages);
-        }
-
-        public string ClickOnErrorLink()
-        {
-            var errorMessages = GetErrorMessages().ToList();
-            var index = new Random().Next(errorMessages.Count());
-
-            var linkHref = errorMessages[index].GetAttribute("href");
-
-            errorMessages[index].Click();
-
-            return linkHref;
-        }
-
         public void SectionsContainDefaultMessage(IList<string> allAppTypes, string message)
         {
             foreach (var section in allAppTypes)
@@ -154,7 +125,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void NavigateToPreviewPage()
         {
             driver.FindElement(pages.Dashboard.PreviewPage).Click();
-            new PreviewPage(driver, helper).PageDisplayed();
+            new PreviewPage(driver).PageDisplayed();
         }
 
         public bool SectionHasStatus(string section)
@@ -202,7 +173,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// </summary>
         /// <param name="sectionName">Case sensitive name of a section</param>
         /// <param name="status">Case sensitive expected status</param>
-        private void AssertSectionStatus(string sectionName, string status)
+        public void AssertSectionStatus(string sectionName, string status)
         {
             var section = driver.FindElements(pages.Dashboard.Sections)
                 .Single(s => s.FindElement(pages.Dashboard.SectionTitle).Text == sectionName);
