@@ -1,5 +1,6 @@
 using FluentAssertions;
 using OpenQA.Selenium;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit.Abstractions;
@@ -8,7 +9,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 {
     public sealed class PreviewPage : PageAction
     {
-        public PreviewPage(IWebDriver driver, ITestOutputHelper helper) : base(driver, helper)
+        public PreviewPage(IWebDriver driver) : base(driver)
         {
             
         }
@@ -76,15 +77,21 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                 .FindElement(By.ClassName("nhsuk_title")).Text;
         }
 
-        /// <summary>
-        /// Clicks the 'SubmitForModeration' button
-        /// </summary>
-        public void SubmitForModeration()
+        public void BrowserBasedSectionDisplayed()
         {
-            driver.FindElement(pages.PreviewPage.SubmitForModeration).Click();
+            driver.FindElement(pages.PreviewPage.BrowserBasedSection).Displayed.Should().BeTrue();
         }
 
-        
+        public void OpenBrowserBasedSection()
+        {
+            driver.FindElement(pages.PreviewPage.BrowserBasedSection).Click();
+        }
+
+        public int SupportedBrowsersCount()
+        {
+            return driver.FindElements(pages.PreviewPage.SupportedBrowsers).Count;
+        }
+
         private int GetSectionFieldsCount(string sectionName)
         {
             return driver.FindElement(

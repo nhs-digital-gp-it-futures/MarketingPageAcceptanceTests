@@ -10,7 +10,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 {
     public class BrowserSubDashboard : PageAction
     {
-        public BrowserSubDashboard(IWebDriver driver, ITestOutputHelper helper) : base(driver, helper)
+        public BrowserSubDashboard(IWebDriver driver) : base(driver)
         {
         }
 

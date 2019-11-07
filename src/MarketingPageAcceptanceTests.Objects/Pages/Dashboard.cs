@@ -11,7 +11,7 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
 
         public By SectionTitle => CustomBy.DataTestId("dashboard-section-title");
 
-        public By PreviewPage => CustomBy.DataTestId("dashboard-preview-button", "a");
+        public By PreviewPage => CustomBy.DataTestId("dashboard-preview-button", "a.nhsuk-button--secondary");
 
         public By Requirement => CustomBy.DataTestId("dashboard-section-requirement");
 
@@ -19,8 +19,6 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
 
         public By SubmitForModerationButton => CustomBy.DataTestId("dashboard-submit-for-moderation-button", "a.nhsuk-button");
 
-        public By ErrorMessages => By.CssSelector("ul.nhsuk-list.nhsuk-error-summary__list li a");
-
-        public By ErrorSection => By.ClassName("nhsuk-error-summary");
+        
     }
 }

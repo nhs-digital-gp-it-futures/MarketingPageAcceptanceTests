@@ -8,7 +8,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 {
     public class ClientApplicationTypes : PageAction
     {
-        public ClientApplicationTypes(IWebDriver driver, ITestOutputHelper helper) : base(driver, helper)
+        public ClientApplicationTypes(IWebDriver driver) : base(driver)
         {
         }
 

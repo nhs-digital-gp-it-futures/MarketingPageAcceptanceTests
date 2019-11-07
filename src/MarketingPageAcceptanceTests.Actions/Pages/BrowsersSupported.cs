@@ -7,7 +7,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 {
     public class BrowsersSupported : PageAction
     {
-        public BrowsersSupported(IWebDriver driver, ITestOutputHelper helper) : base(driver, helper)
+        public BrowsersSupported(IWebDriver driver) : base(driver)
         {
         }
 
