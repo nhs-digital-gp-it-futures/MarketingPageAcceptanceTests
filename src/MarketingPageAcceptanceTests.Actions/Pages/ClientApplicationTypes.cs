@@ -1,8 +1,7 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using OpenQA.Selenium;
-using Xunit.Abstractions;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
@@ -20,7 +19,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public IList<string> SelectRandomCheckbox()
         {
             Random rand = new Random();
-            var checkboxes = driver.FindElements(pages.ClientApplicationTypes.Checkboxes);            
+            var checkboxes = driver.FindElements(pages.ClientApplicationTypes.Checkboxes);
             checkboxes[rand.Next(3)].Click();
             return GetSelectedCheckboxNames();
         }
@@ -43,12 +42,12 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void SaveAndReturn()
         {
-            driver.FindElement(pages.ClientApplicationTypes.SaveAndReturn).Click();            
+            driver.FindElement(pages.ClientApplicationTypes.SaveAndReturn).Click();
         }
 
         public IList<string> GetAppTypes()
         {
-            var appTypes = driver.FindElements(pages.ClientApplicationTypes.CheckboxGroups)                
+            var appTypes = driver.FindElements(pages.ClientApplicationTypes.CheckboxGroups)
                 .Select(s => s.FindElement(By.TagName("label")).Text);
 
             return appTypes.ToList();

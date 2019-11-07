@@ -1,7 +1,6 @@
 ﻿using MarketingPageAcceptanceTests.Actions.Collections;
 using MarketingPageAcceptanceTests.Actions.Pages;
 using OpenQA.Selenium;
-using Xunit.Abstractions;
 
 namespace MarketingPageAcceptanceTests.Actions
 {

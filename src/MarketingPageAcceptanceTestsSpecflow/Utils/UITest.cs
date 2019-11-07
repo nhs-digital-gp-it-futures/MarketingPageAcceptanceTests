@@ -26,7 +26,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
             // Navigate to the site url            
 
             driver = new BrowserFactory().Driver;
-            
+
             pages = new PageActions(driver).PageActionCollection;
 
             driver.Navigate().GoToUrl(this.url);

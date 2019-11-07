@@ -40,7 +40,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
                 Features = "[\"A big feature\", \"Unusual Pricing\"]",
                 ClientApplication = "{ \"ClientApplicationTypes\":[\"browser-based\"],\"BrowsersSupported\":[\"google-chrome\", \"microsoft-edge\", \"mozilla-firefox\"],\"MobileResponsive\":true}",
                 AboutUrl = "Https://www.nhs.uk"
-            };  
+            };
         }
     }
 

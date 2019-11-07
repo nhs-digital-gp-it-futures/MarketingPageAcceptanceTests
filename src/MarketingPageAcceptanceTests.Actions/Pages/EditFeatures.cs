@@ -1,7 +1,5 @@
-﻿using FluentAssertions;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using System.Collections.Generic;
-using Xunit.Abstractions;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {

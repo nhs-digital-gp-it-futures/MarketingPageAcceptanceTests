@@ -1,10 +1,5 @@
-﻿using MarketingPageAcceptanceTests.Actions;
-using MarketingPageAcceptanceTests.Actions.Utils;
+﻿using MarketingPageAcceptanceTests.Actions.Utils;
 using MarketingPageAcceptanceTestsSpecflow.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Steps

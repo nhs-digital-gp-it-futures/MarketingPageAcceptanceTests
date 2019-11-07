@@ -1,5 +1,4 @@
 ﻿using MarketingPageAcceptanceTestsSpecflow.Utils;
-using System;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.Features
@@ -18,15 +17,15 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Features
 
         [Given(@"that a Supplier has chosen to manage Marketing Page Information")]
         public void GivenThatASupplierHasChosenToManageMarketingPageInformation()
-        {  
+        {
         }
-        
+
         [Then(@"the Supplier is able to manage the Features Marketing Page Form Section")]
         public void ThenTheSupplierIsAbleToManageTheFeaturesMarketingPageFormSection()
         {
             _test.pages.Dashboard.NavigateToSection("Features");
         }
-        
+
         [Then(@"the Features section content validation status is displayed")]
         public void ThenTheFeaturesSectionContentValidationStatusIsDisplayed()
         {

@@ -1,11 +1,4 @@
-﻿using MarketingPageAcceptanceTests.Actions;
-using MarketingPageAcceptanceTests.Actions.Collections;
-using MarketingPageAcceptanceTests.Actions.Utils;
-using MarketingPageAcceptanceTestsSpecflow.Utils;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MarketingPageAcceptanceTestsSpecflow.Utils;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Steps

@@ -18,7 +18,7 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
         public By SectionDataLink => CustomBy.DataTestId("preview-question-data-link");
         public By FeaturesSection => CustomBy.DataTestId("preview-features");
         public By BrowserBasedSection => CustomBy.DataTestId("preview-section-browser-based", "span");
-        
+
         public By PageTitle => By.CssSelector("div.nhsuk-grid-column-full h1");
 
         public By SupportedBrowsers => CustomBy.DataTestId("preview-section-table-row-supported-browsers", "li > label");
