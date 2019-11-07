@@ -1,6 +1,8 @@
-﻿using System;
+﻿using MarketingPageAcceptanceTests.TestData.Solutions;
+using System;
 using System.Data;
 using System.Data.SqlClient;
+using MarketingPageAcceptanceTests.Actions.Utils.SqlDataReaders;
 
 namespace MarketingPageAcceptanceTests.Actions.Utils
 {
@@ -13,7 +15,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
                 new SqlParameter("@solutionId", solutionId)
             };
 
-            var result = SqlReader.Read<string>(connectionString, query, parameters, GetFeatures);
+            var result = SqlReader.Read(connectionString, query, parameters, DataReaders.GetFeatures);
 
             return result;
         }
@@ -26,7 +28,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
                 new SqlParameter("@solutionId", solutionId)
             };
 
-            var result = SqlReader.Read<string>(connectionString, query, parameters, GetSolutionSummary);
+            var result = SqlReader.Read(connectionString, query, parameters, DataReaders.GetSolutionSummary);
 
             return result;
         }
@@ -39,7 +41,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
                 new SqlParameter("@solutionId", solutionId)
             };
 
-            var result = SqlReader.Read<string>(connectionString, query, parameters, GetSolutionDescription);
+            var result = SqlReader.Read(connectionString, query, parameters, DataReaders.GetSolutionDescription);
 
             return result;
         }
@@ -55,7 +57,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
                 new SqlParameter("@solutionVersion", solution.Version)
             };
 
-            SqlReader.Read<string>(connectionString, solutionQuery, parameters, NewSolution);
+            SqlReader.Read(connectionString, solutionQuery, parameters, DataReaders.NoReturn);
 
             // Create a record in the MarketingDetail table for the new solution
             var marketingDetailQuery = Queries.CreateMarketingDetail;
@@ -64,7 +66,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
                 new SqlParameter("@solutionId", solution.Id)
             };
 
-            SqlReader.Read<string>(connectionString, marketingDetailQuery, newParameters, NewSolution);
+            SqlReader.Read(connectionString, marketingDetailQuery, newParameters, DataReaders.NoReturn);
         }
 
         public static void UpdateMarketingDetails(MarketingDetail marketingDetail, string connectionString)
@@ -79,13 +81,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
                 new SqlParameter("@aboutUrl", marketingDetail.AboutUrl)
             };
 
-            SqlReader.Read(connectionString, query, newParameters, UpdateMarketing);
-        }
-
-        private static string UpdateMarketing(IDataReader dr)
-        {
-            dr.Read();
-            return dr.ToString();
+            SqlReader.Read(connectionString, query, newParameters, DataReaders.NoReturn);
         }
 
         public static void DeleteSolution(string solutionId, string connectionString)
@@ -97,7 +93,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
                 new SqlParameter("@solutionId", solutionId)
             };
 
-            SqlReader.Read<string>(connectionString, solutionQuery, parameters, NewSolution);
+            SqlReader.Read(connectionString, solutionQuery, parameters, DataReaders.NoReturn);
 
             // remove marketing detail related to the above solution
             var marketingDetailQuery = Queries.DeleteMarketingDetail;
@@ -106,31 +102,12 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
                 new SqlParameter("@solutionId", solutionId)
             };
 
-            SqlReader.Read<string>(connectionString, marketingDetailQuery, newParameters, NewSolution);
+            SqlReader.Read(connectionString, marketingDetailQuery, newParameters, DataReaders.NoReturn);
         }
 
-        private static string NewSolution(IDataReader dr)
+        private static void NoReturn(IDataReader arg)
         {
-            dr.Read();
-            return dr.ToString();
-        }
-
-        private static string GetSolutionSummary(IDataReader dr)
-        {
-            dr.Read();
-            return dr["Summary"].ToString();
-        }
-
-        private static string GetSolutionDescription(IDataReader dr)
-        {
-            dr.Read();
-            return dr["FullDescription"].ToString();
-        }
-
-        private static string GetFeatures(IDataReader dr)
-        {
-            dr.Read();
-            return dr["Features"].ToString();
+            throw new NotImplementedException();
         }
 
         internal static string GetSolutionAboutLink(string solutionId, string connectionString)
@@ -141,7 +118,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
                 new SqlParameter("@solutionId", solutionId)
             };
 
-            var result = SqlReader.Read<string>(connectionString, query, parameters, GetAboutUrl);
+            var result = SqlReader.Read(connectionString, query, parameters, DataReaders.GetAboutUrl);
 
             return result;
         }
@@ -154,52 +131,9 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
                 new SqlParameter("@solutionId", solutionId)
             };
 
-            var result = SqlReader.Read<int>(connectionString, query, parameters, GetSupplierStatus);
+            var result = SqlReader.Read(connectionString, query, parameters, DataReaders.GetSupplierStatus);
 
             return result;
         }
-
-        private static int GetSupplierStatus(IDataReader dr)
-        {
-            dr.Read();
-            int.TryParse(dr["SupplierStatusId"].ToString(), out int result);
-            return result;
-        }
-
-        private static string GetAboutUrl(IDataReader dr)
-        {
-            dr.Read();
-            return dr["AboutUrl"].ToString();
-        }
     }
-
-    public static class SqlReader
-    {
-        public static T Read<T>(string connectionString, string query, SqlParameter[] sqlParameters, Func<IDataReader, T> mapDataReader)
-        {
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                using (var command = new SqlCommand(query, connection))
-                {
-                    //add the params
-                    command.Parameters.AddRange(sqlParameters);
-
-                    SqlDataReader reader = command.ExecuteReader();
-                    try
-                    {
-                        return mapDataReader(reader);
-                    }
-                    finally
-                    {
-                        reader.Close();
-                    }
-                }
-            }
-
-        }
-    }
-
 }
