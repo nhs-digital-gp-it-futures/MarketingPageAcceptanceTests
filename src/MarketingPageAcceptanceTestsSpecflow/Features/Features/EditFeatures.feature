@@ -29,4 +29,4 @@ Scenario: Features Section marked as Incomplete -  No Data
 	Given the Features Section has no Mandatory Data
 	And a Supplier has not saved any data on the Features Section
 	When the Marketing Page Form is presented 
-	Then the Features Section is marked as Incomplete
+	Then the Features Section is marked as Incomplete	
