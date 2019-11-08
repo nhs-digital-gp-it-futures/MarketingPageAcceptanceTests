@@ -7,7 +7,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders
         internal static object NoReturn(IDataReader dr)
         {
             dr.Read();
-            return dr.ToString();
+            return null;
         }
 
         internal static string GetSolutionSummary(IDataReader dr)
