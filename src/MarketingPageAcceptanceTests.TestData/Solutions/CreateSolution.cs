@@ -22,10 +22,10 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         }
 
         private static string RandomSolId(Faker faker)
-        {   
+        {
             var suffix = faker.Random.Digits(14 - prefix.Length);
 
-            return $"{prefix}{string.Join("",suffix)}";
+            return $"{prefix}{string.Join("", suffix)}";
         }
 
         public static MarketingDetail CreateCompleteMarketingDetail(Solution solution)

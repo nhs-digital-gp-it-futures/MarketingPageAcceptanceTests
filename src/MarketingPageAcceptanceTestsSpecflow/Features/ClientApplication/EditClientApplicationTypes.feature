@@ -25,9 +25,7 @@ Scenario:  Client Application Type Section marked as Complete -  Mandatory Data 
 	When the Marketing Page Form is presented
 	Then the Client Application Type Section is marked as Complete
 
-@ignore
 Scenario: Validation on Submission
-	Given that a User has not provided at least one Client Application Type
-	When the User submits their Marketing Page
-	Then the Submission will trigger validation
-	And the User will be informed that they need to select a Client Application Type before they can submit
+	Given validation has been triggered on Client application type
+	When the User selects an error link in the Error Summary
+	Then the User will be navigated to the relevant section on the page

@@ -56,10 +56,15 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
             _test.pages.ClientApplicationTypes.SaveAndReturn();
         }
 
-        [Given(@"that a User has not provided at least one Client Application Type")]
-        public void GivenThatAUserHasNotProvidedAtLeastOneClientApplicationType()
+        [Given(@"validation has been triggered on Client application type")]
+        public void GivenValidationHasBeenTriggeredOnClientApplicationType()
         {
+            _test.pages.Dashboard.NavigateToSection("Client application type");
+            _test.pages.ClientApplicationTypes.PageDisplayed().Should().BeTrue();
+            _test.pages.ClientApplicationTypes.SaveAndReturn();
+            _test.pages.Common.ErrorMessageDisplayed();
         }
+
 
         [When(@"the section is saved")]
         public void WhenTheSectionIsSaved()

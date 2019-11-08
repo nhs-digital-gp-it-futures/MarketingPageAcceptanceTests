@@ -2,7 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 
-namespace MarketingPageAcceptanceTests.Actions.Utils
+namespace MarketingPageAcceptanceTests.TestData.Utils
 {
     internal static class SqlReader
     {

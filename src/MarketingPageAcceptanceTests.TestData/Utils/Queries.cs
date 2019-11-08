@@ -1,4 +1,4 @@
-﻿namespace MarketingPageAcceptanceTests.Actions.Utils
+﻿namespace MarketingPageAcceptanceTests.TestData.Utils
 {
     internal static class Queries
     {

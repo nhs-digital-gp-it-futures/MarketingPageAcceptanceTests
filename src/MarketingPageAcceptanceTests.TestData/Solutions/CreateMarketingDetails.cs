@@ -1,8 +1,4 @@
 ﻿using Bogus;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
@@ -27,10 +23,10 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 
         private static string GenerateFeatures(int numFeatures, Faker faker)
         {
-            if( numFeatures <= 0)
+            if (numFeatures <= 0)
                 return string.Empty;
 
-            string[] featuresArray = new string[numFeatures];            
+            string[] featuresArray = new string[numFeatures];
 
             if (numFeatures > 0)
             {

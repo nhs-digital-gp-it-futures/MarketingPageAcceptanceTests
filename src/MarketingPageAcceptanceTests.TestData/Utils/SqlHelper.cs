@@ -1,10 +1,10 @@
 ﻿using MarketingPageAcceptanceTests.TestData.Solutions;
+using MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders;
 using System;
 using System.Data;
 using System.Data.SqlClient;
-using MarketingPageAcceptanceTests.Actions.Utils.SqlDataReaders;
 
-namespace MarketingPageAcceptanceTests.Actions.Utils
+namespace MarketingPageAcceptanceTests.TestData.Utils
 {
     public static class SqlHelper
     {
@@ -110,7 +110,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
             throw new NotImplementedException();
         }
 
-        internal static string GetSolutionAboutLink(string solutionId, string connectionString)
+        public static string GetSolutionAboutLink(string solutionId, string connectionString)
         {
             var query = Queries.GetMarketingDetail;
 

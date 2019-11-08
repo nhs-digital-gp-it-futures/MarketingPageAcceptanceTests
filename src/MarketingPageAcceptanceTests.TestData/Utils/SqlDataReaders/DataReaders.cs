@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace MarketingPageAcceptanceTests.Actions.Utils.SqlDataReaders
+namespace MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders
 {
     public static class DataReaders
     {

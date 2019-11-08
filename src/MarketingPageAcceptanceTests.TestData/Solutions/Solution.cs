@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MarketingPageAcceptanceTests.TestData.Solutions
+﻿namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
     public sealed class Solution
     {
@@ -13,5 +9,5 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         public int PublishedStatusId { get; set; } = 1;
         public int AuthorityStatusId { get; set; } = 1;
         public int SupplierStatusId { get; set; } = 1;
-    }   
+    }
 }
