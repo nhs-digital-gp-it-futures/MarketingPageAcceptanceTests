@@ -32,9 +32,14 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             return driver.WindowHandles;
         }
 
-        public void ClickBackLink()
+        public void ClickSubDashboardBackLink()
         {
-            driver.FindElement(pages.Common.BackLink).Click();
+            driver.FindElement(pages.Common.SubDashboardBackLink).Click();
+        }
+
+        public void ClickSectionBackLink()
+        {
+            driver.FindElement(pages.Common.SectionBackLink).Click();
         }
 
         /// <summary>

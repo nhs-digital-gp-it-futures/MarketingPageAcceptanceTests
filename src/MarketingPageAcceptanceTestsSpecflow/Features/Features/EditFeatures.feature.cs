@@ -157,26 +157,6 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validation Error Message Anchors")]
-        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
-        public virtual void ValidationErrorMessageAnchors()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validation Error Message Anchors", null, new string[] {
-                        "ignore"});
-#line 35
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 36
- testRunner.Given("validation has been triggered", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 37
- testRunner.When("the User selects an error link in the Error Summary", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 38
- testRunner.Then("the User will be navigated to the relevant section on the page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
     }
 }
 #pragma warning restore

@@ -37,7 +37,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserSu
         {
             GivenThatAnAnswerIsProvidedToAllQuestions();
             WhenAUserSavesThePage();
-            _test.pages.Common.ClickBackLink();
+            _test.pages.Common.ClickSubDashboardBackLink();
         }
 
         [When(@"a User saves the page")]

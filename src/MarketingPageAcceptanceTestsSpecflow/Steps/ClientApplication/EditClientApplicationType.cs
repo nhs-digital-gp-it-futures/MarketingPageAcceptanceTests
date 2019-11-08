@@ -33,6 +33,8 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
             _test.pages.Dashboard.NavigateToSection("Client application type");
             _test.pages.ClientApplicationTypes.PageDisplayed().Should().BeTrue();
             allAppTypes = _test.pages.ClientApplicationTypes.GetAppTypes();
+            _test.pages.Common.ClickSectionBackLink();
+            _test.pages.Dashboard.PageDisplayed();
         }
 
         [Given(@"the Client Application Type Section requires Mandatory Data")]

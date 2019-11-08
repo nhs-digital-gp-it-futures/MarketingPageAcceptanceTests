@@ -8,10 +8,8 @@ Scenario: Client Application Type Selected
 	When the section is saved
 	Then the selected Client Application Type sub-category is available on the Marketing Page Form
 
-@ignore
 Scenario: Client Application Type Not Selected
 	Given that a Client Application Type is not selected
-	When the section is saved
 	Then no Client Application Type sub-category is available on the Marketing Page Form
 	And there is a guidance message informing the User they need to select a Client Application Type
 

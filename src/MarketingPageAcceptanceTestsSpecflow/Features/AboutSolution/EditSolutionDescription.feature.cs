@@ -133,40 +133,18 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Removing Mandatory data sets Section status to INCOMPLETE")]
-        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
-        public virtual void RemovingMandatoryDataSetsSectionStatusToINCOMPLETE()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Removing Mandatory data sets Section status to INCOMPLETE", null, new string[] {
-                        "ignore"});
-#line 26
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 27
- testRunner.Given("the Solution Description Section has completed data saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 28
- testRunner.When("the Mandatory fields data is deleted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 29
- testRunner.Then("the status is set to INCOMPLETE", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 30
- testRunner.And("the non mandatory data is saved to the database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Validation Error Message Anchors")]
         public virtual void ValidationErrorMessageAnchors()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validation Error Message Anchors", null, ((string[])(null)));
-#line 32
+#line 25
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 33
+#line 26
  testRunner.Given("validation has been triggered on Solution description", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 34
+#line 27
  testRunner.When("the User selects an error link in the Error Summary", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 35
+#line 28
  testRunner.Then("the User will be navigated to the relevant section on the page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -177,16 +155,16 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void NoSummary()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("No Summary", null, ((string[])(null)));
-#line 37
+#line 30
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 38
+#line 31
  testRunner.Given("that a Supplier has not provided a Summary Description", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 39
+#line 32
  testRunner.When("the Supplier attempts to save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 40
+#line 33
  testRunner.Then("the Section is not saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 41
+#line 34
  testRunner.And("an indication is given to the Supplier as to why", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
