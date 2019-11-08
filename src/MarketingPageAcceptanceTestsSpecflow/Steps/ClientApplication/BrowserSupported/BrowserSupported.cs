@@ -77,34 +77,28 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserSu
             _test.pages.PreviewPage.SupportedBrowsersCount().Should().Be(browsersSupportedCount);
         }
 
-        [Given(@"that a User has not provided answers for both questions")]
-        public void GivenThatAUserHasNotProvidedAnswersForBothQuestions()
-        {
-            _context.Pending();
-        }
-
         [When(@"the User submits their Marketing Page for moderation")]
         public void WhenTheUserSubmitsTheirMarketingPageForModeration()
         {
-            _context.Pending();
+            _test.driver.Navigate().GoToUrl(_test.url);
+            _test.pages.Dashboard.SubmitForModeration();
         }
 
         [Then(@"the Submission will trigger validation")]
         public void ThenTheSubmissionWillTriggerValidation()
         {
-            _context.Pending();
+            _test.pages.Common.ErrorMessageDisplayed();
         }
 
         [Then(@"the User will be informed that they need to answer the Browsers Supported section before they can submit")]
         public void ThenTheUserWillBeInformedThatTheyNeedToAnswerTheBrowsersSupportedSectionBeforeTheyCanSubmit()
         {
-            _context.Pending();
+            _test.pages.Common.ErrorMessageTextDisplayed("Browser based is a mandatory section");
         }
 
         [Then(@"the Section is not saved because it is mandatory to answer both questions")]
         public void ThenTheSectionIsNotSavedBecauseItIsMandatoryToAnswerBothQuestions()
         {
-            _context.Pending();
         }
 
         [Then(@"an indication is given to the Supplier as to why")]

@@ -115,7 +115,7 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 17
- testRunner.Given("that a User has not provided answers for both questions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("that an answer is not provided to both questions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 18
  testRunner.When("the User submits their Marketing Page for moderation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 19

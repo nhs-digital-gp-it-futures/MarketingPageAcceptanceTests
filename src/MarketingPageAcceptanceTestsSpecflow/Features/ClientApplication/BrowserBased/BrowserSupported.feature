@@ -14,7 +14,7 @@ Scenario: Appear on Preview
 	Then data will be presented on the Preview of the Marketing Page
 
 Scenario: Validation on Submission
-	Given that a User has not provided answers for both questions
+	Given that an answer is not provided to both questions
 	When the User submits their Marketing Page for moderation
 	Then the Submission will trigger validation
 	And the User will be informed that they need to answer the Browsers Supported section before they can submit

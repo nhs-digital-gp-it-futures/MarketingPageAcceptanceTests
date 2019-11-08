@@ -59,7 +59,12 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             var errorMessages = GetErrorMessages();
             errorMessages.Should().HaveCount(numSections);
+        }
 
+        public void ErrorMessageTextDisplayed(string text)
+        {
+            var errorMessages = GetErrorMessages();
+            errorMessages.Select(s => s.Text).Should().Contain(text);
         }
 
         private IEnumerable<IWebElement> GetErrorMessages()
