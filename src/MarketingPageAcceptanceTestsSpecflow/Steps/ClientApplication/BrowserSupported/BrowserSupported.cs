@@ -78,12 +78,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserSu
             _test.pages.Dashboard.SubmitForModeration();
         }
 
-        [Then(@"the Submission will trigger validation")]
-        public void ThenTheSubmissionWillTriggerValidation()
-        {
-            _test.pages.Common.ErrorMessageDisplayed();
-        }
-
         [Then(@"the User will be informed that they need to answer the Browsers Supported section before they can submit")]
         public void ThenTheUserWillBeInformedThatTheyNeedToAnswerTheBrowsersSupportedSectionBeforeTheyCanSubmit()
         {
@@ -95,11 +89,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserSu
         {
         }
 
-        [Then(@"an indication is given to the Supplier as to why")]
-        public void ThenAnIndicationIsGivenToTheSupplierAsToWhy()
-        {
-            _test.pages.Common.ErrorMessageDisplayed();
-        }
 
     }
 }

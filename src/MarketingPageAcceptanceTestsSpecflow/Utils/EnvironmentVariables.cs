@@ -2,7 +2,7 @@
 
 namespace MarketingPageAcceptanceTestsSpecflow.Utils
 {
-    internal class EnvironmentVariables
+    internal static class EnvironmentVariables
     {
         internal static (string, string, string, string, string, string, string) Get()
         {
