@@ -3,7 +3,6 @@ using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Xunit.Abstractions;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
@@ -33,9 +32,15 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             return driver.WindowHandles;
         }
 
-        public void ClickBackLink()
+        public void ClickSubDashboardBackLink()
         {
-            driver.FindElement(pages.Common.BackLink).Click();
+            driver.FindElement(pages.Common.SubDashboardBackLink).Click();
+        }
+
+        public void ClickSectionBackLink()
+        {
+            driver.FindElement(pages.Common.SectionBackLink).Click();
+            new Dashboard(driver).PageDisplayed();
         }
 
         /// <summary>
@@ -55,7 +60,12 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             var errorMessages = GetErrorMessages();
             errorMessages.Should().HaveCount(numSections);
+        }
 
+        public void ErrorMessageTextDisplayed(string text)
+        {
+            var errorMessages = GetErrorMessages();
+            errorMessages.Select(s => s.Text).Should().Contain(text);
         }
 
         private IEnumerable<IWebElement> GetErrorMessages()
@@ -73,6 +83,11 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             errorMessages[index].Click();
 
             return linkHref;
+        }
+
+        public void SectionSaveAndReturn()
+        {
+            driver.FindElement(pages.Common.SectionSaveAndReturn).Click();
         }
     }
 }

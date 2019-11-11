@@ -84,7 +84,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserBa
         [Given(@"the Browser Based Client Application Type Section requires Mandatory Data")]
         public void GivenTheBrowserBasedClientApplicationTypeSectionRequiresMandatoryData()
         {
-            
+
         }
 
         [Given(@"the User has selected Browser Based as a Client Application Type")]
@@ -113,7 +113,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserBa
         [Then(@"the Browser Based Client Application Type Section is marked as Complete")]
         public void ThenTheBrowserBasedClientApplicationTypeSectionIsMarkedAsComplete()
         {
-            
+
         }
 
     }

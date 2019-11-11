@@ -22,15 +22,8 @@ Scenario: Solution Description Section marked as Incomplete Mandatory Data Missi
 	When the Marketing Page Form is presented 
 	Then the Solution Description Section is marked as Incomplete
 
-@ignore
-Scenario: Removing Mandatory data sets Section status to INCOMPLETE
-	Given the Solution Description Section has completed data saved
-	When the Mandatory fields data is deleted
-	Then the status is set to INCOMPLETE
-	And the non mandatory data is saved to the database
-
 Scenario: Validation Error Message Anchors
-	Given validation has been triggered on Solution description
+	Given validation has been triggered on Solution description section
 	When the User selects an error link in the Error Summary
 	Then the User will be navigated to the relevant section on the page
 

@@ -1,9 +1,7 @@
 using FluentAssertions;
 using OpenQA.Selenium;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Xunit.Abstractions;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
@@ -11,7 +9,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
     {
         public PreviewPage(IWebDriver driver) : base(driver)
         {
-            
+
         }
 
         /// <summary>

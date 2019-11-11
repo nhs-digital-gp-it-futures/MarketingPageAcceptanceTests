@@ -1,7 +1,9 @@
 ﻿using MarketingPageAcceptanceTests.Actions;
 using MarketingPageAcceptanceTests.Actions.Collections;
-using MarketingPageAcceptanceTests.Actions.Utils;
+using MarketingPageAcceptanceTests.TestData.Solutions;
+using MarketingPageAcceptanceTests.TestData.Utils;
 using OpenQA.Selenium;
+using System;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Utils
 {
@@ -12,11 +14,14 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
         internal string connectionString;
         internal string url;
         internal Solution solution;
-
+        internal string ExpectedSectionLinkInErrorMessage;
 
         public UITest()
         {
             solution = CreateSolution.CreateNewSolution();
+            Console.WriteLine(solution.Id);
+            Console.WriteLine(solution.Name);
+            Console.WriteLine(solution.Version);
             var (serverUrl, databaseName, dbUser, dbPassword) = EnvironmentVariables.GetDbConnectionDetails();
             connectionString = string.Format(ConnectionString.GPitFutures, serverUrl, databaseName, dbUser, dbPassword);
             SqlHelper.CreateBlankSolution(solution, connectionString);
@@ -26,7 +31,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
             // Navigate to the site url            
 
             driver = new BrowserFactory().Driver;
-            
+
             pages = new PageActions(driver).PageActionCollection;
 
             driver.Navigate().GoToUrl(this.url);

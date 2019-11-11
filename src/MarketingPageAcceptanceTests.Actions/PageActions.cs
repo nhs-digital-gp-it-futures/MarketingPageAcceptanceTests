@@ -1,7 +1,6 @@
 ﻿using MarketingPageAcceptanceTests.Actions.Collections;
 using MarketingPageAcceptanceTests.Actions.Pages;
 using OpenQA.Selenium;
-using Xunit.Abstractions;
 
 namespace MarketingPageAcceptanceTests.Actions
 {
@@ -18,7 +17,8 @@ namespace MarketingPageAcceptanceTests.Actions
                 PreviewPage = new PreviewPage(driver),
                 ClientApplicationTypes = new ClientApplicationTypes(driver),
                 BrowserSubDashboard = new BrowserSubDashboard(driver),
-                BrowsersSupported = new BrowsersSupported(driver)
+                BrowsersSupported = new BrowsersSupported(driver),
+                PluginsOrExtensions = new PluginsOrExtensions(driver)
             };
         }
 

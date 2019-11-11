@@ -18,7 +18,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserSu
             _context = context;
         }
 
-        [Given(@"that an answer is provided to all questions")]
+        [Given(@"that an answer is provided to all Browser supported questions")]
         public void GivenThatAnAnswerIsProvidedToAllQuestions()
         {
             _test.pages.Dashboard.NavigateToSection("Client application type");
@@ -32,27 +32,15 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserSu
             _test.pages.BrowsersSupported.SelectRandomRadioButton();
         }
 
-        [Given(@"that data has been saved in this section")]
+        [Given(@"that data has been saved for Browsers supported")]
         public void GivenThatDataHasBeenSavedInThisSection()
         {
             GivenThatAnAnswerIsProvidedToAllQuestions();
-            WhenAUserSavesThePage();
-            _test.pages.Common.ClickBackLink();
+            _test.pages.Common.SectionSaveAndReturn();
+            _test.pages.Common.ClickSubDashboardBackLink();
         }
 
-        [When(@"a User saves the page")]
-        public void WhenAUserSavesThePage()
-        {
-            _test.pages.BrowsersSupported.SaveAndReturn();
-        }
-
-        [Then(@"the Section is marked as (COMPLETE|INCOMPLETE) on the Browser Based Client Type Sub-Form")]
-        public void ThenTheSectionIsMarkedAsOnTheBrowserBasedClientTypeSub_Form(string status)
-        {
-            _test.pages.Dashboard.AssertSectionStatus("Browsers supported", status);
-        }
-
-        [Given(@"that an answer is not provided to both questions")]
+        [Given(@"that an answer is not provided to both questions for Browsers supported")]
         public void GivenThatAnAnswerIsNotProvidedToBothQuestions()
         {
             _test.pages.Dashboard.NavigateToSection("Client application type");
@@ -69,6 +57,12 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserSu
             _test.pages.Dashboard.NavigateToPreviewPage();
         }
 
+        [Then(@"on the Browser based dashboard")]
+        public void NavigateToBrowserBased()
+        {
+            _test.pages.Dashboard.NavigateToSection("Browser based", true);
+        }
+
         [Then(@"data will be presented on the Preview of the Marketing Page")]
         public void ThenDataWillBePresentedOnThePreviewOfTheMarketingPage()
         {
@@ -77,41 +71,24 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserSu
             _test.pages.PreviewPage.SupportedBrowsersCount().Should().Be(browsersSupportedCount);
         }
 
-        [Given(@"that a User has not provided answers for both questions")]
-        public void GivenThatAUserHasNotProvidedAnswersForBothQuestions()
-        {
-            _context.Pending();
-        }
-
         [When(@"the User submits their Marketing Page for moderation")]
         public void WhenTheUserSubmitsTheirMarketingPageForModeration()
         {
-            _context.Pending();
-        }
-
-        [Then(@"the Submission will trigger validation")]
-        public void ThenTheSubmissionWillTriggerValidation()
-        {
-            _context.Pending();
+            _test.driver.Navigate().GoToUrl(_test.url);
+            _test.pages.Dashboard.SubmitForModeration();
         }
 
         [Then(@"the User will be informed that they need to answer the Browsers Supported section before they can submit")]
         public void ThenTheUserWillBeInformedThatTheyNeedToAnswerTheBrowsersSupportedSectionBeforeTheyCanSubmit()
         {
-            _context.Pending();
+            _test.pages.Common.ErrorMessageTextDisplayed("Browser based is a mandatory section");
         }
 
         [Then(@"the Section is not saved because it is mandatory to answer both questions")]
         public void ThenTheSectionIsNotSavedBecauseItIsMandatoryToAnswerBothQuestions()
         {
-            _context.Pending();
         }
 
-        [Then(@"an indication is given to the Supplier as to why")]
-        public void ThenAnIndicationIsGivenToTheSupplierAsToWhy()
-        {
-            _test.pages.Common.ErrorMessageDisplayed();
-        }
 
     }
 }

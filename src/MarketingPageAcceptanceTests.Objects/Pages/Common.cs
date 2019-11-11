@@ -11,10 +11,14 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
 
         public By SubDashboardTitle => CustomBy.DataTestId("sub-dashboard-title");
 
-        public By BackLink => CustomBy.DataTestId("sub-dashboard-back-link", "a");
+        public By SubDashboardBackLink => CustomBy.DataTestId("sub-dashboard-back-link", "a");
 
         public By ErrorMessages => By.CssSelector("ul.nhsuk-list.nhsuk-error-summary__list li a");
 
         public By ErrorSection => By.ClassName("nhsuk-error-summary");
+
+        public By SectionBackLink => CustomBy.DataTestId("section-back-link", "a");
+
+        public By SectionSaveAndReturn => CustomBy.DataTestId("section-submit-button", "button");
     }
 }

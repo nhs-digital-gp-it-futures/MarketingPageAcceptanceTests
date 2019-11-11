@@ -1,9 +1,6 @@
 ﻿using FluentAssertions;
-using MarketingPageAcceptanceTests.Actions.Utils;
+using MarketingPageAcceptanceTests.TestData.Utils;
 using OpenQA.Selenium;
-using System;
-using System.Linq;
-using Xunit.Abstractions;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {

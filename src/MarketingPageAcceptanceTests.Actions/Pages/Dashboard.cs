@@ -1,9 +1,7 @@
 ﻿using FluentAssertions;
 using OpenQA.Selenium;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Xunit.Abstractions;
 using static MarketingPageAcceptanceTests.Actions.Utils.ElementExtensions;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
@@ -21,7 +19,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// Ensure the Marketing Page Dashboard is displayed by checking that some Dashboard Sections are displayed
         /// </summary>
         public void PageDisplayed()
-        {            
+        {
             wait.Until(s => s.FindElements(pages.Dashboard.Sections).Count > 0);
         }
 
@@ -217,7 +215,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             var mandatorySectionNames = GetMandatorySectionsNames();
 
             foreach (var section in mandatorySectionNames)
-            {   
+            {
                 driver.FindElements(pages.Dashboard.Sections)
                     .Single(s => s.FindElement(pages.Dashboard.SectionTitle).Text.Equals(section))
                     .FindElement(pages.Dashboard.SectionTitle).Click();
@@ -229,6 +227,6 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             }
         }
 
-        
+
     }
 }

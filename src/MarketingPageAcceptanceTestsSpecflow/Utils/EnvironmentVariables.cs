@@ -2,7 +2,7 @@
 
 namespace MarketingPageAcceptanceTestsSpecflow.Utils
 {
-    internal class EnvironmentVariables
+    internal static class EnvironmentVariables
     {
         internal static (string, string, string, string, string, string, string) Get()
         {
@@ -41,7 +41,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
         }
     }
 
-    
+
     public static class ConnectionString
     {
         internal const string GPitFutures = @"Server={0};Initial Catalog={1};Persist Security Info=false;User Id={2};Password={3}";

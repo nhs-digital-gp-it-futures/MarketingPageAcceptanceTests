@@ -19,6 +19,6 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
 
         public By SubmitForModerationButton => CustomBy.DataTestId("dashboard-submit-for-moderation-button", "a.nhsuk-button");
 
-        
+
     }
 }

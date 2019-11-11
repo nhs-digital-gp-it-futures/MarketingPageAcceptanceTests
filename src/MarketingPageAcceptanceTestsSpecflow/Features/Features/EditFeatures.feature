@@ -29,10 +29,4 @@ Scenario: Features Section marked as Incomplete -  No Data
 	Given the Features Section has no Mandatory Data
 	And a Supplier has not saved any data on the Features Section
 	When the Marketing Page Form is presented 
-	Then the Features Section is marked as Incomplete
-
-@ignore
-Scenario: Validation Error Message Anchors
-	Given validation has been triggered
-	When the User selects an error link in the Error Summary
-	Then the User will be navigated to the relevant section on the page
+	Then the Features Section is marked as Incomplete	

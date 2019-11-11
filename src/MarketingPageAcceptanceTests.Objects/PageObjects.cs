@@ -15,7 +15,8 @@ namespace MarketingPageAcceptanceTests.Objects
                 PreviewPage = new Pages.PreviewPage(),
                 ClientApplicationTypes = new Pages.ClientApplicationTypes(),
                 BrowserBasedDashboard = new Pages.BrowserBasedDashboard(),
-                BrowsersSupported = new Pages.BrowsersSupported()
+                BrowsersSupported = new Pages.BrowsersSupported(),
+                PluginsOrExtensions = new Pages.PluginsOrExtensions()
             };
         }
 
