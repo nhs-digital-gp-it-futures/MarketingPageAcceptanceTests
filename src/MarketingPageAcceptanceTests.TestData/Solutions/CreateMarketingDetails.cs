@@ -4,9 +4,10 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
     public sealed class CreateMarketingDetails
     {
-        private const string clientApplicationValue = "{ \"ClientApplicationTypes\":[\"browser-based\"],\"BrowsersSupported\":[\"google-chrome\", \"microsoft-edge\", \"mozilla-firefox\"],\"MobileResponsive\":true}";
+        private const string clientApplicationValue = "{ \"ClientApplicationTypes\":[\"browser-based\"],\"BrowsersSupported\":[\"google-chrome\", \"microsoft-edge\", \"mozilla-firefox\"],\"MobileResponsive\":true, \"Plugins\":{\"Required\":true,\"AdditionalInformation\":\"Additional info about plug-ins\"}}";
+        
 
-        public static MarketingDetail CreateNewMarketingDetail(string slnId, int numFeatures, bool clientApplication = true)
+    public static MarketingDetail CreateNewMarketingDetail(string slnId, int numFeatures, bool clientApplication = true)
         {
             var faker = new Faker();
 

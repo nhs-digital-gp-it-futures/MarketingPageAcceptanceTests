@@ -141,7 +141,7 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 26
- testRunner.Given("validation has been triggered on Solution description", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("validation has been triggered on Solution description section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 27
  testRunner.When("the User selects an error link in the Error Summary", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 28

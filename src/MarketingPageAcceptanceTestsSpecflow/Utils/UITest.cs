@@ -14,6 +14,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
         internal string connectionString;
         internal string url;
         internal Solution solution;
+        internal string ExpectedSectionLinkInErrorMessage;
 
         public UITest()
         {

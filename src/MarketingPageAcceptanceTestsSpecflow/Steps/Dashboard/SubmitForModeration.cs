@@ -8,8 +8,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Dashboard
 {
     [Binding]
     public class SubmitForModeration
-    {
-        private string ExpectedSectionLinkInErrorMessage;
+    {   
         private UITest _test;
 
         public SubmitForModeration(UITest test)
@@ -45,11 +44,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Dashboard
             _test.pages.Dashboard.SubmitForModeration();
         }
 
-        [When(@"the User selects an error link in the Error Summary")]
-        public void WhenTheUserSelectsAnErrorLinkInTheErrorSummary()
-        {
-            ExpectedSectionLinkInErrorMessage = _test.pages.Common.ClickOnErrorLink();
-        }
+        
 
         [Then(@"the Marketing Page will be submitted for Moderation")]
         public void ThenTheMarketingPageWillBeSubmittedForModeration()
@@ -91,7 +86,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Dashboard
         [Then(@"the User will be navigated to the relevant section on the page")]
         public void ThenTheUserWillBeNavigatedToTheRelevantSectionOnThePage()
         {
-            _test.driver.Url.Should().Contain(ExpectedSectionLinkInErrorMessage);
+            _test.driver.Url.Should().Contain(_test.ExpectedSectionLinkInErrorMessage);
         }
     }
 }

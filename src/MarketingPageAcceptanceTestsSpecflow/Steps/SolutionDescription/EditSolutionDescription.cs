@@ -66,15 +66,6 @@ namespace MarketingPageAcceptanceTestsSpecflow
             _test.pages.Dashboard.NavigateToSection("Solution description");
         }
 
-        [Given(@"validation has been triggered on Solution description")]
-        public void GivenValidationHasBeenTriggeredOnSolutionDescription()
-        {
-            _test.pages.Dashboard.NavigateToSection("Solution description");
-            _test.pages.SolutionDescription.ClearAllFields();
-            _test.pages.SolutionDescription.SaveAndReturn();
-            _test.pages.Common.ErrorMessageDisplayed();
-        }
-
         [When(@"the Mandatory fields data is deleted")]
         public void WhenTheMandatoryFieldsDataIsDeleted()
         {

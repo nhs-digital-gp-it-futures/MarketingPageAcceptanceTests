@@ -40,6 +40,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void ClickSectionBackLink()
         {
             driver.FindElement(pages.Common.SectionBackLink).Click();
+            new Dashboard(driver).PageDisplayed();
         }
 
         /// <summary>
@@ -82,6 +83,11 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             errorMessages[index].Click();
 
             return linkHref;
+        }
+
+        public void SectionSaveAndReturn()
+        {
+            driver.FindElement(pages.Common.SectionSaveAndReturn).Click();
         }
     }
 }

@@ -30,6 +30,6 @@ Scenario: Mandatory Data Missing Validation
 
 @ignore
 	Scenario: Validation Error Message Anchors
-	Given validation has been triggered for Connectivity and resolution
+	Given validation has been triggered on Browser based section Connectivity and resolution
 	When the User selects an error link in the Error Summary
 	Then the User will be navigated to the relevant section on the page

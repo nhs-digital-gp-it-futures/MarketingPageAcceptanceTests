@@ -26,6 +26,6 @@ Scenario:  Client Application Type Section marked as Complete -  Mandatory Data 
 	Then the Client Application Type Section is marked as Complete
 
 Scenario: Validation on Submission
-	Given validation has been triggered on Client application type
+	Given validation has been triggered on Client application type section
 	When the User selects an error link in the Error Summary
 	Then the User will be navigated to the relevant section on the page

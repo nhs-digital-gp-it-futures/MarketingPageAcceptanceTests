@@ -23,7 +23,7 @@ Scenario: Solution Description Section marked as Incomplete Mandatory Data Missi
 	Then the Solution Description Section is marked as Incomplete
 
 Scenario: Validation Error Message Anchors
-	Given validation has been triggered on Solution description
+	Given validation has been triggered on Solution description section
 	When the User selects an error link in the Error Summary
 	Then the User will be navigated to the relevant section on the page
 

@@ -163,7 +163,8 @@ this.ScenarioInitialize(scenarioInfo);
  this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 33
- testRunner.Given("validation has been triggered for Connectivity and resolution", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("validation has been triggered on Browser based section Connectivity and resolutio" +
+                    "n", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 34
  testRunner.When("the User selects an error link in the Error Summary", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 35

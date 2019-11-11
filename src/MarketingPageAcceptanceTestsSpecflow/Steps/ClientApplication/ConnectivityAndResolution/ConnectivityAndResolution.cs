@@ -54,13 +54,13 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.Connectiv
         [When(@"the User exits the page")]
         public void WhenTheUserExitsThePage()
         {
-            _context.Pending();
+            _test.pages.Common.ClickSectionBackLink();
         }
 
         [When(@"the User attempts to save")]
         public void WhenTheUserAttemptsToSave()
         {
-            _context.Pending();
+            _test.pages.Common.SectionSaveAndReturn();
         }
 
         [Then(@"the Section is marked as '(.*)' on the Browser Based Client Type Sub-Form")]

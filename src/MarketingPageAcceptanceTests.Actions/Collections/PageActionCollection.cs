@@ -12,5 +12,6 @@ namespace MarketingPageAcceptanceTests.Actions.Collections
         public ClientApplicationTypes ClientApplicationTypes { get; set; }
         public BrowserSubDashboard BrowserSubDashboard { get; set; }
         public BrowsersSupported BrowsersSupported { get; set; }
+        public PluginsOrExtensions PluginsOrExtensions { get; set; }
     }
 }

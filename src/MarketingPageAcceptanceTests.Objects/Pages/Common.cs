@@ -18,5 +18,7 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
         public By ErrorSection => By.ClassName("nhsuk-error-summary");
 
         public By SectionBackLink => CustomBy.DataTestId("section-back-link", "a");
+
+        public By SectionSaveAndReturn => CustomBy.DataTestId("section-submit-button", "button");
     }
 }

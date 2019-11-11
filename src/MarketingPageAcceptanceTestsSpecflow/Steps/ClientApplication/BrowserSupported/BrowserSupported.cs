@@ -18,7 +18,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserSu
             _context = context;
         }
 
-        [Given(@"that an answer is provided to all questions")]
+        [Given(@"that an answer is provided to all Browser supported questions")]
         public void GivenThatAnAnswerIsProvidedToAllQuestions()
         {
             _test.pages.Dashboard.NavigateToSection("Client application type");
@@ -32,27 +32,15 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserSu
             _test.pages.BrowsersSupported.SelectRandomRadioButton();
         }
 
-        [Given(@"that data has been saved in this section")]
+        [Given(@"that data has been saved for Browsers supported")]
         public void GivenThatDataHasBeenSavedInThisSection()
         {
             GivenThatAnAnswerIsProvidedToAllQuestions();
-            WhenAUserSavesThePage();
+            _test.pages.Common.SectionSaveAndReturn();
             _test.pages.Common.ClickSubDashboardBackLink();
         }
 
-        [When(@"a User saves the page")]
-        public void WhenAUserSavesThePage()
-        {
-            _test.pages.BrowsersSupported.SaveAndReturn();
-        }
-
-        [Then(@"the Section is marked as (COMPLETE|INCOMPLETE) on the Browser Based Client Type Sub-Form")]
-        public void ThenTheSectionIsMarkedAsOnTheBrowserBasedClientTypeSub_Form(string status)
-        {
-            _test.pages.Dashboard.AssertSectionStatus("Browsers supported", status);
-        }
-
-        [Given(@"that an answer is not provided to both questions")]
+        [Given(@"that an answer is not provided to both questions for Browsers supported")]
         public void GivenThatAnAnswerIsNotProvidedToBothQuestions()
         {
             _test.pages.Dashboard.NavigateToSection("Client application type");
@@ -67,6 +55,12 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserSu
         public void WhenAUserPreviewsTheMarketingPage()
         {
             _test.pages.Dashboard.NavigateToPreviewPage();
+        }
+
+        [Then(@"on the Browser based dashboard")]
+        public void NavigateToBrowserBased()
+        {
+            _test.pages.Dashboard.NavigateToSection("Browser based", true);
         }
 
         [Then(@"data will be presented on the Preview of the Marketing Page")]

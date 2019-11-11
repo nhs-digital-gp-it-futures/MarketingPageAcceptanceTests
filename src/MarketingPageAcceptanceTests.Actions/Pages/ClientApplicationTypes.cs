@@ -42,7 +42,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void SaveAndReturn()
         {
-            driver.FindElement(pages.ClientApplicationTypes.SaveAndReturn).Click();
+            driver.FindElement(pages.Common.SectionSaveAndReturn).Click();
         }
 
         public IList<string> GetAppTypes()

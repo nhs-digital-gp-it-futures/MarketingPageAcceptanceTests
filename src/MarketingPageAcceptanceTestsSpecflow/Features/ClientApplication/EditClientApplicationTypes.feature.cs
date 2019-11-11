@@ -157,7 +157,7 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 29
- testRunner.Given("validation has been triggered on Client application type", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("validation has been triggered on Client application type section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 30
  testRunner.When("the User selects an error link in the Error Summary", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 31

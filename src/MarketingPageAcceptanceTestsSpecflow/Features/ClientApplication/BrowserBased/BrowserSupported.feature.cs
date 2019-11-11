@@ -79,11 +79,12 @@ namespace MarketingPageAcceptanceTestsSpecflow.Features.ClientApplication.Browse
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 7
- testRunner.Given("that an answer is provided to all questions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("that an answer is provided to all Browser supported questions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 8
  testRunner.When("a User saves the page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 9
- testRunner.Then("the Section is marked as COMPLETE on the Browser Based Client Type Sub-Form", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the Browsers supported section is marked as COMPLETE on the Browser Based Client " +
+                    "Type Sub-Form", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -97,7 +98,7 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 12
- testRunner.Given("that data has been saved in this section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("that data has been saved for Browsers supported", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 13
  testRunner.When("a User previews the Marketing Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 14
@@ -115,7 +116,7 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 17
- testRunner.Given("that an answer is not provided to both questions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("that an answer is not provided to both questions for Browsers supported", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 18
  testRunner.When("the User submits their Marketing Page for moderation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 19
@@ -136,7 +137,7 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 23
- testRunner.Given("that an answer is not provided to both questions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("that an answer is not provided to both questions for Browsers supported", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 24
  testRunner.When("a User saves the page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 25
