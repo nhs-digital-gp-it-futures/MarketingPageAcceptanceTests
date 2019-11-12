@@ -19,6 +19,11 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
                 ClientApplication = clientApplication ? clientApplicationValue : string.Empty
             };
 
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                md.ToString();
+            }
+
             return md;
         }
 

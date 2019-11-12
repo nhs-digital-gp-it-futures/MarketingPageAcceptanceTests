@@ -18,6 +18,11 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
                 Version = faker.System.Semver()
             };
 
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                solution.ToString();
+            }
+
             return solution;
         }
 

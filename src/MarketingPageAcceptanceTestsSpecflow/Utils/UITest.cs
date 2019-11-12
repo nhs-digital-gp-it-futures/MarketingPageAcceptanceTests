@@ -20,13 +20,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
         {
             solution = CreateSolution.CreateNewSolution();
 
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                Console.WriteLine(solution.Id);
-                Console.WriteLine(solution.Name);
-                Console.WriteLine(solution.Version);
-            }
-
             connectionString = EnvironmentVariables.GetConnectionString();
             SqlHelper.CreateBlankSolution(solution, connectionString);
 
