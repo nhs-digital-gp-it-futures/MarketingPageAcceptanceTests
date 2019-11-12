@@ -19,22 +19,16 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
         public UITest()
         {
             solution = CreateSolution.CreateNewSolution();
-            Console.WriteLine(solution.Id);
-            Console.WriteLine(solution.Name);
-            Console.WriteLine(solution.Version);
-            var (serverUrl, databaseName, dbUser, dbPassword) = EnvironmentVariables.GetDbConnectionDetails();
-            connectionString = string.Format(ConnectionString.GPitFutures, serverUrl, databaseName, dbUser, dbPassword);
+
+            connectionString = EnvironmentVariables.GetConnectionString();
             SqlHelper.CreateBlankSolution(solution, connectionString);
 
-            var url = EnvironmentVariables.GetUrl();
-            this.url = $"{url}/{solution.Id}";
-            // Navigate to the site url            
+            url = $"{EnvironmentVariables.GetUrl()}/{solution.Id}";                   
 
             driver = new BrowserFactory().Driver;
-
             pages = new PageActions(driver).PageActionCollection;
 
-            driver.Navigate().GoToUrl(this.url);
+            driver.Navigate().GoToUrl(url);
         }
     }
 }
