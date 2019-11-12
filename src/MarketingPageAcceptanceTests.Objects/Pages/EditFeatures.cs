@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using MarketingPageAcceptanceTests.Objects.Utils;
+using OpenQA.Selenium;
 
 namespace MarketingPageAcceptanceTests.Objects.Pages
 {
@@ -6,8 +7,6 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
     {
         public By FeatureText => By.ClassName("nhsuk-input");
 
-        public By SaveAndReturn => By.CssSelector("button[type=submit]");
-
-        public By ErrorMessage => By.ClassName("nhsuk-error-message");
+        public By SaveAndReturn => CustomBy.DataTestId("section-submit-button", "button");
     }
 }

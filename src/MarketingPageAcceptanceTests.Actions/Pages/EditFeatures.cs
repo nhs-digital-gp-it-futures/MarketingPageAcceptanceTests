@@ -1,14 +1,12 @@
-﻿using FluentAssertions;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using System.Collections.Generic;
-using Xunit.Abstractions;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
     public sealed class EditFeatures : PageAction
     {
 
-        public EditFeatures(IWebDriver driver, ITestOutputHelper helper) : base(driver, helper)
+        public EditFeatures(IWebDriver driver) : base(driver)
         {
         }
 
@@ -41,14 +39,6 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void ClickSaveAndReturn()
         {
             driver.FindElement(pages.EditFeatures.SaveAndReturn).Click();
-        }
-
-        /// <summary>
-        /// Validate that an error message is displayed (does not validate text within message)
-        /// </summary>
-        public void ErrorMessageDisplayed()
-        {
-            driver.FindElement(pages.EditFeatures.ErrorMessage).Text.Should().NotBeNullOrEmpty();
         }
 
         /// <summary>

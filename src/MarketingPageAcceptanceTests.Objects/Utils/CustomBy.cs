@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using System;
 
 namespace MarketingPageAcceptanceTests.Objects.Utils
 {
@@ -12,6 +13,12 @@ namespace MarketingPageAcceptanceTests.Objects.Utils
         public static By DataTestId(string locator, string childTag = null)
         {
             return CssSelector($"[data-test-id={locator}] {childTag}");
+        }
+
+        public static By PartialDataTestId(string partialLocator, string substitution, string childTag = null)
+        {
+            var replaced = String.Format(partialLocator, substitution);
+            return DataTestId(replaced, childTag);
         }
     }
 }

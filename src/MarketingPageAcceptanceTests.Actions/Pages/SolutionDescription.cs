@@ -1,8 +1,6 @@
 ﻿using FluentAssertions;
-using MarketingPageAcceptanceTests.Actions.Utils;
+using MarketingPageAcceptanceTests.TestData.Utils;
 using OpenQA.Selenium;
-using System.Linq;
-using Xunit.Abstractions;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
@@ -13,7 +11,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         string description = "";
         string link = "";
 
-        public SolutionDescription(IWebDriver driver, ITestOutputHelper helper) : base(driver, helper)
+        public SolutionDescription(IWebDriver driver) : base(driver)
         {
         }
 
@@ -111,15 +109,6 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             driver.FindElement(pages.SolutionDescription.Summary).Clear();
             driver.FindElement(pages.SolutionDescription.Description).Clear();
             driver.FindElement(pages.SolutionDescription.Link).Clear();
-        }
-
-        public void ClickValidationMessage()
-        {
-            var errorLink = driver.FindElements(pages.SolutionDescription.ErrorSummaryLinks).First();
-
-            href = errorLink.GetAttribute("href");
-
-            errorLink.Click();
         }
 
         public void UrlContainsValidationLinkDetails()

@@ -1,16 +1,15 @@
-﻿using System;
+﻿using FluentAssertions;
+using OpenQA.Selenium;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using FluentAssertions;
-using OpenQA.Selenium;
-using Xunit.Abstractions;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
     public sealed class Common : PageAction
     {
 
-        public Common(IWebDriver driver, ITestOutputHelper helper) : base(driver, helper)
+        public Common(IWebDriver driver) : base(driver)
         {
         }
         public void GoBackOnePage()
@@ -31,6 +30,64 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public IEnumerable<string> GetWindowHandles()
         {
             return driver.WindowHandles;
+        }
+
+        public void ClickSubDashboardBackLink()
+        {
+            driver.FindElement(pages.Common.SubDashboardBackLink).Click();
+        }
+
+        public void ClickSectionBackLink()
+        {
+            driver.FindElement(pages.Common.SectionBackLink).Click();
+            new Dashboard(driver).PageDisplayed();
+        }
+
+        /// <summary>
+        /// Validate that an error message is displayed (does not validate text within message)
+        /// </summary>
+        public void ErrorMessageDisplayed()
+        {
+            driver.FindElement(pages.Common.ErrorMessages).Text.Should().NotBeNullOrEmpty();
+        }
+
+        public void ErrorSectionDisplayed()
+        {
+            wait.Until(s => s.FindElement(pages.Common.ErrorSection).Displayed);
+        }
+
+        public void ErrorMessagesDisplayed(int numSections)
+        {
+            var errorMessages = GetErrorMessages();
+            errorMessages.Should().HaveCount(numSections);
+        }
+
+        public void ErrorMessageTextDisplayed(string text)
+        {
+            var errorMessages = GetErrorMessages();
+            errorMessages.Select(s => s.Text).Should().Contain(text);
+        }
+
+        private IEnumerable<IWebElement> GetErrorMessages()
+        {
+            return driver.FindElements(pages.Common.ErrorMessages);
+        }
+
+        public string ClickOnErrorLink()
+        {
+            var errorMessages = GetErrorMessages().ToList();
+            var index = new Random().Next(errorMessages.Count());
+
+            var linkHref = errorMessages[index].GetAttribute("href");
+
+            errorMessages[index].Click();
+
+            return linkHref;
+        }
+
+        public void SectionSaveAndReturn()
+        {
+            driver.FindElement(pages.Common.SectionSaveAndReturn).Click();
         }
     }
 }

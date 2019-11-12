@@ -10,7 +10,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  solution: '**/*.sln'
+  solution: 'src/'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
@@ -42,4 +42,5 @@ steps:
     export DBPASSWORD=$DBPASSWORD &&
     export HUBURL=http://localhost:4444/wd/hub &&
     export MPURL=https://test.mp-buyingcatalogue.com &&
-    dotnet test $(solution)'
+    dotnet build $(solution) &&
+    dotnet test $(solution) -v n'
