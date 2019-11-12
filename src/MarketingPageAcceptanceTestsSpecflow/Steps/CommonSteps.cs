@@ -48,5 +48,13 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps
         {
             _test.pages.Common.SectionSaveAndReturn();
         }
+
+        [Then(@"(.*) will be presented on the Preview of the Marketing Page")]
+        public void ThenSectionWillBePresentedOnThePreviewOfTheMarketingPage(string section)
+        {
+            _test.pages.PreviewPage.OpenBrowserBasedSection();
+            _test.pages.PreviewPage.SectionDisplayed(section);
+        }
+
     }
 }

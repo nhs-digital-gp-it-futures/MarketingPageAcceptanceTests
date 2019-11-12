@@ -1,5 +1,6 @@
 using FluentAssertions;
 using OpenQA.Selenium;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -53,6 +54,13 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             return driver.FindElement(pages.PreviewPage.SolutionDescriptionLinkSection)
                 .FindElement(pages.PreviewPage.SectionDataLink).Text;
+        }
+
+        public void SectionDisplayed(string section)
+        {
+            driver.FindElements(pages.PreviewPage.BrowserBasedSectionTitles)
+                .Where(s => s.Text.ToLower().Contains(section.ToLower()))
+                .Count().Should().BeGreaterThan(0);
         }
 
         public IWebElement GetSolutionLink()

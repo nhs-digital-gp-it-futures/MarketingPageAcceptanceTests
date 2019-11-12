@@ -6,7 +6,6 @@
 Background:
 	Given the user has set Browser based application type
 
-@ignore
 Scenario: Data Saved
 	Given that an answer is provided to the Plug-ins or extensions mandatory question
 	When a User saves the page
@@ -18,26 +17,24 @@ Scenario: Data not Saved
 	Then on the Browser based dashboard
 	And the Plug-ins or extensions section is marked as INCOMPLETE on the Browser Based Client Type Sub-Form
 
-@ignore
 Scenario: Plug in or Extension Description does not exceed maximum
-	Given the Supplier has entered text
-	And it does not exceed the maximum character count
+	Given that an answer is provided to the Plug-ins or extensions mandatory question
+	And the Supplier has entered Plug-in or extensions description with character count 500
 	When the Supplier attempts to save 
-	Then the Section is saved
+	Then the Plug-ins or extensions section is marked as COMPLETE on the Browser Based Client Type Sub-Form
 
-@ignore
 Scenario: Plug in or Extension Description does exceed maximum
-	Given the Supplier has entered text
-	And it does exceed the maximum character count
+	Given that an answer is provided to the Plug-ins or extensions mandatory question
+	And the Supplier has entered Plug-in or extensions description with character count 501
 	When the Supplier attempts to save 
 	Then the Section is not saved 
 	And an indication is given to the Supplier as to why
 
-@ignore
 Scenario: Appear on Preview
-	Given that data has been saved in this section
+	Given that an answer is provided to the Plug-ins or extensions mandatory question
+	And the user has saved the data
 	When a User previews the Marketing Page
-	Then data will be presented on the Preview of the Marketing Page
+	Then Plug-ins or extensions will be presented on the Preview of the Marketing Page
 
 Scenario: Validation Error Message Anchors
 	Given validation has been triggered on Browser based section Plug-ins or extensions

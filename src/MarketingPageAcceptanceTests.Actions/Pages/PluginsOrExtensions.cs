@@ -17,16 +17,10 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                 .Click();
         }
 
-        public void EnterPluginInformation(string information, bool clear = false)
+        public void EnterPluginInformation(string information)
         {
-            var infoTextArea = driver.FindElement(pages.PluginsOrExtensions.PluginInformation);
-
-            if (clear)
-            {
-                infoTextArea.Clear();
-            }
-
-            infoTextArea.SendKeys(information);
+            var infoArea = driver.FindElement(pages.PluginsOrExtensions.PluginDetail);
+            infoArea.SendKeys(information);
         }
     }
 }
