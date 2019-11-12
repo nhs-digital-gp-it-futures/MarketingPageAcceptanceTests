@@ -39,6 +39,13 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
 
             return (serverUrl, databaseName, dbUser, dbPassword);
         }
+
+        internal static string GetConnectionString()
+        {
+            var (serverUrl, databaseName, dbUser, dbPassword) = GetDbConnectionDetails();
+
+            return string.Format(ConnectionString.GPitFutures, serverUrl, databaseName, dbUser, dbPassword);
+        }
     }
 
 
