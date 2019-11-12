@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using System;
 
 namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
@@ -6,8 +7,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
     {
         private const string clientApplicationValue = "{ \"ClientApplicationTypes\":[\"browser-based\"],\"BrowsersSupported\":[\"google-chrome\", \"microsoft-edge\", \"mozilla-firefox\"],\"MobileResponsive\":true, \"Plugins\":{\"Required\":true,\"AdditionalInformation\":\"Additional info about plug-ins\"}}";
         
-
-    public static MarketingDetail CreateNewMarketingDetail(string slnId, int numFeatures, bool clientApplication = true)
+        public static MarketingDetail CreateNewMarketingDetail(string slnId, int numFeatures, bool clientApplication = true)
         {
             var faker = new Faker();
 
@@ -21,7 +21,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 
             if (System.Diagnostics.Debugger.IsAttached)
             {
-                md.ToString();
+                Console.WriteLine(md.ToString());
             }
 
             return md;

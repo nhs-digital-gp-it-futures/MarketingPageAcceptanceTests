@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using System;
 
 namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
@@ -20,7 +21,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 
             if (System.Diagnostics.Debugger.IsAttached)
             {
-                solution.ToString();
+                Console.WriteLine(solution.ToString());
             }
 
             return solution;
