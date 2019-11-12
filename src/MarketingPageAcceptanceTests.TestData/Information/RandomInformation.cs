@@ -17,7 +17,7 @@ namespace MarketingPageAcceptanceTests.TestData.Information
         public static string RandomString(int count)
         {
             var faker = new Faker("en_GB");
-            return string.Join("", faker.Random.Chars(count: count));
+            return string.Join("", faker.Random.Chars(min: '0', max: 'z', count: count));
         }
     }
 }
