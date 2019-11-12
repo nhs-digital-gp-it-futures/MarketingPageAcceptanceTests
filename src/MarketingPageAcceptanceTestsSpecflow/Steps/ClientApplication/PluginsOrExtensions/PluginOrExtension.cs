@@ -18,20 +18,20 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.PluginsOr
         }
 
         [Given(@"that an answer is provided to the Plug-ins or extensions mandatory question")]
-        public void GivenThatAnAnswerIsProvidedToThePlug_InsOrExtensionsMandatoryQuestion(string section)
+        public void GivenThatAnAnswerIsProvidedToThePlug_InsOrExtensionsMandatoryQuestion()
         {   
             _test.pages.Dashboard.NavigateToSection("Browser based", true);
-            _test.pages.BrowserSubDashboard.OpenSection(section);
+            _test.pages.BrowserSubDashboard.OpenSection("Plug-ins or extensions");
 
             var choice = new Random().Next() > (int.MaxValue / 2) ? "Yes" : "No";
 
             _test.pages.PluginsOrExtensions.SelectRadioButton(choice);
         }
 
-        [Given(@"the Supplier has entered text")]
-        public void GivenTheSupplierHasEnteredText()
+        [Given(@"the Supplier has entered Plug-in or extensions description with character count (.*)")]
+        public void GivenTheSupplierHasEnteredPlug_InOrExtensionsDescriptionThatDoesExceedTheMaximumCharacterCount(int count)
         {
-            _test.pages.PluginsOrExtensions.EnterPluginInformation(RandomInformation.RandomInformationText(), true);
+            _test.pages.PluginsOrExtensions.EnterPluginInformation(RandomInformation.RandomCharacters(count));
         }
     }
 }

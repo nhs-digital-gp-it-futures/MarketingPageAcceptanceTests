@@ -80,21 +80,19 @@ namespace MarketingPageAcceptanceTestsSpecflow.Features.ClientApplication.Browse
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Data Saved")]
-        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         public virtual void DataSaved()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Data Saved", null, new string[] {
-                        "ignore"});
-#line 10
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Data Saved", null, ((string[])(null)));
+#line 9
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 6
 this.FeatureBackground();
-#line 11
+#line 10
  testRunner.Given("that an answer is provided to the Plug-ins or extensions mandatory question", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 12
+#line 11
  testRunner.When("a User saves the page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 13
+#line 12
  testRunner.Then("the Plug-ins or extensions section is marked as COMPLETE on the Browser Based Cli" +
                     "ent Type Sub-Form", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -106,19 +104,19 @@ this.FeatureBackground();
         public virtual void DataNotSaved()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Data not Saved", null, ((string[])(null)));
-#line 15
+#line 14
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 6
 this.FeatureBackground();
-#line 16
+#line 15
  testRunner.Given("that an answer has not been provided to the Plug-ins or extensions mandatory ques" +
                     "tion", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 17
+#line 16
  testRunner.When("the User exits the page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 18
+#line 17
  testRunner.Then("on the Browser based dashboard", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 19
+#line 18
  testRunner.And("the Plug-ins or extensions section is marked as INCOMPLETE on the Browser Based C" +
                     "lient Type Sub-Form", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
@@ -127,49 +125,48 @@ this.FeatureBackground();
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Plug in or Extension Description does not exceed maximum")]
-        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         public virtual void PlugInOrExtensionDescriptionDoesNotExceedMaximum()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Plug in or Extension Description does not exceed maximum", null, new string[] {
-                        "ignore"});
-#line 22
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Plug in or Extension Description does not exceed maximum", null, ((string[])(null)));
+#line 20
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 6
 this.FeatureBackground();
+#line 21
+ testRunner.Given("that an answer is provided to the Plug-ins or extensions mandatory question", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 22
+ testRunner.And("the Supplier has entered Plug-in or extensions description with character count 5" +
+                    "00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 23
- testRunner.Given("the Supplier has entered text", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 24
- testRunner.And("it does not exceed the maximum character count", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 25
  testRunner.When("the Supplier attempts to save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 26
- testRunner.Then("the Section is saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 24
+ testRunner.Then("the Plug-ins or extensions section is marked as COMPLETE on the Browser Based Cli" +
+                    "ent Type Sub-Form", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Plug in or Extension Description does exceed maximum")]
-        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         public virtual void PlugInOrExtensionDescriptionDoesExceedMaximum()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Plug in or Extension Description does exceed maximum", null, new string[] {
-                        "ignore"});
-#line 29
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Plug in or Extension Description does exceed maximum", null, ((string[])(null)));
+#line 26
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 6
 this.FeatureBackground();
-#line 30
- testRunner.Given("the Supplier has entered text", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 31
- testRunner.And("it does exceed the maximum character count", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 32
+#line 27
+ testRunner.Given("that an answer is provided to the Plug-ins or extensions mandatory question", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 28
+ testRunner.And("the Supplier has entered Plug-in or extensions description with character count 5" +
+                    "01", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 29
  testRunner.When("the Supplier attempts to save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 33
+#line 30
  testRunner.Then("the Section is not saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 34
+#line 31
  testRunner.And("an indication is given to the Supplier as to why", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -177,22 +174,22 @@ this.FeatureBackground();
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Appear on Preview")]
-        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         public virtual void AppearOnPreview()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Appear on Preview", null, new string[] {
-                        "ignore"});
-#line 37
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Appear on Preview", null, ((string[])(null)));
+#line 33
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 6
 this.FeatureBackground();
-#line 38
- testRunner.Given("that data has been saved in this section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 39
+#line 34
+ testRunner.Given("that an answer is provided to the Plug-ins or extensions mandatory question", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 35
+ testRunner.And("the user has saved the data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 36
  testRunner.When("a User previews the Marketing Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 40
- testRunner.Then("data will be presented on the Preview of the Marketing Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 37
+ testRunner.Then("Plug-ins or extensions will be presented on the Preview of the Marketing Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -202,16 +199,16 @@ this.FeatureBackground();
         public virtual void ValidationErrorMessageAnchors()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validation Error Message Anchors", null, ((string[])(null)));
-#line 42
+#line 39
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 6
 this.FeatureBackground();
-#line 43
+#line 40
  testRunner.Given("validation has been triggered on Browser based section Plug-ins or extensions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 44
+#line 41
  testRunner.When("the User selects an error link in the Error Summary", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 45
+#line 42
  testRunner.Then("the User will be navigated to the relevant section on the page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -222,18 +219,18 @@ this.FeatureBackground();
         public virtual void MandatoryDataMissingValidation()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Mandatory Data Missing Validation", null, ((string[])(null)));
-#line 47
+#line 44
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 6
 this.FeatureBackground();
-#line 48
+#line 45
  testRunner.Given("that a User has not provided any mandatory data for Plug-ins or extensions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 49
+#line 46
  testRunner.When("the User attempts to save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 50
+#line 47
  testRunner.Then("the Section is not saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 51
+#line 48
  testRunner.And("an indication is given to the Supplier as to why", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();

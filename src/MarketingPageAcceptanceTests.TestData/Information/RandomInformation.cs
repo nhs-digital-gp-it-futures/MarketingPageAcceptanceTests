@@ -13,5 +13,11 @@ namespace MarketingPageAcceptanceTests.TestData.Information
 
             return string.Join(" ", faker.Lorem.Words(numWords));
         }
+
+        public static string RandomCharacters(int count)
+        {
+            var faker = new Faker();
+            return string.Join("", faker.Random.String(length: count));
+        }
     }
 }

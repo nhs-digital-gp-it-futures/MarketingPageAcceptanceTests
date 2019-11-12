@@ -6,6 +6,7 @@ using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
 {
+    [Binding]
     public sealed class SharedBrowserBasedSteps
     {
         private UITest _test;
@@ -38,6 +39,14 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
             _test.pages.Dashboard.NavigateToSection("Browser based", true);
             _test.pages.BrowserSubDashboard.OpenSection(section);
         }
+
+        [Given(@"the user has saved the data")]
+        public void GivenTheUserHasSavedTheData()
+        {
+            _test.pages.Common.SectionSaveAndReturn();
+            _test.pages.Common.ClickSubDashboardBackLink();
+        }
+
 
         [Then(@"the (.*) section is marked as (COMPLETE|INCOMPLETE) on the Browser Based Client Type Sub-Form")]
         public void ThenTheSectionIsMarkedAsOnTheBrowserBasedClientTypeSub_Form(string section, string status)
