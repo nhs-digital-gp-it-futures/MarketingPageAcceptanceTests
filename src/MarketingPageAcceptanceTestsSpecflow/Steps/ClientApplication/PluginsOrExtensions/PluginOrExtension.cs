@@ -31,7 +31,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.PluginsOr
         [Given(@"the Supplier has entered Plug-in or extensions description with character count (.*)")]
         public void GivenTheSupplierHasEnteredPlug_InOrExtensionsDescriptionThatDoesExceedTheMaximumCharacterCount(int count)
         {
-            _test.pages.PluginsOrExtensions.EnterPluginInformation(RandomInformation.RandomCharacters(count));
+            _test.pages.PluginsOrExtensions.EnterPluginInformation(RandomInformation.RandomString(count));
         }
     }
 }
