@@ -34,9 +34,9 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
             return $"{prefix}{string.Join("", suffix)}";
         }
 
-        public static MarketingDetail CreateCompleteMarketingDetail(Solution solution)
+        public static SolutionDetail CreateCompleteMarketingDetail(Solution solution)
         {
-            return CreateMarketingDetails.CreateNewMarketingDetail(solution.Id, 5);
+            return CreateSolutionDetails.CreateNewSolutionDetail(solution.Id, 5);
         }
     }
 }
