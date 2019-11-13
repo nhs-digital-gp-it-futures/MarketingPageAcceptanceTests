@@ -3,16 +3,17 @@ using System;
 
 namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
-    public sealed class CreateMarketingDetails
+    public sealed class CreateSolutionDetails
     {
         private const string clientApplicationValue = "{ \"ClientApplicationTypes\":[\"browser-based\"],\"BrowsersSupported\":[\"google-chrome\", \"microsoft-edge\", \"mozilla-firefox\"],\"MobileResponsive\":true, \"Plugins\":{\"Required\":true,\"AdditionalInformation\":\"Additional info about plug-ins\"}}";
         
-        public static MarketingDetail CreateNewMarketingDetail(string slnId, int numFeatures, bool clientApplication = true)
+        public static SolutionDetail CreateNewSolutionDetail(string slnId, int numFeatures, bool clientApplication = true)
         {
             var faker = new Faker();
 
-            var md = new MarketingDetail
+            var md = new SolutionDetail
             {
+                SolutionDetailId = Guid.NewGuid(),
                 SolutionId = slnId,
                 AboutUrl = faker.Internet.Url(),
                 Features = GenerateFeatures(numFeatures, faker),
