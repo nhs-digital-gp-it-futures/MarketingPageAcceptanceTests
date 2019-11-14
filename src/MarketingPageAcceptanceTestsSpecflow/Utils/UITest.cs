@@ -14,13 +14,13 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
         internal string connectionString;
         internal string url;
         internal Solution solution;
+        internal SolutionDetail solutionDetail;
         internal string ExpectedSectionLinkInErrorMessage;
 
         public UITest()
         {
             solution = CreateSolution.CreateNewSolution();
-            var solutionDetail = CreateSolutionDetails.CreateNewSolutionDetail(solution.Id, 0, false);
-            solution.SolutionDetailId = solutionDetail.SolutionDetailId;
+            solutionDetail = CreateSolutionDetails.CreateNewSolutionDetail(solution.Id, Guid.NewGuid(), 0, false);
 
             connectionString = EnvironmentVariables.GetConnectionString();
             SqlHelper.CreateBlankSolution(solution, solutionDetail, connectionString);

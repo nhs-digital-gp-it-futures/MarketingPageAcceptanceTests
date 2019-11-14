@@ -19,7 +19,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Dashboard
         [Given(@"that a Supplier has provided all mandatory data on the Marketing Page")]
         public void GivenThatASupplierHasProvidedAllMandatoryDataOnTheMarketingPage()
         {
-            SqlHelper.UpdateMarketingDetails(CreateSolution.CreateCompleteMarketingDetail(_test.solution), _test.connectionString);
+            SqlHelper.UpdateMarketingDetails(CreateSolution.CreateCompleteMarketingDetail(_test.solution, _test.solutionDetail), _test.connectionString);
             _test.driver.Navigate().Refresh();
             _test.pages.Dashboard.NavigateToSection("Solution description");
             _test.pages.SolutionDescription.SummaryAddText(100);
