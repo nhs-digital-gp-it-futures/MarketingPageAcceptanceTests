@@ -61,17 +61,25 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
 
             SqlReader.Read(connectionString, solutionQuery, parameters, DataReaders.NoReturn);
 
-            // Create a record in the MarketingDetail table for the new solution
+            // Create a record in the SolutionDetail table for the new solution
             var solutionDetailQuery = Queries.CreateSolutionDetail;
 
             SqlParameter[] newParameters = new SqlParameter[] {
-                new SqlParameter("@solutionId", solutionDetail.SolutionId),
                 new SqlParameter("@solutionDetailId", solutionDetail.SolutionDetailId),
+                new SqlParameter("@solutionId", solutionDetail.SolutionId),
                 new SqlParameter("@lastUpdatedBy", Guid.NewGuid()),
                 new SqlParameter("@lastUpdated", DateTime.Now)
             };
 
             SqlReader.Read(connectionString, solutionDetailQuery, newParameters, DataReaders.NoReturn);
+
+            var updateSolutionDetail = Queries.UpdateSolutionSolutionDetailId;
+            SqlParameter[] updateSolId = new SqlParameter[] {
+                new SqlParameter("@solutionDetailId", solutionDetail.SolutionDetailId),
+                new SqlParameter("@solutionId", solution.Id)
+            };
+
+            SqlReader.Read(connectionString, updateSolutionDetail, updateSolId, DataReaders.NoReturn);
         }
 
         public static void UpdateMarketingDetails(SolutionDetail solutionDetail, string connectionString)
@@ -80,12 +88,12 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
 
             SqlParameter[] newParameters = new SqlParameter[]
             {
+                new SqlParameter("@summary", solutionDetail.Summary),
                 new SqlParameter("@solutionDetailsId", solutionDetail.SolutionDetailId),
                 new SqlParameter("@solutionId", solutionDetail.SolutionId),
                 new SqlParameter("@clientApplication", solutionDetail.ClientApplication),
                 new SqlParameter("@features", solutionDetail.Features),
-                new SqlParameter("@aboutUrl", solutionDetail.AboutUrl),
-                new SqlParameter("@summary", solutionDetail.Summary),
+                new SqlParameter("@aboutUrl", solutionDetail.AboutUrl),                
                 new SqlParameter("@fullDescription", solutionDetail.FullDescription)
             };
 
