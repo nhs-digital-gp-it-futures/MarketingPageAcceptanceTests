@@ -1,6 +1,6 @@
-﻿using FluentAssertions;
+﻿using System.Collections.Generic;
+using FluentAssertions;
 using MarketingPageAcceptanceTestsSpecflow.Utils;
-using System.Collections.Generic;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication

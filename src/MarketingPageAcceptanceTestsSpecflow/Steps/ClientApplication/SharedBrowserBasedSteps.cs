@@ -1,7 +1,4 @@
 ﻿using MarketingPageAcceptanceTestsSpecflow.Utils;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
@@ -66,6 +63,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
             _test.pages.Common.ErrorMessageDisplayed();
         }
 
-        
+
     }
 }
