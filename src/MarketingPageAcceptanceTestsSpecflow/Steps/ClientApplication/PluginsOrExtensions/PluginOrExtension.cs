@@ -1,6 +1,6 @@
-﻿using MarketingPageAcceptanceTests.TestData.Information;
+﻿using System;
+using MarketingPageAcceptanceTests.TestData.Information;
 using MarketingPageAcceptanceTestsSpecflow.Utils;
-using System;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.PluginsOrExtensions
@@ -19,7 +19,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.PluginsOr
 
         [Given(@"that an answer is provided to the Plug-ins or extensions mandatory question")]
         public void GivenThatAnAnswerIsProvidedToThePlug_InsOrExtensionsMandatoryQuestion()
-        {   
+        {
             _test.pages.Dashboard.NavigateToSection("Browser based", true);
             _test.pages.BrowserSubDashboard.OpenSection("Plug-ins or extensions");
 
