@@ -16,7 +16,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Features
         }
 
         [Given(@"that a (Supplier|User) has chosen to manage Marketing Page Information")]
-        public void GivenThatASupplierHasChosenToManageMarketingPageInformation()
+        public void GivenThatASupplierHasChosenToManageMarketingPageInformation(string user)
         {
         }
 
