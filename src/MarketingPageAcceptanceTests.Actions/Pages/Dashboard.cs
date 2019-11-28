@@ -92,8 +92,6 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public string GetSectionDefaultMessage(string sectionTitle)
         {
-            var sections = driver.FindElements(pages.Dashboard.Sections);
-            var e = sections.Single(s => s.FindElement(pages.Dashboard.SectionTitle).Text.ToLower().Contains(sectionTitle.ToLower()));
             return driver.FindElements(pages.Dashboard.Sections)
                 .Single(s => s.FindElement(pages.Dashboard.SectionTitle).Text.ToLower().Contains(sectionTitle.ToLower()))
                 .FindElement(pages.Dashboard.DefaultMessage).Text;
