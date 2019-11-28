@@ -10,7 +10,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
     {
         public static string GetSolutionFeatures(string solutionId, string connectionString)
         {
-            var query = Queries.GetMarketingDetail;
+            var query = Queries.GetSolutionDetail;
             SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@solutionId", solutionId)
             };
@@ -60,25 +60,32 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             SqlReader.Read(connectionString, solutionQuery, parameters, DataReaders.NoReturn);
 
             // Create a record in the MarketingDetail table for the new solution
-            var marketingDetailQuery = Queries.CreateMarketingDetail;
+            var solutionDetailQuery = Queries.CreateSolutionDetail;
 
             SqlParameter[] newParameters = new SqlParameter[] {
                 new SqlParameter("@solutionId", solution.Id)
             };
 
-            SqlReader.Read(connectionString, marketingDetailQuery, newParameters, DataReaders.NoReturn);
+            SqlReader.Read(connectionString, solutionDetailQuery, newParameters, DataReaders.NoReturn);
+
+            //update solution table with new detail record
+            var updateSolutionWithDetailsQuery = Queries.UpdateSolutionWithSolutionDetailId;
+            SqlParameter[] updateParameters = new SqlParameter[] {
+                new SqlParameter("@solutionId", solution.Id)
+            };
+            SqlReader.Read(connectionString, updateSolutionWithDetailsQuery, updateParameters, DataReaders.NoReturn);
         }
 
-        public static void UpdateMarketingDetails(MarketingDetail marketingDetail, string connectionString)
+        public static void UpdateSolutionDetails(MarketingDetail solutionDetail, string connectionString)
         {
-            var query = Queries.UpdateMarketingDetail;
+            var query = Queries.UpdateSolutionDetail;
 
             SqlParameter[] newParameters = new SqlParameter[]
             {
-                new SqlParameter("@solutionId", marketingDetail.SolutionId),
-                new SqlParameter("@clientApplication", marketingDetail.ClientApplication),
-                new SqlParameter("@features", marketingDetail.Features),
-                new SqlParameter("@aboutUrl", marketingDetail.AboutUrl)
+                new SqlParameter("@solutionId", solutionDetail.SolutionId),
+                new SqlParameter("@clientApplication", solutionDetail.ClientApplication),
+                new SqlParameter("@features", solutionDetail.Features),
+                new SqlParameter("@aboutUrl", solutionDetail.AboutUrl)
             };
 
             SqlReader.Read(connectionString, query, newParameters, DataReaders.NoReturn);
@@ -96,7 +103,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             SqlReader.Read(connectionString, solutionQuery, parameters, DataReaders.NoReturn);
 
             // remove marketing detail related to the above solution
-            var marketingDetailQuery = Queries.DeleteMarketingDetail;
+            var marketingDetailQuery = Queries.DeleteSolutionDetail;
 
             SqlParameter[] newParameters = new SqlParameter[] {
                 new SqlParameter("@solutionId", solutionId)
@@ -112,7 +119,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
 
         public static string GetSolutionAboutLink(string solutionId, string connectionString)
         {
-            var query = Queries.GetMarketingDetail;
+            var query = Queries.GetSolutionDetail;
 
             SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@solutionId", solutionId)
