@@ -2,9 +2,8 @@
 {
     internal static class Queries
     {
-        internal const string CreateNewSolution = "INSERT INTO Solution (Id, SupplierId, OrganisationId, Name, Version, PublishedStatusId, AuthorityStatusId, SupplierStatusId, OnCatalogueVersion, LastUpdatedBy, LastUpdated) values (@solutionId, 100000, '315F73EC-66C6-42CD-B97A-615CA9586BE8', @solutionName, @solutionVersion, 1,1,1, 0, @lastUpdatedBy, @lastUpdated)";
-        internal const string GetSolution = "SELECT SupplierStatusId from [dbo].[Solution] where Id=@solutionId";
-        internal const string UpdateSolution = "UPDATE Solution SET (Id=@solutionId, OrganisationId='315F73EC-66C6-42CD-B97A-615CA9586BE8', Name=@solutionName, Version=@solutionVersion, PublishedStatusId=1, AuthorityStatusId=1, SupplierStatusId=1, OnCatalogueVersion=0, SolutionDetailId=@solutionDetailId)";
+        internal const string CreateNewSolution = "INSERT INTO Solution (Id, SupplierId, OrganisationId, Name, Version, PublishedStatusId, AuthorityStatusId, SupplierStatusId, OnCatalogueVersion, LastUpdatedBy, LastUpdated) values (@solutionId, (SELECT TOP (1) [Id] FROM [dbo].[Supplier]), (SELECT TOP (1) [Id] FROM [dbo].[Organisation]), @solutionName, @solutionVersion, 1,1,1, 0, @lastUpdatedBy, @lastUpdated)";
+        internal const string GetSolution = "SELECT Summary, FullDescription, SupplierStatusId from [dbo].[Solution] LEFT JOIN [dbo].[SolutionDetail] ON Solution.Id = SolutionDetail.SolutionId where Solution.Id=@solutionId";
         internal const string UpdateSolutionSolutionDetailId = "UPDATE Solution SET SolutionDetailId=@solutionDetailId WHERE Id=@solutionId";
         internal const string DeleteSolution = "DELETE from Solution where Id=@solutionId";
 
