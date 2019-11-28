@@ -82,7 +82,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             SqlReader.Read(connectionString, updateSolutionDetail, updateSolId, DataReaders.NoReturn);
         }
 
-        public static void UpdateMarketingDetails(SolutionDetail solutionDetail, string connectionString)
+        public static void UpdateSolutionDetails(SolutionDetail solutionDetail, string connectionString)
         {
             var query = Queries.UpdateSolutionDetail;
 
@@ -111,14 +111,14 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
 
             SqlReader.Read(connectionString, solutionQuery, parameters, DataReaders.NoReturn);
 
-            // remove marketing detail related to the above solution
-            var marketingDetailQuery = Queries.DeleteSolutionDetail;
+            // remove solution detail related to the above solution
+            var solututionDetailQuery = Queries.DeleteSolutionDetail;
 
             SqlParameter[] newParameters = new SqlParameter[] {
                 new SqlParameter("@solutionId", solutionId)
             };
 
-            SqlReader.Read(connectionString, marketingDetailQuery, newParameters, DataReaders.NoReturn);
+            SqlReader.Read(connectionString, solututionDetailQuery, newParameters, DataReaders.NoReturn);
         }
 
         public static string GetSolutionAboutLink(string solutionId, string connectionString)
