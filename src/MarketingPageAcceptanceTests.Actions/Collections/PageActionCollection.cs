@@ -13,5 +13,6 @@ namespace MarketingPageAcceptanceTests.Actions.Collections
         public BrowserSubDashboard BrowserSubDashboard { get; set; }
         public BrowsersSupported BrowsersSupported { get; set; }
         public PluginsOrExtensions PluginsOrExtensions { get; set; }
+        public ContactDetails ContactDetails { get; set; }
     }
 }
