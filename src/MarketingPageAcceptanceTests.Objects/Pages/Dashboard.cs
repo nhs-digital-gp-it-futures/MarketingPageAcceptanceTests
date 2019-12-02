@@ -5,7 +5,7 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
 {
     public class Dashboard
     {
-        public By Sections => By.ClassName("bc-c-section-list__item");
+        public By Sections => By.CssSelector("li.bc-c-section-list__item");
 
         public By Statuses => CustomBy.DataTestId("dashboard-section-status");
 

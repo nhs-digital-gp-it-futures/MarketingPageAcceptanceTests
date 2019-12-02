@@ -12,6 +12,12 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public Common(IWebDriver driver) : base(driver)
         {
         }
+
+        public bool PageTitleEquals(string expectedTitle)
+        {
+            return driver.FindElement(pages.Common.PageTitle).Text == expectedTitle;
+        }
+
         public void GoBackOnePage()
         {
             driver.Navigate().Back();

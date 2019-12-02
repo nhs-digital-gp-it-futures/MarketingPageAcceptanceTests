@@ -3,6 +3,7 @@
 	I want to manage Marketing Page Information for the Solution Contact Details
 	So that I can ensure the information is correct
 
+@ignore
 	Scenario: Sections presented
 		Given that a User has chosen to manage Marketing Page Information
 		When the Marketing Page Form is presented
