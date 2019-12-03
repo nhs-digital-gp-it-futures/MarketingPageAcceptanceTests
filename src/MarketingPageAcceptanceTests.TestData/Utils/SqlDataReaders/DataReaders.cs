@@ -55,10 +55,5 @@ namespace MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders
                 JobSector = dr["Department"].ToString()
             };
         }
-
-        internal static object CreateContactDetails(IDataReader arg)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
