@@ -18,7 +18,8 @@ namespace MarketingPageAcceptanceTests.Actions
                 ClientApplicationTypes = new ClientApplicationTypes(driver),
                 BrowserSubDashboard = new BrowserSubDashboard(driver),
                 BrowsersSupported = new BrowsersSupported(driver),
-                PluginsOrExtensions = new PluginsOrExtensions(driver)
+                PluginsOrExtensions = new PluginsOrExtensions(driver),
+                ContactDetails = new ContactDetails(driver)
             };
         }
 
