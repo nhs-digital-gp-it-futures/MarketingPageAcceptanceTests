@@ -1,7 +1,6 @@
 ﻿using MarketingPageAcceptanceTests.TestData.Solutions;
 using MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders;
 using System;
-using System.Data;
 using System.Data.SqlClient;
 
 namespace MarketingPageAcceptanceTests.TestData.Utils
@@ -93,7 +92,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
                 new SqlParameter("@solutionId", solutionDetail.SolutionId),
                 new SqlParameter("@clientApplication", solutionDetail.ClientApplication),
                 new SqlParameter("@features", solutionDetail.Features),
-                new SqlParameter("@aboutUrl", solutionDetail.AboutUrl),                
+                new SqlParameter("@aboutUrl", solutionDetail.AboutUrl),
                 new SqlParameter("@fullDescription", solutionDetail.FullDescription)
             };
 

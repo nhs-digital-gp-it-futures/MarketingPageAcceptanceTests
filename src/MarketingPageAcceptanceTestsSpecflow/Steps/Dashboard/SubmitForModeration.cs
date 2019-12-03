@@ -8,7 +8,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Dashboard
 {
     [Binding]
     public class SubmitForModeration
-    {   
+    {
         private UITest _test;
 
         public SubmitForModeration(UITest test)
@@ -44,7 +44,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Dashboard
             _test.pages.Dashboard.SubmitForModeration();
         }
 
-        
+
 
         [Then(@"the Marketing Page will be submitted for Moderation")]
         public void ThenTheMarketingPageWillBeSubmittedForModeration()

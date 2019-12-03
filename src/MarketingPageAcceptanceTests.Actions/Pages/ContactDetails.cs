@@ -11,7 +11,9 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public bool PageDisplayed()
         {
-            return new Common(driver).PageTitleEquals("Contact Details");
+            return new Common(driver).PageTitleEquals("Contact details");
         }
+
+
     }
 }

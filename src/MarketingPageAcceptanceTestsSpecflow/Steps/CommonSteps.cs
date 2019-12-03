@@ -13,7 +13,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps
             _test = test;
         }
 
-        
+
 
         [Given(@"the user has set Browser based application type")]
         public void GivenTheUserHasSetBrowserBasedApplicationType()

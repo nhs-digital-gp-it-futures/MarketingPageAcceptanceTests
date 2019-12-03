@@ -9,7 +9,9 @@
 
         internal const string CreateSolutionDetail = "INSERT INTO SolutionDetail (Id, LastUpdatedBy, LastUpdated, SolutionId) values (@solutionDetailId, @lastUpdatedBy, @lastUpdated, @solutionId)";
         internal const string GetSolutionDetail = "SELECT Features, AboutUrl, Summary, FullDescription from [dbo].[SolutionDetail] where SolutionId=@solutionId";
-        internal const string UpdateSolutionDetail = "UPDATE SolutionDetail SET Features=@features, ClientApplication=@clientApplication, AboutUrl=@aboutUrl, Summary=@summary, FullDescription=@fullDescription WHERE SolutionId=@solutionId";        
+        internal const string UpdateSolutionDetail = "UPDATE SolutionDetail SET Features=@features, ClientApplication=@clientApplication, AboutUrl=@aboutUrl, Summary=@summary, FullDescription=@fullDescription WHERE SolutionId=@solutionId";
         internal const string DeleteSolutionDetail = "DELETE from SolutionDetail where SolutionId=@solutionId";
+
+        internal const string GetMarketingContactDetails = "";
     }
 }
