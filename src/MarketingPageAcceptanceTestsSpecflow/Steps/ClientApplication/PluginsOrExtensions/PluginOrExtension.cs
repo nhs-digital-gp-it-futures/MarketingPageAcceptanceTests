@@ -6,20 +6,15 @@ using TechTalk.SpecFlow;
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.PluginsOrExtensions
 {
     [Binding]
-    public class PluginOrExtension
+    public class PluginOrExtension : TestBase
     {
-        private UITest _test;
-        private ScenarioContext _context;
-
-        public PluginOrExtension(UITest test, ScenarioContext context)
+        public PluginOrExtension(UITest test, ScenarioContext context) : base(test, context)
         {
-            _test = test;
-            _context = context;
         }
 
         [Given(@"that an answer is provided to the Plug-ins or extensions mandatory question")]
         public void GivenThatAnAnswerIsProvidedToThePlug_InsOrExtensionsMandatoryQuestion()
-        {   
+        {
             _test.pages.Dashboard.NavigateToSection("Browser based", true);
             _test.pages.BrowserSubDashboard.OpenSection("Plug-ins or extensions");
 

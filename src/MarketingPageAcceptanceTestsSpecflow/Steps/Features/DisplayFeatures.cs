@@ -4,15 +4,10 @@ using TechTalk.SpecFlow;
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.Features
 {
     [Binding]
-    public class DisplayFeatures
+    public class DisplayFeatures : TestBase
     {
-        private UITest _test;
-        private ScenarioContext _context;
-
-        public DisplayFeatures(UITest test, ScenarioContext context)
+        public DisplayFeatures(UITest test, ScenarioContext context) : base(test, context)
         {
-            _test = test;
-            _context = context;
         }
 
         [Given(@"that a (Supplier|User) has chosen to manage Marketing Page Information")]

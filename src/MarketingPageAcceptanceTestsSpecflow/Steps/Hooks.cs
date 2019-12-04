@@ -5,13 +5,10 @@ using TechTalk.SpecFlow;
 namespace MarketingPageAcceptanceTestsSpecflow.Steps
 {
     [Binding]
-    public sealed class Hooks
+    public sealed class Hooks: TestBase
     {
-        private readonly UITest _test;
-
-        public Hooks(UITest test)
+        public Hooks(UITest test,ScenarioContext context): base(test, context)
         {
-            _test = test;
         }
 
         [AfterScenario]

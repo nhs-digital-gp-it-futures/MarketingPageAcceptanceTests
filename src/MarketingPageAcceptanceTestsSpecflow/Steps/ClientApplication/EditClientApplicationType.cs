@@ -6,17 +6,13 @@ using TechTalk.SpecFlow;
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
 {
     [Binding]
-    public class EditClientApplicationType
+    public class EditClientApplicationType : TestBase
     {
-        private UITest _test;
-        private ScenarioContext _context;
         private IList<string> checkboxesSelected;
         private IList<string> allAppTypes;
 
-        public EditClientApplicationType(UITest test, ScenarioContext context)
+        public EditClientApplicationType(UITest test, ScenarioContext context) : base(test, context)
         {
-            _test = test;
-            _context = context;
         }
 
         [Given(@"that a Client Application Type is selected")]
@@ -100,7 +96,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
         [Then(@"the Client Application Type Section is marked as Incomplete")]
         public void ThenTheClientApplicationTypeSectionIsMarkedAsIncomplete()
         {
-            _test.pages.Dashboard.SectionIncomplete("Client application type");
+            _test.pages.Dashboard.SectionIncompleteStatus("Client application type");
         }
 
         [Then(@"the Client Application Type Section is marked as Complete")]

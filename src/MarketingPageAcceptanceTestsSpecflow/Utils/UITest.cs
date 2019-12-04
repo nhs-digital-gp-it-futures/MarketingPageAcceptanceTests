@@ -25,7 +25,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
             connectionString = EnvironmentVariables.GetConnectionString();
             SqlHelper.CreateBlankSolution(solution, solutionDetail, connectionString);
 
-            url = $"{EnvironmentVariables.GetUrl()}/{solution.Id}";                   
+            url = $"{EnvironmentVariables.GetUrl()}/{solution.Id}";
 
             driver = new BrowserFactory().Driver;
             pages = new PageActions(driver).PageActionCollection;

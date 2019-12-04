@@ -78,16 +78,16 @@ namespace MarketingPageAcceptanceTestsSpecflow.Features.AboutOrganisation
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Contact Detail does not exceed maximum", null, new string[] {
                         "ignore"});
 #line 7
- this.ScenarioInitialize(scenarioInfo);
+this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 8
-  testRunner.Given("the User has entered any Contact Detail", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("the User has entered any Contact Detail", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 9
-  testRunner.And("it does not exceed the maximum", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("it does not exceed the maximum", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 10
-  testRunner.When("the User attempts to save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("the User attempts to save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 11
-  testRunner.Then("the Contact details is saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the Contact details is saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -100,18 +100,18 @@ namespace MarketingPageAcceptanceTestsSpecflow.Features.AboutOrganisation
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Contact Detail does exceed maximum", null, new string[] {
                         "ignore"});
 #line 13
- this.ScenarioInitialize(scenarioInfo);
+this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 14
-  testRunner.Given("the User has entered any Contact Detail", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("the User has entered any Contact Detail", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 15
-  testRunner.And("it does exceed the maximum", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("it does exceed the maximum", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 16
-  testRunner.When("the User attempts to save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("the User attempts to save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 17
-  testRunner.Then("the Section is not saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the Section is not saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 18
-  testRunner.And("an indication is given to the User as to why", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("an indication is given to the User as to why", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -124,16 +124,16 @@ namespace MarketingPageAcceptanceTestsSpecflow.Features.AboutOrganisation
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Contact Details Section marked as Complete -  Any Data Saved", null, new string[] {
                         "ignore"});
 #line 20
- this.ScenarioInitialize(scenarioInfo);
+this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 21
-  testRunner.Given("the Contact Details Section has no Mandatory Data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("the Contact Details Section has no Mandatory Data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 22
-  testRunner.And("a User has saved any data on the Contact Details Section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("a User has saved any data on the Contact Details Section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 23
-  testRunner.When("the Marketing Page Form is presented", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("the Marketing Page Form is presented", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 24
-  testRunner.Then("the Contact Details Section is marked as Complete", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the Contact Details Section is marked as Complete", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -146,16 +146,16 @@ namespace MarketingPageAcceptanceTestsSpecflow.Features.AboutOrganisation
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Contact Details Type Section marked as Incomplete -  No Data", null, new string[] {
                         "ignore"});
 #line 26
- this.ScenarioInitialize(scenarioInfo);
+this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 27
-  testRunner.Given("the Contact Details Section has no Mandatory Data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("the Contact Details Section has no Mandatory Data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 28
-  testRunner.And("a User has not saved any data on the Contact Details Section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("a User has not saved any data on the Contact Details Section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 29
-  testRunner.When("the Marketing Page Form is presented", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("the Marketing Page Form is presented", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 30
-  testRunner.Then("the Contact Details Section is marked as Incomplete", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the Contact Details Section is marked as Incomplete", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -168,14 +168,14 @@ namespace MarketingPageAcceptanceTestsSpecflow.Features.AboutOrganisation
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Appear on Preview", null, new string[] {
                         "ignore"});
 #line 32
- this.ScenarioInitialize(scenarioInfo);
+this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 33
-  testRunner.Given("that data has been saved in this section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("that data has been saved in this section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 34
-  testRunner.When("a User previews the Marketing Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("a User previews the Marketing Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 35
-  testRunner.Then("data will be presented on the Preview of the Marketing Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("data will be presented on the Preview of the Marketing Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

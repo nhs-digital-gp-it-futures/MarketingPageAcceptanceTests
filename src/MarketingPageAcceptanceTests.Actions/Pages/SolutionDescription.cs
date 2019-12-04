@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using MarketingPageAcceptanceTests.TestData.Utils;
+﻿using MarketingPageAcceptanceTests.TestData.Utils;
 using OpenQA.Selenium;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
@@ -7,7 +6,6 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
     public sealed class SolutionDescription : PageAction
     {
         string summary = "";
-        string href;
         string description = "";
         string link = "";
 
@@ -42,12 +40,6 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             driver.FindElement(pages.SolutionDescription.SaveAndReturn).Click();
         }
 
-        public bool DbContainsSummary(string solutionId, string connectionString)
-        {
-            var solutionDescription = SqlHelper.GetSolutionSummary(solutionId, connectionString);
-            return solutionDescription.Contains(summary.TrimStart());
-        }
-
         public bool DbContainsLink(string solutionId, string connectionString)
         {
             var aboutUrl = SqlHelper.GetSolutionAboutLink(solutionId, connectionString);
@@ -58,62 +50,6 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             var solutionDescription = SqlHelper.GetSolutionDescription(solutionId, connectionString);
             return solutionDescription.Contains(description);
-        }
-
-        public void PageDisplayed()
-        {
-            wait.Until(s => s.FindElement(pages.SolutionDescription.Summary).Displayed && s.FindElement(pages.SolutionDescription.Description).Displayed);
-        }
-
-        public bool SummaryErrorDisplayed()
-        {
-            try
-            {
-                driver.FindElement(pages.SolutionDescription.SummaryError);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        public bool DescriptionErrorDisplayed()
-        {
-            try
-            {
-                driver.FindElement(pages.SolutionDescription.DescriptionError);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        public bool LinkErrorDisplayed()
-        {
-            try
-            {
-                driver.FindElement(pages.SolutionDescription.LinkError);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        public void ClearAllFields()
-        {
-            driver.FindElement(pages.SolutionDescription.Summary).Clear();
-            driver.FindElement(pages.SolutionDescription.Description).Clear();
-            driver.FindElement(pages.SolutionDescription.Link).Clear();
-        }
-
-        public void UrlContainsValidationLinkDetails()
-        {
-            driver.Url.Should().Contain(href);
         }
 
         public void ClearMandatoryFields()
