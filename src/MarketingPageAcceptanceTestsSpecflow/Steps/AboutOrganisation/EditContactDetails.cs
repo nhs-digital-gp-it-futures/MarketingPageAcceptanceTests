@@ -4,18 +4,14 @@ using TechTalk.SpecFlow;
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutOrganisation
 {
     [Binding]
-    public class EditContactDetails
+    public class EditContactDetails : TestBase
     {
-        private UITest _test;
-        private ScenarioContext _context;
-
-        public EditContactDetails(UITest test, ScenarioContext context)
+        public EditContactDetails(UITest test, ScenarioContext context) : base(test, context)
         {
-            _test = test;
-            _context = context;
         }
 
         [Given(@"the User has entered any Contact Detail")]
+        [Given(@"a User has saved any data on the Contact Details Section")]
         public void GivenTheUserHasEnteredAnyContactDetail()
         {
             _context.Pending();
@@ -24,19 +20,11 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutOrganisation
         [Given(@"the Contact Details Section has no Mandatory Data")]
         public void GivenTheContactDetailsSectionHasNoMandatoryData()
         {
-            _context.Pending();
-        }
-
-        [Given(@"a User has saved any data on the Contact Details Section")]
-        public void GivenAUserHasSavedAnyDataOnTheContactDetailsSection()
-        {
-            _context.Pending();
         }
 
         [Given(@"a User has not saved any data on the Contact Details Section")]
         public void GivenAUserHasNotSavedAnyDataOnTheContactDetailsSection()
-        {
-            _context.Pending();
+        {   
         }
 
         [Given(@"that data has been saved in this section")]
@@ -54,13 +42,13 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutOrganisation
         [Then(@"the Contact Details Section is marked as Complete")]
         public void ThenTheContactDetailsSectionIsMarkedAsComplete()
         {
-            _context.Pending();
+            _test.pages.Dashboard.SectionCompleteStatus("Contact details");
         }
 
         [Then(@"the Contact Details Section is marked as Incomplete")]
         public void ThenTheContactDetailsSectionIsMarkedAsIncomplete()
         {
-            _context.Pending();
+            _test.pages.Dashboard.SectionIncompleteStatus("Contact details");
         }
     }
 }

@@ -4,16 +4,11 @@ using TechTalk.SpecFlow;
 namespace MarketingPageAcceptanceTestsSpecflow.Steps
 {
     [Binding]
-    public sealed class CommonSteps
+    public sealed class CommonSteps : TestBase
     {
-        private UITest _test;
-
-        public CommonSteps(UITest test)
+        public CommonSteps(UITest test, ScenarioContext context) : base(test, context)
         {
-            _test = test;
         }
-
-
 
         [Given(@"the user has set Browser based application type")]
         public void GivenTheUserHasSetBrowserBasedApplicationType()

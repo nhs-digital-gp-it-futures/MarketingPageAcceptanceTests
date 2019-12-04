@@ -5,15 +5,10 @@ using TechTalk.SpecFlow;
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
 {
     [Binding]
-    public class DisplayClientApplicationType
+    public class DisplayClientApplicationType : TestBase
     {
-        private UITest _test;
-        private ScenarioContext _context;
-
-        public DisplayClientApplicationType(UITest test, ScenarioContext context)
+        public DisplayClientApplicationType(UITest test, ScenarioContext context) : base(test, context)
         {
-            _test = test;
-            _context = context;
         }
 
         [Given(@"that a Supplier has chosen to manage Client Application Type Information")]

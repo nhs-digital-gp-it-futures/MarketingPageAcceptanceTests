@@ -6,16 +6,12 @@ using TechTalk.SpecFlow;
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserSupported
 {
     [Binding]
-    public sealed class BrowserSupported
+    public sealed class BrowserSupported : TestBase
     {
         private int browsersSupportedCount;
-        private UITest _test;
-        private ScenarioContext _context;
 
-        public BrowserSupported(UITest test, ScenarioContext context)
+        public BrowserSupported(UITest test, ScenarioContext context) : base(test, context)
         {
-            _test = test;
-            _context = context;
         }
 
         [Given(@"that an answer is provided to all Browser supported questions")]

@@ -4,15 +4,10 @@ using TechTalk.SpecFlow;
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
 {
     [Binding]
-    public sealed class SharedBrowserBasedSteps
+    public sealed class SharedBrowserBasedSteps : TestBase
     {
-        private UITest _test;
-        private ScenarioContext _context;
-
-        public SharedBrowserBasedSteps(UITest test, ScenarioContext context)
+        public SharedBrowserBasedSteps(UITest test, ScenarioContext context) : base(test, context)
         {
-            _test = test;
-            _context = context;
         }
 
         [Given(@"that an answer has not been provided to the (.*) mandatory question")]
