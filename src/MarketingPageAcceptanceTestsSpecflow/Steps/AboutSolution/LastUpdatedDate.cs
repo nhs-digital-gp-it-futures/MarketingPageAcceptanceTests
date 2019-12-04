@@ -38,17 +38,12 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutSolution
         {
             _context.Pending();
         }
-        
-        [Then(@"the Last Changed Date is updated in the SolutionDetail table")]
-        public void ThenTheLastChangedDateIsUpdatedInSolutionDetail()
+
+        [Then(@"the Last Changed Date is updated in the (.*) table")]
+        public void ThenTheLastChangedDateIsUpdated(string tableName)
         {
             _context.Pending();
         }
 
-        [Then(@"the Last Changed Date is updated in the MarketingContact table")]
-        public void ThenTheLastChangedDateIsUpdatedInMarketingContact()
-        {
-            _context.Pending();
-        }
     }
 }

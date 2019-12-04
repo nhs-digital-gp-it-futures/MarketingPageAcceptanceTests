@@ -85,7 +85,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 9
  testRunner.When("the content has been updated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 10
- testRunner.Then("the Last Changed Date is updated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the Last Changed Date is updated in the SolutionDetail table", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -105,7 +105,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 14
  testRunner.When("the content has been updated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 15
- testRunner.Then("the Last Changed Date is updated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the Last Changed Date is updated in the SolutionDetail table", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -125,7 +125,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 19
  testRunner.When("the content has been updated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 20
- testRunner.Then("the Last Changed Date is updated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the Last Changed Date is updated in the MarketingContact table", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
