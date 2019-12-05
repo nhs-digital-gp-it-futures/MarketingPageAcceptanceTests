@@ -26,7 +26,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             }
         }
 
-        private void FirstContactComplete(IContactDetail contact, bool clearFirst = false)
+        private void FirstContactComplete(IContactDetail contact, bool clearFirst)
         {
             if (clearFirst)
             {
@@ -44,7 +44,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             driver.FindElement(pages.ContactDetails.Contact1JobSector).SendKeys(contact.JobSector);
         }
 
-        private void SecondContactComplete(IContactDetail contact, bool clearFirst = false)
+        private void SecondContactComplete(IContactDetail contact, bool clearFirst)
         {
             if (clearFirst)
             {
