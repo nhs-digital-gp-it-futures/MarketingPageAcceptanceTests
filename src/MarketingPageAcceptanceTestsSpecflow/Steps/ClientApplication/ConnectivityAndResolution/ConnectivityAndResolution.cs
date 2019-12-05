@@ -52,7 +52,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.Connectiv
             _test.pages.Common.ClickSectionBackLink();
         }
 
-        [When(@"the User attempts to save")]
+        [StepDefinition(@"the User attempts to save")]
         public void WhenTheUserAttemptsToSave()
         {
             _test.pages.Common.SectionSaveAndReturn();

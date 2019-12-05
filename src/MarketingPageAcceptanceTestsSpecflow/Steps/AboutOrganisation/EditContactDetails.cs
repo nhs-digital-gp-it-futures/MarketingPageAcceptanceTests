@@ -24,6 +24,17 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutOrganisation
             _test.pages.ContactDetails.EnterAllData(firstContact);
         }
 
+        [Given(@"the User has entered two Contact Details")]
+
+        public void GivenTheUserHasEnteredTwoContactDetails()
+        {
+            firstContact = GenerateContactDetails.NewContactDetail();
+            var secondContact = GenerateContactDetails.NewContactDetail();
+
+            _test.pages.Dashboard.NavigateToSection("Contact details");
+            _test.pages.ContactDetails.EnterAllData(firstContact, secondContact);
+        }
+
         [Given(@"a User has saved any data on the Contact Details Section")]
         public void GivenDataSaved()
         {
@@ -66,12 +77,20 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutOrganisation
             _test.pages.Dashboard.SectionIncompleteStatus("Contact details");
         }
 
-        [Then(@"the contact is saved to the database")]
+        [StepDefinition(@"the contact is saved to the database")]
         public void ThenTheContectIsSavedToTheDatabase()
         {
             var dbContact = SqlHelper.GetContactDetail(_test.solution.Id, _test.connectionString);
             dbContact.Should().BeEquivalentTo(firstContact);
         }
+
+        [Then(@"there (is|are) (.*) (record|records) in the contact table")]
+        public void ThenThereIsRecordInTheContactTable(string ignore1, int expected, string ignore2)
+        {
+            var actual = SqlHelper.GetNumberOfContacts(_test.solution.Id, _test.connectionString);
+            actual.Should().Be(expected);
+        }
+
 
     }
 }
