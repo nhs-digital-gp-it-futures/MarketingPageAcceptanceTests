@@ -100,6 +100,37 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             SqlReader.Read(connectionString, query, newParameters, DataReaders.NoReturn);
         }
 
+        public static void UpdateLastUpdated(DateTime lastUpdated, String table, String whereKey, String whereValue, string connectionString)
+        {
+            var query = Queries.UpdateLastUpdated;
+            //cant do table names as parameters
+            //https://stackoverflow.com/questions/14003241/must-declare-the-table-variable-table
+            //can't do the key as a parameter either as it treats it as a string with quotes
+            query = query.Replace("@table", table).Replace("@whereKey", whereKey);
+
+            SqlParameter[] newParameters = new SqlParameter[]
+            {
+                new SqlParameter("@lastUpdated", lastUpdated),
+                new SqlParameter("@whereValue", whereValue)
+            };
+
+            SqlReader.Read(connectionString, query, newParameters, DataReaders.NoReturn);
+        }
+
+        public static DateTime GetLastUpdated(String table, String whereKey, String whereValue, string connectionString)
+        {
+            var query = Queries.GetLastUpdated;
+            query = query.Replace("@table", table).Replace("@whereKey", whereKey);
+
+            SqlParameter[] newParameters = new SqlParameter[]
+            {
+                new SqlParameter("@whereValue", whereValue)
+            };
+
+            var result = SqlReader.Read(connectionString, query, newParameters, DataReaders.GetLastUpdated);
+            return result;
+        }
+
         public static void DeleteSolution(string solutionId, string connectionString)
         {
             // Remove automated solution

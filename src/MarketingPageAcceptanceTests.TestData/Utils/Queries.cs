@@ -11,5 +11,7 @@
         internal const string GetSolutionDetail = "SELECT Features, AboutUrl, Summary, FullDescription from [dbo].[SolutionDetail] where SolutionId=@solutionId";
         internal const string UpdateSolutionDetail = "UPDATE SolutionDetail SET Features=@features, ClientApplication=@clientApplication, AboutUrl=@aboutUrl, Summary=@summary, FullDescription=@fullDescription WHERE SolutionId=@solutionId";        
         internal const string DeleteSolutionDetail = "DELETE from SolutionDetail where SolutionId=@solutionId";
+        internal const string UpdateLastUpdated = "UPDATE @table SET LastUpdated=@lastUpdated WHERE @whereKey=@whereValue";
+        internal const string GetLastUpdated = "SELECT LastUpdated FROM @table WHERE @whereKey=@whereValue";
     }
 }

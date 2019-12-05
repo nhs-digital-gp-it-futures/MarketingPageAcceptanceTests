@@ -72,11 +72,9 @@ namespace MarketingPageAcceptanceTestsSpecflow.Features.AboutSolution
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Updated solution summary changes the last updated date")]
-        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         public virtual void UpdatedSolutionSummaryChangesTheLastUpdatedDate()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Updated solution summary changes the last updated date", null, new string[] {
-                        "ignore"});
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Updated solution summary changes the last updated date", null, ((string[])(null)));
 #line 7
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -92,11 +90,9 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Updated about solution URL changes the last updated date")]
-        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         public virtual void UpdatedAboutSolutionURLChangesTheLastUpdatedDate()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Updated about solution URL changes the last updated date", null, new string[] {
-                        "ignore"});
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Updated about solution URL changes the last updated date", null, ((string[])(null)));
 #line 12
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();

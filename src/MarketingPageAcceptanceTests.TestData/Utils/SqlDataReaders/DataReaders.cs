@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 
 namespace MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders
 {
@@ -39,6 +40,13 @@ namespace MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders
         {
             dr.Read();
             return dr["AboutUrl"].ToString();
+        }
+
+        internal static DateTime GetLastUpdated(IDataReader dr)
+        {
+            dr.Read();
+            var val = dr["LastUpdated"].ToString();
+            return Convert.ToDateTime(val);
         }
     }
 }
