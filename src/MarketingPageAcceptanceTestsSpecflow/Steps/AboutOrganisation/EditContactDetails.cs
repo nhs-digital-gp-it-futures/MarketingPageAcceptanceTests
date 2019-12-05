@@ -1,4 +1,7 @@
-﻿using MarketingPageAcceptanceTestsSpecflow.Utils;
+﻿using FluentAssertions;
+using MarketingPageAcceptanceTests.TestData.ContactDetails;
+using MarketingPageAcceptanceTests.TestData.Utils;
+using MarketingPageAcceptanceTestsSpecflow.Utils;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutOrganisation
@@ -6,20 +9,32 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutOrganisation
     [Binding]
     public class EditContactDetails : TestBase
     {
+        IContactDetail firstContact;
         public EditContactDetails(UITest test, ScenarioContext context) : base(test, context)
         {
         }
 
         [Given(@"the User has entered any Contact Detail")]
-        [Given(@"a User has saved any data on the Contact Details Section")]
+        
         public void GivenTheUserHasEnteredAnyContactDetail()
         {
-            _context.Pending();
+            firstContact = GenerateContactDetails.NewContactDetail();
+
+            _test.pages.Dashboard.NavigateToSection("Contact details");
+            _test.pages.ContactDetails.EnterAllData(firstContact);
+        }
+
+        [Given(@"a User has saved any data on the Contact Details Section")]
+        public void GivenDataSaved()
+        {
+            GivenTheUserHasEnteredAnyContactDetail();
+
+            _test.pages.Common.SectionSaveAndReturn();
         }
 
         [Given(@"the Contact Details Section has no Mandatory Data")]
         public void GivenTheContactDetailsSectionHasNoMandatoryData()
-        {
+        {   
         }
 
         [Given(@"a User has not saved any data on the Contact Details Section")]
@@ -50,5 +65,13 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutOrganisation
         {
             _test.pages.Dashboard.SectionIncompleteStatus("Contact details");
         }
+
+        [Then(@"the contact is saved to the database")]
+        public void ThenTheContectIsSavedToTheDatabase()
+        {
+            var dbContact = SqlHelper.GetContactDetail(_test.solution.Id, _test.connectionString);
+            dbContact.Should().BeEquivalentTo(firstContact);
+        }
+
     }
 }
