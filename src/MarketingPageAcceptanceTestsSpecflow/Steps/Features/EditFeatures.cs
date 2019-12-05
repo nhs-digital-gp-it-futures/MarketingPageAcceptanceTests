@@ -60,7 +60,7 @@ namespace MarketingPageAcceptanceTestsSpecflow
             _test.pages.EditFeatures.ClickSaveAndReturn();
         }
 
-        [StepDefinition(@"the (.*) is saved")]
+        [Then(@"the (.*) is saved")]
         public void ThenTheSectionIsSaved(string section)
         {
             _test.pages.Dashboard.ShouldDisplaySections();
