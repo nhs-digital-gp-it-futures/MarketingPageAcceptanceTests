@@ -12,6 +12,13 @@ namespace MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders
             return null;
         }
 
+        internal static int GetCount(IDataReader dr)
+        {
+            dr.Read();
+            int.TryParse(dr["Count"].ToString(), out int count);
+            return count;
+        }
+
         internal static string GetSolutionSummary(IDataReader dr)
         {
             dr.Read();

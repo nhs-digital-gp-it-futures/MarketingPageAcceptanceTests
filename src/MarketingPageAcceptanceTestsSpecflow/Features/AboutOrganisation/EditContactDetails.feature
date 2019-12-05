@@ -35,3 +35,16 @@ Scenario: Appear on Preview
 	Then the Contact details is saved
 	When a User previews the Marketing Page
 	Then the correct contact details for the solution is displayed
+@BUG_3860
+@ignore
+Scenario: One contact only saves one record
+	Given the User has entered any Contact Detail	
+	And the User attempts to save 
+	When the Contact details is saved
+	Then there is 1 record in the contact table
+@BUG_3860
+Scenario: Two contacts saves two records
+	Given the User has entered two Contact Details	
+	And the User attempts to save 
+	When the Contact details is saved
+	Then there are 2 records in the contact table

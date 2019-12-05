@@ -192,6 +192,20 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             return result;
         }
 
+        public static int GetNumberOfContacts(string solutionId, string connectionString)
+        {
+            var query = Queries.GetNumberOfMarketingContactsForSolution;
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@solutionId", solutionId)
+            };
+
+            var result = SqlReader.Read(connectionString, query, parameters, DataReaders.GetCount);
+
+            return result;
+        }
+
         public static void DeleteContactDetailsForSolution(string solutionId, string connectionString)
         {
             var query = Queries.DeleteMarketingContact;

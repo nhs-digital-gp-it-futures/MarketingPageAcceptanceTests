@@ -108,11 +108,9 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Updated contact details changes the last updated date")]
-        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         public virtual void UpdatedContactDetailsChangesTheLastUpdatedDate()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Updated contact details changes the last updated date", null, new string[] {
-                        "ignore"});
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Updated contact details changes the last updated date", null, ((string[])(null)));
 #line 17
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
