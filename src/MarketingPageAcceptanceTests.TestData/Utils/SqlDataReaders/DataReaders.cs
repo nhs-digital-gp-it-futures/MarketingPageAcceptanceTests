@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 
 namespace MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders
 {
@@ -40,6 +39,19 @@ namespace MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders
         {
             dr.Read();
             return dr["AboutUrl"].ToString();
+        }
+
+        internal static IContactDetail GetContactDetails(IDataReader dr)
+        {
+            dr.Read();
+            return new ContactDetail
+            {
+                FirstName = dr["FirstName"].ToString(),
+                LastName = dr["LastName"].ToString(),
+                EmailAddress = dr["Email"].ToString(),
+                PhoneNumber = dr["PhoneNumber"].ToString(),
+                JobSector = dr["Department"].ToString()
+            };
         }
 
         internal static DateTime GetLastUpdated(IDataReader dr)

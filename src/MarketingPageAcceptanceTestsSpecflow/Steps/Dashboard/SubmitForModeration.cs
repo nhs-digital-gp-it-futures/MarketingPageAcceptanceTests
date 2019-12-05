@@ -7,13 +7,10 @@ using TechTalk.SpecFlow;
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.Dashboard
 {
     [Binding]
-    public class SubmitForModeration
-    {   
-        private UITest _test;
-
-        public SubmitForModeration(UITest test)
+    public class SubmitForModeration : TestBase
+    {
+        public SubmitForModeration(UITest test, ScenarioContext context) : base(test, context)
         {
-            _test = test;
         }
 
         [Given(@"that a Supplier has provided all mandatory data on the Marketing Page")]
@@ -44,7 +41,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Dashboard
             _test.pages.Dashboard.SubmitForModeration();
         }
 
-        
+
 
         [Then(@"the Marketing Page will be submitted for Moderation")]
         public void ThenTheMarketingPageWillBeSubmittedForModeration()

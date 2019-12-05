@@ -1,7 +1,7 @@
-﻿using MarketingPageAcceptanceTests.TestData.Solutions;
+﻿using MarketingPageAcceptanceTests.TestData.ContactDetails;
+using MarketingPageAcceptanceTests.TestData.Solutions;
 using MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders;
 using System;
-using System.Data;
 using System.Data.SqlClient;
 
 namespace MarketingPageAcceptanceTests.TestData.Utils
@@ -55,7 +55,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
                 new SqlParameter("@solutionId", solution.Id),
                 new SqlParameter("@solutionName", solution.Name),
                 new SqlParameter("@solutionVersion", solution.Version),
-                new SqlParameter("@lastUpdatedBy", Guid.NewGuid()),
+                new SqlParameter("@lastUpdatedBy", Guid.Empty),
                 new SqlParameter("@lastUpdated", DateTime.Now)
             };
 
@@ -67,7 +67,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             SqlParameter[] newParameters = new SqlParameter[] {
                 new SqlParameter("@solutionDetailId", solutionDetail.SolutionDetailId),
                 new SqlParameter("@solutionId", solutionDetail.SolutionId),
-                new SqlParameter("@lastUpdatedBy", Guid.NewGuid()),
+                new SqlParameter("@lastUpdatedBy", Guid.Empty),
                 new SqlParameter("@lastUpdated", DateTime.Now)
             };
 
@@ -93,7 +93,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
                 new SqlParameter("@solutionId", solutionDetail.SolutionId),
                 new SqlParameter("@clientApplication", solutionDetail.ClientApplication),
                 new SqlParameter("@features", solutionDetail.Features),
-                new SqlParameter("@aboutUrl", solutionDetail.AboutUrl),                
+                new SqlParameter("@aboutUrl", solutionDetail.AboutUrl),
                 new SqlParameter("@fullDescription", solutionDetail.FullDescription)
             };
 
@@ -176,6 +176,49 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             var result = SqlReader.Read(connectionString, query, parameters, DataReaders.GetSupplierStatus);
 
             return result;
+        }
+
+        public static IContactDetail GetContactDetail(string solutionId, string connectionString)
+        {
+            var query = Queries.GetMarketingContacts;
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@solutionId", solutionId)
+            };
+
+            var result = SqlReader.Read(connectionString, query, parameters, DataReaders.GetContactDetails);
+
+            return result;
+        }
+
+        public static void DeleteContactDetailsForSolution(string solutionId, string connectionString)
+        {
+            var query = Queries.DeleteMarketingContact;
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@solutionId", solutionId)
+            };
+
+            SqlReader.Read(connectionString, query, parameters, DataReaders.NoReturn);
+        }
+
+        public static void CreateContactDetails(string solutionId, IContactDetail contactDetail, string connectionString)
+        {
+            var query = Queries.CreateMarketingContact;
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@solutionId", solutionId),
+                new SqlParameter("@firstName", contactDetail.FirstName),
+                new SqlParameter("@lastName", contactDetail.LastName),
+                new SqlParameter("@email", contactDetail.EmailAddress),
+                new SqlParameter("@phoneNumber", contactDetail.PhoneNumber),
+                new SqlParameter("@department", contactDetail.JobSector)
+            };
+
+            var result = SqlReader.Read(connectionString, query, parameters, DataReaders.NoReturn);
         }
     }
 }

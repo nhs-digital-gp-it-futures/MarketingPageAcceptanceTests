@@ -109,7 +109,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                 .Single(s => s.Text.Contains(sectionTitle))
                 .FindElement(By.TagName("a"))
                 .Click();
-            
+
             if (subDashboard)
             {
                 wait.Until(s => s.FindElement(pages.Common.SubDashboardTitle).Text.Contains(sectionTitle));
@@ -165,7 +165,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// Ensure a section has a status of INCOMPLETE
         /// </summary>
         /// <param name="sectionName">Case sensitive name of a section</param>
-        public void SectionIncomplete(string sectionName)
+        public void SectionIncompleteStatus(string sectionName)
         {
             AssertSectionStatus(sectionName, "INCOMPLETE");
         }

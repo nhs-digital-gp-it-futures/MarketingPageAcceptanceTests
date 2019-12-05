@@ -4,16 +4,10 @@ using TechTalk.SpecFlow;
 namespace MarketingPageAcceptanceTestsSpecflow
 {
     [Binding]
-    public class EditSolutionDescription
+    public class EditSolutionDescription : TestBase
     {
-
-        private UITest _test;
-        private ScenarioContext _context;
-
-        public EditSolutionDescription(UITest test, ScenarioContext context)
+        public EditSolutionDescription(UITest test, ScenarioContext context) : base(test, context)
         {
-            _test = test;
-            _context = context;
         }
 
         [Given(@"the Supplier has entered data into any field")]
@@ -79,7 +73,7 @@ namespace MarketingPageAcceptanceTestsSpecflow
         [Then(@"the status is set to INCOMPLETE")]
         public void ThenTheSolutionDescriptionSectionIsMarkedAsIncomplete()
         {
-            _test.pages.Dashboard.SectionIncomplete("Solution description");
+            _test.pages.Dashboard.SectionIncompleteStatus("Solution description");
         }
 
         [Then(@"the non mandatory data is saved to the database")]

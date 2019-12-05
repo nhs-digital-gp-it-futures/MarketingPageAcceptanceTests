@@ -4,15 +4,10 @@ using TechTalk.SpecFlow;
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.HardwareRequirements
 {
     [Binding]
-    public class HardwareRequirements
+    public class HardwareRequirements : TestBase
     {
-        private UITest _test;
-        private ScenarioContext _context;
-
-        public HardwareRequirements(UITest test, ScenarioContext context)
+        public HardwareRequirements(UITest test, ScenarioContext context) : base(test, context)
         {
-            _test = test;
-            _context = context;
         }
 
         [Given(@"the Supplier has entered text on the (.*) page")]

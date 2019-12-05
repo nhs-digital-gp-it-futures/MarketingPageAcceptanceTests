@@ -4,15 +4,10 @@ using TechTalk.SpecFlow;
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.ConnectivityAndResolution
 {
     [Binding]
-    public class ConnectivityAndResolution
+    public class ConnectivityAndResolution : TestBase
     {
-        private UITest _test;
-        private ScenarioContext _context;
-
-        public ConnectivityAndResolution(UITest test, ScenarioContext context)
+        public ConnectivityAndResolution(UITest test, ScenarioContext context) : base(test, context)
         {
-            _test = test;
-            _context = context;
         }
 
         [Given(@"that a User has provided a value for the Mandatory Information")]

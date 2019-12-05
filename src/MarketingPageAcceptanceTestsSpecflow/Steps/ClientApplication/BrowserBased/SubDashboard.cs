@@ -6,13 +6,10 @@ using TechTalk.SpecFlow;
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserBased
 {
     [Binding]
-    public sealed class SubDashboard
+    public sealed class SubDashboard : TestBase
     {
-        private UITest _test;
-
-        public SubDashboard(UITest test)
+        public SubDashboard(UITest test, ScenarioContext context) : base(test, context)
         {
-            _test = test;
         }
 
         [Given(@"that a Supplier has chosen to manage the Browser Based Client Application Type Section")]

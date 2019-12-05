@@ -5,15 +5,10 @@ using TechTalk.SpecFlow;
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutOrganisation
 {
     [Binding]
-    public sealed class ContactDetails
+    public sealed class ContactDetails : TestBase
     {
-        private UITest _test;
-        private ScenarioContext _context;
-
-        public ContactDetails(UITest test, ScenarioContext context)
+        public ContactDetails(UITest test, ScenarioContext context) : base(test, context)
         {
-            _test = test;
-            _context = context;
         }
 
         [Then(@"the User is able to manage the Contact Details Marketing Page Form Section")]
