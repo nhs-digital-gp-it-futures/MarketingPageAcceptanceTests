@@ -1,6 +1,6 @@
-﻿using MarketingPageAcceptanceTests.TestData.ContactDetails;
-using System;
+﻿using System;
 using System.Data;
+using MarketingPageAcceptanceTests.TestData.ContactDetails;
 
 namespace MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders
 {
@@ -54,6 +54,13 @@ namespace MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders
                 PhoneNumber = dr["PhoneNumber"].ToString(),
                 JobSector = dr["Department"].ToString()
             };
+        }
+
+        internal static DateTime GetLastUpdated(IDataReader dr)
+        {
+            dr.Read();
+            var val = dr["LastUpdated"].ToString();
+            return Convert.ToDateTime(val);
         }
     }
 }

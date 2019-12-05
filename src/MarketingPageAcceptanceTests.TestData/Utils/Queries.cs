@@ -15,5 +15,9 @@
         internal const string GetMarketingContacts = "SELECT FirstName, LastName, PhoneNumber, Department, Email FROM MarketingContact WHERE SolutionId=@solutionId";
         internal const string CreateMarketingContact = "INSERT INTO [MarketingContact] (SolutionId, FirstName, LastName, Email, PhoneNumber, Department, LastUpdated, LastUpdatedBy) VALUES(@solutionId, @firstName, @lastName, @email, @phoneNumber, @department, GETDATE(), '00000000-0000-0000-0000-000000000000')";
         internal const string DeleteMarketingContact = "DELETE FROM MarketingContact where SolutionId=@solutionId";
+
+        internal const string UpdateLastUpdated = "UPDATE @table SET LastUpdated=@lastUpdated WHERE @whereKey=@whereValue";
+        internal const string GetLastUpdated = "SELECT LastUpdated FROM @table WHERE @whereKey=@whereValue";
+
     }
 }
