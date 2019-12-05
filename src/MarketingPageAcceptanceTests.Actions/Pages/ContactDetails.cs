@@ -16,18 +16,27 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             return new Common(driver).PageTitleEquals("Contact details");
         }
 
-        public void EnterAllData(IContactDetail firstContact, IContactDetail secondContact = null)
+        public void EnterAllData(IContactDetail firstContact, IContactDetail secondContact = null, bool clearFirst = false)
         {
-            FirstContactComplete(firstContact);
+            FirstContactComplete(firstContact, clearFirst);
 
             if(!(secondContact is null))
             {
-                SecondContactComplete(secondContact);
+                SecondContactComplete(secondContact, clearFirst);
             }
         }
 
-        private void FirstContactComplete(IContactDetail contact)
+        private void FirstContactComplete(IContactDetail contact, bool clearFirst = false)
         {
+            if (clearFirst)
+            {
+                driver.FindElement(pages.ContactDetails.Contact1FirstName).Clear();
+                driver.FindElement(pages.ContactDetails.Contact1LastName).Clear();
+                driver.FindElement(pages.ContactDetails.Contact1EmailAddress).Clear();
+                driver.FindElement(pages.ContactDetails.Contact1PhoneNumber).Clear();
+                driver.FindElement(pages.ContactDetails.Contact1JobSector).Clear();
+            }
+
             driver.FindElement(pages.ContactDetails.Contact1FirstName).SendKeys(contact.FirstName);
             driver.FindElement(pages.ContactDetails.Contact1LastName).SendKeys(contact.LastName);
             driver.FindElement(pages.ContactDetails.Contact1EmailAddress).SendKeys(contact.EmailAddress);
@@ -35,8 +44,17 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             driver.FindElement(pages.ContactDetails.Contact1JobSector).SendKeys(contact.JobSector);
         }
 
-        private void SecondContactComplete(IContactDetail contact)
+        private void SecondContactComplete(IContactDetail contact, bool clearFirst = false)
         {
+            if (clearFirst)
+            {
+                driver.FindElement(pages.ContactDetails.Contact2FirstName).Clear();
+                driver.FindElement(pages.ContactDetails.Contact2LastName).Clear();
+                driver.FindElement(pages.ContactDetails.Contact2EmailAddress).Clear();
+                driver.FindElement(pages.ContactDetails.Contact2PhoneNumber).Clear();
+                driver.FindElement(pages.ContactDetails.Contact2JobSector).Clear();
+            }
+
             driver.FindElement(pages.ContactDetails.Contact2FirstName).SendKeys(contact.FirstName);
             driver.FindElement(pages.ContactDetails.Contact2LastName).SendKeys(contact.LastName);
             driver.FindElement(pages.ContactDetails.Contact2EmailAddress).SendKeys(contact.EmailAddress);

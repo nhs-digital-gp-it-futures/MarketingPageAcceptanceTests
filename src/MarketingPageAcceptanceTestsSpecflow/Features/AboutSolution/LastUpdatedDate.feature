@@ -13,7 +13,7 @@ Scenario: Updated about solution URL changes the last updated date
 	Given that the About Solution URL is updated
 	When the content has been updated
 	Then the Last Changed Date is updated in the SolutionDetail table
-@ignore
+
 Scenario: Updated contact details changes the last updated date
 	Given that the Contact details are updated
 	When the content has been updated

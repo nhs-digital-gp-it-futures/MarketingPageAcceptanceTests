@@ -1,5 +1,6 @@
 ﻿using System;
 using FluentAssertions;
+using MarketingPageAcceptanceTests.TestData.ContactDetails;
 using MarketingPageAcceptanceTests.TestData.Utils;
 using MarketingPageAcceptanceTestsSpecflow.Utils;
 using TechTalk.SpecFlow;
@@ -14,15 +15,10 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutSolution
         {
         }
 
-        private void SetLastUpdatedDateToAnOlderDate()
-        {
-            SqlHelper.UpdateLastUpdated(oldDate, "SolutionDetail", "SolutionId", _test.solution.Id, _test.connectionString);
-        }
-
         [Given(@"that the Solution Summary is updated")]
         public void GivenThatTheSolutionSummaryIsUpdated()
         {
-            SetLastUpdatedDateToAnOlderDate();
+            SqlHelper.UpdateLastUpdated(oldDate, "SolutionDetail", "SolutionId", _test.solution.Id, _test.connectionString);
             _test.pages.Dashboard.NavigateToSection("Solution description");
             _test.pages.SolutionDescription.SummaryAddText(300);
         }
@@ -37,7 +33,12 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutSolution
         [Given(@"that the Contact details are updated")]
         public void GivenThatTheContactDetailsAreUpdated()
         {
-            _context.Pending();
+            var firstContact = GenerateContactDetails.NewContactDetail();
+            SqlHelper.CreateContactDetails(_test.solution.Id, firstContact, _test.connectionString);
+            SqlHelper.UpdateLastUpdated(oldDate, "MarketingContact", "SolutionId", _test.solution.Id, _test.connectionString);
+            var updatedContact = GenerateContactDetails.NewContactDetail();
+            _test.pages.Dashboard.NavigateToSection("Contact details");
+            _test.pages.ContactDetails.EnterAllData(updatedContact, null, true);
         }
         
         [When(@"the content has been updated")]
