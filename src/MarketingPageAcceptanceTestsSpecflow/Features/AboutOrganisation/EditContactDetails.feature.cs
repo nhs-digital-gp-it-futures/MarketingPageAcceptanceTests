@@ -72,22 +72,20 @@ namespace MarketingPageAcceptanceTestsSpecflow.Features.AboutOrganisation
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Contact Detail does not exceed maximum")]
-        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         public virtual void ContactDetailDoesNotExceedMaximum()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Contact Detail does not exceed maximum", null, new string[] {
-                        "ignore"});
-#line 7
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Contact Detail does not exceed maximum", null, ((string[])(null)));
+#line 6
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 8
+#line 7
  testRunner.Given("the User has entered any Contact Detail", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 9
- testRunner.And("it does not exceed the maximum", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 10
+#line 8
  testRunner.When("the User attempts to save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 11
+#line 9
  testRunner.Then("the Contact details is saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 10
+ testRunner.And("the contact is saved to the database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -118,11 +116,9 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Contact Details Section marked as Complete -  Any Data Saved")]
-        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         public virtual void ContactDetailsSectionMarkedAsComplete_AnyDataSaved()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Contact Details Section marked as Complete -  Any Data Saved", null, new string[] {
-                        "ignore"});
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Contact Details Section marked as Complete -  Any Data Saved", null, ((string[])(null)));
 #line 20
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -140,11 +136,9 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Contact Details Type Section marked as Incomplete -  No Data")]
-        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         public virtual void ContactDetailsTypeSectionMarkedAsIncomplete_NoData()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Contact Details Type Section marked as Incomplete -  No Data", null, new string[] {
-                        "ignore"});
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Contact Details Type Section marked as Incomplete -  No Data", null, ((string[])(null)));
 #line 26
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -167,14 +161,14 @@ this.ScenarioInitialize(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Appear on Preview", null, new string[] {
                         "ignore"});
-#line 32
+#line 33
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 33
- testRunner.Given("that data has been saved in this section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 34
- testRunner.When("a User previews the Marketing Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("that data has been saved in this section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 35
+ testRunner.When("a User previews the Marketing Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 36
  testRunner.Then("data will be presented on the Preview of the Marketing Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
