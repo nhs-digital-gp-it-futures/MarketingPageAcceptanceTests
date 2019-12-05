@@ -23,5 +23,10 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
         public By BrowserBasedSectionTitles => By.ClassName("nhsuk-summary-list__key");
 
         public By SupportedBrowsers => CustomBy.DataTestId("preview-section-table-row-supported-browsers", "li > label");
+
+        public By ContactName => CustomBy.DataTestId("view-question-data-text-contact-name");
+        public By ContactDepartment => CustomBy.DataTestId("view-question-data-text-department-name");
+        public By ContactEmail => CustomBy.DataTestId("view-question-data-text-email-address");
+        public By ContactPhoneNumber => CustomBy.DataTestId("view-question-data-text-phone-number");
     }
 }

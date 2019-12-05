@@ -1,4 +1,5 @@
 using FluentAssertions;
+using MarketingPageAcceptanceTests.TestData.ContactDetails;
 using OpenQA.Selenium;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,6 +74,18 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             var features = driver.FindElement(pages.PreviewPage.FeaturesSection).FindElements(By.CssSelector("li label.nhsuk-label")).Select(s => s.Text);
             return features.ToList();
+        }
+
+        public IContactDetail ContactDisplayedOnPreview()
+        {
+            var contact = new ContactDetail();
+            var fullName = driver.FindElement(pages.PreviewPage.ContactName).Text.Split(' ');
+            contact.FirstName = fullName[0];
+            contact.LastName = fullName[1];
+            contact.JobSector = driver.FindElement(pages.PreviewPage.ContactDepartment).Text;
+            contact.EmailAddress = driver.FindElement(pages.PreviewPage.ContactEmail).Text;
+            contact.PhoneNumber = driver.FindElement(pages.PreviewPage.ContactPhoneNumber).Text;
+            return contact;
         }
 
         /// <returns>title of the 'Solution description' section</returns>

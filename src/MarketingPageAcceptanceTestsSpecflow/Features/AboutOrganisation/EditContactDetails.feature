@@ -29,8 +29,9 @@ Scenario: Contact Details Type Section marked as Incomplete -  No Data
 	When the Marketing Page Form is presented 
 	Then the Contact Details Section is marked as Incomplete
 
-@ignore
 Scenario: Appear on Preview
-	Given that data has been saved in this section
+	Given the User has entered any Contact Detail	
+	When the User attempts to save 
+	Then the Contact details is saved
 	When a User previews the Marketing Page
-	Then data will be presented on the Preview of the Marketing Page
+	Then the correct contact details for the solution is displayed

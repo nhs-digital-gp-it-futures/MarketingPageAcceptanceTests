@@ -73,5 +73,10 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutOrganisation
             dbContact.Should().BeEquivalentTo(firstContact);
         }
 
+        [Then(@"the correct contact details for the solution is displayed")]
+        public void ThenTheCorrectContactDetailsForTheSolutionIsDisplayed()
+        {
+            _test.pages.PreviewPage.ContactDisplayedOnPreview().Should().BeEquivalentTo(firstContact);
+        }
     }
 }
