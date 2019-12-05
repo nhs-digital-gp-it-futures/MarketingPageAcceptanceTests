@@ -100,7 +100,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             SqlReader.Read(connectionString, query, newParameters, DataReaders.NoReturn);
         }
 
-        public static void UpdateLastUpdated(DateTime lastUpdated, String table, String whereKey, String whereValue, string connectionString)
+        public static void UpdateLastUpdated(DateTime lastUpdated, string table, string whereKey, string whereValue, string connectionString)
         {
             var query = Queries.UpdateLastUpdated;
             //cant do table names as parameters
@@ -117,7 +117,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             SqlReader.Read(connectionString, query, newParameters, DataReaders.NoReturn);
         }
 
-        public static DateTime GetLastUpdated(String table, String whereKey, String whereValue, string connectionString)
+        public static DateTime GetLastUpdated(string table, string whereKey, string whereValue, string connectionString)
         {
             var query = Queries.GetLastUpdated;
             query = query.Replace("@table", table).Replace("@whereKey", whereKey);

@@ -7,15 +7,11 @@ using TechTalk.SpecFlow;
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutSolution
 {
     [Binding]
-    public class LastUpdatedDate
+    public class LastUpdatedDate : TestBase
     {
-        private UITest _test;
-        private ScenarioContext _context;
         DateTime oldDate = new DateTime(2001, 02, 03);
-        public LastUpdatedDate(UITest test, ScenarioContext context)
+        public LastUpdatedDate(UITest test, ScenarioContext context) : base(test, context)
         {
-            _test = test;
-            _context = context;
         }
 
         private void SetLastUpdatedDateToAnOlderDate()
