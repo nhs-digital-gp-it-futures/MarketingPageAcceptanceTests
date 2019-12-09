@@ -1,8 +1,8 @@
-﻿using MarketingPageAcceptanceTests.TestData.ContactDetails;
+﻿using System;
+using System.Data.SqlClient;
+using MarketingPageAcceptanceTests.TestData.ContactDetails;
 using MarketingPageAcceptanceTests.TestData.Solutions;
 using MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders;
-using System;
-using System.Data.SqlClient;
 
 namespace MarketingPageAcceptanceTests.TestData.Utils
 {
