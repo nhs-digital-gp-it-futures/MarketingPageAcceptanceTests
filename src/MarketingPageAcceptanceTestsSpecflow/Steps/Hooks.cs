@@ -5,9 +5,9 @@ using TechTalk.SpecFlow;
 namespace MarketingPageAcceptanceTestsSpecflow.Steps
 {
     [Binding]
-    public sealed class Hooks: TestBase
+    public sealed class Hooks : TestBase
     {
-        public Hooks(UITest test,ScenarioContext context): base(test, context)
+        public Hooks(UITest test, ScenarioContext context) : base(test, context)
         {
         }
 

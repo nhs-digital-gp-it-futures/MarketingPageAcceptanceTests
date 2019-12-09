@@ -1,5 +1,4 @@
-﻿using System;
-using MarketingPageAcceptanceTests.TestData.ContactDetails;
+﻿using MarketingPageAcceptanceTests.TestData.ContactDetails;
 using OpenQA.Selenium;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
@@ -20,7 +19,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             FirstContactComplete(firstContact, clearFirst);
 
-            if(!(secondContact is null))
+            if (!(secondContact is null))
             {
                 SecondContactComplete(secondContact, clearFirst);
             }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MarketingPageAcceptanceTests.TestData.ContactDetails
+﻿namespace MarketingPageAcceptanceTests.TestData.ContactDetails
 {
     public interface IContactDetail
     {

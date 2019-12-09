@@ -1,9 +1,9 @@
-﻿using MarketingPageAcceptanceTests.Actions;
+﻿using System;
+using MarketingPageAcceptanceTests.Actions;
 using MarketingPageAcceptanceTests.Actions.Collections;
 using MarketingPageAcceptanceTests.TestData.Solutions;
 using MarketingPageAcceptanceTests.TestData.Utils;
 using OpenQA.Selenium;
-using System;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Utils
 {

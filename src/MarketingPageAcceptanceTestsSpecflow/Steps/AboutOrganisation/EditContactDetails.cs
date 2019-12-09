@@ -15,7 +15,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutOrganisation
         }
 
         [Given(@"the User has entered any Contact Detail")]
-        
+
         public void GivenTheUserHasEnteredAnyContactDetail()
         {
             firstContact = GenerateContactDetails.NewContactDetail();
@@ -45,12 +45,12 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutOrganisation
 
         [Given(@"the Contact Details Section has no Mandatory Data")]
         public void GivenTheContactDetailsSectionHasNoMandatoryData()
-        {   
+        {
         }
 
         [Given(@"a User has not saved any data on the Contact Details Section")]
         public void GivenAUserHasNotSavedAnyDataOnTheContactDetailsSection()
-        {   
+        {
         }
 
         [Given(@"that data has been saved in this section")]

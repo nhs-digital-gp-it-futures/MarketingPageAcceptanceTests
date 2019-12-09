@@ -1,5 +1,5 @@
-﻿using OpenQA.Selenium;
-using System.Linq;
+﻿using System.Linq;
+using OpenQA.Selenium;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {

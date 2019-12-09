@@ -1,6 +1,6 @@
-﻿using MarketingPageAcceptanceTests.TestData.Information;
+﻿using System;
+using MarketingPageAcceptanceTests.TestData.Information;
 using MarketingPageAcceptanceTestsSpecflow.Utils;
-using System;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.PluginsOrExtensions

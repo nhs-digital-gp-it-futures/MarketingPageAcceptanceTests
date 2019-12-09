@@ -1,7 +1,7 @@
-﻿using FluentAssertions;
-using OpenQA.Selenium;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
+using OpenQA.Selenium;
 using static MarketingPageAcceptanceTests.Actions.Utils.ElementExtensions;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages

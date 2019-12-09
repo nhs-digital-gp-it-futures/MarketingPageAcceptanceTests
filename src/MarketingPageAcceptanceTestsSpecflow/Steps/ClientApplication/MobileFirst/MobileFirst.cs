@@ -1,5 +1,4 @@
-﻿using System;
-using MarketingPageAcceptanceTestsSpecflow.Utils;
+﻿using MarketingPageAcceptanceTestsSpecflow.Utils;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.MobileFirst
@@ -10,7 +9,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.MobileFir
 
         public MobileFirst(UITest test, ScenarioContext context) : base(test, context)
         {
-                
+
         }
 
         [Given(@"that an answer is provided to the mobile first question")]
