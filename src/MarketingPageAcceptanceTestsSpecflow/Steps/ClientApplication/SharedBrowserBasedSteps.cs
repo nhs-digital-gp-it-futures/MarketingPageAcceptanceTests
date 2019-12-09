@@ -57,7 +57,5 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
         {
             _test.pages.Common.ErrorMessageDisplayed();
         }
-
-
     }
 }

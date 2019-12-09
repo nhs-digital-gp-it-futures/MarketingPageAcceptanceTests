@@ -10,10 +10,17 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.HardwareR
         {
         }
 
-        [Given(@"the Supplier has entered text on the (.*) page")]
-        public void GivenTheSupplierHasEnteredText(string page)
+        [Given(@"the Supplier has entered (\d{3,4}) characters on the (.*) page")]
+        public void GivenTheSupplierHasEnteredText(int characters, string page)
         {
-            _context.Pending();
+            _test.pages.Dashboard.NavigateToSection("Client application type");
+            _test.pages.ClientApplicationTypes.SelectCheckbox("Browser based");
+            _test.pages.ClientApplicationTypes.SaveAndReturn();
+            _test.pages.Dashboard.NavigateToSection("Browser based", true);
+
+            _test.pages.BrowserSubDashboard.OpenSection(page);
+
+            _test.pages.HardwareRequirements.EnterText(characters);
         }
 
         [Given(@"the Browser Based Client Application Type Sub-Section does not require Mandatory Data")]

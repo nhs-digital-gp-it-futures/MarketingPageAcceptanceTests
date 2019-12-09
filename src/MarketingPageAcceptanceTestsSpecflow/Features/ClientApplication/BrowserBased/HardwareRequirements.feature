@@ -5,15 +5,13 @@
 
 @ignore
 Scenario: Does not exceed maximum
-	Given the Supplier has entered text on the Hardware requirements page
-	And it does not exceed the maximum character count
+	Given the Supplier has entered 500 characters on the Hardware requirements page	
 	When the Supplier attempts to save 
 	Then the Hardware requirements is saved
 
 @ignore
 Scenario: Does exceed maximum
-	Given the Supplier has entered text on the Hardware requirements page
-	And it does exceed the maximum character count
+	Given the Supplier has entered 501 characters on the Hardware requirements page		
 	When the Supplier attempts to save 
 	Then the Section is not saved 
 	And an indication is given to the Supplier as to why
