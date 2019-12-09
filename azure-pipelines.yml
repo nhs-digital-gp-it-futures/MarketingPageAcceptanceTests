@@ -4,22 +4,17 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 trigger:
-- master
+- development
 
 pool:
   vmImage: 'ubuntu-latest'
 
-variables:
-  solution: 'src/'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
-
 steps:
-- task: NuGetToolInstaller@1
-
-- task: NuGetCommand@2
+- task: UseDotNet@2
+  displayName: 'Use DotNet Core 3.1'
   inputs:
-    restoreSolution: '$(solution)'
+    version: 3.x
+    includePreviewVersions: false
 
 - task: DockerCompose@0
   inputs:
@@ -36,11 +31,10 @@ steps:
     targetType: 'inline'
     script: '
     export BROWSER=chrome &&
-    export SERVERURL=gpitfuture-sql-test.database.windows.net &&
-    export DATABASENAME=gpitfuture-db-test &&
+    export SERVERURL=$SERVERURL &&
+    export DATABASENAME=$DATABASENAME &&
     export DBUSER=$DBUSER &&
     export DBPASSWORD=$DBPASSWORD &&
-    export HUBURL=http://localhost:4444/wd/hub &&
-    export MPURL=https://test.mp-buyingcatalogue.com &&
-    dotnet build $(solution) &&
-    dotnet test $(solution) -v n'
+    export HUBURL=$HUBURL &&
+    export MPURL=$MPURL &&
+    dotnet test src/ -v n'
