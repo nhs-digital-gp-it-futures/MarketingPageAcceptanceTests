@@ -19,8 +19,8 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.Connectiv
             _test.pages.Dashboard.NavigateToSection("Browser based", true);
             _test.pages.BrowserSubDashboard.OpenSection("Connectivity and resolution");
 
-            expectedMinimumConnectionSpeed = "1 Mbps";
-            expectedMinimumDesktopResolution = "4:3 800 x 600";
+            expectedMinimumConnectionSpeed = "0.5Mbps";
+            expectedMinimumDesktopResolution = "4:3 - 800 x 600";
             _test.pages.ConnectivityAndResolution.SelectMinimumConnectionSpeed(expectedMinimumConnectionSpeed);
             _test.pages.ConnectivityAndResolution.SelectMinimumDesktopResolution(expectedMinimumDesktopResolution);
         }

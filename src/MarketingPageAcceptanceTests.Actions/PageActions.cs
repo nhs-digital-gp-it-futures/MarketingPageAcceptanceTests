@@ -19,7 +19,8 @@ namespace MarketingPageAcceptanceTests.Actions
                 BrowserSubDashboard = new BrowserSubDashboard(driver),
                 BrowsersSupported = new BrowsersSupported(driver),
                 PluginsOrExtensions = new PluginsOrExtensions(driver),
-                ContactDetails = new ContactDetails(driver)
+                ContactDetails = new ContactDetails(driver),
+                ConnectivityAndResolution = new ConnectivityAndResolution(driver)
             };
         }
 
