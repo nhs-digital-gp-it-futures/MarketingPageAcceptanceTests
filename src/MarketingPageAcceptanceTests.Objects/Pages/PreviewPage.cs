@@ -28,5 +28,8 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
         public By ContactDepartment => CustomBy.DataTestId("view-question-data-text-department-name");
         public By ContactEmail => CustomBy.DataTestId("view-question-data-text-email-address");
         public By ContactPhoneNumber => CustomBy.DataTestId("view-question-data-text-phone-number");
+
+        public By ConnectivityRequirement => CustomBy.DataTestId("view-question-data-text-minimum-connection-speed");
+        public By DesktopResolutionRequirement => CustomBy.DataTestId("view-question-data-text-minimum-desktop-resolution");
     }
 }
