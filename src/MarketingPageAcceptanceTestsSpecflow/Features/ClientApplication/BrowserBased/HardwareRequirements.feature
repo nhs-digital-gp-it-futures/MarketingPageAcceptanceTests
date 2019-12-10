@@ -9,7 +9,6 @@ Scenario: Does not exceed maximum
 	When the Supplier attempts to save 
 	Then the Hardware requirements is saved
 
-@ignore
 Scenario: Does exceed maximum
 	Given the Supplier has entered 501 characters on the Hardware requirements page		
 	When the Supplier attempts to save 
