@@ -10,46 +10,62 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.HardwareR
         {
         }
 
-        [Given(@"the Supplier has entered text on the (.*) page")]
-        public void GivenTheSupplierHasEnteredText(string page)
+        [Given(@"the Supplier has entered (\d{3,4}) characters on the (.*) page")]
+        public void GivenTheSupplierHasEnteredText(int characters, string page)
         {
-            _context.Pending();
+            _test.pages.Dashboard.NavigateToSection("Client application type");
+            _test.pages.ClientApplicationTypes.SelectCheckbox("Browser based");
+            _test.pages.ClientApplicationTypes.SaveAndReturn();
+            _test.pages.Dashboard.NavigateToSection("Browser based", true);
+
+            _test.pages.BrowserSubDashboard.OpenSection(page);
+
+            _test.pages.HardwareRequirements.EnterText(characters);
         }
 
-        [Given(@"the Browser Based Client Application Type Sub-Section does not require Mandatory Data")]
-        public void GivenTheBrowserBasedClientApplicationTypeSub_SectionDoesNotRequireMandatoryData()
+        [Given(@"the (.*) Sub-Section does not require Mandatory Data")]
+        public void GivenTheSub_SectionDoesNotRequireMandatoryData(string sectionName)
         {
-            _context.Pending();
+            _test.pages.Dashboard.NavigateToSection("Client application type");
+            _test.pages.ClientApplicationTypes.SelectCheckbox("Browser based");
+            _test.pages.ClientApplicationTypes.SaveAndReturn();
+            _test.pages.Dashboard.NavigateToSection("Browser based", true);
         }
+
 
         [Given(@"a Supplier has not saved any data in any field within the Sub-Section")]
         public void GivenASupplierHasNotSavedAnyDataInAnyFieldWithinTheSub_Section()
         {
-            _context.Pending();
+            
         }
 
-        [Given(@"a Supplier has saved any data in any field within the Sub-Section")]
-        public void GivenASupplierHasSavedAnyDataInAnyFieldWithinTheSub_Section()
+        [Given(@"a Supplier has saved any data in any field within (.*)")]
+        public void GivenASupplierHasSavedAnyDataInAnyFieldWithinTheSub_Section(string sectionName)
         {
-            _context.Pending();
+            _test.pages.BrowserSubDashboard.OpenSection(sectionName);
+
+            _test.pages.HardwareRequirements.EnterText(100);
+            _test.pages.Common.SectionSaveAndReturn();
         }
 
         [When(@"the Browser Based Client Application Sub-Form is presented")]
         public void WhenTheBrowserBasedClientApplicationSub_FormIsPresented()
-        {
-            _context.Pending();
+        {   
         }
 
-        [Then(@"the Browser Based Client Application Type Sub-Section is marked as Incomplete")]
-        public void ThenTheBrowserBasedClientApplicationTypeSub_SectionIsMarkedAsIncomplete()
+        [Then(@"the (.*) Sub-Section is marked as (Incomplete|Complete)")]
+        public void ThenTheBrowserBasedClientApplicationTypeSub_SectionIsMarkedAsStatus(string sectionName, string status)
         {
-            _context.Pending();
+            _test.pages.Dashboard.AssertSectionStatus(sectionName, status.ToUpper());
         }
 
-        [Then(@"the Browser Based Client Application Type Sub-Section is marked as Complete")]
-        public void ThenTheBrowserBasedClientApplicationTypeSub_SectionIsMarkedAsComplete()
+        [Given(@"that (.*) has been completed")]
+        public void GivenThatSectionHasBeenCompleted(string sectionName)
         {
-            _context.Pending();
+            GivenTheSupplierHasEnteredText(100, sectionName);
+            _test.pages.Common.SectionSaveAndReturn();
+            _test.pages.Common.ClickSubDashboardBackLink();
         }
+
     }
 }

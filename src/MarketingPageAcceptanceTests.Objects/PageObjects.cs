@@ -18,6 +18,7 @@ namespace MarketingPageAcceptanceTests.Objects
                 BrowsersSupported = new Pages.BrowsersSupported(),
                 PluginsOrExtensions = new Pages.PluginsOrExtensions(),
                 ContactDetails = new Pages.ContactDetails(),
+                HardwareRequirements = new Pages.HardwareRequirements(),
                 MobileFirst = new Pages.MobileFirst()
             };
         }
