@@ -61,7 +61,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
         private static IWebDriver GetChromeDriver(string hubURL)
         {
             var options = new ChromeOptions();
-            options.AddArguments("headless", "window-size=1920,1080", "no-sandbox");
+            options.AddArguments("headless", "window-size=1920,1080"/*, "no-sandbox"*/);
 
             return new RemoteWebDriver(new Uri(hubURL), options);
         }
