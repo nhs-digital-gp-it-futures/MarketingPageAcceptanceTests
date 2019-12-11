@@ -14,5 +14,6 @@ namespace MarketingPageAcceptanceTests.Actions.Collections
         public BrowsersSupported BrowsersSupported { get; set; }
         public PluginsOrExtensions PluginsOrExtensions { get; set; }
         public ContactDetails ContactDetails { get; set; }
+        public MobileFirst MobileFirst { get; set; }
     }
 }

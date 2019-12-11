@@ -5,6 +5,9 @@
 
 	N.B Authority User and Supplier used interchangeably 
 
+Background:
+	Given the user has set Browser based application type
+
 @ignore
 Scenario: Data Saved
 	Given that an answer is provided to the mobile first question
