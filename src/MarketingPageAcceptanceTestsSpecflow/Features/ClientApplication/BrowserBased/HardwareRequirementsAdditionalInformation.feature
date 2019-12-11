@@ -41,7 +41,7 @@ Scenario Outline: Sub-Section marked as Incomplete - No Mandatory Data Required 
 	| Hardware requirements  | 
 	#| Additional information |
 
-Scenario: Sub-Section marked as Complete - No Mandatory Data Required + data present
+Scenario Outline: Sub-Section marked as Complete - No Mandatory Data Required + data present
 	Given the <PageTitle> Sub-Section does not require Mandatory Data
 	And a Supplier has saved any data in any field within <PageTitle>
 	When the Browser Based Client Application Sub-Form is presented
