@@ -14,6 +14,7 @@ namespace MarketingPageAcceptanceTests.Objects.Collections
         public BrowsersSupported BrowsersSupported { get; set; }
         public PluginsOrExtensions PluginsOrExtensions { get; set; }
         public ContactDetails ContactDetails { get; set; }
+        public HardwareRequirements HardwareRequirements { get; set; }
         public ConnectivityAndResolution ConnectivityAndResolution { get; set; }
     }
 }

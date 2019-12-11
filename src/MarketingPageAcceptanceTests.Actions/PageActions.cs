@@ -20,6 +20,7 @@ namespace MarketingPageAcceptanceTests.Actions
                 BrowsersSupported = new BrowsersSupported(driver),
                 PluginsOrExtensions = new PluginsOrExtensions(driver),
                 ContactDetails = new ContactDetails(driver),
+                HardwareRequirements = new HardwareRequirements(driver)
                 ConnectivityAndResolution = new ConnectivityAndResolution(driver)
             };
         }
