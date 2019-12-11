@@ -52,8 +52,12 @@ Scenario: Sub-Section marked as Complete - No Mandatory Data Required + data pre
 	| Hardware requirements  | 
 	#| Additional information |
 
-@ignore
-Scenario: Appear on Preview
-	Given that data has been saved in this section
+Scenario Outline: Appear on Preview
+	Given that <PageTitle> has been completed
 	When a User previews the Marketing Page
-	Then data will be presented on the Preview of the Marketing Page
+	Then <PageTitle> will be presented on the Preview of the Marketing Page
+
+	Examples: 
+	| PageTitle              | 
+	| Hardware requirements  | 
+	#| Additional information |

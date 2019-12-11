@@ -54,15 +54,18 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.HardwareR
         }
 
         [Then(@"the (.*) Sub-Section is marked as (Incomplete|Complete)")]
-        public void ThenTheBrowserBasedClientApplicationTypeSub_SectionIsMarkedAsIncomplete(string sectionName, string status)
+        public void ThenTheBrowserBasedClientApplicationTypeSub_SectionIsMarkedAsStatus(string sectionName, string status)
         {
             _test.pages.Dashboard.AssertSectionStatus(sectionName, status.ToUpper());
         }
 
-        [Then(@"the Browser Based Client Application Type Sub-Section is marked as Complete")]
-        public void ThenTheBrowserBasedClientApplicationTypeSub_SectionIsMarkedAsComplete()
+        [Given(@"that (.*) has been completed")]
+        public void GivenThatSectionHasBeenCompleted(string sectionName)
         {
-            _context.Pending();
+            GivenTheSupplierHasEnteredText(100, sectionName);
+            _test.pages.Common.SectionSaveAndReturn();
+            _test.pages.Common.ClickSubDashboardBackLink();
         }
+
     }
 }
