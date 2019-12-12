@@ -5,8 +5,8 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
 {
     public sealed class ConnectivityAndResolution
     {
-        public By MinimumConnectionSpeed => CustomBy.DataTestId("combobox-options-minimum-connection-speed");
+        public By MinimumConnectionSpeed => CustomBy.DataTestId("combobox-options-minimum-connection-speed", "select");
 
-        public By MinimumDesktopResolution => CustomBy.DataTestId("combobox-options-minimum-desktop-resolution");
+        public By MinimumDesktopResolution => CustomBy.DataTestId("combobox-options-minimum-desktop-resolution", "select");
     }
 }
