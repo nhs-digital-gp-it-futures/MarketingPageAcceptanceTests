@@ -18,8 +18,7 @@ Scenario: Section status
 	And the Connectivity and resolution content validation status is displayed
 	And the Hardware requirements content validation status is displayed
 	And the Additional information content validation status is displayed
-	#3595
-	#And the Mobile first content validation status is displayed
+	And the Mobile first content validation status is displayed
 
 Scenario: Main Form - Browser Based Application Type Section marked as Incomplete -  Mandatory Data Missing
 	Given the Browser Based Client Application Type Section requires Mandatory Data

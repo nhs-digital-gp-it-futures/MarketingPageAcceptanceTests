@@ -21,7 +21,8 @@ namespace MarketingPageAcceptanceTests.Actions
                 PluginsOrExtensions = new PluginsOrExtensions(driver),
                 ContactDetails = new ContactDetails(driver),
                 HardwareRequirements = new HardwareRequirements(driver),
-                ConnectivityAndResolution = new ConnectivityAndResolution(driver)
+                ConnectivityAndResolution = new ConnectivityAndResolution(driver),
+                MobileFirst = new MobileFirst(driver)
             };
         }
 

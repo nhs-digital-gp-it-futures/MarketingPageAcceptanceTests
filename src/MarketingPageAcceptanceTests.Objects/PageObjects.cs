@@ -19,7 +19,8 @@ namespace MarketingPageAcceptanceTests.Objects
                 PluginsOrExtensions = new Pages.PluginsOrExtensions(),
                 ContactDetails = new Pages.ContactDetails(),
                 HardwareRequirements = new Pages.HardwareRequirements(),
-                ConnectivityAndResolution = new Pages.ConnectivityAndResolution()
+                ConnectivityAndResolution = new Pages.ConnectivityAndResolution(),
+                MobileFirst = new Pages.MobileFirst()
             };
         }
 
