@@ -51,5 +51,16 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps
             _test.pages.PreviewPage.SectionDisplayed(section);
         }
 
+        [When(@"the User exits the page")]
+        public void WhenTheUserExitsThePage()
+        {
+            _test.pages.Common.ClickSectionBackLink();
+        }
+
+        [StepDefinition(@"the User attempts to save")]
+        public void WhenTheUserAttemptsToSave()
+        {
+            _test.pages.Common.SectionSaveAndReturn();
+        }
     }
 }

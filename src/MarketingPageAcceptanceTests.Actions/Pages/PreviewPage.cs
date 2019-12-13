@@ -129,5 +129,15 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             GetSectionFieldsCount(sectionName).Should().Be(numFields);
         }
 
+        public string GetConnectivityRequirement()
+        {
+            return driver.FindElement(pages.PreviewPage.ConnectivityRequirement).Text;
+        }
+
+        public string GetDesktopResolutionRequirement()
+        {
+            return driver.FindElement(pages.PreviewPage.DesktopResolutionRequirement).Text;
+        }
+
     }
 }
