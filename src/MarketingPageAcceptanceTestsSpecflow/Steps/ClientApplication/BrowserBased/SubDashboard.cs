@@ -49,7 +49,8 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserBa
                 "Plug-ins or extensions",
                 "Connectivity and resolution",
                 "Hardware requirements",
-                "Additional information"
+                "Additional information",
+                "Mobile first"
             };
 
             _test.pages.BrowserSubDashboard.GetSections().Should().BeEquivalentTo(subSectionsExpected);
