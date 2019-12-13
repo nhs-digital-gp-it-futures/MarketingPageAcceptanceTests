@@ -16,12 +16,13 @@ Scenario:  Mandatory - No
 	When the User exits the page
 	Then on the Browser based dashboard
 	And the Connectivity and resolution section is marked as INCOMPLETE on the Browser Based Client Type Sub-Form
-@ignore
+
 Scenario: Appear on Preview
 	Given that a User has provided a value for the Connectivity and resolution Mandatory Information
 	And the user has saved the data
 	When a User previews the Marketing Page
-	Then Connectivity and resolution will be presented on the Preview of the Marketing Page
+	Then Minimum connection speed required will be presented on the Preview of the Marketing Page
+	And Recommended desktop aspect ratio and screen resolution will be presented on the Preview of the Marketing Page
 	And the Connectivity and resolution details match as expected on the Preview of the Marketing Page
 
 Scenario: Mandatory Data Missing Validation
