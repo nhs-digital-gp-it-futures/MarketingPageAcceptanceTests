@@ -175,13 +175,10 @@ this.FeatureBackground();
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Appear on Preview")]
-        [NUnit.Framework.CategoryAttribute("ignore")]
         public virtual void AppearOnPreview()
         {
-            string[] tagsOfScenario = new string[] {
-                    "ignore"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Appear on Preview", null, new string[] {
-                        "ignore"});
+            string[] tagsOfScenario = ((string[])(null));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Appear on Preview", null, ((string[])(null)));
 #line 22
 this.ScenarioInitialize(scenarioInfo);
 #line hidden

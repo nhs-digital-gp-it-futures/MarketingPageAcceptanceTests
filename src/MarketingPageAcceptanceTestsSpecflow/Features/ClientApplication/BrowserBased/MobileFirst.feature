@@ -18,7 +18,7 @@ Scenario: Data not Saved
 	When the User exits the page
 	Then on the Browser based dashboard
 	And the Mobile first section is marked as INCOMPLETE on the Browser Based Client Type Sub-Form
-@ignore
+
 Scenario: Appear on Preview
 	Given that an answer is provided to the mobile first question
 	And the user has saved the data
