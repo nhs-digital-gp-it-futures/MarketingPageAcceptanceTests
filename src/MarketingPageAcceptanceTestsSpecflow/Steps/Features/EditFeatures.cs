@@ -63,6 +63,7 @@ namespace MarketingPageAcceptanceTestsSpecflow
         [Then(@"the (.*) is saved")]
         public void ThenTheSectionIsSaved(string section)
         {
+            _test.pages.Dashboard.PageDisplayed();
             _test.pages.Dashboard.ShouldDisplaySections();
             _test.pages.Dashboard.SectionCompleteStatus(section);
         }

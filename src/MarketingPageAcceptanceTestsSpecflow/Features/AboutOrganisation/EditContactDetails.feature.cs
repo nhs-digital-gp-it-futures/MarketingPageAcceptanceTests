@@ -296,15 +296,12 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("One contact only saves one record")]
         [NUnit.Framework.CategoryAttribute("BUG_3860")]
-        [NUnit.Framework.CategoryAttribute("ignore")]
         public virtual void OneContactOnlySavesOneRecord()
         {
             string[] tagsOfScenario = new string[] {
-                    "BUG_3860",
-                    "ignore"};
+                    "BUG_3860"};
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("One contact only saves one record", null, new string[] {
-                        "BUG_3860",
-                        "ignore"});
+                        "BUG_3860"});
 #line 40
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -347,7 +344,7 @@ this.ScenarioInitialize(scenarioInfo);
                     "BUG_3860"};
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Two contacts saves two records", null, new string[] {
                         "BUG_3860"});
-#line 45
+#line 46
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -367,13 +364,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 46
+#line 47
  testRunner.Given("the User has entered two Contact Details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 47
+#line 48
  testRunner.And("the User attempts to save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 48
+#line 49
  testRunner.Then("there are 2 records in the contact table", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
