@@ -84,6 +84,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Features.ClientApplication.Browse
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Does not exceed maximum")]
         [NUnit.Framework.TestCaseAttribute("Hardware requirements", "500", null)]
+        [NUnit.Framework.TestCaseAttribute("Additional information", "500", null)]
         public virtual void DoesNotExceedMaximum(string pageTitle, string maxChars, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -109,7 +110,8 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 13
- testRunner.Given(string.Format("the Supplier has entered {0} characters on the {1} page", maxChars, pageTitle), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given(string.Format("the Supplier has entered {0} characters on the {1} page in the Browser based sect" +
+                            "ion", maxChars, pageTitle), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 14
  testRunner.When("the Supplier attempts to save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -124,6 +126,7 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Does exceed maximum")]
         [NUnit.Framework.TestCaseAttribute("Hardware requirements", "501", null)]
+        [NUnit.Framework.TestCaseAttribute("Additional information", "501", null)]
         public virtual void DoesExceedMaximum(string pageTitle, string maxChars, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -149,7 +152,8 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 23
- testRunner.Given(string.Format("the Supplier has entered {0} characters on the {1} page", maxChars, pageTitle), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given(string.Format("the Supplier has entered {0} characters on the {1} page in the Browser based sect" +
+                            "ion", maxChars, pageTitle), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 24
  testRunner.When("the Supplier attempts to save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -167,6 +171,7 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Sub-Section marked as Incomplete - No Mandatory Data Required + no data")]
         [NUnit.Framework.TestCaseAttribute("Hardware requirements", null)]
+        [NUnit.Framework.TestCaseAttribute("Additional information", null)]
         public virtual void Sub_SectionMarkedAsIncomplete_NoMandatoryDataRequiredNoData(string pageTitle, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -192,13 +197,13 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 34
- testRunner.Given(string.Format("the {0} Sub-Section does not require Mandatory Data", pageTitle), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given(string.Format("the {0} Sub-Section in the Browser based section does not require Mandatory Data", pageTitle), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 35
  testRunner.And("a Supplier has not saved any data in any field within the Sub-Section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 36
- testRunner.When("the Browser Based Client Application Sub-Form is presented", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("the Browser based Client Application Sub-Form is presented", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 37
  testRunner.Then(string.Format("the {0} Sub-Section is marked as Incomplete", pageTitle), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -210,6 +215,7 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Sub-Section marked as Complete - No Mandatory Data Required + data present")]
         [NUnit.Framework.TestCaseAttribute("Hardware requirements", null)]
+        [NUnit.Framework.TestCaseAttribute("Additional information", null)]
         public virtual void Sub_SectionMarkedAsComplete_NoMandatoryDataRequiredDataPresent(string pageTitle, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -235,13 +241,13 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 45
- testRunner.Given(string.Format("the {0} Sub-Section does not require Mandatory Data", pageTitle), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given(string.Format("the {0} Sub-Section in the Browser based section does not require Mandatory Data", pageTitle), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 46
  testRunner.And(string.Format("a Supplier has saved any data in any field within {0}", pageTitle), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 47
- testRunner.When("the Browser Based Client Application Sub-Form is presented", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("the Browser based Client Application Sub-Form is presented", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 48
  testRunner.Then(string.Format("the {0} Sub-Section is marked as Complete", pageTitle), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -253,6 +259,7 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Appear on Preview")]
         [NUnit.Framework.TestCaseAttribute("Hardware requirements", null)]
+        [NUnit.Framework.TestCaseAttribute("Additional information", null)]
         public virtual void AppearOnPreview(string pageTitle, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -278,7 +285,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 56
- testRunner.Given(string.Format("that {0} has been completed", pageTitle), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given(string.Format("that {0} has been completed in the Browser based section", pageTitle), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 57
  testRunner.When("a User previews the Marketing Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
