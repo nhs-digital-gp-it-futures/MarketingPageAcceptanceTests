@@ -15,7 +15,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
         {
         }
 
-        [Given(@"that a (.*) Client Application Type is selected")]
+        [Given(@"that a (Browser based|Native mobile or tablet|Native desktop) Client Application Type is selected")]
         public void GivenThatAChosenClientApplicationTypeIsSelected(string clientApplicationType)
         {
             _test.pages.Dashboard.NavigateToSection("Client application type");
@@ -82,12 +82,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
             // Check for link HREF containing the checkbox value from the sub dashboard
             _test.pages.Dashboard.SectionsAvailable(checkboxesSelected).Should().BeTrue();
         }
-
-        /*[Then(@"the (.*) Client Application Type sub-category is available on the Marketing Page Form")]
-        public void ThenTheChosenClientApplicationTypeSub_CategoryIsAvailableOnTheMarketingPageForm(string expectedType)
-        {
-            _test.pages.Dashboard.SectionsAvailable(checkboxesSelected).Should().BeTrue();
-        }*/
 
         [Then(@"no Client Application Type sub-category is available on the Marketing Page Form")]
         public void ThenNoClientApplicationTypeSub_CategoryIsAvailableOnTheMarketingPageForm()
