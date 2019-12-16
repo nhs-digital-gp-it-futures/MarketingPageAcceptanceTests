@@ -48,20 +48,19 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public bool SectionsAvailable(IList<string> checkboxesSelected)
         {
+            var resultCount = 0;
             foreach (var cb in checkboxesSelected)
             {
-                try
+                // Find link that has the saved checkbox value in the href attribute. Return false if any are not found
+                var sectionTitle = driver.FindElements(pages.Dashboard.SectionTitle)
+                    .Single(s => s.Text.Contains(cb));
+                var child = sectionTitle.FindElements(By.CssSelector("a"));
+                if (child.Count > 0)
                 {
-                    // Find link that has the saved checkbox value in the href attribute. Return false if any are not found
-                    driver.FindElements(pages.Dashboard.SectionTitle)
-                        .Single(s => s.FindElement(By.TagName("a")).GetAttribute("href").Contains(cb));
-                }
-                catch
-                {
-                    return false;
+                    resultCount++;
                 }
             }
-            return true;
+            return resultCount == checkboxesSelected.Count;
         }
 
         public bool SectionsHaveStatusIndicator(IList<string> checkboxesSelected)
