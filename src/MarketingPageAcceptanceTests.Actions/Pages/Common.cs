@@ -79,6 +79,11 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             return driver.FindElements(pages.Common.ErrorMessages);
         }
 
+        public string SubDashboardTitle()
+        {
+            return driver.FindElement(pages.Common.SubDashboardTitle).Text;
+        }
+
         public string ClickOnErrorLink()
         {
             var errorMessages = GetErrorMessages().ToList();

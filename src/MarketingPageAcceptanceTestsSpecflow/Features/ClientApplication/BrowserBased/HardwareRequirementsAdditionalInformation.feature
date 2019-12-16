@@ -10,17 +10,17 @@
 		So that I can make sure the information is correct
 
 Scenario Outline: Does not exceed maximum
-	Given the Supplier has entered <MaxChars> characters on the <PageTitle> page	
+	Given the Supplier has entered <MaxChars> characters on the <PageTitle> page in the Browser based section
 	When the Supplier attempts to save 
 	Then the <PageTitle> is saved
 
 	Examples: 
 	| PageTitle              | MaxChars |
 	| Hardware requirements  | 500      |
-	#| Additional information | 500      |
+	| Additional information | 500      |
 
 Scenario Outline: Does exceed maximum
-	Given the Supplier has entered <MaxChars> characters on the <PageTitle> page	
+	Given the Supplier has entered <MaxChars> characters on the <PageTitle> page in the Browser based section
 	When the Supplier attempts to save 
 	Then the Section is not saved 
 	And an indication is given to the Supplier as to why
@@ -28,36 +28,36 @@ Scenario Outline: Does exceed maximum
 	Examples: 
 	| PageTitle              | MaxChars |
 	| Hardware requirements  | 501      |
-	#| Additional information | 501      |
+	| Additional information | 501      |
 
 Scenario Outline: Sub-Section marked as Incomplete - No Mandatory Data Required + no data
-	Given the <PageTitle> Sub-Section does not require Mandatory Data
+	Given the <PageTitle> Sub-Section in the Browser based section does not require Mandatory Data
 	And a Supplier has not saved any data in any field within the Sub-Section
-	When the Browser Based Client Application Sub-Form is presented
+	When the Browser based Client Application Sub-Form is presented
 	Then the <PageTitle> Sub-Section is marked as Incomplete 
 
 	Examples: 
 	| PageTitle              | 
 	| Hardware requirements  | 
-	#| Additional information |
+	| Additional information |
 
 Scenario Outline: Sub-Section marked as Complete - No Mandatory Data Required + data present
-	Given the <PageTitle> Sub-Section does not require Mandatory Data
+	Given the <PageTitle> Sub-Section in the Browser based section does not require Mandatory Data
 	And a Supplier has saved any data in any field within <PageTitle>
-	When the Browser Based Client Application Sub-Form is presented
+	When the Browser based Client Application Sub-Form is presented
 	Then the <PageTitle> Sub-Section is marked as Complete
 
 	Examples: 
-	| PageTitle              | 
-	| Hardware requirements  | 
-	#| Additional information |
+	| PageTitle             | 
+	| Hardware requirements | 
+	| Additional information |
 
 Scenario Outline: Appear on Preview
-	Given that <PageTitle> has been completed
+	Given that <PageTitle> has been completed in the Browser based section
 	When a User previews the Marketing Page
 	Then <PageTitle> will be presented on the Preview of the Marketing Page
 
 	Examples: 
 	| PageTitle              | 
 	| Hardware requirements  | 
-	#| Additional information |
+	| Additional information |
