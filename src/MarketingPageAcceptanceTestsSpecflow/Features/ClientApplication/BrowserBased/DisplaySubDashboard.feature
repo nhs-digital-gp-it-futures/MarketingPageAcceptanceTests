@@ -6,12 +6,12 @@
 Scenario: Sub Sections presented
 	Given that a Supplier has chosen to manage the Browser Based Client Application Type Section
 	When the User has selected Browser Based as a Client Application Type
-	And has navigated to the Browser Based Client Application Sub-Form
+	And has navigated to the Browser based Client Application Sub-Form
 	Then there is a list of Browser Based Client Application Type Sub-Sections 
 	And the Supplier is able to access the Browser Based Client Type Sub-Sections
 
 Scenario: Section status
-	Given each Section has a content validation status
+	Given each Browser based Sub-Section has a content validation status
 	When the Marketing Page Form is presented
 	Then the Browsers supported content validation status is displayed
 	And the Plug-ins or extensions content validation status is displayed

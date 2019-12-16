@@ -10,17 +10,22 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
         {
         }
 
+        private void NavigateToBrowserBasedSubDashboard()
+        {
+            new SharedClientApplicationTypesSteps(_test, _context).WhenHasNavigatedToTheSpecifiedClientApplicationSub_Form("Browser based");
+        }
+
         [Given(@"that an answer has not been provided to the (.*) mandatory question")]
         public void GivenThatAnAnswerHasNotBeenProvidedToThePlug_InsOrExtensionsMandatoryQuestion(string section)
         {
-            _test.pages.Dashboard.NavigateToSection("Browser based", true);
+            NavigateToBrowserBasedSubDashboard();
             _test.pages.BrowserSubDashboard.OpenSection(section);
         }
 
         [Given(@"validation has been triggered on Browser based section (.*)")]
         public void GivenValidationHasBeenTriggeredOnSection(string section)
         {
-            _test.pages.Dashboard.NavigateToSection("Browser based", true);
+            NavigateToBrowserBasedSubDashboard();
             _test.pages.BrowserSubDashboard.OpenSection(section);
             _test.pages.Common.SectionSaveAndReturn();
         }
@@ -28,7 +33,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
         [Given(@"that a User has not provided any mandatory data for (.*)")]
         public void GivenThatAUserHasNotProvidedAnyMandatoryDataForSection(string section)
         {
-            _test.pages.Dashboard.NavigateToSection("Browser based", true);
+            NavigateToBrowserBasedSubDashboard();
             _test.pages.BrowserSubDashboard.OpenSection(section);
         }
 

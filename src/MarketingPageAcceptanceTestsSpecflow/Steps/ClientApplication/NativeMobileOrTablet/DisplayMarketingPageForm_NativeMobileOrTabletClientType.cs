@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using FluentAssertions;
 using MarketingPageAcceptanceTestsSpecflow.Utils;
 using TechTalk.SpecFlow;
 
@@ -25,5 +27,23 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.NativeMob
         {
             _test.pages.Dashboard.NavigateToSection("Native mobile or tablet", true);
         }
+
+        [Then(@"there is a list of Native Mobile or Tablet Client Application Type Sub-Sections")]
+        public void ThenThereIsAListOfNativeMobileOrTabletClientApplicationTypeSub_Sections()
+        {
+            IList<string> subSectionsExpected = new List<string>
+            {
+                "Supported operating systems",
+                "Mobile first",
+                "Memory and storage",
+                "Connection details",
+                "Third party components and device capabilities",
+                "Hardware requirements",
+                "Additional information"
+            };
+
+            _test.pages.BrowserSubDashboard.GetSections().Should().BeEquivalentTo(subSectionsExpected);
+        }
+
     }
 }
