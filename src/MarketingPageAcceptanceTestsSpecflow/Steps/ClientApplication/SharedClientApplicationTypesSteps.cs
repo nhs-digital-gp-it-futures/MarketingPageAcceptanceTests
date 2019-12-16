@@ -24,13 +24,15 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
             _test.pages.HardwareRequirements.EnterText(characters);
         }
 
+        [Given(@"each (Browser based|Native mobile or tablet|Native desktop) Sub-Section has a content validation status")]
         [Given(@"the .* Sub-Section in the (Browser based|Native mobile or tablet|Native desktop) section does not require Mandatory Data")]
         public void GivenTheSub_SectionDoesNotRequireMandatoryData(string section)
         {
             _test.pages.Dashboard.NavigateToSection("Client application type");
+            _test.pages.ClientApplicationTypes.PageDisplayed().Should().BeTrue();
             _test.pages.ClientApplicationTypes.SelectCheckbox(section);
             _test.pages.ClientApplicationTypes.SaveAndReturn();
-            _test.pages.Dashboard.NavigateToSection(section, true);
+            WhenHasNavigatedToTheSpecifiedClientApplicationSub_Form(section);
         }
 
         [When(@"the (Browser based|Native mobile or tablet|Native desktop) Client Application Sub-Form is presented")]
@@ -52,6 +54,13 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
             _test.pages.Common.SectionSaveAndReturn();
             _test.pages.Common.ClickSubDashboardBackLink();
         }
+
+        [When(@"has navigated to the (Browser based|Native mobile or tablet|Native desktop) Client Application Sub-Form")]
+        public void WhenHasNavigatedToTheSpecifiedClientApplicationSub_Form(string desiredSubForm)
+        {
+            _test.pages.Dashboard.NavigateToSection(desiredSubForm, true);
+        }
+
 
     }
 }
