@@ -3,10 +3,15 @@
 	I want to select my Client Application Types
 	So that I can add further information for each Client Application Type
 
-Scenario: Client Application Type Selected
-	Given that a Client Application Type is selected
+Scenario Outline: Client Application Type Selected
+	Given that a <chosen> Client Application Type is selected
 	When the section is saved
 	Then the selected Client Application Type sub-category is available on the Marketing Page Form
+	Examples: 
+	| chosen |
+	| Browser based |
+	| Native mobile or tablet |
+	| Native desktop |
 
 Scenario: Client Application Type Not Selected
 	Given that a Client Application Type is not selected

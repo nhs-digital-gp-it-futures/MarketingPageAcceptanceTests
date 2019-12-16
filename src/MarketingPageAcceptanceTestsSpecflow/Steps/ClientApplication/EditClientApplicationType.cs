@@ -15,12 +15,13 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
         {
         }
 
-        [Given(@"that a Client Application Type is selected")]
-        public void GivenThatAClientApplicationTypeIsSelected()
+        [Given(@"that a (Browser based|Native mobile or tablet|Native desktop) Client Application Type is selected")]
+        public void GivenThatAChosenClientApplicationTypeIsSelected(string clientApplicationType)
         {
             _test.pages.Dashboard.NavigateToSection("Client application type");
             _test.pages.ClientApplicationTypes.PageDisplayed().Should().BeTrue();
-            checkboxesSelected = _test.pages.ClientApplicationTypes.SelectRandomCheckbox();
+            checkboxesSelected = new List<string>() { clientApplicationType };
+            _test.pages.ClientApplicationTypes.SelectCheckbox(clientApplicationType);
         }
 
         [Given(@"that a Client Application Type is not selected")]
