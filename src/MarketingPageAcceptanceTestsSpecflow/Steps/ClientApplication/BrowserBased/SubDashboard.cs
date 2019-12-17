@@ -34,12 +34,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserBa
             _test.pages.ClientApplicationTypes.SaveAndReturn();
         }
 
-        [When(@"has navigated to the Browser Based Client Application Sub-Form")]
-        public void WhenHasNavigatedToTheBrowserBasedClientApplicationSub_Form()
-        {
-            _test.pages.Dashboard.NavigateToSection("Browser based", true);
-        }
-
         [Then(@"there is a list of Browser Based Client Application Type Sub-Sections")]
         public void ThenThereIsAListOfBrowserBasedClientApplicationTypeSub_Sections()
         {
@@ -61,16 +55,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserBa
         {
             _test.pages.BrowserSubDashboard.OpenSection("Browsers supported");
             _test.pages.Common.GoBackOnePage();
-        }
-
-        [Given(@"each Section has a content validation status")]
-        public void GivenEachSectionHasAContentValidationStatus()
-        {
-            _test.pages.Dashboard.NavigateToSection("Client application type");
-            _test.pages.ClientApplicationTypes.PageDisplayed().Should().BeTrue();
-            _test.pages.ClientApplicationTypes.SelectCheckbox("Browser based");
-            _test.pages.ClientApplicationTypes.SaveAndReturn();
-            _test.pages.Dashboard.NavigateToSection("Browser based", true);
         }
 
         [Then(@"the Section content validation status is displayed")]
