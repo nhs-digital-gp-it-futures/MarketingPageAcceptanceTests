@@ -5,8 +5,6 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
     public sealed class CreateSolutionDetails
     {
-        private const string clientApplicationValue = "{ \"ClientApplicationTypes\":[\"browser-based\"],\"BrowsersSupported\":[\"google-chrome\", \"microsoft-edge\", \"mozilla-firefox\"],\"MobileResponsive\":true, \"Plugins\":{\"Required\":true,\"AdditionalInformation\":\"Additional info about plug-ins\"}}";
-
         public static SolutionDetail CreateNewSolutionDetail(string slnId, Guid solutionDetailId, int numFeatures, bool clientApplication = true)
         {
             var faker = new Faker();
@@ -17,7 +15,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
                 SolutionId = slnId,
                 AboutUrl = faker.Internet.Url(),
                 Features = GenerateFeatures(numFeatures, faker),
-                ClientApplication = clientApplication ? clientApplicationValue : string.Empty,
+                ClientApplication = clientApplication ? ClientApplicationStrings.GetClientAppString() : string.Empty,
                 Summary = faker.Commerce.ProductName(),
                 FullDescription = faker.Name.JobTitle()
             };
