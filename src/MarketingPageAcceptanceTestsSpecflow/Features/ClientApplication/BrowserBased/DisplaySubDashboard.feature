@@ -33,3 +33,16 @@ Scenario: Main Form - Client Application Type Section marked as Complete -  Mand
 	And a Supplier has saved all mandatory data on the Browser Based Client Application Type Sub-Sections
 	When the Marketing Page Form is presented 
 	Then the Browser Based Client Application Type Section is marked as Complete
+
+Scenario Outline: Main Form - Client Application Type Section marked as Incomplete - Some data missing
+	Given the Browser Based Client Application Type Section requires Mandatory Data
+	And a Supplier has saved all mandatory data on the Browser Based Client Application Type Sub-Sections except for <section>
+	When the Marketing Page Form is presented 
+	Then the Browser Based Client Application Type Section is marked as Incomplete
+
+	Examples: 
+	| section                     |
+	| Browsers supported          |
+	| Plug-ins or extensions      |
+	| Connectivity and resolution |
+	| Mobile first				  |

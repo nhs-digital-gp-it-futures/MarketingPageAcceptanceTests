@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
-using FluentAssertions;
+﻿using FluentAssertions;
+using MarketingPageAcceptanceTests.TestData.Solutions;
+using MarketingPageAcceptanceTests.TestData.Utils;
 using MarketingPageAcceptanceTestsSpecflow.Utils;
+using System.Collections.Generic;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserBased
@@ -106,13 +108,25 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserBa
         [Given(@"a Supplier has saved all mandatory data on the Browser Based Client Application Type Sub-Sections")]
         public void GivenASupplierHasSavedAllMandatoryDataOnTheBrowserBasedClientApplicationTypeSub_Sections()
         {
+            _test.solutionDetail.ClientApplication = ClientApplicationStrings.GetClientAppString();
+
+            SqlHelper.UpdateSolutionDetails(_test.solutionDetail, _test.connectionString);
+            _test.driver.Navigate().Refresh();
         }
 
         [Then(@"the Browser Based Client Application Type Section is marked as Complete")]
         public void ThenTheBrowserBasedClientApplicationTypeSectionIsMarkedAsComplete()
         {
-
+            _test.pages.Dashboard.AssertSectionStatus("Browser based", "COMPLETE");
         }
 
+        [Given(@"a Supplier has saved all mandatory data on the Browser Based Client Application Type Sub-Sections except for (Browsers supported|Plug-ins or extensions|Connectivity and resolution|Mobile first)")]
+        public void GivenASupplierHasSavedAllMandatoryDataOnTheBrowserBasedClientApplicationTypeSub_Sections(string section)
+        {
+            _test.solutionDetail.ClientApplication = ClientApplicationStrings.GetClientAppString(section);
+
+            SqlHelper.UpdateSolutionDetails(_test.solutionDetail, _test.connectionString);
+            _test.driver.Navigate().Refresh();
+        }
     }
 }
