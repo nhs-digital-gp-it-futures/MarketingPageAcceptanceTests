@@ -3,7 +3,7 @@
 	I want to manage Marketing Page Information for the Native Mobile or Tablet Client Type Section
 	So that I can ensure the information is correct
 
-@ignore
+
 Scenario: Native Mobile or Tablet Client Type Type Sub-Dashboard presented
 	Given that a User has chosen to manage Marketing Page Information
 	When the Marketing Page Form is presented
