@@ -25,20 +25,20 @@ Scenario: Main Form - Browser Based Application Type Section marked as Incomplet
 	And the User has selected Browser Based as a Client Application Type
 	And a Supplier has not saved Mandatory data on all the Browser Based Client Application Type Sub-Sections
 	When the Marketing Page Form is presented
-	Then the Browser Based Client Application Type Section is marked as Incomplete
+	Then the Browser based Sub-Section is marked as Incomplete
 
 Scenario: Main Form - Client Application Type Section marked as Complete -  Mandatory Data Present
 	Given the Browser Based Client Application Type Section requires Mandatory Data
 	And the User has selected Browser Based as a Client Application Type
 	And a Supplier has saved all mandatory data on the Browser Based Client Application Type Sub-Sections
 	When the Marketing Page Form is presented 
-	Then the Browser Based Client Application Type Section is marked as Complete
+	Then the Browser based Sub-Section is marked as Complete
 
 Scenario Outline: Main Form - Client Application Type Section marked as Incomplete - Some data missing
 	Given the Browser Based Client Application Type Section requires Mandatory Data
 	And a Supplier has saved all mandatory data on the Browser Based Client Application Type Sub-Sections except for <section>
-	When the Marketing Page Form is presented 
-	Then the Browser Based Client Application Type Section is marked as Incomplete
+	When the Marketing Page Form is presented 	
+	Then the Browser based Sub-Section is marked as Incomplete
 
 	Examples: 
 	| section                     |

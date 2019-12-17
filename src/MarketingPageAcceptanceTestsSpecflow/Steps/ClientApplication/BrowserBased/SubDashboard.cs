@@ -99,12 +99,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserBa
         {
         }
 
-        [Then(@"the Browser Based Client Application Type Section is marked as Incomplete")]
-        public void ThenTheBrowserBasedClientApplicationTypeSectionIsMarkedAsIncomplete()
-        {
-            _test.pages.Dashboard.AssertSectionStatus("Browser based", "INCOMPLETE");
-        }
-
         [Given(@"a Supplier has saved all mandatory data on the Browser Based Client Application Type Sub-Sections")]
         public void GivenASupplierHasSavedAllMandatoryDataOnTheBrowserBasedClientApplicationTypeSub_Sections()
         {
@@ -112,12 +106,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserBa
 
             SqlHelper.UpdateSolutionDetails(_test.solutionDetail, _test.connectionString);
             _test.driver.Navigate().Refresh();
-        }
-
-        [Then(@"the Browser Based Client Application Type Section is marked as Complete")]
-        public void ThenTheBrowserBasedClientApplicationTypeSectionIsMarkedAsComplete()
-        {
-            _test.pages.Dashboard.AssertSectionStatus("Browser based", "COMPLETE");
         }
 
         [Given(@"a Supplier has saved all mandatory data on the Browser Based Client Application Type Sub-Sections except for (Browsers supported|Plug-ins or extensions|Connectivity and resolution|Mobile first)")]
