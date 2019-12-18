@@ -26,15 +26,16 @@ steps:
     dockerComposeCommand: 'up --scale chrome=4 -d'
     arguments: ''
 
-- task: Bash@3
+- bash: '
+    export SERVERURL=$(SERVERURL) && 
+    export DATABASENAME=$(DATABASENAME) && 
+    export DBUSER=$(DBUSER) && 
+    export DBPASSWORD=$(DBPASSWORD) && 
+    export MPURL=$(MPURL) &&
+    dotnet test src/ -v n -l:trx;LogFileName=/test/results.trx'
+
+- task: PublishTestResults@2
   inputs:
-    targetType: 'inline'
-    script: '
-    export BROWSER=chrome &&
-    export SERVERURL=$SERVERURL &&
-    export DATABASENAME=$DATABASENAME &&
-    export DBUSER=$DBUSER &&
-    export DBPASSWORD=$DBPASSWORD &&
-    export HUBURL=$HUBURL &&
-    export MPURL=$MPURL &&
-    dotnet test src/ -v n'
+    testResultsFiles: '**/*.trx'
+    failTaskOnFailedTests: true
+    testRunner: VSTest
