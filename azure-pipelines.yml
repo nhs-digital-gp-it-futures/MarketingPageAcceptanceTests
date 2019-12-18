@@ -9,6 +9,9 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+  buildConfiguration: 'Release'
+
 steps:
 - task: UseDotNet@2
   displayName: 'Use DotNet Core 3.1'
@@ -18,8 +21,8 @@ steps:
 
 - script: docker-compose up --scale chrome=4 -d
   displayName: docker-compose
-
 - bash: '
+    export BROWSER=chrome && 
     export SERVERURL=$(SERVERURL) && 
     export DATABASENAME=$(DATABASENAME) && 
     export DBUSER=$(DBUSER) && 
