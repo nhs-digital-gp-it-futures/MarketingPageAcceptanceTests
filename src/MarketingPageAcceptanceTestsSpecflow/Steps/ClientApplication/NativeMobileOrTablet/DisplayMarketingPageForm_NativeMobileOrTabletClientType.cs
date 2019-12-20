@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using FluentAssertions;
+﻿using FluentAssertions;
 using MarketingPageAcceptanceTestsSpecflow.Utils;
+using System.Collections.Generic;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.NativeMobileOrTablet
@@ -21,7 +20,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.NativeMob
             _test.pages.ClientApplicationTypes.SelectCheckbox("Native mobile or tablet");
             _test.pages.ClientApplicationTypes.SaveAndReturn();
         }
-        
+
         [Then(@"the Authority User is able to access the Native Mobile or Tablet Client Type Type Sub-Dashboard")]
         public void ThenTheAuthorityUserIsAbleToAccessTheNativeMobileOrTabletClientTypeTypeSub_Dashboard()
         {

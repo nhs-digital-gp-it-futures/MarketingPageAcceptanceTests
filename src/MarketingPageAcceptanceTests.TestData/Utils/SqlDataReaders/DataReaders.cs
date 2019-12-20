@@ -1,6 +1,6 @@
-﻿using System;
+﻿using MarketingPageAcceptanceTests.TestData.ContactDetails;
+using System;
 using System.Data;
-using MarketingPageAcceptanceTests.TestData.ContactDetails;
 
 namespace MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders
 {

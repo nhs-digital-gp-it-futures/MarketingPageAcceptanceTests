@@ -1,8 +1,8 @@
-﻿using System;
-using FluentAssertions;
+﻿using FluentAssertions;
 using MarketingPageAcceptanceTests.TestData.ContactDetails;
 using MarketingPageAcceptanceTests.TestData.Utils;
 using MarketingPageAcceptanceTestsSpecflow.Utils;
+using System;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutSolution
