@@ -22,7 +22,8 @@ namespace MarketingPageAcceptanceTests.Actions
                 ContactDetails = new ContactDetails(driver),
                 HardwareRequirements = new HardwareRequirements(driver),
                 ConnectivityAndResolution = new ConnectivityAndResolution(driver),
-                MobileFirst = new MobileFirst(driver)
+                MobileFirst = new MobileFirst(driver),
+                NativeMobileOperatingSystems = new NativeMobileOperatingSystems(driver)
             };
         }
 

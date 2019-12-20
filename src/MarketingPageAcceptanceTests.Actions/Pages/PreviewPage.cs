@@ -1,8 +1,8 @@
-using System.Collections.Generic;
-using System.Linq;
 using FluentAssertions;
 using MarketingPageAcceptanceTests.TestData.ContactDetails;
 using OpenQA.Selenium;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
@@ -61,6 +61,13 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             driver.FindElements(pages.PreviewPage.BrowserBasedSectionTitles)
                 .Where(s => s.Text.ToLower().Contains(section.ToLower()))
                 .Count().Should().BeGreaterThan(0);
+        }
+
+        public void ExpandSection(string subDashboard)
+        {
+            driver.FindElements(pages.PreviewPage.ExpandingSections)
+                .Single(s => s.Text.Contains(subDashboard))
+                .Click();
         }
 
         public IWebElement GetSolutionLink()

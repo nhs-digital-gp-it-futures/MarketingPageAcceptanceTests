@@ -51,6 +51,14 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps
             _test.pages.PreviewPage.SectionDisplayed(section);
         }
 
+        [Then(@"(.*) will be presented in (.*) on the Preview of the Marketing Page")]
+        public void ThenSupportedOperatingSystemsWillBePresentedInNativeMobileOrTabletOnThePreviewOfTheMarketingPage(string section, string subDashboard)
+        {
+            _test.pages.PreviewPage.ExpandSection(subDashboard);
+            _test.pages.PreviewPage.SectionDisplayed(section);
+        }
+
+
         [When(@"the User exits the page")]
         public void WhenTheUserExitsThePage()
         {

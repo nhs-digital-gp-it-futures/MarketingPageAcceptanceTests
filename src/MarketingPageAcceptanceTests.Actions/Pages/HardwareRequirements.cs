@@ -1,8 +1,5 @@
 ﻿using MarketingPageAcceptanceTests.TestData.Information;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
