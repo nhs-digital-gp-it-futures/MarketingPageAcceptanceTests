@@ -1,7 +1,7 @@
 ﻿Feature: OperatingSystemsSupported
-	In order to avoid silly mistakes
-	As a math idiot
-	I want to be told the sum of two numbers
+	As an Authority User
+	I want to edit the Operating Systems Sub-Section
+	So that I can make sure the information is correct
 
 Scenario: Mandatory - Yes
 Given that a User has provided a value for the Mandatory Information
