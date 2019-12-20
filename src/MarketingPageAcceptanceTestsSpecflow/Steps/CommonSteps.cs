@@ -10,11 +10,11 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps
         {
         }
 
-        [Given(@"the user has set Browser based application type")]
-        public void GivenTheUserHasSetBrowserBasedApplicationType()
+        [Given(@"the user has set (.*) application type")]
+        public void GivenTheUserHasSetBrowserBasedApplicationType(string clientType)
         {
             _test.pages.Dashboard.NavigateToSection("Client application type");
-            _test.pages.ClientApplicationTypes.SelectCheckbox("Browser based");
+            _test.pages.ClientApplicationTypes.SelectCheckbox(clientType);
             _test.pages.ClientApplicationTypes.SaveAndReturn();
         }
 
