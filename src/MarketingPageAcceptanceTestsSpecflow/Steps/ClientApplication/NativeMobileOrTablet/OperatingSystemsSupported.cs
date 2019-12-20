@@ -10,46 +10,70 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.NativeMob
         {
         }
 
-        [Given(@"that a User has provided a value for the Mandatory Information")]
-        public void GivenThatAUserHasProvidedAValueForTheMandatoryInformation()
+        [Given(@"that a User has provided a value for the Mandatory Information for (.*) section on (.*) sub dashboard")]
+        public void GivenThatAUserHasProvidedAValueForTheMandatoryInformation(string section, string subDashboard)
         {
-            _context.Pending();
+            _test.pages.Dashboard.NavigateToSection("Client application type");
+            _test.pages.ClientApplicationTypes.SelectCheckbox(subDashboard);
+            _test.pages.ClientApplicationTypes.SaveAndReturn();
+            _test.pages.Dashboard.NavigateToSection(subDashboard, true);
+            _test.pages.BrowserSubDashboard.OpenSection(section);
+
+            _test.pages.NativeMobileOperatingSystems.SelectCheckboxes(1);
+            _test.pages.Common.SectionSaveAndReturn();
         }
 
-        [Given(@"that an answer has not been provided to the mandatory question")]
-        public void GivenThatAnAnswerHasNotBeenProvidedToTheMandatoryQuestion()
+        [Given(@"that an answer has not been provided to the mandatory question for (.*) section on (.*) sub dashboard")]
+        public void GivenThatAnAnswerHasNotBeenProvidedToTheMandatoryQuestion(string section, string subDashboard)
         {
-            _context.Pending();
+            _test.pages.Dashboard.NavigateToSection("Client application type");
+            _test.pages.ClientApplicationTypes.SelectCheckbox(subDashboard);
+            _test.pages.ClientApplicationTypes.SaveAndReturn();
+            _test.pages.Dashboard.NavigateToSection(subDashboard, true);
         }
 
-        [Given(@"the User has entered text")]
-        public void GivenTheUserHasEnteredText()
+        [Given(@"the User has entered (.*) characters for (.*) section on (.*) sub dashboard")]
+        public void GivenTheUserHasEnteredText(int characters, string section, string subDashboard)
         {
-            _context.Pending();
+            _test.pages.Dashboard.NavigateToSection("Client application type");
+            _test.pages.ClientApplicationTypes.SelectCheckbox(subDashboard);
+            _test.pages.ClientApplicationTypes.SaveAndReturn();
+            _test.pages.Dashboard.NavigateToSection(subDashboard, true);
+            _test.pages.BrowserSubDashboard.OpenSection(section);
+
+            _test.pages.NativeMobileOperatingSystems.SelectCheckboxes(1);
+
+            _test.pages.NativeMobileOperatingSystems.TextAreaSendText(characters);
         }
 
-        [Given(@"that a User has not provided any mandatory data")]
-        public void GivenThatAUserHasNotProvidedAnyMandatoryData()
+        [Given(@"that a User has not provided any mandatory data on (.*) sub dashboard for (.*) section")]
+        public void GivenThatAUserHasNotProvidedAnyMandatoryDataOnNativeMobileOrTabletSubDashboardForSupportedOperatingSystemsSection(string subDashboard, string section)
         {
-            _context.Pending();
+            _test.pages.Dashboard.NavigateToSection("Client application type");
+            _test.pages.ClientApplicationTypes.SelectCheckbox(subDashboard);
+            _test.pages.ClientApplicationTypes.SaveAndReturn();
+            _test.pages.Dashboard.NavigateToSection(subDashboard, true);
+            _test.pages.BrowserSubDashboard.OpenSection(section);
         }
 
-        [When(@"the User is managing their Operating System Information")]
-        public void WhenTheUserIsManagingTheirOperatingSystemInformation()
+        [Given(@"validation has been triggered on (.*) section (.*)")]
+        public void GivenValidationHasBeenTriggeredOnNativeMobileOrTabletSectionSupportedOperatingSystems(string subDashboard, string section)
         {
-            _context.Pending();
+            GivenThatAUserHasNotProvidedAnyMandatoryDataOnNativeMobileOrTabletSubDashboardForSupportedOperatingSystemsSection(subDashboard, section);
+
+            _test.pages.Common.SectionSaveAndReturn();
         }
 
-        [Then(@"the Section is marked as '(.*)' on the Native Desktop Client Type Sub-Form")]
-        public void ThenTheSectionIsMarkedAsOnTheNativeDesktopClientTypeSub_Form(string status)
+
+        [Given(@"the User has saved all data for (.*) section on (.*) sub dashboard")]
+        public void GivenTheUserHasSavedAllDataForSupportedOperatingSystemsSectionOnNativeMobileOrTabletSubDashboard(string section, string subDashboard)
         {
-            _context.Pending();
+            GivenTheUserHasEnteredText(100, section, subDashboard);
+
+            _test.pages.Common.SectionSaveAndReturn();
+
+            _test.pages.Common.ClickSubDashboardBackLink();
         }
 
-        [Then(@"the Section is marked as '(.*)' on the Browser Based Client Type Sub-Form")]
-        public void ThenTheSectionIsMarkedAsOnTheBrowserBasedClientTypeSub_Form(string status)
-        {
-            _context.Pending();
-        }
     }
 }

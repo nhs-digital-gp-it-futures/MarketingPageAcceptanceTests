@@ -3,48 +3,37 @@
 	I want to edit the Operating Systems Sub-Section
 	So that I can make sure the information is correct
 
-@ignore
 Scenario: Mandatory - Yes
-Given that a User has provided a value for the Mandatory Information
-When the User is managing their Operating System Information
-Then the Supported operating systems Sub-Section is marked as Complete 
+	Given that a User has provided a value for the Mandatory Information for Supported operating systems section on Native mobile or tablet sub dashboard
+	Then the Supported operating systems Sub-Section is marked as Complete 
 
-@ignore
 Scenario: Data not Saved
-Given that an answer has not been provided to the mandatory question
-When the User exits the page
-Then the Supported operating systems Sub-Section is marked as Incomplete 
+	Given that an answer has not been provided to the mandatory question for Supported operating systems section on Native mobile or tablet sub dashboard
+	Then the Supported operating systems Sub-Section is marked as Incomplete 
 
-@ignore
 Scenario: Supported operating systems does not exceed maximum
-Given the User has entered text
-And it does not exceed the maximum character count
-When the User attempts to save 
-Then the Section is saved
+	Given the User has entered 1000 characters for Supported operating systems section on Native mobile or tablet sub dashboard
+	When the User attempts to save 
+	Then the Supported operating systems is saved
 
-@ignore
 Scenario: Supported operating systems does exceed maximum
-Given the User has entered text
-And it does exceed the maximum character count
-When the User attempts to save 
-Then the Section is not saved 
-And an indication is given to the User as to why
+	Given the User has entered 1001 characters for Supported operating systems section on Native mobile or tablet sub dashboard
+	When the Supplier attempts to save 
+	Then the Section is not saved 
+	And an indication is given to the Supplier as to why
 
-@ignore
 Scenario: Appear on Preview - Supported operating systems
-Given that data has been saved in this section
-When a User previews the Marketing Page
-Then data will be presented on the Preview of the Marketing Page
+	Given the User has saved all data for Supported operating systems section on Native mobile or tablet sub dashboard	
+	When a User previews the Marketing Page
+	Then Supported operating systems will be presented in Native mobile or tablet on the Preview of the Marketing Page
 
-@ignore
 Scenario: Supported operating systems Mandatory Data Missing Validation
-Given that a User has not provided any mandatory data
-When the User attempts to save
-Then the Section is not saved 
-And an indication is given to the User as to why
+	Given that a User has not provided any mandatory data on Native mobile or tablet sub dashboard for Supported operating systems section
+	When the User attempts to save
+	Then the Section is not saved 
+	And an indication is given to the Supplier as to why
 
-@ignore
 Scenario: Supported operating systems Validation Error Message Anchors
-Given validation has been triggered
-When the User selects an error link in the Error Summary
-Then the User will be navigated to the relevant section on the page
+	Given validation has been triggered on Native mobile or tablet section Supported operating systems
+	When the User selects an error link in the Error Summary
+	Then the User will be navigated to the relevant section on the page

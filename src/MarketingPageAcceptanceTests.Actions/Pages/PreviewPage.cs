@@ -63,6 +63,13 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                 .Count().Should().BeGreaterThan(0);
         }
 
+        public void ExpandSection(string subDashboard)
+        {
+            driver.FindElements(pages.PreviewPage.ExpandingSections)
+                .Single(s => s.Text.Contains(subDashboard))
+                .Click();
+        }
+
         public IWebElement GetSolutionLink()
         {
             return driver.FindElement(pages.PreviewPage.SolutionDescriptionLinkSection)
