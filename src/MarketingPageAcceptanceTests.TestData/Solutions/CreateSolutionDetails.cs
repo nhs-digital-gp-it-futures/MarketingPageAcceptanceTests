@@ -1,5 +1,5 @@
-﻿using System;
-using Bogus;
+﻿using Bogus;
+using System;
 
 namespace MarketingPageAcceptanceTests.TestData.Solutions
 {

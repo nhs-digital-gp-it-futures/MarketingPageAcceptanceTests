@@ -20,7 +20,8 @@ namespace MarketingPageAcceptanceTests.Objects
                 ContactDetails = new Pages.ContactDetails(),
                 HardwareRequirements = new Pages.HardwareRequirements(),
                 ConnectivityAndResolution = new Pages.ConnectivityAndResolution(),
-                MobileFirst = new Pages.MobileFirst()
+                MobileFirst = new Pages.MobileFirst(),
+                SupportedOperatingSystems = new Pages.SupportedOperatingSystems()
             };
         }
 

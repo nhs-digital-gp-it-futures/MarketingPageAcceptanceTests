@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using MarketingPageAcceptanceTestsSpecflow.Utils;
+﻿using MarketingPageAcceptanceTestsSpecflow.Utils;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.HardwareRequirements
@@ -14,7 +13,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.HardwareR
         [Given(@"a Supplier has not saved any data in any field within the Sub-Section")]
         public void GivenASupplierHasNotSavedAnyDataInAnyFieldWithinTheSub_Section()
         {
-            
+
         }
 
         [Given(@"a Supplier has saved any data in any field within (.*)")]

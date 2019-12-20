@@ -1,9 +1,9 @@
-﻿using System;
-using System.IO;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
+using System;
+using System.IO;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Utils
 {

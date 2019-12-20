@@ -17,5 +17,6 @@ namespace MarketingPageAcceptanceTests.Objects.Collections
         public HardwareRequirements HardwareRequirements { get; set; }
         public ConnectivityAndResolution ConnectivityAndResolution { get; set; }
         public MobileFirst MobileFirst { get; set; }
+        public SupportedOperatingSystems SupportedOperatingSystems { get; set; }
     }
 }
