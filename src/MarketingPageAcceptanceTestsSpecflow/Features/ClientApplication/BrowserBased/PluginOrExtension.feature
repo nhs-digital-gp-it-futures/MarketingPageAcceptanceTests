@@ -12,7 +12,7 @@ Scenario: Data Saved
 	Then the Plug-ins or extensions section is marked as COMPLETE on the Browser Based Client Type Sub-Form
 
 Scenario: Data not Saved
-	Given that an answer has not been provided to the Plug-ins or extensions mandatory question
+	Given that an answer has not been provided to the Plug-ins or extensions mandatory question on the Browser based section
 	When the User exits the page
 	Then on the Browser based dashboard
 	And the Plug-ins or extensions section is marked as INCOMPLETE on the Browser Based Client Type Sub-Form
