@@ -15,10 +15,10 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
             new SharedClientApplicationTypesSteps(_test, _context).WhenHasNavigatedToTheSpecifiedClientApplicationSub_Form("Browser based");
         }
 
-        [Given(@"that an answer has not been provided to the (.*) mandatory question")]
-        public void GivenThatAnAnswerHasNotBeenProvidedToThePlug_InsOrExtensionsMandatoryQuestion(string section)
+        [Given(@"that an answer has not been provided to the (.*) mandatory question on the (.*) section")]
+        public void GivenThatAnAnswerHasNotBeenProvidedToThePlug_InsOrExtensionsMandatoryQuestion(string section, string subDashboard)
         {
-            NavigateToBrowserBasedSubDashboard();
+            _test.pages.Dashboard.NavigateToSection(subDashboard, true);
             _test.pages.BrowserSubDashboard.OpenSection(section);
         }
 

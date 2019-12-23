@@ -13,10 +13,10 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.MobileFir
 
         }
 
-        [Given(@"that an answer is provided to the mobile first question")]
-        public void GivenThatAnAnswerIsProvidedToTheMobileFirstQuestion()
+        [Given(@"that an answer is provided to the (.*) mobile first question")]
+        public void GivenThatAnAnswerIsProvidedToTheMobileFirstQuestion(string subDashboard)
         {
-            _test.pages.Dashboard.NavigateToSection("Browser based", true);
+            _test.pages.Dashboard.NavigateToSection(subDashboard, true);
             _test.pages.BrowserSubDashboard.OpenSection("Mobile first");
 
             var choice = new Random().Next() > (int.MaxValue / 2) ? "Yes" : "No";

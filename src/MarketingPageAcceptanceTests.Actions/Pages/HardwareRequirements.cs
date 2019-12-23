@@ -13,7 +13,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             string randomText = RandomInformation.RandomString(characters);
 
-            driver.FindElement(pages.HardwareRequirements.HardwareRequirementsDescription).SendKeys(randomText);
+            driver.FindElement(pages.BrowserBasedSections.HardwareRequirements.HardwareRequirementsDescription).SendKeys(randomText);
         }
     }
 }

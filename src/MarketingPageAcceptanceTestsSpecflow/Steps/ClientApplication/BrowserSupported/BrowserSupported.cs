@@ -53,10 +53,10 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserSu
             _test.pages.Dashboard.NavigateToPreviewPage();
         }
 
-        [Then(@"on the Browser based dashboard")]
-        public void NavigateToBrowserBased()
+        [Then(@"on the (.*) dashboard")]
+        public void NavigateToSubDashboard(string subDashboard)
         {
-            _test.pages.Dashboard.NavigateToSection("Browser based", true);
+            _test.pages.Dashboard.NavigateToSection(subDashboard, true);
         }
 
         [Then(@"data will be presented on the Preview of the Marketing Page")]

@@ -12,7 +12,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void SelectCheckboxes(int numberToSelect)
         {
-            IList<IWebElement> checkboxes = driver.FindElements(pages.SupportedOperatingSystems.OperatingSystems);
+            IList<IWebElement> checkboxes = driver.FindElements(pages.NativeMobileSections.SupportedOperatingSystems.OperatingSystems);
 
             for (int i = 0; i < numberToSelect; i++)
             {
@@ -24,7 +24,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             var text = RandomInformation.RandomString(characters);
 
-            driver.FindElement(pages.SupportedOperatingSystems.OperatingSystemsDescription).SendKeys(text);
+            driver.FindElement(pages.NativeMobileSections.SupportedOperatingSystems.OperatingSystemsDescription).SendKeys(text);
         }
     }
 }
