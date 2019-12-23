@@ -61,6 +61,13 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
             _test.pages.Dashboard.NavigateToSection(desiredSubForm, true);
         }
 
+        [Given(@"validation has been triggered on (.*) section (.*)")]
+        public void GivenValidationHasBeenTriggeredOnNativeMobileOrTabletSectionSupportedOperatingSystems(string subDashboard, string section)
+        {
+            _test.pages.Dashboard.NavigateToSection(subDashboard, true);
+            _test.pages.BrowserSubDashboard.OpenSection(section);
+            _test.pages.Common.SectionSaveAndReturn();
+        }
 
     }
 }

@@ -3,6 +3,9 @@
 	I want to edit the Operating Systems Sub-Section
 	So that I can make sure the information is correct
 
+Background:
+	Given the user has set Native mobile or tablet application type
+
 Scenario: Mandatory - Yes
 	Given that a User has provided a value for the Mandatory Information for Supported operating systems section on Native mobile or tablet sub dashboard
 	Then the Supported operating systems Sub-Section is marked as Complete 

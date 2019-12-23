@@ -22,14 +22,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
             _test.pages.BrowserSubDashboard.OpenSection(section);
         }
 
-        [Given(@"validation has been triggered on Browser based section (.*)")]
-        public void GivenValidationHasBeenTriggeredOnSection(string section)
-        {
-            NavigateToBrowserBasedSubDashboard();
-            _test.pages.BrowserSubDashboard.OpenSection(section);
-            _test.pages.Common.SectionSaveAndReturn();
-        }
-
         [Given(@"that a User has not provided any mandatory data for (.*)")]
         public void GivenThatAUserHasNotProvidedAnyMandatoryDataForSection(string section)
         {
