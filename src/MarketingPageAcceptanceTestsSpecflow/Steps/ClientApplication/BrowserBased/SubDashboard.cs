@@ -49,20 +49,20 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserBa
                 "Mobile first"
             };
 
-            _test.pages.BrowserSubDashboard.GetSections().Should().BeEquivalentTo(subSectionsExpected);
+            _test.pages.BrowserBasedSections.BrowserSubDashboard.GetSections().Should().BeEquivalentTo(subSectionsExpected);
         }
 
         [Then(@"the Supplier is able to access the Browser Based Client Type Sub-Sections")]
         public void ThenTheSupplierIsAbleToAccessTheBrowserBasedClientTypeSub_Sections()
         {
-            _test.pages.BrowserSubDashboard.OpenSection("Browsers supported");
+            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection("Browsers supported");
             _test.pages.Common.GoBackOnePage();
         }
 
         [Then(@"the Section content validation status is displayed")]
         public void ThenTheSectionContentValidationStatusIsDisplayed()
         {
-            _test.pages.BrowserSubDashboard.SectionsHaveStatusIndicators();
+            _test.pages.BrowserBasedSections.BrowserSubDashboard.SectionsHaveStatusIndicators();
         }
 
         [Given(@"the Browser Based Client Application Type Section requires Mandatory Data")]

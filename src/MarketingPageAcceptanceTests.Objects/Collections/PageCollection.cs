@@ -30,5 +30,6 @@ namespace MarketingPageAcceptanceTests.Objects.Collections
     {
 
         public SupportedOperatingSystems SupportedOperatingSystems { get; set; }
+        public MemoryAndStorage MemoryAndStorage { get; set; }
     }
 }

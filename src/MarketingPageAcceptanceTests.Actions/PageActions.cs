@@ -16,14 +16,21 @@ namespace MarketingPageAcceptanceTests.Actions
                 SolutionDescription = new SolutionDescription(driver),
                 PreviewPage = new PreviewPage(driver),
                 ClientApplicationTypes = new ClientApplicationTypes(driver),
-                BrowserSubDashboard = new BrowserSubDashboard(driver),
-                BrowsersSupported = new BrowsersSupported(driver),
-                PluginsOrExtensions = new PluginsOrExtensions(driver),
-                ContactDetails = new ContactDetails(driver),
-                HardwareRequirements = new HardwareRequirements(driver),
-                ConnectivityAndResolution = new ConnectivityAndResolution(driver),
-                MobileFirst = new MobileFirst(driver),
-                NativeMobileOperatingSystems = new NativeMobileOperatingSystems(driver)
+                BrowserBasedSections = new BrowserBasedSections()
+                {
+                    BrowserSubDashboard = new BrowserSubDashboard(driver),
+                    BrowsersSupported = new BrowsersSupported(driver),
+                    PluginsOrExtensions = new PluginsOrExtensions(driver),
+                    HardwareRequirements = new HardwareRequirements(driver),
+                    ConnectivityAndResolution = new ConnectivityAndResolution(driver),
+                    MobileFirst = new MobileFirst(driver),
+                },
+                NativeMobileSections = new NativeMobileSections()
+                {
+                    OperatingSystems = new NativeMobileOperatingSystems(driver),
+                    MemoryAndStorage = new MemoryAndStorage(driver)
+                },
+                ContactDetails = new ContactDetails(driver)
             };
         }
 

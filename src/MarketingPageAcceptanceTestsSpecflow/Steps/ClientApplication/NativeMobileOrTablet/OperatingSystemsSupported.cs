@@ -14,9 +14,9 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.NativeMob
         public void GivenThatAUserHasProvidedAValueForTheMandatoryInformation(string section, string subDashboard)
         {
             _test.pages.Dashboard.NavigateToSection(subDashboard, true);
-            _test.pages.BrowserSubDashboard.OpenSection(section);
+            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection(section);
 
-            _test.pages.NativeMobileOperatingSystems.SelectCheckboxes(1);
+            _test.pages.NativeMobileSections.OperatingSystems.SelectCheckboxes(1);
             _test.pages.Common.SectionSaveAndReturn();
         }
 
@@ -30,18 +30,24 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.NativeMob
         public void GivenTheUserHasEnteredText(int characters, string section, string subDashboard)
         {
             _test.pages.Dashboard.NavigateToSection(subDashboard, true);
-            _test.pages.BrowserSubDashboard.OpenSection(section);
+            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection(section);
 
-            _test.pages.NativeMobileOperatingSystems.SelectCheckboxes(1);
-
-            _test.pages.NativeMobileOperatingSystems.TextAreaSendText(characters);
+            switch (section) {
+                case "Supported operating systems":                    
+                    _test.pages.NativeMobileSections.OperatingSystems.SelectCheckboxes(1);
+                    _test.pages.NativeMobileSections.OperatingSystems.TextAreaSendText(characters);
+                    break;
+                case "Memory and storage":
+                    _test.pages.NativeMobileSections.MemoryAndStorage.TextAreaSend(characters);
+                    break;
+            }
         }
 
         [Given(@"that a User has not provided any mandatory data on (.*) sub dashboard for (.*) section")]
         public void GivenThatAUserHasNotProvidedAnyMandatoryDataOnNativeMobileOrTabletSubDashboardForSupportedOperatingSystemsSection(string subDashboard, string section)
         {
             _test.pages.Dashboard.NavigateToSection(subDashboard, true);
-            _test.pages.BrowserSubDashboard.OpenSection(section);
+            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection(section);
         }
 
 

@@ -19,14 +19,14 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
         public void GivenThatAnAnswerHasNotBeenProvidedToThePlug_InsOrExtensionsMandatoryQuestion(string section, string subDashboard)
         {
             _test.pages.Dashboard.NavigateToSection(subDashboard, true);
-            _test.pages.BrowserSubDashboard.OpenSection(section);
+            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection(section);
         }
 
         [Given(@"that a User has not provided any mandatory data for (.*)")]
         public void GivenThatAUserHasNotProvidedAnyMandatoryDataForSection(string section)
         {
             NavigateToBrowserBasedSubDashboard();
-            _test.pages.BrowserSubDashboard.OpenSection(section);
+            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection(section);
         }
 
         [Given(@"the user has saved the data")]
