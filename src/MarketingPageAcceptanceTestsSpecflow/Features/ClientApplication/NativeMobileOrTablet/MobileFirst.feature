@@ -19,12 +19,11 @@ Scenario: Data not Saved
 	Then on the Native mobile or tablet dashboard
 	And the Mobile first section is marked as INCOMPLETE on the Browser Based Client Type Sub-Form
 
-@ignore
 Scenario: Appear on Preview
 	Given that an answer is provided to the Native mobile or tablet mobile first question
 	And the user has saved the data
 	When a User previews the Marketing Page
-	Then Mobile first will be presented on the Preview of the Marketing Page
+	Then Designed with a mobile first approach will be presented in Native mobile or tablet on the Preview of the Marketing Page
 
 Scenario: Mandatory Data Missing Validation
 	Given that an answer has not been provided to the Mobile first mandatory question on the Native mobile or tablet section
