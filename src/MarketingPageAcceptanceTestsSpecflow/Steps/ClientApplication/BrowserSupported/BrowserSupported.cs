@@ -21,11 +21,11 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserSu
             _test.pages.ClientApplicationTypes.SelectCheckbox("Browser based");
             _test.pages.ClientApplicationTypes.SaveAndReturn();
             _test.pages.Dashboard.NavigateToSection("Browser based", true);
-            _test.pages.BrowserSubDashboard.OpenSection("Browsers supported");
+            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection("Browsers supported");
 
             browsersSupportedCount = new Random().Next(1, 8);
-            _test.pages.BrowsersSupported.SelectRandomCheckboxes(browsersSupportedCount);
-            _test.pages.BrowsersSupported.SelectRandomRadioButton();
+            _test.pages.BrowserBasedSections.BrowsersSupported.SelectRandomCheckboxes(browsersSupportedCount);
+            _test.pages.BrowserBasedSections.BrowsersSupported.SelectRandomRadioButton();
         }
 
         [Given(@"that data has been saved for Browsers supported")]
@@ -44,7 +44,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserSu
             _test.pages.ClientApplicationTypes.SaveAndReturn();
             _test.pages.Dashboard.NavigateToSection("Browser based", true);
 
-            _test.pages.BrowserSubDashboard.OpenSection("Browsers supported");
+            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection("Browsers supported");
         }
 
         [When(@"a User previews the Marketing Page")]
@@ -53,10 +53,10 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserSu
             _test.pages.Dashboard.NavigateToPreviewPage();
         }
 
-        [Then(@"on the Browser based dashboard")]
-        public void NavigateToBrowserBased()
+        [Then(@"on the (.*) dashboard")]
+        public void NavigateToSubDashboard(string subDashboard)
         {
-            _test.pages.Dashboard.NavigateToSection("Browser based", true);
+            _test.pages.Dashboard.NavigateToSection(subDashboard, true);
         }
 
         [Then(@"data will be presented on the Preview of the Marketing Page")]

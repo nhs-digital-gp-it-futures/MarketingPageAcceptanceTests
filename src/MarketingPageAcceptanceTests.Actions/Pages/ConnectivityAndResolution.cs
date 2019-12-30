@@ -12,13 +12,13 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void SelectMinimumConnectionSpeed(string textValue)
         {
-            new SelectElement(driver.FindElement(pages.ConnectivityAndResolution.MinimumConnectionSpeed))
+            new SelectElement(driver.FindElement(pages.BrowserBasedSections.ConnectivityAndResolution.MinimumConnectionSpeed))
                  .SelectByText(textValue);
         }
 
         public void SelectMinimumDesktopResolution(string textValue)
         {
-            new SelectElement(driver.FindElement(pages.ConnectivityAndResolution.MinimumDesktopResolution))
+            new SelectElement(driver.FindElement(pages.BrowserBasedSections.ConnectivityAndResolution.MinimumDesktopResolution))
                 .SelectByText(textValue);
         }
     }

@@ -17,12 +17,12 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.Connectiv
         public void GivenThatAUserHasProvidedAValueForTheConnectivityAndResolutionMandatoryInformation()
         {
             _test.pages.Dashboard.NavigateToSection("Browser based", true);
-            _test.pages.BrowserSubDashboard.OpenSection("Connectivity and resolution");
+            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection("Connectivity and resolution");
 
             expectedMinimumConnectionSpeed = "0.5Mbps";
             expectedMinimumDesktopResolution = "4:3 - 800 x 600";
-            _test.pages.ConnectivityAndResolution.SelectMinimumConnectionSpeed(expectedMinimumConnectionSpeed);
-            _test.pages.ConnectivityAndResolution.SelectMinimumDesktopResolution(expectedMinimumDesktopResolution);
+            _test.pages.BrowserBasedSections.ConnectivityAndResolution.SelectMinimumConnectionSpeed(expectedMinimumConnectionSpeed);
+            _test.pages.BrowserBasedSections.ConnectivityAndResolution.SelectMinimumDesktopResolution(expectedMinimumDesktopResolution);
         }
 
         [Then(@"the Connectivity and resolution details match as expected on the Preview of the Marketing Page")]

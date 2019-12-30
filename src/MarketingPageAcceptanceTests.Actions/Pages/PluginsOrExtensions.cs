@@ -11,7 +11,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void SelectRadioButton(string choice)
         {
-            driver.FindElements(pages.PluginsOrExtensions.PluginsRequired)
+            driver.FindElements(pages.BrowserBasedSections.PluginsOrExtensions.PluginsRequired)
                 .Single(s => s.FindElement(By.TagName("label")).Text.Contains(choice))
                 .FindElement(By.TagName("input"))
                 .Click();
@@ -19,7 +19,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void EnterPluginInformation(string information)
         {
-            var infoArea = driver.FindElement(pages.PluginsOrExtensions.PluginDetail);
+            var infoArea = driver.FindElement(pages.BrowserBasedSections.PluginsOrExtensions.PluginDetail);
             infoArea.SendKeys(information);
         }
     }

@@ -19,9 +19,9 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
             _test.pages.ClientApplicationTypes.SaveAndReturn();
             _test.pages.Dashboard.NavigateToSection(section, true);
 
-            _test.pages.BrowserSubDashboard.OpenSection(page);
+            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection(page);
 
-            _test.pages.HardwareRequirements.EnterText(characters);
+            _test.pages.BrowserBasedSections.HardwareRequirements.EnterText(characters);
         }
 
         [Given(@"each (Browser based|Native mobile or tablet|Native desktop) Sub-Section has a content validation status")]
@@ -65,7 +65,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
         public void GivenValidationHasBeenTriggeredOnNativeMobileOrTabletSectionSupportedOperatingSystems(string subDashboard, string section)
         {
             _test.pages.Dashboard.NavigateToSection(subDashboard, true);
-            _test.pages.BrowserSubDashboard.OpenSection(section);
+            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection(section);
             _test.pages.Common.SectionSaveAndReturn();
         }
 

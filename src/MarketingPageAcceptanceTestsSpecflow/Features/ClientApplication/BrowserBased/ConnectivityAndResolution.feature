@@ -12,7 +12,7 @@ Scenario: Mandatory - Yes
 	Then the Connectivity and resolution section is marked as COMPLETE on the Browser Based Client Type Sub-Form
 
 Scenario:  Mandatory - No
-	Given that an answer has not been provided to the Connectivity and resolution mandatory question
+	Given that an answer has not been provided to the Connectivity and resolution mandatory question on the Browser based section
 	When the User exits the page
 	Then on the Browser based dashboard
 	And the Connectivity and resolution section is marked as INCOMPLETE on the Browser Based Client Type Sub-Form
@@ -26,7 +26,7 @@ Scenario: Appear on Preview
 	And the Connectivity and resolution details match as expected on the Preview of the Marketing Page
 
 Scenario: Mandatory Data Missing Validation
-	Given that an answer has not been provided to the Connectivity and resolution mandatory question
+	Given that an answer has not been provided to the Connectivity and resolution mandatory question on the Browser based section
 	When the User attempts to save
 	Then the Section is not saved 
 	And an indication is given to the Supplier as to why

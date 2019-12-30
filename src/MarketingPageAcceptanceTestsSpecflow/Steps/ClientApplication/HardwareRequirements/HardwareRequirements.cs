@@ -19,9 +19,9 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.HardwareR
         [Given(@"a Supplier has saved any data in any field within (.*)")]
         public void GivenASupplierHasSavedAnyDataInAnyFieldWithinTheSub_Section(string sectionName)
         {
-            _test.pages.BrowserSubDashboard.OpenSection(sectionName);
+            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection(sectionName);
 
-            _test.pages.HardwareRequirements.EnterText(100);
+            _test.pages.BrowserBasedSections.HardwareRequirements.EnterText(100);
             _test.pages.Common.SectionSaveAndReturn();
         }
     }

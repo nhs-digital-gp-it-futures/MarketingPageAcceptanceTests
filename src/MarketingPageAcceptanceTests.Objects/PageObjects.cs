@@ -15,13 +15,20 @@ namespace MarketingPageAcceptanceTests.Objects
                 PreviewPage = new Pages.PreviewPage(),
                 ClientApplicationTypes = new Pages.ClientApplicationTypes(),
                 BrowserBasedDashboard = new Pages.BrowserBasedDashboard(),
-                BrowsersSupported = new Pages.BrowsersSupported(),
-                PluginsOrExtensions = new Pages.PluginsOrExtensions(),
-                ContactDetails = new Pages.ContactDetails(),
-                HardwareRequirements = new Pages.HardwareRequirements(),
-                ConnectivityAndResolution = new Pages.ConnectivityAndResolution(),
-                MobileFirst = new Pages.MobileFirst(),
-                SupportedOperatingSystems = new Pages.SupportedOperatingSystems()
+                BrowserBasedSections = new BrowserBasedSections()
+                {
+                    BrowsersSupported = new Pages.BrowsersSupported(),
+                    PluginsOrExtensions = new Pages.PluginsOrExtensions(),                    
+                    HardwareRequirements = new Pages.HardwareRequirements(),
+                    ConnectivityAndResolution = new Pages.ConnectivityAndResolution(),
+                    MobileFirst = new Pages.MobileFirst(),
+                },
+                NativeMobileSections = new NativeMobileSections()
+                {
+                    SupportedOperatingSystems = new Pages.SupportedOperatingSystems(),
+                    MemoryAndStorage = new Pages.MemoryAndStorage()
+                },
+                ContactDetails = new Pages.ContactDetails()
             };
         }
 
