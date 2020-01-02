@@ -9,13 +9,13 @@ Scenario: Contact Detail does not exceed maximum
 	Then the Contact details is saved
 	And the contact is saved to the database
 
-@ignore
 Scenario: Contact Detail does exceed maximum
-	Given the User has entered any Contact Detail
-	And it does exceed the maximum
+	Given the User has entered two Contact Details
+	And the Contact Details does exceed the maximum for both contacts
 	When the User attempts to save 
 	Then the Section is not saved 
-	And an indication is given to the User as to why
+	And an indication is given to the Supplier as to why
+	And the Supplier is shown 4 error messages
 
 Scenario: Contact Details Section marked as Complete -  Any Data Saved
 	Given the Contact Details Section has no Mandatory Data

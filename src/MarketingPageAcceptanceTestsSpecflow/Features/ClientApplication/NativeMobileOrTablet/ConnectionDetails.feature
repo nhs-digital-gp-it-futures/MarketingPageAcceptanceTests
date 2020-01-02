@@ -7,7 +7,7 @@ Scenario: Does not exceed maximum
 	Given the Supplier has entered 300 characters on the Connection details page in the Native mobile or tablet section
 	When the User attempts to save 
 	Then the Connection details is saved
-@ignore
+
 Scenario: Does exceed maximum
 	Given the Supplier has entered 301 characters on the Connection details page in the Native mobile or tablet section
 	When the User attempts to save 

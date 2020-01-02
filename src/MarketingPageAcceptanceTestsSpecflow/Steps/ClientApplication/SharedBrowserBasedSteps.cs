@@ -54,5 +54,11 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
         {
             _test.pages.Common.ErrorMessageDisplayed();
         }
+
+        [Then(@"the Supplier is shown (.*) error messages")]
+        public void xNumberOfErrorMessagesDisplayed(int numberOfExpectedErrorMessages)
+        {
+            _test.pages.Common.ErrorMessagesDisplayed(numberOfExpectedErrorMessages);
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using MarketingPageAcceptanceTests.TestData.ContactDetails;
+using MarketingPageAcceptanceTests.TestData.Information;
 using MarketingPageAcceptanceTests.TestData.Utils;
 using MarketingPageAcceptanceTestsSpecflow.Utils;
 using TechTalk.SpecFlow;
@@ -43,6 +44,18 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutOrganisation
             _test.pages.Common.SectionSaveAndReturn();
         }
 
+        [Given(@"the Contact Details does exceed the maximum for both contacts")]
+        public void GivenContactDetailDoesExceedTheMaximumForBothContacts()
+        {
+            var updatedContact1 = GenerateContactDetails.NewContactDetail();
+            var updatedContact2 = GenerateContactDetails.NewContactDetail();
+            updatedContact1.FirstName = RandomInformation.RandomString(36);
+            updatedContact1.LastName = RandomInformation.RandomString(36);
+            updatedContact2.FirstName = RandomInformation.RandomString(36);
+            updatedContact2.LastName = RandomInformation.RandomString(36);
+            _test.pages.ContactDetails.EnterAllData(updatedContact1, updatedContact2, true);
+        }
+
         [Given(@"the Contact Details Section has no Mandatory Data")]
         public void GivenTheContactDetailsSectionHasNoMandatoryData()
         {
@@ -51,18 +64,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutOrganisation
         [Given(@"a User has not saved any data on the Contact Details Section")]
         public void GivenAUserHasNotSavedAnyDataOnTheContactDetailsSection()
         {
-        }
-
-        [Given(@"that data has been saved in this section")]
-        public void GivenThatDataHasBeenSavedInThisSection()
-        {
-            _context.Pending();
-        }
-
-        [Then(@"an indication is given to the User as to why")]
-        public void ThenAnIndicationIsGivenToTheUserAsToWhy()
-        {
-            _context.Pending();
         }
 
         [Then(@"the Contact Details Section is marked as Complete")]
