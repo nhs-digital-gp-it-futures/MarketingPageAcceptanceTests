@@ -14,9 +14,8 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
         [Given(@"the Supplier has entered (\d{3,4}) characters on the (.*) page in the (Browser based|Native mobile or tablet|Native desktop) section")]
         public void GivenTheSupplierHasEnteredText(int characters, string page, string section)
         {
-            _test.pages.Dashboard.NavigateToSection("Client application type");
-            _test.pages.ClientApplicationTypes.SelectCheckbox(section);
-            _test.pages.ClientApplicationTypes.SaveAndReturn();
+            SelectClientType(section);
+
             _test.pages.Dashboard.NavigateToSection(section, true);
 
             _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection(page);
@@ -28,10 +27,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
         [Given(@"the .* Sub-Section in the (Browser based|Native mobile or tablet|Native desktop) section does not require Mandatory Data")]
         public void GivenTheSub_SectionDoesNotRequireMandatoryData(string section)
         {
-            _test.pages.Dashboard.NavigateToSection("Client application type");
-            _test.pages.ClientApplicationTypes.PageDisplayed().Should().BeTrue();
-            _test.pages.ClientApplicationTypes.SelectCheckbox(section);
-            _test.pages.ClientApplicationTypes.SaveAndReturn();
+            SelectClientType(section);
             WhenHasNavigatedToTheSpecifiedClientApplicationSub_Form(section);
         }
 
@@ -69,5 +65,12 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
             _test.pages.Common.SectionSaveAndReturn();
         }
 
+        private void SelectClientType(string clientType)
+        {
+            _test.pages.Dashboard.NavigateToSection("Client application type");
+            _test.pages.ClientApplicationTypes.PageDisplayed().Should().BeTrue();
+            _test.pages.ClientApplicationTypes.SelectCheckbox(clientType);
+            _test.pages.ClientApplicationTypes.SaveAndReturn();
+        }
     }
 }
