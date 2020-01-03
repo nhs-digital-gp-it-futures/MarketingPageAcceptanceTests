@@ -28,7 +28,7 @@ Scenario: Native Mobile or Tablet Application Type Sub-Section marked as Complet
 	And a Supplier has saved any data in any field within Third party components and device capabilities
 	When the Native mobile or tablet Client Application Sub-Form is presented
 	Then the Third party components and device capabilities Sub-Section is marked as Complete
-@ignore
+
 Scenario: Appear on Preview
 	Given the Supplier has entered 200 characters on the Third party components and device capabilities page in the Native mobile or tablet section
 	And I enter 200 characters into the second text field
