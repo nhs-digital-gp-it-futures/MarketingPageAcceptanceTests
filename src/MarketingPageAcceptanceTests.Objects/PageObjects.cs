@@ -26,7 +26,8 @@ namespace MarketingPageAcceptanceTests.Objects
                 NativeMobileSections = new NativeMobileSections()
                 {
                     SupportedOperatingSystems = new Pages.SupportedOperatingSystems(),
-                    MemoryAndStorage = new Pages.MemoryAndStorage()
+                    MemoryAndStorage = new Pages.MemoryAndStorage(),
+                    ThirdPartyComponentsAndDevices = new Pages.ThirdPartyComponentsAndDevices()
                 },
                 ContactDetails = new Pages.ContactDetails()
             };

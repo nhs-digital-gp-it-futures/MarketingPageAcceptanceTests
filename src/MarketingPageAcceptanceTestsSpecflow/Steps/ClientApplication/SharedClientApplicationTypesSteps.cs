@@ -23,6 +23,12 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
             _test.pages.BrowserBasedSections.HardwareRequirements.EnterText(characters);
         }
 
+        [Given(@"I enter (.*) characters into the second text field")]
+        public void GivenIEnterCharactersIntoTheSecondTextField(int characters)
+        {
+            _test.pages.BrowserBasedSections.HardwareRequirements.EnterText(characters, 1);
+        }
+
         [Given(@"each (Browser based|Native mobile or tablet|Native desktop) Sub-Section has a content validation status")]
         [Given(@"the .* Sub-Section in the (Browser based|Native mobile or tablet|Native desktop) section does not require Mandatory Data")]
         public void GivenTheSub_SectionDoesNotRequireMandatoryData(string section)
