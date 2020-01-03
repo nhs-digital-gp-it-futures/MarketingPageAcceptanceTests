@@ -11,7 +11,7 @@ Scenario: Data Saved
 Scenario: Appear on Preview
 	Given that data has been saved for Browsers supported
 	When a User previews the Marketing Page
-	Then Browsers supported will be presented on the Preview of the Marketing Page
+	Then Browsers supported will be presented in Browser based on the Preview of the Marketing Page
 
 Scenario: Validation on Submission
 	Given that an answer is not provided to both questions for Browsers supported
