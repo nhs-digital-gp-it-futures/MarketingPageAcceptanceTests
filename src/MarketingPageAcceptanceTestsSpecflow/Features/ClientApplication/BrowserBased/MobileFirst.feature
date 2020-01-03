@@ -23,7 +23,7 @@ Scenario: Appear on Preview
 	Given that an answer is provided to the Browser based mobile first question
 	And the user has saved the data
 	When a User previews the Marketing Page
-	Then Mobile first will be presented in Broswer based on the Preview of the Marketing Page
+	Then Mobile first will be presented in Browser based on the Preview of the Marketing Page
 
 Scenario: Mandatory Data Missing Validation
 	Given that an answer has not been provided to the Mobile first mandatory question on the Browser based section
