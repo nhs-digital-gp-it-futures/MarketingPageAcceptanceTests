@@ -1,4 +1,6 @@
-﻿using System.Data;
+﻿using MarketingPageAcceptanceTests.TestData.ContactDetails;
+using System;
+using System.Data;
 
 namespace MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders
 {
@@ -8,6 +10,13 @@ namespace MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders
         {
             dr.Read();
             return null;
+        }
+
+        internal static int GetCount(IDataReader dr)
+        {
+            dr.Read();
+            int.TryParse(dr["Count"].ToString(), out int count);
+            return count;
         }
 
         internal static string GetSolutionSummary(IDataReader dr)
@@ -39,6 +48,26 @@ namespace MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders
         {
             dr.Read();
             return dr["AboutUrl"].ToString();
+        }
+
+        internal static IContactDetail GetContactDetails(IDataReader dr)
+        {
+            dr.Read();
+            return new ContactDetail
+            {
+                FirstName = dr["FirstName"].ToString(),
+                LastName = dr["LastName"].ToString(),
+                EmailAddress = dr["Email"].ToString(),
+                PhoneNumber = dr["PhoneNumber"].ToString(),
+                JobSector = dr["Department"].ToString()
+            };
+        }
+
+        internal static DateTime GetLastUpdated(IDataReader dr)
+        {
+            dr.Read();
+            var val = dr["LastUpdated"].ToString();
+            return Convert.ToDateTime(val);
         }
     }
 }

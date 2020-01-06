@@ -21,6 +21,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void PageDisplayed()
         {
             wait.Until(s => s.FindElements(pages.Dashboard.Sections).Count > 0);
+
         }
 
         /// <summary>
@@ -47,20 +48,19 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public bool SectionsAvailable(IList<string> checkboxesSelected)
         {
+            var resultCount = 0;
             foreach (var cb in checkboxesSelected)
             {
-                try
+                // Find link that has the saved checkbox value in the href attribute. Return false if any are not found
+                var sectionTitle = driver.FindElements(pages.Dashboard.SectionTitle)
+                    .Single(s => s.Text.Contains(cb));
+                var child = sectionTitle.FindElements(By.CssSelector("a"));
+                if (child.Count > 0)
                 {
-                    // Find link that has the saved checkbox value in the href attribute. Return false if any are not found
-                    driver.FindElements(pages.Dashboard.SectionTitle)
-                        .Single(s => s.FindElement(By.TagName("a")).GetAttribute("href").Contains(cb));
-                }
-                catch
-                {
-                    return false;
+                    resultCount++;
                 }
             }
-            return true;
+            return resultCount == checkboxesSelected.Count;
         }
 
         public bool SectionsHaveStatusIndicator(IList<string> checkboxesSelected)
@@ -92,9 +92,8 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public string GetSectionDefaultMessage(string sectionTitle)
         {
-            var sections = driver.FindElements(pages.Dashboard.Sections);
-            var e = sections.Single(s => s.FindElement(pages.Dashboard.SectionTitle).Text.ToLower().Contains(sectionTitle.ToLower()));
             return driver.FindElements(pages.Dashboard.Sections)
+                .Where(s => s.ContainsElement(pages.Dashboard.SectionTitle))
                 .Single(s => s.FindElement(pages.Dashboard.SectionTitle).Text.ToLower().Contains(sectionTitle.ToLower()))
                 .FindElement(pages.Dashboard.DefaultMessage).Text;
         }
@@ -105,9 +104,9 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// <param name="sectionTitle">Case sensitive name of a section</param>
         public void NavigateToSection(string sectionTitle, bool subDashboard = false)
         {
-            driver.FindElements(pages.Dashboard.Sections)
-                .Single(s => s.FindElement(pages.Dashboard.SectionTitle).Text.ToLower().Contains(sectionTitle.ToLower()))
-                .FindElement(pages.Dashboard.SectionTitle)
+            driver.FindElements(pages.Dashboard.SectionTitle)
+                .Single(s => s.Text.Contains(sectionTitle))
+                .FindElement(By.TagName("a"))
                 .Click();
             if (subDashboard)
             {
@@ -133,6 +132,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             try
             {
                 driver.FindElements(pages.Dashboard.Sections)
+                    .Where(s => s.ContainsElement(pages.Dashboard.SectionTitle))
                     .Single(s => s.FindElement(pages.Dashboard.SectionTitle).Text.Contains(section))
                     .FindElement(pages.Dashboard.Statuses);
                 return true;
@@ -163,7 +163,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// Ensure a section has a status of INCOMPLETE
         /// </summary>
         /// <param name="sectionName">Case sensitive name of a section</param>
-        public void SectionIncomplete(string sectionName)
+        public void SectionIncompleteStatus(string sectionName)
         {
             AssertSectionStatus(sectionName, "INCOMPLETE");
         }
@@ -176,6 +176,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void AssertSectionStatus(string sectionName, string status)
         {
             var section = driver.FindElements(pages.Dashboard.Sections)
+                .Where(s => s.ContainsElement(pages.Dashboard.SectionTitle))
                 .Single(s => s.FindElement(pages.Dashboard.SectionTitle).Text == sectionName);
             section.FindElement(pages.Dashboard.Statuses).Text.Should().Be(status);
         }

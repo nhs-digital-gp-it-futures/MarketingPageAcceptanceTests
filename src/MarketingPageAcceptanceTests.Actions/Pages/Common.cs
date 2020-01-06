@@ -12,6 +12,12 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public Common(IWebDriver driver) : base(driver)
         {
         }
+
+        public bool PageTitleEquals(string expectedTitle)
+        {
+            return driver.FindElement(pages.Common.PageTitle).Text == expectedTitle;
+        }
+
         public void GoBackOnePage()
         {
             driver.Navigate().Back();
@@ -71,6 +77,11 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         private IEnumerable<IWebElement> GetErrorMessages()
         {
             return driver.FindElements(pages.Common.ErrorMessages);
+        }
+
+        public string SubDashboardTitle()
+        {
+            return driver.FindElement(pages.Common.SubDashboardTitle).Text;
         }
 
         public string ClickOnErrorLink()

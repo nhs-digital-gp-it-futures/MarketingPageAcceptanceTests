@@ -33,11 +33,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void OpenSection(string sectionName)
         {
-            driver.FindElements(pages.BrowserBasedDashboard.Sections)
-                .Single(s => s.FindElement(pages.BrowserBasedDashboard.SectionTitle).Text == sectionName)
-                .FindElement(pages.BrowserBasedDashboard.SectionTitle)
-                .Click();
-
+            driver.FindElement(By.LinkText(sectionName)).Click();
             wait.Until(s => s.FindElement(pages.Common.PageTitle).Text.Contains(sectionName.ToLower()));
         }
     }

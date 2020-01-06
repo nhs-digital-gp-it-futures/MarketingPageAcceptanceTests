@@ -4,43 +4,34 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 trigger:
-- master
+- development
 
 pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  solution: 'src/'
-  buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
 steps:
-- task: NuGetToolInstaller@1
-
-- task: NuGetCommand@2
+- task: UseDotNet@2
+  displayName: 'Use DotNet Core 3.1'
   inputs:
-    restoreSolution: '$(solution)'
+    version: 3.x
+    includePreviewVersions: false
 
-- task: DockerCompose@0
-  inputs:
-    containerregistrytype: 'Azure Container Registry'
-    azureSubscription: 'NHSAPP-BuyingCatalogue'
-    azureContainerRegistry: '{"loginServer":"buyingcat01.azurecr.io", "id" : "/subscriptions/7b12a8a2-f06f-456f-b6f9-aa2d92e0b2ec/resourceGroups/BCadminrepo/providers/Microsoft.ContainerRegistry/registries/buyingcat01"}'
-    dockerComposeFile: '**/docker-compose.yml'
-    action: 'Run a Docker Compose command'
-    dockerComposeCommand: 'up --scale chrome=4 -d'
-    arguments: ''
+- script: docker-compose up --scale chrome=4 -d
+  displayName: docker-compose
+- bash: '
+    export BROWSER=chrome && 
+    export SERVERURL=$(SERVERURL) && 
+    export DATABASENAME=$(DATABASENAME) && 
+    export DBUSER=$(DBUSER) && 
+    export DBPASSWORD=$(DBPASSWORD) && 
+    export MPURL=$(MPURL) &&
+    dotnet test src/ -v n -l:trx;LogFileName=/test/results.trx'
 
-- task: Bash@3
+- task: PublishTestResults@2
   inputs:
-    targetType: 'inline'
-    script: '
-    export BROWSER=chrome &&
-    export SERVERURL=gpitfuture-sql-test.database.windows.net &&
-    export DATABASENAME=gpitfuture-db-test &&
-    export DBUSER=$DBUSER &&
-    export DBPASSWORD=$DBPASSWORD &&
-    export HUBURL=http://localhost:4444/wd/hub &&
-    export MPURL=https://test.mp-buyingcatalogue.com &&
-    dotnet build $(solution) &&
-    dotnet test $(solution) -v n'
+    testResultsFiles: '**/*.trx'
+    failTaskOnFailedTests: true
+    testRunner: VSTest

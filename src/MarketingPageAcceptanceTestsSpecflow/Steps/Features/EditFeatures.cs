@@ -6,16 +6,12 @@ using TechTalk.SpecFlow;
 namespace MarketingPageAcceptanceTestsSpecflow
 {
     [Binding]
-    public class EditFeatures
+    public class EditFeatures : TestBase
     {
-        private UITest _test;
-        private ScenarioContext _context;
         private string featureString;
 
-        public EditFeatures(UITest test, ScenarioContext context)
+        public EditFeatures(UITest test, ScenarioContext context) : base(test, context)
         {
-            _test = test;
-            _context = context;
         }
 
         [Given(@"the Supplier has entered a Feature")]
@@ -67,6 +63,7 @@ namespace MarketingPageAcceptanceTestsSpecflow
         [Then(@"the (.*) is saved")]
         public void ThenTheSectionIsSaved(string section)
         {
+            _test.pages.Dashboard.PageDisplayed();
             _test.pages.Dashboard.ShouldDisplaySections();
             _test.pages.Dashboard.SectionCompleteStatus(section);
         }

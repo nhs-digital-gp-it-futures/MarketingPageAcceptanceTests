@@ -4,37 +4,29 @@ using TechTalk.SpecFlow;
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
 {
     [Binding]
-    public sealed class SharedBrowserBasedSteps
+    public sealed class SharedBrowserBasedSteps : TestBase
     {
-        private UITest _test;
-        private ScenarioContext _context;
-
-        public SharedBrowserBasedSteps(UITest test, ScenarioContext context)
+        public SharedBrowserBasedSteps(UITest test, ScenarioContext context) : base(test, context)
         {
-            _test = test;
-            _context = context;
         }
 
-        [Given(@"that an answer has not been provided to the (.*) mandatory question")]
-        public void GivenThatAnAnswerHasNotBeenProvidedToThePlug_InsOrExtensionsMandatoryQuestion(string section)
+        private void NavigateToBrowserBasedSubDashboard()
         {
-            _test.pages.Dashboard.NavigateToSection("Browser based", true);
-            _test.pages.BrowserSubDashboard.OpenSection(section);
+            new SharedClientApplicationTypesSteps(_test, _context).WhenHasNavigatedToTheSpecifiedClientApplicationSub_Form("Browser based");
         }
 
-        [Given(@"validation has been triggered on Browser based section (.*)")]
-        public void GivenValidationHasBeenTriggeredOnSection(string section)
+        [Given(@"that an answer has not been provided to the (.*) mandatory question on the (.*) section")]
+        public void GivenThatAnAnswerHasNotBeenProvidedToThePlug_InsOrExtensionsMandatoryQuestion(string section, string subDashboard)
         {
-            _test.pages.Dashboard.NavigateToSection("Browser based", true);
-            _test.pages.BrowserSubDashboard.OpenSection(section);
-            _test.pages.Common.SectionSaveAndReturn();
+            _test.pages.Dashboard.NavigateToSection(subDashboard, true);
+            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection(section);
         }
 
         [Given(@"that a User has not provided any mandatory data for (.*)")]
         public void GivenThatAUserHasNotProvidedAnyMandatoryDataForSection(string section)
         {
-            _test.pages.Dashboard.NavigateToSection("Browser based", true);
-            _test.pages.BrowserSubDashboard.OpenSection(section);
+            NavigateToBrowserBasedSubDashboard();
+            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection(section);
         }
 
         [Given(@"the user has saved the data")]
@@ -63,6 +55,10 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
             _test.pages.Common.ErrorMessageDisplayed();
         }
 
-
+        [Then(@"the Supplier is shown (.*) error messages")]
+        public void xNumberOfErrorMessagesDisplayed(int numberOfExpectedErrorMessages)
+        {
+            _test.pages.Common.ErrorMessagesDisplayed(numberOfExpectedErrorMessages);
+        }
     }
 }

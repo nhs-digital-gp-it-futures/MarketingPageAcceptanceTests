@@ -1,18 +1,17 @@
-﻿using System.Collections.Generic;
-using FluentAssertions;
+﻿using FluentAssertions;
+using MarketingPageAcceptanceTests.TestData.Solutions;
+using MarketingPageAcceptanceTests.TestData.Utils;
 using MarketingPageAcceptanceTestsSpecflow.Utils;
+using System.Collections.Generic;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserBased
 {
     [Binding]
-    public sealed class SubDashboard
+    public sealed class SubDashboard : TestBase
     {
-        private UITest _test;
-
-        public SubDashboard(UITest test)
+        public SubDashboard(UITest test, ScenarioContext context) : base(test, context)
         {
-            _test = test;
         }
 
         [Given(@"that a Supplier has chosen to manage the Browser Based Client Application Type Section")]
@@ -37,12 +36,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserBa
             _test.pages.ClientApplicationTypes.SaveAndReturn();
         }
 
-        [When(@"has navigated to the Browser Based Client Application Sub-Form")]
-        public void WhenHasNavigatedToTheBrowserBasedClientApplicationSub_Form()
-        {
-            _test.pages.Dashboard.NavigateToSection("Browser based", true);
-        }
-
         [Then(@"there is a list of Browser Based Client Application Type Sub-Sections")]
         public void ThenThereIsAListOfBrowserBasedClientApplicationTypeSub_Sections()
         {
@@ -52,33 +45,24 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserBa
                 "Plug-ins or extensions",
                 "Connectivity and resolution",
                 "Hardware requirements",
-                "Additional information"
+                "Additional information",
+                "Mobile first"
             };
 
-            _test.pages.BrowserSubDashboard.GetSections().Should().BeEquivalentTo(subSectionsExpected);
+            _test.pages.BrowserBasedSections.BrowserSubDashboard.GetSections().Should().BeEquivalentTo(subSectionsExpected);
         }
 
         [Then(@"the Supplier is able to access the Browser Based Client Type Sub-Sections")]
         public void ThenTheSupplierIsAbleToAccessTheBrowserBasedClientTypeSub_Sections()
         {
-            _test.pages.BrowserSubDashboard.OpenSection("Browsers supported");
+            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection("Browsers supported");
             _test.pages.Common.GoBackOnePage();
-        }
-
-        [Given(@"each Section has a content validation status")]
-        public void GivenEachSectionHasAContentValidationStatus()
-        {
-            _test.pages.Dashboard.NavigateToSection("Client application type");
-            _test.pages.ClientApplicationTypes.PageDisplayed().Should().BeTrue();
-            _test.pages.ClientApplicationTypes.SelectCheckbox("Browser based");
-            _test.pages.ClientApplicationTypes.SaveAndReturn();
-            _test.pages.Dashboard.NavigateToSection("Browser based", true);
         }
 
         [Then(@"the Section content validation status is displayed")]
         public void ThenTheSectionContentValidationStatusIsDisplayed()
         {
-            _test.pages.BrowserSubDashboard.SectionsHaveStatusIndicators();
+            _test.pages.BrowserBasedSections.BrowserSubDashboard.SectionsHaveStatusIndicators();
         }
 
         [Given(@"the Browser Based Client Application Type Section requires Mandatory Data")]
@@ -99,22 +83,22 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserBa
         {
         }
 
-        [Then(@"the Browser Based Client Application Type Section is marked as Incomplete")]
-        public void ThenTheBrowserBasedClientApplicationTypeSectionIsMarkedAsIncomplete()
-        {
-            _test.pages.Dashboard.AssertSectionStatus("Browser based", "INCOMPLETE");
-        }
-
         [Given(@"a Supplier has saved all mandatory data on the Browser Based Client Application Type Sub-Sections")]
         public void GivenASupplierHasSavedAllMandatoryDataOnTheBrowserBasedClientApplicationTypeSub_Sections()
         {
+            _test.solutionDetail.ClientApplication = ClientApplicationStrings.GetClientAppString();
+
+            SqlHelper.UpdateSolutionDetails(_test.solutionDetail, _test.connectionString);
+            _test.driver.Navigate().Refresh();
         }
 
-        [Then(@"the Browser Based Client Application Type Section is marked as Complete")]
-        public void ThenTheBrowserBasedClientApplicationTypeSectionIsMarkedAsComplete()
+        [Given(@"a Supplier has saved all mandatory data on the Browser Based Client Application Type Sub-Sections except for (Browsers supported|Plug-ins or extensions|Connectivity and resolution|Mobile first)")]
+        public void GivenASupplierHasSavedAllMandatoryDataOnTheBrowserBasedClientApplicationTypeSub_Sections(string section)
         {
+            _test.solutionDetail.ClientApplication = ClientApplicationStrings.GetClientAppString(section);
 
+            SqlHelper.UpdateSolutionDetails(_test.solutionDetail, _test.connectionString);
+            _test.driver.Navigate().Refresh();
         }
-
     }
 }

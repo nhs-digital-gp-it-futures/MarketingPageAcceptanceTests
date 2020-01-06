@@ -4,22 +4,17 @@ using TechTalk.SpecFlow;
 namespace MarketingPageAcceptanceTestsSpecflow.Steps
 {
     [Binding]
-    public sealed class CommonSteps
+    public sealed class CommonSteps : TestBase
     {
-        private UITest _test;
-
-        public CommonSteps(UITest test)
+        public CommonSteps(UITest test, ScenarioContext context) : base(test, context)
         {
-            _test = test;
         }
 
-
-
-        [Given(@"the user has set Browser based application type")]
-        public void GivenTheUserHasSetBrowserBasedApplicationType()
+        [Given(@"the user has set (.*) application type")]
+        public void GivenTheUserHasSetBrowserBasedApplicationType(string clientType)
         {
             _test.pages.Dashboard.NavigateToSection("Client application type");
-            _test.pages.ClientApplicationTypes.SelectCheckbox("Browser based");
+            _test.pages.ClientApplicationTypes.SelectCheckbox(clientType);
             _test.pages.ClientApplicationTypes.SaveAndReturn();
         }
 
@@ -49,12 +44,31 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps
             _test.pages.Common.SectionSaveAndReturn();
         }
 
-        [Then(@"(.*) will be presented on the Preview of the Marketing Page")]
-        public void ThenSectionWillBePresentedOnThePreviewOfTheMarketingPage(string section)
+        [Then(@"(.*) will be presented in the (.*) section on the Preview of the Marketing Page")]
+        public void ThenSectionWillBePresentedOnThePreviewOfTheMarketingPage(string section, string subSection)
         {
-            _test.pages.PreviewPage.OpenBrowserBasedSection();
+            _test.pages.PreviewPage.ExpandSection(subSection);
             _test.pages.PreviewPage.SectionDisplayed(section);
         }
 
+        [Then(@"(.*) will be presented in (.*) on the Preview of the Marketing Page")]
+        public void ThenSupportedOperatingSystemsWillBePresentedInNativeMobileOrTabletOnThePreviewOfTheMarketingPage(string section, string subDashboard)
+        {
+            _test.pages.PreviewPage.ExpandSection(subDashboard);
+            _test.pages.PreviewPage.SectionDisplayed(section);
+        }
+
+
+        [When(@"the User exits the page")]
+        public void WhenTheUserExitsThePage()
+        {
+            _test.pages.Common.ClickSectionBackLink();
+        }
+
+        [StepDefinition(@"the User attempts to save")]
+        public void WhenTheUserAttemptsToSave()
+        {
+            _test.pages.Common.SectionSaveAndReturn();
+        }
     }
 }

@@ -7,19 +7,16 @@ using TechTalk.SpecFlow;
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.Dashboard
 {
     [Binding]
-    public class SubmitForModeration
+    public class SubmitForModeration : TestBase
     {
-        private UITest _test;
-
-        public SubmitForModeration(UITest test)
+        public SubmitForModeration(UITest test, ScenarioContext context) : base(test, context)
         {
-            _test = test;
         }
 
         [Given(@"that a Supplier has provided all mandatory data on the Marketing Page")]
         public void GivenThatASupplierHasProvidedAllMandatoryDataOnTheMarketingPage()
         {
-            SqlHelper.UpdateSolutionDetails(CreateSolution.CreateCompleteMarketingDetail(_test.solution), _test.connectionString);
+            SqlHelper.UpdateSolutionDetails(CreateSolution.CreateCompleteSolutionDetail(_test.solution, _test.solutionDetail), _test.connectionString);
             _test.driver.Navigate().Refresh();
             _test.pages.Dashboard.NavigateToSection("Solution description");
             _test.pages.SolutionDescription.SummaryAddText(100);

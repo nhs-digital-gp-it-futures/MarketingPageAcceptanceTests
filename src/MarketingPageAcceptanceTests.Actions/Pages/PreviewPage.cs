@@ -1,4 +1,5 @@
 using FluentAssertions;
+using MarketingPageAcceptanceTests.TestData.ContactDetails;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -63,6 +64,13 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                 .Count().Should().BeGreaterThan(0);
         }
 
+        public void ExpandSection(string subDashboard)
+        {
+            driver.FindElements(pages.PreviewPage.ExpandingSections)
+                .Single(s => s.Text.Contains(subDashboard))
+                .Click();
+        }
+
         public IWebElement GetSolutionLink()
         {
             return driver.FindElement(pages.PreviewPage.SolutionDescriptionLinkSection)
@@ -74,6 +82,18 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             var features = driver.FindElement(pages.PreviewPage.FeaturesSection).FindElements(By.CssSelector("li label.nhsuk-label")).Select(s => s.Text);
             return features.ToList();
+        }
+
+        public IContactDetail ContactDisplayedOnPreview()
+        {
+            var contact = new ContactDetail();
+            var fullName = driver.FindElement(pages.PreviewPage.ContactName).Text.Split(' ');
+            contact.FirstName = fullName[0];
+            contact.LastName = fullName[1];
+            contact.JobSector = driver.FindElement(pages.PreviewPage.ContactDepartment).Text;
+            contact.EmailAddress = driver.FindElement(pages.PreviewPage.ContactEmail).Text;
+            contact.PhoneNumber = driver.FindElement(pages.PreviewPage.ContactPhoneNumber).Text;
+            return contact;
         }
 
         /// <returns>title of the 'Solution description' section</returns>
@@ -115,6 +135,16 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void AssertSectionHasMandatoryFields(string sectionName, int numFields)
         {
             GetSectionFieldsCount(sectionName).Should().Be(numFields);
+        }
+
+        public string GetConnectivityRequirement()
+        {
+            return driver.FindElement(pages.PreviewPage.ConnectivityRequirement).Text;
+        }
+
+        public string GetDesktopResolutionRequirement()
+        {
+            return driver.FindElement(pages.PreviewPage.DesktopResolutionRequirement).Text;
         }
 
     }

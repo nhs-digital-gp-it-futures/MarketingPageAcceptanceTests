@@ -17,11 +17,21 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
         public By SectionDataText => CustomBy.DataTestId("preview-question-data-text");
         public By SectionDataLink => CustomBy.DataTestId("preview-question-data-link");
         public By FeaturesSection => CustomBy.DataTestId("preview-features");
-        public By BrowserBasedSection => CustomBy.DataTestId("preview-section-browser-based", "span");
+        public By BrowserBasedSection => CustomBy.DataTestId("view-section-browser-based", "span");
 
         public By PageTitle => By.CssSelector("div.nhsuk-grid-column-full h1");
-        public By BrowserBasedSectionTitles => By.ClassName("nhsuk-summary-list__key");
+        public By BrowserBasedSectionTitles => CustomBy.DataTestId("view-section-table-row-title");
 
         public By SupportedBrowsers => CustomBy.DataTestId("preview-section-table-row-supported-browsers", "li > label");
+
+        public By ContactName => CustomBy.DataTestId("view-question-data-text-contact-name");
+        public By ContactDepartment => CustomBy.DataTestId("view-question-data-text-department-name");
+        public By ContactEmail => CustomBy.DataTestId("view-question-data-text-email-address");
+        public By ContactPhoneNumber => CustomBy.DataTestId("view-question-data-text-phone-number");
+
+        public By ConnectivityRequirement => CustomBy.DataTestId("view-question-data-text-minimum-connection-speed");
+        public By DesktopResolutionRequirement => CustomBy.DataTestId("view-question-data-text-minimum-desktop-resolution");
+
+        public By ExpandingSections => By.CssSelector("details.nhsuk-details summary");
     }
 }

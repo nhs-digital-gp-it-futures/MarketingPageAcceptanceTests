@@ -3,6 +3,7 @@ using MarketingPageAcceptanceTests.Actions.Collections;
 using MarketingPageAcceptanceTests.TestData.Solutions;
 using MarketingPageAcceptanceTests.TestData.Utils;
 using OpenQA.Selenium;
+using System;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Utils
 {
@@ -13,14 +14,16 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
         internal string connectionString;
         internal string url;
         internal Solution solution;
+        internal SolutionDetail solutionDetail;
         internal string ExpectedSectionLinkInErrorMessage;
 
         public UITest()
         {
             solution = CreateSolution.CreateNewSolution();
+            solutionDetail = CreateSolutionDetails.CreateNewSolutionDetail(solution.Id, Guid.NewGuid(), 0, false);
 
             connectionString = EnvironmentVariables.GetConnectionString();
-            SqlHelper.CreateBlankSolution(solution, connectionString);
+            SqlHelper.CreateBlankSolution(solution, solutionDetail, connectionString);
 
             url = $"{EnvironmentVariables.GetUrl()}/{solution.Id}";
 

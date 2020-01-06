@@ -1,24 +1,34 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
+    <SpecFlowObsoleteCodeBehindFiles Remove="Features\ClientApplication\NativeMobileOrTablet\HardwareRequirementsAdditionalInformation.feature.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="nunit" Version="3.12.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.15.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
-    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="78.0.3904.7000" />
-    <PackageReference Include="SpecFlow" Version="3.0.225" />
-    <PackageReference Include="SpecFlow.NUnit" Version="3.0.225" />
-    <PackageReference Include="SpecFlow.NUnit.Runners" Version="3.0.225" />
-    <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.0.225" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="79.0.3945.3600" />
+    <PackageReference Include="SpecFlow" Version="3.1.67" />
+    <PackageReference Include="SpecFlow.NUnit" Version="3.1.67" />
+    <PackageReference Include="SpecFlow.NUnit.Runners" Version="3.1.67" />
+    <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.1.67" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MarketingPageAcceptanceTests.Actions\MarketingPageAcceptanceTests.Actions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Features\ClientApplication\NativeMobileOrTablet\HardwareRequirementsAdditionalInformation.feature.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +39,13 @@
     <None Update="Features\ClientApplication\BrowserBased\DisplaySubDashboard.feature">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <SpecFlowFeatureFiles Update="Features\ClientApplication\NativeMobileOrTablet\HardwareRequirementsAdditionalInformation.feature">
+      <Visible>$(UsingMicrosoftNETSdk)</Visible>
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+    </SpecFlowFeatureFiles>
   </ItemGroup>
 
 </Project>
