@@ -32,6 +32,6 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
         public By ConnectivityRequirement => CustomBy.DataTestId("view-question-data-text-minimum-connection-speed");
         public By DesktopResolutionRequirement => CustomBy.DataTestId("view-question-data-text-minimum-desktop-resolution");
 
-        public By ExpandingSections => By.CssSelector("details.nhsuk-details");
+        public By ExpandingSections => By.CssSelector("details.nhsuk-details summary");
     }
 }
