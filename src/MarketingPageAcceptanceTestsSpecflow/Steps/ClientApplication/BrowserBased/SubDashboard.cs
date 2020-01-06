@@ -65,12 +65,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserBa
             _test.pages.BrowserBasedSections.BrowserSubDashboard.SectionsHaveStatusIndicators();
         }
 
-        [Given(@"the Browser Based Client Application Type Section requires Mandatory Data")]
-        public void GivenTheBrowserBasedClientApplicationTypeSectionRequiresMandatoryData()
-        {
-
-        }
-
         [Given(@"the User has selected Browser Based as a Client Application Type")]
         public void GivenTheUserHasSelectedBrowserBasedAsAClientApplicationType()
         {
@@ -81,24 +75,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserBa
         [Given(@"a Supplier has not saved Mandatory data on all the Browser Based Client Application Type Sub-Sections")]
         public void GivenASupplierHasNotSavedMandatoryDataOnAllTheBrowserBasedClientApplicationTypeSub_Sections()
         {
-        }
-
-        [Given(@"a Supplier has saved all mandatory data on the Browser Based Client Application Type Sub-Sections")]
-        public void GivenASupplierHasSavedAllMandatoryDataOnTheBrowserBasedClientApplicationTypeSub_Sections()
-        {
-            _test.solutionDetail.ClientApplication = ClientApplicationStrings.GetClientAppString();
-
-            SqlHelper.UpdateSolutionDetails(_test.solutionDetail, _test.connectionString);
-            _test.driver.Navigate().Refresh();
-        }
-
-        [Given(@"a Supplier has saved all mandatory data on the Browser Based Client Application Type Sub-Sections except for (Browsers supported|Plug-ins or extensions|Connectivity and resolution|Mobile first)")]
-        public void GivenASupplierHasSavedAllMandatoryDataOnTheBrowserBasedClientApplicationTypeSub_Sections(string section)
-        {
-            _test.solutionDetail.ClientApplication = ClientApplicationStrings.GetClientAppString(section);
-
-            SqlHelper.UpdateSolutionDetails(_test.solutionDetail, _test.connectionString);
-            _test.driver.Navigate().Refresh();
         }
     }
 }
