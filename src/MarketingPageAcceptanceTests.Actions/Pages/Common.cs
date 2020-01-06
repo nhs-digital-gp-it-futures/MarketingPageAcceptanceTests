@@ -40,6 +40,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void ClickSubDashboardBackLink()
         {
+            wait.Until(s => s.FindElement(pages.Common.SubDashboardBackLink).Displayed);
             driver.FindElement(pages.Common.SubDashboardBackLink).Click();
         }
 

@@ -7,13 +7,13 @@
 Scenario: Native Mobile or Tablet Client Type Type Sub-Dashboard presented
 	Given that a User has chosen to manage Marketing Page Information
 	When the Marketing Page Form is presented
-	And the User has selected Native Mobile or Tablet Client Type as a Client Application Type
+	And the User has selected Native mobile or tablet Client Type as a Client Application Type
 	Then there is a list of Marketing Page Form Sections 
-	And the Authority User is able to access the Native Mobile or Tablet Client Type Type Sub-Dashboard
+	And the Authority User is able to access the Native mobile or tablet Client Type Type Sub-Dashboard
 
 Scenario: Sub Sections presented
 	Given that a User has chosen to manage Marketing Page Information
-	When the User has selected Native Mobile or Tablet Client Type as a Client Application Type
+	When the User has selected Native mobile or tablet Client Type as a Client Application Type
 	And has navigated to the Native mobile or tablet Client Application Sub-Form
 	Then there is a list of Native Mobile or Tablet Client Application Type Sub-Sections 
 
@@ -30,7 +30,7 @@ Scenario: Section status
 @ignore
 Scenario: Main Form - Section marked as Complete -  Mandatory Data Present
 	Given the Native mobile or tablet Client Application Type Section requires Mandatory Data
-	And the User has selected Native Mobile or Tablet Client Type as a Client Application Type
+	And the User has selected Native mobile or tablet Client Type as a Client Application Type
 	And a Supplier has saved all mandatory data on the Native mobile or tablet Client Application Type Sub-Sections
 	When the Marketing Page Form is presented 
 	Then the Native mobile or tablet Sub-Section is marked as Complete

@@ -17,23 +17,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserBa
         [Given(@"that a Supplier has chosen to manage the Browser Based Client Application Type Section")]
         public void GivenThatASupplierHasChosenToManageTheBrowserBasedClientApplicationTypeSection()
         {
-            _test.pages.Dashboard.NavigateToSection("Client application type");
-            _test.pages.ClientApplicationTypes.PageDisplayed().Should().BeTrue();
-        }
-
-        [Given(@"that a Supplier has chosen the Browser based Client Application Type")]
-        public void GivenThatASupplierHasChosenTheBrowserBasedClientApplicationType()
-        {
-            GivenThatASupplierHasChosenToManageTheBrowserBasedClientApplicationTypeSection();
-            WhenTheUserHasSelectedBrowserBasedAsAClientApplicationType();
-        }
-
-
-        [When(@"the User has selected Browser Based as a Client Application Type")]
-        public void WhenTheUserHasSelectedBrowserBasedAsAClientApplicationType()
-        {
-            _test.pages.ClientApplicationTypes.SelectCheckbox("Browser based");
-            _test.pages.ClientApplicationTypes.SaveAndReturn();
         }
 
         [Then(@"there is a list of Browser Based Client Application Type Sub-Sections")]
@@ -63,13 +46,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.BrowserBa
         public void ThenTheSectionContentValidationStatusIsDisplayed()
         {
             _test.pages.BrowserBasedSections.BrowserSubDashboard.SectionsHaveStatusIndicators();
-        }
-
-        [Given(@"the User has selected Browser Based as a Client Application Type")]
-        public void GivenTheUserHasSelectedBrowserBasedAsAClientApplicationType()
-        {
-            GivenThatASupplierHasChosenToManageTheBrowserBasedClientApplicationTypeSection();
-            WhenTheUserHasSelectedBrowserBasedAsAClientApplicationType();
         }
 
         [Given(@"a Supplier has not saved Mandatory data on all the Browser Based Client Application Type Sub-Sections")]

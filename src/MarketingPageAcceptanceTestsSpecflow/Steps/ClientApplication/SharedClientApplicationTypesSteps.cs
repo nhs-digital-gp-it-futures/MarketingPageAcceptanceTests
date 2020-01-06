@@ -14,6 +14,18 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
         {
         }
 
+        [StepDefinition(@"the User has selected (Browser based|Native mobile or tablet|Native desktop) Client Type as a Client Application Type")]
+        public void WhenTheUserHasSelectedTheClientTypeAsAClientApplicationType(string clientType)
+        {
+            new SharedClientApplicationTypesSteps(_test, _context).SelectClientType(clientType);
+        }
+
+        [Then(@"the Authority User is able to access the (Browser based|Native mobile or tablet|Native desktop) Client Type Type Sub-Dashboard")]
+        public void ThenTheAuthorityUserIsAbleToAccessTheClientTypeTypeSub_Dashboard(string clientType)
+        {
+            _test.pages.Dashboard.NavigateToSection(clientType, true);
+        }
+
         [Given(@"the Supplier has entered (\d{3,4}) characters on the (.*) page in the (Browser based|Native mobile or tablet|Native desktop) section")]
         public void GivenTheSupplierHasEnteredText(int characters, string page, string section)
         {
@@ -111,7 +123,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
             GivenASupplierHasSavedAllMandatoryDataOnTheClientApplicationTypeSub_SectionsExceptForX(clientApplicationType, section);
         }
 
-        private void SelectClientType(string clientType)
+        public void SelectClientType(string clientType)
         {
             _test.pages.Dashboard.NavigateToSection("Client application type");
             _test.pages.ClientApplicationTypes.PageDisplayed().Should().BeTrue();
