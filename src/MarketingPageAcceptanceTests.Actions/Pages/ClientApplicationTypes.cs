@@ -32,7 +32,8 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void SaveAndReturn()
         {
-            driver.FindElement(pages.Common.SectionSaveAndReturn).Click();
+            // Using Submit() instead of Click() prevents HTTP timeouts to Selenium server errors
+            driver.FindElement(pages.Common.SectionSaveAndReturn).Submit();
         }
 
         public IList<string> GetAppTypes()
