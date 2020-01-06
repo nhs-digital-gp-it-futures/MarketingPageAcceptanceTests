@@ -16,9 +16,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.NativeMob
         [StepDefinition(@"the User has selected Native Mobile or Tablet Client Type as a Client Application Type")]
         public void WhenTheUserHasSelectedNativeMobileOrTabletClientTypeAsAClientApplicationType()
         {
-            _test.pages.Dashboard.NavigateToSection("Client application type");
-            _test.pages.ClientApplicationTypes.SelectCheckbox("Native mobile or tablet");
-            _test.pages.ClientApplicationTypes.SaveAndReturn();
+            new SharedClientApplicationTypesSteps(_test, _context).SelectClientType("Native mobile or tablet");
         }
 
         [Then(@"the Authority User is able to access the Native Mobile or Tablet Client Type Type Sub-Dashboard")]

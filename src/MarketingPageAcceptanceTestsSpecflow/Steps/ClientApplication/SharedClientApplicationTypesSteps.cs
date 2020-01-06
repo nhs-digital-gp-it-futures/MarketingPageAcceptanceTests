@@ -111,7 +111,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
             GivenASupplierHasSavedAllMandatoryDataOnTheClientApplicationTypeSub_SectionsExceptForX(clientApplicationType, section);
         }
 
-        private void SelectClientType(string clientType)
+        public void SelectClientType(string clientType)
         {
             _test.pages.Dashboard.NavigateToSection("Client application type");
             _test.pages.ClientApplicationTypes.PageDisplayed().Should().BeTrue();
