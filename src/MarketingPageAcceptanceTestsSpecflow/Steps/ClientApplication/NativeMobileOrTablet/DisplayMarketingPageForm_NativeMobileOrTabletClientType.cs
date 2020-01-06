@@ -13,7 +13,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.NativeMob
 
         }
 
-        [When(@"the User has selected Native Mobile or Tablet Client Type as a Client Application Type")]
+        [StepDefinition(@"the User has selected Native Mobile or Tablet Client Type as a Client Application Type")]
         public void WhenTheUserHasSelectedNativeMobileOrTabletClientTypeAsAClientApplicationType()
         {
             _test.pages.Dashboard.NavigateToSection("Client application type");

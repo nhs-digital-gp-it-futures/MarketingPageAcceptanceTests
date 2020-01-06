@@ -1,4 +1,7 @@
-﻿using FluentAssertions;
+﻿using System.Threading;
+using FluentAssertions;
+using MarketingPageAcceptanceTests.TestData.Solutions;
+using MarketingPageAcceptanceTests.TestData.Utils;
 using MarketingPageAcceptanceTestsSpecflow.Utils;
 using TechTalk.SpecFlow;
 
@@ -69,6 +72,43 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
             _test.pages.Dashboard.NavigateToSection(subDashboard, true);
             _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection(section);
             _test.pages.Common.SectionSaveAndReturn();
+        }
+
+        [Given(@"the (Browser based|Native mobile or tablet|Native desktop) Client Application Type Section requires Mandatory Data")]
+        public void GivenTheBrowserBasedClientApplicationTypeSectionRequiresMandatoryData(string section)
+        {
+
+        }
+
+        [Given(@"a Supplier has saved all mandatory data on the (Browser based|Native mobile or tablet|Native desktop) Client Application Type Sub-Sections")]
+        public void GivenASupplierHasSavedAllMandatoryDataOnTheClientApplicationTypeSub_Sections(string clientApplicationType)
+        {
+            _test.solutionDetail.ClientApplication = ClientApplicationStrings.GetClientAppString(null, clientApplicationType);
+
+            SqlHelper.UpdateSolutionDetails(_test.solutionDetail, _test.connectionString);
+            _test.driver.Navigate().Refresh();
+        }
+
+        [Given(@"a Supplier has saved all mandatory data on the (Browser based) Client Application Type Sub-Sections except for (Browsers supported|Plug-ins or extensions|Connectivity and resolution|Mobile first)")]
+        public void GivenASupplierHasSavedAllMandatoryDataOnTheClientApplicationTypeSub_SectionsExceptForX(string clientApplicationType, string section)
+        {
+            _test.solutionDetail.ClientApplication = ClientApplicationStrings.GetClientAppString(section, clientApplicationType);
+
+            SqlHelper.UpdateSolutionDetails(_test.solutionDetail, _test.connectionString);
+            Thread.Sleep(800);
+            _test.driver.Navigate().Refresh();
+        }
+
+        [Given(@"a Supplier has saved all mandatory data on the (Native mobile or tablet) Client Application Type Sub-Sections except for (Supported operating systems|Memory and storage|Mobile first)")]
+        public void GivenASupplierHasSavedAllMandatoryDataOnTheNativeMobileClientApplicationTypeSub_SectionsExceptForX(string clientApplicationType, string section)
+        {
+            GivenASupplierHasSavedAllMandatoryDataOnTheClientApplicationTypeSub_SectionsExceptForX(clientApplicationType, section);
+        }
+
+        [Given(@"a Supplier has saved all mandatory data on the (Native desktop) Client Application Type Sub-Sections except for (Supported operating systems|Connection details|Memory, storage, processing and aspect ratio)")]
+        public void GivenASupplierHasSavedAllMandatoryDataOnTheNativeDesktopClientApplicationTypeSub_SectionsExceptForX(string clientApplicationType, string section)
+        {
+            GivenASupplierHasSavedAllMandatoryDataOnTheClientApplicationTypeSub_SectionsExceptForX(clientApplicationType, section);
         }
 
         private void SelectClientType(string clientType)
