@@ -5,7 +5,7 @@
 
 Scenario: Sub Sections presented
 	Given that a Supplier has chosen to manage the Browser Based Client Application Type Section
-	When the User has selected Browser Based as a Client Application Type
+	When the User has selected Browser based Client Type as a Client Application Type
 	And has navigated to the Browser based Client Application Sub-Form
 	Then there is a list of Browser Based Client Application Type Sub-Sections 
 	And the Supplier is able to access the Browser Based Client Type Sub-Sections
@@ -22,14 +22,14 @@ Scenario: Section status
 
 Scenario: Main Form - Browser Based Application Type Section marked as Incomplete -  Mandatory Data Missing
 	Given the Browser based Client Application Type Section requires Mandatory Data
-	And the User has selected Browser Based as a Client Application Type
+	And the User has selected Browser based Client Type as a Client Application Type
 	And a Supplier has not saved Mandatory data on all the Browser Based Client Application Type Sub-Sections
 	When the Marketing Page Form is presented
 	Then the Browser based Sub-Section is marked as Incomplete
 
 Scenario: Main Form - Client Application Type Section marked as Complete -  Mandatory Data Present
 	Given the Browser based Client Application Type Section requires Mandatory Data
-	And the User has selected Browser Based as a Client Application Type
+	And the User has selected Browser based Client Type as a Client Application Type
 	And a Supplier has saved all mandatory data on the Browser based Client Application Type Sub-Sections
 	When the Marketing Page Form is presented 
 	Then the Browser based Sub-Section is marked as Complete

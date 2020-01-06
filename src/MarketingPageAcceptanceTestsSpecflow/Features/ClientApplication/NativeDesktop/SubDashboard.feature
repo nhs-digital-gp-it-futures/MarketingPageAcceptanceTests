@@ -6,13 +6,13 @@
 Scenario: Native Mobile or Tablet Client Type Type Sub-Dashboard presented
 	Given that a User has chosen to manage Marketing Page Information
 	When the Marketing Page Form is presented
-	And the User has selected Native Desktop Client Type as a Client Application Type
+	And the User has selected Native desktop Client Type as a Client Application Type
 	Then there is a list of Marketing Page Form Sections 
-	And the Authority User is able to access the Native Desktop Client Type Type Sub-Dashboard
+	And the Authority User is able to access the Native desktop Client Type Type Sub-Dashboard
 
 Scenario: Sub Sections presented
 	Given that a User has chosen to manage Marketing Page Information
-	When the User has selected Native Desktop Client Type as a Client Application Type
+	When the User has selected Native desktop Client Type as a Client Application Type
 	And has navigated to the Native desktop Client Application Sub-Form
 	Then there is a list of Native Desktop Client Application Type Sub-Sections 
 

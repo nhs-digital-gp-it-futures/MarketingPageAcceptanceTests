@@ -13,18 +13,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.NativeDes
         {
 
         }
-
-        [When(@"the User has selected Native Desktop Client Type as a Client Application Type")]
-        public void WhenTheUserHasSelectedNativeDesktopClientTypeAsAClientApplicationType()
-        {
-            new SharedClientApplicationTypesSteps(_test, _context).SelectClientType("Native desktop");
-        }
-        
-        [Then(@"the Authority User is able to access the Native Desktop Client Type Type Sub-Dashboard")]
-        public void ThenTheAuthorityUserIsAbleToAccessTheNativeDesktopClientTypeTypeSub_Dashboard()
-        {
-            _test.pages.Dashboard.NavigateToSection("Native desktop", true);
-        }
         
         [Then(@"there is a list of Native Desktop Client Application Type Sub-Sections")]
         public void ThenThereIsAListOfNativeDesktopClientApplicationTypeSub_Sections()

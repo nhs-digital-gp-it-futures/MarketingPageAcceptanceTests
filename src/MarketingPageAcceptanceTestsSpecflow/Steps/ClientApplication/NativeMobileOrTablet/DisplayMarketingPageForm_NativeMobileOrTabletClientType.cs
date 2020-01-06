@@ -13,18 +13,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.NativeMob
 
         }
 
-        [StepDefinition(@"the User has selected Native Mobile or Tablet Client Type as a Client Application Type")]
-        public void WhenTheUserHasSelectedNativeMobileOrTabletClientTypeAsAClientApplicationType()
-        {
-            new SharedClientApplicationTypesSteps(_test, _context).SelectClientType("Native mobile or tablet");
-        }
-
-        [Then(@"the Authority User is able to access the Native Mobile or Tablet Client Type Type Sub-Dashboard")]
-        public void ThenTheAuthorityUserIsAbleToAccessTheNativeMobileOrTabletClientTypeTypeSub_Dashboard()
-        {
-            _test.pages.Dashboard.NavigateToSection("Native mobile or tablet", true);
-        }
-
         [Then(@"there is a list of Native Mobile or Tablet Client Application Type Sub-Sections")]
         public void ThenThereIsAListOfNativeMobileOrTabletClientApplicationTypeSub_Sections()
         {
