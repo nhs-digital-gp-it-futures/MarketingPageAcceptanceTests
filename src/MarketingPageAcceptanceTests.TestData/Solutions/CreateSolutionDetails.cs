@@ -15,7 +15,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
                 SolutionId = slnId,
                 AboutUrl = faker.Internet.Url(),
                 Features = GenerateFeatures(numFeatures, faker),
-                ClientApplication = clientApplication ? ClientApplicationStrings.GetClientAppString() : string.Empty,
+                ClientApplication = clientApplication ? ClientApplicationStringBuilder.GetClientAppString() : string.Empty,
                 Summary = faker.Commerce.ProductName(),
                 FullDescription = faker.Name.JobTitle()
             };

@@ -95,7 +95,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
         [Given(@"a Supplier has saved all mandatory data on the (Browser based|Native mobile or tablet|Native desktop) Client Application Type Sub-Sections")]
         public void GivenASupplierHasSavedAllMandatoryDataOnTheClientApplicationTypeSub_Sections(string clientApplicationType)
         {
-            _test.solutionDetail.ClientApplication = ClientApplicationStrings.GetClientAppString(null, clientApplicationType);
+            _test.solutionDetail.ClientApplication = ClientApplicationStringBuilder.GetClientAppString(null, clientApplicationType);
 
             SqlHelper.UpdateSolutionDetails(_test.solutionDetail, _test.connectionString);
             _test.driver.Navigate().Refresh();
@@ -104,7 +104,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
         [Given(@"a Supplier has saved all mandatory data on the (Browser based) Client Application Type Sub-Sections except for (Browsers supported|Plug-ins or extensions|Connectivity and resolution|Mobile first)")]
         public void GivenASupplierHasSavedAllMandatoryDataOnTheClientApplicationTypeSub_SectionsExceptForX(string clientApplicationType, string section)
         {
-            _test.solutionDetail.ClientApplication = ClientApplicationStrings.GetClientAppString(section, clientApplicationType);
+            _test.solutionDetail.ClientApplication = ClientApplicationStringBuilder.GetClientAppString(section, clientApplicationType);
 
             SqlHelper.UpdateSolutionDetails(_test.solutionDetail, _test.connectionString);
             Thread.Sleep(800);
