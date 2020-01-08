@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using System;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
@@ -20,6 +21,13 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             new SelectElement(driver.FindElement(pages.BrowserBasedSections.ConnectivityAndResolution.MinimumDesktopResolution))
                 .SelectByText(textValue);
+        }
+
+        public void SelectRandomConnectionSpeed()
+        {
+            var connectionDropdown = new SelectElement(driver.FindElement(pages.BrowserBasedSections.ConnectivityAndResolution.MinimumConnectionSpeed));
+            var index = new Random().Next(connectionDropdown.Options.Count);
+            connectionDropdown.SelectByIndex(index);
         }
     }
 }
