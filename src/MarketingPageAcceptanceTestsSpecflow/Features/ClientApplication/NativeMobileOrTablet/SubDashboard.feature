@@ -27,7 +27,7 @@ Scenario: Section status
 	And the Third party components and device capabilities content validation status is displayed
 	And the Hardware requirements content validation status is displayed
 	And the Additional information content validation status is displayed
-@ignore
+
 Scenario: Main Form - Section marked as Complete -  Mandatory Data Present
 	Given the Native mobile or tablet Client Application Type Section requires Mandatory Data
 	And the User has selected Native mobile or tablet Client Type as a Client Application Type
