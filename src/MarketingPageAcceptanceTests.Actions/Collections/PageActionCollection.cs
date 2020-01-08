@@ -12,6 +12,7 @@ namespace MarketingPageAcceptanceTests.Actions.Collections
         public ClientApplicationTypes ClientApplicationTypes { get; set; }
         public BrowserBasedSections BrowserBasedSections { get; set; }
         public NativeMobileSections NativeMobileSections { get; set; }
+        public NativeDesktopSections NativeDesktopSections { get; set; }
         public ContactDetails ContactDetails { get; set; }
     }
 
@@ -29,5 +30,10 @@ namespace MarketingPageAcceptanceTests.Actions.Collections
     {   
         public NativeMobileOperatingSystems OperatingSystems { get; set; }
         public MemoryAndStorage MemoryAndStorage { get; set; }
+    }
+
+    public sealed class NativeDesktopSections
+    {
+        public NativeDesktopOperatingSystems OperatingSystems { get; set; }
     }
 }
