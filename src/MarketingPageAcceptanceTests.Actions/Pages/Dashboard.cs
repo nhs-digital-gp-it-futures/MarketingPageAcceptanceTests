@@ -115,7 +115,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             }
             else
             {
-                wait.Until(s => s.FindElement(pages.Common.PageTitle).Text.Contains(sectionTitle));
+                wait.Until(s => s.FindElement(pages.Common.PageTitle).Text.Contains(sectionTitle, System.StringComparison.OrdinalIgnoreCase));
             }
         }
 

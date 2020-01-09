@@ -17,7 +17,7 @@ Scenario Outline: Does not exceed maximum
 	Examples: 
 	| PageTitle              | MaxChars |
 	| Hardware requirements  | 500      |
-	#| Additional information | 500      |
+	| Additional information | 500      |
 
 Scenario Outline: Does exceed maximum
 	Given the Supplier has entered <MaxChars> characters on the <PageTitle> page in the Native mobile or tablet section
@@ -50,7 +50,7 @@ Scenario Outline: Sub-Section marked as Complete - No Mandatory Data Required + 
 	Examples: 
 	| PageTitle             | 
 	| Hardware requirements | 
-	#| Additional information |
+	| Additional information |
 
 Scenario Outline: Appear on Preview
 	Given that <PageTitle> has been completed in the Native mobile or tablet section
@@ -60,4 +60,4 @@ Scenario Outline: Appear on Preview
 	Examples: 
 	| PageTitle              | 
 	| Hardware requirements  | 
-	#| Additional information |
+	| Additional information |

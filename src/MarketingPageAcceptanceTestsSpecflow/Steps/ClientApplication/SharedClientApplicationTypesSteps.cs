@@ -72,7 +72,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
             _test.pages.Common.ClickSubDashboardBackLink();
         }
 
-        [When(@"has navigated to the (Browser based|Native mobile or tablet|Native desktop) Client Application Sub-Form")]
+        [StepDefinition(@"has navigated to the (Browser based|Native mobile or tablet|Native desktop) Client Application Sub-Form")]
         public void WhenHasNavigatedToTheSpecifiedClientApplicationSub_Form(string desiredSubForm)
         {
             _test.pages.Dashboard.NavigateToSection(desiredSubForm, true);
@@ -121,6 +121,21 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
         public void GivenASupplierHasSavedAllMandatoryDataOnTheNativeDesktopClientApplicationTypeSub_SectionsExceptForX(string clientApplicationType, string section)
         {
             GivenASupplierHasSavedAllMandatoryDataOnTheClientApplicationTypeSub_SectionsExceptForX(clientApplicationType, section);
+        }
+
+        [Given(@"that (.*) has been completed for (Browser based|Native mobile or tablet|Native desktop)")]
+        public void GivenThatConnectionDetailsHasBeenCompletedForNativeDesktop(string subSection, string section)
+        {
+            _test.pages.Dashboard.NavigateToSection(section, true);
+            _test.pages.Dashboard.NavigateToSection(subSection);
+            switch (subSection)
+            {
+                case "Connection details":
+                    _test.pages.BrowserBasedSections.ConnectivityAndResolution.SelectRandomConnectionSpeed();
+                    break;
+            }
+            _test.pages.Common.SectionSaveAndReturn();
+            _test.pages.Common.ClickSubDashboardBackLink();
         }
 
         public void SelectClientType(string clientType)
