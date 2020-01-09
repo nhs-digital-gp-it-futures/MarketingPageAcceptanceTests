@@ -18,11 +18,10 @@ Scenario: Mandatory - No
 	When the Native desktop Client Application Sub-Form is presented
 	Then the Connection details Sub-Section is marked as Incomplete 
 
-@ignore
 Scenario: Appear on Preview
 	Given that Connection details has been completed for Native desktop
 	When a User previews the Marketing Page
-	Then Additional information about connection types will be presented in Native desktop on the Preview of the Marketing Page
+	Then Minimum connection speed required will be presented in Native desktop on the Preview of the Marketing Page
 
 Scenario: Validation on Save
 	Given validation has been triggered on Native desktop section Connection details
