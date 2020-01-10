@@ -122,7 +122,7 @@
 
             string desktopOperatingSystemsSupported = "\"NativeDesktopOperatingSystemsDescription\":\"Windows 7,8,10\r\nUbuntu\",";
             string connectionDetails = "\"NativeDesktopMinimumConnectionSpeed\":\"0.5Mbps\",";
-            string memoryStorageProcessingAspectRatio = "\"NativeDesktopMemoryAndStorage\":null,";
+            string memoryStorageProcessingAspectRatio = "\"NativeDesktopMemoryAndStorage\":{\"MinimumMemoryRequirement\":\"256MB\",\"StorageRequirementsDescription\":\"approximately 10MB, plus additional for cache\",\"MinimumCpu\":\"0.98hz\",\"RecommendedResolution\":\"16:9 - 640 x 360\"},";
             switch (ignoredSection)
             {
                 case "Supported operating systems":
