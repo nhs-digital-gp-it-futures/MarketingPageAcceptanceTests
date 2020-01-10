@@ -5,13 +5,13 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
     public static class CreateSolution
     {
-        const string prefix = "AutoSol";
+        const string prefix = "Auto";
 
         public static Solution CreateNewSolution()
         {
             var faker = new Faker();
 
-            var Id = RandomSolId(faker);
+            var Id = RandomSolId();
             Solution solution = new Solution
             {
                 Id = Id,
@@ -27,11 +27,10 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
             return solution;
         }
 
-        private static string RandomSolId(Faker faker)
+        private static string RandomSolId()
         {
-            var suffix = faker.Random.Digits(14 - prefix.Length);
-
-            return $"{prefix}{string.Join("", suffix)}";
+            string timestamp = DateTimeOffset.Now.ToUnixTimeMilliseconds().ToString();
+            return prefix + timestamp.Substring(timestamp.Length - 10);
         }
 
         public static SolutionDetail CreateCompleteSolutionDetail(Solution solution, SolutionDetail solutionDetail)
