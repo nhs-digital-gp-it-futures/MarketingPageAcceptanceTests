@@ -22,7 +22,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
 
         internal static string GetUrl()
         {
-            return Environment.GetEnvironmentVariable("MPURL") ?? "http://10.0.75.1:3002/solution";
+            return Environment.GetEnvironmentVariable("MPURL") ?? "http://10.0.75.1:3002/solution/";
         }
 
         internal static string GetBrowser()
