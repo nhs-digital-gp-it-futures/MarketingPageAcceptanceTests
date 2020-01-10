@@ -18,7 +18,7 @@ namespace MarketingPageAcceptanceTests.Objects
                 BrowserBasedSections = new BrowserBasedSections()
                 {
                     BrowsersSupported = new Pages.BrowsersSupported(),
-                    PluginsOrExtensions = new Pages.PluginsOrExtensions(),                    
+                    PluginsOrExtensions = new Pages.PluginsOrExtensions(),
                     HardwareRequirements = new Pages.HardwareRequirements(),
                     ConnectivityAndResolution = new Pages.ConnectivityAndResolution(),
                     MobileFirst = new Pages.MobileFirst(),
@@ -31,7 +31,8 @@ namespace MarketingPageAcceptanceTests.Objects
                 },
                 NativeDesktopSections = new NativeDesktopSections()
                 {
-                    SupportedOperatingSystems = new Pages.SupportedOperatingSystems()
+                    SupportedOperatingSystems = new Pages.SupportedOperatingSystems(),
+                    MemoryAndStorage = new Pages.NativeDesktopMemoryStorage()
                 },
                 ContactDetails = new Pages.ContactDetails()
             };
