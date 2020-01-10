@@ -18,7 +18,20 @@
 
                 if (clientApplicationTypes.Contains(nativeMobile))
                 {
+                    if (!string.IsNullOrEmpty(clientAppString))
+                    {
+                        clientAppString += ",";
+                    }
                     clientAppString += ClientApplicationStrings.NativeMobile;
+                }
+
+                if (clientApplicationTypes.Contains(nativeDesktop))
+                {
+                    if (!string.IsNullOrEmpty(clientAppString))
+                    {
+                        clientAppString += ",";
+                    }
+                    clientAppString += ClientApplicationStrings.NativeDesktop;
                 }
 
                 return buildClientApplicationString(clientApplicationTypes, clientAppString);
@@ -32,6 +45,11 @@
             if (clientApplicationTypes.Contains(nativeMobile))
             {
                 clientAppString += parseNativeMobileTemplate(ignoredSection);
+            }
+
+            if (clientApplicationTypes.Contains(nativeDesktop))
+            {
+                clientAppString += parseNativeDesktopTemplate(ignoredSection);
             }
 
             return buildClientApplicationString(clientApplicationTypes, clientAppString);
@@ -50,10 +68,10 @@
         {
             string formattedString = string.Empty;
 
-            var browsersSupported = "\"BrowsersSupported\":[\"Google Chrome\"],\"MobileResponsive\":true,";
-            var plugins = "\"Plugins\":{\"Required\":false,\"AdditionalInformation\":\"\"},";
-            var connectivityAndResolution = "\"MinimumConnectionSpeed\":\"1Mbps\",\"MinimumDesktopResolution\":\"21:9-2560 x 1080\",";
-            var mobileFirstDesign = "\"MobileFirstDesign\":true,";
+            string browsersSupported = "\"BrowsersSupported\":[\"Google Chrome\"],\"MobileResponsive\":true,";
+            string plugins = "\"Plugins\":{\"Required\":false,\"AdditionalInformation\":\"\"},";
+            string connectivityAndResolution = "\"MinimumConnectionSpeed\":\"1Mbps\",\"MinimumDesktopResolution\":\"21:9-2560 x 1080\",";
+            string mobileFirstDesign = "\"MobileFirstDesign\":true,";
 
             switch (ignoredSection)
             {
@@ -78,9 +96,9 @@
         {
             string formattedString = string.Empty;
 
-            var mobileOperatingSystemsSupported = "\"MobileOperatingSystems\":{\"OperatingSystems\":[\"Apple IOS\",\"Android\"],\"OperatingSystemsDescription\":\"\"},";
-            var nativeMobileFirstDesign = "\"NativeMobileFirstDesign\":true,";
-            var mobileMemoryAndStorage = "\"MobileMemoryAndStorage\":{\"MinimumMemoryRequirement\":\"256MB\",\"Description\":\"Some storage description details\"},";
+            string mobileOperatingSystemsSupported = "\"MobileOperatingSystems\":{\"OperatingSystems\":[\"Apple IOS\",\"Android\"],\"OperatingSystemsDescription\":\"\"},";
+            string nativeMobileFirstDesign = "\"NativeMobileFirstDesign\":true,";
+            string mobileMemoryAndStorage = "\"MobileMemoryAndStorage\":{\"MinimumMemoryRequirement\":\"256MB\",\"Description\":\"Some storage description details\"},";
 
             switch (ignoredSection)
             {
@@ -96,6 +114,29 @@
             }
 
             return formattedString;            
+        }
+
+        private static string parseNativeDesktopTemplate(string ignoredSection)
+        {
+            string formattedString = string.Empty;
+
+            string desktopOperatingSystemsSupported = "\"NativeDesktopOperatingSystemsDescription\":\"Windows 7,8,10\r\nUbuntu\",";
+            string connectionDetails = "\"NativeDesktopMinimumConnectionSpeed\":\"0.5Mbps\",";
+            string memoryStorageProcessingAspectRatio = "\"NativeDesktopMemoryAndStorage\":null,";
+            switch (ignoredSection)
+            {
+                case "Supported operating systems":
+                    formattedString = string.Format(ClientApplicationStrings.NativeDesktopTemplate, "", connectionDetails, memoryStorageProcessingAspectRatio);
+                    break;
+                case "Connection details":
+                    formattedString = string.Format(ClientApplicationStrings.NativeDesktopTemplate, desktopOperatingSystemsSupported, "", memoryStorageProcessingAspectRatio);
+                    break;
+                case "Memory, storage, processing and aspect ratio":
+                    formattedString = string.Format(ClientApplicationStrings.NativeDesktopTemplate, desktopOperatingSystemsSupported, connectionDetails, "");
+                    break;
+            }
+
+            return formattedString;
         }
     }
 }

@@ -18,5 +18,8 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 
         internal const string NativeMobile = "\"NativeMobileHardwareRequirements\":null,\"NativeMobileFirstDesign\":true,\"MobileOperatingSystems\":{\"OperatingSystems\":[\"Apple IOS\",\"Android\"],\"OperatingSystemsDescription\":\"\"},\"MobileConnectionDetails\":{\"MinimumConnectionSpeed\":\"\",\"ConnectionType\":[],\"Description\":\"\"},\"MobileMemoryAndStorage\":{\"MinimumMemoryRequirement\":\"256MB\",\"Description\":\"Some storage description details\"},\"MobileThirdParty\":{\"ThirdPartyComponents\":\"\",\"DeviceCapabilities\":\"\"},\"NativeMobileAdditionalInformation\":null";
         internal const string NativeMobileTemplate = "\"NativeMobileHardwareRequirements\":null,{0}{1}\"MobileConnectionDetails\":{{\"MinimumConnectionSpeed\":\"\",\"ConnectionType\":[],\"Description\":\"\"}},{2}\"MobileThirdParty\":{{\"ThirdPartyComponents\":\"\",\"DeviceCapabilities\":\"\"}},\"NativeMobileAdditionalInformation\":null";
+
+        internal const string NativeDesktop = "\"NativeDesktopOperatingSystemsDescription\":\"Windoze, That linux one with the penguin, macO$\",\"NativeDesktopMinimumConnectionSpeed\":\"0.5Mbps\",\"NativeDesktopThirdParty\":null,\"NativeDesktopMemoryAndStorage\":null,\"NativeDesktopHardwareRequirements\":null,\"NativeDesktopAdditionalInformation\":null";
+        internal const string NativeDesktopTemplate = "{0}{1}\"NativeDesktopThirdParty\":null,{2}\"NativeDesktopHardwareRequirements\":null,\"NativeDesktopAdditionalInformation\":null";
     }
 }
