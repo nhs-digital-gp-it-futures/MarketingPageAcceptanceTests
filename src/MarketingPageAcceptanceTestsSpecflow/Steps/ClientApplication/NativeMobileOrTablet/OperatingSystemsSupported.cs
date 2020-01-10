@@ -10,7 +10,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.NativeMob
         {
         }
 
-        [Given(@"that a User has provided a value for the Mandatory Information for (.*) section on (.*) sub dashboard")]
+        [Given(@"that a User has provided a value for the Mandatory Information for (Supported operating systems) section on (Native mobile or tablet) sub dashboard")]
         public void GivenThatAUserHasProvidedAValueForTheMandatoryInformation(string section, string subDashboard)
         {
             _test.pages.Dashboard.NavigateToSection(subDashboard, true);
@@ -33,8 +33,11 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.NativeMob
             _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection(section);
 
             switch (section) {
-                case "Supported operating systems":                    
-                    _test.pages.NativeMobileSections.OperatingSystems.SelectCheckboxes(1);
+                case "Supported operating systems":
+                    if (subDashboard.Contains("native mobile", System.StringComparison.OrdinalIgnoreCase))
+                    {
+                        _test.pages.NativeMobileSections.OperatingSystems.SelectCheckboxes(1);
+                    }
                     _test.pages.NativeMobileSections.OperatingSystems.TextAreaSendText(characters);
                     break;
                 case "Memory and storage":

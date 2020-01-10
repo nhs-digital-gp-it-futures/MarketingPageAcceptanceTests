@@ -29,6 +29,10 @@ namespace MarketingPageAcceptanceTests.Objects
                     MemoryAndStorage = new Pages.MemoryAndStorage(),
                     ThirdPartyComponentsAndDevices = new Pages.ThirdPartyComponentsAndDevices()
                 },
+                NativeDesktopSections = new NativeDesktopSections()
+                {
+                    SupportedOperatingSystems = new Pages.SupportedOperatingSystems()
+                },
                 ContactDetails = new Pages.ContactDetails()
             };
         }

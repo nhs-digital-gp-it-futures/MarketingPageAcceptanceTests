@@ -30,6 +30,10 @@ namespace MarketingPageAcceptanceTests.Actions
                     OperatingSystems = new NativeMobileOperatingSystems(driver),
                     MemoryAndStorage = new MemoryAndStorage(driver)
                 },
+                NativeDesktopSections = new NativeDesktopSections()
+                {
+                    OperatingSystems = new NativeDesktopOperatingSystems(driver)
+                },
                 ContactDetails = new ContactDetails(driver)
             };
         }
