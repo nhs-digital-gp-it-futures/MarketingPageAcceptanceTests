@@ -4,7 +4,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
 {
     internal static class EnvironmentVariables
     {
-        internal static (Uri, string, string, string, string, string, string) Get()
+        internal static (string, string, string, string, string, string, string) Get()
         {
             var url = GetUrl();
             var hubUrl = GetHubUrl();
@@ -20,11 +20,11 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
             return Environment.GetEnvironmentVariable("HUBURL") ?? "http://localhost:4444/wd/hub";
         }
 
-        internal static Uri GetUrl()
+        internal static string GetUrl()
         {
             string uri = Environment.GetEnvironmentVariable("MPURL") ?? "http://10.0.75.1:3002/solution/";
 
-            return new Uri(uri);
+            return uri.TrimEnd('/');
         }
 
         internal static string GetBrowser()
