@@ -12,12 +12,13 @@ pool:
 variables:
   buildConfiguration: 'Release'
 
-steps:
 - task: UseDotNet@2
-  displayName: 'Use DotNet Core 3.1'
+  displayName: 'Use DotNet Core 3.1.x'
   inputs:
-    version: 3.x
+    packageType: 'sdk'
+    version: '3.1.x'
     includePreviewVersions: false
+    installationPath: '$(Agent.ToolsDirectory)'
 
 - script: docker-compose up --scale chrome=4 -d
   displayName: docker-compose
