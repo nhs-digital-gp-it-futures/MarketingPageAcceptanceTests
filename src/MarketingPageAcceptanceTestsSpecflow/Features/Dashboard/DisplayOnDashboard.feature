@@ -14,11 +14,13 @@ And the User is able to manage the <Section> Marketing Page Form Section
 	| Solution description    |
 	| Features                |
 	| Client application type |
-	| Public cloud            |
+	#| Public cloud            
 	#| Private cloud 
 	#| Hybrid        
 	#| On Premise    
 	| Contact details         |
+	#| Roadmap                 
+	#| About supplier          
 	
 Scenario Outline: Sub dashboard sections presented
 	Given that a User has chosen to manage Marketing Page Information
@@ -44,10 +46,12 @@ Then the <Section> content validation status is displayed
 	| Features                |
 	| Client application type |
 	| Public cloud            |
-	#| Private cloud 
+	| Private cloud           |
 	#| Hybrid        
 	#| On Premise    
 	| Contact details         |
+	#| Roadmap                 
+	#| About supplier          
 	
 Scenario Outline: Sub dashboard section status
 Given that a User has chosen to manage Marketing Page Information
