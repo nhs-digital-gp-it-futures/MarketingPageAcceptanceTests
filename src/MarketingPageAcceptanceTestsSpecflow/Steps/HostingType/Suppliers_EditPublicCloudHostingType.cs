@@ -15,7 +15,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.HostingType
         [Given(@"that Public cloud has been completed in the Hosting type section")]
         public void GivenThatPublicCloudHasBeenCompletedInTheHostingTypeSection()
         {
-            _test.pages.Dashboard.NavigateToSection("Public cloud", false);
+            _test.pages.Dashboard.NavigateToSection("Public cloud");
             _test.pages.BrowserBasedSections.HardwareRequirements.EnterText(500, 0);
             _test.pages.BrowserBasedSections.HardwareRequirements.EnterText(1000, 1);
             _test.pages.HostingTypeSections.PublicCloud.ClickRequiresHscnN3ConnectivityCheckbox();
@@ -26,7 +26,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.HostingType
         [Given(@"the user unchecks the HSCN/N3 connection checkbox on the Public cloud section")]
         public void GivenTheUserUnchecksTheHSCNNConnectionCheckboxOnThePublicCloudSection()
         {
-            _test.pages.Dashboard.NavigateToSection("Public cloud", false);
+            _test.pages.Dashboard.NavigateToSection("Public cloud");
             _test.pages.HostingTypeSections.PublicCloud.ClickRequiresHscnN3ConnectivityCheckbox();
             _test.pages.Common.SectionSaveAndReturn();
         }

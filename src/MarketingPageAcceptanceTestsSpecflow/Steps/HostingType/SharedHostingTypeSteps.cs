@@ -15,7 +15,7 @@ namespace MarketingPageAcceptanceTestsSpecflow
         [Given(@"the User has entered (\d{3,4}) characters on the (.*) page in the (Public cloud|Private cloud|Hybrid|On premise) section")]
         public void GivenTheSupplierHasEnteredText(int characters, string page, string section)
         {
-            _test.pages.Dashboard.NavigateToSection(section, false);
+            _test.pages.Dashboard.NavigateToSection(section);
 
             _test.pages.BrowserBasedSections.HardwareRequirements.EnterText(characters);
         }
