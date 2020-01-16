@@ -133,6 +133,9 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
                 case "Connection details":
                     _test.pages.BrowserBasedSections.ConnectivityAndResolution.SelectRandomConnectionSpeed();
                     break;
+                case "Memory, storage, processing and aspect ratio":
+                    _test.pages.NativeDesktopSections.MemoryAndStorage.CompleteAllFields();
+                    break;
             }
             _test.pages.Common.SectionSaveAndReturn();
             _test.pages.Common.ClickSubDashboardBackLink();

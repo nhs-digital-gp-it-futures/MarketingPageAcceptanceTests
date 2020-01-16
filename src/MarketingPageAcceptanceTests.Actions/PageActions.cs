@@ -32,7 +32,8 @@ namespace MarketingPageAcceptanceTests.Actions
                 },
                 NativeDesktopSections = new NativeDesktopSections()
                 {
-                    OperatingSystems = new NativeDesktopOperatingSystems(driver)
+                    OperatingSystems = new NativeDesktopOperatingSystems(driver),
+                    MemoryAndStorage = new NativeDesktopMemoryAndStorage(driver)
                 },
                 ContactDetails = new ContactDetails(driver)
             };

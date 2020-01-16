@@ -35,5 +35,6 @@ namespace MarketingPageAcceptanceTests.Actions.Collections
     public sealed class NativeDesktopSections
     {
         public NativeDesktopOperatingSystems OperatingSystems { get; set; }
+        public NativeDesktopMemoryAndStorage MemoryAndStorage { get; set; }
     }
 }

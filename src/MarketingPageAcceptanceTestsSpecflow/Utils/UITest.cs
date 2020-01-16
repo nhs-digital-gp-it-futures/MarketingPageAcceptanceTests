@@ -25,6 +25,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
             connectionString = EnvironmentVariables.GetConnectionString();
             SqlHelper.CreateBlankSolution(solution, solutionDetail, connectionString);
 
+            // Reformatting to remove chance of rogue '/' between site url and solution id
             url = $"{EnvironmentVariables.GetUrl()}/{solution.Id}";
 
             driver = new BrowserFactory().Driver;

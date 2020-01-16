@@ -56,7 +56,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
         }
 
         [Then(@"the Supplier is shown (.*) error messages")]
-        public void xNumberOfErrorMessagesDisplayed(int numberOfExpectedErrorMessages)
+        public void NumberOfErrorMessagesDisplayed(int numberOfExpectedErrorMessages)
         {
             _test.pages.Common.ErrorMessagesDisplayed(numberOfExpectedErrorMessages);
         }
