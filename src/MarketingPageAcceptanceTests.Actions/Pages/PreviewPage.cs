@@ -63,6 +63,12 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                 .Where(s => s.Text.ToLower().Contains(section.ToLower()))
                 .Count().Should().BeGreaterThan(0);
         }
+        public void SectionNotDisplayed(string section)
+        {
+            driver.FindElements(pages.PreviewPage.BrowserBasedSectionTitles)
+                .Where(s => s.Text.ToLower().Contains(section.ToLower()))
+                .Count().Should().Be(0);
+        }
 
         public void ExpandSection(string subDashboard)
         {

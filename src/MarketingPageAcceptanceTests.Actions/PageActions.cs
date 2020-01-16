@@ -35,6 +35,10 @@ namespace MarketingPageAcceptanceTests.Actions
                     OperatingSystems = new NativeDesktopOperatingSystems(driver),
                     MemoryAndStorage = new NativeDesktopMemoryAndStorage(driver)
                 },
+                HostingTypeSections = new HostingTypeSections()
+                {
+                    PublicCloud = new PublicCloud(driver)
+                },
                 ContactDetails = new ContactDetails(driver)
             };
         }

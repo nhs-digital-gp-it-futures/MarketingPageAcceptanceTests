@@ -45,8 +45,8 @@ Then the <Section> content validation status is displayed
 	| Solution description    |
 	| Features                |
 	| Client application type |
-	| Public cloud            |
-	| Private cloud           |
+	#| Public cloud            |
+	#| Private cloud           |
 	#| Hybrid        
 	#| On Premise    
 	| Contact details         |

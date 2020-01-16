@@ -34,6 +34,10 @@ namespace MarketingPageAcceptanceTests.Objects
                     SupportedOperatingSystems = new Pages.SupportedOperatingSystems(),
                     MemoryAndStorage = new Pages.NativeDesktopMemoryStorage()
                 },
+                HostingTypeSections = new HostingTypeSections()
+                {
+                    PublicCloud = new Pages.PublicCloud()
+                },
                 ContactDetails = new Pages.ContactDetails()
             };
         }

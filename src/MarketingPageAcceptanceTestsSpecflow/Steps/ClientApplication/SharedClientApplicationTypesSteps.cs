@@ -58,12 +58,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
             _test.pages.Common.SubDashboardTitle().Should().BeEquivalentTo(sectionTitle);
         }
 
-        [Then(@"the (.*) Sub-Section is marked as (Incomplete|Complete)")]
-        public void ThenTheBrowserBasedClientApplicationTypeSub_SectionIsMarkedAsStatus(string sectionName, string status)
-        {
-            _test.pages.Dashboard.AssertSectionStatus(sectionName, status.ToUpper());
-        }
-
         [Given(@"that (.*) has been completed in the (Browser based|Native mobile or tablet|Native desktop) section")]
         public void GivenThatSectionHasBeenCompleted(string sectionName, string section)
         {
