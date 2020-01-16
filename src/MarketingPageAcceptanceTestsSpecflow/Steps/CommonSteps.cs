@@ -1,4 +1,5 @@
-﻿using MarketingPageAcceptanceTestsSpecflow.Utils;
+﻿using FluentAssertions;
+using MarketingPageAcceptanceTestsSpecflow.Utils;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Steps
@@ -69,6 +70,18 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps
         public void WhenTheUserAttemptsToSave()
         {
             _test.pages.Common.SectionSaveAndReturn();
+        }
+
+        [Then(@"the (.*) content validation status is displayed")]
+        public void ThenTheClientApplicationTypeContentValidationStatusIsDisplayed(string section)
+        {
+            _test.pages.Dashboard.SectionHasStatus(section).Should().BeTrue();
+        }
+
+        [Then(@"the (Supplier|User) is able to manage the (.*) Marketing Page (Dashboard|Form Section)")]
+        public void ThenTheSupplierIsAbleToManageTheMarketingPageFormSection(string user, string section, string pageType)
+        {
+            _test.pages.Dashboard.NavigateToSection(section, pageType=="Dashboard");
         }
     }
 }

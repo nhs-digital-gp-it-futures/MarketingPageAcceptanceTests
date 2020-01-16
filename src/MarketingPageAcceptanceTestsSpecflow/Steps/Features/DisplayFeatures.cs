@@ -15,12 +15,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Features
         {
         }
 
-        [Then(@"the Supplier is able to manage the Features Marketing Page Form Section")]
-        public void ThenTheSupplierIsAbleToManageTheFeaturesMarketingPageFormSection()
-        {
-            _test.pages.Dashboard.NavigateToSection("Features");
-        }
-
         [Then(@"the Features section content validation status is displayed")]
         public void ThenTheFeaturesSectionContentValidationStatusIsDisplayed()
         {
