@@ -36,11 +36,5 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
             _test.pages.ClientApplicationTypes.PageDisplayed().Should().BeTrue();
         }
 
-        [Then(@"the (.*) content validation status is displayed")]
-        public void ThenTheClientApplicationTypeContentValidationStatusIsDisplayed(string section)
-        {
-            _test.pages.Dashboard.SectionHasStatus(section).Should().BeTrue();
-        }
-
     }
 }

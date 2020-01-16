@@ -17,7 +17,7 @@ Scenario Outline: Does not exceed maximum
 	Examples: 
 	| PageTitle              | MaxChars |
 	| Hardware requirements  | 500      |
-	#| Additional information | 500      |
+	| Additional information | 500      |
 
 Scenario Outline: Does exceed maximum
 	Given the Supplier has entered <MaxChars> characters on the <PageTitle> page in the Native desktop section
@@ -28,7 +28,7 @@ Scenario Outline: Does exceed maximum
 	Examples: 
 	| PageTitle              | MaxChars |
 	| Hardware requirements  | 501      |
-	#| Additional information | 501      |
+	| Additional information | 501      |
 
 Scenario Outline: Sub-Section marked as Incomplete - No Mandatory Data Required + no data
 	Given the <PageTitle> Sub-Section in the Native desktop section does not require Mandatory Data
@@ -39,7 +39,7 @@ Scenario Outline: Sub-Section marked as Incomplete - No Mandatory Data Required 
 	Examples: 
 	| PageTitle              | 
 	| Hardware requirements  | 
-	#| Additional information |
+	| Additional information |
 
 Scenario Outline: Sub-Section marked as Complete - No Mandatory Data Required + data present
 	Given the <PageTitle> Sub-Section in the Native desktop section does not require Mandatory Data
@@ -50,7 +50,7 @@ Scenario Outline: Sub-Section marked as Complete - No Mandatory Data Required + 
 	Examples: 
 	| PageTitle             | 
 	| Hardware requirements | 
-	#| Additional information |
+	| Additional information |
 
 Scenario Outline: Appear on Preview
 	Given that <PageTitle> has been completed in the Native desktop section
@@ -60,4 +60,4 @@ Scenario Outline: Appear on Preview
 	Examples: 
 	| PageTitle              | 
 	| Hardware requirements  | 
-	#| Additional information |
+	| Additional information |
