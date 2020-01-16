@@ -232,7 +232,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
                 new SqlParameter("@department", contactDetail.JobSector)
             };
 
-            var result = SqlReader.Read(connectionString, query, parameters, DataReaders.NoReturn);
+            SqlReader.Read(connectionString, query, parameters, DataReaders.NoReturn);
         }
     }
 }

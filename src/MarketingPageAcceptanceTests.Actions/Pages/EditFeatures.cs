@@ -29,7 +29,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// <returns>Returns a random text field</returns>
         private IWebElement GetRandomTextField()
         {
-            IList<IWebElement> textFields = driver.FindElements(pages.EditFeatures.FeatureText); //driver.FindElements(pages.EditFeatures.FeatureList).ToList();
+            IList<IWebElement> textFields = driver.FindElements(pages.EditFeatures.FeatureText);
             return textFields[random.GetRandomPositionInArrayOfLength(textFields.Count)];
         }
 

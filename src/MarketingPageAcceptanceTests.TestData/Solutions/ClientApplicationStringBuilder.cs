@@ -1,4 +1,7 @@
-﻿namespace MarketingPageAcceptanceTests.TestData.Solutions
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
     public static class ClientApplicationStringBuilder
     {
@@ -8,51 +11,45 @@
 
         public static string GetClientAppString(string ignoredSection = null, string clientApplicationTypes = "Browser based")
         {
-            string clientAppString = string.Empty;
+            List<string> clientAppString = new List<string>();
+
+            string finishedString = string.Empty;
             if (string.IsNullOrEmpty(ignoredSection))
             {
                 if(clientApplicationTypes.Contains(browserBased))
                 {
-                    clientAppString += ClientApplicationStrings.BrowserBased;
+                    clientAppString.Add(ClientApplicationStrings.BrowserBased);
                 }
 
                 if (clientApplicationTypes.Contains(nativeMobile))
                 {
-                    if (!string.IsNullOrEmpty(clientAppString))
-                    {
-                        clientAppString += ",";
-                    }
-                    clientAppString += ClientApplicationStrings.NativeMobile;
+                    clientAppString.Add(ClientApplicationStrings.NativeMobile);
                 }
 
                 if (clientApplicationTypes.Contains(nativeDesktop))
                 {
-                    if (!string.IsNullOrEmpty(clientAppString))
-                    {
-                        clientAppString += ",";
-                    }
-                    clientAppString += ClientApplicationStrings.NativeDesktop;
+                    clientAppString.Add(ClientApplicationStrings.NativeDesktop);                    
                 }
 
-                return buildClientApplicationString(clientApplicationTypes, clientAppString);
+                finishedString = buildClientApplicationString(clientApplicationTypes, string.Join(',', clientAppString));
             }
 
             if (clientApplicationTypes.Contains(browserBased))
             {
-                clientAppString += parseBrowserBasedTemplate(ignoredSection);
+                finishedString += parseBrowserBasedTemplate(ignoredSection);
             }
 
             if (clientApplicationTypes.Contains(nativeMobile))
             {
-                clientAppString += parseNativeMobileTemplate(ignoredSection);
+                finishedString += parseNativeMobileTemplate(ignoredSection);
             }
 
             if (clientApplicationTypes.Contains(nativeDesktop))
             {
-                clientAppString += parseNativeDesktopTemplate(ignoredSection);
+                finishedString += parseNativeDesktopTemplate(ignoredSection);
             }
 
-            return buildClientApplicationString(clientApplicationTypes, clientAppString);
+            return buildClientApplicationString(clientApplicationTypes, finishedString);
         }
 
         private static string buildClientApplicationString(string clientApplicationType, string clientAppString)
