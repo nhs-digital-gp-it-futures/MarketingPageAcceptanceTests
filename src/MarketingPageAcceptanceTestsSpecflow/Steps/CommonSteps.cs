@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using MarketingPageAcceptanceTestsSpecflow.Utils;
+using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Steps
@@ -37,13 +38,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps
         public void MarketingPageFormPresented()
         {
             _test.pages.Dashboard.PageDisplayed();
-        }
-
-        [When(@"a User saves the page")]
-        public void WhenAUserSavesThePage()
-        {
-            _test.pages.Common.SectionSaveAndReturn();
-        }
+        }        
 
         [Then(@"(.*) will be presented in the (.*) section on the Preview of the Marketing Page")]
         public void ThenSectionWillBePresentedOnThePreviewOfTheMarketingPage(string section, string subSection)
@@ -66,9 +61,10 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps
             _test.pages.Common.ClickSectionBackLink();
         }
 
+        [When(@"a User saves the page")]
         [StepDefinition(@"the User attempts to save")]
         public void WhenTheUserAttemptsToSave()
-        {
+        {            
             _test.pages.Common.SectionSaveAndReturn();
         }
 
