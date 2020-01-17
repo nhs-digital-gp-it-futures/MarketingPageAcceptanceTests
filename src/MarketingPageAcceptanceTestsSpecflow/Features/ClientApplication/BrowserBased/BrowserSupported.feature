@@ -1,5 +1,4 @@
-﻿@ignore
-Feature: Suppliers - Edit Browser Based Client Type - Browser Supported
+﻿Feature: Suppliers - Edit Browser Based Client Type - Browser Supported
 	As a Supplier
 	I want to edit the Browsers Supported Sub-Section
 	So that I can make sure the information is correct

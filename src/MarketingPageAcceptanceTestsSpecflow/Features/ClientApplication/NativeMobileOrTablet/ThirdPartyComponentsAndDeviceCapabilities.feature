@@ -1,5 +1,4 @@
-﻿@ignore
-Feature: ThirdPartyComponentsAndDeviceCapabilities
+﻿Feature: ThirdPartyComponentsAndDeviceCapabilities
 	As an Authority User
 	I want to edit the Third Party Components + Device Capabilities  Section
 	So that I can make sure the information is correct

@@ -1,5 +1,4 @@
-﻿@ignore
-Feature: Edit Native Desktop - Third Party Components And Device Capabilities
+﻿Feature: Edit Native Desktop - Third Party Components And Device Capabilities
 	As an Authority User
 	I want to edit the Third Party + Device Capabilities Section
 	So that I can make sure the information is correct

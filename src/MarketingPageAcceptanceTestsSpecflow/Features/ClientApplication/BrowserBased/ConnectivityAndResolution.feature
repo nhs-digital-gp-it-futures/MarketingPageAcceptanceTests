@@ -1,5 +1,4 @@
-﻿@ignore
-Feature: Suppliers - Edit Browser Based Client Type - Connectivity and Resolution
+﻿Feature: Suppliers - Edit Browser Based Client Type - Connectivity and Resolution
 	As a Supplier
 	I want to edit the Resolution and Connectivity Sub-Section
 	So that I can make sure the information is correct

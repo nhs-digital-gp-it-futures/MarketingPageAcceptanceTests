@@ -1,5 +1,4 @@
-﻿@ignore
-Feature: Suppliers - Edit Client Application Type
+﻿Feature: Suppliers - Edit Client Application Type
 	As a Supplier
 	I want to select my Client Application Types
 	So that I can add further information for each Client Application Type

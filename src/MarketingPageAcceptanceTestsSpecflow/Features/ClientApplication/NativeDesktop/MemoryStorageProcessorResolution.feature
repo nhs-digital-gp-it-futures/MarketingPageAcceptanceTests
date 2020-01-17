@@ -1,5 +1,4 @@
-﻿@ignore
-Feature: Native Desktop - Memory, Storage, Processing and Resolution
+﻿Feature: Native Desktop - Memory, Storage, Processing and Resolution
 	As an Authority User
 	I want to edit the Memory, Storage, Processing and Resolution Sub-Section
 	So that I can make sure the information is correct

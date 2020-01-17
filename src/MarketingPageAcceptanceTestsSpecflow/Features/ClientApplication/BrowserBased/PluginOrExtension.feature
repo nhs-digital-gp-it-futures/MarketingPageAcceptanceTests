@@ -1,5 +1,4 @@
-﻿@ignore
-Feature: Suppliers - Edit Browser Based Client Type - Plugin or Extension
+﻿Feature: Suppliers - Edit Browser Based Client Type - Plugin or Extension
 	As a Supplier
 	I want to edit the Plugin or Extension Sub-Section
 	So that I can make sure the information is correct

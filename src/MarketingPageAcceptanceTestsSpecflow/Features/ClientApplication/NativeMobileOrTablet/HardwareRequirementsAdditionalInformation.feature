@@ -1,5 +1,4 @@
-﻿@ignore
-Feature: Suppliers - Native mobile or tablet Hardware and Additional Information
+﻿Feature: Suppliers - Native mobile or tablet Hardware and Additional Information
 	Edit Native mobile or tablet Client Type - Hardware Requirements
 		As a Supplier
 		I want to edit the Hardware Section

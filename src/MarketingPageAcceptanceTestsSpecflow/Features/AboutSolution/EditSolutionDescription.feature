@@ -1,5 +1,4 @@
-﻿@ignore
-Feature: Suppliers - Edit Solution Description Section
+﻿Feature: Suppliers - Edit Solution Description Section
 	As a Supplier
 	I want to Edit the About Solution Section
 	So that I can make sure the information is correct

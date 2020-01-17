@@ -1,5 +1,4 @@
-﻿@ignore
-Feature: Suppliers - Edit Features Section
+﻿Feature: Suppliers - Edit Features Section
 	As a Supplier
 	I want to Edit the Features Section
 	So that I can make sure the information is correct

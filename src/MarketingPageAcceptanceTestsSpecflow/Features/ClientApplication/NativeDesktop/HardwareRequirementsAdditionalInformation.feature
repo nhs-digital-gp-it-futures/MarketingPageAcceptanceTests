@@ -1,5 +1,4 @@
-﻿@ignore
-Feature: Suppliers - Native desktop Hardware and Additional Information
+﻿Feature: Suppliers - Native desktop Hardware and Additional Information
 	Edit Native Desktop - Hardware Requirements
 		As an Authority User
 		I want to edit the Hardware Requirements Sub-Section

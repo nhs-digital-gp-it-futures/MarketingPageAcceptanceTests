@@ -1,5 +1,4 @@
-﻿@ignore
-Feature: Last Updated Date
+﻿Feature: Last Updated Date
 
 	As an Authority User 
 	I want to update content on a Marketing Page

@@ -1,5 +1,4 @@
-﻿@ignore
-Feature: OperatingSystemsSupported
+﻿Feature: OperatingSystemsSupported
 	As an Authority User
 	I want to edit the Operating Systems Sub-Section
 	So that I can make sure the information is correct

@@ -1,5 +1,4 @@
-﻿@ignore
-Feature: Suppliers - Browser based Hardware and Additional Information
+﻿Feature: Suppliers - Browser based Hardware and Additional Information
 	Edit Browser Based Client Type - Hardware Requirements
 		As a Supplier
 		I want to edit the Hardware Section
