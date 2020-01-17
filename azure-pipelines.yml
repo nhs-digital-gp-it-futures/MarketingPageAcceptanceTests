@@ -30,10 +30,12 @@ steps:
     export DBUSER=$(DBUSER) && 
     export DBPASSWORD=$(DBPASSWORD) && 
     export MPURL=$(MPURL) &&
-    dotnet test src/ -v n -l:trx;LogFileName=/test/results.trx'
+    dotnet test src/ -v n -l:trx;LogFileName=/test/results.trx
+    $?'
 
 - task: PublishTestResults@2
   inputs:
     testResultsFiles: '**/*.trx'
     failTaskOnFailedTests: true
     testRunner: VSTest
+  condition: succeededOrFailed()
