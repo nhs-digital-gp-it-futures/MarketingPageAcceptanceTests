@@ -21,8 +21,13 @@ steps:
     includePreviewVersions: false
     installationPath: '$(Agent.ToolsDirectory)'
 
+- bash: 
+    "curl -i $(MPURL) --fail --connect-timeout 30"
+  displayName: 'Check URL is reachable'
+
 - script: docker-compose up --scale chrome=4 -d
   displayName: docker-compose
+
 - bash: '
     export BROWSER=chrome && 
     export SERVERURL=$(SERVERURL) && 
@@ -30,10 +35,13 @@ steps:
     export DBUSER=$(DBUSER) && 
     export DBPASSWORD=$(DBPASSWORD) && 
     export MPURL=$(MPURL) &&
-    dotnet test src/ -v n -l:trx;LogFileName=/test/results.trx'
+    dotnet test src/ -v n -l:trx;LogFileName=/test/results.trx
+    $?'
+  displayName: 'Run acceptance tests'
 
 - task: PublishTestResults@2
   inputs:
     testResultsFiles: '**/*.trx'
     failTaskOnFailedTests: true
     testRunner: VSTest
+  condition: succeededOrFailed()

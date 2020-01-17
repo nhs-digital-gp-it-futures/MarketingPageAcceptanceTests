@@ -27,7 +27,7 @@ namespace MarketingPageAcceptanceTestsSpecflow
         }
 
         [Given(@"a User has not saved any data on the (Public cloud|Private cloud|Hybrid|On premise) section")]
-        public void GivenAUserHasNotSavedAnyDataOnTheHostingTypeSection()
+        public void GivenAUserHasNotSavedAnyDataOnTheHostingTypeSection(string hostingTypeSection)
         {
 
         }

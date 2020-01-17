@@ -8,6 +8,6 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
 {
     public sealed class PublicCloud
     {
-        public By RequiresHscnN3Connectivity => By.CssSelector("div.nhsuk-checkboxes__item");
+        public By RequiresHscnN3Connectivity => By.Id("requires-hscn-1");
     }
 }

@@ -14,7 +14,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void ClickRequiresHscnN3ConnectivityCheckbox()
         {
-            driver.FindElement(pages.HostingTypeSections.PublicCloud.RequiresHscnN3Connectivity).FindElement(By.TagName("input")).Click();
+            driver.FindElement(pages.HostingTypeSections.PublicCloud.RequiresHscnN3Connectivity).Click();
         }
     }
 }
