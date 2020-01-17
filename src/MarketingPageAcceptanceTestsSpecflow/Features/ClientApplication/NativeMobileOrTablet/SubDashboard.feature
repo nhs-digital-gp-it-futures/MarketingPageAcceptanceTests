@@ -1,4 +1,5 @@
-﻿Feature: Display Marketing Page Form - Native Mobile or Tablet Client Type
+﻿@ignore
+Feature: Display Marketing Page Form - Native Mobile or Tablet Client Type
 	As an Authority User
 	I want to manage Marketing Page Information for the Native Mobile or Tablet Client Type Section
 	So that I can ensure the information is correct

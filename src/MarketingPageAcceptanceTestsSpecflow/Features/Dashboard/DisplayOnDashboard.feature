@@ -1,4 +1,5 @@
-﻿Feature: DisplayOnDashboard
+﻿@ignore
+Feature: DisplayOnDashboard
 	As an Authority User
 	I want to manage Marketing Page Information
 	So that I can ensure the information is correct

@@ -1,4 +1,5 @@
-﻿Feature: Suppliers - Edit Native Mobile or Tablet - Memory and Storage
+﻿@ignore
+Feature: Suppliers - Edit Native Mobile or Tablet - Memory and Storage
 	As an Authority User
 	I want to edit the Memory and Storage Sub-Section
 	So that I can make sure the information is correct

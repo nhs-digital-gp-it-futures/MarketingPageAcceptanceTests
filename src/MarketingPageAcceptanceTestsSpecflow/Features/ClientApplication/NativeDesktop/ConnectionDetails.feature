@@ -1,4 +1,5 @@
-﻿Feature: Native desktop - Connection Details
+﻿@ignore
+Feature: Native desktop - Connection Details
 	As an Authority User
 	I want to edit the Connectivity Section
 	So that I can make sure the information is correct

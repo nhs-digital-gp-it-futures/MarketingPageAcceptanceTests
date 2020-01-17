@@ -1,4 +1,5 @@
-﻿Feature: ConnectionDetails
+﻿@ignore
+Feature: ConnectionDetails
 	As an Authority User
 	I want to edit the Connection Details Section
 	So that I can make sure the information is correct
