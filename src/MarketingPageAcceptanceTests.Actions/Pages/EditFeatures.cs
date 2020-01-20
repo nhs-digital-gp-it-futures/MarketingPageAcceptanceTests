@@ -1,4 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+using MarketingPageAcceptanceTests.TestData.Information;
+using OpenQA.Selenium;
 using System.Collections.Generic;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
@@ -17,7 +19,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public string AddTextToFeature(int characterCount = 100)
         {
             var randomTextField = GetRandomTextField();
-            string randomString = random.GetRandomString(characterCount);
+            string randomString = RandomInformation.RandomString(characterCount);
             randomTextField.Clear();
             randomTextField.SendKeys(randomString);
             return randomString;
@@ -29,8 +31,9 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// <returns>Returns a random text field</returns>
         private IWebElement GetRandomTextField()
         {
-            IList<IWebElement> textFields = driver.FindElements(pages.EditFeatures.FeatureText); //driver.FindElements(pages.EditFeatures.FeatureList).ToList();
-            return textFields[random.GetRandomPositionInArrayOfLength(textFields.Count)];
+            IList<IWebElement> textFields = driver.FindElements(pages.EditFeatures.FeatureText);
+
+            return RandomInformation.GetRandomItem(textFields);
         }
 
         /// <summary>

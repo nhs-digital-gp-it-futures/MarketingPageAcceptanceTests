@@ -5,16 +5,15 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 
-namespace MarketingPageAcceptanceTests.Actions.Pages
+namespace MarketingPageAcceptanceTests.Actions.Pages.Utils
 {
     public abstract class PageAction
     {
         internal readonly IWebDriver driver;
-        internal RandomGenerator random = new RandomGenerator();
         internal readonly WebDriverWait wait;
         internal PageCollection pages;
 
-        public PageAction(IWebDriver driver)
+        protected PageAction(IWebDriver driver)
         {
             this.driver = driver;
 

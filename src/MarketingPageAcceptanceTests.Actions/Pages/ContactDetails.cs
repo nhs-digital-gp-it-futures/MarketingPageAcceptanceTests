@@ -1,4 +1,5 @@
-﻿using MarketingPageAcceptanceTests.TestData.ContactDetails;
+﻿using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+using MarketingPageAcceptanceTests.TestData.ContactDetails;
 using OpenQA.Selenium;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
