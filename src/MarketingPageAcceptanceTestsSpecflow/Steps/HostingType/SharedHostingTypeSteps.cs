@@ -38,5 +38,33 @@ namespace MarketingPageAcceptanceTestsSpecflow
         {
             _test.pages.PreviewPage.IsRequiresHscnDisplayed(hostingTypeSection).Should().Be(assertionText == "contains");
         }
+
+        [Given(@"that (Public cloud|Private cloud|Hybrid|On premise) has been completed in the Hosting type section")]
+        public void GivenThatPublicCloudHasBeenCompletedInTheHostingTypeSection(string hostingTypeSection)
+        {
+            _test.pages.Dashboard.NavigateToSection("Public cloud");
+            _test.pages.BrowserBasedSections.HardwareRequirements.EnterText(500, 0);
+            _test.pages.SolutionDescription.LinkAddText(1000);
+            _test.pages.HostingTypeSections.PublicCloud.ClickRequiresHscnN3ConnectivityCheckbox();
+            if (hostingTypeSection != "Public cloud")
+            {
+                _context.Pending();
+            }
+            _test.pages.Common.SectionSaveAndReturn();
+        }
+
+        [Given(@"the user unchecks the HSCN/N3 connection checkbox on the (Public cloud|Private cloud|Hybrid|On premise) section")]
+        public void GivenTheUserUnchecksTheHSCNNConnectionCheckboxOnThePublicCloudSection(string hostingTypeSection)
+        {
+            _test.pages.Dashboard.NavigateToSection("Public cloud");
+            _test.pages.HostingTypeSections.PublicCloud.ClickRequiresHscnN3ConnectivityCheckbox();
+            _test.pages.Common.SectionSaveAndReturn();
+        }
+
+        [Given(@"I enter (.*) characters into the link field")]
+        public void GivenIEnterCharactersIntoTheLinkField(int characters)
+        {
+            _test.pages.SolutionDescription.LinkAddText(characters);
+        }
     }
 }
