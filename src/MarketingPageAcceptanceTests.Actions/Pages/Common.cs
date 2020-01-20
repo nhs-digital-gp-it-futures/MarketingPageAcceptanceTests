@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using MarketingPageAcceptanceTests.Actions.Pages.Utils;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -101,6 +102,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void SectionSaveAndReturn()
         {
             // Using Submit() directly to the form instead of Click() on the button prevents HTTP timeouts to Selenium server errors in 95% of cases
+            wait.Until(s => s.FindElement(By.TagName("form")).Displayed);
             driver.FindElement(By.TagName("form")).Submit();            
         }
     }

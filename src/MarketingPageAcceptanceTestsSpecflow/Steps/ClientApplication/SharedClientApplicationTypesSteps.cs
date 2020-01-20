@@ -131,6 +131,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
                     _test.pages.NativeDesktopSections.MemoryAndStorage.CompleteAllFields();
                     break;
             }
+            
             _test.pages.Common.SectionSaveAndReturn();
             _test.pages.Common.ClickSubDashboardBackLink();
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using FluentAssertions;
 using MarketingPageAcceptanceTestsSpecflow.Utils;
 using TechTalk.SpecFlow;
 
@@ -30,6 +31,12 @@ namespace MarketingPageAcceptanceTestsSpecflow
         public void GivenAUserHasNotSavedAnyDataOnTheHostingTypeSection(string hostingTypeSection)
         {
 
+        }
+
+        [Then(@"The (Public cloud|Private cloud|Hybrid|On premise) section (contains|does not contain) This Solution requires a HSCN/N3 connection on the preview of the marketing page")]
+        public void ThenThePublicCloudSectionContainsThisSolutionRequiresAHSCNNConnectionOnThePreviewOfTheMarketingPage(string hostingTypeSection, string assertionText)
+        {
+            _test.pages.PreviewPage.IsRequiresHscnDisplayed(hostingTypeSection).Should().Be(assertionText == "contains");
         }
     }
 }
