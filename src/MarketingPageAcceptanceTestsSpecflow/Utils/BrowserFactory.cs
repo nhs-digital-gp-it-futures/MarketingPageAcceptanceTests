@@ -63,7 +63,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
             var options = new ChromeOptions();
             options.AddArguments("headless", "window-size=1920,1080", "no-sandbox", "disable-dev-shm-usage");
 
-            return new RemoteWebDriver(/*new Uri(hubURL), */options);
+            return new RemoteWebDriver(new Uri(hubURL), options);
         }
 
         private static IWebDriver GetFirefoxDriver(string hubURL)
