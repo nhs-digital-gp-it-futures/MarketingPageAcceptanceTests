@@ -3,7 +3,7 @@ using System;
 
 namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
-    public sealed class CreateSolutionDetails
+    public static class CreateSolutionDetails
     {
         public static SolutionDetail CreateNewSolutionDetail(string slnId, Guid solutionDetailId, int numFeatures, bool clientApplication = true)
         {

@@ -1,4 +1,6 @@
-﻿using MarketingPageAcceptanceTests.TestData.Utils;
+﻿using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+using MarketingPageAcceptanceTests.TestData.Information;
+using MarketingPageAcceptanceTests.TestData.Utils;
 using OpenQA.Selenium;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
@@ -15,14 +17,14 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public string SummaryAddText(int numChars)
         {
-            summary = random.GetRandomString(numChars);
+            summary = RandomInformation.RandomString(numChars);
             driver.FindElement(pages.SolutionDescription.Summary).SendKeys(summary);
             return summary;
         }
 
         public string DescriptionAddText(int numChars)
         {
-            description = random.GetRandomString(numChars);
+            description = RandomInformation.RandomString(numChars);
             driver.FindElement(pages.SolutionDescription.Description).SendKeys(description);
             return description;
         }
@@ -30,7 +32,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public string LinkAddText(int numChars, string input = null)
         {
 
-            link = input ?? random.GetRandomString(numChars);
+            link = input ?? RandomInformation.RandomString(numChars);
             driver.FindElement(pages.SolutionDescription.Link).SendKeys(link);
             return link;
         }

@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using MarketingPageAcceptanceTests.Actions.Pages.Utils;
 using MarketingPageAcceptanceTests.Actions.Utils;
 using OpenQA.Selenium;
 using System.Collections.Generic;

@@ -1,4 +1,8 @@
-﻿namespace MarketingPageAcceptanceTests.TestData.Solutions
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
     public static class ClientApplicationStringBuilder
     {
@@ -6,56 +10,44 @@
         const string nativeMobile = "Native mobile or tablet";
         const string nativeDesktop = "Native desktop";
 
+        static readonly Dictionary<string, (string clientAppString, Func<string, string> parseString)> clientAppTypes = new Dictionary<string, (string, Func<string, string>)>()
+        {
+            { "Browser based", ( ClientApplicationStrings.BrowserBased, ParseBrowserBasedTemplate ) },
+            { "Native mobile or tablet", (ClientApplicationStrings.NativeMobile, ParseNativeMobileTemplate) },
+            { "Native desktop", (ClientApplicationStrings.NativeDesktop, ParseNativeDesktopTemplate) }
+        };
+
         public static string GetClientAppString(string ignoredSection = null, string clientApplicationTypes = "Browser based")
         {
-            string clientAppString = string.Empty;
+            List<string> clientAppString = new List<string>();
+
+            string finishedString = string.Empty;
+
             if (string.IsNullOrEmpty(ignoredSection))
             {
-                if(clientApplicationTypes.Contains(browserBased))
+                foreach(var appType in clientAppTypes)
                 {
-                    clientAppString += ClientApplicationStrings.BrowserBased;
-                }
-
-                if (clientApplicationTypes.Contains(nativeMobile))
-                {
-                    if (!string.IsNullOrEmpty(clientAppString))
+                    if (clientApplicationTypes.Contains(appType.Key))
                     {
-                        clientAppString += ",";
+                        clientAppString.Add(appType.Value.clientAppString);
                     }
-                    clientAppString += ClientApplicationStrings.NativeMobile;
                 }
 
-                if (clientApplicationTypes.Contains(nativeDesktop))
+                return BuildClientApplicationString(clientApplicationTypes, string.Join(',', clientAppString));
+            }
+
+            foreach (var appType in clientAppTypes)
+            {
+                if (clientApplicationTypes.Contains(appType.Key))
                 {
-                    if (!string.IsNullOrEmpty(clientAppString))
-                    {
-                        clientAppString += ",";
-                    }
-                    clientAppString += ClientApplicationStrings.NativeDesktop;
+                    finishedString += appType.Value.parseString(ignoredSection);
                 }
-
-                return buildClientApplicationString(clientApplicationTypes, clientAppString);
             }
 
-            if (clientApplicationTypes.Contains(browserBased))
-            {
-                clientAppString += parseBrowserBasedTemplate(ignoredSection);
-            }
-
-            if (clientApplicationTypes.Contains(nativeMobile))
-            {
-                clientAppString += parseNativeMobileTemplate(ignoredSection);
-            }
-
-            if (clientApplicationTypes.Contains(nativeDesktop))
-            {
-                clientAppString += parseNativeDesktopTemplate(ignoredSection);
-            }
-
-            return buildClientApplicationString(clientApplicationTypes, clientAppString);
+            return BuildClientApplicationString(clientApplicationTypes, finishedString);
         }
 
-        private static string buildClientApplicationString(string clientApplicationType, string clientAppString)
+        private static string BuildClientApplicationString(string clientApplicationType, string clientAppString)
         {
             clientApplicationType = clientApplicationType.Replace(browserBased, "browser-based")
                                     .Replace(nativeMobile, "native-mobile")
@@ -64,7 +56,7 @@
             return completeClientApplicationString;
         }
 
-        private static string parseBrowserBasedTemplate(string ignoredSection)
+        private static string ParseBrowserBasedTemplate(string ignoredSection)
         {
             string formattedString = string.Empty;
 
@@ -92,7 +84,7 @@
             return formattedString;            
         }
 
-        private static string parseNativeMobileTemplate(string ignoredSection)
+        private static string ParseNativeMobileTemplate(string ignoredSection)
         {
             string formattedString = string.Empty;
 
@@ -116,7 +108,7 @@
             return formattedString;            
         }
 
-        private static string parseNativeDesktopTemplate(string ignoredSection)
+        private static string ParseNativeDesktopTemplate(string ignoredSection)
         {
             string formattedString = string.Empty;
 

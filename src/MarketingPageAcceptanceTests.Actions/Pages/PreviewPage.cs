@@ -1,4 +1,5 @@
 using FluentAssertions;
+using MarketingPageAcceptanceTests.Actions.Pages.Utils;
 using MarketingPageAcceptanceTests.TestData.ContactDetails;
 using OpenQA.Selenium;
 using System;
@@ -59,9 +60,9 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void SectionDisplayed(string section)
         {
-            driver.FindElements(pages.PreviewPage.BrowserBasedSectionTitles)
-                .Where(s => s.Text.ToLower().Contains(section.ToLower()))
-                .Count().Should().BeGreaterThan(0);
+            driver.FindElements(pages.PreviewPage.BrowserBasedSectionTitles)                
+                .Count(s => s.Text.ToLower().Contains(section.ToLower()))
+                .Should().BeGreaterThan(0);
         }
 
         public void ExpandSection(string subDashboard)

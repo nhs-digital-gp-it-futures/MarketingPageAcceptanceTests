@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 
