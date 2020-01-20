@@ -65,12 +65,6 @@ namespace MarketingPageAcceptanceTestsSpecflow
         {
             _test.pages.Dashboard.PageDisplayed();
             _test.pages.Dashboard.ShouldDisplaySections();
-            /* I think we should take this out, as it's duplicating the tests that assert the dashboard complete/incomplete validation
-            "Blah" Section marked as Complete -  Any Data Saved
-            So I've added Scenario: Solution Description Section marked as Complete
-            Which was the only feature that didnt have that section marked as complete scenario
-            _test.pages.Dashboard.SectionCompleteStatus(section);
-            */
         }
 
         [Then(@"the database contains the Feature Text")]
