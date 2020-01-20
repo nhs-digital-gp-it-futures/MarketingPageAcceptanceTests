@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MarketingPageAcceptanceTests.Actions.Pages.Utils;
 using OpenQA.Selenium;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
