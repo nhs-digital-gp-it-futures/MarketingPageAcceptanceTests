@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MarketingPageAcceptanceTests.TestData.Solutions
@@ -9,50 +10,44 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         const string nativeMobile = "Native mobile or tablet";
         const string nativeDesktop = "Native desktop";
 
+        static readonly Dictionary<string, (string clientAppString, Func<string, string> parseString)> clientAppTypes = new Dictionary<string, (string, Func<string, string>)>()
+        {
+            { "Browser based", ( ClientApplicationStrings.BrowserBased, ParseBrowserBasedTemplate ) },
+            { "Native mobile or tablet", (ClientApplicationStrings.NativeMobile, ParseNativeMobileTemplate) },
+            { "Native desktop", (ClientApplicationStrings.NativeDesktop, ParseNativeDesktopTemplate) }
+        };
+
         public static string GetClientAppString(string ignoredSection = null, string clientApplicationTypes = "Browser based")
         {
             List<string> clientAppString = new List<string>();
 
             string finishedString = string.Empty;
+
             if (string.IsNullOrEmpty(ignoredSection))
             {
-                if(clientApplicationTypes.Contains(browserBased))
+                foreach(var appType in clientAppTypes)
                 {
-                    clientAppString.Add(ClientApplicationStrings.BrowserBased);
+                    if (clientApplicationTypes.Contains(appType.Key))
+                    {
+                        clientAppString.Add(appType.Value.clientAppString);
+                    }
                 }
 
-                if (clientApplicationTypes.Contains(nativeMobile))
+                return BuildClientApplicationString(clientApplicationTypes, string.Join(',', clientAppString));
+            }
+
+            foreach (var appType in clientAppTypes)
+            {
+                if (clientApplicationTypes.Contains(appType.Key))
                 {
-                    clientAppString.Add(ClientApplicationStrings.NativeMobile);
+                    finishedString += appType.Value.parseString(ignoredSection);
                 }
-
-                if (clientApplicationTypes.Contains(nativeDesktop))
-                {
-                    clientAppString.Add(ClientApplicationStrings.NativeDesktop);                    
-                }
-
-                finishedString = buildClientApplicationString(clientApplicationTypes, string.Join(',', clientAppString));
             }
 
-            if (clientApplicationTypes.Contains(browserBased))
-            {
-                finishedString += parseBrowserBasedTemplate(ignoredSection);
-            }
-
-            if (clientApplicationTypes.Contains(nativeMobile))
-            {
-                finishedString += parseNativeMobileTemplate(ignoredSection);
-            }
-
-            if (clientApplicationTypes.Contains(nativeDesktop))
-            {
-                finishedString += parseNativeDesktopTemplate(ignoredSection);
-            }
-
-            return buildClientApplicationString(clientApplicationTypes, finishedString);
+            return BuildClientApplicationString(clientApplicationTypes, finishedString);
         }
 
-        private static string buildClientApplicationString(string clientApplicationType, string clientAppString)
+        private static string BuildClientApplicationString(string clientApplicationType, string clientAppString)
         {
             clientApplicationType = clientApplicationType.Replace(browserBased, "browser-based")
                                     .Replace(nativeMobile, "native-mobile")
@@ -61,7 +56,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
             return completeClientApplicationString;
         }
 
-        private static string parseBrowserBasedTemplate(string ignoredSection)
+        private static string ParseBrowserBasedTemplate(string ignoredSection)
         {
             string formattedString = string.Empty;
 
@@ -89,7 +84,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
             return formattedString;            
         }
 
-        private static string parseNativeMobileTemplate(string ignoredSection)
+        private static string ParseNativeMobileTemplate(string ignoredSection)
         {
             string formattedString = string.Empty;
 
@@ -113,7 +108,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
             return formattedString;            
         }
 
-        private static string parseNativeDesktopTemplate(string ignoredSection)
+        private static string ParseNativeDesktopTemplate(string ignoredSection)
         {
             string formattedString = string.Empty;
 
