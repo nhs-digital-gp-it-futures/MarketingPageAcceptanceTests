@@ -65,9 +65,17 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                 .Should().BeGreaterThan(0);
         }
 
+        public void SectionNotDisplayed(string section)
+        {
+            driver.FindElements(pages.PreviewPage.BrowserBasedSectionTitles)
+                .Where(s => s.Text.ToLower().Contains(section.ToLower()))
+                .Count().Should().Be(0);
+        }
+
         public void ExpandSection(string subDashboard)
         {
             driver.FindElements(pages.PreviewPage.ExpandingSections)
+                .Select(s => s.FindElement(By.TagName("summary")))
                 .Single(s => s.Text.Contains(subDashboard))
                 .Click();
         }
@@ -148,5 +156,12 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             return driver.FindElement(pages.PreviewPage.DesktopResolutionRequirement).Text;
         }
 
+        public bool IsRequiresHscnDisplayed(String section)
+        {
+            return driver.FindElements(pages.PreviewPage.ExpandingSections)
+                .Single(s => s.Text.Contains(section))
+                .FindElements(pages.PreviewPage.RequiresHscn)
+                .Count > 0;
+        }
     }
 }

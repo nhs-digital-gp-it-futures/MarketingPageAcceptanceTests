@@ -24,6 +24,8 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
 
         public By SupportedBrowsers => CustomBy.DataTestId("preview-section-table-row-supported-browsers", "li > label");
 
+        public By RequiresHscn => CustomBy.DataTestId("view-question-data-text-requires-hscn");
+
         public By ContactName => CustomBy.DataTestId("view-question-data-text-contact-name");
         public By ContactDepartment => CustomBy.DataTestId("view-question-data-text-department-name");
         public By ContactEmail => CustomBy.DataTestId("view-question-data-text-email-address");
@@ -32,6 +34,6 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
         public By ConnectivityRequirement => CustomBy.DataTestId("view-question-data-text-minimum-connection-speed");
         public By DesktopResolutionRequirement => CustomBy.DataTestId("view-question-data-text-minimum-desktop-resolution");
 
-        public By ExpandingSections => By.CssSelector("details.nhsuk-details summary");
+        public By ExpandingSections => By.CssSelector("details.nhsuk-details");
     }
 }

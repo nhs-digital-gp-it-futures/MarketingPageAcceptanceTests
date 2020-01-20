@@ -49,8 +49,8 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
             _test.pages.Common.ErrorMessageDisplayed();
         }
 
-        [Then(@"an indication is given to the Supplier as to why")]
-        public void ThenAnIndicationIsGivenToTheSupplierAsToWhy()
+        [Then(@"an indication is given to the (Supplier|User) as to why")]
+        public void ThenAnIndicationIsGivenToTheSupplierAsToWhy(string user)
         {
             _test.pages.Common.ErrorMessageDisplayed();
         }

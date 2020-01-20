@@ -54,6 +54,12 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps
             _test.pages.PreviewPage.SectionDisplayed(section);
         }
 
+        [Then(@"(.*) will not be presented in (.*) on the Preview of the Marketing Page")]
+        public void ThenSupportedOperatingSystemsWillNotBePresentedInNativeMobileOrTabletOnThePreviewOfTheMarketingPage(string section, string subDashboard)
+        {
+            _test.pages.PreviewPage.ExpandSection(subDashboard);
+            _test.pages.PreviewPage.SectionNotDisplayed(section);
+        }
 
         [When(@"the User exits the page")]
         public void WhenTheUserExitsThePage()
@@ -78,6 +84,12 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps
         public void ThenTheSupplierIsAbleToManageTheMarketingPageFormSection(string user, string section, string pageType)
         {
             _test.pages.Dashboard.NavigateToSection(section, pageType=="Dashboard");
+        }
+
+        [Then(@"the (.*) (Sub-Section|section) is marked as (Incomplete|Complete)")]
+        public void ThenTheBrowserBasedClientApplicationTypeSub_SectionIsMarkedAsStatus(string sectionName, string sectionOrSubSection, string status)
+        {
+            _test.pages.Dashboard.AssertSectionStatus(sectionName, status.ToUpper());
         }
     }
 }

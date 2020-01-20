@@ -48,8 +48,4 @@
     </SpecFlowFeatureFiles>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\HostingType\" />
-  </ItemGroup>
-
 </Project>

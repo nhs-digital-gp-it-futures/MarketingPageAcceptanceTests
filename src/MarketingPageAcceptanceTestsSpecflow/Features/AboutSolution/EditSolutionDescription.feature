@@ -22,6 +22,13 @@ Scenario: Solution Description Section marked as Incomplete Mandatory Data Missi
 	When the Marketing Page Form is presented 
 	Then the Solution Description Section is marked as Incomplete
 
+Scenario: Solution Description Section marked as Complete
+	Given the Supplier has entered data into any field
+	And it does not exceed the maximum
+	When the Supplier attempts to save
+	And the Marketing Page Form is presented 
+	Then the Solution description section is marked as Complete
+
 Scenario: Validation Error Message Anchors
 	Given validation has been triggered on Solution description section
 	When the User selects an error link in the Error Summary

@@ -14,6 +14,7 @@ namespace MarketingPageAcceptanceTests.Objects.Collections
         public BrowserBasedSections BrowserBasedSections { get; set; }
         public NativeMobileSections NativeMobileSections { get; set; }
         public NativeDesktopSections NativeDesktopSections { get; set; }
+        public HostingTypeSections HostingTypeSections { get; set; }
         public ContactDetails ContactDetails { get; set; }
     }
 
@@ -38,5 +39,10 @@ namespace MarketingPageAcceptanceTests.Objects.Collections
     {
         public SupportedOperatingSystems SupportedOperatingSystems { get; set; }
         public NativeDesktopMemoryStorage MemoryAndStorage { get; set; }
+    }
+
+    public sealed class HostingTypeSections
+    {
+        public PublicCloud PublicCloud { get; set; }
     }
 }

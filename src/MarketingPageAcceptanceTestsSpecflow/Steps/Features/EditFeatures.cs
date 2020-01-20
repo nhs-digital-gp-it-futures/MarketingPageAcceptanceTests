@@ -65,7 +65,6 @@ namespace MarketingPageAcceptanceTestsSpecflow
         {
             _test.pages.Dashboard.PageDisplayed();
             _test.pages.Dashboard.ShouldDisplaySections();
-            _test.pages.Dashboard.SectionCompleteStatus(section);
         }
 
         [Then(@"the database contains the Feature Text")]

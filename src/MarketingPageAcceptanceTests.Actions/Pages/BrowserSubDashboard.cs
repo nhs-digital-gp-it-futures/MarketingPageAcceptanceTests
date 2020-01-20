@@ -35,7 +35,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void OpenSection(string sectionName)
         {
             driver.FindElement(By.LinkText(sectionName)).Click();
-            wait.Until(s => s.FindElement(pages.Common.PageTitle).Text.Contains(sectionName.ToLower()));
+            wait.Until(s => s.FindElement(pages.Common.PageTitle).Text.Contains(sectionName, System.StringComparison.OrdinalIgnoreCase));
         }
     }
 }
