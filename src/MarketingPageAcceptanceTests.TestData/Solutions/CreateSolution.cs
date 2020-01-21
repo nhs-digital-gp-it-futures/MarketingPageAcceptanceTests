@@ -5,13 +5,11 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
     public static class CreateSolution
     {
-        const string prefix = "Auto";
-
-        public static Solution CreateNewSolution()
+        public static Solution CreateNewSolution(string prefix = "Auto")
         {
             var faker = new Faker();
 
-            var Id = RandomSolId();
+            var Id = RandomSolId(prefix);
             Solution solution = new Solution
             {
                 Id = Id,
@@ -27,7 +25,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
             return solution;
         }
 
-        private static string RandomSolId()
+        private static string RandomSolId(string prefix)
         {
             string timestamp = DateTimeOffset.Now.ToUnixTimeMilliseconds().ToString();
             return prefix + timestamp.Substring(timestamp.Length - 10);
