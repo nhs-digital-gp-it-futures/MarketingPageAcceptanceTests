@@ -55,8 +55,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
                 }
             }
 
-            string completeClientApplicationString = string.Format("{{\"ClientApplicationTypes\":[\"{0}\"],{1}}}", converted, clientAppString);
-            return completeClientApplicationString;
+            return string.Format("{{\"ClientApplicationTypes\":[\"{0}\"],{1}}}", converted, clientAppString);
         }
 
         private static string ParseBrowserBased(string ignoredSection)
