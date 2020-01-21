@@ -15,8 +15,8 @@ Scenario Outline: Form sections presented
 		| Features                |
 		| Client application type |
 		| Public cloud            |
-		#| Private cloud 
-		#| Hybrid        
+		| Private cloud 
+		| Hybrid        
 		#| On Premise    
 		| Contact details         |
 		#| Roadmap                 
