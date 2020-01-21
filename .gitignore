@@ -331,3 +331,5 @@ ASALocalRun/
 
 # Auto-generated SpecFlow code-behind files
 *.feature.cs
+
+.vscode/
