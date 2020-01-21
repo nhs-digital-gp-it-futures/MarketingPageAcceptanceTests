@@ -49,7 +49,10 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 
             foreach (string key in clientAppTypes.Keys)
             {
-                converted = clientApplicationType.Replace(key, clientAppTypes[key].conversion);
+                if (clientApplicationType.Contains(key))
+                {
+                    converted += clientAppTypes[key].conversion;
+                }
             }
 
             string completeClientApplicationString = string.Format("{{\"ClientApplicationTypes\":[\"{0}\"],{1}}}", converted, clientAppString);
