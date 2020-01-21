@@ -42,13 +42,13 @@ namespace MarketingPageAcceptanceTestsSpecflow
         [Given(@"that (Public cloud|Private cloud|Hybrid|On premise) has been completed in the Hosting type section")]
         public void GivenThatPublicCloudHasBeenCompletedInTheHostingTypeSection(string hostingTypeSection)
         {
-            _test.pages.Dashboard.NavigateToSection("Public cloud");
+            _test.pages.Dashboard.NavigateToSection(hostingTypeSection);
             _test.pages.BrowserBasedSections.HardwareRequirements.EnterText(500, 0);
             _test.pages.SolutionDescription.LinkAddText(1000);
             _test.pages.HostingTypeSections.PublicCloud.ClickRequiresHscnN3ConnectivityCheckbox();
             if (hostingTypeSection != "Public cloud")
             {
-                _context.Pending();
+                _test.pages.HostingTypeSections.PrivateCloud.EnterText(1000);
             }
             _test.pages.Common.SectionSaveAndReturn();
         }
@@ -56,7 +56,7 @@ namespace MarketingPageAcceptanceTestsSpecflow
         [Given(@"the user unchecks the HSCN/N3 connection checkbox on the (Public cloud|Private cloud|Hybrid|On premise) section")]
         public void GivenTheUserUnchecksTheHSCNNConnectionCheckboxOnThePublicCloudSection(string hostingTypeSection)
         {
-            _test.pages.Dashboard.NavigateToSection("Public cloud");
+            _test.pages.Dashboard.NavigateToSection(hostingTypeSection);
             _test.pages.HostingTypeSections.PublicCloud.ClickRequiresHscnN3ConnectivityCheckbox();
             _test.pages.Common.SectionSaveAndReturn();
         }

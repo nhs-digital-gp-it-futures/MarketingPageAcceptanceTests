@@ -36,7 +36,8 @@ namespace MarketingPageAcceptanceTests.Objects
                 },
                 HostingTypeSections = new HostingTypeSections()
                 {
-                    PublicCloud = new Pages.PublicCloud()
+                    PublicCloud = new Pages.PublicCloud(),
+                    PrivateCloud = new Pages.PrivateCloud()
                 },
                 ContactDetails = new Pages.ContactDetails()
             };

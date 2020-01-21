@@ -37,7 +37,8 @@ namespace MarketingPageAcceptanceTests.Actions
                 },
                 HostingTypeSections = new HostingTypeSections()
                 {
-                    PublicCloud = new PublicCloud(driver)
+                    PublicCloud = new PublicCloud(driver),
+                    PrivateCloud = new PrivateCloud(driver)
                 },
                 ContactDetails = new ContactDetails(driver)
             };
