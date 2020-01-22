@@ -18,8 +18,8 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void EnterText(int characters, int fieldIndex = 0)
         {
             string randomText = RandomInformation.RandomString(characters);
-
-            driver.FindElements(pages.BrowserBasedSections.HardwareRequirements.HardwareRequirementsDescription)[fieldIndex].SendKeys(randomText);
+            TextCopy.Clipboard.SetText(randomText);
+            driver.FindElements(pages.BrowserBasedSections.HardwareRequirements.HardwareRequirementsDescription)[fieldIndex].SendKeys(Keys.LeftControl + "v");
         }
     }
 }
