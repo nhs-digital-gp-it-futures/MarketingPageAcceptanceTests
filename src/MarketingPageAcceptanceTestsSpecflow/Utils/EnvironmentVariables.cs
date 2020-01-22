@@ -51,12 +51,12 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
             return string.Format(ConnectionString.GPitFutures, serverUrl, databaseName, dbUser, dbPassword);
         }
 
-        private static string GetLocalIp()
+        private static string GetLocalIp(NetworkInterfaceType networkType = NetworkInterfaceType.Wireless80211)
         {
             var output = string.Empty;
             foreach (NetworkInterface item in NetworkInterface.GetAllNetworkInterfaces())
             {
-                if (item.NetworkInterfaceType == NetworkInterfaceType.Wireless80211 && item.OperationalStatus == OperationalStatus.Up)
+                if (item.NetworkInterfaceType == networkType && item.OperationalStatus == OperationalStatus.Up)
                 {
                     foreach (UnicastIPAddressInformation ip in item.GetIPProperties().UnicastAddresses)
                     {
