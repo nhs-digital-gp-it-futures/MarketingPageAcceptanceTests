@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Utils
 {
@@ -22,7 +24,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
 
         internal static string GetUrl()
         {
-            string uri = Environment.GetEnvironmentVariable("MPURL") ?? "http://10.0.75.1:3002/solution/";
+            string uri = Environment.GetEnvironmentVariable("MPURL") ?? $"http://{GetLocalIp()}:3002/solution/";
 
             return uri.TrimEnd('/');
         }
@@ -47,6 +49,25 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
             var (serverUrl, databaseName, dbUser, dbPassword) = GetDbConnectionDetails();
 
             return string.Format(ConnectionString.GPitFutures, serverUrl, databaseName, dbUser, dbPassword);
+        }
+
+        private static string GetLocalIp(NetworkInterfaceType networkType = NetworkInterfaceType.Wireless80211)
+        {
+            var output = string.Empty;
+            foreach (NetworkInterface item in NetworkInterface.GetAllNetworkInterfaces())
+            {
+                if (item.NetworkInterfaceType == networkType && item.OperationalStatus == OperationalStatus.Up)
+                {
+                    foreach (UnicastIPAddressInformation ip in item.GetIPProperties().UnicastAddresses)
+                    {
+                        if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
+                        {
+                            output = ip.Address.ToString();
+                        }
+                    }
+                }
+            }
+            return output;
         }
     }
 
