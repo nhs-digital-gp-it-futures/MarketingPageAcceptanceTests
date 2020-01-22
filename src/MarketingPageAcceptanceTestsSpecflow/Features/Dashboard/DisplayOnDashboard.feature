@@ -17,7 +17,7 @@ Scenario Outline: Form sections presented
 		| Public cloud            |
 		| Private cloud           |
 		| Hybrid                  |
-		| On Premise              |
+		| On premise              |
 		| Contact details         |
 		#| Roadmap                 
 		#| About supplier          
@@ -48,7 +48,7 @@ Scenario Outline: Section status
 		| Public cloud            |
 		| Private cloud           |
 		| Hybrid                  |
-		| On Premise              |
+		| On premise              |
 		| Contact details         |
 		#| Roadmap                 
 		#| About supplier          
