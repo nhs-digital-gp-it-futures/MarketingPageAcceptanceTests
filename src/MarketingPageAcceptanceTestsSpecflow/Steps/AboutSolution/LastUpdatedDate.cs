@@ -45,6 +45,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutSolution
         public void WhenTheContentHasBeenUpdated()
         {
             _test.pages.Common.SectionSaveAndReturn();
+            _test.pages.Common.WaitUntilSectionPageNotShownAnymore();
         }
 
         [Then(@"the Last Changed Date is updated in the (.*) table")]

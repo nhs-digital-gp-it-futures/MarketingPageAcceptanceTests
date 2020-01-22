@@ -1,4 +1,5 @@
 ﻿using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+using MarketingPageAcceptanceTests.Actions.Utils;
 using MarketingPageAcceptanceTests.TestData.Information;
 using OpenQA.Selenium;
 
@@ -18,8 +19,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void EnterText(int characters, int fieldIndex = 0)
         {
             string randomText = RandomInformation.RandomString(characters);
-            TextCopy.Clipboard.SetText(randomText);
-            driver.FindElements(pages.BrowserBasedSections.HardwareRequirements.HardwareRequirementsDescription)[fieldIndex].SendKeys(Keys.LeftControl + "v");
+            driver.EnterTextViaJS(wait, pages.BrowserBasedSections.HardwareRequirements.HardwareRequirementsDescription, randomText, fieldIndex);
         }
     }
 }
