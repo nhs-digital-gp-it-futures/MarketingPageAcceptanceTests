@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using Newtonsoft.Json.Linq;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Utils
 {
@@ -38,6 +40,12 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
             var databaseName = Environment.GetEnvironmentVariable("DATABASENAME") ?? "buyingcatalogue";
             var dbUser = Environment.GetEnvironmentVariable("DBUSER") ?? "NHSD";
             var dbPassword = Environment.GetEnvironmentVariable("gpitdevsqladminpassword") ?? "DisruptTheMarket1!";
+
+            var path = Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory), "Utils", "tokens.json");
+            JObject o1 = JObject.Parse(File.ReadAllText(path));
+            var value = o1.SelectToken("gpitdevsqladminpassword").Value<string>();
+            Console.WriteLine(value);
+            dbPassword = value;
 
             return (serverUrl, databaseName, dbUser, dbPassword);
         }
