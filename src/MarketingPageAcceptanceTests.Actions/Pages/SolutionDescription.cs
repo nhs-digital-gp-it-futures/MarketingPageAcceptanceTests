@@ -1,4 +1,6 @@
-﻿using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+﻿using System.Threading;
+using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+using MarketingPageAcceptanceTests.Actions.Utils;
 using MarketingPageAcceptanceTests.TestData.Information;
 using MarketingPageAcceptanceTests.TestData.Utils;
 using OpenQA.Selenium;
@@ -18,22 +20,21 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public string SummaryAddText(int numChars)
         {
             summary = RandomInformation.RandomString(numChars);
-            driver.FindElement(pages.SolutionDescription.Summary).SendKeys(summary);
+            driver.EnterTextViaJS(wait, pages.SolutionDescription.Summary, summary);
             return summary;
         }
 
         public string DescriptionAddText(int numChars)
         {
             description = RandomInformation.RandomString(numChars);
-            driver.FindElement(pages.SolutionDescription.Description).SendKeys(description);
+            driver.EnterTextViaJS(wait, pages.SolutionDescription.Description, description);
             return description;
         }
 
         public string LinkAddText(int numChars, string input = null)
         {
-
             link = input ?? RandomInformation.RandomString(numChars);
-            driver.FindElement(pages.SolutionDescription.Link).SendKeys(link);
+            driver.EnterTextViaJS(wait, pages.SolutionDescription.Link, link);
             return link;
         }
 

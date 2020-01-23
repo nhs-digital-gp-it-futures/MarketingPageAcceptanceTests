@@ -133,6 +133,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
             }
             
             _test.pages.Common.SectionSaveAndReturn();
+            _test.pages.Common.WaitUntilSectionPageNotShownAnymore();
             _test.pages.Common.ClickSubDashboardBackLink();
         }
 
