@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Net.NetworkInformation;
-using System.Net.Sockets;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Utils
 {
@@ -24,7 +22,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
 
         internal static string GetUrl()
         {
-            string uri = Environment.GetEnvironmentVariable("MPURL") ?? $"http://host.docker.internal:3002/solution/";
+            string uri = Environment.GetEnvironmentVariable("MPURL") ?? "http://host.docker.internal:3002/solution/";
 
             return uri.TrimEnd('/');
         }
