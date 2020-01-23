@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+using MarketingPageAcceptanceTests.Actions.Utils;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -103,13 +104,13 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             // Using Submit() directly to the form instead of Click() on the button prevents HTTP timeouts to Selenium server errors in 95% of cases
             wait.Until(s => s.FindElement(By.TagName("form")).Displayed);
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(pages.Common.SectionSaveAndReturn));
+            wait.Until(ElementExtensions.ElementToBeClickable(pages.Common.SectionSaveAndReturn));
             driver.FindElement(By.TagName("form")).Submit();            
         }
 
         public void WaitUntilSectionPageNotShownAnymore()
         {
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.InvisibilityOfElementLocated(By.TagName("form")));
+            wait.Until(ElementExtensions.InvisibilityOfElement(By.TagName("form")));
         }
     }
 }
