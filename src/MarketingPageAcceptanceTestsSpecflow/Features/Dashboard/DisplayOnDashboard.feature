@@ -50,7 +50,7 @@ Scenario Outline: Section status
 		| Hybrid                  |
 		| On premise              |
 		| Contact details         |
-		#| Roadmap                 
+		| Roadmap                 |
 		#| About supplier          
 	
 Scenario Outline: Sub dashboard section status
