@@ -63,6 +63,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
         {
             GivenTheSupplierHasEnteredText(100, sectionName, section);
             _test.pages.Common.SectionSaveAndReturn();
+            _test.pages.Common.WaitUntilSectionPageNotShownAnymore();
             _test.pages.Common.ClickSubDashboardBackLink();
         }
 

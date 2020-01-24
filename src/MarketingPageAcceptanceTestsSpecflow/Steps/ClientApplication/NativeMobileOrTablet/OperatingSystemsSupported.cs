@@ -60,7 +60,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.NativeMob
             GivenTheUserHasEnteredText(100, section, subDashboard);
 
             _test.pages.Common.SectionSaveAndReturn();
-
+            _test.pages.Common.WaitUntilSectionPageNotShownAnymore();
             _test.pages.Common.ClickSubDashboardBackLink();
         }
 
