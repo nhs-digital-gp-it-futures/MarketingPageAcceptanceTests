@@ -51,6 +51,7 @@ namespace MarketingPageAcceptanceTestsSpecflow
                 _test.pages.HostingTypeSections.PrivateCloud.EnterText(1000);
             }
             _test.pages.Common.SectionSaveAndReturn();
+            _test.pages.Common.WaitUntilSectionPageNotShownAnymore();
         }
 
         [Given(@"the user unchecks the HSCN/N3 connection checkbox on the (Public cloud|Private cloud|Hybrid|On premise) section")]
@@ -59,6 +60,7 @@ namespace MarketingPageAcceptanceTestsSpecflow
             _test.pages.Dashboard.NavigateToSection(hostingTypeSection);
             _test.pages.HostingTypeSections.PublicCloud.ClickRequiresHscnN3ConnectivityCheckbox();
             _test.pages.Common.SectionSaveAndReturn();
+            _test.pages.Common.WaitUntilSectionPageNotShownAnymore();
         }
 
         [Given(@"I enter (.*) characters into the link field")]
