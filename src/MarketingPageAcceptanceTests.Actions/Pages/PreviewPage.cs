@@ -163,5 +163,10 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                 .FindElements(pages.PreviewPage.RequiresHscn)
                 .Count > 0;
         }
+
+        public bool RoadmapSectionDisplayed()
+        {
+            return driver.FindElements(pages.PreviewPage.PreviewHeaders).Select(s => s.Text.ToLower()).Contains("roadmap");
+        }
     }
 }

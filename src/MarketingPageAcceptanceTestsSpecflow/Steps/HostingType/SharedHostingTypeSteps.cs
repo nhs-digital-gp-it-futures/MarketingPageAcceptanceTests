@@ -13,7 +13,7 @@ namespace MarketingPageAcceptanceTestsSpecflow
 
         }
 
-        [Given(@"the User has entered (\d{3,4}) characters on the (.*) page in the (Public cloud|Private cloud|Hybrid|On premise) section")]
+        [Given(@"the User has entered (\d{3,4}) characters on the (.*) page in the (Public cloud|Private cloud|Hybrid|On premise|Roadmap) section")]
         public void GivenTheSupplierHasEnteredText(int characters, string page, string section)
         {
             _test.pages.Dashboard.NavigateToSection(section);
@@ -21,7 +21,7 @@ namespace MarketingPageAcceptanceTestsSpecflow
             _test.pages.BrowserBasedSections.HardwareRequirements.EnterText(characters);
         }
 
-        [Given(@"the (Public cloud|Private cloud|Hybrid|On premise) section does not require Mandatory Data")]
+        [Given(@"the (Public cloud|Private cloud|Hybrid|On premise|Roadmap) section does not require Mandatory Data")]
         public void GivenTheHostingTypeSectionDoesNotRequireMandatoryData(string hostingTypeSection)
         {
 
