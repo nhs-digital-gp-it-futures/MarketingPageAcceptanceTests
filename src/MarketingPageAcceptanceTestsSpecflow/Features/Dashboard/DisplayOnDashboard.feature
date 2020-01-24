@@ -19,7 +19,7 @@ Scenario Outline: Form sections presented
 		| Hybrid                  |
 		| On premise              |
 		| Contact details         |
-		#| Roadmap                 
+		| Roadmap                 |
 		#| About supplier          
 	
 Scenario Outline: Sub dashboard sections presented
@@ -51,7 +51,7 @@ Scenario Outline: Section status
 		| On premise              |
 		| Contact details         |
 		| Roadmap                 |
-		#| About supplier          
+		| About supplier          |
 	
 Scenario Outline: Sub dashboard section status
 	Given that a User has chosen to manage Marketing Page Information
