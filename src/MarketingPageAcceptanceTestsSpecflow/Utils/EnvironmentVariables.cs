@@ -39,11 +39,12 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
             var serverUrl = Environment.GetEnvironmentVariable("SERVERURL") ?? "127.0.0.1,1433";
             var databaseName = Environment.GetEnvironmentVariable("DATABASENAME") ?? "buyingcatalogue";
             var dbUser = Environment.GetEnvironmentVariable("DBUSER") ?? "NHSD";
-            var dbPassword = Environment.GetEnvironmentVariable("gpitdevsqladminpassword") ?? "DisruptTheMarket1!";
+            var dbPassword = Environment.GetEnvironmentVariable("DBPASSWORD") ?? "DisruptTheMarket1!";
 
             var path = Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory), "Utils", "tokens.json");
             JObject o1 = JObject.Parse(File.ReadAllText(path));
-            var value = o1.SelectToken("gpitdevsqladminpassword").Value<string>();
+            var whichEnv = "dev";
+            var value = o1.SelectToken(whichEnv + ".dbpassword").Value<string>();
             Console.WriteLine(value);
             dbPassword = value;
 
