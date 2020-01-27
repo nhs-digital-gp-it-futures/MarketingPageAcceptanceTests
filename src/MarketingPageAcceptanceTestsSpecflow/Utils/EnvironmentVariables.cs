@@ -62,11 +62,9 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
             Dictionary<string, string> dbValues = o1.ToObject<Dictionary<string, string>>();
 
             var result = dbValues.Values
-                .Where(s => !s.Contains("#{"))
-                .DefaultIfEmpty(defaultValue)
-                .Single();
+                .SingleOrDefault(s => !s.Contains("#{"));               
 
-            return result;
+            return string.IsNullOrEmpty(result) ? defaultValue : result;
         }
     }
 
