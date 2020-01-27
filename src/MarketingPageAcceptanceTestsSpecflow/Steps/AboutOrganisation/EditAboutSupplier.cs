@@ -28,7 +28,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutOrganisation
             _test.supplier = CreateSupplier.CreateNewSupplier();
             SqlHelper.CreateSupplier(_test.supplier, _test.connectionString);
             _test.solution.SupplierId = _test.supplier.Id;
-            SqlHelper.UpdateSolutionSupplierId(_test.solution.Id, _test.solution.Id, _test.connectionString);
+            SqlHelper.UpdateSolutionSupplierId(_test.solution.Id, _test.solution.SupplierId, _test.connectionString);
             _test.listOfSolutions.Add(_test.solution);
         }
 
@@ -40,7 +40,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutOrganisation
             _test.solutionDetail = CreateSolutionDetails.CreateNewSolutionDetail(_test.solution.Id, Guid.NewGuid(), 0, false);
             SqlHelper.CreateBlankSolution(_test.solution, _test.solutionDetail, _test.connectionString);
             _test.listOfSolutions.Add(_test.solution);
-            var count = _test.listOfSolutions.Count;
         }
 
         [When(@"the User is editing the About supplier section for Solution B")]

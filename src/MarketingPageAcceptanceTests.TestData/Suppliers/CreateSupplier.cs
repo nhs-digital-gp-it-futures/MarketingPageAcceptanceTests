@@ -14,7 +14,6 @@ namespace MarketingPageAcceptanceTests.TestData.Suppliers
             Supplier supplier = new Supplier
             {
                 Id = id,
-                OrganisationId = new Guid(),
                 Name = faker.Company.CompanyName(),
                 Summary = faker.Company.Bs(),
                 SupplierUrl = faker.Internet.Url()

@@ -20,7 +20,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public string GetLinkText()
         {
-            return driver.FindElement(pages.AboutSupplier.Link).Text;
+            return driver.FindElement(pages.AboutSupplier.Link).GetAttribute("value");
         }
     }
 }

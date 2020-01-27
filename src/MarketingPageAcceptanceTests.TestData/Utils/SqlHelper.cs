@@ -57,7 +57,6 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
                 new SqlParameter("@solutionName", solution.Name),
                 new SqlParameter("@solutionVersion", solution.Version),
                 new SqlParameter("@supplierId", solution.SupplierId),
-                new SqlParameter("@organisationId", solution.OrganisationId),
                 new SqlParameter("@lastUpdatedBy", Guid.Empty),
                 new SqlParameter("@lastUpdated", DateTime.Now)
             };
@@ -245,7 +244,6 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@supplierId", supplier.Id),
-                new SqlParameter("@organisationId", supplier.OrganisationId),
                 new SqlParameter("@name", supplier.Name),
                 new SqlParameter("@summary", supplier.Summary),
                 new SqlParameter("@supplierUrl", supplier.SupplierUrl),
