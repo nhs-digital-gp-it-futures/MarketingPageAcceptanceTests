@@ -1,5 +1,6 @@
 ﻿using MarketingPageAcceptanceTests.TestData.ContactDetails;
 using MarketingPageAcceptanceTests.TestData.Solutions;
+using MarketingPageAcceptanceTests.TestData.Suppliers;
 using MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders;
 using System;
 using System.Data.SqlClient;
@@ -55,6 +56,8 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
                 new SqlParameter("@solutionId", solution.Id),
                 new SqlParameter("@solutionName", solution.Name),
                 new SqlParameter("@solutionVersion", solution.Version),
+                new SqlParameter("@supplierId", solution.SupplierId),
+                new SqlParameter("@organisationId", solution.OrganisationId),
                 new SqlParameter("@lastUpdatedBy", Guid.Empty),
                 new SqlParameter("@lastUpdated", DateTime.Now)
             };
@@ -233,6 +236,59 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             };
 
             SqlReader.Read(connectionString, query, parameters, DataReaders.NoReturn);
+        }
+
+        public static void CreateSupplier(Supplier supplier, string connectionString)
+        {
+            var query = Queries.CreateNewSupplier;
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@supplierId", supplier.Id),
+                new SqlParameter("@organisationId", supplier.OrganisationId),
+                new SqlParameter("@name", supplier.Name),
+                new SqlParameter("@summary", supplier.Summary),
+                new SqlParameter("@supplierUrl", supplier.SupplierUrl),
+                new SqlParameter("@lastUpdatedBy", Guid.Empty),
+                new SqlParameter("@lastUpdated", DateTime.Now)
+            };
+
+            SqlReader.Read(connectionString, query, parameters, DataReaders.NoReturn);
+        }
+
+        public static void UpdateSolutionSupplierId(string solutionId, string supplierId, string connectionString)
+        {
+            var updateSolutionDetail = Queries.UpdateSolutionSupplierlId;
+            SqlParameter[] updateSolId = new SqlParameter[] {
+                new SqlParameter("@supplierId", supplierId),
+                new SqlParameter("@solutionId", solutionId)
+            };
+
+            SqlReader.Read(connectionString, updateSolutionDetail, updateSolId, DataReaders.NoReturn);
+        }
+
+        public static void DeleteSupplier(string supplierId, string connectionString)
+        {
+            var solutionQuery = Queries.DeleteSupplier;
+
+            SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@supplierId", supplierId)
+            };
+
+            SqlReader.Read(connectionString, solutionQuery, parameters, DataReaders.NoReturn);
+        }
+
+        public static Supplier GetSupplier(string supplierId, string connectionString)
+        {
+            var query = Queries.GetSupplier;
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@supplierId", supplierId)
+            };
+
+            var result = SqlReader.Read(connectionString, query, parameters, DataReaders.GetSupplier);
+            return result;
         }
     }
 }

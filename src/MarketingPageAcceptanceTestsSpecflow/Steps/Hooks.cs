@@ -18,6 +18,10 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps
             _test.driver.Quit();
 
             SqlHelper.DeleteSolution(_test.solution.Id, _test.connectionString);
+            if (_test.supplier != null)
+            {
+                SqlHelper.DeleteSupplier(_test.supplier.Id, _test.connectionString);
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using MarketingPageAcceptanceTests.Actions;
 using MarketingPageAcceptanceTests.Actions.Collections;
 using MarketingPageAcceptanceTests.TestData.Solutions;
+using MarketingPageAcceptanceTests.TestData.Suppliers;
 using MarketingPageAcceptanceTests.TestData.Utils;
 using OpenQA.Selenium;
 using System;
@@ -16,6 +17,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
         internal Solution solution;
         internal SolutionDetail solutionDetail;
         internal string ExpectedSectionLinkInErrorMessage;
+        internal Supplier supplier;
 
         public UITest()
         {
