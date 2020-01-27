@@ -39,6 +39,7 @@ namespace MarketingPageAcceptanceTests.Objects
                     PublicCloud = new Pages.PublicCloud(),
                     PrivateCloud = new Pages.PrivateCloud()
                 },
+                AboutSupplier = new Pages.AboutSupplier(),
                 ContactDetails = new Pages.ContactDetails()
             };
         }
