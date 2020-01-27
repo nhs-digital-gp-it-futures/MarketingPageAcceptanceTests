@@ -15,6 +15,7 @@ namespace MarketingPageAcceptanceTests.Objects.Collections
         public NativeMobileSections NativeMobileSections { get; set; }
         public NativeDesktopSections NativeDesktopSections { get; set; }
         public HostingTypeSections HostingTypeSections { get; set; }
+        public AboutSupplier AboutSupplier { get; set; }
         public ContactDetails ContactDetails { get; set; }
     }
 

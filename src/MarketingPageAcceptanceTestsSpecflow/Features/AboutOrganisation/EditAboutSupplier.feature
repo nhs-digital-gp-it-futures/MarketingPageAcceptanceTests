@@ -33,16 +33,18 @@ Scenario: About Supplier Appear on Preview
 	When the User attempts to save 
 	And a User previews the Marketing Page
 	Then the About supplier section is presented
-@ignore
+
 Scenario: Pre-Populated Description & URL
-	Given that a User has previously saved data in the 'About Supplier' Section
-	When they were completing the 'About Supplier' Section for another Solution
-	Then the data will be populated in the 'About Supplier' Section for all of the Supplier's Solutions
+	Given that About Supplier data has been added to a Solution (Solution A)
+	And the User has created a new solution for the same supplier (Solution B)
+	When the User is editing the About supplier section for Solution B
+	Then the data will be populated in the About supplier Section
 @ignore
 Scenario Outline: Changing About Supplier Data
 	Given that About Supplier data has been added to a Solution (Solution A)
-	When the About Supplier data is pre-populated for another Solution (Solution B)
-	And the About Supplier <field> data is changed for Solution B 
+	And the User has created a new solution for the same supplier (Solution B)
+	And the User is editing the About Supplier section for Solution B
+	When the About Supplier <field> data is changed for Solution B 
 	Then the About Supplier data is changed for Solution A as well as for Solution B
 	Examples: 
 	| field       |
