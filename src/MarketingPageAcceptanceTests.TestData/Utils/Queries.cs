@@ -24,5 +24,6 @@
         internal const string CreateNewSupplier = "INSERT INTO Supplier (Id, OrganisationId, Name, Summary, SupplierUrl, LastUpdated, LastUpdatedBy) values (@supplierId, (SELECT TOP (1) [Id] FROM [dbo].[Organisation]), @name, @summary, @supplierUrl, @lastUpdated, @lastUpdatedBy)";
         internal const string DeleteSupplier = "DELETE from Supplier where Id=@supplierId";
         internal const string GetSupplier = "SELECT [Id],[OrganisationId],[Name],[Summary],[SupplierUrl],[LastUpdated],[LastUpdatedBy]FROM [dbo].[Supplier] WHERE [Id]=@supplierId";
+        internal const string GetSupplierForSolution = "SELECT Supplier.[Id],Supplier.[OrganisationId],Supplier.[Name],Supplier.[Summary],Supplier.[SupplierUrl],Supplier.[LastUpdated],Supplier.[LastUpdatedBy]FROM [dbo].[Supplier] LEFT JOIN Solution on Solution.SupplierId = Supplier.Id WHERE Solution.Id=@solutionId";
     }
 }

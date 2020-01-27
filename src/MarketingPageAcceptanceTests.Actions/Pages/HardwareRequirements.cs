@@ -16,10 +16,12 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// </summary>
         /// <param name="characters">String value to enter</param>
         /// <param name="fieldIndex">optional, by default it will go for the first one unless other is specified</param>
-        public void EnterText(int characters, int fieldIndex = 0)
+        /// <returns>the value entered into the field</returns>
+        public string EnterText(int characters, int fieldIndex = 0)
         {
             string randomText = RandomInformation.RandomString(characters);
             driver.EnterTextViaJS(wait, pages.BrowserBasedSections.HardwareRequirements.HardwareRequirementsDescription, randomText, fieldIndex);
+            return randomText;
         }
     }
 }

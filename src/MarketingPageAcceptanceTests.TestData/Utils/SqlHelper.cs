@@ -288,5 +288,18 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             var result = SqlReader.Read(connectionString, query, parameters, DataReaders.GetSupplier);
             return result;
         }
+
+        public static Supplier GetSupplierForSolution(string solutionId, string connectionString)
+        {
+            var query = Queries.GetSupplierForSolution;
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@solutionId", solutionId)
+            };
+
+            var result = SqlReader.Read(connectionString, query, parameters, DataReaders.GetSupplier);
+            return result;
+        }
     }
 }
