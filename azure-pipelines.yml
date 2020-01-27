@@ -11,7 +11,6 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  group: 'Azure Keyvault - Dev Environment'
 
 steps:
 - task: UseDotNet@2
@@ -27,10 +26,6 @@ steps:
     azureSubscription: 'NHSAPP-BuyingCatalogue (Non-Prod)'
     KeyVaultName: 'gpitfutures-dev-kv'
     SecretsFilter: '*'
-    
-- bash:
-    "printenv | sort"
-  displayName: 'Print env variables'
 
 - task: replacetokens@3
   inputs:
