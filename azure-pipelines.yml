@@ -21,7 +21,12 @@ steps:
     version: '3.1.x'
     includePreviewVersions: false
     installationPath: '$(Agent.ToolsDirectory)'
-
+- task: AzureKeyVault@1
+  inputs:
+    azureSubscription: 'NHSAPP-BuyingCatalogue (Non-Prod)'
+    KeyVaultName: 'gpitfutures-dev-kv'
+    SecretsFilter: '*'
+    
 - bash:
     "printenv | sort"
   displayName: 'Print env variables'
