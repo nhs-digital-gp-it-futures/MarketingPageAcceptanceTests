@@ -57,9 +57,9 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
         private static string GetJsonConfigValues(string section, string defaultValue)
         {
             var path = Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory), "Utils", "tokens.json");
-            var o1 = JObject.Parse(File.ReadAllText(path))[section];
+            var jsonSection = JObject.Parse(File.ReadAllText(path))[section];
 
-            Dictionary<string, string> dbValues = o1.ToObject<Dictionary<string, string>>();
+            Dictionary<string, string> dbValues = jsonSection.ToObject<Dictionary<string, string>>();
 
             var result = dbValues.Values
                 .FirstOrDefault(s => !s.Contains("#{"));               
