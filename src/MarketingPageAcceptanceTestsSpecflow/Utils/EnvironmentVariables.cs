@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Newtonsoft.Json.Linq;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Utils
@@ -39,14 +41,8 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
             var serverUrl = Environment.GetEnvironmentVariable("SERVERURL") ?? "127.0.0.1,1433";
             var databaseName = Environment.GetEnvironmentVariable("DATABASENAME") ?? "buyingcatalogue";
             var dbUser = Environment.GetEnvironmentVariable("DBUSER") ?? "NHSD";
-            var dbPassword = Environment.GetEnvironmentVariable("DBPASSWORD") ?? "DisruptTheMarket1!";
 
-            var path = Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory), "Utils", "tokens.json");
-            JObject o1 = JObject.Parse(File.ReadAllText(path));
-            var whichEnv = "dev";
-            var value = o1.SelectToken(whichEnv + ".dbpassword").Value<string>();
-            Console.WriteLine(value);
-            dbPassword = value;
+            var dbPassword = GetJsonConfigValues("password", "DisruptTheMarket1!");            
 
             return (serverUrl, databaseName, dbUser, dbPassword);
         }
@@ -56,6 +52,21 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
             var (serverUrl, databaseName, dbUser, dbPassword) = GetDbConnectionDetails();
 
             return string.Format(ConnectionString.GPitFutures, serverUrl, databaseName, dbUser, dbPassword);
+        }
+
+        private static string GetJsonConfigValues(string section, string defaultValue)
+        {
+            var path = Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory), "Utils", "tokens.json");
+            var o1 = JObject.Parse(File.ReadAllText(path))[section];
+
+            Dictionary<string, string> dbValues = o1.ToObject<Dictionary<string, string>>();
+
+            var result = dbValues.Values
+                .Where(s => !s.Contains("#{"))
+                .DefaultIfEmpty(defaultValue)
+                .Single();
+
+            return result;
         }
     }
 
