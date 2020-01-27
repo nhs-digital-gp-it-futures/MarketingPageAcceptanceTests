@@ -20,5 +20,8 @@
         internal const string UpdateLastUpdated = "UPDATE @table SET LastUpdated=@lastUpdated WHERE @whereKey=@whereValue";
         internal const string GetLastUpdated = "SELECT LastUpdated FROM @table WHERE @whereKey=@whereValue";
 
+        internal const string CreateNewSupplier = "";
+        internal const string DeleteSupplier = "";
+        internal const string GetSupplier = "SELECT [Id],[OrganisationId],[Name],[Summary],[SupplierUrl],[LastUpdated],[LastUpdatedBy]FROM [buyingcatalogue].[dbo].[Supplier]WHERE [Id]=@supplierId";
     }
 }
