@@ -22,6 +22,10 @@ steps:
     includePreviewVersions: false
     installationPath: '$(Agent.ToolsDirectory)'
 
+- bash:
+    "printenv | sort"
+  displayName: 'Print env variables'
+
 - bash: 
     "curl -i $(MPURL) --fail --connect-timeout 30"
   displayName: 'Check URL is reachable'
