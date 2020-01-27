@@ -171,7 +171,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void AboutSupplierSectionDisplayed()
         {
-            driver.FindElements(pages.PreviewPage.PreviewHeaders).Select(s => s.Text.ToLower()).Contains("about supplier");
+            driver.FindElements(pages.PreviewPage.PreviewHeaders).Select(s => s.Text.ToLower()).Should().Contain("about supplier");
             driver.FindElement(pages.PreviewPage.AboutSupplierDescription).Displayed.Should().BeTrue();
             driver.FindElement(pages.PreviewPage.SectionDataLink).Displayed.Should().BeTrue();
         }

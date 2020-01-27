@@ -16,7 +16,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 
         public override string ToString()
         {
-            return $"ID: {Id},\nName: {Name},\nVersion: {Version},\nSupplier Id: {SupplierId},\nOrganisation Id: {OrganisationId.ToString()},\nSolutionDetailId: {SolutionDetailId}";
+            return $"ID: {Id},\nName: {Name},\nVersion: {Version},\nSupplier Id: {SupplierId},\nOrganisation Id: {OrganisationId},\nSolutionDetailId: {SolutionDetailId}";
         }
     }
 }
