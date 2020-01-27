@@ -25,6 +25,17 @@ steps:
     "curl -i $(MPURL) --fail --connect-timeout 30"
   displayName: 'Check URL is reachable'
 
+- task: replacetokens@3
+  inputs:
+    targetFiles: '**/*.json'
+    encoding: 'auto'
+    writeBOM: true
+    actionOnMissing: 'warn'
+    keepToken: false
+    tokenPrefix: '#{'
+    tokenSuffix: '}#'
+    emptyValue: 
+
 - script: docker-compose up --scale chrome=4 -d
   displayName: docker-compose
 
