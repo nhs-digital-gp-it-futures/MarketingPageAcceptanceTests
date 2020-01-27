@@ -11,6 +11,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  group: Azure Keyvault - Dev Environment
 
 steps:
 - task: UseDotNet@2
