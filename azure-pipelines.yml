@@ -21,6 +21,23 @@ steps:
     includePreviewVersions: false
     installationPath: '$(Agent.ToolsDirectory)'
 
+- task: AzureKeyVault@1
+  inputs:
+    azureSubscription: 'NHSAPP-BuyingCatalogue (Non-Prod)'
+    KeyVaultName: 'gpitfutures-dev-kv'
+    SecretsFilter: '*'
+
+- task: replacetokens@3
+  inputs:
+    targetFiles: '**/*.json'
+    encoding: 'auto'
+    writeBOM: true
+    actionOnMissing: 'warn'
+    keepToken: false
+    tokenPrefix: '#{'
+    tokenSuffix: '}#'
+    emptyValue: 
+
 - bash: 
     "curl -i $(MPURL) --fail --connect-timeout 30"
   displayName: 'Check URL is reachable'

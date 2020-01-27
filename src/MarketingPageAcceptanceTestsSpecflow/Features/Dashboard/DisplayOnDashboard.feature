@@ -20,7 +20,7 @@ Scenario Outline: Form sections presented
 		| On premise              |
 		| Contact details         |
 		| Roadmap                 |
-		#| About supplier          
+		| About supplier          |
 	
 Scenario Outline: Sub dashboard sections presented
 	Given that a User has chosen to manage Marketing Page Information
