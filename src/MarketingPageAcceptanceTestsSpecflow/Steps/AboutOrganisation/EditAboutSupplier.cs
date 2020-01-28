@@ -19,6 +19,14 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutOrganisation
 
         }
 
+        [Given(@"the About supplier section does not require Mandatory Data")]
+        public void GivenTheAboutSupplierSectionDoesNotRequireMandatoryData()
+        {
+            _test.supplier.Summary = "";
+            _test.supplier.SupplierUrl = "";
+            SqlHelper.UpdateSupplier(_test.supplier, _test.connectionString);
+        }
+
         [Then(@"the About supplier section is presented")]
         public void ThenTheAboutSupplierSectionIsPresented()
         {

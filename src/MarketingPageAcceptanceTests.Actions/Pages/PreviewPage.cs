@@ -173,7 +173,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             driver.FindElements(pages.PreviewPage.PreviewHeaders).Select(s => s.Text.ToLower()).Should().Contain("about supplier");
             driver.FindElement(pages.PreviewPage.AboutSupplierDescription).Displayed.Should().BeTrue();
-            driver.FindElement(pages.PreviewPage.SectionDataLink).Displayed.Should().BeTrue();
+            driver.FindElement(pages.PreviewPage.AboutSupplierUrl).Displayed.Should().BeTrue();
         }
     }
 }

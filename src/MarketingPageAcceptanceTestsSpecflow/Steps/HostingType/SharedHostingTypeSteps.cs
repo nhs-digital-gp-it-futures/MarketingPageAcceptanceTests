@@ -21,7 +21,7 @@ namespace MarketingPageAcceptanceTestsSpecflow
             _test.pages.BrowserBasedSections.HardwareRequirements.EnterText(characters);
         }
 
-        [Given(@"the (Public cloud|Private cloud|Hybrid|On premise|Roadmap|About supplier) section does not require Mandatory Data")]
+        [Given(@"the (Public cloud|Private cloud|Hybrid|On premise|Roadmap) section does not require Mandatory Data")]
         public void GivenTheHostingTypeSectionDoesNotRequireMandatoryData(string hostingTypeSection)
         {
 
