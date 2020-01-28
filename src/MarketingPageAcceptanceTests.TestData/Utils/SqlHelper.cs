@@ -245,6 +245,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             {
                 new SqlParameter("@supplierId", supplier.Id),
                 new SqlParameter("@name", supplier.Name),
+                new SqlParameter("@legalName", supplier.LegalName),
                 new SqlParameter("@summary", supplier.Summary),
                 new SqlParameter("@supplierUrl", supplier.SupplierUrl),
                 new SqlParameter("@lastUpdatedBy", Guid.Empty),
@@ -300,6 +301,24 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
 
             var result = SqlReader.Read(connectionString, query, parameters, DataReaders.GetSupplier);
             return result;
+        }
+
+        public static void UpdateSupplier(Supplier supplier, string connectionString)
+        {
+            var query = Queries.UpdateSupplier;
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@supplierId", supplier.Id),
+                new SqlParameter("@name", supplier.Name),
+                new SqlParameter("@legalName", supplier.LegalName),
+                new SqlParameter("@summary", supplier.Summary),
+                new SqlParameter("@supplierUrl", supplier.SupplierUrl),
+                new SqlParameter("@lastUpdatedBy", Guid.Empty),
+                new SqlParameter("@lastUpdated", DateTime.Now)
+            };
+
+            SqlReader.Read(connectionString, query, parameters, DataReaders.NoReturn);
         }
     }
 }

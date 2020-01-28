@@ -3,6 +3,9 @@
 	I want to Edit the About Supplier Section
 	So that I can make sure the information is correct
 
+Background: 
+	Given that About Supplier data has been added to a Solution (Solution A)
+
 Scenario: About Supplier does not exceed maximum
 	Given the User has entered 1000 characters on the About supplier page in the About supplier section
 	And I enter 1000 characters into the link field
@@ -37,14 +40,12 @@ Scenario: About Supplier Appear on Preview
 	Then the About supplier section is presented
 
 Scenario: Pre-Populated Description & URL
-	Given that About Supplier data has been added to a Solution (Solution A)
-	And the User has created a new solution for the same supplier (Solution B)
+	Given the User has created a new solution for the same supplier (Solution B)
 	When the User is editing the About supplier section for Solution B
 	Then the data will be populated in the About supplier Section
 
 Scenario Outline: Changing About Supplier Data
-	Given that About Supplier data has been added to a Solution (Solution A)
-	And the User has created a new solution for the same supplier (Solution B)
+	Given the User has created a new solution for the same supplier (Solution B)
 	And the User is editing the About supplier section for Solution B
 	When the About Supplier <field> data is changed for Solution B 
 	Then the About Supplier data is changed for Solution A as well as for Solution B

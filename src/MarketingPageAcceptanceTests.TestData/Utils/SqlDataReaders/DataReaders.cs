@@ -77,7 +77,6 @@ namespace MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders
             return new Supplier
             {
                 Id = dr["Id"].ToString(),
-                OrganisationId = (Guid)dr["OrganisationId"],
                 Name = dr["Name"].ToString(),
                 Summary = dr["Summary"].ToString(),
                 SupplierUrl = dr["SupplierUrl"].ToString()

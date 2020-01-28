@@ -11,13 +11,14 @@ namespace MarketingPageAcceptanceTests.TestData.Suppliers
         {
             var faker = new Faker();
             var id = faker.Random.Int(900000, 999999).ToString();
-            Supplier supplier = new Supplier
+            Supplier supplier = new Supplier()
             {
                 Id = id,
-                Name = faker.Company.CompanyName(),
+                Name = faker.Company.CompanyName(),                
                 Summary = faker.Company.Bs(),
                 SupplierUrl = faker.Internet.Url()
             };
+            supplier.LegalName = supplier.Name + " plc";
             return supplier;
         }
     }
