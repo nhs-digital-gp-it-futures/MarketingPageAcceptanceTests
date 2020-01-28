@@ -25,6 +25,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutOrganisation
             _test.supplier.Summary = "";
             _test.supplier.SupplierUrl = "";
             SqlHelper.UpdateSupplier(_test.supplier, _test.connectionString);
+            _test.driver.Navigate().Refresh();
         }
 
         [Then(@"the About supplier section is presented")]
