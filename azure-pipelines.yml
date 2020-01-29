@@ -52,8 +52,7 @@ steps:
     export DBUSER=$(DBUSER) && 
     export DBPASSWORD=$(DBPASSWORD) && 
     export MPURL=$(MPURL) &&
-    dotnet test src/ -v n -l:trx;LogFileName=/test/results.trx
-    $?'
+    dotnet test src/ -v n -l:trx;LogFileName=/test/results.trx'
   displayName: 'Run acceptance tests'
 
 - task: PublishTestResults@2
