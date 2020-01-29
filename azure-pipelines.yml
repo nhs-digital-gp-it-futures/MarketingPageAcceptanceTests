@@ -11,12 +11,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  BROWSER: chrome 
-  SERVERURL: $(SERVERURL)
-  DATABASENAME: $(DATABASENAME)
-  DBUSER: $(DBUSER)
-  DBPASSWORD: $(DBPASSWORD)
-  MPURL: $(MPURL)
+  BROWSER: chrome
 
 steps:
 - task: UseDotNet@2
