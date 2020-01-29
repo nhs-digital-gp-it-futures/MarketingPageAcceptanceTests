@@ -59,12 +59,14 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: 'src/'
+    projects: 'src/MarketingPageAcceptanceTestsSpecflow/*csproj'
     arguments: '-v n'
     testRunTitle: 'Run Acceptance Tests'
 
+  
+
 - task: PublishTestResults@2
   inputs:
-    testResultsFiles: '**/*.trx'
+    testResultsFiles: '$(Agent.TempDirectory)/*.trx'
     failTaskOnFailedTests: true
     testRunner: VSTest
