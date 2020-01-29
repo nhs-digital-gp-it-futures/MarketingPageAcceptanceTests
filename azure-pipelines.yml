@@ -60,4 +60,3 @@ steps:
     testResultsFiles: '**/*.trx'
     failTaskOnFailedTests: true
     testRunner: VSTest
-  condition: succeededOrFailed()
