@@ -28,6 +28,21 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 
         private static string RandomSolId(string prefix)
         {
+            var timestampPrefixed = GetTruncatedTimestamp(prefix);
+            var lastChar = GetRandomCharacter();            
+            
+            var solId = timestampPrefixed.Length > 13 ? timestampPrefixed.Substring(0, 13) : timestampPrefixed;
+
+            return solId + lastChar;
+        }
+
+        public static SolutionDetail CreateCompleteSolutionDetail(Solution solution, SolutionDetail solutionDetail)
+        {
+            return CreateSolutionDetails.CreateNewSolutionDetail(solution.Id, solutionDetail.SolutionDetailId, 5);
+        }
+
+        private static string GetRandomCharacter()
+        {
             var faker = new Faker();
             List<string> randomChars = new List<string>();
             for (int i = 0; i < 10; i++)
@@ -35,19 +50,15 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
                 randomChars.Add(faker.Random.AlphaNumeric(1));
             }
 
-            var randomChar = Information.RandomInformation.GetRandomItem(randomChars).ToString();
+            return Information.RandomInformation.GetRandomItem(randomChars).ToString();
+        }
 
+        private static string GetTruncatedTimestamp(string prefix)
+        {
             string timestamp = DateTimeOffset.Now.ToUnixTimeMilliseconds().ToString();
             timestamp = timestamp.Substring(timestamp.Length - prefix.Length);
 
-            string totalString = prefix + timestamp;
-
-            return totalString.Length > 13 ? totalString.Substring(0, 13) + randomChar : totalString + randomChar;
-        }
-
-        public static SolutionDetail CreateCompleteSolutionDetail(Solution solution, SolutionDetail solutionDetail)
-        {
-            return CreateSolutionDetails.CreateNewSolutionDetail(solution.Id, solutionDetail.SolutionDetailId, 5);
+            return prefix + timestamp;
         }
     }
 }
