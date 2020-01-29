@@ -28,12 +28,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutOrganisation
             _test.driver.Navigate().Refresh();
         }
 
-        [Then(@"the About supplier section is presented")]
-        public void ThenTheAboutSupplierSectionIsPresented()
-        {
-            _test.pages.PreviewPage.AboutSupplierSectionDisplayed();
-        }
-
         [Given(@"that About Supplier data has been added to a Solution \(Solution A\)")]
         public void GivenThatAboutSupplierDataHasBeenAddedToASolutionSolutionA()
         {

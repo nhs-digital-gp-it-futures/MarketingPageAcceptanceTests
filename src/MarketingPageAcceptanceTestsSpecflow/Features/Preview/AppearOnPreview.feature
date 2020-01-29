@@ -21,7 +21,6 @@ Scenario Outline: Appear on Preview - Hosting Types
 Scenario Outline: Appear on Preview - Client Application Types
 	When a User previews the Marketing Page
 	Then <SubSection> will be presented in <Section> on the Preview of the Marketing Page
-	And <SubSection> will be presented in <Section> on the Preview of the Marketing Page
 
 	Examples:
 	| Section                 | SubSection                                             |
@@ -64,3 +63,4 @@ Scenario Outline: Appear on Preview - Main Sections
 	| Roadmap                 |
 	| Hosting type            |
 	| Contact details         |
+	| About supplier          |
