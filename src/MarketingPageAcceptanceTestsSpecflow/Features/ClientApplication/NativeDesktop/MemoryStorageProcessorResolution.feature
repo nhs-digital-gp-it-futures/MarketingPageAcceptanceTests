@@ -29,15 +29,6 @@ Scenario: Does exceed maximum
 	Then the Section is not saved 
 	And an indication is given to the Supplier as to why
 
-Scenario: Appear on Preview
-	Given that Memory, storage, processing and aspect ratio has been completed for Native desktop
-	When a User previews the Marketing Page
-	Then Additional storage requirements will be presented in Native desktop on the Preview of the Marketing Page
-	And Minimum memory requirement will be presented in Native desktop on the Preview of the Marketing Page
-	And Minimum necessary CPU power will be presented in Native desktop on the Preview of the Marketing Page
-	And Recommended desktop aspect ratio and screen resolution will be presented in Native desktop on the Preview of the Marketing Page
-
-
 Scenario: Validation on Save
 	Given validation has been triggered on Native desktop section Memory, storage, processing and aspect ratio
 	When the User attempts to save

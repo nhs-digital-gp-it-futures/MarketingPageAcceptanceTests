@@ -45,17 +45,17 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 
         private static string BuildClientApplicationString(string clientApplicationType, string clientAppString)
         {
-            string converted = string.Empty;
+            List<string> converted = new List<string>();
 
             foreach (string key in clientAppTypes.Keys)
             {
                 if (clientApplicationType.Contains(key))
                 {
-                    converted += clientAppTypes[key].conversion;
+                    converted.Add($"\"{clientAppTypes[key].conversion}\"");
                 }
             }
 
-            return string.Format("{{\"ClientApplicationTypes\":[\"{0}\"],{1}}}", converted, clientAppString);
+            return string.Format("{{\"ClientApplicationTypes\":[{0}],{1}}}", string.Join(',', converted), clientAppString);
         }
 
         private static string ParseBrowserBased(string ignoredSection)

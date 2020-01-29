@@ -31,14 +31,6 @@ Scenario: Does exceed maximum
 	Then the Section is not saved 
 	And an indication is given to the Supplier as to why
 
-Scenario: Appear on Preview
-	Given the User has entered 300 characters for Memory and storage section on Native mobile or tablet sub dashboard
-	And the User selects a memory requirement
-	And the user has saved the data
-	When a User previews the Marketing Page
-	Then Minimum memory requirement will be presented in Native mobile or tablet on the Preview of the Marketing Page
-	And Additional storage requirements will be presented in Native mobile or tablet on the Preview of the Marketing Page
-
 Scenario: Mandatory Data Missing Validation
 	Given the User has entered 300 characters for Memory and storage section on Native mobile or tablet sub dashboard
 	When the User attempts to save

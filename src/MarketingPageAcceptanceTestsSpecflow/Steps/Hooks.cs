@@ -15,19 +15,31 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps
         [AfterScenario]
         public void AfterScenario()
         {
-            _test.driver.Close();
             _test.driver.Quit();
 
-            SqlHelper.DeleteSolution(_test.solution.Id, _test.connectionString);         
+            SqlHelper.DeleteSolution(_test.solution.Id, _test.connectionString);
             _test.listOfSolutions.Remove(_test.solution);
-            foreach (Solution solution in _test.listOfSolutions)
+            try
             {
-                SqlHelper.DeleteSolution(solution.Id, _test.connectionString);
+                foreach (Solution solution in _test.listOfSolutions)
+                {
+                    SqlHelper.DeleteSolution(solution.Id, _test.connectionString);
+                }
             }
-
-            if (_test.supplier != null)
+            finally
             {
-                SqlHelper.DeleteSupplier(_test.supplier.Id, _test.connectionString);
+                _test.listOfSolutions = null;
+            }
+            try
+            {
+                if (_test.supplier != null)
+                {
+                    SqlHelper.DeleteSupplier(_test.supplier.Id, _test.connectionString);
+                }
+            }
+            finally
+            {
+                _test.supplier = null;
             }
         }
     }

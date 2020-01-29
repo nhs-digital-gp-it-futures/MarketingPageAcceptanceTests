@@ -28,12 +28,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutOrganisation
             _test.driver.Navigate().Refresh();
         }
 
-        [Then(@"the About supplier section is presented")]
-        public void ThenTheAboutSupplierSectionIsPresented()
-        {
-            _test.pages.PreviewPage.AboutSupplierSectionDisplayed();
-        }
-
         [Given(@"that About Supplier data has been added to a Solution \(Solution A\)")]
         public void GivenThatAboutSupplierDataHasBeenAddedToASolutionSolutionA()
         {
@@ -47,7 +41,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutOrganisation
         [Given(@"the User has created a new solution for the same supplier \(Solution B\)")]
         public void GivenTheUserHasCreatedANewSolutionForTheSameSupplierSolutionB()
         {
-            _test.solution = CreateSolution.CreateNewSolution();
+            _test.solution = CreateSolution.CreateNewSolution("SolB");
             _test.solution.SupplierId = _test.supplier.Id;
             _test.solutionDetail = CreateSolutionDetails.CreateNewSolutionDetail(_test.solution.Id, Guid.NewGuid(), 0, false);
             SqlHelper.CreateBlankSolution(_test.solution, _test.solutionDetail, _test.connectionString);

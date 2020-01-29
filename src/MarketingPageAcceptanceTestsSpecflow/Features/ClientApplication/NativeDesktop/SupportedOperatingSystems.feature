@@ -25,11 +25,6 @@ Scenario: Supported operating systems does exceed maximum
 	Then the Section is not saved 
 	And an indication is given to the Supplier as to why
 
-Scenario: Appear on Preview - Supported operating systems
-	Given the User has saved all data for Supported operating systems section on Native desktop sub dashboard	
-	When a User previews the Marketing Page
-	Then Supported operating systems will be presented in Native desktop on the Preview of the Marketing Page
-
 Scenario: Supported operating systems Mandatory Data Missing Validation
 	Given that a User has not provided any mandatory data on Native desktop sub dashboard for Supported operating systems section
 	When the User attempts to save

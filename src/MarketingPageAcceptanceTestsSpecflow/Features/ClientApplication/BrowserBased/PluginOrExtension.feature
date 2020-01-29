@@ -30,12 +30,6 @@ Scenario: Plug in or Extension Description does exceed maximum
 	Then the Section is not saved 
 	And an indication is given to the Supplier as to why
 
-Scenario: Appear on Preview
-	Given that an answer is provided to the Plug-ins or extensions mandatory question
-	And the user has saved the data
-	When a User previews the Marketing Page
-	Then Plug-ins or extensions will be presented in Browser based on the Preview of the Marketing Page
-
 Scenario: Validation Error Message Anchors
 	Given validation has been triggered on Browser based section Plug-ins or extensions
 	When the User selects an error link in the Error Summary

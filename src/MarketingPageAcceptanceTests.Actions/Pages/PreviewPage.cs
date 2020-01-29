@@ -164,14 +164,14 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                 .Count > 0;
         }
 
-        public bool RoadmapSectionDisplayed()
+        public bool MainSectionDisplayed(string section)
         {
-            return driver.FindElements(pages.PreviewPage.PreviewHeaders).Select(s => s.Text.ToLower()).Contains("roadmap");
+            return driver.FindElements(pages.PreviewPage.PreviewHeaders).Select(s => s.Text.ToLower()).Contains(section.ToLower());
         }
 
         public void AboutSupplierSectionDisplayed()
         {
-            driver.FindElements(pages.PreviewPage.PreviewHeaders).Select(s => s.Text.ToLower()).Should().Contain("about supplier");
+            MainSectionDisplayed("about supplier").Should().BeTrue();
             driver.FindElement(pages.PreviewPage.AboutSupplierDescription).Displayed.Should().BeTrue();
             driver.FindElement(pages.PreviewPage.AboutSupplierUrl).Displayed.Should().BeTrue();
         }
