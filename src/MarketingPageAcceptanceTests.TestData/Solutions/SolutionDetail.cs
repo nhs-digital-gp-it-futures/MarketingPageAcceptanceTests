@@ -11,6 +11,8 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         public string ClientApplication { get; set; }
         public string Summary { get; set; }
         public string FullDescription { get; set; }
+        public string RoadMap { get; set; }
+        public string HostingTypes { get; set; }
 
         public override string ToString()
         {

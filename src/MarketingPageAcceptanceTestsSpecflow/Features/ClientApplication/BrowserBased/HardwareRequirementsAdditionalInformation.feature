@@ -48,16 +48,6 @@ Scenario Outline: Sub-Section marked as Complete - No Mandatory Data Required + 
 	Then the <PageTitle> Sub-Section is marked as Complete
 
 	Examples: 
-	| PageTitle             | 
-	| Hardware requirements | 
-	| Additional information |
-
-Scenario Outline: Appear on Preview
-	Given that <PageTitle> has been completed in the Browser based section
-	When a User previews the Marketing Page
-	Then <PageTitle> will be presented in Browser based on the Preview of the Marketing Page
-
-	Examples: 
-	| PageTitle              | 
-	| Hardware requirements  | 
+	| PageTitle              |
+	| Hardware requirements  |
 	| Additional information |

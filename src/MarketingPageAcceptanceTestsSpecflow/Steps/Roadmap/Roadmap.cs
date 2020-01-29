@@ -12,10 +12,10 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Roadmap
         {
         }
 
-        [Then(@"the Roadmap section is presented")]
-        public void ThenTheRoadmapSectionIsPresented()
+        [Then(@"the (.*) section is presented")]
+        public void ThenTheSectionIsPresented(string section)
         {
-            _test.pages.PreviewPage.RoadmapSectionDisplayed().Should().BeTrue();
+            _test.pages.PreviewPage.MainSectionDisplayed(section).Should().BeTrue();
         }
     }
 }

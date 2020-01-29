@@ -51,13 +51,3 @@ Scenario Outline: Sub-Section marked as Complete - No Mandatory Data Required + 
 	| PageTitle             | 
 	| Hardware requirements | 
 	| Additional information |
-
-Scenario Outline: Appear on Preview
-	Given that <PageTitle> has been completed in the Native mobile or tablet section
-	When a User previews the Marketing Page
-	Then <PageTitle> will be presented in Native mobile or tablet on the Preview of the Marketing Page
-
-	Examples: 
-	| PageTitle              | 
-	| Hardware requirements  | 
-	| Additional information |

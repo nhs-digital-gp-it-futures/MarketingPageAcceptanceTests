@@ -25,8 +25,3 @@ Scenario: Native Mobile or Tablet Application Type Sub-Section marked as Complet
 	And a Supplier has saved any data in any field within Connection details
 	When the Native mobile or tablet Client Application Sub-Form is presented
 	Then the Connection details Sub-Section is marked as Complete
-
-Scenario: Appear on Preview
-	Given that Connection details has been completed in the Native mobile or tablet section
-	When a User previews the Marketing Page
-	Then Additional information about connection types will be presented in Native mobile or tablet on the Preview of the Marketing Page

@@ -28,12 +28,6 @@ Scenario: Hosting Type Section marked as Incomplete -  No Data
 	When the Marketing Page Form is presented 
 	Then the Public cloud section is marked as Incomplete
 
-Scenario: Appear on Preview
-	Given that Public cloud has been completed in the Hosting type section
-	When a User previews the Marketing Page
-	Then Summary will be presented in Public cloud on the Preview of the Marketing Page
-	And The Public cloud section contains This Solution requires a HSCN/N3 connection on the preview of the marketing page
-
 Scenario: HSCN/N3 connection does not appear on preview when not checked
 	Given that Public cloud has been completed in the Hosting type section
 	And the user unchecks the HSCN/N3 connection checkbox on the Public cloud section

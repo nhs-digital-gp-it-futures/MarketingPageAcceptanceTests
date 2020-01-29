@@ -5,11 +5,11 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
     public static class CreateSolutionDetails
     {
-        public static SolutionDetail CreateNewSolutionDetail(string slnId, Guid solutionDetailId, int numFeatures, bool clientApplication = true)
+        public static SolutionDetail CreateNewSolutionDetail(string slnId, Guid solutionDetailId, int numFeatures, bool clientApplication = true, bool roadMap = false, bool hostingTypes = false)
         {
             var faker = new Faker();
 
-            var md = new SolutionDetail
+            var sd = new SolutionDetail
             {
                 SolutionDetailId = solutionDetailId,
                 SolutionId = slnId,
@@ -17,15 +17,42 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
                 Features = GenerateFeatures(numFeatures, faker),
                 ClientApplication = clientApplication ? ClientApplicationStringBuilder.GetClientAppString() : string.Empty,
                 Summary = faker.Commerce.ProductName(),
-                FullDescription = faker.Name.JobTitle()
+                FullDescription = faker.Name.JobTitle(),
+                RoadMap = roadMap ? faker.Rant.Review() : string.Empty,
+                HostingTypes = hostingTypes ? GetCompleteHostingTypes() : string.Empty
             };
 
             if (System.Diagnostics.Debugger.IsAttached)
             {
-                Console.WriteLine(md.ToString());
+                Console.WriteLine(sd.ToString());
             }
 
-            return md;
+            return sd;
+        }
+
+        public static SolutionDetail CreateCompleteSolutionDetail(string slnId, Guid solutionDetailId, int numFeatures = 5)
+        {
+            var faker = new Faker();
+
+            var sd = new SolutionDetail
+            {
+                SolutionDetailId = solutionDetailId,
+                SolutionId = slnId,
+                AboutUrl = faker.Internet.Url(),
+                Features = GenerateFeatures(numFeatures, faker),
+                ClientApplication = ClientApplicationStringBuilder.GetClientAppString(clientApplicationTypes: "Browser based, Native mobile or tablet, Native desktop"),
+                Summary = faker.Commerce.ProductName(),
+                FullDescription = faker.Name.JobTitle(),
+                RoadMap = faker.Rant.Review(),
+                HostingTypes = GetCompleteHostingTypes()
+            };
+
+            return sd;
+        }
+
+        private static string GetCompleteHostingTypes()
+        {
+            return HostingTypeStrings.CompleteHostingTypes;
         }
 
         private static string GenerateFeatures(int numFeatures, Faker faker)

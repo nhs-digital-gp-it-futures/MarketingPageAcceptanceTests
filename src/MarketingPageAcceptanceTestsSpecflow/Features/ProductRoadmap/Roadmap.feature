@@ -24,9 +24,3 @@ Scenario: Roadmap Section marked as Incomplete -  No Data
 	Given the Roadmap section does not require Mandatory Data
 	When the Marketing Page Form is presented 
 	Then the Roadmap section is marked as Incomplete
-
-Scenario: Appear on Preview
-	Given the User has entered 1000 characters on the Roadmap page in the Roadmap section
-	When the User attempts to save 
-	And a User previews the Marketing Page
-	Then the Roadmap section is presented

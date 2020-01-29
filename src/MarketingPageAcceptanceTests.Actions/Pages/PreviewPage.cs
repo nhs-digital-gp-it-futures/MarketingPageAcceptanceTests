@@ -164,9 +164,9 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                 .Count > 0;
         }
 
-        public bool RoadmapSectionDisplayed()
+        public bool MainSectionDisplayed(string section)
         {
-            return driver.FindElements(pages.PreviewPage.PreviewHeaders).Select(s => s.Text.ToLower()).Contains("roadmap");
+            return driver.FindElements(pages.PreviewPage.PreviewHeaders).Select(s => s.Text.ToLower()).Contains(section.ToLower());
         }
 
         public void AboutSupplierSectionDisplayed()

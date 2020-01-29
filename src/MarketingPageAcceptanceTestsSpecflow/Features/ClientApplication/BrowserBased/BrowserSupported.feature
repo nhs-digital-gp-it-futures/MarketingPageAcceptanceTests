@@ -8,11 +8,6 @@ Scenario: Data Saved
 	When a User saves the page
 	Then the Browsers supported section is marked as COMPLETE on the Browser Based Client Type Sub-Form
 
-Scenario: Appear on Preview
-	Given that data has been saved for Browsers supported
-	When a User previews the Marketing Page
-	Then Browsers supported will be presented in Browser based on the Preview of the Marketing Page
-
 Scenario: Validation on Submission
 	Given that an answer is not provided to both questions for Browsers supported
 	When the User submits their Marketing Page for moderation

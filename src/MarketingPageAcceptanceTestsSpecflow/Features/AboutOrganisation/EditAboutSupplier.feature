@@ -32,13 +32,6 @@ Scenario: About Supplier Section marked as Incomplete -  No Data
 	When the Marketing Page Form is presented 
 	Then the About supplier section is marked as Incomplete
 
-Scenario: About Supplier Appear on Preview
-	Given the User has entered 1000 characters on the About supplier page in the About supplier section
-	And I enter 1000 characters into the link field
-	When the User attempts to save 
-	And a User previews the Marketing Page
-	Then the About supplier section is presented
-
 Scenario: Pre-Populated Description & URL
 	Given the User has created a new solution for the same supplier (Solution B)
 	When the User is editing the About supplier section for Solution B
