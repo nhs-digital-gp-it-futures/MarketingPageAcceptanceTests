@@ -42,16 +42,6 @@ steps:
 - bash: 
     "curl -i $(MPURL) --fail --connect-timeout 30"
   displayName: 'Check URL is reachable'
-
-- task: DockerCompose@0
-  displayName: Selenium Grid Setup
-  inputs:
-    containerregistrytype: 'Container Registry'
-    dockerComposeFile: 'docker-compose.yml'
-    action: 'Run a Docker Compose command'
-    dockerComposeCommand: 'up'
-    arguments: '--scale chrome=4 --scale firefox=4'
-    detached: true
     
 - task: Bash@3
   displayName: Selenium Grid Setup
