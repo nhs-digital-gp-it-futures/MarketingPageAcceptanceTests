@@ -11,6 +11,12 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  BROWSER: chrome 
+  SERVERURL: $(SERVERURL)
+  DATABASENAME: $(DATABASENAME)
+  DBUSER: $(DBUSER)
+  DBPASSWORD: $(DBPASSWORD)
+  MPURL: $(MPURL)
 
 steps:
 - task: UseDotNet@2
@@ -45,15 +51,22 @@ steps:
 - script: docker-compose up --scale chrome=4 -d
   displayName: docker-compose
 
-- bash: '
-    export BROWSER=chrome && 
-    export SERVERURL=$(SERVERURL) && 
-    export DATABASENAME=$(DATABASENAME) && 
-    export DBUSER=$(DBUSER) && 
-    export DBPASSWORD=$(DBPASSWORD) && 
-    export MPURL=$(MPURL) &&
-    dotnet test src/ -v n -l:trx;LogFileName=/test/results.trx'
-  displayName: 'Run acceptance tests'
+#- bash: '
+#    export BROWSER=chrome && 
+#    export SERVERURL=$(SERVERURL) && 
+#    export DATABASENAME=$(DATABASENAME) && 
+#    export DBUSER=$(DBUSER) && 
+#    export DBPASSWORD=$(DBPASSWORD) && 
+#    export MPURL=$(MPURL) &&
+#    dotnet test src/ -v n -l:trx;LogFileName=/test/results.trx'
+#  displayName: 'Run acceptance tests'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: 'src/'
+    arguments: '-v n'
+    testRunTitle: 'Run Acceptance Tests'
 
 - task: PublishTestResults@2
   inputs:
