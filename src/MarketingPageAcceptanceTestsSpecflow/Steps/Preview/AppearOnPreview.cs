@@ -1,4 +1,5 @@
-﻿using MarketingPageAcceptanceTests.TestData.ContactDetails;
+﻿using FluentAssertions;
+using MarketingPageAcceptanceTests.TestData.ContactDetails;
 using MarketingPageAcceptanceTests.TestData.Solutions;
 using MarketingPageAcceptanceTests.TestData.Utils;
 using MarketingPageAcceptanceTestsSpecflow.Utils;
@@ -20,6 +21,13 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Preview
             SqlHelper.UpdateSolutionDetails(_test.solutionDetail, _test.connectionString);
             var contactDetails = GenerateContactDetails.NewContactDetail();
             SqlHelper.CreateContactDetails(_test.solution.Id, contactDetails, _test.connectionString);
+        }
+
+
+        [Then(@"the (.*) section is presented")]
+        public void ThenTheSectionIsPresented(string section)
+        {
+            _test.pages.PreviewPage.MainSectionDisplayed(section).Should().BeTrue();
         }
     }
 }
