@@ -1,5 +1,6 @@
 ﻿using Bogus;
 using System;
+using System.Collections.Generic;
 
 namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
@@ -27,8 +28,21 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 
         private static string RandomSolId(string prefix)
         {
+            var faker = new Faker();
+            List<string> randomChars = new List<string>();
+            for (int i = 0; i < 10; i++)
+            {
+                randomChars.Add(faker.Random.AlphaNumeric(1));
+            }
+
+            var randomChar = Information.RandomInformation.GetRandomItem(randomChars).ToString();
+
             string timestamp = DateTimeOffset.Now.ToUnixTimeMilliseconds().ToString();
-            return prefix + timestamp.Substring(timestamp.Length - 10);
+            timestamp = timestamp.Substring(timestamp.Length - prefix.Length);
+
+            string totalString = prefix + timestamp;
+
+            return totalString.Length > 13 ? totalString.Substring(0, 13) + randomChar : totalString + randomChar;
         }
 
         public static SolutionDetail CreateCompleteSolutionDetail(Solution solution, SolutionDetail solutionDetail)
