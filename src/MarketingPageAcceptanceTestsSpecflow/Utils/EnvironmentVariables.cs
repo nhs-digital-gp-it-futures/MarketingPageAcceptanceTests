@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json.Linq;
-using NUnit.Framework;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Utils
 {
@@ -43,12 +40,9 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
         {
             var serverUrl = Environment.GetEnvironmentVariable("SERVERURL") ?? "127.0.0.1,1433";
             var databaseName = Environment.GetEnvironmentVariable("DATABASENAME") ?? "buyingcatalogue";
+            var dbUser = Environment.GetEnvironmentVariable("DBUSER") ?? "NHSD";
 
-            var dbUser = GetPartialEnvVar("GPIT(.*)SQLADMINUSERNAME") ?? "NHSD";
-            var dbPassword = GetPartialEnvVar("GPIT(.*)SQLADMINPASSWORD") ?? "DisruptTheMarket1!";
-
-            TestContext.Out.WriteLine("User: " + dbUser);
-            TestContext.Out.WriteLine("Password: " + dbPassword);
+            var dbPassword = GetJsonConfigValues("password", "DisruptTheMarket1!");            
 
             return (serverUrl, databaseName, dbUser, dbPassword);
         }
@@ -71,22 +65,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
                 .FirstOrDefault(s => !s.Contains("#{"));               
 
             return string.IsNullOrEmpty(result) ? defaultValue : result;
-        }
-
-        private static string GetPartialEnvVar(string pattern)
-        {
-            IDictionary variables = Environment.GetEnvironmentVariables();
-            foreach (string variable in variables.Keys)
-            {
-                TestContext.Out.WriteLine(variable);
-                var match = Regex.Match(variable, pattern).Value;
-                if (!string.IsNullOrEmpty(match))
-                {
-                    return (string)variables[match];
-                }
-            }
-
-            return null;
         }
     }
 
