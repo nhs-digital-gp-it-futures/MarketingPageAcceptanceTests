@@ -1,4 +1,5 @@
-﻿using TechTalk.SpecFlow;
+﻿using NUnit.Framework;
+using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Utils
 {
@@ -11,6 +12,8 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
         {
             _test = test;
             _context = context;
+
+            TestContext.Out.WriteLine(_test.connectionString);
         }
     }
 }
