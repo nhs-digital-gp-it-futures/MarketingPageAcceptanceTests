@@ -6,6 +6,7 @@ using MarketingPageAcceptanceTests.TestData.Utils;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Utils
 {
@@ -27,6 +28,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
             solutionDetail = CreateSolutionDetails.CreateNewSolutionDetail(solution.Id, Guid.NewGuid(), 0, false);
 
             connectionString = EnvironmentVariables.GetConnectionString();
+            Trace.WriteLine(connectionString);
             SqlHelper.CreateBlankSolution(solution, solutionDetail, connectionString);
 
             SetUrl(solution.Id);
