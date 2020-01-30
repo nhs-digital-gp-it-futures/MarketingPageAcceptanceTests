@@ -44,8 +44,8 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
             var serverUrl = Environment.GetEnvironmentVariable("SERVERURL") ?? "127.0.0.1,1433";
             var databaseName = Environment.GetEnvironmentVariable("DATABASENAME") ?? "buyingcatalogue";
 
-            var dbUser = GetPartialEnvVar("gpit(.*)sqladminusername") ?? "NHSD";
-            var dbPassword = GetPartialEnvVar("gpit(.*)sqladminpassword") ?? "DisruptTheMarket1!";
+            var dbUser = GetPartialEnvVar("GPIT(.*)SQLADMINUSERNAME") ?? "NHSD";
+            var dbPassword = GetPartialEnvVar("GPIT(.*)SQLADMINPASSWORD") ?? "DisruptTheMarket1!";
 
             TestContext.Out.WriteLine("User: " + dbUser);
             TestContext.Out.WriteLine("Password: " + dbPassword);
