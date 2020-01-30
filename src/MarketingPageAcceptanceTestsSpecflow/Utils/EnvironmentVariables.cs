@@ -75,7 +75,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
 
         private static string GetPartialEnvVar(string pattern)
         {
-            IDictionary variables = Environment.GetEnvironmentVariables(EnvironmentVariableTarget.Process);
+            IDictionary variables = Environment.GetEnvironmentVariables();
             foreach (string variable in variables.Keys)
             {
                 TestContext.Out.WriteLine(variable);
