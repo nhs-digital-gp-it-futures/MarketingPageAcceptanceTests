@@ -20,28 +20,30 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
                 {
                     //add the params
                     command.Parameters.AddRange(sqlParameters);
-
-                    Policy.Handle<SqlException>()
-                        .Or<TimeoutException>()
-                        .WaitAndRetry(3, retryAttempt => TimeSpan.FromMilliseconds(500))
-                        .Execute(() =>
+                    PolicyBuilder().Execute(() =>
+                    {
+                        SqlDataReader reader = command.ExecuteReader();
+                        try
                         {
-                            SqlDataReader reader = command.ExecuteReader();
-                            try
-                            {
-                                returnValue = mapDataReader(reader);
-                            }
-                            finally
-                            {
-                                reader.Close();
-                            }
+                            returnValue = mapDataReader(reader);
                         }
-                    );
+                        finally
+                        {
+                            reader.Close();
+                        }
+                    });
                 }
             }
 
 
             return returnValue;
+        }
+
+        private static ISyncPolicy PolicyBuilder()
+        {
+            return Policy.Handle<SqlException>()
+                .Or<TimeoutException>()
+                .WaitAndRetry(3, retryAttempt => TimeSpan.FromMilliseconds(500));
         }
     }
 }
