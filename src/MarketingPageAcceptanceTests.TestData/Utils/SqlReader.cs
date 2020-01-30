@@ -9,6 +9,8 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
     {
         internal static T Read<T>(string connectionString, string query, SqlParameter[] sqlParameters, Func<IDataReader, T> mapDataReader)
         {
+            T returnValue = default;
+
             Policy.Handle<SqlException>()
                 .Or<TimeoutException>()
                 .WaitAndRetry(3, retryAttempt => TimeSpan.FromMilliseconds(500))
@@ -26,7 +28,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
                             SqlDataReader reader = command.ExecuteReader();
                             try
                             {
-                                return mapDataReader(reader);
+                                returnValue = mapDataReader(reader);
                             }
                             finally
                             {
@@ -37,7 +39,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
                 }
             );
 
-            throw new TimeoutException("Failure after 3 retries");
+            return returnValue;
         }
     }
 }
