@@ -3,6 +3,7 @@ using MarketingPageAcceptanceTests.Actions.Collections;
 using MarketingPageAcceptanceTests.TestData.Solutions;
 using MarketingPageAcceptanceTests.TestData.Suppliers;
 using MarketingPageAcceptanceTests.TestData.Utils;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
             solutionDetail = CreateSolutionDetails.CreateNewSolutionDetail(solution.Id, Guid.NewGuid(), 0, false);
 
             connectionString = EnvironmentVariables.GetConnectionString();
-            Trace.WriteLine(connectionString);
+            TestContext.Out.WriteLine(connectionString);
             SqlHelper.CreateBlankSolution(solution, solutionDetail, connectionString);
 
             SetUrl(solution.Id);
