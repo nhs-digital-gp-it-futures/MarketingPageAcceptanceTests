@@ -28,8 +28,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
             solution = CreateSolution.CreateNewSolution();
             solutionDetail = CreateSolutionDetails.CreateNewSolutionDetail(solution.Id, Guid.NewGuid(), 0, false);
 
-            connectionString = EnvironmentVariables.GetConnectionString();
-            TestContext.Out.WriteLine(connectionString);
+            connectionString = EnvironmentVariables.GetConnectionString();            
             SqlHelper.CreateBlankSolution(solution, solutionDetail, connectionString);
 
             SetUrl(solution.Id);

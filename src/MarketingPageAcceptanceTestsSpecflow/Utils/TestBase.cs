@@ -12,8 +12,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
         {
             _test = test;
             _context = context;
-
-            TestContext.Out.WriteLine(_test.connectionString);
         }
     }
 }

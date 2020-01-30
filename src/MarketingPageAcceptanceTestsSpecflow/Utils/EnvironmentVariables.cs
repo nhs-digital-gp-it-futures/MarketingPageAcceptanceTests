@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json.Linq;
+using NUnit.Framework;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Utils
 {
@@ -46,6 +47,9 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
             var dbUser = GetPartialEnvVar("gpit(.*)sqladminusername") ?? "NHSD";
             var dbPassword = GetPartialEnvVar("gpit(.*)sqladminpassword") ?? "DisruptTheMarket1!";
 
+            TestContext.Out.WriteLine("User: " + dbUser);
+            TestContext.Out.WriteLine("Password: " + dbPassword);
+
             return (serverUrl, databaseName, dbUser, dbPassword);
         }
 
@@ -74,6 +78,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
             IDictionary variables = Environment.GetEnvironmentVariables(EnvironmentVariableTarget.Process);
             foreach (string variable in variables.Keys)
             {
+                TestContext.Out.WriteLine(variable);
                 var match = Regex.Match(variable, pattern).Value;
                 if (!string.IsNullOrEmpty(match))
                 {
