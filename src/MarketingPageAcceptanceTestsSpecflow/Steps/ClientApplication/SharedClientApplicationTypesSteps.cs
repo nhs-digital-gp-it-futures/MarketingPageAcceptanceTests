@@ -1,8 +1,8 @@
-﻿using System.Threading;
-using FluentAssertions;
+﻿using FluentAssertions;
 using MarketingPageAcceptanceTests.TestData.Solutions;
 using MarketingPageAcceptanceTests.TestData.Utils;
 using MarketingPageAcceptanceTestsSpecflow.Utils;
+using System.Threading;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
@@ -132,7 +132,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
                     _test.pages.NativeDesktopSections.MemoryAndStorage.CompleteAllFields();
                     break;
             }
-            
+
             _test.pages.Common.SectionSaveAndReturn();
             _test.pages.Common.WaitUntilSectionPageNotShownAnymore();
             _test.pages.Common.ClickSubDashboardBackLink();

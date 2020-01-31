@@ -1,6 +1,4 @@
 ﻿using FluentAssertions;
-using MarketingPageAcceptanceTests.TestData.Solutions;
-using MarketingPageAcceptanceTests.TestData.Utils;
 using MarketingPageAcceptanceTestsSpecflow.Utils;
 using System.Collections.Generic;
 using TechTalk.SpecFlow;

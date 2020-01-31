@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using FluentAssertions;
+﻿using FluentAssertions;
 using MarketingPageAcceptanceTestsSpecflow.Utils;
+using System.Collections.Generic;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.NativeDesktop
@@ -13,7 +12,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.NativeDes
         {
 
         }
-        
+
         [Then(@"there is a list of Native Desktop Client Application Type Sub-Sections")]
         public void ThenThereIsAListOfNativeDesktopClientApplicationTypeSub_Sections()
         {
@@ -21,7 +20,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.NativeDes
             {
                 "Supported operating systems",
                 "Connection details",
-                "Memory, storage, processing and aspect ratio",                
+                "Memory, storage, processing and aspect ratio",
                 "Third party components and device capabilities",
                 "Hardware requirements",
                 "Additional information"

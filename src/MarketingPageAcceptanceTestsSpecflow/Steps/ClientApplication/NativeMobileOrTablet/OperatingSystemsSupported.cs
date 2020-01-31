@@ -32,7 +32,8 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.NativeMob
             _test.pages.Dashboard.NavigateToSection(subDashboard, true);
             _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection(section);
 
-            switch (section) {
+            switch (section)
+            {
                 case "Supported operating systems":
                     if (subDashboard.Contains("native mobile", System.StringComparison.OrdinalIgnoreCase))
                     {

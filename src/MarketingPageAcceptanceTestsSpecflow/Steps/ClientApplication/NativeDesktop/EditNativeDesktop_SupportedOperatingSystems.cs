@@ -1,5 +1,4 @@
-﻿using System;
-using MarketingPageAcceptanceTestsSpecflow.Utils;
+﻿using MarketingPageAcceptanceTestsSpecflow.Utils;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.NativeDesktop

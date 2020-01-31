@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-using TechTalk.SpecFlow;
+﻿using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Utils
 {
