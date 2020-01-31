@@ -1,6 +1,7 @@
 ﻿using MarketingPageAcceptanceTests.TestData.ContactDetails;
 using MarketingPageAcceptanceTests.TestData.Suppliers;
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders
@@ -81,6 +82,18 @@ namespace MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders
                 Summary = dr["Summary"].ToString(),
                 SupplierUrl = dr["SupplierUrl"].ToString()
             };
+        }
+
+        internal static IEnumerable<string> GetSolutionIds(IDataReader dr)
+        {
+            List<string> result = new List<string>();
+
+            while (dr.Read())
+            {
+                result.Add(Convert.ToString(dr["Id"]));
+            }
+
+            return result;
         }
     }
 }

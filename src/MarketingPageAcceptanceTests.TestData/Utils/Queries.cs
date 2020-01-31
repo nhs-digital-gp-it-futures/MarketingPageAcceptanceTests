@@ -7,6 +7,7 @@
         internal const string UpdateSolutionSolutionDetailId = "UPDATE Solution SET SolutionDetailId=@solutionDetailId WHERE Id=@solutionId";
         internal const string UpdateSolutionSupplierlId = "UPDATE Solution SET SupplierId=@supplierId WHERE Id=@solutionId";
         internal const string DeleteSolution = "DELETE from Solution where Id=@solutionId";
+        internal const string GetAllSolutionIds = "Select Id from [dbo].[Solution]";
 
         internal const string CreateSolutionDetail = "INSERT INTO SolutionDetail (Id, LastUpdatedBy, LastUpdated, SolutionId) values (@solutionDetailId, @lastUpdatedBy, @lastUpdated, @solutionId)";
         internal const string GetSolutionDetail = "SELECT Features, AboutUrl, Summary, FullDescription from [dbo].[SolutionDetail] where SolutionId=@solutionId";

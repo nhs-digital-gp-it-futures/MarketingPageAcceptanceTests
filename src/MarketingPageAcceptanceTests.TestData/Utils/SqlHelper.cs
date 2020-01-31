@@ -3,7 +3,9 @@ using MarketingPageAcceptanceTests.TestData.Solutions;
 using MarketingPageAcceptanceTests.TestData.Suppliers;
 using MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace MarketingPageAcceptanceTests.TestData.Utils
 {
@@ -321,6 +323,15 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             };
 
             SqlReader.Read(connectionString, query, parameters, DataReaders.NoReturn);
+        }
+
+        public static IEnumerable<string> GetAllSolutionIds(string connectionString)
+        {
+            var query = Queries.GetAllSolutionIds;
+            SqlParameter[] parameters = new SqlParameter[0];
+            var result = SqlReader.Read(connectionString, query, parameters, DataReaders.GetSolutionIds);
+
+            return result;
         }
     }
 }
