@@ -74,7 +74,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         /// <returns>A unique solution ID</returns>
         private static string UniqueSolIdCheck(string prefix, string connectionString)
         {
-            var existingSolIds = SqlHelper.GetAllSolutionIds(connectionString).ToList();
+            var existingSolIds = SqlHelper.GetAllSolutionIds(connectionString, prefix).ToList();
 
             var solId = string.Empty;
 

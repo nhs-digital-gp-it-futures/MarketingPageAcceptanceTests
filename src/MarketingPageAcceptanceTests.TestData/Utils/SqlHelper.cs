@@ -325,12 +325,15 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             SqlReader.Read(connectionString, query, parameters, DataReaders.NoReturn);
         }
 
-        public static IEnumerable<string> GetAllSolutionIds(string connectionString)
+        public static IEnumerable<string> GetAllSolutionIds(string connectionString, string prefix)
         {
             var query = Queries.GetAllSolutionIds;
-            SqlParameter[] parameters = new SqlParameter[0];
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@prefix", prefix + "%")
+            };
             var result = SqlReader.Read(connectionString, query, parameters, DataReaders.GetSolutionIds);
-
+            
             return result;
         }
     }
