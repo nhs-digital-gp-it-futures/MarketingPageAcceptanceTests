@@ -44,7 +44,8 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
                 Summary = faker.Commerce.ProductName(),
                 FullDescription = faker.Name.JobTitle(),
                 RoadMap = faker.Rant.Review(),
-                HostingTypes = GetCompleteHostingTypes()
+                HostingTypes = GetCompleteHostingTypes(),
+                IntegrationsUrl = faker.Internet.Url()
             };
 
             return sd;

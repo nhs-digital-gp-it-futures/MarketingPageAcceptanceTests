@@ -64,3 +64,4 @@ Scenario Outline: Appear on Preview - Main Sections
 	| Hosting type            |
 	| Contact details         |
 	| About supplier          |
+	#| Integrations            
