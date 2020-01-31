@@ -1,4 +1,5 @@
 ﻿using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+using MarketingPageAcceptanceTests.Actions.Utils;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -33,8 +34,11 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void SaveAndReturn()
         {
-            // Using Submit() directly to the form instead of Click() on the button prevents HTTP timeouts to Selenium server errors in 95% of cases
-            driver.FindElement(By.TagName("form")).Submit();            
+            Policies.GetPolicy().Execute(() =>
+            {
+                // Using Submit() directly to the form instead of Click() on the button prevents HTTP timeouts to Selenium server errors in 95% of cases
+                driver.FindElement(By.TagName("form")).Submit();
+            });
         }
 
         public IList<string> GetAppTypes()
