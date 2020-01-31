@@ -10,12 +10,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication.HardwareR
         {
         }
 
-        [Given(@"a Supplier has not saved any data in any field within the Sub-Section")]
-        public void GivenASupplierHasNotSavedAnyDataInAnyFieldWithinTheSub_Section()
-        {
-
-        }
-
         [Given(@"a (Supplier|User) has saved any data in any field within (.*)")]
         public void GivenASupplierHasSavedAnyDataInAnyFieldWithinTheSub_Section(string user, string sectionName)
         {

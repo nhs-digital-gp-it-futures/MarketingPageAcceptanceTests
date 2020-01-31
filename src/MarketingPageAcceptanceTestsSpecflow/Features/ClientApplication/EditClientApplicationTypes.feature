@@ -20,7 +20,7 @@ Scenario: Client Application Type Not Selected
 
 Scenario: Client Application Type Section marked as Incomplete -  Mandatory Data Missing
 	Given the Client Application Type Section requires Mandatory Data
-	And a Supplier has not saved any data on the Client Application Type Section
+	And a Supplier has not saved any data on the Client Application Type section
 	When the Marketing Page Form is presented
 	Then the Client Application Type Section is marked as Incomplete
 

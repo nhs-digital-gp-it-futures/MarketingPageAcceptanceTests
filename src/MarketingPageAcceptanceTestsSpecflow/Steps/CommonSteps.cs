@@ -90,5 +90,19 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps
         {
             _test.pages.Dashboard.AssertSectionStatus(sectionName, status.ToUpper());
         }
+
+        [Given(@"the (Public cloud|Private cloud|Hybrid|On premise) section does not require Mandatory Data")]
+        [Given(@"the (Roadmap|Integrations) section does not require Mandatory Data")]
+        public void GivenTheSectionDoesNotRequireMandatoryData(string section)
+        {
+            //add any new pages as necessary
+            //can't wildcard it as some pages need to do something
+        }
+
+        [Given(@"a (User|Supplier) has not saved any data in any field within the Sub-Section")]
+        [Given(@"a (User|Supplier) has not saved any data on the .* section")]
+        public void GivenAUserHasNotSavedAnyDataOnTheSection(string user)
+        {
+        }
     }
 }

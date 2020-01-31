@@ -20,18 +20,6 @@ namespace MarketingPageAcceptanceTestsSpecflow
             _test.pages.BrowserBasedSections.HardwareRequirements.EnterText(characters);
         }
 
-        [Given(@"the (Public cloud|Private cloud|Hybrid|On premise|Roadmap) section does not require Mandatory Data")]
-        public void GivenTheHostingTypeSectionDoesNotRequireMandatoryData(string hostingTypeSection)
-        {
-
-        }
-
-        [Given(@"a User has not saved any data on the (Public cloud|Private cloud|Hybrid|On premise) section")]
-        public void GivenAUserHasNotSavedAnyDataOnTheHostingTypeSection(string hostingTypeSection)
-        {
-
-        }
-
         [Then(@"The (Public cloud|Private cloud|Hybrid|On premise) section (contains|does not contain) This Solution requires a HSCN/N3 connection on the preview of the marketing page")]
         public void ThenThePublicCloudSectionContainsThisSolutionRequiresAHSCNNConnectionOnThePreviewOfTheMarketingPage(string hostingTypeSection, string assertionText)
         {

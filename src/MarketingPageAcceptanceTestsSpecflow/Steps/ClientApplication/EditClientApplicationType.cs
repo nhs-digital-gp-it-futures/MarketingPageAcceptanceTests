@@ -39,11 +39,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.ClientApplication
         {
         }
 
-        [Given(@"a Supplier has not saved any data on the Client Application Type Section")]
-        public void GivenASupplierHasNotSavedAnyDataOnTheClientApplicationTypeSection()
-        {
-        }
-
         [Given(@"a Supplier has saved any data on the Client Application Type Section")]
         public void GivenASupplierHasSavedAnyDataOnTheClientApplicationTypeSection()
         {
