@@ -40,8 +40,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
         {
             var serverUrl = Environment.GetEnvironmentVariable("SERVERURL") ?? "127.0.0.1,1433";
             var databaseName = Environment.GetEnvironmentVariable("DATABASENAME") ?? "buyingcatalogue";
-            var dbUser = Environment.GetEnvironmentVariable("DBUSER") ?? "NHSD";
-
+            var dbUser = GetJsonConfigValues("user", "NHSD");
             var dbPassword = GetJsonConfigValues("password", "DisruptTheMarket1!");            
 
             return (serverUrl, databaseName, dbUser, dbPassword);

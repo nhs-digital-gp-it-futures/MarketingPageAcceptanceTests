@@ -28,17 +28,27 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 
         private static string RandomSolId(string prefix)
         {
-            var timestampPrefixed = GetTruncatedTimestamp(prefix);
-            var lastChar = GetRandomCharacter();            
+            var timestampPrefixed = GetTruncatedTimestamp(prefix);            
             
             var solId = timestampPrefixed.Length > 13 ? timestampPrefixed.Substring(0, 13) : timestampPrefixed;
+            var suffix = GetSuffix(solId.Length);
 
-            return solId + lastChar;
+            return solId + suffix;
         }
 
         public static SolutionDetail CreateCompleteSolutionDetail(Solution solution, SolutionDetail solutionDetail)
         {
             return CreateSolutionDetails.CreateNewSolutionDetail(solution.Id, solutionDetail.SolutionDetailId, 5);
+        }
+
+        private static string GetSuffix(int solIdLength)
+        {
+            var suffix = string.Empty;
+            for (int i = 0; i < 14 - solIdLength; i++)
+            {
+                suffix += GetRandomCharacter();
+            }
+            return suffix;
         }
 
         private static string GetRandomCharacter()

@@ -21,7 +21,8 @@ Scenario Outline: Form sections presented
 		| Contact details         |
 		| Roadmap                 |
 		| About supplier          |
-		#| Integrations            |
+		#| Integrations            
+		#| Implementation timescales
 	
 Scenario Outline: Sub dashboard sections presented
 	Given that a User has chosen to manage Marketing Page Information
@@ -53,7 +54,8 @@ Scenario Outline: Section status
 		| Contact details         |
 		| Roadmap                 |
 		| About supplier          |
-		#| Integrations            |
+		#| Integrations            
+		#| Implementation timescales
 	
 Scenario Outline: Sub dashboard section status
 	Given that a User has chosen to manage Marketing Page Information
