@@ -1,10 +1,10 @@
-﻿using System;
-using Bogus;
+﻿using Bogus;
 using FluentAssertions;
 using MarketingPageAcceptanceTests.TestData.Solutions;
 using MarketingPageAcceptanceTests.TestData.Suppliers;
 using MarketingPageAcceptanceTests.TestData.Utils;
 using MarketingPageAcceptanceTestsSpecflow.Utils;
+using System;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutOrganisation
@@ -83,10 +83,10 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutOrganisation
         {
             Supplier supplierForSolutionA = SqlHelper.GetSupplierForSolution(_test.listOfSolutions[0].Id, _test.connectionString);
             Supplier supplierForSolutionB = SqlHelper.GetSupplierForSolution(_test.listOfSolutions[1].Id, _test.connectionString);
-            
-            if(newDescription != null)
+
+            if (newDescription != null)
                 supplierForSolutionA.Summary.Should().Be(newDescription);
-            if(newLink != null)
+            if (newLink != null)
                 supplierForSolutionA.SupplierUrl.Should().Be(newLink);
 
             supplierForSolutionA.Should().BeEquivalentTo(supplierForSolutionB);

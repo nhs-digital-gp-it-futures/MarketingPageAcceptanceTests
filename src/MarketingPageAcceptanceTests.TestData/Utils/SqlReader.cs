@@ -20,7 +20,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
                 {
                     //add the params
                     command.Parameters.AddRange(sqlParameters);
-                    PolicyBuilder().Execute(() =>
+                    Policies.RetryPolicy().Execute(() =>
                     {
                         SqlDataReader reader = command.ExecuteReader();
                         try
@@ -37,13 +37,6 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
 
 
             return returnValue;
-        }
-
-        private static ISyncPolicy PolicyBuilder()
-        {
-            return Policy.Handle<SqlException>()
-                .Or<TimeoutException>()
-                .WaitAndRetry(3, retryAttempt => TimeSpan.FromMilliseconds(500));
         }
     }
 }

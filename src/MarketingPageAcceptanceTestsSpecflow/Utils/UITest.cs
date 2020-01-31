@@ -3,11 +3,9 @@ using MarketingPageAcceptanceTests.Actions.Collections;
 using MarketingPageAcceptanceTests.TestData.Solutions;
 using MarketingPageAcceptanceTests.TestData.Suppliers;
 using MarketingPageAcceptanceTests.TestData.Utils;
-using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Utils
 {
@@ -22,14 +20,14 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
         internal string ExpectedSectionLinkInErrorMessage;
         internal Supplier supplier;
         internal List<Solution> listOfSolutions = new List<Solution>();
-        
+
         public UITest()
         {
             connectionString = EnvironmentVariables.GetConnectionString();
 
             solution = CreateSolution.CreateNewSolution(checkForUnique: true, connectionString: connectionString);
             solutionDetail = CreateSolutionDetails.CreateNewSolutionDetail(solution.Id, Guid.NewGuid(), 0, false);
-            
+
             SqlHelper.CreateBlankSolution(solution, solutionDetail, connectionString);
 
             SetUrl(solution.Id);

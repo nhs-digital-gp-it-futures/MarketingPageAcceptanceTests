@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using MarketingPageAcceptanceTestsSpecflow.Utils;
-using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Steps
@@ -38,7 +37,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps
         public void MarketingPageFormPresented()
         {
             _test.pages.Dashboard.PageDisplayed();
-        }        
+        }
 
         [Then(@"(.*) will be presented in the (.*) section on the Preview of the Marketing Page")]
         public void ThenSectionWillBePresentedOnThePreviewOfTheMarketingPage(string section, string subSection)
@@ -70,7 +69,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps
         [When(@"a User saves the page")]
         [StepDefinition(@"the User attempts to save")]
         public void WhenTheUserAttemptsToSave()
-        {            
+        {
             _test.pages.Common.SectionSaveAndReturn();
         }
 
@@ -83,7 +82,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps
         [Then(@"the (Supplier|User) is able to manage the (.*) Marketing Page (Dashboard|Form Section)")]
         public void ThenTheSupplierIsAbleToManageTheMarketingPageFormSection(string user, string section, string pageType)
         {
-            _test.pages.Dashboard.NavigateToSection(section, pageType=="Dashboard");
+            _test.pages.Dashboard.NavigateToSection(section, pageType == "Dashboard");
         }
 
         [Then(@"the (.*) (Sub-Section|section) is marked as (Incomplete|Complete)")]

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Newtonsoft.Json.Linq;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Utils
 {
@@ -26,7 +26,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
 
         internal static string GetUrl()
         {
-            string uri = Environment.GetEnvironmentVariable("MPURL") ?? "http://host.docker.internal:3002/solution/";
+            string uri = Environment.GetEnvironmentVariable("MPURL") ?? "http://host.docker.internal:3002/supplier/solution/";
 
             return uri.TrimEnd('/');
         }
@@ -41,7 +41,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
             var serverUrl = Environment.GetEnvironmentVariable("SERVERURL") ?? "127.0.0.1,1433";
             var databaseName = Environment.GetEnvironmentVariable("DATABASENAME") ?? "buyingcatalogue";
             var dbUser = GetJsonConfigValues("user", "NHSD");
-            var dbPassword = GetJsonConfigValues("password", "DisruptTheMarket1!");            
+            var dbPassword = GetJsonConfigValues("password", "DisruptTheMarket1!");
 
             return (serverUrl, databaseName, dbUser, dbPassword);
         }
@@ -61,7 +61,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
             Dictionary<string, string> dbValues = jsonSection.ToObject<Dictionary<string, string>>();
 
             var result = dbValues.Values
-                .FirstOrDefault(s => !s.Contains("#{"));               
+                .FirstOrDefault(s => !s.Contains("#{"));
 
             return string.IsNullOrEmpty(result) ? defaultValue : result;
         }

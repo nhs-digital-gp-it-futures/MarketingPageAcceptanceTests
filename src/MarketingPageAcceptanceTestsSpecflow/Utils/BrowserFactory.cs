@@ -63,7 +63,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
             var options = new ChromeOptions();
             options.AddArguments("headless", "window-size=1920,1080", "no-sandbox", "disable-dev-shm-usage");
 
-            return new RemoteWebDriver(new Uri(hubURL), options);
+            return GetRemoteDriver(new Uri(hubURL), options);
         }
 
         private static IWebDriver GetFirefoxDriver(string hubURL)
@@ -71,7 +71,18 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
             var options = new FirefoxOptions();
             options.AddArguments("headless", "window-size=1920,1080", "no-sandbox");
 
-            return new RemoteWebDriver(new Uri(hubURL), options);
+            return GetRemoteDriver(new Uri(hubURL), options);
+        }
+        private static IWebDriver GetRemoteDriver(Uri uri, DriverOptions options)
+        {
+            IWebDriver driver = null;
+
+            Policies.GetPolicy().Execute(() =>
+            {
+                driver = new RemoteWebDriver(uri, options);
+            });
+
+            return driver;
         }
     }
 }
