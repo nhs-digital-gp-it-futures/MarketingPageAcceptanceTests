@@ -25,7 +25,7 @@ Scenario: Contact Details Section marked as Complete -  Any Data Saved
 
 Scenario: Contact Details Type Section marked as Incomplete -  No Data
 	Given the Contact Details Section has no Mandatory Data
-	And a User has not saved any data on the Contact Details Section
+	And a User has not saved any data on the Contact Details section
 	When the Marketing Page Form is presented 
 	Then the Contact Details Section is marked as Incomplete
 

@@ -18,15 +18,5 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutSolution
             _test.pages.Dashboard.NavigateToSection(section);
             _test.pages.SolutionDescription.LinkAddText(characters);
         }
-        
-        [Given(@"the Integrations section does not require Mandatory Data")]
-        public void GivenTheIntegrationsSectionDoesNotRequireMandatoryData()
-        {
-        }
-        
-        [Given(@"a User has not saved any data on the Integrations section")]
-        public void GivenAUserHasNotSavedAnyDataOnTheIntegrationsSection()
-        {
-        }
     }
 }

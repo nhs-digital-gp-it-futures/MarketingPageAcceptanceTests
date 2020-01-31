@@ -61,11 +61,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutOrganisation
         {
         }
 
-        [Given(@"a User has not saved any data on the Contact Details Section")]
-        public void GivenAUserHasNotSavedAnyDataOnTheContactDetailsSection()
-        {
-        }
-
         [Then(@"the Contact Details Section is marked as Complete")]
         public void ThenTheContactDetailsSectionIsMarkedAsComplete()
         {
