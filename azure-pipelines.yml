@@ -53,6 +53,7 @@ steps:
       docker-compose up --scale chrome=4 --scale firefox=4  -d
     
 - task: DotNetCoreCLI@2
+  displayName: "Run accceptance tests"
   inputs:
     command: 'test'
     projects: 'src/MarketingPageAcceptanceTestsSpecflow/*csproj'

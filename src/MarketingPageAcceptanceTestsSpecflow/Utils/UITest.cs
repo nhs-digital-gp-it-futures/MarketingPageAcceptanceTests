@@ -25,10 +25,11 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
         
         public UITest()
         {
-            solution = CreateSolution.CreateNewSolution();
-            solutionDetail = CreateSolutionDetails.CreateNewSolutionDetail(solution.Id, Guid.NewGuid(), 0, false);
+            connectionString = EnvironmentVariables.GetConnectionString();
 
-            connectionString = EnvironmentVariables.GetConnectionString();            
+            solution = CreateSolution.CreateNewSolution(checkForUnique: true, connectionString: connectionString);
+            solutionDetail = CreateSolutionDetails.CreateNewSolutionDetail(solution.Id, Guid.NewGuid(), 0, false);
+            
             SqlHelper.CreateBlankSolution(solution, solutionDetail, connectionString);
 
             SetUrl(solution.Id);
