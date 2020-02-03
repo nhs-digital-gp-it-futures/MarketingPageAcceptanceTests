@@ -1,4 +1,4 @@
-﻿Feature: Mobile First
+﻿Feature: Suppliers - Browser Based Mobile First
 	As an Authority User
 	I want to edit the Mobile First Sub-Section
 	So that I can make sure the information is correct

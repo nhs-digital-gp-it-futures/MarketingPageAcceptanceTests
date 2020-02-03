@@ -1,4 +1,4 @@
-﻿Feature: AppearOnPreview
+﻿Feature: Suppliers - Appear On Preview
 	As a Supplier
 	I want to view the Preview Page
 	So I can ensure my solution is previewed correctly

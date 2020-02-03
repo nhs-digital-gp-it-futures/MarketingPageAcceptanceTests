@@ -1,4 +1,4 @@
-﻿Feature: Last Updated Date
+﻿Feature: Suppliers - Last Updated Date
 
 	As an Authority User 
 	I want to update content on a Marketing Page

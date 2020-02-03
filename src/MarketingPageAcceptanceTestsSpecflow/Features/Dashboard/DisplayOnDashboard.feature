@@ -1,4 +1,4 @@
-﻿Feature: DisplayOnDashboard
+﻿Feature: Suppliers - Display On Dashboard
 	As an Authority User
 	I want to manage Marketing Page Information
 	So that I can ensure the information is correct

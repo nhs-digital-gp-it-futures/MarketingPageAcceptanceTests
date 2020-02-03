@@ -1,4 +1,4 @@
-﻿Feature: ThirdPartyComponentsAndDeviceCapabilities
+﻿Feature: Suppliers - Native mobile - Third Party Components And Device Capabilities
 	As an Authority User
 	I want to edit the Third Party Components + Device Capabilities  Section
 	So that I can make sure the information is correct

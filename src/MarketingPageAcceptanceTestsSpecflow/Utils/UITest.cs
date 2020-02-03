@@ -30,18 +30,18 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
 
             SqlHelper.CreateBlankSolution(solution, solutionDetail, connectionString);
 
-            SetUrl(solution.Id);
-
             driver = new BrowserFactory().Driver;
             pages = new PageActions(driver).PageActionCollection;
-
-            GoToUrl();
         }
 
-        public void SetUrl(string solutionId)
+        public string DetermineUser(string scenarioTitle)
         {
-            // Reformatting to remove chance of rogue '/' between site url and solution id
-            url = $"{EnvironmentVariables.GetUrl()}/{solutionId}";
+            return scenarioTitle.Contains("authority", System.StringComparison.OrdinalIgnoreCase) ? "authoriy" : "supplier";
+        }
+
+        public void SetUrl(string solutionId, string userType = "supplier")
+        {
+            url = $"{EnvironmentVariables.GetUrl()}/{solutionId}".Replace("supplier", userType);
         }
 
         public void GoToUrl()
