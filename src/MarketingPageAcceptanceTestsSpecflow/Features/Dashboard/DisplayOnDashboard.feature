@@ -10,19 +10,19 @@ Scenario Outline: Form sections presented
 	And the User is able to manage the <Section> Marketing Page Form Section
 	
 		Examples:
-		| Section                 |
-		| Solution description    |
-		| Features                |
-		| Client application type |
-		| Public cloud            |
-		| Private cloud           |
-		| Hybrid                  |
-		| On premise              |
-		| Contact details         |
-		| Roadmap                 |
-		| About supplier          |
-		#| Integrations            
-		#| Implementation timescales
+		| Section                   |
+		| Solution description      |
+		| Features                  |
+		| Client application type   |
+		| Public cloud              |
+		| Private cloud             |
+		| Hybrid                    |
+		| On premise                |
+		| Contact details           |
+		| Roadmap                   |
+		| About supplier            |
+		| Integrations              |
+		#| Implementation timescales |
 	
 Scenario Outline: Sub dashboard sections presented
 	Given that a User has chosen to manage Marketing Page Information
@@ -43,19 +43,19 @@ Scenario Outline: Section status
 	Then the <Section> content validation status is displayed
 	
 		Examples:
-		| Section                 |
-		| Solution description    |
-		| Features                |
-		| Client application type |
-		| Public cloud            |
-		| Private cloud           |
-		| Hybrid                  |
-		| On premise              |
-		| Contact details         |
-		| Roadmap                 |
-		| About supplier          |
-		#| Integrations            
-		#| Implementation timescales
+		| Section                   |
+		| Solution description      |
+		| Features                  |
+		| Client application type   |
+		| Public cloud              |
+		| Private cloud             |
+		| Hybrid                    |
+		| On premise                |
+		| Contact details           |
+		| Roadmap                   |
+		| About supplier            |
+		| Integrations              |
+		| Implementation timescales |
 	
 Scenario Outline: Sub dashboard section status
 	Given that a User has chosen to manage Marketing Page Information
