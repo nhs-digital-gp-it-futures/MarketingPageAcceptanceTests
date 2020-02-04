@@ -92,7 +92,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps
         }
 
         [Given(@"the (Public cloud|Private cloud|Hybrid|On premise) section does not require Mandatory Data")]
-        [Given(@"the (Roadmap|Integrations) section does not require Mandatory Data")]
+        [Given(@"the (Roadmap|Integrations|Implementation timescales) section does not require Mandatory Data")]
         public void GivenTheSectionDoesNotRequireMandatoryData(string section)
         {
             //add any new pages as necessary

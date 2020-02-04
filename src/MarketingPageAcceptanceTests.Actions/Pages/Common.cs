@@ -58,6 +58,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// </summary>
         public void ErrorMessageDisplayed()
         {
+            ErrorSectionDisplayed();
             driver.FindElement(pages.Common.ErrorMessages).Text.Should().NotBeNullOrEmpty();
         }
 

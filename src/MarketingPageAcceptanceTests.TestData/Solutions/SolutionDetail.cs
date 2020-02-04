@@ -14,6 +14,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         public string RoadMap { get; set; }
         public string HostingTypes { get; set; }
         public string IntegrationsUrl { get; set; }
+        public string ImplementationTimescales { get; set; }
 
         public override string ToString()
         {
