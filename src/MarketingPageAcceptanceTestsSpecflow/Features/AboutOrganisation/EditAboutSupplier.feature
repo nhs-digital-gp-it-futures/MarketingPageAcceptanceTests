@@ -7,13 +7,13 @@ Background:
 	Given that About Supplier data has been added to a Solution (Solution A)
 
 Scenario: About Supplier does not exceed maximum
-	Given the User has entered 1000 characters on the About supplier page in the About supplier section
+	Given the Supplier has entered 1000 characters on the About supplier page in the About supplier section
 	And I enter 1000 characters into the link field
 	When the User attempts to save 
 	Then the About supplier is saved
 
 Scenario: About Supplier does exceed maximum
-	Given the User has entered 1001 characters on the About supplier page in the About supplier section
+	Given the Supplier has entered 1001 characters on the About supplier page in the About supplier section
 	And I enter 1001 characters into the link field
 	When the User attempts to save 
 	Then the Section is not saved 
@@ -21,7 +21,7 @@ Scenario: About Supplier does exceed maximum
 	And the Supplier is shown 2 error messages
 
 Scenario: About Supplier Section marked as Complete -  Any Data Saved
-	Given the User has entered 1000 characters on the About supplier page in the About supplier section
+	Given the Supplier has entered 1000 characters on the About supplier page in the About supplier section
 	And I enter 1000 characters into the link field
 	When the User attempts to save 
 	And the Marketing Page Form is presented 

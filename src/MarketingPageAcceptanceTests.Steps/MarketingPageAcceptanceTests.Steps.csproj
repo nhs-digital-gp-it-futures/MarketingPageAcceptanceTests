@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SpecFlow" Version="3.1.82" />
+    <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.1.82" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MarketingPageAcceptanceTests.Actions\MarketingPageAcceptanceTests.Actions.csproj" />
+    <ProjectReference Include="..\MarketingPageAcceptanceTests.TestData\MarketingPageAcceptanceTests.TestData.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Steps\ClientApplication\BrowserBased\SubDashboard.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Steps\Hooks.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Utils\tokens.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

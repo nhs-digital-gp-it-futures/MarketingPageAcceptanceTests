@@ -105,16 +105,34 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             Policies.GetPolicy().Execute(() =>
             {
-                // Using Submit() directly to the form instead of Click() on the button prevents HTTP timeouts to Selenium server errors in 95% of cases
-                wait.Until(s => s.FindElement(By.TagName("form")).Displayed);
-                wait.Until(ElementExtensions.ElementToBeClickable(pages.Common.SectionSaveAndReturn));
-                driver.FindElement(By.TagName("form")).Submit();
+                // Using Submit() directly to the form instead of Click() on the button prevents HTTP timeouts to Selenium server errors in 95% of cases                
+                if (IsDisplayed(By.TagName("form")))
+                {
+                    driver.FindElement(By.TagName("form")).Submit();
+                }
+                else
+                {
+                    driver.FindElement(pages.Common.SectionSaveAndReturn).Click();
+                }
             });
         }
 
         public void WaitUntilSectionPageNotShownAnymore()
         {
             wait.Until(ElementExtensions.InvisibilityOfElement(By.TagName("form")));
+        }
+
+        private bool IsDisplayed(By by)
+        {
+            try
+            {
+                driver.FindElement(by);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
