@@ -1,4 +1,4 @@
-﻿Feature: EditAboutSupplier
+﻿Feature: Suppliers - Edit About Supplier
 	As an Authority User
 	I want to Edit the About Supplier Section
 	So that I can make sure the information is correct

@@ -1,4 +1,4 @@
-﻿Feature: Native Desktop Client Type Sub Dashboard
+﻿Feature: Suppliers - Native Desktop Client Type Sub Dashboard
 	As an Authority User
 	I want to manage Marketing Page Information for the Native Desktop Client Type Section
 	So that I can ensure the information is correct

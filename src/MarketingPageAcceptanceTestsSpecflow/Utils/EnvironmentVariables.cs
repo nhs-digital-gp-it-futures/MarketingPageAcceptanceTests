@@ -27,7 +27,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Utils
         internal static string GetUrl()
         {
             string uri = Environment.GetEnvironmentVariable("MPURL") ?? "http://host.docker.internal:3002/supplier/solution/";
-
             return uri.TrimEnd('/');
         }
 

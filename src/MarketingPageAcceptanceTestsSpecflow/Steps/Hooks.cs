@@ -8,10 +8,19 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps
     [Binding]
     public sealed class Hooks : TestBase
     {
-        public Hooks(UITest test, ScenarioContext context) : base(test, context)
+        public Hooks(UITest test, ScenarioContext context, FeatureContext feature) : base(test, context)
         {
+            context.Set(feature.FeatureInfo.Title, "FeatureTitle");
         }
 
+        [BeforeScenario]
+        public void BeforeScenario()
+        {
+            var user =_test.DetermineUser(_context.Get<string>("FeatureTitle"));
+            _test.SetUrl(_test.solution.Id, user);
+            _test.GoToUrl();
+        }
+        
         [AfterScenario]
         public void AfterScenario()
         {

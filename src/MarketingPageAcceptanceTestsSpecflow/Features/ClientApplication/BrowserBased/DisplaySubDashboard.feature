@@ -1,4 +1,4 @@
-﻿Feature: Display Sub-Form - Browser Based Client Type
+﻿Feature: Suppliers - Display Sub-Form - Browser Based Client Type
 	As a Supplier
 	I want to manage Marketing Page Information for the Browser Based Client Type Section
 	So that I can ensure the information is correct
