@@ -101,7 +101,8 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
                 new SqlParameter("@fullDescription", solutionDetail.FullDescription),
                 new SqlParameter("@roadMap", solutionDetail.RoadMap),
                 new SqlParameter("@hostingTypes", solutionDetail.HostingTypes),
-                new SqlParameter("@integrationsUrl", solutionDetail.IntegrationsUrl)
+                new SqlParameter("@integrationsUrl", solutionDetail.IntegrationsUrl),
+                new SqlParameter("@implementationTimescales", solutionDetail.ImplementationTimescales)
             };            
 
             SqlReader.Read(connectionString, query, newParameters, DataReaders.NoReturn);

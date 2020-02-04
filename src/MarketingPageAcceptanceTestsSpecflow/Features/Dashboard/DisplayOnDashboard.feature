@@ -22,7 +22,7 @@ Scenario Outline: Form sections presented
 		| Roadmap                   |
 		| About supplier            |
 		| Integrations              |
-		#| Implementation timescales |
+		| Implementation timescales |
 	
 Scenario Outline: Sub dashboard sections presented
 	Given that a User has chosen to manage Marketing Page Information

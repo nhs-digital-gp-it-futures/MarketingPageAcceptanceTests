@@ -5,7 +5,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
     public static class CreateSolutionDetails
     {
-        public static SolutionDetail CreateNewSolutionDetail(string slnId, Guid solutionDetailId, int numFeatures, bool clientApplication = true, bool roadMap = false, bool hostingTypes = false, bool integrationsUrl = false)
+        public static SolutionDetail CreateNewSolutionDetail(string slnId, Guid solutionDetailId, int numFeatures, bool clientApplication = true, bool roadMap = false, bool hostingTypes = false, bool integrationsUrl = false, bool implementationTimescales = false)
         {
             var faker = new Faker();
 
@@ -20,7 +20,8 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
                 FullDescription = faker.Name.JobTitle(),
                 RoadMap = roadMap ? faker.Rant.Review() : string.Empty,
                 HostingTypes = hostingTypes ? GetCompleteHostingTypes() : string.Empty,
-                IntegrationsUrl = integrationsUrl ? faker.Internet.Url() : string.Empty
+                IntegrationsUrl = integrationsUrl ? faker.Internet.Url() : string.Empty,
+                ImplementationTimescales = implementationTimescales ? faker.Lorem.Sentences(2) : string.Empty
             };
 
             if (System.Diagnostics.Debugger.IsAttached)
@@ -46,7 +47,8 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
                 FullDescription = faker.Name.JobTitle(),
                 RoadMap = faker.Rant.Review(),
                 HostingTypes = GetCompleteHostingTypes(),
-                IntegrationsUrl = faker.Internet.Url()
+                IntegrationsUrl = faker.Internet.Url(),
+                ImplementationTimescales = faker.Lorem.Sentences(2)
             };
 
             return sd;

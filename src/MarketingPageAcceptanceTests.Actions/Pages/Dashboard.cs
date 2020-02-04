@@ -105,6 +105,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// <param name="sectionTitle">Case sensitive name of a section</param>
         public void NavigateToSection(string sectionTitle, bool subDashboard = false)
         {
+            PageDisplayed();
             driver.FindElements(pages.Dashboard.SectionTitle)
                 .Single(s => s.Text.Contains(sectionTitle))
                 .FindElement(By.TagName("a"))
