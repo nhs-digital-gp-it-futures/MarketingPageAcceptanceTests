@@ -15,7 +15,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutSolution
         [Given(@"the User has entered (\d{3,4}) characters on the Catalogue Solution integrations page in the (Integrations) section")]
         public void GivenTheUserHasEnteredCharactersOnTheCatalogueSolutionIntegrationsPageInTheIntegrationsSection(int characters, string section)
         {
-            _test.pages.Dashboard.PageDisplayed();
             _test.pages.Dashboard.NavigateToSection(section);
             _test.pages.SolutionDescription.LinkAddText(characters);
         }
