@@ -4,13 +4,13 @@ Feature: Suppliers - Edit Implementation Timescales
 	I want to edit the Implementation Timescales Section
 	So that I can make sure the information is correct
 
-Scenario: Field does not exceed maximum
-	Given the User has entered 1000 characters on the Implementation timescales page in the Implementation timescales section
+Scenario: Implementation Timescales Section - Field does not exceed maximum
+	Given the Supplier has entered 1000 characters on the Implementation timescales page in the Implementation timescales section
 	When the User attempts to save 
 	Then the Implementation timescales is saved
 
-Scenario: Field does exceed maximum
-	Given the User has entered 1001 characters on the Implementation timescales page in the Implementation timescales section
+Scenario: Implementation Timescales Section - Field does exceed maximum
+	Given the Supplier has entered 1001 characters on the Implementation timescales page in the Implementation timescales section
 	When the User attempts to save 
 	Then the Section is not saved 
 	And an indication is given to the User as to why
