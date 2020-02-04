@@ -4,7 +4,7 @@
 	So that I can make sure the information is correct
 
 Scenario: Contact Detail does not exceed maximum
-	Given the User has entered any Contact Detail	
+	Given the Supplier has entered any Contact Detail	
 	When the User attempts to save 
 	Then the Contact details is saved
 	And the contact is saved to the database
@@ -31,7 +31,7 @@ Scenario: Contact Details Type Section marked as Incomplete -  No Data
 
 @BUG_3860
 Scenario: One contact only saves one record
-	Given the User has entered any Contact Detail	
+	Given the Supplier has entered any Contact Detail	
 	And the User attempts to save 
 	Then there is 1 record in the contact table
 

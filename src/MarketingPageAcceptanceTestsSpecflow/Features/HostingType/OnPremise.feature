@@ -4,14 +4,14 @@
 	So that I can make sure the information is correct
 
 Scenario: Field does not exceed maximum
-	Given the User has entered 500 characters on the On premise hosting page in the On premise section
+	Given the Supplier has entered 500 characters on the On premise hosting page in the On premise section
 	And I enter 1000 characters into the link field
 	And I enter 1000 characters into the second text field
 	When the User attempts to save 
 	Then the On premise is saved
 
 Scenario: Field does exceed maximum
-	Given the User has entered 501 characters on the On premise hosting page in the On premise section
+	Given the Supplier has entered 501 characters on the On premise hosting page in the On premise section
 	And I enter 1001 characters into the link field
 	And I enter 1001 characters into the second text field
 	When the User attempts to save 

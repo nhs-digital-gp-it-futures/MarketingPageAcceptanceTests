@@ -19,7 +19,7 @@ Scenario: Does exceed maximum
 
 Scenario: Native Mobile or Tablet Application Type Sub-Section marked as Incomplete - No Mandatory Data Required
 	Given the Third party components and device capabilities Sub-Section in the Native mobile or tablet section does not require Mandatory Data
-	And a Supplier has not saved any data in any field within the Sub-Section
+	And a User has not saved any data in any field within the Sub-Section
 	When the Native mobile or tablet Client Application Sub-Form is presented
 	Then the Third party components and device capabilities Sub-Section is marked as Incomplete
 

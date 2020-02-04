@@ -4,14 +4,14 @@
 	So that I can make sure the information is correct
 
 Scenario: Field does not exceed maximum
-	Given the User has entered 500 characters on the Private cloud hosting page in the Private cloud section
+	Given the Supplier has entered 500 characters on the Private cloud hosting page in the Private cloud section
 	And I enter 1000 characters into the link field
 	And I enter 1000 characters into the second text field
 	When the User attempts to save 
 	Then the Private cloud is saved
 
 Scenario: Field does exceed maximum
-	Given the User has entered 501 characters on the Private cloud hosting page in the Private cloud section
+	Given the Supplier has entered 501 characters on the Private cloud hosting page in the Private cloud section
 	And I enter 1001 characters into the link field
 	And I enter 1001 characters into the second text field
 	When the User attempts to save 
