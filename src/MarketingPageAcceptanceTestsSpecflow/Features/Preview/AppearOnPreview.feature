@@ -65,4 +65,4 @@ Scenario Outline: Appear on Preview - Main Sections
 	| Contact details         |
 	| About supplier          |
 	#| Integrations            
-	#| Implementation timescales ### still need to update datamodel
+	#| Implementation timescales 
