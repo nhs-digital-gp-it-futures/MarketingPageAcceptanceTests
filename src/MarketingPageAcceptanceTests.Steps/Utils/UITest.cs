@@ -35,19 +35,19 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Utils
             pages = new PageActions(driver).PageActionCollection;
         }
 
-        public string DetermineUser(string scenarioTitle)
-        {
-            return scenarioTitle.Contains("authority", StringComparison.OrdinalIgnoreCase) ? "authoriy" : "supplier";
-        }
-
         public void SetUrl(string solutionId = null, string userType = null)
         {
+            // If param is null, use the solution created at the start of the test run
             if (string.IsNullOrEmpty(solutionId))
             {
                 solutionId = solution.Id;
             }
-            if(userType != null)
+
+            // If param is not null, set the UserType property to be the provided usertype
+            if (userType != null)
+            {
                 UserType = userType;
+            }
 
             url = $"{EnvironmentVariables.GetUrl()}/{solutionId}".Replace("supplier", UserTypeConvert());
         }

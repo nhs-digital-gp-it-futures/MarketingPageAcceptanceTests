@@ -105,8 +105,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             Policies.GetPolicy().Execute(() =>
             {
-                // Using Submit() directly to the form instead of Click() on the button prevents HTTP timeouts to Selenium server errors in 95% of cases
-                // wait.Until(ElementExtensions.ElementToBeClickable(pages.Common.SectionSaveAndReturn));
+                // Using Submit() directly to the form instead of Click() on the button prevents HTTP timeouts to Selenium server errors in 95% of cases                
                 if (IsDisplayed(By.TagName("form")))
                 {
                     driver.FindElement(By.TagName("form")).Submit();
