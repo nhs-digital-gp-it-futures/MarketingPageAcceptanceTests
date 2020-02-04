@@ -18,5 +18,13 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.AboutSolution
             _test.pages.Dashboard.NavigateToSection(section);
             _test.pages.SolutionDescription.LinkAddText(characters);
         }
+
+        [Given(@"a User has saved any data on the Integrations page")]
+        public void GivenAUserHasSavedAnyDataOnTheIntegrationsPage()
+        {
+            GivenTheUserHasEnteredCharactersOnTheCatalogueSolutionIntegrationsPageInTheIntegrationsSection(100, "Integrations");
+            _test.pages.Common.SectionSaveAndReturn();
+        }
+
     }
 }

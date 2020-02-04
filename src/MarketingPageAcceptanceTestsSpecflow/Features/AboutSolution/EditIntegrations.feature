@@ -1,5 +1,4 @@
-﻿@ignore
-Feature: Suppliers - Edit Supplier Asserted Integrations Section
+﻿Feature: Suppliers - Edit Supplier Asserted Integrations Section
 	As an Authority User
 	I want to Edit the Supplier Asserted Integrations Section
 	So that I can make sure the information is correct
@@ -17,7 +16,7 @@ Scenario: Field does exceed maximum
 
 Scenario: Integrations marked as Complete -  Any Data Saved
 	Given the Integrations section does not require Mandatory Data
-	And a User has saved any data in any field within Integrations
+	And a User has saved any data on the Integrations page
 	When the Marketing Page Form is presented 
 	Then the Integrations section is marked as Complete
 
