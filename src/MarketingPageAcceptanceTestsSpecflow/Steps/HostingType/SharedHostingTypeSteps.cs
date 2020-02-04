@@ -12,7 +12,7 @@ namespace MarketingPageAcceptanceTestsSpecflow
 
         }
 
-        [Given(@"the User has entered (\d{3,4}) characters on the (.*) page in the (Public cloud|Private cloud|Hybrid|On premise|Roadmap|About supplier) section")]
+        [Given(@"the User has entered (\d{3,4}) characters on the (.*) page in the (Public cloud|Private cloud|Hybrid|On premise|Roadmap|About supplier|Implementation timescales) section")]
         public void GivenTheSupplierHasEnteredText(int characters, string page, string section)
         {
             _test.pages.Dashboard.NavigateToSection(section);
