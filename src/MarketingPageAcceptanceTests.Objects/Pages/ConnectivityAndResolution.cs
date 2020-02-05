@@ -1,5 +1,4 @@
-﻿using MarketingPageAcceptanceTests.Objects.Utils;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace MarketingPageAcceptanceTests.Objects.Pages
 {

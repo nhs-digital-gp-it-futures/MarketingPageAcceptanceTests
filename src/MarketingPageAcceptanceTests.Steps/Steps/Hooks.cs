@@ -9,7 +9,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps
     public sealed class Hooks : TestBase
     {
         public Hooks(UITest test, ScenarioContext context) : base(test, context)
-        {   
+        {
         }
 
         [AfterScenario]

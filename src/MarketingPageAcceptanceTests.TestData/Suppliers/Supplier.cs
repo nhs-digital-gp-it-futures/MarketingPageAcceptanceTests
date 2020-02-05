@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MarketingPageAcceptanceTests.TestData.Suppliers
+﻿namespace MarketingPageAcceptanceTests.TestData.Suppliers
 {
     public sealed class Supplier
     {

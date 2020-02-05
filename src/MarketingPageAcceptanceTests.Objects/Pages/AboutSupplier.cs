@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MarketingPageAcceptanceTests.Objects.Utils;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace MarketingPageAcceptanceTests.Objects.Pages
 {

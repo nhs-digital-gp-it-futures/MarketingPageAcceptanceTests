@@ -60,7 +60,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void SectionDisplayed(string section)
         {
-            driver.FindElements(pages.PreviewPage.BrowserBasedSectionTitles)                
+            driver.FindElements(pages.PreviewPage.BrowserBasedSectionTitles)
                 .Count(s => s.Text.ToLower().Contains(section.ToLower()))
                 .Should().BeGreaterThan(0);
         }

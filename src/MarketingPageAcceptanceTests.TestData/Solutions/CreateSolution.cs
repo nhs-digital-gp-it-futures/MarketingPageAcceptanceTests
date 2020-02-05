@@ -29,7 +29,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
             return solution;
         }
 
-        
+
 
         public static SolutionDetail CreateCompleteSolutionDetail(Solution solution, SolutionDetail solutionDetail)
         {
@@ -78,7 +78,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 
             var solId = string.Empty;
 
-            for(var i = 0; i < 10; i++)
+            for (var i = 0; i < 10; i++)
             {
                 solId = RandomSolId(prefix);
                 if (!existingSolIds.Contains(solId))

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
@@ -17,7 +15,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         internal const string NativeMobileComplete = "\"NativeMobileHardwareRequirements\":\"Hardware Requirements\",\"NativeMobileFirstDesign\":true,\"MobileOperatingSystems\":{\"OperatingSystems\":[\"Apple IOS\",\"Android\"],\"OperatingSystemsDescription\":\"Operating System Description\"},\"MobileConnectionDetails\":{\"MinimumConnectionSpeed\":\"1Mbps\",\"ConnectionType\":[\"GPRS\",\"3G\",\"4G\",\"5G\",\"Wifi\"],\"Description\":\"Connection Details Description\"},\"MobileMemoryAndStorage\":{\"MinimumMemoryRequirement\":\"256MB\",\"Description\":\"Additional Storage Requirements\"},\"MobileThirdParty\":{\"ThirdPartyComponents\":\"Components Description\",\"DeviceCapabilities\":\"Device Capabilities Description\"},\"NativeMobileAdditionalInformation\":\"Additional Information\"";
         internal const string NativeDesktopComplete = "\"NativeDesktopHardwareRequirements\":\"Hardware requirements\",\"NativeDesktopOperatingSystemsDescription\":\"Windows 7,8,10\r\nUbuntu\",\"NativeDesktopMinimumConnectionSpeed\":\"0.5Mbps\",\"NativeDesktopThirdParty\":{\"ThirdPartyComponents\":\"Third party\",\"DeviceCapabilities\":\"Device Capabilities\"},\"NativeDesktopMemoryAndStorage\":{\"MinimumMemoryRequirement\":\"256MB\",\"StorageRequirementsDescription\":\"approximately 10MB, plus additional for cache\",\"MinimumCpu\":\"0.98hz\",\"RecommendedResolution\":\"16:9 - 640 x 360\"},\"NativeDesktopAdditionalInformation\":\"Additional Information\"";
 
-        internal static Dictionary<string, string> BrowserSections = new Dictionary<string, string>() 
+        internal static Dictionary<string, string> BrowserSections = new Dictionary<string, string>()
         {
             { "Browsers supported", "\"BrowsersSupported\":[\"Google Chrome\"],\"MobileResponsive\":true,"},
             { "Plug-ins or extensions", "\"Plugins\":{\"Required\":false,\"AdditionalInformation\":\"\"}," },
@@ -35,7 +33,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
             { "Hardware requirements", "\"NativeMobileHardwareRequirements\":\"Hardware Requirements\"," },
             { "Additional information", "\"NativeMobileAdditionalInformation\":\"Additional Information\"}" },
             { "Connection details",  "\"MobileConnectionDetails\":{\"MinimumConnectionSpeed\":\"1Mbps\",\"ConnectionType\":[\"GPRS\",\"3G\",\"4G\",\"5G\",\"Wifi\"],\"Description\":\"Connection Details Description\"},"},
-            
+
         };
 
         internal static Dictionary<string, string> NativeDesktopSections = new Dictionary<string, string>()

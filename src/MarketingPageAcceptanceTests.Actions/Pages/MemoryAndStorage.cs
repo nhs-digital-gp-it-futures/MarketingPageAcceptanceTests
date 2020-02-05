@@ -15,7 +15,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void SelectRequirementFromList(int index = -1)
         {
             var optionsCount = driver.FindElement(pages.NativeMobileSections.MemoryAndStorage.MinimumMemory).FindElements(By.TagName("option")).Count;
-            if(index == -1)
+            if (index == -1)
             {
                 index = new Random().Next(1, optionsCount);
             }
