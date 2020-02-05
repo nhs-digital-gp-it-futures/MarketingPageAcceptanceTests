@@ -3,7 +3,7 @@
 	I want to manage Marketing Page Information
 	So that I can ensure the information is correct
 
-Scenario Outline: Form sections presented
+Scenario Outline: Display On Dashboard - Form sections presented
 	Given that a User has chosen to manage Marketing Page Information
 	When the Marketing Page Form is presented
 	Then there is a list of Marketing Page Form Sections 
@@ -24,7 +24,7 @@ Scenario Outline: Form sections presented
 		| Integrations              |
 		| Implementation timescales |
 	
-Scenario Outline: Sub dashboard sections presented
+Scenario Outline: Display On Dashboard - Sub dashboard sections presented
 	Given that a User has chosen to manage Marketing Page Information
 	When the Marketing Page Form is presented
 	And the User has selected <Section> Client Type as a Client Application Type
@@ -37,7 +37,7 @@ Scenario Outline: Sub dashboard sections presented
 	| Native mobile or tablet |
 	| Native desktop          |
 
-Scenario Outline: Section status
+Scenario Outline: Display On Dashboard - Section status
 	Given the Section has a content validation status
 	When the Marketing Page Form is presented
 	Then the <Section> content validation status is displayed
@@ -57,7 +57,7 @@ Scenario Outline: Section status
 		| Integrations              |
 		| Implementation timescales |
 	
-Scenario Outline: Sub dashboard section status
+Scenario Outline: Display On Dashboard - Sub dashboard section status
 	Given that a User has chosen to manage Marketing Page Information
 	When the Marketing Page Form is presented
 	And the User has selected <Section> Client Type as a Client Application Type

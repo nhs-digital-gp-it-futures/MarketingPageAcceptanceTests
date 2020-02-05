@@ -6,32 +6,32 @@
 Background:
 	Given the user has set Native mobile or tablet application type
 
-Scenario: Mandatory - Yes
+Scenario: Native Mobile Operating Systems Supported - Mandatory - Yes
 	Given that a User has provided a value for the Mandatory Information for Supported operating systems section on Native mobile or tablet sub dashboard
 	Then the Supported operating systems Sub-Section is marked as Complete 
 
-Scenario: Data not Saved
+Scenario: Native Mobile Operating Systems Supported - Data not Saved
 	Given that an answer has not been provided to the mandatory question for Supported operating systems section on Native mobile or tablet sub dashboard
 	Then the Supported operating systems Sub-Section is marked as Incomplete 
 
-Scenario: Supported operating systems does not exceed maximum
+Scenario: Native Mobile Operating Systems Supported - Supported operating systems does not exceed maximum
 	Given the User has entered 1000 characters for Supported operating systems section on Native mobile or tablet sub dashboard
 	When the User attempts to save 
 	Then the Supported operating systems is saved
 
-Scenario: Supported operating systems does exceed maximum
+Scenario: Native Mobile Operating Systems Supported - Supported operating systems does exceed maximum
 	Given the User has entered 1001 characters for Supported operating systems section on Native mobile or tablet sub dashboard
 	When the Supplier attempts to save 
 	Then the Section is not saved 
 	And an indication is given to the Supplier as to why
 
-Scenario: Supported operating systems Mandatory Data Missing Validation
+Scenario: Native Mobile Operating Systems Supported - Supported operating systems Mandatory Data Missing Validation
 	Given that a User has not provided any mandatory data on Native mobile or tablet sub dashboard for Supported operating systems section
 	When the User attempts to save
 	Then the Section is not saved 
 	And an indication is given to the Supplier as to why
 
-Scenario: Supported operating systems Validation Error Message Anchors
+Scenario: Native Mobile Operating Systems Supported - Supported operating systems Validation Error Message Anchors
 	Given validation has been triggered on Native mobile or tablet section Supported operating systems
 	When the User selects an error link in the Error Summary
 	Then the User will be navigated to the relevant section on the page
