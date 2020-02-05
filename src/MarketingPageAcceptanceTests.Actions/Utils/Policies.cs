@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using Polly;
+using System;
 
 namespace MarketingPageAcceptanceTests.Actions.Utils
 {

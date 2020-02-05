@@ -29,7 +29,7 @@ namespace MarketingPageAcceptanceTests.Actions.Collections
     }
 
     public sealed class NativeMobileSections
-    {   
+    {
         public NativeMobileOperatingSystems OperatingSystems { get; set; }
         public MemoryAndStorage MemoryAndStorage { get; set; }
     }

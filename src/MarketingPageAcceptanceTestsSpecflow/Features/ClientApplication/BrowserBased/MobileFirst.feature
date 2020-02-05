@@ -8,24 +8,24 @@
 Background:
 	Given the user has set Browser based application type
 
-Scenario: Data Saved
+Scenario: Browser Based Mobile First - Data Saved
 	Given that an answer is provided to the Browser based mobile first question
 	When a User saves the page
 	Then the Mobile first section is marked as COMPLETE on the Browser Based Client Type Sub-Form
 
-Scenario: Data not Saved
+Scenario: Browser Based Mobile First - Data not Saved
 	Given that an answer has not been provided to the Mobile first mandatory question on the Browser based section
 	When the User exits the page
 	Then on the Browser based dashboard
 	And the Mobile first section is marked as INCOMPLETE on the Browser Based Client Type Sub-Form
 
-Scenario: Mandatory Data Missing Validation
+Scenario: Browser Based Mobile First - Mandatory Data Missing Validation
 	Given that an answer has not been provided to the Mobile first mandatory question on the Browser based section
 	When the User attempts to save
 	Then the Section is not saved 
 	And an indication is given to the Supplier as to why
 
-Scenario: Validation Error Message Anchors
+Scenario: Browser Based Mobile First - Validation Error Message Anchors
 	Given validation has been triggered on Browser based section Mobile first
 	When the User selects an error link in the Error Summary
 	Then the User will be navigated to the relevant section on the page

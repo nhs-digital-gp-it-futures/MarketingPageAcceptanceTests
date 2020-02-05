@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Bogus;
+﻿using Bogus;
 
 namespace MarketingPageAcceptanceTests.TestData.Suppliers
 {
@@ -14,7 +11,7 @@ namespace MarketingPageAcceptanceTests.TestData.Suppliers
             Supplier supplier = new Supplier()
             {
                 Id = id,
-                Name = faker.Company.CompanyName(),                
+                Name = faker.Company.CompanyName(),
                 Summary = faker.Company.Bs(),
                 SupplierUrl = faker.Internet.Url()
             };

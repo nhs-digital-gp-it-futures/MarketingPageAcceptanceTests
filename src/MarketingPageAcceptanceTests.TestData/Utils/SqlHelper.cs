@@ -5,7 +5,6 @@ using MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
 
 namespace MarketingPageAcceptanceTests.TestData.Utils
 {
@@ -103,7 +102,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
                 new SqlParameter("@hostingTypes", solutionDetail.HostingTypes),
                 new SqlParameter("@integrationsUrl", solutionDetail.IntegrationsUrl),
                 new SqlParameter("@implementationTimescales", solutionDetail.ImplementationTimescales)
-            };            
+            };
 
             SqlReader.Read(connectionString, query, newParameters, DataReaders.NoReturn);
         }
@@ -335,7 +334,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
                 new SqlParameter("@prefix", prefix + "%")
             };
             var result = SqlReader.Read(connectionString, query, parameters, DataReaders.GetSolutionIds);
-            
+
             return result;
         }
     }

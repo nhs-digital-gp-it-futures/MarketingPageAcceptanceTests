@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+﻿using MarketingPageAcceptanceTests.Actions.Pages.Utils;
 using MarketingPageAcceptanceTests.Actions.Utils;
 using MarketingPageAcceptanceTests.TestData.Information;
 using MarketingPageAcceptanceTests.TestData.Utils;

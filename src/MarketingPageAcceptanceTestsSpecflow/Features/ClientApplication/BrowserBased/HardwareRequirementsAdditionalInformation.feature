@@ -9,7 +9,7 @@
 		I want to edit the Additional Information Sub-Section
 		So that I can make sure the information is correct
 
-Scenario Outline: Does not exceed maximum
+Scenario Outline: Browser based Hardware and Additional Information - Does not exceed maximum
 	Given the Supplier has entered <MaxChars> characters on the <PageTitle> page in the Browser based section
 	When the Supplier attempts to save 
 	Then the <PageTitle> is saved
@@ -19,7 +19,7 @@ Scenario Outline: Does not exceed maximum
 	| Hardware requirements  | 500      |
 	| Additional information | 500      |
 
-Scenario Outline: Does exceed maximum
+Scenario Outline: Browser based Hardware and Additional Information - Does exceed maximum
 	Given the Supplier has entered <MaxChars> characters on the <PageTitle> page in the Browser based section
 	When the Supplier attempts to save 
 	Then the Section is not saved 
@@ -30,7 +30,7 @@ Scenario Outline: Does exceed maximum
 	| Hardware requirements  | 501      |
 	| Additional information | 501      |
 
-Scenario Outline: Sub-Section marked as Incomplete - No Mandatory Data Required + no data
+Scenario Outline: Browser based Hardware and Additional Information - Sub-Section marked as Incomplete - No Mandatory Data Required + no data
 	Given the <PageTitle> Sub-Section in the Browser based section does not require Mandatory Data
 	And a Supplier has not saved any data in any field within the Sub-Section
 	When the Browser based Client Application Sub-Form is presented
@@ -41,7 +41,7 @@ Scenario Outline: Sub-Section marked as Incomplete - No Mandatory Data Required 
 	| Hardware requirements  | 
 	| Additional information |
 
-Scenario Outline: Sub-Section marked as Complete - No Mandatory Data Required + data present
+Scenario Outline: Browser based Hardware and Additional Information - Sub-Section marked as Complete - No Mandatory Data Required + data present
 	Given the <PageTitle> Sub-Section in the Browser based section does not require Mandatory Data
 	And a Supplier has saved any data in any field within <PageTitle>
 	When the Browser based Client Application Sub-Form is presented
