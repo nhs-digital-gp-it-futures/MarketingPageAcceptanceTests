@@ -56,13 +56,13 @@ Scenario Outline: Appear on Preview - Main Sections
 	Then the <section> section is presented
 
 	Examples: 
-	| section                 |
-	| Solution description    |
-	| Features                |
-	| Client application type |
-	| Roadmap                 |
-	| Hosting type            |
-	| Contact details         |
-	| About supplier          |
-	| Integrations            |
-	#| Implementation timescales 
+	| section                   |
+	| Solution description      |
+	| Features                  |
+	| Client application type   |
+	| Roadmap                   |
+	| Hosting type              |
+	| Contact details           |
+	| About supplier            |
+	| Integrations              |
+	| Implementation timescales |
