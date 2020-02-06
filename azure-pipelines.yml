@@ -61,9 +61,9 @@ steps:
     testRunTitle: 'Run Supplier Acceptance Tests'
 
 - task: DotNetCoreCLI@2
-    displayName: "Run Authority Acceptance Tests"
-    inputs:
-      command: 'test'
-      projects: 'src/MarketingPageAcceptanceTests.AuthorityTests/*csproj'
-      arguments: '-v n'
-      testRunTitle: 'Run Authority Acceptance Tests'
+  displayName: "Run Authority Acceptance Tests"
+  inputs:
+    command: 'test'
+    projects: 'src/MarketingPageAcceptanceTests.AuthorityTests/*csproj'
+    arguments: '-v n'
+    testRunTitle: 'Run Authority Acceptance Tests'
