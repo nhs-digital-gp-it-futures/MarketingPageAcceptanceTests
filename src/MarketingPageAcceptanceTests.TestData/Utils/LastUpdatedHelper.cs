@@ -1,6 +1,4 @@
-﻿using MarketingPageAcceptanceTests.TestData.Utils.SqlDataReaders;
-using System;
-using System.Data.SqlClient;
+﻿using System;
 using System.Linq;
 
 namespace MarketingPageAcceptanceTests.TestData.Utils
