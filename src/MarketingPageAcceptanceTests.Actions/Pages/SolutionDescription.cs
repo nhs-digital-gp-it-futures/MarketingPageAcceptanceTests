@@ -43,14 +43,14 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             driver.FindElement(pages.SolutionDescription.SaveAndReturn).Click();
         }
 
-        public bool DbContainsLink(SolutionDetail solution, string connectionString)
+        public bool DbContainsLink(SolutionDetail solutionDetail, string connectionString)
         {
-            return solution.Retrieve(connectionString).AboutUrl.Contains(description);
+            return solutionDetail.Retrieve(connectionString).AboutUrl.Contains(description);
         }
 
-        public bool DbContainsDescription(SolutionDetail solution, string connectionString)
+        public bool DbContainsDescription(SolutionDetail solutionDetail, string connectionString)
         {
-            return solution.Retrieve(connectionString).FullDescription.Contains(description);
+            return solutionDetail.Retrieve(connectionString).FullDescription.Contains(description);
         }
 
         public void ClearMandatoryFields()
