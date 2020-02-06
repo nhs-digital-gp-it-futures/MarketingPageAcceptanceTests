@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
-using MarketingPageAcceptanceTestsSpecflow.Steps.Utils;
+using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
 
-namespace MarketingPageAcceptanceTestsSpecflow.Steps
+namespace MarketingPageAcceptanceTests.Steps
 {
     [Binding]
     public class SharedHostingTypeSteps : TestBase
@@ -10,17 +10,6 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps
         public SharedHostingTypeSteps(UITest test, ScenarioContext context) : base(test, context)
         {
 
-        }
-
-        [Given(@"the (Supplier|Authority User) has entered (\d{3,4}) characters on the (.*) page in the (Public cloud|Private cloud|Hybrid|On premise|Roadmap|About supplier) section")]
-        public void GivenTheSupplierHasEnteredText(string userType, int characters, string page, string section)
-        {
-            _test.SetUrl(_test.solution.Id, userType);
-            _test.GoToUrl();
-
-            _test.pages.Dashboard.NavigateToSection(section);
-
-            _test.pages.BrowserBasedSections.HardwareRequirements.EnterText(characters);
         }
 
         [Then(@"The (Public cloud|Private cloud|Hybrid|On premise) section (contains|does not contain) This Solution requires a HSCN/N3 connection on the preview of the marketing page")]

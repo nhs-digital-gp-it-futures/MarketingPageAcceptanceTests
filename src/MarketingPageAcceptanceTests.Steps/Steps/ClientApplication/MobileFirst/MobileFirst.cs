@@ -1,8 +1,8 @@
-﻿using MarketingPageAcceptanceTestsSpecflow.Steps.Utils;
+﻿using MarketingPageAcceptanceTests.Steps.Utils;
 using System;
 using TechTalk.SpecFlow;
 
-namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.ClientApplication.MobileFirst
+namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.MobileFirst
 {
     [Binding]
     public class MobileFirst : TestBase

@@ -1,5 +1,4 @@
-﻿@ignore
-Feature: Suppliers - Edit Implementation Timescales
+﻿Feature: Suppliers - Edit Implementation Timescales
 	As an Authority User
 	I want to edit the Implementation Timescales Section
 	So that I can make sure the information is correct

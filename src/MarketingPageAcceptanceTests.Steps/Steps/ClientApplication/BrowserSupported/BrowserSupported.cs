@@ -1,9 +1,9 @@
 ﻿using FluentAssertions;
-using MarketingPageAcceptanceTestsSpecflow.Steps.Utils;
+using MarketingPageAcceptanceTests.Steps.Utils;
 using System;
 using TechTalk.SpecFlow;
 
-namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.ClientApplication.BrowserSupported
+namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.BrowserSupported
 {
     [Binding]
     public sealed class BrowserSupported : TestBase

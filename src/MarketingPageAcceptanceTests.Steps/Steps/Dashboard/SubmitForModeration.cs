@@ -1,10 +1,10 @@
 ﻿using FluentAssertions;
 using MarketingPageAcceptanceTests.TestData.Solutions;
 using MarketingPageAcceptanceTests.TestData.Utils;
-using MarketingPageAcceptanceTestsSpecflow.Steps.Utils;
+using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
 
-namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.Dashboard
+namespace MarketingPageAcceptanceTests.Steps.Steps.Dashboard
 {
     [Binding]
     public class SubmitForModeration : TestBase

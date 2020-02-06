@@ -1,4 +1,4 @@
-﻿using MarketingPageAcceptanceTestsSpecflow.Steps.Utils;
+﻿using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTests.SupplierTests.Utils

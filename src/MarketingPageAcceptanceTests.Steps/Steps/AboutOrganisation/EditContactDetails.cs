@@ -1,10 +1,10 @@
 ﻿using FluentAssertions;
 using MarketingPageAcceptanceTests.TestData.ContactDetails;
 using MarketingPageAcceptanceTests.TestData.Information;
-using MarketingPageAcceptanceTestsSpecflow.Steps.Utils;
+using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
 
-namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.AboutOrganisation
+namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation
 {
     [Binding]
     public class EditContactDetails : TestBase

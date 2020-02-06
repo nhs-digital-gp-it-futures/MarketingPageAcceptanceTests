@@ -1,11 +1,11 @@
 ﻿using FluentAssertions;
 using MarketingPageAcceptanceTests.TestData.ContactDetails;
 using MarketingPageAcceptanceTests.TestData.Utils;
-using MarketingPageAcceptanceTestsSpecflow.Steps.Utils;
+using MarketingPageAcceptanceTests.Steps.Utils;
 using System;
 using TechTalk.SpecFlow;
 
-namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.AboutSolution
+namespace MarketingPageAcceptanceTests.Steps.Steps.AboutSolution
 {
     [Binding]
     public class LastUpdatedDate : TestBase

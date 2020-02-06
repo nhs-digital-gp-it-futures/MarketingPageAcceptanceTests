@@ -1,9 +1,9 @@
 ﻿using FluentAssertions;
 using MarketingPageAcceptanceTests.TestData.Utils;
-using MarketingPageAcceptanceTestsSpecflow.Steps.Utils;
+using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
 
-namespace MarketingPageAcceptanceTestsSpecflow.Steps
+namespace MarketingPageAcceptanceTests.Steps
 {
     [Binding]
     public class EditFeatures : TestBase

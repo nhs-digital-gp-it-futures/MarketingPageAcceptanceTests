@@ -2,7 +2,7 @@
 using Polly;
 using System;
 
-namespace MarketingPageAcceptanceTestsSpecflow.Steps.Utils
+namespace MarketingPageAcceptanceTests.Steps.Utils
 {
     internal static class Policies
     {

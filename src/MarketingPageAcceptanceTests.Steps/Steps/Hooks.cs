@@ -1,9 +1,9 @@
 ﻿using MarketingPageAcceptanceTests.TestData.Solutions;
 using MarketingPageAcceptanceTests.TestData.Utils;
-using MarketingPageAcceptanceTestsSpecflow.Steps.Utils;
+using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
 
-namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps
+namespace MarketingPageAcceptanceTests.Steps.Steps
 {
     [Binding]
     public sealed class Hooks : TestBase

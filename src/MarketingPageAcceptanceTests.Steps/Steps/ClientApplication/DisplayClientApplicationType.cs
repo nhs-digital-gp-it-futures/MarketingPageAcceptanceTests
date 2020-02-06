@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
-using MarketingPageAcceptanceTestsSpecflow.Steps.Utils;
+using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
 
-namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.ClientApplication
+namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
 {
     [Binding]
     public class DisplayClientApplicationType : TestBase
