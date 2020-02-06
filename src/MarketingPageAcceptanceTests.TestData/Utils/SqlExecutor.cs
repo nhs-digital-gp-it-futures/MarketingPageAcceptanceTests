@@ -4,9 +4,9 @@ using System.Data.SqlClient;
 
 namespace MarketingPageAcceptanceTests.TestData.Utils
 {
-    internal static class SqlReader
+    internal static class SqlExecutor
     {
-        internal static IEnumerable<T> Read<T>(string connectionString, string query, object param)
+        internal static IEnumerable<T> Execute<T>(string connectionString, string query, object param)
         {
             IEnumerable<T> returnValue = null;
             using (var connection = new SqlConnection(connectionString))
@@ -21,7 +21,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             return returnValue;
         }
 
-        internal static int ReadCount(string connectionString, string query, object param)
+        internal static int ExecuteScalar(string connectionString, string query, object param)
         {
             int result = 0;
             using (var connection = new SqlConnection(connectionString))

@@ -16,31 +16,31 @@ namespace MarketingPageAcceptanceTests.TestData.ContactDetails
         public void Create(string connectionString)
         {
             var query = Queries.CreateMarketingContact;
-            SqlReader.Read<ContactDetail>(connectionString, query, this);
+            SqlExecutor.Execute<ContactDetail>(connectionString, query, this);
         }
 
         public void Delete(string connectionString)
         {
             var query = Queries.DeleteMarketingContact;
-            SqlReader.Read<ContactDetail>(connectionString, query, new { SolutionId });
+            SqlExecutor.Execute<ContactDetail>(connectionString, query, new { SolutionId });
         }
 
         public IContactDetail Retrieve(string connectionString)
         {
             var query = Queries.GetMarketingContacts;
-            return SqlReader.Read<ContactDetail>(connectionString, query, new { SolutionId }).Single();
+            return SqlExecutor.Execute<ContactDetail>(connectionString, query, new { SolutionId }).Single();
         }
 
         public IEnumerable<IContactDetail> RetrieveAll(string connectionString)
         {
             var query = Queries.GetMarketingContacts;
-            return SqlReader.Read<ContactDetail>(connectionString, query, new { SolutionId });
+            return SqlExecutor.Execute<ContactDetail>(connectionString, query, new { SolutionId });
         }
 
         public int RetrieveCount(string connectionString)
         {
             var query = Queries.GetNumberOfMarketingContactsForSolution;
-            return SqlReader.ReadCount(connectionString, query, new { SolutionId });
+            return SqlExecutor.ExecuteScalar(connectionString, query, new { SolutionId });
         }
 
         public void Update(string connectionString)

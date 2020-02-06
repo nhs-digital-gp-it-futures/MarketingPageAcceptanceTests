@@ -23,25 +23,25 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         public SolutionDetail Retrieve(string connectionString)
         {
             var query = Queries.GetSolutionDetail;
-            return SqlReader.Read<SolutionDetail>(connectionString, query, this).Single();
+            return SqlExecutor.Execute<SolutionDetail>(connectionString, query, this).Single();
         }
 
         public void Create(string connectionString)
         {
             var query = Queries.CreateSolutionDetail;
-            SqlReader.Read<SolutionDetail>(connectionString, query, this);
+            SqlExecutor.Execute<SolutionDetail>(connectionString, query, this);
         }
 
         public void Update(string connectionString)
         {
             var query = Queries.UpdateSolutionDetail;
-            SqlReader.Read<SolutionDetail>(connectionString, query, this);
+            SqlExecutor.Execute<SolutionDetail>(connectionString, query, this);
         }
 
         public void Delete(string connectionString)
         {
             var query = Queries.DeleteSolutionDetail;
-            SqlReader.Read<SolutionDetail>(connectionString, query, this);
+            SqlExecutor.Execute<SolutionDetail>(connectionString, query, this);
         }
     }
 }
