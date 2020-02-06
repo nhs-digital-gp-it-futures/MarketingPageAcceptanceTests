@@ -1,9 +1,9 @@
 ﻿using FluentAssertions;
-using MarketingPageAcceptanceTestsSpecflow.Steps.Utils;
+using MarketingPageAcceptanceTests.Steps.Utils;
 using System.Collections.Generic;
 using TechTalk.SpecFlow;
 
-namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.ClientApplication.NativeMobileOrTablet
+namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeMobileOrTablet
 {
     [Binding]
     public class DisplayMarketingPageForm_NativeMobileOrTabletClientType : TestBase

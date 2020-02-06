@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace MarketingPageAcceptanceTestsSpecflow.Steps.Utils
+namespace MarketingPageAcceptanceTests.Steps.Utils
 {
     internal static class EnvironmentVariables
     {

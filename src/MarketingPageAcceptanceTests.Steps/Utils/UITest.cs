@@ -7,7 +7,7 @@ using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 
-namespace MarketingPageAcceptanceTestsSpecflow.Steps.Utils
+namespace MarketingPageAcceptanceTests.Steps.Utils
 {
     public sealed class UITest
     {

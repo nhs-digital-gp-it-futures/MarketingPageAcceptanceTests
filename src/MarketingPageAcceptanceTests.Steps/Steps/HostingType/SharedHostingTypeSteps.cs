@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
-using MarketingPageAcceptanceTestsSpecflow.Steps.Utils;
+using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
 
-namespace MarketingPageAcceptanceTestsSpecflow.Steps
+namespace MarketingPageAcceptanceTests.Steps
 {
     [Binding]
     public class SharedHostingTypeSteps : TestBase
