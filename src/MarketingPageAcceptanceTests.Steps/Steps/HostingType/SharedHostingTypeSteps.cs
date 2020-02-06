@@ -12,17 +12,6 @@ namespace MarketingPageAcceptanceTests.Steps
 
         }
 
-        [Given(@"the (Supplier|Authority User) has entered (\d{3,4}) characters on the (.*) page in the (Public cloud|Private cloud|Hybrid|On premise|Roadmap|About supplier) section")]
-        public void GivenTheSupplierHasEnteredText(string userType, int characters, string page, string section)
-        {
-            _test.SetUrl(_test.solution.Id, userType);
-            _test.GoToUrl();
-
-            _test.pages.Dashboard.NavigateToSection(section);
-
-            _test.pages.BrowserBasedSections.HardwareRequirements.EnterText(characters);
-        }
-
         [Then(@"The (Public cloud|Private cloud|Hybrid|On premise) section (contains|does not contain) This Solution requires a HSCN/N3 connection on the preview of the marketing page")]
         public void ThenThePublicCloudSectionContainsThisSolutionRequiresAHSCNNConnectionOnThePreviewOfTheMarketingPage(string hostingTypeSection, string assertionText)
         {

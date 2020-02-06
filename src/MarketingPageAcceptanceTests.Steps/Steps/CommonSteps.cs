@@ -100,7 +100,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps
         }
 
         [Given(@"the (Public cloud|Private cloud|Hybrid|On premise) section does not require Mandatory Data")]
-        [Given(@"the (Roadmap|Integrations) section does not require Mandatory Data")]
+        [Given(@"the (Roadmap|Integrations|Implementation timescales) section does not require Mandatory Data")]
         public void GivenTheSectionDoesNotRequireMandatoryData(string section)
         {
             //add any new pages as necessary
@@ -119,6 +119,18 @@ namespace MarketingPageAcceptanceTests.Steps.Steps
         {
             _test.driver.Navigate().Refresh();
             MarketingPageFormPresented();
+        }
+
+        [Given(@"the (Supplier|Authority User) has entered (\d{3,4}) characters on the (.*) page in the (Public cloud|Private cloud|Hybrid|On premise) section")]
+        [Given(@"the (Supplier|Authority User) has entered (\d{3,4}) characters on the (.*) page in the (Roadmap|About supplier|Implementation timescales) section")]
+        public void GivenTheSupplierHasEnteredText(string userType, int characters, string page, string section)
+        {
+            _test.SetUrl(_test.solution.Id, userType);
+            _test.GoToUrl();
+
+            _test.pages.Dashboard.NavigateToSection(section);
+
+            _test.pages.BrowserBasedSections.HardwareRequirements.EnterText(characters);
         }
     }
 }
