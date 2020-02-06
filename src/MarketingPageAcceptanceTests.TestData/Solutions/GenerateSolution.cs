@@ -6,9 +6,9 @@ using System.Linq;
 
 namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
-    public static class CreateSolution
+    public static class GenerateSolution
     {
-        public static Solution CreateNewSolution(string prefix = "Auto", bool checkForUnique = false, string connectionString = null)
+        public static Solution GenerateNewSolution(string prefix = "Auto", bool checkForUnique = false, string connectionString = null)
         {
             var faker = new Faker();
 
@@ -18,7 +18,9 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
             {
                 Id = Id,
                 Name = faker.Name.JobTitle(),
-                Version = faker.System.Semver()
+                Version = faker.System.Semver(),
+                LastUpdated = DateTime.Now,
+                LastUpdatedBy = Guid.Empty
             };
 
             if (System.Diagnostics.Debugger.IsAttached)
@@ -31,9 +33,9 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 
 
 
-        public static SolutionDetail CreateCompleteSolutionDetail(Solution solution, SolutionDetail solutionDetail)
+        public static SolutionDetail GenerateCompleteSolutionDetail(Solution solution, SolutionDetail solutionDetail)
         {
-            return CreateSolutionDetails.CreateNewSolutionDetail(solution.Id, solutionDetail.SolutionDetailId, 5);
+            return GenerateSolutionDetails.GenerateNewSolutionDetail(solution.Id, solutionDetail.SolutionDetailId, 5);
         }
 
         private static string GetSuffix(int solIdLength)
@@ -74,7 +76,11 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         /// <returns>A unique solution ID</returns>
         private static string UniqueSolIdCheck(string prefix, string connectionString)
         {
-            var existingSolIds = SqlHelper.GetAllSolutionIds(connectionString, prefix).ToList();
+            var solution = new Solution();
+
+            var existingSolIds = solution.GetAll(connectionString).ToList();
+                
+            existingSolIds = existingSolIds.Where(s => s.StartsWith(prefix)).ToList();
 
             var solId = string.Empty;
 

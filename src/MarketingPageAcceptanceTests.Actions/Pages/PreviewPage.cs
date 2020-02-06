@@ -99,8 +99,8 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             var fullName = driver.FindElement(pages.PreviewPage.ContactName).Text.Split(' ');
             contact.FirstName = fullName[0];
             contact.LastName = fullName[1];
-            contact.JobSector = driver.FindElement(pages.PreviewPage.ContactDepartment).Text;
-            contact.EmailAddress = driver.FindElement(pages.PreviewPage.ContactEmail).Text;
+            contact.Department = driver.FindElement(pages.PreviewPage.ContactDepartment).Text;
+            contact.Email = driver.FindElement(pages.PreviewPage.ContactEmail).Text;
             contact.PhoneNumber = driver.FindElement(pages.PreviewPage.ContactPhoneNumber).Text;
             return contact;
         }

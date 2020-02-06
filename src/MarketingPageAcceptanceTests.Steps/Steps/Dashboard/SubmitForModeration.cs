@@ -16,7 +16,8 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.Dashboard
         [Given(@"that a Supplier has provided all mandatory data on the Marketing Page")]
         public void GivenThatASupplierHasProvidedAllMandatoryDataOnTheMarketingPage()
         {
-            SqlHelper.UpdateSolutionDetails(CreateSolution.CreateCompleteSolutionDetail(_test.solution, _test.solutionDetail), _test.connectionString);
+            _test.solutionDetail = GenerateSolution.GenerateCompleteSolutionDetail(_test.solution, _test.solutionDetail);
+            _test.solutionDetail.Update(_test.connectionString);
             _test.driver.Navigate().Refresh();
             _test.pages.Dashboard.NavigateToSection("Solution description");
             _test.pages.SolutionDescription.SummaryAddText(100);
@@ -41,12 +42,10 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.Dashboard
             _test.pages.Dashboard.SubmitForModeration();
         }
 
-
-
         [Then(@"the Marketing Page will be submitted for Moderation")]
         public void ThenTheMarketingPageWillBeSubmittedForModeration()
         {
-            SqlHelper.GetSolutionStatus(_test.solution.Id, _test.connectionString).Should().Be(2);
+            _test.solution.Get(_test.connectionString).SupplierStatusId.Should().Be(2);            
         }
 
         [Then(@"the User will be informed that Submission was successful")]
@@ -59,7 +58,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.Dashboard
         public void ThenTheMarketingPageWillNotBeSubmittedForModeration()
         {
             _test.pages.Dashboard.SubmitForModeration();
-            SqlHelper.GetSolutionStatus(_test.solution.Id, _test.connectionString).Should().NotBe(2);
+            _test.solution.Get(_test.connectionString).SupplierStatusId.Should().NotBe(2);
         }
 
         [Then(@"the User remains on the Marketing Page Dashboard")]

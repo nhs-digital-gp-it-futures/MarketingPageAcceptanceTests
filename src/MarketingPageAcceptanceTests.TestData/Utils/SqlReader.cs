@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dapper;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -6,36 +8,34 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
 {
     internal static class SqlReader
     {
-        internal static T Read<T>(string connectionString, string query, SqlParameter[] sqlParameters, Func<IDataReader, T> mapDataReader)
+        internal static IEnumerable<T> Read<T>(string connectionString, string query, object param)
         {
-            T returnValue = default; ;
-
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            IEnumerable<T> returnValue = null;
+            using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-
-                using (var command = new SqlCommand(query, connection))
-                {
-                    //add the params
-                    command.Parameters.AddRange(sqlParameters);
-                    Policies.RetryPolicy().Execute(() =>
-                    {
-                        SqlDataReader reader = command.ExecuteReader();
-                        try
-                        {
-                            returnValue = mapDataReader(reader);
-                        }
-                        finally
-                        {
-                            reader.Close();
-                        }
-                    });
-                }
+                Policies.RetryPolicy().Execute(() =>
+                {                    
+                    returnValue = connection.Query<T>(query, param);
+                });
             }
 
-
             return returnValue;
+        }
+
+        internal static int ReadCount(string connectionString, string query, object param)
+        {
+            int result = 0;
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                Policies.RetryPolicy().Execute(() =>
+                {                    
+                    result = connection.ExecuteScalar<int>(query, param);                
+                });
+            }
+
+            return result;
         }
     }
 }

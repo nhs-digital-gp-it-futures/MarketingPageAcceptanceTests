@@ -70,7 +70,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps
         [Then(@"the database contains the Feature Text")]
         public void ThenTheDatabaseContainsTheFeatureText()
         {
-            var features = SqlHelper.GetSolutionFeatures(_test.solution.Id, _test.connectionString);
+            var features = _test.solutionDetail.Get(_test.connectionString).Features;
             features.Should().Contain(featureString);
         }
 
@@ -88,7 +88,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps
         [Then(@"the database does not contain the Feature Text")]
         public void ThenTheDatabaseDoesNotContainTheFeatureText()
         {
-            var features = SqlHelper.GetSolutionFeatures(_test.solution.Id, _test.connectionString);
+            var features = _test.solutionDetail.Get(_test.connectionString).Features;
             features.Should().NotContain(featureString);
         }
 

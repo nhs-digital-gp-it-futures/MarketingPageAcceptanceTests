@@ -17,10 +17,10 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.Preview
         [Given(@"a solution has been created with all data complete")]
         public void GivenASolutionHasBeenCreatedWithAllDataComplete()
         {
-            _test.solutionDetail = CreateSolutionDetails.CreateCompleteSolutionDetail(_test.solution.Id, _test.solutionDetail.SolutionDetailId);
-            SqlHelper.UpdateSolutionDetails(_test.solutionDetail, _test.connectionString);
-            var contactDetails = GenerateContactDetails.NewContactDetail();
-            SqlHelper.CreateContactDetails(_test.solution.Id, contactDetails, _test.connectionString);
+            _test.solutionDetail = GenerateSolutionDetails.CreateCompleteSolutionDetail(_test.solution.Id, _test.solutionDetail.SolutionDetailId);
+            _test.solutionDetail.Update(_test.connectionString);
+            var contactDetails = GenerateContactDetails.NewContactDetail(_test.solution.Id);
+            contactDetails.Create(_test.connectionString);
         }
 
 

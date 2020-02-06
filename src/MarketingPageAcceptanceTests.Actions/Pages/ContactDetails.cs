@@ -39,9 +39,9 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
             driver.FindElement(pages.ContactDetails.Contact1FirstName).SendKeys(contact.FirstName);
             driver.FindElement(pages.ContactDetails.Contact1LastName).SendKeys(contact.LastName);
-            driver.FindElement(pages.ContactDetails.Contact1EmailAddress).SendKeys(contact.EmailAddress);
+            driver.FindElement(pages.ContactDetails.Contact1EmailAddress).SendKeys(contact.Email);
             driver.FindElement(pages.ContactDetails.Contact1PhoneNumber).SendKeys(contact.PhoneNumber);
-            driver.FindElement(pages.ContactDetails.Contact1JobSector).SendKeys(contact.JobSector);
+            driver.FindElement(pages.ContactDetails.Contact1JobSector).SendKeys(contact.Department);
         }
 
         private void SecondContactComplete(IContactDetail contact, bool clearFirst)
@@ -57,9 +57,9 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
             driver.FindElement(pages.ContactDetails.Contact2FirstName).SendKeys(contact.FirstName);
             driver.FindElement(pages.ContactDetails.Contact2LastName).SendKeys(contact.LastName);
-            driver.FindElement(pages.ContactDetails.Contact2EmailAddress).SendKeys(contact.EmailAddress);
+            driver.FindElement(pages.ContactDetails.Contact2EmailAddress).SendKeys(contact.Email);
             driver.FindElement(pages.ContactDetails.Contact2PhoneNumber).SendKeys(contact.PhoneNumber);
-            driver.FindElement(pages.ContactDetails.Contact2JobSector).SendKeys(contact.JobSector);
+            driver.FindElement(pages.ContactDetails.Contact2JobSector).SendKeys(contact.Department);
         }
     }
 }

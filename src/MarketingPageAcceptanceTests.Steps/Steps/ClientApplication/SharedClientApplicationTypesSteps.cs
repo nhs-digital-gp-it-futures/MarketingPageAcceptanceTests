@@ -92,7 +92,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.ClientApplication
         {
             _test.solutionDetail.ClientApplication = ClientApplicationStringBuilder.GetClientAppString(null, clientApplicationType);
 
-            SqlHelper.UpdateSolutionDetails(_test.solutionDetail, _test.connectionString);
+            _test.solutionDetail.Update(_test.connectionString);
             _test.driver.Navigate().Refresh();
         }
 
@@ -100,9 +100,8 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.ClientApplication
         public void GivenASupplierHasSavedAllMandatoryDataOnTheClientApplicationTypeSub_SectionsExceptForX(string clientApplicationType, string section)
         {
             _test.solutionDetail.ClientApplication = ClientApplicationStringBuilder.GetClientAppString(section, clientApplicationType);
+            _test.solutionDetail.Update(_test.connectionString);
 
-            SqlHelper.UpdateSolutionDetails(_test.solutionDetail, _test.connectionString);
-            Thread.Sleep(800);
             _test.driver.Navigate().Refresh();
         }
 

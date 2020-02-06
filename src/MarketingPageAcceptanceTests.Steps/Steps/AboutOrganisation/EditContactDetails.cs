@@ -1,7 +1,6 @@
 ﻿using FluentAssertions;
 using MarketingPageAcceptanceTests.TestData.ContactDetails;
 using MarketingPageAcceptanceTests.TestData.Information;
-using MarketingPageAcceptanceTests.TestData.Utils;
 using MarketingPageAcceptanceTestsSpecflow.Steps.Utils;
 using TechTalk.SpecFlow;
 
@@ -22,7 +21,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.AboutOrganisation
             _test.SetUrl(userType: userType);
             _test.GoToUrl();
 
-            firstContact = GenerateContactDetails.NewContactDetail();
+            firstContact = GenerateContactDetails.NewContactDetail(_test.solution.Id);            
 
             _test.pages.Dashboard.NavigateToSection("Contact details");
             _test.pages.ContactDetails.EnterAllData(firstContact);
@@ -32,8 +31,8 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.AboutOrganisation
 
         public void GivenTheUserHasEnteredTwoContactDetails()
         {
-            firstContact = GenerateContactDetails.NewContactDetail();
-            var secondContact = GenerateContactDetails.NewContactDetail();
+            firstContact = GenerateContactDetails.NewContactDetail(_test.solution.Id);            
+            var secondContact = GenerateContactDetails.NewContactDetail(_test.solution.Id);
 
             _test.pages.Dashboard.NavigateToSection("Contact details");
             _test.pages.ContactDetails.EnterAllData(firstContact, secondContact);
@@ -50,8 +49,8 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.AboutOrganisation
         [Given(@"the Contact Details does exceed the maximum for both contacts")]
         public void GivenContactDetailDoesExceedTheMaximumForBothContacts()
         {
-            var updatedContact1 = GenerateContactDetails.NewContactDetail();
-            var updatedContact2 = GenerateContactDetails.NewContactDetail();
+            var updatedContact1 = GenerateContactDetails.NewContactDetail(_test.solution.Id);
+            var updatedContact2 = GenerateContactDetails.NewContactDetail(_test.solution.Id);
             updatedContact1.FirstName = RandomInformation.RandomString(36);
             updatedContact1.LastName = RandomInformation.RandomString(36);
             updatedContact2.FirstName = RandomInformation.RandomString(36);
@@ -78,15 +77,15 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.AboutOrganisation
 
         [StepDefinition(@"the contact is saved to the database")]
         public void ThenTheContectIsSavedToTheDatabase()
-        {
-            var dbContact = SqlHelper.GetContactDetail(_test.solution.Id, _test.connectionString);
+        {   
+            var dbContact = firstContact.Get(_test.connectionString);
             dbContact.Should().BeEquivalentTo(firstContact);
         }
 
         [Then(@"there (is|are) (.*) (record|records) in the contact table")]
         public void ThenThereIsRecordInTheContactTable(string ignore1, int expected, string ignore2)
         {
-            var actual = SqlHelper.GetNumberOfContacts(_test.solution.Id, _test.connectionString);
+            var actual = firstContact.GetCount(_test.connectionString);
             actual.Should().Be(expected);
         }
 

@@ -17,13 +17,16 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps
         {
             _test.driver.Quit();
 
-            SqlHelper.DeleteSolution(_test.solution.Id, _test.connectionString);
+            _test.solution.Delete(_test.connectionString);
+
             _test.listOfSolutions.Remove(_test.solution);
             try
             {
                 foreach (Solution solution in _test.listOfSolutions)
                 {
-                    SqlHelper.DeleteSolution(solution.Id, _test.connectionString);
+                    solution.Delete(_test.connectionString);
+
+                    //SqlHelper.DeleteSolution(solution.Id, _test.connectionString);
                 }
             }
             finally
@@ -34,7 +37,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps
             {
                 if (_test.supplier != null)
                 {
-                    SqlHelper.DeleteSupplier(_test.supplier.Id, _test.connectionString);
+                    _test.supplier.Delete(_test.connectionString);
                 }
             }
             finally

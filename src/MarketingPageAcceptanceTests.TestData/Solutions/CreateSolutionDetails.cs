@@ -3,9 +3,9 @@ using System;
 
 namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
-    public static class CreateSolutionDetails
+    public static class GenerateSolutionDetails
     {
-        public static SolutionDetail CreateNewSolutionDetail(string slnId, Guid solutionDetailId, int numFeatures, bool clientApplication = true, bool roadMap = false, bool hostingTypes = false, bool integrationsUrl = false, bool implementationTimescales = false)
+        public static SolutionDetail GenerateNewSolutionDetail(string slnId, Guid solutionDetailId, int numFeatures, bool clientApplication = true, bool roadMap = false, bool hostingTypes = false, bool integrationsUrl = false, bool implementationTimescales = false)
         {
             var faker = new Faker();
 

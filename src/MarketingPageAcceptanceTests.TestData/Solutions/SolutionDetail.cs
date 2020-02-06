@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MarketingPageAcceptanceTests.TestData.Utils;
+using System;
+using System.Linq;
 
 namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
@@ -15,10 +17,31 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         public string HostingTypes { get; set; }
         public string IntegrationsUrl { get; set; }
         public string ImplementationTimescales { get; set; }
+        public Guid LastUpdatedBy { get; set; } = Guid.Empty;
+        public DateTime LastUpdated { get; set; } = DateTime.Now;
 
-        public override string ToString()
+        public SolutionDetail Get(string connectionString)
         {
-            return $"SolutionDetailId: {SolutionDetailId},\nSolutionId: {SolutionId},\nAboutUrl: {AboutUrl},\nFeatures: {Features},\nClientApplication: {ClientApplication}";
+            var query = Queries.GetSolutionDetail;
+            return SqlReader.Read<SolutionDetail>(connectionString, query, this).Single();
+        }
+
+        public void Create(string connectionString)
+        {
+            var query = Queries.CreateSolutionDetail;
+            SqlReader.Read<SolutionDetail>(connectionString, query, this);
+        }
+
+        public void Update(string connectionString)
+        {
+            var query = Queries.UpdateSolutionDetail;
+            SqlReader.Read<SolutionDetail>(connectionString, query, this);
+        }
+
+        public void Delete(string connectionString)
+        {
+            var query = Queries.DeleteSolutionDetail;
+            SqlReader.Read<SolutionDetail>(connectionString, query, this);
         }
     }
 }

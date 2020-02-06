@@ -18,7 +18,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.AboutSolution
         [Given(@"that the Solution Summary is updated")]
         public void GivenThatTheSolutionSummaryIsUpdated()
         {
-            SqlHelper.UpdateLastUpdated(oldDate, "SolutionDetail", "SolutionId", _test.solution.Id, _test.connectionString);
+            LastUpdatedHelper.UpdateLastUpdated(oldDate, "SolutionDetail", "SolutionId", _test.solution.Id, _test.connectionString);
             _test.pages.Dashboard.NavigateToSection("Solution description");
             _test.pages.SolutionDescription.SummaryAddText(300);
         }
@@ -33,10 +33,10 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.AboutSolution
         [Given(@"that the Contact details are updated")]
         public void GivenThatTheContactDetailsAreUpdated()
         {
-            var firstContact = GenerateContactDetails.NewContactDetail();
-            SqlHelper.CreateContactDetails(_test.solution.Id, firstContact, _test.connectionString);
-            SqlHelper.UpdateLastUpdated(oldDate, "MarketingContact", "SolutionId", _test.solution.Id, _test.connectionString);
-            var updatedContact = GenerateContactDetails.NewContactDetail();
+            var firstContact = GenerateContactDetails.NewContactDetail(_test.solution.Id);
+            firstContact.Create(_test.connectionString);
+            LastUpdatedHelper.UpdateLastUpdated(oldDate, "MarketingContact", "SolutionId", _test.solution.Id, _test.connectionString);
+            var updatedContact = GenerateContactDetails.NewContactDetail(_test.solution.Id);
             _test.pages.Dashboard.NavigateToSection("Contact details");
             _test.pages.ContactDetails.EnterAllData(updatedContact, null, true);
         }
@@ -51,9 +51,8 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.AboutSolution
         [Then(@"the Last Changed Date is updated in the (.*) table")]
         public void ThenTheLastChangedDateIsUpdated(string tableName)
         {
-            var actualValueFromDB = SqlHelper.GetLastUpdated(tableName, "SolutionId", _test.solution.Id, _test.connectionString);
+            var actualValueFromDB = LastUpdatedHelper.GetLastUpdated(tableName, "SolutionId", _test.solution.Id, _test.connectionString);
             actualValueFromDB.Should().BeAfter(oldDate);
         }
-
     }
 }

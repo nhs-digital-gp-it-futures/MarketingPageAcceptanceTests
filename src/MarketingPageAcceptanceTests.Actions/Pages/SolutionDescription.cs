@@ -1,6 +1,7 @@
 ﻿using MarketingPageAcceptanceTests.Actions.Pages.Utils;
 using MarketingPageAcceptanceTests.Actions.Utils;
 using MarketingPageAcceptanceTests.TestData.Information;
+using MarketingPageAcceptanceTests.TestData.Solutions;
 using MarketingPageAcceptanceTests.TestData.Utils;
 using OpenQA.Selenium;
 
@@ -42,16 +43,14 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             driver.FindElement(pages.SolutionDescription.SaveAndReturn).Click();
         }
 
-        public bool DbContainsLink(string solutionId, string connectionString)
+        public bool DbContainsLink(SolutionDetail solution, string connectionString)
         {
-            var aboutUrl = SqlHelper.GetSolutionAboutLink(solutionId, connectionString);
-            return aboutUrl.Contains(link);
+            return solution.Get(connectionString).AboutUrl.Contains(description);
         }
 
-        public bool DbContainsDescription(string solutionId, string connectionString)
+        public bool DbContainsDescription(SolutionDetail solution, string connectionString)
         {
-            var solutionDescription = SqlHelper.GetSolutionDescription(solutionId, connectionString);
-            return solutionDescription.Contains(description);
+            return solution.Get(connectionString).FullDescription.Contains(description);
         }
 
         public void ClearMandatoryFields()

@@ -26,10 +26,12 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Utils
         {
             connectionString = EnvironmentVariables.GetConnectionString();
 
-            solution = CreateSolution.CreateNewSolution(checkForUnique: true, connectionString: connectionString);
-            solutionDetail = CreateSolutionDetails.CreateNewSolutionDetail(solution.Id, Guid.NewGuid(), 0, false);
-
-            SqlHelper.CreateBlankSolution(solution, solutionDetail, connectionString);
+            solution = GenerateSolution.GenerateNewSolution(checkForUnique: true, connectionString: connectionString);
+            solution.Create(connectionString);
+            solutionDetail = GenerateSolutionDetails.GenerateNewSolutionDetail(solution.Id, Guid.NewGuid(), 0, false);
+            solutionDetail.Create(connectionString);
+            solution.SolutionDetailId = solutionDetail.SolutionDetailId;
+            solution.Update(connectionString);
 
             driver = new BrowserFactory().Driver;
             pages = new PageActions(driver).PageActionCollection;

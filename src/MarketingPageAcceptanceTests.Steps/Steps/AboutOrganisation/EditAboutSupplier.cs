@@ -25,7 +25,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.AboutOrganisation
         {
             _test.supplier.Summary = "";
             _test.supplier.SupplierUrl = "";
-            SqlHelper.UpdateSupplier(_test.supplier, _test.connectionString);
+            _test.supplier.Update(_test.connectionString);
             _test.driver.Navigate().Refresh();
         }
 
@@ -33,19 +33,25 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.AboutOrganisation
         public void GivenThatAboutSupplierDataHasBeenAddedToASolutionSolutionA()
         {
             _test.supplier = CreateSupplier.CreateNewSupplier();
-            SqlHelper.CreateSupplier(_test.supplier, _test.connectionString);
+            _test.supplier.Create(_test.connectionString);
             _test.solution.SupplierId = _test.supplier.Id;
-            SqlHelper.UpdateSolutionSupplierId(_test.solution.Id, _test.solution.SupplierId, _test.connectionString);
+            _test.solution.Update(_test.connectionString);
             _test.listOfSolutions.Add(_test.solution);
         }
 
         [Given(@"the User has created a new solution for the same supplier \(Solution B\)")]
         public void GivenTheUserHasCreatedANewSolutionForTheSameSupplierSolutionB()
         {
-            _test.solution = CreateSolution.CreateNewSolution("SolB");
+            _test.solution = GenerateSolution.GenerateNewSolution("SolB");
             _test.solution.SupplierId = _test.supplier.Id;
-            _test.solutionDetail = CreateSolutionDetails.CreateNewSolutionDetail(_test.solution.Id, Guid.NewGuid(), 0, false);
-            SqlHelper.CreateBlankSolution(_test.solution, _test.solutionDetail, _test.connectionString);
+            _test.solution.Create(_test.connectionString);
+
+            _test.solutionDetail = GenerateSolutionDetails.GenerateNewSolutionDetail(_test.solution.Id, Guid.NewGuid(), 0, false);
+            _test.solutionDetail.Create(_test.connectionString);
+
+            _test.solution.SolutionDetailId = _test.solutionDetail.SolutionDetailId;
+            _test.solution.Update(_test.connectionString);
+
             _test.listOfSolutions.Add(_test.solution);
         }
 
@@ -82,8 +88,8 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.AboutOrganisation
         [Then(@"the About Supplier data is changed for Solution A as well as for Solution B")]
         public void ThenTheAboutSupplierDataIsChangedForSolutionAAsWellAsForSolutionB()
         {
-            Supplier supplierForSolutionA = SqlHelper.GetSupplierForSolution(_test.listOfSolutions[0].Id, _test.connectionString);
-            Supplier supplierForSolutionB = SqlHelper.GetSupplierForSolution(_test.listOfSolutions[1].Id, _test.connectionString);
+            Supplier supplierForSolutionA = new Supplier().GetSupplierForSolution(_test.connectionString,_test.listOfSolutions[0].Id);
+            Supplier supplierForSolutionB = new Supplier().GetSupplierForSolution(_test.connectionString, _test.listOfSolutions[1].Id);
 
             if (newDescription != null)
                 supplierForSolutionA.Summary.Should().Be(newDescription);

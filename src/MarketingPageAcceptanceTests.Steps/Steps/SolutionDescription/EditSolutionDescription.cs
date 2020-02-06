@@ -1,4 +1,5 @@
-﻿using MarketingPageAcceptanceTestsSpecflow.Steps.Utils;
+﻿using FluentAssertions;
+using MarketingPageAcceptanceTestsSpecflow.Steps.Utils;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTestsSpecflow.Steps
@@ -79,8 +80,8 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps
         [Then(@"the non mandatory data is saved to the database")]
         public void ThenTheNonMandatoryDataIsSavedToTheDatabase()
         {
-            _test.pages.SolutionDescription.DbContainsDescription(_test.solution.Id, _test.connectionString);
-            _test.pages.SolutionDescription.DbContainsLink(_test.solution.Id, _test.connectionString);
+            _test.pages.SolutionDescription.DbContainsDescription(_test.solutionDetail, _test.connectionString).Should().BeTrue();
+            _test.pages.SolutionDescription.DbContainsLink(_test.solutionDetail, _test.connectionString).Should().BeTrue();
         }
 
         [Then(@"the Section is not saved because it is mandatory")]
