@@ -1,7 +1,7 @@
-﻿using MarketingPageAcceptanceTestsSpecflow.Steps.Utils;
+﻿using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
 
-namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.AboutSolution
+namespace MarketingPageAcceptanceTests.Steps.Steps.AboutSolution
 {
     [Binding]
     public class Suppliers_EditSupplierAssertedIntegrationsSection : TestBase

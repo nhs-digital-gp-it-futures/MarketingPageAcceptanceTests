@@ -1,7 +1,7 @@
-﻿using MarketingPageAcceptanceTestsSpecflow.Steps.Utils;
+﻿using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
 
-namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.ClientApplication.NativeMobileOrTablet
+namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeMobileOrTablet
 {
     [Binding]
     public class OperatingSystemsSupported : TestBase

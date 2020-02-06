@@ -2,10 +2,10 @@
 using MarketingPageAcceptanceTests.TestData.ContactDetails;
 using MarketingPageAcceptanceTests.TestData.Solutions;
 using MarketingPageAcceptanceTests.TestData.Utils;
-using MarketingPageAcceptanceTestsSpecflow.Steps.Utils;
+using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
 
-namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.Preview
+namespace MarketingPageAcceptanceTests.Steps.Steps.Preview
 {
     [Binding]
     public class AppearOnPreview : TestBase

@@ -3,12 +3,12 @@ using FluentAssertions;
 using MarketingPageAcceptanceTests.TestData.Solutions;
 using MarketingPageAcceptanceTests.TestData.Suppliers;
 using MarketingPageAcceptanceTests.TestData.Utils;
-using MarketingPageAcceptanceTestsSpecflow.Steps.Utils;
+using MarketingPageAcceptanceTests.Steps.Utils;
 using System;
 using System.Linq;
 using TechTalk.SpecFlow;
 
-namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.AboutOrganisation
+namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation
 {
     [Binding]
     public class EditAboutSupplier : TestBase
