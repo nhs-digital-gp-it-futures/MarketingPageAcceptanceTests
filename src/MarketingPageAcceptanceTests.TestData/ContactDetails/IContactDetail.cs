@@ -11,11 +11,11 @@ namespace MarketingPageAcceptanceTests.TestData.ContactDetails
         string Department { get; set; }
         string SolutionId { get; set; }
 
-        IContactDetail Get(string connectionString);
-        IEnumerable<IContactDetail> GetAll(string connectionString);
+        IContactDetail Retrieve(string connectionString);
+        IEnumerable<IContactDetail> RetrieveAll(string connectionString);
         void Create(string connectionString);
         void Update(string connectionString);
         void Delete(string connectionString);
-        int GetCount(string connectionString);
+        int RetrieveCount(string connectionString);
     }
 }

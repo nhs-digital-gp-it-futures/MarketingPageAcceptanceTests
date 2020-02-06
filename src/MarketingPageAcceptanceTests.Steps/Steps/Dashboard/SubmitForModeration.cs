@@ -45,7 +45,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.Dashboard
         [Then(@"the Marketing Page will be submitted for Moderation")]
         public void ThenTheMarketingPageWillBeSubmittedForModeration()
         {
-            _test.solution.Get(_test.connectionString).SupplierStatusId.Should().Be(2);            
+            _test.solution.Retrieve(_test.connectionString).SupplierStatusId.Should().Be(2);            
         }
 
         [Then(@"the User will be informed that Submission was successful")]
@@ -58,7 +58,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.Dashboard
         public void ThenTheMarketingPageWillNotBeSubmittedForModeration()
         {
             _test.pages.Dashboard.SubmitForModeration();
-            _test.solution.Get(_test.connectionString).SupplierStatusId.Should().NotBe(2);
+            _test.solution.Retrieve(_test.connectionString).SupplierStatusId.Should().NotBe(2);
         }
 
         [Then(@"the User remains on the Marketing Page Dashboard")]

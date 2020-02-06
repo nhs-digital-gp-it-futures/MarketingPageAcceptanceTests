@@ -20,13 +20,13 @@ namespace MarketingPageAcceptanceTests.TestData.Suppliers
             SqlReader.Read<Supplier>(connectionString, query, this);
         }
 
-        public Supplier Get(string connectionString)
+        public Supplier Retrieve(string connectionString)
         {
             var query = Queries.GetSupplier;
             return SqlReader.Read<Supplier>(connectionString, query, this).Single();
         }
 
-        public Supplier GetSupplierForSolution(string connectionString, string solutionId)
+        public Supplier RetrieveSupplierForSolution(string connectionString, string solutionId)
         {
             var query = Queries.GetSupplierForSolution;
             return SqlReader.Read<Supplier>(connectionString, query, new { solutionId }).Single();

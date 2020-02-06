@@ -45,12 +45,12 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public bool DbContainsLink(SolutionDetail solution, string connectionString)
         {
-            return solution.Get(connectionString).AboutUrl.Contains(description);
+            return solution.Retrieve(connectionString).AboutUrl.Contains(description);
         }
 
         public bool DbContainsDescription(SolutionDetail solution, string connectionString)
         {
-            return solution.Get(connectionString).FullDescription.Contains(description);
+            return solution.Retrieve(connectionString).FullDescription.Contains(description);
         }
 
         public void ClearMandatoryFields()

@@ -1,7 +1,5 @@
 ﻿using Dapper;
-using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
 
 namespace MarketingPageAcceptanceTests.TestData.Utils
@@ -15,7 +13,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             {
                 connection.Open();
                 Policies.RetryPolicy().Execute(() =>
-                {                    
+                {
                     returnValue = connection.Query<T>(query, param);
                 });
             }
@@ -30,8 +28,8 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             {
                 connection.Open();
                 Policies.RetryPolicy().Execute(() =>
-                {                    
-                    result = connection.ExecuteScalar<int>(query, param);                
+                {
+                    result = connection.ExecuteScalar<int>(query, param);
                 });
             }
 

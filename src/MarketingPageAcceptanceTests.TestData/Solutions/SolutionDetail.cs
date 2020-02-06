@@ -20,7 +20,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         public Guid LastUpdatedBy { get; set; } = Guid.Empty;
         public DateTime LastUpdated { get; set; } = DateTime.Now;
 
-        public SolutionDetail Get(string connectionString)
+        public SolutionDetail Retrieve(string connectionString)
         {
             var query = Queries.GetSolutionDetail;
             return SqlReader.Read<SolutionDetail>(connectionString, query, this).Single();

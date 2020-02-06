@@ -88,8 +88,8 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.AboutOrganisation
         [Then(@"the About Supplier data is changed for Solution A as well as for Solution B")]
         public void ThenTheAboutSupplierDataIsChangedForSolutionAAsWellAsForSolutionB()
         {
-            Supplier supplierForSolutionA = new Supplier().GetSupplierForSolution(_test.connectionString,_test.listOfSolutions[0].Id);
-            Supplier supplierForSolutionB = new Supplier().GetSupplierForSolution(_test.connectionString, _test.listOfSolutions[1].Id);
+            Supplier supplierForSolutionA = new Supplier().RetrieveSupplierForSolution(_test.connectionString,_test.listOfSolutions[0].Id);
+            Supplier supplierForSolutionB = new Supplier().RetrieveSupplierForSolution(_test.connectionString, _test.listOfSolutions[1].Id);
 
             if (newDescription != null)
                 supplierForSolutionA.Summary.Should().Be(newDescription);
