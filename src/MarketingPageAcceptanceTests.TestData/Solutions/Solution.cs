@@ -1,9 +1,7 @@
-﻿using MarketingPageAcceptanceTests.TestData.Interfaces;
-using MarketingPageAcceptanceTests.TestData.Utils;
+﻿using MarketingPageAcceptanceTests.TestData.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 
 namespace MarketingPageAcceptanceTests.TestData.Solutions
@@ -20,39 +18,39 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         public int PublishedStatusId { get; set; } = 1;
         public int AuthorityStatusId { get; set; } = 1;
         public int SupplierStatusId { get; set; } = 1;
-        public Guid SolutionDetailId { get; set; }       
+        public Guid SolutionDetailId { get; set; }
         public DateTime LastUpdated { get; set; }
         public Guid LastUpdatedBy { get; set; }
 
-        public Solution Get(string connectionString)
+        public Solution Retrieve(string connectionString)
         {
             var query = Queries.GetSolution;
-            return SqlReader.Read<Solution>(connectionString, query, this).Single();
+            return SqlExecutor.Execute<Solution>(connectionString, query, this).Single();
         }
 
         public void Create(string connectionString)
         {
             var query = Queries.CreateNewSolution;
-            SqlReader.Read<Solution>(connectionString, query, this);
+            SqlExecutor.Execute<Solution>(connectionString, query, this);
         }
 
         public void Update(string connectionString)
         {
             var query = Queries.UpdateSolution;
-            SqlReader.Read<Solution>(connectionString, query, this);
+            SqlExecutor.Execute<Solution>(connectionString, query, this);
         }
 
         public void Delete(string connectionString)
         {
             var query = Queries.DeleteSolution;
-            SqlReader.Read<Solution>(connectionString, query, this);
+            SqlExecutor.Execute<Solution>(connectionString, query, this);
         }
 
-        public IEnumerable<string> GetAll(string connectionString)
+        public IEnumerable<string> RetrieveAll(string connectionString)
         {
             var query = Queries.GetAllSolutions;
 
-            return SqlReader.Read<Solution>(connectionString, query, null).Select(s => s.Id);
-        }        
+            return SqlExecutor.Execute<Solution>(connectionString, query, null).Select(s => s.Id);
+        }
     }
 }

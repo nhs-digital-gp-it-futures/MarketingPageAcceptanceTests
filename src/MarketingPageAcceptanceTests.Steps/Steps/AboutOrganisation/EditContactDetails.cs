@@ -78,14 +78,14 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation
         [StepDefinition(@"the contact is saved to the database")]
         public void ThenTheContectIsSavedToTheDatabase()
         {   
-            var dbContact = firstContact.Get(_test.connectionString);
+            var dbContact = firstContact.Retrieve(_test.connectionString);
             dbContact.Should().BeEquivalentTo(firstContact);
         }
 
         [Then(@"there (is|are) (.*) (record|records) in the contact table")]
         public void ThenThereIsRecordInTheContactTable(string ignore1, int expected, string ignore2)
         {
-            var actual = firstContact.GetCount(_test.connectionString);
+            var actual = firstContact.RetrieveCount(_test.connectionString);
             actual.Should().Be(expected);
         }
 

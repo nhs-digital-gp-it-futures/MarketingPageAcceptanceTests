@@ -7,7 +7,7 @@ namespace MarketingPageAcceptanceTests.TestData.ContactDetails
         public static IContactDetail NewContactDetail(string solutionId)
         {
             // en_GB esures UK format Phone Number
-            IContactDetail contact = new Faker<ContactDetail>("en_GB")                
+            IContactDetail contact = new Faker<ContactDetail>("en_GB")
                 .RuleFor(c => c.FirstName, f => f.Name.FirstName())
                 .RuleFor(c => c.LastName, f => f.Name.LastName())
                 .RuleFor(c => c.PhoneNumber, f => f.Phone.PhoneNumber())

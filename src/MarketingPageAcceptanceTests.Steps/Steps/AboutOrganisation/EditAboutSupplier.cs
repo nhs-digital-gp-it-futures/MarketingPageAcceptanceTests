@@ -32,7 +32,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation
         [Given(@"that About Supplier data has been added to a Solution \(Solution A\)")]
         public void GivenThatAboutSupplierDataHasBeenAddedToASolutionSolutionA()
         {
-            _test.supplier = CreateSupplier.CreateNewSupplier();
+            _test.supplier = GenerateSupplier.GenerateNewSupplier();
             _test.supplier.Create(_test.connectionString);
             _test.solution.SupplierId = _test.supplier.Id;
             _test.solution.Update(_test.connectionString);
@@ -88,8 +88,8 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation
         [Then(@"the About Supplier data is changed for Solution A as well as for Solution B")]
         public void ThenTheAboutSupplierDataIsChangedForSolutionAAsWellAsForSolutionB()
         {
-            Supplier supplierForSolutionA = new Supplier().GetSupplierForSolution(_test.connectionString,_test.listOfSolutions[0].Id);
-            Supplier supplierForSolutionB = new Supplier().GetSupplierForSolution(_test.connectionString, _test.listOfSolutions[1].Id);
+            Supplier supplierForSolutionA = new Supplier().RetrieveSupplierForSolution(_test.connectionString,_test.listOfSolutions[0].Id);
+            Supplier supplierForSolutionB = new Supplier().RetrieveSupplierForSolution(_test.connectionString, _test.listOfSolutions[1].Id);
 
             if (newDescription != null)
                 supplierForSolutionA.Summary.Should().Be(newDescription);

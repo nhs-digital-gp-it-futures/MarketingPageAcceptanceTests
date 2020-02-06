@@ -2,7 +2,7 @@
 {
     internal static class Queries
     {
-        internal const string CreateNewSolution = "INSERT INTO Solution (Id, SupplierId, Name, Version, PublishedStatusId, AuthorityStatusId, SupplierStatusId, OnCatalogueVersion, LastUpdatedBy, LastUpdated) values (@SolutionId, @SupplierId, @SolutionName, @SolutionVersion, @PublishedStatusId,@AuthorityStatusId,@SupplierStatusId, 0, @LastUpdatedBy, @LastUpdated)";        
+        internal const string CreateNewSolution = "INSERT INTO Solution (Id, SupplierId, Name, Version, PublishedStatusId, AuthorityStatusId, SupplierStatusId, OnCatalogueVersion, LastUpdatedBy, LastUpdated) values (@SolutionId, @SupplierId, @SolutionName, @SolutionVersion, @PublishedStatusId,@AuthorityStatusId,@SupplierStatusId, 0, @LastUpdatedBy, @LastUpdated)";
         internal const string GetSolution = "SELECT * from [dbo].[Solution] WHERE Solution.Id=@solutionId";
         internal const string UpdateSolution = "UPDATE Solution SET SolutionDetailId=@solutionDetailId, SupplierId=@supplierId, Name=@solutionName, Version=@solutionVersion, PublishedStatusId=@publishedStatusId, AuthorityStatusId=@authorityStatusId, SupplierStatusId=@supplierStatusId WHERE Id=@solutionId";
         internal const string UpdateSolutionSupplierlId = "UPDATE Solution SET SupplierId=@supplierId WHERE Id=@solutionId";

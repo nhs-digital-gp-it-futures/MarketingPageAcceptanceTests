@@ -1,21 +1,19 @@
 ﻿using Dapper;
-using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
 
 namespace MarketingPageAcceptanceTests.TestData.Utils
 {
-    internal static class SqlReader
+    internal static class SqlExecutor
     {
-        internal static IEnumerable<T> Read<T>(string connectionString, string query, object param)
+        internal static IEnumerable<T> Execute<T>(string connectionString, string query, object param)
         {
             IEnumerable<T> returnValue = null;
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
                 Policies.RetryPolicy().Execute(() =>
-                {                    
+                {
                     returnValue = connection.Query<T>(query, param);
                 });
             }
@@ -23,15 +21,15 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             return returnValue;
         }
 
-        internal static int ReadCount(string connectionString, string query, object param)
+        internal static int ExecuteScalar(string connectionString, string query, object param)
         {
             int result = 0;
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
                 Policies.RetryPolicy().Execute(() =>
-                {                    
-                    result = connection.ExecuteScalar<int>(query, param);                
+                {
+                    result = connection.ExecuteScalar<int>(query, param);
                 });
             }
 

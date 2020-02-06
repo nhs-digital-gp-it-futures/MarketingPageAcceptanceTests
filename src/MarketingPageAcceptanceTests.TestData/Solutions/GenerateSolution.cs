@@ -1,5 +1,4 @@
 ﻿using Bogus;
-using MarketingPageAcceptanceTests.TestData.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -78,8 +77,8 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         {
             var solution = new Solution();
 
-            var existingSolIds = solution.GetAll(connectionString).ToList();
-                
+            var existingSolIds = solution.RetrieveAll(connectionString).ToList();
+
             existingSolIds = existingSolIds.Where(s => s.StartsWith(prefix)).ToList();
 
             var solId = string.Empty;

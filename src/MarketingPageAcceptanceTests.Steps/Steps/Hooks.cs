@@ -25,8 +25,6 @@ namespace MarketingPageAcceptanceTests.Steps.Steps
                 foreach (Solution solution in _test.listOfSolutions)
                 {
                     solution.Delete(_test.connectionString);
-
-                    //SqlHelper.DeleteSolution(solution.Id, _test.connectionString);
                 }
             }
             finally

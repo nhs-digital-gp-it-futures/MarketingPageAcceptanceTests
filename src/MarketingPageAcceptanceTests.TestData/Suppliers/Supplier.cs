@@ -17,31 +17,31 @@ namespace MarketingPageAcceptanceTests.TestData.Suppliers
         public void Create(string connectionString)
         {
             var query = Queries.CreateNewSupplier;
-            SqlReader.Read<Supplier>(connectionString, query, this);
+            SqlExecutor.Execute<Supplier>(connectionString, query, this);
         }
 
-        public Supplier Get(string connectionString)
+        public Supplier Retrieve(string connectionString)
         {
             var query = Queries.GetSupplier;
-            return SqlReader.Read<Supplier>(connectionString, query, this).Single();
+            return SqlExecutor.Execute<Supplier>(connectionString, query, this).Single();
         }
 
-        public Supplier GetSupplierForSolution(string connectionString, string solutionId)
+        public Supplier RetrieveSupplierForSolution(string connectionString, string solutionId)
         {
             var query = Queries.GetSupplierForSolution;
-            return SqlReader.Read<Supplier>(connectionString, query, new { solutionId }).Single();
+            return SqlExecutor.Execute<Supplier>(connectionString, query, new { solutionId }).Single();
         }
 
         public void Update(string connectionString)
         {
             var query = Queries.UpdateSupplier;
-            SqlReader.Read<Supplier>(connectionString, query, this);
+            SqlExecutor.Execute<Supplier>(connectionString, query, this);
         }
 
         public void Delete(string connectionString)
         {
             var query = Queries.DeleteSupplier;
-            SqlReader.Read<Supplier>(connectionString, query, this);
+            SqlExecutor.Execute<Supplier>(connectionString, query, this);
         }
     }
 }
