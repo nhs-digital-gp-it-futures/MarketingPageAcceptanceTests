@@ -2,10 +2,10 @@
 using MarketingPageAcceptanceTests.TestData.ContactDetails;
 using MarketingPageAcceptanceTests.TestData.Information;
 using MarketingPageAcceptanceTests.TestData.Utils;
-using MarketingPageAcceptanceTestsSpecflow.Steps.Utils;
+using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
 
-namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.AboutOrganisation
+namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation
 {
     [Binding]
     public class EditContactDetails : TestBase

@@ -1,9 +1,9 @@
 ﻿using MarketingPageAcceptanceTests.TestData.Information;
-using MarketingPageAcceptanceTestsSpecflow.Steps.Utils;
+using MarketingPageAcceptanceTests.Steps.Utils;
 using System;
 using TechTalk.SpecFlow;
 
-namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.ClientApplication.PluginsOrExtensions
+namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.PluginsOrExtensions
 {
     [Binding]
     public class PluginOrExtension : TestBase

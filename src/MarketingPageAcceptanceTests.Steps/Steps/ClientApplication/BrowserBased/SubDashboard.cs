@@ -1,9 +1,9 @@
 ﻿using FluentAssertions;
-using MarketingPageAcceptanceTestsSpecflow.Steps.Utils;
+using MarketingPageAcceptanceTests.Steps.Utils;
 using System.Collections.Generic;
 using TechTalk.SpecFlow;
 
-namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.ClientApplication.BrowserBased
+namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.BrowserBased
 {
     [Binding]
     public sealed class SubDashboard : TestBase

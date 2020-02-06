@@ -5,7 +5,7 @@ using OpenQA.Selenium.Remote;
 using System;
 using System.IO;
 
-namespace MarketingPageAcceptanceTestsSpecflow.Steps.Utils
+namespace MarketingPageAcceptanceTests.Steps.Utils
 {
     public sealed class BrowserFactory
     {

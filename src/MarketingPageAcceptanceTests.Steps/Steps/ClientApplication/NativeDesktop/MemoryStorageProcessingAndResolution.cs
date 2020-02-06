@@ -1,7 +1,7 @@
-﻿using MarketingPageAcceptanceTestsSpecflow.Steps.Utils;
+﻿using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
 
-namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.ClientApplication.NativeDesktop
+namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeDesktop
 {
     [Binding]
     public class MemoryStorageProcessingAndResolution : TestBase

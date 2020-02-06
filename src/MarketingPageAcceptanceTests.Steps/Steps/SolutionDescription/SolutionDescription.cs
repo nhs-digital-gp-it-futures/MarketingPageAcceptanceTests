@@ -1,7 +1,7 @@
-﻿using MarketingPageAcceptanceTestsSpecflow.Steps.Utils;
+﻿using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
 
-namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.SolutionDescription
+namespace MarketingPageAcceptanceTests.Steps.Steps.SolutionDescription
 {
     [Binding]
     public class SolutionDescription : TestBase
