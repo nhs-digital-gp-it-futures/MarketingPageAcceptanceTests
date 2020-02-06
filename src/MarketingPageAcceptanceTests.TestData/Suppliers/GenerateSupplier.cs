@@ -2,9 +2,9 @@
 
 namespace MarketingPageAcceptanceTests.TestData.Suppliers
 {
-    public static class CreateSupplier
+    public static class GenerateSupplier
     {
-        public static Supplier CreateNewSupplier()
+        public static Supplier GenerateNewSupplier()
         {
             var faker = new Faker();
             var id = faker.Random.Int(900000, 999999).ToString();

@@ -32,7 +32,7 @@ namespace MarketingPageAcceptanceTestsSpecflow.Steps.Steps.AboutOrganisation
         [Given(@"that About Supplier data has been added to a Solution \(Solution A\)")]
         public void GivenThatAboutSupplierDataHasBeenAddedToASolutionSolutionA()
         {
-            _test.supplier = CreateSupplier.CreateNewSupplier();
+            _test.supplier = GenerateSupplier.GenerateNewSupplier();
             _test.supplier.Create(_test.connectionString);
             _test.solution.SupplierId = _test.supplier.Id;
             _test.solution.Update(_test.connectionString);
