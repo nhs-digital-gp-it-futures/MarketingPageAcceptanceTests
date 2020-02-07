@@ -33,7 +33,7 @@ steps:
     targetFiles: '**/*.json'
     encoding: 'auto'
     writeBOM: true
-    actionOnMissing: 'continue'
+    actionOnMissing: 'warn'
     keepToken: true
     tokenPrefix: '#{'
     tokenSuffix: '}#'
