@@ -13,6 +13,7 @@ Scenario Outline: Display On Authority Dashboard - Form sections presented
 		Examples:
 		| Section      |
 		| Capabilities |
+		| Epics        |
 
 Scenario Outline: Display On Authority Dashboard - Section status
 	Given the Section has a content validation status
@@ -20,6 +21,6 @@ Scenario Outline: Display On Authority Dashboard - Section status
 	Then the <Section> content validation status is displayed
 	
 		Examples:
-		| Section     |
-		| Capabilites |
-		
+		| Section      |
+		| Capabilities |
+		#|Epics
