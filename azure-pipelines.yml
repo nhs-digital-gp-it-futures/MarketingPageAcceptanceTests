@@ -53,9 +53,17 @@ steps:
       docker-compose up --scale chrome=4 --scale firefox=4  -d
     
 - task: DotNetCoreCLI@2
-  displayName: "Run accceptance tests"
+  displayName: "Run Supplier Acceptance Tests"
   inputs:
     command: 'test'
-    projects: 'src/MarketingPageAcceptanceTestsSpecflow/*csproj'
+    projects: 'src/MarketingPageAcceptanceTests.SupplierTests/*csproj'
     arguments: '-v n'
-    testRunTitle: 'Run Acceptance Tests'
+    testRunTitle: 'Run Supplier Acceptance Tests'
+
+- task: DotNetCoreCLI@2
+  displayName: "Run Authority Acceptance Tests"
+  inputs:
+    command: 'test'
+    projects: 'src/MarketingPageAcceptanceTests.AuthorityTests/*csproj'
+    arguments: '-v n'
+    testRunTitle: 'Run Authority Acceptance Tests'

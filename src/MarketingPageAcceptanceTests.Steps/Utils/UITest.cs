@@ -63,17 +63,13 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
         {
             string userType;
 
-            switch (UserType)
+            switch (UserType.ToLower())
             {
                 case "supplier":
-                case "Supplier":
-                case "SUPPLIER":
                     userType = "supplier";
                     break;
-                case "Authority":
-                case "Authority user":
-                case "Authority User":
-                case "AUTHORITY USER":
+                case "authority":
+                case "authority user":
                     userType = "authority";
                     break;
                 default:
