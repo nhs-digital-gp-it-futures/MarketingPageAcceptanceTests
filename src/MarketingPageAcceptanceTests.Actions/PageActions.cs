@@ -41,7 +41,8 @@ namespace MarketingPageAcceptanceTests.Actions
                     PrivateCloud = new PrivateCloud(driver)
                 },
                 AboutSupplier = new AboutSupplier(driver),
-                ContactDetails = new ContactDetails(driver)
+                ContactDetails = new ContactDetails(driver),
+                Capabilities = new Capabilities(driver)
             };
         }
 
