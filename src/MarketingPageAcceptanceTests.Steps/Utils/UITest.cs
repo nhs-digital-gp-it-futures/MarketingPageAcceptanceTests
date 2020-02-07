@@ -21,12 +21,12 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
         internal Supplier supplier;
         internal List<Solution> listOfSolutions = new List<Solution>();
         public string UserType { get; set; } = "supplier";
-        internal AzureBlobStorage azureBlobStorage;
-
+        internal TestData.Utils.AzureBlobStorage azureBlobStorage;
+        
         public UITest()
         {
             connectionString = EnvironmentVariables.GetDbConnectionString();
-            azureBlobStorage = new AzureBlobStorage(EnvironmentVariables.GetAzureBlobStorageConnectionString());
+            azureBlobStorage = new TestData.Utils.AzureBlobStorage(EnvironmentVariables.GetAzureBlobStorageConnectionString());
 
             solution = GenerateSolution.GenerateNewSolution(checkForUnique: true, connectionString: connectionString);
             solution.Create(connectionString);

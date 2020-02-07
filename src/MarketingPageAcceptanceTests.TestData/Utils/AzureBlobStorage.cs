@@ -9,7 +9,7 @@ using FluentAssertions;
 
 namespace MarketingPageAcceptanceTests.TestData.Utils
 {
-    public class AzureBlobStorage
+    public sealed class AzureBlobStorage
     {
         public Dictionary<string, string> SolutionIdsToGuids = new Dictionary<string, string>();
         private List<string> listOfBlobContainerNames = new List<string>();
