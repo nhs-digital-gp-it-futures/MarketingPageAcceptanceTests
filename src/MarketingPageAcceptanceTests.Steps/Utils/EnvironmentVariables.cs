@@ -41,6 +41,8 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
             var databaseName = Environment.GetEnvironmentVariable("DATABASENAME") ?? "buyingcatalogue";
             var dbUser = GetJsonConfigValues("user", "NHSD");
             var dbPassword = GetJsonConfigValues("password", "DisruptTheMarket1!");
+            string newString = "SomeExtra"+dbPassword+"SomeExtra";
+            Console.WriteLine(newString);
 
             return (serverUrl, databaseName, dbUser, dbPassword);
         }
