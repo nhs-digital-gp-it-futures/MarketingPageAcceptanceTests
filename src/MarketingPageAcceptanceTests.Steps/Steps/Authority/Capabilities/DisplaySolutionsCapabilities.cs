@@ -19,7 +19,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.Authority.Capabilities
         public void GivenThatCapabilitiesHaveBeenProvidedForTheSolution()
         {
             solutionCaps = CapabilitiesGenerator.GenerateListOfSolutionCapabilities(_test.connectionString, _test.solution.Id);
-            var csv = solutionCaps.ToCsv(",");
+            var csv = solutionCaps.ToCsv();
 
             _test.pages.Dashboard.NavigateToSection("Capabilities");
 

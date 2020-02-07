@@ -9,7 +9,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
 {
     public static class CsvConverter
     {
-        public static string ToCsv<T>(this IEnumerable<T> objectList, string separator)
+        public static string ToCsv<T>(this IEnumerable<T> objectList, string separator = ",")
         {
             Type t = typeof(T);
             PropertyInfo[] properties = t.GetProperties();
