@@ -27,5 +27,8 @@
         internal const string GetSupplier = "SELECT * FROM [dbo].[Supplier] WHERE [Id]=@Id";
         internal const string GetSupplierForSolution = "SELECT Supplier.[Id],Supplier.[Name],Supplier.[Summary],Supplier.[SupplierUrl],Supplier.[LastUpdated],Supplier.[LastUpdatedBy]FROM [dbo].[Supplier] LEFT JOIN Solution on Solution.SupplierId = Supplier.Id WHERE Solution.Id=@solutionId";
         internal const string UpdateSupplier = "UPDATE Supplier SET Name=@name, LegalName=@legalName, Summary=@summary, SupplierUrl=@supplierUrl, LastUpdated=@lastUpdated, LastUpdatedBy=@lastUpdatedBy WHERE Id=@Id";
+        
+        internal const string GetCapabilityById = "SELECT * FROM Capability WHERE Id=@Id";
+        internal const string GetAllCapabilities = "SELECT * FROM Capability";
     }
 }

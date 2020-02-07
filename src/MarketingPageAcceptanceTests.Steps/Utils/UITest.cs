@@ -2,7 +2,6 @@
 using MarketingPageAcceptanceTests.Actions.Collections;
 using MarketingPageAcceptanceTests.TestData.Solutions;
 using MarketingPageAcceptanceTests.TestData.Suppliers;
-using MarketingPageAcceptanceTests.TestData.Utils;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -35,6 +34,8 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
 
             driver = new BrowserFactory().Driver;
             pages = new PageActions(driver).PageActionCollection;
+
+
         }
 
         public void SetUrl(string solutionId = null, string userType = null)

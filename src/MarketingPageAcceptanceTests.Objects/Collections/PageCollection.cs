@@ -17,6 +17,7 @@ namespace MarketingPageAcceptanceTests.Objects.Collections
         public HostingTypeSections HostingTypeSections { get; set; }
         public AboutSupplier AboutSupplier { get; set; }
         public ContactDetails ContactDetails { get; set; }
+        public Capabilities Capabilities { get; set; }
     }
 
     public sealed class BrowserBasedSections
