@@ -2,6 +2,7 @@
 using MarketingPageAcceptanceTests.TestData.Utils;
 using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
+using System.Threading.Tasks;
 
 namespace MarketingPageAcceptanceTests.Steps.Steps
 {
@@ -13,7 +14,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps
         }
 
         [AfterScenario]
-        public void AfterScenario()
+        public async Task AfterScenario()
         {
             _test.driver.Quit();
 
@@ -42,6 +43,8 @@ namespace MarketingPageAcceptanceTests.Steps.Steps
             {
                 _test.supplier = null;
             }
+
+            await _test.azureBlobStorage.ClearStorage();
         }
     }
 }

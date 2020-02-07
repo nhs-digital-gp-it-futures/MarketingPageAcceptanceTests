@@ -47,7 +47,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.BrowserSupp
             _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection("Browsers supported");
         }
 
-        [When(@"a User previews the Marketing Page")]
+        [StepDefinition(@"a User previews the Marketing Page")]
         public void WhenAUserPreviewsTheMarketingPage()
         {
             _test.pages.Dashboard.NavigateToPreviewPage();

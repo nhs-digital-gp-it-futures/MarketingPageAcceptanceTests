@@ -45,11 +45,16 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
             return (serverUrl, databaseName, dbUser, dbPassword);
         }
 
-        internal static string GetConnectionString()
+        internal static string GetDbConnectionString()
         {
             var (serverUrl, databaseName, dbUser, dbPassword) = GetDbConnectionDetails();
 
             return string.Format(ConnectionString.GPitFutures, serverUrl, databaseName, dbUser, dbPassword);
+        }
+
+        internal static string GetAzureBlobStorageConnectionString()
+        {
+            return GetJsonConfigValues("AzureBlobStorageConnectionString", @"UseDevelopmentStorage=true");
         }
 
         private static string GetJsonConfigValues(string section, string defaultValue)

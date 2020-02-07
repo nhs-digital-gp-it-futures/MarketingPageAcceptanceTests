@@ -38,5 +38,6 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
         public By PreviewHeaders => By.TagName("h3");
         public By AboutSupplierDescription => CustomBy.DataTestId("view-question-data-text-description");
         public By AboutSupplierUrl => CustomBy.DataTestId("view-question-data-link");
+        public By DownloadDocumentLink => CustomBy.DataTestId("view-question-data-link-document-link");
     }
 }

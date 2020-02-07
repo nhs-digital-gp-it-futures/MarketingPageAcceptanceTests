@@ -24,10 +24,23 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.Preview
         }
 
 
-        [Then(@"the (.*) section is presented")]
+        [StepDefinition(@"the (.*) section is presented")]
         public void ThenTheSectionIsPresented(string section)
         {
             _test.pages.PreviewPage.MainSectionDisplayed(section).Should().BeTrue();
         }
+
+        [StepDefinition(@"the (.*) section is not presented")]
+        public void ThenTheSectionIsNotPresented(string section)
+        {
+            _test.pages.PreviewPage.MainSectionDisplayed(section).Should().BeFalse();
+        }
+
+        [Then(@"there is no call to action to download a file in the (Roadmap) section")]
+        public void ThenThereIsNoCallToActionToDownloadAFileInTheRoadmapSection(string section)
+        {
+            _test.pages.PreviewPage.DownloadLinkInSectionIsDisplayed(section).Should().BeFalse();
+        }
+
     }
 }
