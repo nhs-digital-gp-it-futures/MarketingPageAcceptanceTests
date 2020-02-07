@@ -14,9 +14,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             Type t = typeof(T);
             PropertyInfo[] properties = t.GetProperties();
 
-            string[] headers = properties.Select(p => p.GetCustomAttributes(typeof(DisplayAttribute), false).Cast<DisplayAttribute>().Single().Name).ToArray();
-
-            string header = string.Join(separator, headers);
+            string header = GetHeaderLine(separator, properties);
 
             StringBuilder csvBuilder = new StringBuilder();
             csvBuilder.AppendLine(header);
@@ -27,6 +25,25 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             }
 
             return csvBuilder.ToString();
+        }
+
+        private static string GetHeaderLine(string separator, PropertyInfo[] properties)
+        {
+            List<string> headers = new List<string>();
+
+            foreach (var p in properties)
+            {
+                if (p.GetCustomAttributes(typeof(DisplayAttribute), false).Length > 0)
+                {
+                    headers.Add(p.GetCustomAttributes(typeof(DisplayAttribute), false).Cast<DisplayAttribute>().Single().Name);
+                }
+                else
+                {
+                    headers.Add(p.Name);
+                }
+            }
+
+            return string.Join(separator, headers);
         }
 
         private static string ToCsvLines<T>(string separator, PropertyInfo[] properties, T o)
