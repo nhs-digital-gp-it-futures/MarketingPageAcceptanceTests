@@ -1,4 +1,7 @@
-﻿using FluentAssertions;
+﻿using System;
+using System.IO;
+using System.Threading.Tasks;
+using FluentAssertions;
 using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
 
@@ -132,5 +135,11 @@ namespace MarketingPageAcceptanceTests.Steps.Steps
 
             _test.pages.BrowserBasedSections.HardwareRequirements.EnterText(characters);
         }
+
+        [Given(@"a (.*) attachment has not been provided for the Solution")]
+        public void GivenARoadmapAttachmentHasNotBeenProvidedForTheSolution(string documentType)
+        {       
+        }
+
     }
 }

@@ -1,5 +1,5 @@
 ﻿Feature: Suppliers - Roadmap
-	As an Authority User
+	As a supplier
 	I want to Edit the Roadmap Section
 	So that I can make sure the information is correct
 

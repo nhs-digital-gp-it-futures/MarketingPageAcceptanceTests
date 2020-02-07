@@ -175,5 +175,13 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             driver.FindElement(pages.PreviewPage.AboutSupplierDescription).Displayed.Should().BeTrue();
             driver.FindElement(pages.PreviewPage.AboutSupplierUrl).Displayed.Should().BeTrue();
         }
+
+        public bool DownloadLinkInSectionIsDisplayed(string section)
+        {
+            return driver.FindElements(pages.PreviewPage.PreviewHeaders)
+                .Single(s => s.Text.ToLower().Contains(section.ToLower()))
+                .FindElements(pages.PreviewPage.DownloadDocumentLink)
+                .Count > 0;
+        }
     }
 }
