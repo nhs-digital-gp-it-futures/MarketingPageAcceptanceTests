@@ -2,7 +2,6 @@
 using MarketingPageAcceptanceTests.Actions.Collections;
 using MarketingPageAcceptanceTests.TestData.Solutions;
 using MarketingPageAcceptanceTests.TestData.Suppliers;
-using MarketingPageAcceptanceTests.TestData.Utils;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -21,12 +20,12 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
         internal Supplier supplier;
         internal List<Solution> listOfSolutions = new List<Solution>();
         public string UserType { get; set; } = "supplier";
-        internal TestData.Utils.AzureBlobStorage azureBlobStorage;
+        internal TestData.Azure.AzureBlobStorage azureBlobStorage;
         
         public UITest()
         {
             connectionString = EnvironmentVariables.GetDbConnectionString();
-            azureBlobStorage = new TestData.Utils.AzureBlobStorage(EnvironmentVariables.GetAzureBlobStorageConnectionString());
+            azureBlobStorage = new TestData.Azure.AzureBlobStorage(EnvironmentVariables.GetAzureBlobStorageConnectionString());
 
             solution = GenerateSolution.GenerateNewSolution(checkForUnique: true, connectionString: connectionString);
             solution.Create(connectionString);
