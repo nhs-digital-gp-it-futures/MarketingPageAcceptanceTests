@@ -24,6 +24,7 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
         public UITest()
         {
             connectionString = EnvironmentVariables.GetConnectionString();
+            Console.WriteLine(connectionString);
 
             solution = GenerateSolution.GenerateNewSolution(checkForUnique: true, connectionString: connectionString);
             solution.Create(connectionString);
