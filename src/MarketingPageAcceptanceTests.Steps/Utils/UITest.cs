@@ -36,6 +36,8 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
 
             driver = new BrowserFactory().Driver;
             pages = new PageActions(driver).PageActionCollection;
+
+
         }
 
         public void SetUrl(string solutionId = null, string userType = null)

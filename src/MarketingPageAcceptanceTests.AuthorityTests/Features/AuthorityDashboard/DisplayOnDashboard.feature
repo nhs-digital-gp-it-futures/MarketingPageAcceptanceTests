@@ -3,7 +3,6 @@
 	I want to manage Marketing Page Information
 	So that I can ensure the information is correct
 
-@ignore
 Scenario Outline: Display On Authority Dashboard - Form sections presented
 	Given that a User has chosen to manage Marketing Page Information
 	When the Marketing Page Form is presented
@@ -13,7 +12,7 @@ Scenario Outline: Display On Authority Dashboard - Form sections presented
 		Examples:
 		| Section      |
 		| Capabilities |
-		| Epics        |
+		#| Epics        |
 
 Scenario Outline: Display On Authority Dashboard - Section status
 	Given the Section has a content validation status
