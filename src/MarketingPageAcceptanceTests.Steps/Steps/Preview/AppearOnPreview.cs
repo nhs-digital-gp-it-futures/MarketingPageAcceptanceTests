@@ -36,7 +36,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.Preview
             _test.pages.PreviewPage.MainSectionDisplayed(section).Should().BeFalse();
         }
 
-        [Then(@"there is no call to action to download a file in the (Roadmap) section")]
+        [Then(@"there is no call to action to download a file in the (Roadmap|Integrations) section")]
         public void ThenThereIsNoCallToActionToDownloadAFileInTheRoadmapSection(string section)
         {
             _test.pages.PreviewPage.DownloadLinkInSectionIsDisplayed(section).Should().BeFalse();
