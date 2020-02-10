@@ -26,7 +26,10 @@ namespace MarketingPageAcceptanceTests.TestData.Azure
             {
                 listOfBlobContainerNames.Add(containerName);
             }
+
             var currentContainer = blobServiceClient.GetBlobContainerClient(containerName);
+            currentContainer.CreateIfNotExists();
+
             var blobClient = currentContainer.GetBlobClient(Path.Combine(SolutionIdsToGuids[solutionId], fileName));
             using var uploadFileStream = File.OpenRead(fullFilePath);
             var response = await blobClient
