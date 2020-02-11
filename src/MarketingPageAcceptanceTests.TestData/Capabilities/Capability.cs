@@ -9,6 +9,7 @@ namespace MarketingPageAcceptanceTests.TestData.Capabilities
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
+        public string CapabilityRef { get; set; }
         public Capability Get(string connectionString, Guid Id)
         {
             var query = Queries.GetCapabilityById;
