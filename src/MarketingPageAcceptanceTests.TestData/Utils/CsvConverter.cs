@@ -9,12 +9,12 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
 {
     public static class CsvConverter
     {
-        public static string ToCsv<T>(this IEnumerable<T> objectList, string separator = ",", string headerQuotations = "'")
+        public static string ToCsv<T>(this IEnumerable<T> objectList, string separator = ",")
         {
             Type t = typeof(T);
             PropertyInfo[] properties = t.GetProperties();
 
-            string header = GetHeaderLine(separator, properties, headerQuotations);
+            string header = GetHeaderLine(separator, properties);
 
             StringBuilder csvBuilder = new StringBuilder();
             csvBuilder.AppendLine(header);
@@ -27,7 +27,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             return csvBuilder.ToString();
         }
 
-        private static string GetHeaderLine(string separator, PropertyInfo[] properties, string headerQuotations)
+        private static string GetHeaderLine(string separator, PropertyInfo[] properties)
         {
             List<string> headers = new List<string>();
 
@@ -35,7 +35,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             {
                 if (p.GetCustomAttributes(typeof(DisplayAttribute), false).Length > 0)
                 {
-                    string header = /*headerQuotations + */p.GetCustomAttributes(typeof(DisplayAttribute), false).Cast<DisplayAttribute>().Single().Name;/* + headerQuotations*/;
+                    string header = p.GetCustomAttributes(typeof(DisplayAttribute), false).Cast<DisplayAttribute>().Single().Name;
 
                     headers.Add(header);
                 }
