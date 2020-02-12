@@ -12,8 +12,8 @@ namespace MarketingPageAcceptanceTests.TestData.Capabilities
 
             var capabilityIds = new Capability().GetAll(connectionString) // Get list of Capabilities
                 .OrderBy(s => Guid.NewGuid())                             // Reorder them randomly
-                .Select(s => s.Id)
-                .ToList();                                                // Return ordered list of ID's only
+                .Select(s => s.CapabilityRef)
+                .ToList();                                                // Return ordered list of Ref's only
 
             for (int i = 0; i < length; i++)
             {

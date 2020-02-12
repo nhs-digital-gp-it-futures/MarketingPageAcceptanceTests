@@ -35,7 +35,9 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             {
                 if (p.GetCustomAttributes(typeof(DisplayAttribute), false).Length > 0)
                 {
-                    headers.Add(p.GetCustomAttributes(typeof(DisplayAttribute), false).Cast<DisplayAttribute>().Single().Name);
+                    string header = p.GetCustomAttributes(typeof(DisplayAttribute), false).Cast<DisplayAttribute>().Single().Name;
+
+                    headers.Add(header);
                 }
                 else
                 {
