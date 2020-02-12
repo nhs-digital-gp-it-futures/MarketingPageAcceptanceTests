@@ -5,6 +5,7 @@ using MarketingPageAcceptanceTests.TestData.Suppliers;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace MarketingPageAcceptanceTests.Steps.Utils
 {
@@ -21,11 +22,15 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
         internal List<Solution> listOfSolutions = new List<Solution>();
         public string UserType { get; set; } = "supplier";
         internal TestData.Azure.AzureBlobStorage azureBlobStorage;
+        internal string defaultAzureBlobStorageContainerName;
+        internal string downloadPath;
         
         public UITest()
         {
             connectionString = EnvironmentVariables.GetDbConnectionString();
             azureBlobStorage = new TestData.Azure.AzureBlobStorage(EnvironmentVariables.GetAzureBlobStorageConnectionString());
+            defaultAzureBlobStorageContainerName = EnvironmentVariables.GetAzureContainerName();
+            downloadPath = Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory));
 
             solution = GenerateSolution.GenerateNewSolution(checkForUnique: true, connectionString: connectionString);
             solution.Create(connectionString);

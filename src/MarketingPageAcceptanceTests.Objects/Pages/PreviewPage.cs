@@ -36,8 +36,9 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
 
         public By ExpandingSections => By.CssSelector("details.nhsuk-details");
         public By PreviewHeaders => By.TagName("h3");
+        public By PreviewHeadersSectionContainer => By.CssSelector("div.nhsuk-width-container");
         public By AboutSupplierDescription => CustomBy.DataTestId("view-question-data-text-description");
         public By AboutSupplierUrl => CustomBy.DataTestId("view-question-data-link");
-        public By DownloadDocumentLink => CustomBy.DataTestId("view-question-data-link-document-link");
+        public By DownloadDocumentLink => CustomBy.DataTestId("view-question-data-link-document-link", "a");
     }
 }
