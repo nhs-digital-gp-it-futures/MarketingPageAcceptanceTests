@@ -12,6 +12,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.Authority.Capabilities
     public class DisplaySolutionsCapabilities : TestBase
     {
         IEnumerable<SolutionCapabilities> solutionCaps;
+        IEnumerable<SolutionCapabilityEpics> solutionEpics;
 
         public DisplaySolutionsCapabilities(UITest test, ScenarioContext context) : base(test, context)
         {
@@ -20,7 +21,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.Authority.Capabilities
         [Given(@"that Capabilities have been provided for the Solution")]
         public void GivenThatCapabilitiesHaveBeenProvidedForTheSolution()
         {
-            solutionCaps = CapabilitiesGenerator.GenerateListOfSolutionCapabilities(_test.connectionString, _test.solution.Id);
+            GenerateCapabilitiesAndEpics();
             var csv = solutionCaps.ToCsv();
 
             _test.pages.Dashboard.NavigateToSection("Capabilities");
@@ -63,7 +64,18 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.Authority.Capabilities
         [Given(@"that Epics for the Capability are provided")]
         public void GivenThatEpicsForTheCapabilityAreProvided()
         {
+            GenerateCapabilitiesAndEpics();
+            var csv = solutionEpics.ToCsv();
+
+            GivenThatCapabilitiesHaveBeenProvidedForTheSolution();
+
             _context.Pending();
+
+            _test.pages.Dashboard.NavigateToSection("Epics");
+
+            _test.pages.Capabilities.EnterText(csv);
+
+            _test.pages.Common.SectionSaveAndReturn();            
         }
 
         [Then(@"the Epic titles are visible")]
@@ -94,6 +106,12 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.Authority.Capabilities
         public void ThenTheEpicsAreDisplayedAsMustOrMayEpics()
         {
             _context.Pending();
+        }
+
+        private void GenerateCapabilitiesAndEpics(int numCaps = 5)
+        {
+            solutionCaps = CapabilitiesGenerator.GenerateListOfSolutionCapabilities(_test.connectionString, _test.solution.Id, numCaps);
+            solutionEpics = CapabilitiesGenerator.GenerateCapabilityEpics(_test.connectionString, solutionCaps, _test.solution);
         }
     }
 }
