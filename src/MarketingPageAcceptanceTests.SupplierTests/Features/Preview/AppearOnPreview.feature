@@ -28,6 +28,7 @@ Scenario Outline: Appear on Preview - Client Application Types
 	| Browser based           | Mobile responsive                                   |
 	| Browser based           | Mobile first approach                               |
 	| Browser based           | Plug-ins or extensions required                     |
+	| Browser based           | Additional information about plug-ins or extensions |
 	| Browser based           | Minimum connection speed                            |
 	| Browser based           | Screen resolution and aspect ratio                  |
 	| Browser based           | Hardware requirements                               |
