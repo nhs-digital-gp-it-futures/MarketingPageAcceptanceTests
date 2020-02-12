@@ -18,7 +18,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         internal static Dictionary<string, string> BrowserSections = new Dictionary<string, string>()
         {
             { "Browsers supported", "\"BrowsersSupported\":[\"Google Chrome\"],\"MobileResponsive\":true,"},
-            { "Plug-ins or extensions", "\"Plugins\":{\"Required\":false,\"AdditionalInformation\":\"\"}," },
+            { "Plug-ins or extensions", "\"Plugins\":{\"Required\":false,\"AdditionalInformation\":\"Plugins additional info\"}," },
             { "Connectivity and resolution", "\"MinimumConnectionSpeed\":\"1Mbps\",\"MinimumDesktopResolution\":\"21:9-2560 x 1080\","},
             { "Mobile first", "\"MobileFirstDesign\":true" },
             { "Hardware requirements",  "\"HardwareRequirements\":\"Hardware Requirements\","},
