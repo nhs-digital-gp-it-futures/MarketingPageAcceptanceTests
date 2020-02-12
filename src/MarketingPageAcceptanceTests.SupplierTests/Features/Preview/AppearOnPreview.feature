@@ -24,15 +24,15 @@ Scenario Outline: Appear on Preview - Client Application Types
 
 	Examples:
 	| Section                 | SubSection                                          |
-	| Browser based           | Supported browser types                             |
-	| Browser based           | Mobile responsive                                   |
-	| Browser based           | Mobile first approach                               |
-	| Browser based           | Plug-ins or extensions required                     |
-	| Browser based           | Additional information about plug-ins or extensions |
-	| Browser based           | Minimum connection speed                            |
-	| Browser based           | Screen resolution and aspect ratio                  |
-	| Browser based           | Hardware requirements                               |
-	| Browser based           | Additional information                              |
+	| Browser-based           | Supported browser types                             |
+	| Browser-based           | Mobile responsive                                   |
+	| Browser-based           | Mobile first approach                               |
+	| Browser-based           | Plug-ins or extensions required                     |
+	| Browser-based           | Additional information about plug-ins or extensions |
+	| Browser-based           | Minimum connection speed                            |
+	| Browser-based           | Screen resolution and aspect ratio                  |
+	| Browser-based           | Hardware requirements                               |
+	| Browser-based           | Additional information                              |
 	| Native mobile or tablet | Supported operating systems                         |
 	| Native mobile or tablet | Description of supported operating systems          |
 	| Native mobile or tablet | Mobile first approach                               |
