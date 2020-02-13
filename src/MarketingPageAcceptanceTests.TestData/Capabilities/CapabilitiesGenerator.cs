@@ -56,6 +56,33 @@ namespace MarketingPageAcceptanceTests.TestData.Capabilities
             return solEpics;
         }
 
+        public static IEnumerable<SolutionCapabilityEpics> GenerateEpicsForCapabilityNotSelected(string connectionString, IEnumerable<SolutionCapabilities> capabilities, Solution solution)
+        {
+            List<SolutionCapabilityEpics> solEpics = new List<SolutionCapabilityEpics>();
+
+            var capabilityIds = new Capability().GetAll(connectionString).ToList();
+
+            var capability = capabilityIds.Where(s => !capabilities.Select(d => d.CapabilityId).ToList().Contains(s.CapabilityRef)).First();
+
+            var epics = new Epic().GetAllByCapabilityId(connectionString, capability.Id);
+
+            foreach (var epic in epics)
+            {
+                solEpics.Add(
+                    new SolutionCapabilityEpics
+                    {
+                        SupplierID = solution.SupplierId,
+                        CapabilityID = capability.CapabilityRef,
+                        EpicID = epic.Id,
+                        Level = LevelConversion[epic.Level],
+                        SolutionID = solution.Id,
+                        EpicFinalAssessmentResult = SelectRandomAssessmentResult()
+                    });
+            }
+
+            return solEpics;
+        }
+
         private static string SelectRandomAssessmentResult()
         {
             var assessmentLevels = new string[] { "Passed", "Failed", "Not Evidenced" };
