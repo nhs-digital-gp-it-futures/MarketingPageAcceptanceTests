@@ -141,7 +141,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps
         {
         }
 
-        [Given(@"(a|an) (Roadmap|NHS Assured Integrations) attachment has been provided for the Solution")]
+        [Given(@"(a|an) (Roadmap|NHS Assured Integrations|Authority Provided Data Document) attachment has been provided for the Solution")]
         public async Task GivenARoadmapAttachmentHasBeenProvidedForTheSolution(string s1, string documentType)
         {
             string fileName;

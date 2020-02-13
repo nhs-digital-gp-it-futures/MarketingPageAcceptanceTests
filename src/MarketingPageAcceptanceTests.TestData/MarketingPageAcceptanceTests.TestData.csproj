@@ -14,10 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Azure\SampleData\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <None Update="Azure\SampleData\Authority Provided Data Document.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Azure\SampleData\integrations.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
