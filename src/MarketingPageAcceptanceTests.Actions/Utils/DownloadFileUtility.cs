@@ -9,7 +9,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
         public static void DownloadFile(string fileName, string downloadPath, string downloadLink)
         {
             downloadLink = DownloadFileUtility.TransformLocalHost(downloadLink);
-            CreateDirectory(downloadPath);
+            System.IO.Directory.CreateDirectory(downloadPath);
             using (WebClient client = new WebClient())
             {
                 client.DownloadFile(downloadLink, Path.Combine(downloadPath, fileName));
@@ -30,11 +30,6 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
         {
             return new FileInfo(filePath1).Length == new FileInfo(filePath2).Length &&
                 File.ReadAllBytes(filePath1).SequenceEqual(File.ReadAllBytes(filePath2));
-        }
-
-        private static void CreateDirectory(string directory)
-        {
-            System.IO.Directory.CreateDirectory(directory);
         }
     }
 }
