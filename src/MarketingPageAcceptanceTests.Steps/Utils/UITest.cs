@@ -30,7 +30,7 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
             connectionString = EnvironmentVariables.GetDbConnectionString();
             azureBlobStorage = new TestData.Azure.AzureBlobStorage(EnvironmentVariables.GetAzureBlobStorageConnectionString());
             defaultAzureBlobStorageContainerName = EnvironmentVariables.GetAzureContainerName();
-            downloadPath = Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory));
+            downloadPath = Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory), "downloads");
 
             solution = GenerateSolution.GenerateNewSolution(checkForUnique: true, connectionString: connectionString);
             solution.Create(connectionString);

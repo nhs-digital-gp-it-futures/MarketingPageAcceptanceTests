@@ -3,14 +3,13 @@
 	I want to download an NHS Assured Integrations attachment
 	So that I can view the NHS Assured Integrations attachment
 
-#Techdebt 4898
-@ignore 
+
 Scenario: Download Integrations Attachment - Download Attachment
 	Given an NHS Assured Integrations attachment has been provided for the Solution
 	And a User previews the Marketing Page
 	And the Integrations section is presented
-	When the User chooses to download the attachment
-	Then the attachment is downloaded
+	When the User chooses to download the Integrations attachment
+	Then the Integrations attachment is downloaded
 	And the attachment contains the Supplier's NHS Assured Integrations
 
 Scenario: Download Integrations Attachment - No File

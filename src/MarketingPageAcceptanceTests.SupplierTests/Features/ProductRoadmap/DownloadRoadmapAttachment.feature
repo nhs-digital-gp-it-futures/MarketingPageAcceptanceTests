@@ -3,15 +3,14 @@
 	I want to download a Roadmap attachment
 	So that I can view the Roadmap attachment
 
-#Techdebt 4898
-#@ignore 
+
 Scenario: Download Roadmap Attachment - Download Attachment
 	Given a Roadmap attachment has been provided for the Solution
 	And a User previews the Marketing Page
 	And the Roadmap section is presented
 	When the User chooses to download the Roadmap attachment
-	#Then the attachment is downloaded
-	#And the attachment contains the Supplier's Roadmap
+	Then the Roadmap attachment is downloaded
+	And the attachment contains the Supplier's Roadmap
 
 Scenario: Download Roadmap Attachment - No File
 	Given a solution has been created with all data complete

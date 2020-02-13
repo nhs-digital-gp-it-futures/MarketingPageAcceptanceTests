@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using FluentAssertions;
 using MarketingPageAcceptanceTests.Actions.Utils;
 using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
@@ -9,6 +10,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ProductRoadmap
     [Binding]
     public class SupplierData_DownloadRoadmapAttachment : TestBase
     {
+        string roadmapDownloadFile = "downloadedRoadmap.pdf";
         public SupplierData_DownloadRoadmapAttachment(UITest test, ScenarioContext context) : base(test, context)
         {
         }
@@ -17,13 +19,23 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ProductRoadmap
         public void WhenTheUserChoosesToDownloadTheRoadmapAttachment()
         {
             var url = _test.pages.PreviewPage.GetDownloadLinkUrlInSection("Roadmap");
-            DownloadFileUtility.DownloadFile("downloadedRoadmap.pdf", _test.downloadPath, url);
+            DownloadFileUtility.DownloadFile(roadmapDownloadFile, _test.downloadPath, url);
         }
-        
+
+        [Then(@"the Roadmap attachment is downloaded")]
+        public void ThenTheRoadmapAttachmentIsDownloaded()
+        {
+            var downloadedFile = Path.Combine(_test.downloadPath, roadmapDownloadFile);
+            File.Exists(downloadedFile).Should().BeTrue();
+        }
+
+
         [Then(@"the attachment contains the Supplier's Roadmap")]
         public void ThenTheAttachmentContainsTheSupplierSRoadmap()
         {
-            _context.Pending();
+            var sourceFile = Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory), "Azure", "SampleData", "roadmap.pdf");
+            var downloadedFile = Path.Combine(_test.downloadPath, roadmapDownloadFile);
+            DownloadFileUtility.CompareTwoFiles(downloadedFile, sourceFile).Should().BeTrue();
         }
     }
 }
