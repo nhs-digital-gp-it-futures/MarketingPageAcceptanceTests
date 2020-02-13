@@ -178,10 +178,18 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public bool DownloadLinkInSectionIsDisplayed(string section)
         {
-            return driver.FindElements(pages.PreviewPage.PreviewHeaders)
-                .Single(s => s.Text.ToLower().Contains(section.ToLower()))
+            return driver.FindElements(pages.PreviewPage.PreviewHeadersSectionContainer)
+                .First(s => s.Text.ToLower().Contains(section.ToLower()))
                 .FindElements(pages.PreviewPage.DownloadDocumentLink)
                 .Count > 0;
+        }
+
+        public string GetDownloadLinkUrlInSection(string section)
+        {
+            return driver.FindElements(pages.PreviewPage.PreviewHeadersSectionContainer)
+                .First(s => s.Text.ToLower().Contains(section.ToLower()))
+                .FindElement(pages.PreviewPage.DownloadDocumentLink)
+                .GetAttribute("href");
         }
     }
 }

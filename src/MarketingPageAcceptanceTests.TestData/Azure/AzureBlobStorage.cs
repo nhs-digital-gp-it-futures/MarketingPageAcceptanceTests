@@ -10,7 +10,7 @@ namespace MarketingPageAcceptanceTests.TestData.Azure
 {
     public sealed class AzureBlobStorage
     {
-        public Dictionary<string, string> SolutionIdsToGuids = new Dictionary<string, string>();
+        public List<string> listOfSolutionIds = new List<string>();
         private List<string> listOfBlobContainerNames = new List<string>();
         private BlobServiceClient blobServiceClient;
 
@@ -21,7 +21,11 @@ namespace MarketingPageAcceptanceTests.TestData.Azure
 
         public async Task InsertFileToStorage(string containerName, string solutionId, string fileName, string fullFilePath)
         {
-            InsertIntoMapping(solutionId);
+            if(!listOfSolutionIds.Contains(solutionId))
+            {
+                listOfSolutionIds.Add(solutionId);
+            }
+
             if (!listOfBlobContainerNames.Contains(containerName))
             {
                 listOfBlobContainerNames.Add(containerName);
@@ -30,7 +34,7 @@ namespace MarketingPageAcceptanceTests.TestData.Azure
             var currentContainer = blobServiceClient.GetBlobContainerClient(containerName);
             currentContainer.CreateIfNotExists();
 
-            var blobClient = currentContainer.GetBlobClient(Path.Combine(SolutionIdsToGuids[solutionId], fileName));
+            var blobClient = currentContainer.GetBlobClient(Path.Combine(solutionId, fileName));
             using var uploadFileStream = File.OpenRead(fullFilePath);
             var response = await blobClient
                 .UploadAsync(uploadFileStream, new BlobHttpHeaders())
@@ -41,7 +45,7 @@ namespace MarketingPageAcceptanceTests.TestData.Azure
 
         public async Task ClearStorage()
         {
-            foreach (var directory in SolutionIdsToGuids.Values)
+            foreach (var directory in listOfSolutionIds)
             {
                 foreach (var container in listOfBlobContainerNames)
                 {
@@ -51,24 +55,6 @@ namespace MarketingPageAcceptanceTests.TestData.Azure
                         await currentContainer.DeleteBlobAsync(blob.Name);
                     }
                 }
-            }
-        }
-
-        //I don't think we need this
-        public string TryToGetGuidFromSolutionId(string solutionId)
-        {
-            if (!SolutionIdsToGuids.TryGetValue(solutionId, out string slnId))
-            {
-                slnId = solutionId;
-            }
-            return slnId;
-        }
-
-        private void InsertIntoMapping(string solutionId)
-        {
-            if (!SolutionIdsToGuids.ContainsKey(solutionId))
-            {
-                SolutionIdsToGuids[solutionId] = Guid.NewGuid().ToString();
             }
         }
     }

@@ -57,6 +57,11 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
             return GetJsonConfigValues("AzureBlobStorageConnectionString", @"UseDevelopmentStorage=true");
         }
 
+        internal static string GetAzureContainerName()
+        {
+            return Environment.GetEnvironmentVariable("CONTAINER_NAME") ?? "container-1";
+        }
+
         private static string GetJsonConfigValues(string section, string defaultValue)
         {
             var path = Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory), "Utils", "tokens.json");

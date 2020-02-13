@@ -13,4 +13,17 @@
     <PackageReference Include="System.Data.SqlClient" Version="4.8.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Azure\SampleData\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Azure\SampleData\integrations.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Azure\SampleData\roadmap.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
