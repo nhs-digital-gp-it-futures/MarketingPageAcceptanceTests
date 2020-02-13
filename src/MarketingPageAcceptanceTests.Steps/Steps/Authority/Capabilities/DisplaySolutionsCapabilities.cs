@@ -108,6 +108,20 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.Authority.Capabilities
             _context.Pending();
         }
 
+        [Given(@"that Epics are provided for Capabilities not provided")]
+        public void GivenThatEpicsAreProvidedForCapabilitiesNotProvided()
+        {
+            GenerateCapabilitiesAndEpics();
+            GivenThatCapabilitiesHaveBeenProvidedForTheSolution();
+
+            var csv = CapabilitiesGenerator.GenerateEpicsForCapabilityNotSelected(_test.connectionString, solutionCaps, _test.solution).ToCsv();
+
+            _test.pages.Dashboard.NavigateToSection("Epics");
+
+            _test.pages.Capabilities.EnterText(csv);
+        }
+
+
         private void GenerateCapabilitiesAndEpics(int numCaps = 5)
         {
             solutionCaps = CapabilitiesGenerator.GenerateListOfSolutionCapabilities(_test.connectionString, _test.solution.Id, numCaps);
