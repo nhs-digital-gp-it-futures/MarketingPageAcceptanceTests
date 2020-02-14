@@ -16,6 +16,14 @@ variables:
 jobs:
   - job : Setup
     steps:
+      - bash: 
+          "curl -i $(MPURL) --fail --connect-timeout 30"
+        displayName: 'Check URL is reachable'    
+    
+
+  - job: SupplierAcceptanceTests
+    dependsOn: Setup
+    steps:
     - task: UseDotNet@2
       displayName: 'Use DotNet Core 3.1.x'
       inputs:
@@ -40,10 +48,6 @@ jobs:
         tokenPrefix: '#{'
         tokenSuffix: '}#'
         emptyValue: 
-
-    - bash: 
-        "curl -i $(MPURL) --fail --connect-timeout 30"
-      displayName: 'Check URL is reachable'
     
     - task: Bash@3
       displayName: Selenium Grid Setup
@@ -53,17 +57,6 @@ jobs:
           docker-compose stop &&
           docker-compose rm -f &&
           docker-compose up --scale chrome=4 --scale firefox=4  -d
-
-  - job: SupplierAcceptanceTests
-    dependsOn: Setup
-    steps:
-    - task: UseDotNet@2
-      displayName: 'Use DotNet Core 3.1.x'
-      inputs:
-        packageType: 'sdk'
-        version: '3.1.x'
-        includePreviewVersions: false
-        installationPath: '$(Agent.ToolsDirectory)'
     - task: DotNetCoreCLI@2
       displayName: "Run Supplier Acceptance Tests"
       inputs:
@@ -81,6 +74,32 @@ jobs:
         version: '3.1.x'
         includePreviewVersions: false
         installationPath: '$(Agent.ToolsDirectory)'
+
+    - task: AzureKeyVault@1
+      inputs:
+        azureSubscription: 'NHSAPP-BuyingCatalogue (Non-Prod)'
+        KeyVaultName: 'gpitfutures-dev-kv'
+        SecretsFilter: "*"
+
+    - task: replacetokens@3
+      inputs:
+        targetFiles: '**/*.json'
+        encoding: 'auto'
+        writeBOM: true
+        actionOnMissing: 'continue'
+        keepToken: true
+        tokenPrefix: '#{'
+        tokenSuffix: '}#'
+        emptyValue: 
+    
+    - task: Bash@3
+      displayName: Selenium Grid Setup
+      inputs:
+        targetType: 'inline'
+        script: |
+          docker-compose stop &&
+          docker-compose rm -f &&
+          docker-compose up --scale chrome=4 --scale firefox=4  -d
     - task: DotNetCoreCLI@2
       displayName: "Run Authority Acceptance Tests"
       inputs:
