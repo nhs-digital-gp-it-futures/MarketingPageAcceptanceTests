@@ -57,16 +57,30 @@ jobs:
   - job: SupplierAcceptanceTests
     dependsOn: Setup
     steps:
-      - task: DotNetCoreCLI@2
-        displayName: "Run Supplier Acceptance Tests"
-        inputs:
-          command: 'test'
-          projects: 'src/MarketingPageAcceptanceTests.SupplierTests/*csproj'
-          arguments: '-v n'        
+    - task: UseDotNet@2
+      displayName: 'Use DotNet Core 3.1.x'
+      inputs:
+        packageType: 'sdk'
+        version: '3.1.x'
+        includePreviewVersions: false
+        installationPath: '$(Agent.ToolsDirectory)'
+    - task: DotNetCoreCLI@2
+      displayName: "Run Supplier Acceptance Tests"
+      inputs:
+        command: 'test'
+        projects: 'src/MarketingPageAcceptanceTests.SupplierTests/*csproj'
+        arguments: '-v n'        
 
   - job: AuthorityAcceptanceTests
     dependsOn: Setup
     steps:
+    - task: UseDotNet@2
+      displayName: 'Use DotNet Core 3.1.x'
+      inputs:
+        packageType: 'sdk'
+        version: '3.1.x'
+        includePreviewVersions: false
+        installationPath: '$(Agent.ToolsDirectory)'
     - task: DotNetCoreCLI@2
       displayName: "Run Authority Acceptance Tests"
       inputs:
