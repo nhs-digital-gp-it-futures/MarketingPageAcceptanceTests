@@ -10,7 +10,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AboutSolution
     [Binding]
     public class SupplierData_DownloadNHSAssuredIntegrationsAttachment : TestBase
     {
-        string integrationsDownloadFile = "downloadedIntegrations.pdf";
+        const string integrationsDownloadFile = "downloadedIntegrations.pdf";
         public SupplierData_DownloadNHSAssuredIntegrationsAttachment(UITest test, ScenarioContext context) : base(test, context)
         {                
         }

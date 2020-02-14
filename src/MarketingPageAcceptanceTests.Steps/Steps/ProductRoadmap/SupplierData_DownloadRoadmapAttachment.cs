@@ -10,7 +10,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ProductRoadmap
     [Binding]
     public class SupplierData_DownloadRoadmapAttachment : TestBase
     {
-        string roadmapDownloadFile = "downloadedRoadmap.pdf";
+        const string roadmapDownloadFile = "downloadedRoadmap.pdf";
         public SupplierData_DownloadRoadmapAttachment(UITest test, ScenarioContext context) : base(test, context)
         {
         }

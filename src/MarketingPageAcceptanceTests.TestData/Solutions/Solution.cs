@@ -15,7 +15,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         public string Version { get; set; }
         public string SolutionVersion => Version;
         public string SupplierId { get; set; } = "100000";
-        public int PublishedStatusId { get; set; } = 3;
+        public int PublishedStatusId { get; set; } = 1;
         public int AuthorityStatusId { get; set; } = 1;
         public int SupplierStatusId { get; set; } = 1;
         public Guid SolutionDetailId { get; set; }

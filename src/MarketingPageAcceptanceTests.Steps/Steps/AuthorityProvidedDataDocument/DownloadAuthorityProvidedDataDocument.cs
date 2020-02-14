@@ -10,7 +10,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AuthorityProvidedDataDocument
     [Binding]
     public class DownloadAuthorityProvidedDataDocument : TestBase
     {
-        string providedDataDocumentDownloadFile = "downloaded Authority Provided Data Document.pdf";
+        const string providedDataDocumentDownloadFile = "downloaded Authority Provided Data Document.pdf";
         public DownloadAuthorityProvidedDataDocument(UITest test, ScenarioContext context) : base(test, context)
         {
         }

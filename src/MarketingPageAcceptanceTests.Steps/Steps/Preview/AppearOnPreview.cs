@@ -21,6 +21,8 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.Preview
             _test.solutionDetail.Update(_test.connectionString);
             var contactDetails = GenerateContactDetails.NewContactDetail(_test.solution.Id);
             contactDetails.Create(_test.connectionString);
+            _test.solution.PublishedStatusId = 3;
+            _test.solution.Update(_test.connectionString);
         }
 
 
