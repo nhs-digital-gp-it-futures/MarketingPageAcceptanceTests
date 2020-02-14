@@ -62,8 +62,7 @@ jobs:
         inputs:
           command: 'test'
           projects: 'src/MarketingPageAcceptanceTests.SupplierTests/*csproj'
-          arguments: '-v n'
-        testRunTitle: 'Run Supplier Acceptance Tests'
+          arguments: '-v n'        
 
   - job: AuthorityAcceptanceTests
     dependsOn: Setup
@@ -74,4 +73,3 @@ jobs:
         command: 'test'
         projects: 'src/MarketingPageAcceptanceTests.AuthorityTests/*csproj'
         arguments: '-v n'
-        testRunTitle: 'Run Authority Acceptance Tests'
