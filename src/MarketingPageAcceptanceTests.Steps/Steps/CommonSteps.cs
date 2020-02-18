@@ -141,8 +141,8 @@ namespace MarketingPageAcceptanceTests.Steps.Steps
         {
         }
 
-        [Given(@"(a|an) (Roadmap|NHS Assured Integrations) attachment has been provided for the Solution")]
-        public async Task GivenARoadmapAttachmentHasBeenProvidedForTheSolution(string s1, string documentType)
+        [Given(@"(a|an) (Roadmap|NHS Assured Integrations|Authority Provided Solution Document) attachment has been provided for the Solution")]
+        public async Task GivenAnAttachmentHasBeenProvidedForTheSolution(string s1, string documentType)
         {
             string fileName;
             if(documentType.Equals("NHS Assured Integrations", StringComparison.OrdinalIgnoreCase))
