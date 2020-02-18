@@ -31,6 +31,8 @@
         internal const string GetCapabilityById = "SELECT * FROM Capability WHERE Id=@Id";
         internal const string GetAllCapabilities = "SELECT * FROM Capability";
 
-        internal const string GetAllEpicsByCapabilityId = "SELECT e.Id,e.Name,e.CapabilityId,c.Name AS Level FROM Epic AS e INNER JOIN CompliancyLevel AS c ON e.CompliancyLevelId = c.Id WHERE e.CapabilityId=@Id";
+        internal const string GetAllEpicsByCapabilityId = "SELECT * FROM Epic WHERE CapabilityId=@Id";
+
+        public static string GetAllEpicsByCapabilityPrefix = "SELECT * FROM Epic WHERE Id LIKE @ID";
     }
 }

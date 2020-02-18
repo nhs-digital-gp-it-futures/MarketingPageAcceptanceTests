@@ -10,11 +10,12 @@ namespace MarketingPageAcceptanceTests.TestData.Capabilities
         public string Name { get; set; }
         public string Level { get; set; }
 
-        internal IEnumerable<Epic> GetAllByCapabilityId(string connectionString, Guid id)
+        internal IEnumerable<Epic> GetAllByCapabilityId(string connectionString, Guid capId)
         {
             var query = Queries.GetAllEpicsByCapabilityId;
 
-            return SqlExecutor.Execute<Epic>(connectionString, query, new { Id = id });
+            return SqlExecutor.Execute<Epic>(connectionString, query, new { Id = capId });
         }
+        
     }
 }

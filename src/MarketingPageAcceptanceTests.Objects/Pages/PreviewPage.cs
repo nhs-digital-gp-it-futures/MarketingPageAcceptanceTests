@@ -40,5 +40,14 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
         public By AboutSupplierDescription => CustomBy.DataTestId("view-question-data-text-description");
         public By AboutSupplierUrl => CustomBy.DataTestId("view-question-data-link");
         public By DownloadDocumentLink => By.CssSelector(".bc-c-data-link.nhsuk-u-margin-bottom-4 a");
+
+        public By CapabilityAccordian => By.ClassName("nhsuk-details__summary-text");
+        public By Capabilities => CustomBy.DataTestId("view-section-capabilities", "summary");
+
+        public By EpicTitles => By.CssSelector(".bc-c-epic-list span");
+
+        public By CapabilityEpicsMaySection => CustomBy.DataTestId("may-tag");
+        public By CapabilityEpicsMustSection => CustomBy.DataTestId("must-tag");
+        public By CapabilityEpicsStatusSymbol => By.CssSelector(".bc-c-epic-list svg");
     }
 }

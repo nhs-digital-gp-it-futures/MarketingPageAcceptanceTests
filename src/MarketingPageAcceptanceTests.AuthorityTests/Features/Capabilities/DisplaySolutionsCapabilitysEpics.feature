@@ -1,8 +1,7 @@
-﻿@ignore
-Feature: Display Solution's Capability's Epics
-	In order to avoid silly mistakes
-	As a math idiot
-	I want to be told the sum of two numbers
+﻿Feature: Display Solution's Capability's Epics
+	As a Public User
+	I want to view a Solution's Capability's Epics
+	So that I know what Epics the Solution has
 
 Scenario: Solution Capability Epics - Must Epics and May Epics
 	Given that Epics for the Capability are provided
@@ -20,4 +19,4 @@ Scenario: Solution Capability Epics - Epic Met or Not Met
 Scenario: Solution Capability Epics - Epic provided for Capability not provided
 	Given that Epics are provided for Capabilities not provided
 	When the User attempts to save
-	Then the User is provided with a validation error message
+	Then the User remains on the Epics page
