@@ -18,7 +18,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ProductRoadmap
         [When(@"the User chooses to download the Roadmap attachment")]
         public void WhenTheUserChoosesToDownloadTheRoadmapAttachment()
         {
-            var url = _test.pages.PreviewPage.GetDownloadLinkUrlInSection("Roadmap");
+            var url = _test.pages.PreviewPage.GetRoadmapDownloadLinkUrl();
             DownloadFileUtility.DownloadFile(roadmapDownloadFile, _test.downloadPath, url);
         }
 

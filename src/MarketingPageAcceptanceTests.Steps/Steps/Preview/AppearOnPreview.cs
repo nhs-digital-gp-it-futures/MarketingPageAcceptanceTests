@@ -38,10 +38,16 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.Preview
             _test.pages.PreviewPage.MainSectionDisplayed(section).Should().BeFalse();
         }
 
-        [Then(@"there is no call to action to download a file in the (Roadmap|Integrations) section")]
-        public void ThenThereIsNoCallToActionToDownloadAFileInTheRoadmapSection(string section)
+        [Then(@"there is no call to action to download a file in the Roadmap section")]
+        public void ThenThereIsNoCallToActionToDownloadAFileInTheRoadmapSection()
         {
-            _test.pages.PreviewPage.DownloadLinkInSectionIsDisplayed(section).Should().BeFalse();
+            _test.pages.PreviewPage.DownloadRoadmapDocumentLinkIsDisplayed().Should().BeFalse();
+        }
+
+        [Then(@"there is no call to action to download a file in the Integrations section")]
+        public void ThenThereIsNoCallToActionToDownloadAFileInTheIntegrationsSection()
+        {
+            _test.pages.PreviewPage.DownloadNhsAssuredIntegrationsDocumentLinkIsDisplayed().Should().BeFalse();
         }
 
     }

@@ -176,19 +176,37 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             driver.FindElement(pages.PreviewPage.AboutSupplierUrl).Displayed.Should().BeTrue();
         }
 
-        public bool DownloadLinkInSectionIsDisplayed(string section)
+        public bool DownloadNhsAssuredIntegrationsDocumentLinkIsDisplayed()
         {
-            return driver.FindElements(pages.PreviewPage.PreviewHeadersSectionContainer)
-                .First(s => s.Text.ToLower().Contains(section.ToLower()))
-                .FindElements(pages.PreviewPage.DownloadDocumentLink)
+            return driver.FindElements(pages.PreviewPage.DownloadNHSAssuredIntegrationsDocumentLink)
                 .Count > 0;
         }
 
-        public string GetDownloadLinkUrlInSection(string section)
+        public bool DownloadRoadmapDocumentLinkIsDisplayed()
         {
-            return driver.FindElements(pages.PreviewPage.PreviewHeadersSectionContainer)
-                .First(s => s.Text.ToLower().Contains(section.ToLower()))
-                .FindElement(pages.PreviewPage.DownloadDocumentLink)
+            return driver.FindElements(pages.PreviewPage.DownloadRoadmapDocumentLink)
+                .Count > 0;
+        }
+
+        public bool DownloadAuthorityProvidedDataDocumentLinkIsDisplayed()
+        {
+            return driver.FindElements(pages.PreviewPage.DownloadAuthorityProvidedDataDocumentLink)
+                .Count > 0;
+        }
+
+        public string GetNhsAssuredIntegrationsDownloadLinkUrl()
+        {
+            return driver.FindElement(pages.PreviewPage.DownloadNHSAssuredIntegrationsDocumentLink)
+                .GetAttribute("href");
+        }
+        public string GetRoadmapDownloadLinkUrl()
+        {
+            return driver.FindElement(pages.PreviewPage.DownloadRoadmapDocumentLink)
+                .GetAttribute("href");
+        }
+        public string GetAuthorityProvidedDataDownloadLinkUrl()
+        {
+            return driver.FindElement(pages.PreviewPage.DownloadAuthorityProvidedDataDocumentLink)
                 .GetAttribute("href");
         }
     }

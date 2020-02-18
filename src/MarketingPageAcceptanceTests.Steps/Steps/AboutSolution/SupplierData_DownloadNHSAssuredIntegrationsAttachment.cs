@@ -18,7 +18,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AboutSolution
         [When(@"the User chooses to download the Integrations attachment")]
         public void WhenTheUserChoosesToDownloadTheIntegrationsAttachment()
         {
-            var url = _test.pages.PreviewPage.GetDownloadLinkUrlInSection("Integrations");
+            var url = _test.pages.PreviewPage.GetNhsAssuredIntegrationsDownloadLinkUrl();
             DownloadFileUtility.DownloadFile(integrationsDownloadFile, _test.downloadPath, url);
         }
 
