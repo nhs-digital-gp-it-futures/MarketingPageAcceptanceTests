@@ -80,10 +80,41 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                 .Click();
         }
 
+        public void OpenCapabilityAccordians()
+        {
+            var capabilities = driver.FindElements(pages.PreviewPage.Capabilities);
+            foreach(var capability in capabilities)
+            {
+                capability.FindElement(pages.PreviewPage.CapabilityAccordian).Click();
+            }
+        }
+
+        public void EpicsHaveStatusSymbols(int expected)
+        {
+            driver.FindElements(pages.PreviewPage.CapabilityEpicsStatusSymbol).Should().HaveCount(expected);
+        }
+
         public IWebElement GetSolutionLink()
         {
             return driver.FindElement(pages.PreviewPage.SolutionDescriptionLinkSection)
                 .FindElement(pages.PreviewPage.SectionDataLink);
+        }
+
+        public void EpicIdsDisplayed(IEnumerable<string> epicIds)
+        {
+            var epicTitles = driver.FindElements(pages.PreviewPage.EpicTitles)
+                .Select(s => s.Text.Split('(')[1].Trim(')')).OrderBy(s => s); // Strip the Epic Id from the string for comparison
+            epicTitles.Should().BeEquivalentTo(epicIds.OrderBy(s =>s));
+        }
+
+        public void MustSectionCount(int expected)
+        {
+            driver.FindElements(pages.PreviewPage.CapabilityEpicsMustSection).Should().HaveCountLessOrEqualTo(expected);
+        }
+
+        public void MaySectionCount(int expected)
+        {
+            driver.FindElements(pages.PreviewPage.CapabilityEpicsMaySection).Should().HaveCountLessOrEqualTo(expected);
         }
 
         /// <returns>list of features</returns>

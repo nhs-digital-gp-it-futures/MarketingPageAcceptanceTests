@@ -12,10 +12,10 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.Authority.Capabilities
     public class DisplaySolutionsCapabilities : TestBase
     {
         IEnumerable<SolutionCapabilities> solutionCaps;
-        IEnumerable<SolutionCapabilityEpics> solutionEpics;
+        IEnumerable<EpicDto> solutionEpics;
 
         public DisplaySolutionsCapabilities(UITest test, ScenarioContext context) : base(test, context)
-        {
+        {   
         }
 
         [Given(@"that Capabilities have been provided for the Solution")]
@@ -62,50 +62,42 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.Authority.Capabilities
         }
 
         [Given(@"that Epics for the Capability are provided")]
+        [Given(@"that Epic Pass or Fail Statuses have been provided for each Epic")]
         public void GivenThatEpicsForTheCapabilityAreProvided()
-        {
-            GenerateCapabilitiesAndEpics();
-            var csv = solutionEpics.ToCsv();
-
+        {   
             GivenThatCapabilitiesHaveBeenProvidedForTheSolution();
-
-            _context.Pending();
+            var csv = solutionEpics.ToCsv();
 
             _test.pages.Dashboard.NavigateToSection("Epics");
 
             _test.pages.Capabilities.EnterText(csv);
 
-            _test.pages.Common.SectionSaveAndReturn();            
+            _test.pages.Common.SectionSaveButtonClick();            
         }
 
         [Then(@"the Epic titles are visible")]
         public void ThenTheEpicTitlesAreVisible()
         {
-            _context.Pending();
-        }
-
-        [Given(@"that Epic Pass or Fail Statuses have been provided for each Epic")]
-        public void GivenThatEpicPassOrFailStatusesHaveBeenProvidedForEachEpic()
-        {
-            _context.Pending();
-        }
+            _test.pages.PreviewPage.OpenCapabilityAccordians();
+        }        
 
         [Then(@"the Epic pass or fail status is visible")]
         public void ThenTheEpicPassOrFailStatusIsVisible()
         {
-            _context.Pending();
+            _test.pages.PreviewPage.EpicsHaveStatusSymbols(solutionEpics.Count());
         }
 
         [Then(@"the Epic IDs are displayed")]
         public void ThenTheEpicIDsAreDisplayed()
         {
-            _context.Pending();
+            _test.pages.PreviewPage.EpicIdsDisplayed(solutionEpics.Select(s => s.Id));
         }
 
         [Then(@"the Epics are displayed as Must or May Epics")]
         public void ThenTheEpicsAreDisplayedAsMustOrMayEpics()
         {
-            _context.Pending();
+            _test.pages.PreviewPage.MustSectionCount(solutionCaps.Count());
+            _test.pages.PreviewPage.MaySectionCount(solutionCaps.Count());            
         }
 
         [Given(@"that Epics are provided for Capabilities not provided")]
@@ -121,11 +113,18 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.Authority.Capabilities
             _test.pages.Capabilities.EnterText(csv);
         }
 
+        [Then(@"the User remains on the Epics page")]
+        public void ThenTheUserRemainsOnTheEpicsPage()
+        {
+            _test.pages.Dashboard.SectionHasTitle("Epics");
+        }
+
+
 
         private void GenerateCapabilitiesAndEpics(int numCaps = 5)
         {
             solutionCaps = CapabilitiesGenerator.GenerateListOfSolutionCapabilities(_test.connectionString, _test.solution.Id, numCaps);
-            solutionEpics = CapabilitiesGenerator.GenerateCapabilityEpics(_test.connectionString, solutionCaps, _test.solution);
+            solutionEpics = CapabilitiesGenerator.GenerateCapabilityEpics(_test.connectionString, solutionCaps);
         }
     }
 }

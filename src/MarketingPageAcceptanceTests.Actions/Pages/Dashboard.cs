@@ -22,7 +22,6 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void PageDisplayed()
         {
             wait.Until(s => s.FindElements(pages.Dashboard.Sections).Count > 0);
-
         }
 
         /// <summary>
@@ -233,6 +232,9 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             }
         }
 
-
+        public void SectionHasTitle(string title)
+        {
+            driver.FindElement(pages.Common.PageTitle).Text.Should().Be(title);
+        }
     }
 }

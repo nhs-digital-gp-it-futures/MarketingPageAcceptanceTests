@@ -12,72 +12,51 @@ namespace MarketingPageAcceptanceTests.TestData.Capabilities
         {
             List<SolutionCapabilities> solCaps = new List<SolutionCapabilities>();
 
-            var capabilityIds = new Capability().GetAll(connectionString) // Get list of Capabilities
-                .OrderBy(s => Guid.NewGuid())                             // Reorder them randomly
-                .Select(s => s.CapabilityRef)
-                .ToList();                                                // Return ordered list of Ref's only
+            var capabilities = new Capability().GetAll(connectionString) // Get list of Capabilities
+                .OrderBy(s => Guid.NewGuid())                             // Reorder them randomly                
+                .ToList();                                                
 
             for (int i = 0; i < length; i++)
             {
-                solCaps.Add(new SolutionCapabilities { SolutionID = solutionId, CapabilityId = capabilityIds[i] });
+                solCaps.Add(new SolutionCapabilities { SolutionID = solutionId, CapabilityId = capabilities[i].CapabilityRef });
             }
 
-            return solCaps;
+            return solCaps.OrderBy(s => s.CapabilityId);
         }
 
-        public static IEnumerable<SolutionCapabilityEpics> GenerateCapabilityEpics(string connectionString, IEnumerable<SolutionCapabilities> capabilities, Solution solution)
+        public static IEnumerable<EpicDto> GenerateCapabilityEpics(string connectionString, IEnumerable<SolutionCapabilities> capabilities)
         {
-            List<SolutionCapabilityEpics> solEpics = new List<SolutionCapabilityEpics>();
+            List<EpicDto> solEpics = new List<EpicDto>();            
 
-            var capabilityIds = new Capability().GetAll(connectionString) // Get list of Capabilities
-                .OrderBy(s => Guid.NewGuid())
-                .Where(s => capabilities.Select(d => d.CapabilityId).Contains(s.CapabilityRef))
-                .ToList();
+            foreach(var capability in capabilities.Select(s => s.CapabilityId))
+            {   
+                var epics = new EpicDto().GetAllByIdPrefix(connectionString, $"{ capability }E%");
 
-            foreach(var capability in capabilityIds)
-            {
-                var epics = new Epic().GetAllByCapabilityId(connectionString, capability.Id);
-
-                foreach(var epic in epics)
+                foreach (var epic in epics)
                 {
-                    solEpics.Add(
-                        new SolutionCapabilityEpics 
-                        { 
-                            SupplierID = solution.SupplierId, 
-                            CapabilityID = capability.CapabilityRef, 
-                            EpicID = epic.Id, 
-                            Level = LevelConversion[epic.Level], 
-                            SolutionID = solution.Id,
-                            EpicFinalAssessmentResult = SelectRandomAssessmentResult()
-                        });
-                }
+                    epic.EpicFinalAssessmentResult = SelectRandomAssessmentResult();
+                    solEpics.Add(epic);
+                }                
             }
 
             return solEpics;
         }
 
-        public static IEnumerable<SolutionCapabilityEpics> GenerateEpicsForCapabilityNotSelected(string connectionString, IEnumerable<SolutionCapabilities> capabilities, Solution solution)
+        public static IEnumerable<EpicDto> GenerateEpicsForCapabilityNotSelected(string connectionString, IEnumerable<SolutionCapabilities> capabilities, Solution solution)
         {
-            List<SolutionCapabilityEpics> solEpics = new List<SolutionCapabilityEpics>();
+            List<EpicDto> solEpics = new List<EpicDto>();
 
-            var capabilityIds = new Capability().GetAll(connectionString).ToList();
+            var allCaps = new Capability().GetAll(connectionString).Select(s => s.CapabilityRef);
 
-            var capability = capabilityIds.Where(s => !capabilities.Select(d => d.CapabilityId).ToList().Contains(s.CapabilityRef)).First();
+            foreach (var capability in capabilities.Select(s => s.CapabilityId))
+            {   
+                var epics = new EpicDto().GetAllByIdPrefix(connectionString, $"{ allCaps.Where(s => s != capability).First() }E%");
 
-            var epics = new Epic().GetAllByCapabilityId(connectionString, capability.Id);
-
-            foreach (var epic in epics)
-            {
-                solEpics.Add(
-                    new SolutionCapabilityEpics
-                    {
-                        SupplierID = solution.SupplierId,
-                        CapabilityID = capability.CapabilityRef,
-                        EpicID = epic.Id,
-                        Level = LevelConversion[epic.Level],
-                        SolutionID = solution.Id,
-                        EpicFinalAssessmentResult = SelectRandomAssessmentResult()
-                    });
+                foreach (var epic in epics)
+                {
+                    epic.EpicFinalAssessmentResult = SelectRandomAssessmentResult();
+                    solEpics.Add(epic);
+                }
             }
 
             return solEpics;
@@ -85,7 +64,7 @@ namespace MarketingPageAcceptanceTests.TestData.Capabilities
 
         private static string SelectRandomAssessmentResult()
         {
-            var assessmentLevels = new string[] { "Passed", "Failed", "Not Evidenced" };
+            var assessmentLevels = new string[] { "Passed", "Not Evidenced" };
 
             return RandomInformation.GetRandomItem(assessmentLevels);
         }
