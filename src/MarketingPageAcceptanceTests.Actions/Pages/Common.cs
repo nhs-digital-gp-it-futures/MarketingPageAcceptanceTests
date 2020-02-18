@@ -100,11 +100,6 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             return linkHref;
         }
 
-        public void SectionSaveButtonClick()
-        {
-            driver.FindElement(pages.Common.SectionSaveAndReturn).Click();
-        }
-
         public void SectionSaveAndReturn()
         {
             Policies.GetPolicy().Execute(() =>

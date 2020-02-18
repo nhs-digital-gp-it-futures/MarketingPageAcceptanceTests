@@ -72,7 +72,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.Authority.Capabilities
 
             _test.pages.Capabilities.EnterText(csv);
 
-            _test.pages.Common.SectionSaveButtonClick();            
+            _test.pages.Common.SectionSaveAndReturn();            
         }
 
         [Then(@"the Epic titles are visible")]
