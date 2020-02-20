@@ -10,7 +10,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AuthorityProvidedDataDocument
     [Binding]
     public class DownloadAuthorityProvidedDataDocument : TestBase
     {
-        const string providedDataDocumentDownloadFile = "downloaded Authority Provided Solution Document.pdf";
+        const string providedDataDocumentDownloadFile = "downloaded authority provided solution document.pdf";
         public DownloadAuthorityProvidedDataDocument(UITest test, ScenarioContext context) : base(test, context)
         {
         }
@@ -32,7 +32,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AuthorityProvidedDataDocument
         [Then(@"the attachment contains the Supplier's Authority Provided Data Document")]
         public void ThenTheAttachmentContainsTheSupplierSAuthorityProvidedDataDocument()
         {
-            var sourceFile = Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory), "Azure", "SampleData", "Authority Provided Solution Document.pdf");
+            var sourceFile = Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory), "Azure", "SampleData", "authority provided solution document.pdf");
             var downloadedFile = Path.Combine(_test.downloadPath, providedDataDocumentDownloadFile);
             DownloadFileUtility.CompareTwoFiles(downloadedFile, sourceFile).Should().BeTrue();
         }
