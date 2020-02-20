@@ -37,7 +37,7 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
 
         internal static (string serverUrl, string databaseName, string dbUser, string dbPassword) GetDbConnectionDetails()
         {
-            var serverUrl = Environment.GetEnvironmentVariable("SERVERURL") ?? "127.0.0.1,1433";
+            var serverUrl = Environment.GetEnvironmentVariable("SERVERURL") ?? "127.0.0.1,1450";
             var databaseName = Environment.GetEnvironmentVariable("DATABASENAME") ?? "buyingcatalogue";
             var dbUser = GetJsonConfigValues("user", "NHSD");
             var dbPassword = GetJsonConfigValues("password", "DisruptTheMarket1!");
