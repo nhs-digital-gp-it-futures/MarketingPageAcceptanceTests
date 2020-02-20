@@ -103,7 +103,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void EpicIdsDisplayed(IEnumerable<string> epicIds)
         {
             var epicTitles = driver.FindElements(pages.PreviewPage.EpicTitles)
-                .Select(s => s.Text.Split('(')[1].Trim(')')).OrderBy(s => s).ToList(); // Strip the Epic Id from the string for comparison
+                .Select(s => s.Text.Split('(').Last().Trim(')')).OrderBy(s => s).ToList(); // Strip the Epic Id from the string for comparison
             
             foreach(var id in epicIds)
             {
