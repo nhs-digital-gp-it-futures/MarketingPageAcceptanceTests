@@ -19,9 +19,9 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeDeskt
             IList<string> subSectionsExpected = new List<string>
             {
                 "Supported operating systems",
-                "Connection details",
-                "Memory, storage, processing and aspect ratio",
-                "Third party components and device capabilities",
+                "Connectivity",
+                "Memory, storage, processing and resolution",
+                "Third-party components and device capabilities",
                 "Hardware requirements",
                 "Additional information"
             };

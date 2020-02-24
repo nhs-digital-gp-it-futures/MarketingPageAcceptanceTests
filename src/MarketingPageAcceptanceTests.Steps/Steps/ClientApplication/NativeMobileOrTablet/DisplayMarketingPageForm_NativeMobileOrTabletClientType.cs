@@ -19,10 +19,10 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeMobil
             IList<string> subSectionsExpected = new List<string>
             {
                 "Supported operating systems",
-                "Mobile first",
+                "Mobile first approach",
                 "Memory and storage",
-                "Connection details",
-                "Third party components and device capabilities",
+                "Connectivity",
+                "Third-party components and device capabilities",
                 "Hardware requirements",
                 "Additional information"
             };

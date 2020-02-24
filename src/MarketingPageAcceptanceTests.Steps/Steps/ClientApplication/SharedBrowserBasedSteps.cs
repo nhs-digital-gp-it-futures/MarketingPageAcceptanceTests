@@ -12,7 +12,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
 
         private void NavigateToBrowserBasedSubDashboard()
         {
-            new SharedClientApplicationTypesSteps(_test, _context).WhenHasNavigatedToTheSpecifiedClientApplicationSub_Form("Browser based");
+            new SharedClientApplicationTypesSteps(_test, _context).WhenHasNavigatedToTheSpecifiedClientApplicationSub_Form("Browser-based");
         }
 
         [Given(@"that an answer has not been provided to the (.*) mandatory question on the (.*) section")]
@@ -37,7 +37,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
         }
 
 
-        [Then(@"the (.*) section is marked as (COMPLETE|INCOMPLETE) on the Browser Based Client Type Sub-Form")]
+        [Then(@"the (.*) section is marked as (COMPLETE|INCOMPLETE) on the Browser-based Client Type Sub-Form")]
         public void ThenTheSectionIsMarkedAsOnTheBrowserBasedClientTypeSub_Form(string section, string status)
         {
             _test.pages.Dashboard.AssertSectionStatus(section, status);

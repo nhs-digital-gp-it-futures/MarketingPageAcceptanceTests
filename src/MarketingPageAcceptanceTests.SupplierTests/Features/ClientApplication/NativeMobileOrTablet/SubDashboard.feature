@@ -13,10 +13,10 @@ Scenario: Native Mobile Dashboard - Section status
 	Given each Native mobile or tablet Sub-Section has a content validation status
 	When the Marketing Page Form is presented
 	Then the Supported operating systems content validation status is displayed
-	And the Mobile first content validation status is displayed
+	And the Mobile first approach content validation status is displayed
 	And the Memory and storage content validation status is displayed
-	And the Connection details content validation status is displayed
-	And the Third party components and device capabilities content validation status is displayed
+	And the Connectivity content validation status is displayed
+	And the Third-party components and device capabilities content validation status is displayed
 	And the Hardware requirements content validation status is displayed
 	And the Additional information content validation status is displayed
 
@@ -36,5 +36,5 @@ Scenario Outline: Native Mobile Dashboard - Main Form - Section marked as Incomp
 	Examples: 
 	| section                     |
 	| Supported operating systems |
-	| Mobile first				  |
+	| Mobile first approach		  |
 	| Memory and storage		  |

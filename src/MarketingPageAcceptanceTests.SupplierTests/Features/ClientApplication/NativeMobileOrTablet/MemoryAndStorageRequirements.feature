@@ -10,13 +10,13 @@ Scenario: Native Mobile or Tablet Memory and Storage - Mandatory - Yes
 	Given the User has entered 300 characters for Memory and storage section on Native mobile or tablet sub dashboard
 	And the User selects a memory requirement
 	When the User attempts to save
-	Then the Memory and storage section is marked as COMPLETE on the Browser Based Client Type Sub-Form
+	Then the Memory and storage section is marked as COMPLETE on the Browser-based Client Type Sub-Form
 
 Scenario: Native Mobile or Tablet Memory and Storage - Data not Saved
 	Given that an answer has not been provided to the Memory and storage mandatory question on the Native mobile or tablet section
 	When the User exits the page
 	Then on the Native mobile or tablet dashboard
-	And the Memory and storage section is marked as INCOMPLETE on the Browser Based Client Type Sub-Form
+	And the Memory and storage section is marked as INCOMPLETE on the Browser-based Client Type Sub-Form
 
 Scenario: Native Mobile or Tablet Memory and Storage - Does not exceed maximum
 	Given the User has entered 300 characters for Memory and storage section on Native mobile or tablet sub dashboard

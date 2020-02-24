@@ -17,7 +17,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.MobileFirst
         public void GivenThatAnAnswerIsProvidedToTheMobileFirstQuestion(string subDashboard)
         {
             _test.pages.Dashboard.NavigateToSection(subDashboard, true);
-            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection("Mobile first");
+            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection("Mobile first approach");
 
             var choice = new Random().Next() > (int.MaxValue / 2) ? "Yes" : "No";
 

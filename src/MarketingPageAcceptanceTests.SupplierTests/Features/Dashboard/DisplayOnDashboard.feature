@@ -33,7 +33,7 @@ Scenario Outline: Display On Dashboard - Sub dashboard sections presented
 
 	Examples:
 	| Section                 |
-	| Browser based           |
+	| Browser-based           |
 	| Native mobile or tablet |
 	| Native desktop          |
 
@@ -66,6 +66,6 @@ Scenario Outline: Display On Dashboard - Sub dashboard section status
 
 		Examples:
 		| Section                 |
-		| Browser based           |
+		| Browser-based           |
 		| Native mobile or tablet |
 		| Native desktop          |

@@ -42,7 +42,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
                 SolutionId = slnId,
                 AboutUrl = faker.Internet.Url(),
                 Features = GenerateFeatures(numFeatures, faker),
-                ClientApplication = ClientApplicationStringBuilder.GetClientAppString(clientApplicationTypes: "Browser based, Native mobile or tablet, Native desktop"),
+                ClientApplication = ClientApplicationStringBuilder.GetClientAppString(clientApplicationTypes: "Browser-based, Native mobile or tablet, Native desktop"),
                 Summary = faker.Commerce.ProductName(),
                 FullDescription = faker.Name.JobTitle(),
                 RoadMap = faker.Rant.Review(),

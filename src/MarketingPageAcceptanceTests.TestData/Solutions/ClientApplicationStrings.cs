@@ -17,30 +17,30 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 
         internal static Dictionary<string, string> BrowserSections = new Dictionary<string, string>()
         {
-            { "Browsers supported", "\"BrowsersSupported\":[\"Google Chrome\"],\"MobileResponsive\":true,"},
-            { "Plug-ins or extensions", "\"Plugins\":{\"Required\":false,\"AdditionalInformation\":\"Plugins additional info\"}," },
+            { "Supported browsers", "\"BrowsersSupported\":[\"Google Chrome\"],\"MobileResponsive\":true,"},
+            { "Plug-ins or extensions required", "\"Plugins\":{\"Required\":false,\"AdditionalInformation\":\"Plugins additional info\"}," },
             { "Connectivity and resolution", "\"MinimumConnectionSpeed\":\"1Mbps\",\"MinimumDesktopResolution\":\"21:9-2560 x 1080\","},
-            { "Mobile first", "\"MobileFirstDesign\":true" },
+            { "Mobile first approach", "\"MobileFirstDesign\":true" },
             { "Hardware requirements",  "\"HardwareRequirements\":\"Hardware Requirements\","},
             {"Additional information",  "\"AdditionalInformation\":\"Additional Information\","}
         };
 
         internal static Dictionary<string, string> NativeMobileSections = new Dictionary<string, string>()
         {
-            { "Mobile first", "\"NativeMobileFirstDesign\":true," },
+            { "Mobile first approach", "\"NativeMobileFirstDesign\":true," },
             { "Supported operating systems", "\"MobileOperatingSystems\":{\"OperatingSystems\":[\"Apple IOS\",\"Android\"],\"OperatingSystemsDescription\":\"Operating System Description\"}," },
             { "Memory and storage", "\"MobileMemoryAndStorage\":{\"MinimumMemoryRequirement\":\"256MB\",\"Description\":\"Additional Storage Requirements\"}," },
             { "Hardware requirements", "\"NativeMobileHardwareRequirements\":\"Hardware Requirements\"," },
             { "Additional information", "\"NativeMobileAdditionalInformation\":\"Additional Information\"}" },
-            { "Connection details",  "\"MobileConnectionDetails\":{\"MinimumConnectionSpeed\":\"1Mbps\",\"ConnectionType\":[\"GPRS\",\"3G\",\"4G\",\"5G\",\"Wifi\"],\"Description\":\"Connection Details Description\"},"},
+            { "Connectivity",  "\"MobileConnectionDetails\":{\"MinimumConnectionSpeed\":\"1Mbps\",\"ConnectionType\":[\"GPRS\",\"3G\",\"4G\",\"5G\",\"Wifi\"],\"Description\":\"Connection Details Description\"},"},
 
         };
 
         internal static Dictionary<string, string> NativeDesktopSections = new Dictionary<string, string>()
         {
             { "Supported operating systems", "\"NativeDesktopOperatingSystemsDescription\":\"Windows 7,8,10\r\nUbuntu\","},
-            { "Connection details", "\"NativeDesktopMinimumConnectionSpeed\":\"0.5Mbps\"," },
-            { "Memory, storage, processing and aspect ratio", "\"NativeDesktopMemoryAndStorage\":{\"MinimumMemoryRequirement\":\"256MB\",\"StorageRequirementsDescription\":\"approximately 10MB, plus additional for cache\",\"MinimumCpu\":\"0.98hz\",\"RecommendedResolution\":\"16:9 - 640 x 360\"}," }
+            { "Connectivity", "\"NativeDesktopMinimumConnectionSpeed\":\"0.5Mbps\"," },
+            { "Memory, storage, processing and resolution", "\"NativeDesktopMemoryAndStorage\":{\"MinimumMemoryRequirement\":\"256MB\",\"StorageRequirementsDescription\":\"approximately 10MB, plus additional for cache\",\"MinimumCpu\":\"0.98hz\",\"RecommendedResolution\":\"16:9 - 640 x 360\"}," }
         };
     }
 }
