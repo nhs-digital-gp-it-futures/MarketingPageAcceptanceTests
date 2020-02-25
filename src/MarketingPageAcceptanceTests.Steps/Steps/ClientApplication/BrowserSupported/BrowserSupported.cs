@@ -18,10 +18,10 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.BrowserSupp
         public void GivenThatAnAnswerIsProvidedToAllQuestions()
         {
             _test.pages.Dashboard.NavigateToSection("Client application type");
-            _test.pages.ClientApplicationTypes.SelectCheckbox("Browser based");
+            _test.pages.ClientApplicationTypes.SelectCheckbox("Browser-based");
             _test.pages.ClientApplicationTypes.SaveAndReturn();
-            _test.pages.Dashboard.NavigateToSection("Browser based", true);
-            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection("Browsers supported");
+            _test.pages.Dashboard.NavigateToSection("Browser-based", true);
+            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection("Supported browsers");
 
             browsersSupportedCount = new Random().Next(1, 8);
             _test.pages.BrowserBasedSections.BrowsersSupported.SelectRandomCheckboxes(browsersSupportedCount);
@@ -40,11 +40,11 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.BrowserSupp
         public void GivenThatAnAnswerIsNotProvidedToBothQuestions()
         {
             _test.pages.Dashboard.NavigateToSection("Client application type");
-            _test.pages.ClientApplicationTypes.SelectCheckbox("Browser based");
+            _test.pages.ClientApplicationTypes.SelectCheckbox("Browser-based");
             _test.pages.ClientApplicationTypes.SaveAndReturn();
-            _test.pages.Dashboard.NavigateToSection("Browser based", true);
+            _test.pages.Dashboard.NavigateToSection("Browser-based", true);
 
-            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection("Browsers supported");
+            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection("Supported browsers");
         }
 
         [StepDefinition(@"a User previews the Marketing Page")]
@@ -77,7 +77,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.BrowserSupp
         [Then(@"the User will be informed that they need to answer the Browsers Supported section before they can submit")]
         public void ThenTheUserWillBeInformedThatTheyNeedToAnswerTheBrowsersSupportedSectionBeforeTheyCanSubmit()
         {
-            _test.pages.Common.ErrorMessageTextDisplayed("Browser based is a mandatory section");
+            _test.pages.Common.ErrorMessageTextDisplayed("Provide mandatory information for browser-based application");
         }
 
         [Then(@"the Section is not saved because it is mandatory to answer both questions")]

@@ -15,7 +15,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
         {
         }
 
-        [Given(@"that a (Browser based|Native mobile or tablet|Native desktop) Client Application Type is selected")]
+        [Given(@"that a (Browser-based|Native mobile or tablet|Native desktop) Client Application Type is selected")]
         public void GivenThatAChosenClientApplicationTypeIsSelected(string clientApplicationType)
         {
             _test.pages.Dashboard.NavigateToSection("Client application type");

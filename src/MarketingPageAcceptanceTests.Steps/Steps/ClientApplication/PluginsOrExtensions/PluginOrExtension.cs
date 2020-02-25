@@ -15,8 +15,8 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.PluginsOrEx
         [Given(@"that an answer is provided to the Plug-ins or extensions mandatory question")]
         public void GivenThatAnAnswerIsProvidedToThePlug_InsOrExtensionsMandatoryQuestion()
         {
-            _test.pages.Dashboard.NavigateToSection("Browser based", true);
-            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection("Plug-ins or extensions");
+            _test.pages.Dashboard.NavigateToSection("Browser-based", true);
+            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection("Plug-ins or extensions required");
 
             var choice = new Random().Next() > (int.MaxValue / 2) ? "Yes" : "No";
 

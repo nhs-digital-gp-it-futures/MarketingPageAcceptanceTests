@@ -9,7 +9,7 @@ Scenario Outline: Client Application Type - Client Application Type Selected
 	Then the selected Client Application Type sub-category is available on the Marketing Page Form
 	Examples: 
 	| chosen |
-	| Browser based |
+	| Browser-based |
 	| Native mobile or tablet |
 	| Native desktop |
 

@@ -17,26 +17,26 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.BrowserBase
         {
         }
 
-        [Then(@"there is a list of Browser Based Client Application Type Sub-Sections")]
+        [Then(@"there is a list of Browser-based Client Application Type Sub-Sections")]
         public void ThenThereIsAListOfBrowserBasedClientApplicationTypeSub_Sections()
         {
             IList<string> subSectionsExpected = new List<string>
             {
-                "Browsers supported",
-                "Plug-ins or extensions",
+                "Supported browsers",
+                "Mobile first approach",
+                "Plug-ins or extensions required",
                 "Connectivity and resolution",
                 "Hardware requirements",
-                "Additional information",
-                "Mobile first"
+                "Additional information"                
             };
 
             _test.pages.BrowserBasedSections.BrowserSubDashboard.GetSections().Should().BeEquivalentTo(subSectionsExpected);
         }
 
-        [Then(@"the Supplier is able to access the Browser Based Client Type Sub-Sections")]
+        [Then(@"the Supplier is able to access the Browser-based Client Type Sub-Sections")]
         public void ThenTheSupplierIsAbleToAccessTheBrowserBasedClientTypeSub_Sections()
         {
-            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection("Browsers supported");
+            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection("Supported browsers");
             _test.pages.Common.GoBackOnePage();
         }
 
@@ -46,7 +46,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.BrowserBase
             _test.pages.BrowserBasedSections.BrowserSubDashboard.SectionsHaveStatusIndicators();
         }
 
-        [Given(@"a Supplier has not saved Mandatory data on all the Browser Based Client Application Type Sub-Sections")]
+        [Given(@"a Supplier has not saved Mandatory data on all the Browser-based Client Application Type Sub-Sections")]
         public void GivenASupplierHasNotSavedMandatoryDataOnAllTheBrowserBasedClientApplicationTypeSub_Sections()
         {
         }

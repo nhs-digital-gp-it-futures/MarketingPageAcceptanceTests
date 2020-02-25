@@ -7,12 +7,12 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
     {
         static readonly Dictionary<string, (string conversion, string clientAppString, Func<string, string> parseString)> clientAppTypes = new Dictionary<string, (string, string, Func<string, string>)>()
         {
-            { "Browser based", ( "browser-based", ClientApplicationStrings.BrowserBasedComplete, ParseBrowserBased ) },
+            { "Browser-based", ( "browser-based", ClientApplicationStrings.BrowserBasedComplete, ParseBrowserBased ) },
             { "Native mobile or tablet", ("native-mobile", ClientApplicationStrings.NativeMobileComplete, ParseNativeMobile) },
             { "Native desktop", ("native-desktop", ClientApplicationStrings.NativeDesktopComplete, ParseNativeDesktop) }
         };
 
-        public static string GetClientAppString(string ignoredSection = null, string clientApplicationTypes = "Browser based")
+        public static string GetClientAppString(string ignoredSection = null, string clientApplicationTypes = "Browser-based")
         {
             List<string> clientAppString = new List<string>();
 

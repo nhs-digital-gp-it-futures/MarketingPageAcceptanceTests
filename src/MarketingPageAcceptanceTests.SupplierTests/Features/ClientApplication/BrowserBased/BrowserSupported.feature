@@ -1,4 +1,4 @@
-﻿Feature: Suppliers - Edit Browser Based Client Type - Browser Supported
+﻿Feature: Suppliers - Edit Browser-based Client Type - Browser Supported
 	As a Supplier
 	I want to edit the Browsers Supported Sub-Section
 	So that I can make sure the information is correct
@@ -6,7 +6,7 @@
 Scenario: Browser Supported - Data Saved
 	Given that an answer is provided to all Browser supported questions
 	When a User saves the page
-	Then the Browsers supported section is marked as COMPLETE on the Browser Based Client Type Sub-Form
+	Then the Supported browsers section is marked as COMPLETE on the Browser-based Client Type Sub-Form
 
 Scenario: Browser Supported - Validation on Submission
 	Given that an answer is not provided to both questions for Browsers supported

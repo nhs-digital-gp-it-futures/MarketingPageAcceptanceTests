@@ -16,7 +16,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.Connectivit
         [Given(@"that a User has provided a value for the Connectivity and resolution Mandatory Information")]
         public void GivenThatAUserHasProvidedAValueForTheConnectivityAndResolutionMandatoryInformation()
         {
-            _test.pages.Dashboard.NavigateToSection("Browser based", true);
+            _test.pages.Dashboard.NavigateToSection("Browser-based", true);
             _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection("Connectivity and resolution");
 
             expectedMinimumConnectionSpeed = "0.5Mbps";

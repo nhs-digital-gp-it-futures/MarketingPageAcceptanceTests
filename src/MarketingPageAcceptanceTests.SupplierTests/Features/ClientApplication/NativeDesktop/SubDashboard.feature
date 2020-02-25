@@ -13,9 +13,9 @@ Scenario: Native Desktop Dashboard - Section status
 	Given each Native desktop Sub-Section has a content validation status
 	When the Marketing Page Form is presented
 	Then the Supported operating systems content validation status is displayed
-	And the Connection details content validation status is displayed
-	And the Memory, storage, processing and aspect ratio content validation status is displayed
-	And the Third party components and device capabilities content validation status is displayed
+	And the Connectivity content validation status is displayed
+	And the Memory, storage, processing and resolution content validation status is displayed
+	And the Third-party components and device capabilities content validation status is displayed
 	And the Hardware requirements content validation status is displayed
 	And the Additional information content validation status is displayed
 
@@ -33,7 +33,7 @@ Scenario Outline: Native Desktop Dashboard - Main Form - Section marked as Incom
 	Then the Native desktop Sub-Section is marked as Incomplete
 
 	Examples: 
-	| section										|
-	| Supported operating systems					|
-	| Connection details							|
-	| Memory, storage, processing and aspect ratio  |
+	| section                                    |
+	| Supported operating systems                |
+	| Connectivity                               |
+	| Memory, storage, processing and resolution |
