@@ -125,8 +125,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// </summary>
         public void NavigateToPreviewPage()
         {
-            wait.Until(s => s.FindElement(pages.Dashboard.PreviewPage).Displayed);
-            wait.Until(s => s.FindElement(pages.Dashboard.PreviewPage).Enabled);
+            wait.Until(s => s.FindElement(pages.Dashboard.PreviewPage).Displayed && s.FindElement(pages.Dashboard.PreviewPage).Enabled);
             driver.FindElement(pages.Dashboard.PreviewPage).Click();
             new PreviewPage(driver).PageDisplayed();
         }
