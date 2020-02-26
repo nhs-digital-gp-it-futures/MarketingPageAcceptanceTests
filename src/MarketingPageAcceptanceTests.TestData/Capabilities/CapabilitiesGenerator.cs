@@ -3,6 +3,7 @@ using MarketingPageAcceptanceTests.TestData.Solutions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using MarketingPageAcceptanceTests.TestData.Utils;
 
 namespace MarketingPageAcceptanceTests.TestData.Capabilities
 {
@@ -34,7 +35,7 @@ namespace MarketingPageAcceptanceTests.TestData.Capabilities
 
                 foreach (var epic in epics)
                 {
-                    epic.EpicFinalAssessmentResult = SelectRandomAssessmentResult();
+                    epic.EpicFinalAssessmentResult = SelectRandomAssessmentResult(AssessmentStatuses(connectionString));
                     solEpics.Add(epic);
                 }                
             }
@@ -50,11 +51,11 @@ namespace MarketingPageAcceptanceTests.TestData.Capabilities
 
             foreach (var capability in capabilities.Select(s => s.CapabilityId))
             {   
-                var epics = new EpicDto().GetAllByIdPrefix(connectionString, $"{ allCaps.Where(s => s != capability).First() }E%");
+                var epics = new EpicDto().GetAllByIdPrefix(connectionString, $"{ allCaps.First(s => s != capability) }E%");
 
                 foreach (var epic in epics)
                 {
-                    epic.EpicFinalAssessmentResult = SelectRandomAssessmentResult();
+                    epic.EpicFinalAssessmentResult = SelectRandomAssessmentResult(AssessmentStatuses(connectionString));
                     solEpics.Add(epic);
                 }
             }
@@ -62,17 +63,16 @@ namespace MarketingPageAcceptanceTests.TestData.Capabilities
             return solEpics;
         }
 
-        private static string SelectRandomAssessmentResult()
+        private static string SelectRandomAssessmentResult(IEnumerable<string> assessmentLevels)
         {
-            var assessmentLevels = new string[] { "Passed", "Not Evidenced" };
-
             return RandomInformation.GetRandomItem(assessmentLevels);
         }
 
-        private static Dictionary<string, string> LevelConversion = new Dictionary<string, string>
+        private static IEnumerable<string> AssessmentStatuses(string connectionString)
         {
-            { "MUST", "Must" },
-            {"MAY", "May" }
-        };
+            var assessmentLevelsQuery = "SELECT Name FROM SolutionEpicStatus";
+
+            return SqlExecutor.Execute<string>(connectionString, assessmentLevelsQuery, null);
+        }
     }
 }
