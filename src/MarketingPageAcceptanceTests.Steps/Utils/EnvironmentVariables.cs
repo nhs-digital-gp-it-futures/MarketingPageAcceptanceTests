@@ -26,9 +26,9 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
 
         internal static string GetUrl()
         {
-            string uri = Environment.GetEnvironmentVariable("MPURL") ?? "http://gpitfutures-bc-mp.buyingcatalogue:3002/supplier/solution/";
+            string uri = Environment.GetEnvironmentVariable("MPURL") ?? GetUri();
             return uri.TrimEnd('/');
-        }
+        }        
 
         internal static string GetBrowser()
         {
@@ -73,6 +73,16 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
                 .FirstOrDefault(s => !s.Contains("#{"));
 
             return string.IsNullOrEmpty(result) ? defaultValue : result;
+        }
+
+        private static string GetUri()
+        {
+            var uri = "http://gpitfutures-bc-mp.buyingcatalogue:3002/supplier/solution/";
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                uri = uri.Replace("gpitfutures-bc-mp.buyingcatalogue", "localhost");
+            }
+            return uri;
         }
     }
 
