@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using FluentAssertions;
 using MarketingPageAcceptanceTests.Actions.Utils;
@@ -19,8 +18,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ProductRoadmap
         [When(@"the User chooses to download the Roadmap attachment")]
         public void WhenTheUserChoosesToDownloadTheRoadmapAttachment()
         {
-            var url = _test.pages.PreviewPage.GetRoadmapDownloadLinkUrl();
-            Trace.WriteLine($"Roadmap Url: {url}");
+            var url = _test.pages.PreviewPage.GetRoadmapDownloadLinkUrl();            
             DownloadFileUtility.DownloadFile(roadmapDownloadFile, _test.downloadPath, url);
         }
 

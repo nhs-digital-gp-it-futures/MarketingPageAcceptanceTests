@@ -31,7 +31,7 @@ namespace MarketingPageAcceptanceTests.TestData.Capabilities
 
             foreach(var capability in capabilities.Select(s => s.CapabilityId))
             {   
-                var epics = new EpicDto().GetAllByIdPrefix(connectionString, $"{ capability }E%");
+                var epics = new EpicDto().GetAllByIdPrefix(connectionString, $"{ capability }E");
 
                 foreach (var epic in epics)
                 {
@@ -51,7 +51,7 @@ namespace MarketingPageAcceptanceTests.TestData.Capabilities
 
             foreach (var capability in capabilities.Select(s => s.CapabilityId))
             {   
-                var epics = new EpicDto().GetAllByIdPrefix(connectionString, $"{ allCaps.First(s => s != capability) }E%");
+                var epics = new EpicDto().GetAllByIdPrefix(connectionString, $"{ allCaps.First(s => s != capability) }E");
 
                 foreach (var epic in epics)
                 {

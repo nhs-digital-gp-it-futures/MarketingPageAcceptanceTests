@@ -14,7 +14,7 @@ namespace MarketingPageAcceptanceTests.TestData.Capabilities
         internal IEnumerable<EpicDto> GetAllByIdPrefix(string connectionString, string id)
         {
             var query = "SELECT * FROM Epic WHERE Id LIKE @ID";
-            return SqlExecutor.Execute<EpicDto>(connectionString, query, new { Id = id });
+            return SqlExecutor.Execute<EpicDto>(connectionString, query, new { Id = id + "%" });
         }
     }
 }
