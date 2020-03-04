@@ -12,13 +12,13 @@ namespace MarketingPageAcceptanceTests.TestData.Capabilities
         public string CapabilityRef { get; set; }
         public Capability Get(string connectionString, Guid Id)
         {
-            var query = Queries.GetCapabilityById;
+            var query = "SELECT * FROM Capability WHERE Id=@Id";
             return SqlExecutor.Execute<Capability>(connectionString, query, new { Id }).Single();        
         }
 
         public IEnumerable<Capability> GetAll(string connectionString)
         {
-            var query = Queries.GetAllCapabilities;
+            var query = "SELECT * FROM Capability";
             return SqlExecutor.Execute<Capability>(connectionString, query, null);
         }
     }

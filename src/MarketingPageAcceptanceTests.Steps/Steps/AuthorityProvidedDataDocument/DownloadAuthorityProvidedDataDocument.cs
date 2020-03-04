@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using FluentAssertions;
 using MarketingPageAcceptanceTests.Actions.Utils;
@@ -19,6 +20,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AuthorityProvidedDataDocument
         public void WhenTheUserChoosesToDownloadTheAuthorityProvidedDataDocument()
         {
             var url = _test.pages.PreviewPage.GetAuthorityProvidedDataDownloadLinkUrl();
+            Trace.WriteLine($"Roadmap Url: {url}");
             DownloadFileUtility.DownloadFile(providedDataDocumentDownloadFile, _test.downloadPath, url);
         }
         

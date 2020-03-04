@@ -22,25 +22,49 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 
         public SolutionDetail Retrieve(string connectionString)
         {
-            var query = Queries.GetSolutionDetail;
+            var query = @"SELECT * from [dbo].[SolutionDetail] where SolutionId=@solutionId";
+
             return SqlExecutor.Execute<SolutionDetail>(connectionString, query, this).Single();
         }
 
         public void Create(string connectionString)
         {
-            var query = Queries.CreateSolutionDetail;
+            var query = @"INSERT INTO SolutionDetail (
+                            Id, 
+                            LastUpdatedBy, 
+                            LastUpdated, 
+                            SolutionId) 
+                        VALUES (
+                            @solutionDetailId, 
+                            @lastUpdatedBy, 
+                            @lastUpdated, 
+                            @solutionId)";
+
             SqlExecutor.Execute<SolutionDetail>(connectionString, query, this);
         }
 
         public void Update(string connectionString)
         {
-            var query = Queries.UpdateSolutionDetail;
+            var query = @"UPDATE SolutionDetail 
+                        SET 
+                            Features=@features, 
+                            ClientApplication=@clientApplication, 
+                            AboutUrl=@aboutUrl, 
+                            Summary=@summary, 
+                            FullDescription=@fullDescription, 
+                            RoadMap=@roadMap, 
+                            Hosting=@hostingTypes, 
+                            IntegrationsUrl=@integrationsUrl, 
+                            ImplementationDetail=@implementationTimescales 
+                        WHERE SolutionId=@solutionId";
+
             SqlExecutor.Execute<SolutionDetail>(connectionString, query, this);
         }
 
         public void Delete(string connectionString)
         {
-            var query = Queries.DeleteSolutionDetail;
+            var query = @"DELETE from SolutionDetail where SolutionId=@solutionId";
+
             SqlExecutor.Execute<SolutionDetail>(connectionString, query, this);
         }
     }

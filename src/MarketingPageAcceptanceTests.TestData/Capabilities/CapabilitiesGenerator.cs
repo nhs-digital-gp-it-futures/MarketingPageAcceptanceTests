@@ -43,7 +43,7 @@ namespace MarketingPageAcceptanceTests.TestData.Capabilities
             return solEpics;
         }
 
-        public static IEnumerable<EpicDto> GenerateEpicsForCapabilityNotSelected(string connectionString, IEnumerable<SolutionCapabilities> capabilities, Solution solution)
+        public static IEnumerable<EpicDto> GenerateEpicsForCapabilityNotSelected(string connectionString, IEnumerable<SolutionCapabilities> capabilities)
         {
             List<EpicDto> solEpics = new List<EpicDto>();
 

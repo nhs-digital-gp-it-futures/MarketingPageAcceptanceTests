@@ -12,7 +12,7 @@ namespace MarketingPageAcceptanceTests.TestData.Capabilities
 
         internal IEnumerable<Epic> GetAllByCapabilityId(string connectionString, Guid capId)
         {
-            var query = Queries.GetAllEpicsByCapabilityId;
+            var query = "SELECT * FROM Epic WHERE CapabilityId=@Id";
 
             return SqlExecutor.Execute<Epic>(connectionString, query, new { Id = capId });
         }

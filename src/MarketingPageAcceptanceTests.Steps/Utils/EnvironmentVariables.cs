@@ -26,7 +26,7 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
 
         internal static string GetUrl()
         {
-            string uri = Environment.GetEnvironmentVariable("MPURL") ?? "http://host.docker.internal:3002/supplier/solution/";
+            string uri = Environment.GetEnvironmentVariable("MPURL") ?? "http://gpitfutures-bc-mp.buyingcatalogue:3002/supplier/solution/";
             return uri.TrimEnd('/');
         }
 

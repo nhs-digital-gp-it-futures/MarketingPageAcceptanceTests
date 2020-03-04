@@ -15,31 +15,48 @@ namespace MarketingPageAcceptanceTests.TestData.ContactDetails
 
         public void Create(string connectionString)
         {
-            var query = Queries.CreateMarketingContact;
+            var query = @"INSERT INTO [MarketingContact] (
+                            SolutionId, 
+                            FirstName, 
+                            LastName, 
+                            Email, 
+                            PhoneNumber, 
+                            Department, 
+                            LastUpdated, 
+                            LastUpdatedBy) 
+                        VALUES(
+                            @solutionId, 
+                            @firstName, 
+                            @lastName, 
+                            @email, 
+                            @phoneNumber, 
+                            @department, 
+                            GETDATE(), 
+                            '00000000-0000-0000-0000-000000000000')";
             SqlExecutor.Execute<ContactDetail>(connectionString, query, this);
         }
 
         public void Delete(string connectionString)
         {
-            var query = Queries.DeleteMarketingContact;
+            var query = "DELETE FROM MarketingContact where SolutionId=@solutionId";
             SqlExecutor.Execute<ContactDetail>(connectionString, query, new { SolutionId });
         }
 
         public IContactDetail Retrieve(string connectionString)
         {
-            var query = Queries.GetMarketingContacts;
+            var query = @"SELECT * FROM MarketingContact WHERE SolutionId=@solutionId";
             return SqlExecutor.Execute<ContactDetail>(connectionString, query, new { SolutionId }).Single();
         }
 
         public IEnumerable<IContactDetail> RetrieveAll(string connectionString)
         {
-            var query = Queries.GetMarketingContacts;
+            var query = @"SELECT * FROM MarketingContact WHERE SolutionId=@solutionId";
             return SqlExecutor.Execute<ContactDetail>(connectionString, query, new { SolutionId });
         }
 
         public int RetrieveCount(string connectionString)
         {
-            var query = Queries.GetNumberOfMarketingContactsForSolution;
+            var query = @"SELECT COUNT(*) FROM [dbo].[MarketingContact] WHERE SolutionId=@solutionId";
             return SqlExecutor.ExecuteScalar(connectionString, query, new { SolutionId });
         }
 

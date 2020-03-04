@@ -24,31 +24,63 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 
         public Solution Retrieve(string connectionString)
         {
-            var query = Queries.GetSolution;
+            var query = "SELECT * from [dbo].[Solution] WHERE Solution.Id=@solutionId";
+
             return SqlExecutor.Execute<Solution>(connectionString, query, this).Single();
         }
 
         public void Create(string connectionString)
         {
-            var query = Queries.CreateNewSolution;
+            var query = @"INSERT INTO Solution (
+                            Id, 
+                            SupplierId, 
+                            Name, 
+                            Version, 
+                            PublishedStatusId, 
+                            AuthorityStatusId, 
+                            SupplierStatusId, 
+                            OnCatalogueVersion, 
+                            LastUpdatedBy, 
+                            LastUpdated) 
+                        VALUES (
+                            @SolutionId, 
+                            @SupplierId, 
+                            @SolutionName, 
+                            @SolutionVersion, 
+                            @PublishedStatusId,
+                            @AuthorityStatusId,
+                            @SupplierStatusId, 
+                            0, 
+                            @LastUpdatedBy, 
+                            @LastUpdated
+                        )";
             SqlExecutor.Execute<Solution>(connectionString, query, this);
         }
 
         public void Update(string connectionString)
         {
-            var query = Queries.UpdateSolution;
+            var query = @"UPDATE Solution 
+                        SET 
+                            SolutionDetailId=@solutionDetailId, 
+                            SupplierId=@supplierId, 
+                            Name=@solutionName, 
+                            Version=@solutionVersion, 
+                            PublishedStatusId=@publishedStatusId,  
+                            AuthorityStatusId=@authorityStatusId, 
+                            SupplierStatusId=@supplierStatusId 
+                        WHERE Id=@solutionId";
             SqlExecutor.Execute<Solution>(connectionString, query, this);
         }
 
         public void Delete(string connectionString)
         {
-            var query = Queries.DeleteSolution;
+            var query = @"DELETE FROM Solution WHERE Id=@solutionId";
             SqlExecutor.Execute<Solution>(connectionString, query, this);
         }
 
         public IEnumerable<string> RetrieveAll(string connectionString)
         {
-            var query = Queries.GetAllSolutions;
+            var query = @"SELECT * FROM [dbo].[Solution]";
 
             return SqlExecutor.Execute<Solution>(connectionString, query, null).Select(s => s.Id);
         }
