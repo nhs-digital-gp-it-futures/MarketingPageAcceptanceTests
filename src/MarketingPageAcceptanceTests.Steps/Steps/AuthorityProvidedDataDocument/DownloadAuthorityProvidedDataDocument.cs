@@ -18,7 +18,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AuthorityProvidedDataDocument
         [When(@"the User chooses to download the Authority Provided Data Document")]
         public void WhenTheUserChoosesToDownloadTheAuthorityProvidedDataDocument()
         {
-            var url = _test.pages.PreviewPage.GetAuthorityProvidedDataDownloadLinkUrl();
+            var url = _test.pages.PreviewPage.GetAuthorityProvidedDataDownloadLinkUrl();            
             DownloadFileUtility.DownloadFile(providedDataDocumentDownloadFile, _test.downloadPath, url);
         }
         

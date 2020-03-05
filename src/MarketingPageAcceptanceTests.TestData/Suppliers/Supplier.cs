@@ -16,31 +16,63 @@ namespace MarketingPageAcceptanceTests.TestData.Suppliers
 
         public void Create(string connectionString)
         {
-            var query = Queries.CreateNewSupplier;
+            var query = @"INSERT INTO Supplier (
+                            Id, 
+                            Name, 
+                            LegalName, 
+                            Summary, 
+                            SupplierUrl, 
+                            LastUpdated, 
+                            LastUpdatedBy) 
+                        VALUES (
+                            @Id, 
+                            @name, 
+                            @legalName, 
+                            @summary, 
+                            @supplierUrl, 
+                            @lastUpdated, 
+                            @lastUpdatedBy)";
             SqlExecutor.Execute<Supplier>(connectionString, query, this);
         }
 
         public Supplier Retrieve(string connectionString)
         {
-            var query = Queries.GetSupplier;
+            var query = @"SELECT * FROM [dbo].[Supplier] WHERE [Id]=@Id";
             return SqlExecutor.Execute<Supplier>(connectionString, query, this).Single();
         }
 
         public Supplier RetrieveSupplierForSolution(string connectionString, string solutionId)
         {
-            var query = Queries.GetSupplierForSolution;
+            var query = @"SELECT 
+                            Supplier.[Id],
+                            Supplier.[Name],
+                            Supplier.[Summary],
+                            Supplier.[SupplierUrl],
+                            Supplier.[LastUpdated],
+                            Supplier.[LastUpdatedBy]
+                        FROM [dbo].[Supplier] 
+                        LEFT JOIN Solution on Solution.SupplierId = Supplier.Id 
+                        WHERE Solution.Id=@solutionId";
             return SqlExecutor.Execute<Supplier>(connectionString, query, new { solutionId }).Single();
         }
 
         public void Update(string connectionString)
         {
-            var query = Queries.UpdateSupplier;
+            var query = @"UPDATE Supplier 
+                        SET 
+                            Name=@name, 
+                            LegalName=@legalName, 
+                            Summary=@summary, 
+                            SupplierUrl=@supplierUrl, 
+                            LastUpdated=@lastUpdated, 
+                            LastUpdatedBy=@lastUpdatedBy 
+                        WHERE Id=@Id";
             SqlExecutor.Execute<Supplier>(connectionString, query, this);
         }
 
         public void Delete(string connectionString)
         {
-            var query = Queries.DeleteSupplier;
+            var query = @"DELETE from Supplier where Id=@Id";
             SqlExecutor.Execute<Supplier>(connectionString, query, this);
         }
     }

@@ -106,7 +106,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.Authority.Capabilities
             GenerateCapabilitiesAndEpics();
             GivenThatCapabilitiesHaveBeenProvidedForTheSolution();
 
-            var csv = CapabilitiesGenerator.GenerateEpicsForCapabilityNotSelected(_test.connectionString, solutionCaps, _test.solution).ToCsv();
+            var csv = CapabilitiesGenerator.GenerateEpicsForCapabilityNotSelected(_test.connectionString, solutionCaps).ToCsv();
 
             _test.pages.Dashboard.NavigateToSection("Epics");
 

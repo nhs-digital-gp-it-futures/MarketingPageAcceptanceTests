@@ -46,7 +46,7 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
         public By CapabilityAccordian => By.ClassName("nhsuk-details__summary-text");
         public By Capabilities => CustomBy.DataTestId("view-section-capabilities", "summary");
 
-        public By EpicTitles => By.CssSelector(".bc-c-epic-list span");
+        public By EpicTitles => By.CssSelector(".bc-c-epic-list li span");
 
         public By CapabilityEpicsMaySection => CustomBy.DataTestId("may-tag");
         public By CapabilityEpicsMustSection => CustomBy.DataTestId("must-tag");

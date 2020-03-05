@@ -18,13 +18,13 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
             Driver = GetBrowser(browser, hubUrl);
         }
 
-        private IWebDriver GetBrowser(string browser, string huburl)
+        private IWebDriver GetBrowser(string browser, string hubUrl)
         {
             IWebDriver driver;
 
             if (System.Diagnostics.Debugger.IsAttached)
             {
-                driver = GetLocalChromeDriver();
+                driver = LocalChromeDriver();
             }
             else
             {
@@ -32,15 +32,15 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
                 {
                     case "chrome":
                     case "googlechrome":
-                        driver = GetChromeDriver(huburl);
+                        driver = ChromeDriver(hubUrl);
                         break;
                     case "firefox":
                     case "ff":
                     case "mozilla":
-                        driver = GetFirefoxDriver(huburl);
+                        driver = FirefoxDriver(hubUrl);
                         break;
                     case "chrome-local":
-                        driver = GetLocalChromeDriver();
+                        driver = LocalChromeDriver();
                         break;
                     default:
                         throw new WebDriverException($"Browser {browser} not supported");
@@ -50,7 +50,7 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
             return driver;
         }
 
-        private static IWebDriver GetLocalChromeDriver()
+        private static IWebDriver LocalChromeDriver()
         {
             var options = new ChromeOptions();
             options.AddArguments("start-maximized", "no-sandbox", "auto-open-devtools-for-tabs");
@@ -58,22 +58,22 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
             return new ChromeDriver(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory), options);
         }
 
-        private static IWebDriver GetChromeDriver(string hubURL)
+        private static IWebDriver ChromeDriver(string hubURL)
         {
             var options = new ChromeOptions();
             options.AddArguments("headless", "window-size=1920,1080", "no-sandbox", "disable-dev-shm-usage");
 
-            return GetRemoteDriver(new Uri(hubURL), options);
+            return RemoteDriver(new Uri(hubURL), options);
         }
 
-        private static IWebDriver GetFirefoxDriver(string hubURL)
+        private static IWebDriver FirefoxDriver(string hubURL)
         {
             var options = new FirefoxOptions();
             options.AddArguments("headless", "window-size=1920,1080", "no-sandbox");
 
-            return GetRemoteDriver(new Uri(hubURL), options);
+            return RemoteDriver(new Uri(hubURL), options);
         }
-        private static IWebDriver GetRemoteDriver(Uri uri, DriverOptions options)
+        private static IWebDriver RemoteDriver(Uri uri, DriverOptions options)
         {
             IWebDriver driver = null;
 
