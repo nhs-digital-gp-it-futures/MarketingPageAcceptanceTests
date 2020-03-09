@@ -8,14 +8,14 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
     {
         public NativeDesktopOperatingSystems(IWebDriver driver) : base(driver)
         {
-
         }
 
         public void TextAreaSendText(int characters)
         {
             var text = RandomInformation.RandomString(characters);
 
-            driver.FindElement(pages.NativeDesktopSections.SupportedOperatingSystems.OperatingSystemsDescription).SendKeys(text);
+            driver.FindElement(pages.NativeDesktopSections.SupportedOperatingSystems.OperatingSystemsDescription)
+                .SendKeys(text);
         }
     }
 }

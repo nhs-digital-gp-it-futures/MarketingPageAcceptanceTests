@@ -1,6 +1,6 @@
-﻿using FluentAssertions;
+﻿using System.Collections.Generic;
+using FluentAssertions;
 using MarketingPageAcceptanceTests.Steps.Utils;
-using System.Collections.Generic;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeDesktop
@@ -8,9 +8,9 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeDeskt
     [Binding]
     public class DisplayMarketingPageForm_NativeDesktopClientType : TestBase
     {
-        public DisplayMarketingPageForm_NativeDesktopClientType(UITest test, ScenarioContext context) : base(test, context)
+        public DisplayMarketingPageForm_NativeDesktopClientType(UITest test, ScenarioContext context) : base(test,
+            context)
         {
-
         }
 
         [Then(@"there is a list of Native Desktop Client Application Type Sub-Sections")]
@@ -26,7 +26,8 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeDeskt
                 "Additional information"
             };
 
-            _test.pages.BrowserBasedSections.BrowserSubDashboard.GetSections().Should().BeEquivalentTo(subSectionsExpected);
+            _test.Pages.BrowserBasedSections.BrowserSubDashboard.GetSections().Should()
+                .BeEquivalentTo(subSectionsExpected);
         }
     }
 }

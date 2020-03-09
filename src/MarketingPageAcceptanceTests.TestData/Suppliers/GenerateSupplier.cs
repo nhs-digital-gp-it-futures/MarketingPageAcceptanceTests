@@ -8,7 +8,7 @@ namespace MarketingPageAcceptanceTests.TestData.Suppliers
         {
             var faker = new Faker();
             var id = faker.Random.Int(900000, 999999).ToString();
-            Supplier supplier = new Supplier()
+            var supplier = new Supplier
             {
                 Id = id,
                 Name = faker.Company.CompanyName(),

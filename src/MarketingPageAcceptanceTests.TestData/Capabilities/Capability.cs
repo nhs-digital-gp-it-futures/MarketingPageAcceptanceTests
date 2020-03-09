@@ -1,7 +1,7 @@
-﻿using MarketingPageAcceptanceTests.TestData.Utils;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MarketingPageAcceptanceTests.TestData.Utils;
 
 namespace MarketingPageAcceptanceTests.TestData.Capabilities
 {
@@ -10,10 +10,11 @@ namespace MarketingPageAcceptanceTests.TestData.Capabilities
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string CapabilityRef { get; set; }
+
         public Capability Get(string connectionString, Guid Id)
         {
             var query = "SELECT * FROM Capability WHERE Id=@Id";
-            return SqlExecutor.Execute<Capability>(connectionString, query, new { Id }).Single();        
+            return SqlExecutor.Execute<Capability>(connectionString, query, new {Id}).Single();
         }
 
         public IEnumerable<Capability> GetAll(string connectionString)

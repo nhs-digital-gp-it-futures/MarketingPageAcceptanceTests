@@ -15,7 +15,7 @@ namespace MarketingPageAcceptanceTests.SupplierTests.Utils
         {
             _test.UserType = "authority";
             _test.SetUrl();
-            _test.GoToUrl();            
+            _test.GoToUrl();
         }
     }
 }

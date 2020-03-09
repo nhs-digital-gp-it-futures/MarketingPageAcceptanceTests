@@ -1,6 +1,6 @@
-﻿using Polly;
-using System;
+﻿using System;
 using System.Data.SqlClient;
+using Polly;
 
 namespace MarketingPageAcceptanceTests.TestData.Utils
 {

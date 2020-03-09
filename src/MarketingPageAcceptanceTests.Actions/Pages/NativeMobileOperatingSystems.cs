@@ -1,7 +1,7 @@
-﻿using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+﻿using System.Collections.Generic;
+using MarketingPageAcceptanceTests.Actions.Pages.Utils;
 using MarketingPageAcceptanceTests.TestData.Information;
 using OpenQA.Selenium;
-using System.Collections.Generic;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
@@ -13,19 +13,18 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void SelectCheckboxes(int numberToSelect)
         {
-            IList<IWebElement> checkboxes = driver.FindElements(pages.NativeMobileSections.SupportedOperatingSystems.OperatingSystems);
+            IList<IWebElement> checkboxes =
+                driver.FindElements(pages.NativeMobileSections.SupportedOperatingSystems.OperatingSystems);
 
-            for (int i = 0; i < numberToSelect; i++)
-            {
-                checkboxes[i].Click();
-            }
+            for (var i = 0; i < numberToSelect; i++) checkboxes[i].Click();
         }
 
         public void TextAreaSendText(int characters)
         {
             var text = RandomInformation.RandomString(characters);
 
-            driver.FindElement(pages.NativeMobileSections.SupportedOperatingSystems.OperatingSystemsDescription).SendKeys(text);
+            driver.FindElement(pages.NativeMobileSections.SupportedOperatingSystems.OperatingSystemsDescription)
+                .SendKeys(text);
         }
     }
 }

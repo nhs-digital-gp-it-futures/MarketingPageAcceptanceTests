@@ -1,23 +1,24 @@
-﻿using FluentAssertions;
-using MarketingPageAcceptanceTests.Actions.Pages.Utils;
-using OpenQA.Selenium;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
+using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+using OpenQA.Selenium;
 using static MarketingPageAcceptanceTests.Actions.Utils.ElementExtensions;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
     public sealed class Dashboard : PageAction
     {
-        public IDictionary<string, int> SectionNameToNumOfMandatoryFields { get; internal set; }
-
         public Dashboard(IWebDriver driver) : base(driver)
         {
             SectionNameToNumOfMandatoryFields = new Dictionary<string, int>();
         }
 
+        public IDictionary<string, int> SectionNameToNumOfMandatoryFields { get; internal set; }
+
         /// <summary>
-        /// Ensure the Marketing Page Dashboard is displayed by checking that some Dashboard Sections are displayed
+        ///     Ensure the Marketing Page Dashboard is displayed by checking that some Dashboard Sections are displayed
         /// </summary>
         public void PageDisplayed()
         {
@@ -25,7 +26,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         }
 
         /// <summary>
-        /// Ensure that each dashboard section contains a status block
+        ///     Ensure that each dashboard section contains a status block
         /// </summary>
         public void AllSectionsContainStatus()
         {
@@ -33,12 +34,8 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
             // Assert that each section has a status displayed (does not consider the content of the status)
             foreach (var section in sections)
-            {
                 if (!section.ContainsElement(pages.Dashboard.DefaultMessage))
-                {
                     section.FindElement(pages.Dashboard.Statuses).Displayed.Should().BeTrue();
-                }
-            }
         }
 
         public void SubmitForModeration()
@@ -55,18 +52,15 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                 var sectionTitle = driver.FindElements(pages.Dashboard.SectionTitle)
                     .Single(s => s.Text.Contains(cb));
                 var child = sectionTitle.FindElements(By.CssSelector("a"));
-                if (child.Count > 0)
-                {
-                    resultCount++;
-                }
+                if (child.Count > 0) resultCount++;
             }
+
             return resultCount == checkboxesSelected.Count;
         }
 
         public bool SectionsHaveStatusIndicator(IList<string> checkboxesSelected)
         {
             foreach (var cb in checkboxesSelected)
-            {
                 try
                 {
                     // Find Status indicator on chosen section
@@ -78,28 +72,26 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                 {
                     return false;
                 }
-            }
+
             return true;
         }
 
         public void SectionsContainDefaultMessage(IList<string> allAppTypes, string message)
         {
-            foreach (var section in allAppTypes)
-            {
-                GetSectionDefaultMessage(section).Should().Be(message);
-            }
+            foreach (var section in allAppTypes) GetSectionDefaultMessage(section).Should().Be(message);
         }
 
         public string GetSectionDefaultMessage(string sectionTitle)
         {
             return driver.FindElements(pages.Dashboard.Sections)
                 .Where(s => s.ContainsElement(pages.Dashboard.SectionTitle))
-                .Single(s => s.FindElement(pages.Dashboard.SectionTitle).Text.ToLower().Contains(sectionTitle.ToLower()))
+                .Single(s =>
+                    s.FindElement(pages.Dashboard.SectionTitle).Text.ToLower().Contains(sectionTitle.ToLower()))
                 .FindElement(pages.Dashboard.DefaultMessage).Text;
         }
 
         /// <summary>
-        /// Navigate to a section
+        ///     Navigate to a section
         /// </summary>
         /// <param name="sectionTitle">Case sensitive name of a section</param>
         public void NavigateToSection(string sectionTitle, bool subDashboard = false)
@@ -111,21 +103,21 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                 .Click();
 
             if (subDashboard)
-            {
                 wait.Until(s => s.FindElement(pages.Common.SubDashboardTitle).Text.Contains(sectionTitle));
-            }
             else
-            {
-                wait.Until(s => s.FindElement(pages.Common.PageTitle).Text.Contains(sectionTitle, System.StringComparison.OrdinalIgnoreCase));
-            }
+                wait.Until(s =>
+                    s.FindElement(pages.Common.PageTitle).Text
+                        .Contains(sectionTitle, StringComparison.OrdinalIgnoreCase));
         }
 
         /// <summary>
-        /// Navigate to the PreviewPage
+        ///     Navigate to the PreviewPage
         /// </summary>
         public void NavigateToPreviewPage()
         {
-            wait.Until(s => s.FindElement(pages.Dashboard.PreviewPage).Displayed && s.FindElement(pages.Dashboard.PreviewPage).Enabled);
+            wait.Until(s =>
+                s.FindElement(pages.Dashboard.PreviewPage).Displayed &&
+                s.FindElement(pages.Dashboard.PreviewPage).Enabled);
             driver.FindElement(pages.Dashboard.PreviewPage).Click();
             new PreviewPage(driver).PageDisplayed();
         }
@@ -147,7 +139,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         }
 
         /// <summary>
-        /// Ensure a section has a status of COMPLETE
+        ///     Ensure a section has a status of COMPLETE
         /// </summary>
         /// <param name="sectionName">Case sensitive name of a section</param>
         public void SectionCompleteStatus(string sectionName)
@@ -163,7 +155,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         }
 
         /// <summary>
-        /// Ensure a section has a status of INCOMPLETE
+        ///     Ensure a section has a status of INCOMPLETE
         /// </summary>
         /// <param name="sectionName">Case sensitive name of a section</param>
         public void SectionIncompleteStatus(string sectionName)
@@ -172,7 +164,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         }
 
         /// <summary>
-        /// Helper function that checks for a given status on a named section
+        ///     Helper function that checks for a given status on a named section
         /// </summary>
         /// <param name="sectionName">Case sensitive name of a section</param>
         /// <param name="status">Case sensitive expected status</param>
@@ -185,7 +177,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         }
 
         /// <summary>
-        /// Gets all mandatory sections
+        ///     Gets all mandatory sections
         /// </summary>
         public IList<IWebElement> GetMandatorySections()
         {
@@ -196,7 +188,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         }
 
         /// <summary>
-        /// returns a list of all section names labeled as mandatory in alphabetical order
+        ///     returns a list of all section names labeled as mandatory in alphabetical order
         /// </summary>
         /// <returns></returns>
         public IList<string> GetMandatorySectionsNames()
@@ -211,7 +203,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         private int GetNumberOfRequiredFields()
         {
-            List<IWebElement> fields = driver.FindElements(pages.Common.MandatoryFieldSymbol).ToList();
+            var fields = driver.FindElements(pages.Common.MandatoryFieldSymbol).ToList();
             fields.RemoveAll(field => !field.Text.Trim().Contains("*"));
             return fields.Count;
         }

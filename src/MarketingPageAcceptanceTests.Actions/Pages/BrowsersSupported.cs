@@ -1,7 +1,7 @@
-﻿using MarketingPageAcceptanceTests.Actions.Pages.Utils;
-using OpenQA.Selenium;
-using System;
+﻿using System;
 using System.Linq;
+using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+using OpenQA.Selenium;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
@@ -13,23 +13,20 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void SelectRandomCheckboxes(int browsersSupported)
         {
-            Random rand = new Random();
+            var rand = new Random();
 
             var checkboxes = driver.FindElements(pages.BrowserBasedSections.BrowsersSupported.BrowserCheckboxes);
 
             // randomise order of list
-            var randomised = checkboxes.Select(x => new { value = x, order = rand.Next() })
-            .OrderBy(x => x.order).Select(x => x.value).ToList();
+            var randomised = checkboxes.Select(x => new {value = x, order = rand.Next()})
+                .OrderBy(x => x.order).Select(x => x.value).ToList();
 
-            for (int i = 0; i < browsersSupported; i++)
-            {
-                randomised[i].FindElement(By.TagName("input")).Click();
-            }
+            for (var i = 0; i < browsersSupported; i++) randomised[i].FindElement(By.TagName("input")).Click();
         }
 
         public void SelectRandomRadioButton()
         {
-            Random rand = new Random();
+            var rand = new Random();
 
             var radioButtons = driver.FindElements(pages.BrowserBasedSections.BrowsersSupported.MobileResponsive);
 

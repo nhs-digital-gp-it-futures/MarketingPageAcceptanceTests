@@ -6,12 +6,15 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
     public sealed class PreviewPage
     {
         /// <summary>
-        /// contains Summary, About and Link section
+        ///     contains Summary, About and Link section
         /// </summary>
         public By SolutionDescriptionContainer => CustomBy.DataTestId("preview-solution-description");
+
         public By SolutionDescriptionSummarySection => CustomBy.DataTestId("preview-section-question-summary");
+
         public By SolutionDescriptionAboutSection =>
             CustomBy.DataTestId("preview-section-question-description");
+
         public By SolutionDescriptionLinkSection => CustomBy.DataTestId("preview-section-question-link");
         public By SectionTitle => CustomBy.DataTestId("preview-question-title");
         public By SectionDataText => CustomBy.DataTestId("preview-question-data-text");
@@ -22,7 +25,8 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
         public By PageTitle => CustomBy.DataTestId("view-solution-page-solution-name");
         public By BrowserBasedSectionTitles => CustomBy.DataTestId("view-section-table-row-title");
 
-        public By SupportedBrowsers => CustomBy.DataTestId("preview-section-table-row-supported-browsers", "li > label");
+        public By SupportedBrowsers =>
+            CustomBy.DataTestId("preview-section-table-row-supported-browsers", "li > label");
 
         public By RequiresHscn => CustomBy.DataTestId("view-question-data-text-requires-hscn");
 
@@ -32,16 +36,23 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
         public By ContactPhoneNumber => CustomBy.DataTestId("view-question-data-text-phone-number");
 
         public By ConnectivityRequirement => CustomBy.DataTestId("view-question-data-text-minimum-connection-speed");
-        public By DesktopResolutionRequirement => CustomBy.DataTestId("view-question-data-text-minimum-desktop-resolution");
+
+        public By DesktopResolutionRequirement =>
+            CustomBy.DataTestId("view-question-data-text-minimum-desktop-resolution");
 
         public By ExpandingSections => By.CssSelector("details.nhsuk-details");
         public By PreviewHeaders => By.TagName("h3");
         public By PreviewHeadersSectionContainer => By.CssSelector("div.nhsuk-width-container");
         public By AboutSupplierDescription => CustomBy.DataTestId("view-question-data-text-description");
         public By AboutSupplierUrl => CustomBy.DataTestId("view-question-data-link");
-        public By DownloadNHSAssuredIntegrationsDocumentLink => CustomBy.DataTestId("view-question-data-text-link-authority-integrations", "a");
+
+        public By DownloadNHSAssuredIntegrationsDocumentLink =>
+            CustomBy.DataTestId("view-question-data-text-link-authority-integrations", "a");
+
         public By DownloadRoadmapDocumentLink => CustomBy.DataTestId("view-question-data-link-document-link", "a");
-        public By DownloadAuthorityProvidedDataDocumentLink => CustomBy.DataTestId("view-section-question-document-link", "a");
+
+        public By DownloadAuthorityProvidedDataDocumentLink =>
+            CustomBy.DataTestId("view-section-question-document-link", "a");
 
         public By CapabilityAccordian => By.ClassName("nhsuk-details__summary-text");
         public By Capabilities => CustomBy.DataTestId("view-section-capabilities", "summary");

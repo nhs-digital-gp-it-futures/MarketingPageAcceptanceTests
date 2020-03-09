@@ -13,10 +13,10 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.HardwareReq
         [Given(@"a .* has saved any data in any field within (.*)")]
         public void GivenASupplierHasSavedAnyDataInAnyFieldWithinTheSub_Section(string sectionName)
         {
-            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection(sectionName);
+            _test.Pages.BrowserBasedSections.BrowserSubDashboard.OpenSection(sectionName);
 
-            _test.pages.BrowserBasedSections.HardwareRequirements.EnterText(100);
-            _test.pages.Common.SectionSaveAndReturn();
+            _test.Pages.BrowserBasedSections.HardwareRequirements.EnterText(100);
+            _test.Pages.Common.SectionSaveAndReturn();
         }
     }
 }

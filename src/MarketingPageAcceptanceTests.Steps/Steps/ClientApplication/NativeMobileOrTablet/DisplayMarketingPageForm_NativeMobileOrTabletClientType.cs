@@ -1,6 +1,6 @@
-﻿using FluentAssertions;
+﻿using System.Collections.Generic;
+using FluentAssertions;
 using MarketingPageAcceptanceTests.Steps.Utils;
-using System.Collections.Generic;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeMobileOrTablet
@@ -8,9 +8,9 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeMobil
     [Binding]
     public class DisplayMarketingPageForm_NativeMobileOrTabletClientType : TestBase
     {
-        public DisplayMarketingPageForm_NativeMobileOrTabletClientType(UITest test, ScenarioContext context) : base(test, context)
+        public DisplayMarketingPageForm_NativeMobileOrTabletClientType(UITest test, ScenarioContext context) : base(
+            test, context)
         {
-
         }
 
         [Then(@"there is a list of Native Mobile or Tablet Client Application Type Sub-Sections")]
@@ -27,8 +27,8 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeMobil
                 "Additional information"
             };
 
-            _test.pages.BrowserBasedSections.BrowserSubDashboard.GetSections().Should().BeEquivalentTo(subSectionsExpected);
+            _test.Pages.BrowserBasedSections.BrowserSubDashboard.GetSections().Should()
+                .BeEquivalentTo(subSectionsExpected);
         }
-
     }
 }

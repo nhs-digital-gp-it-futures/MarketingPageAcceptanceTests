@@ -1,11 +1,10 @@
-﻿using Bogus;
+﻿using System;
+using System.Linq;
+using Bogus;
 using FluentAssertions;
+using MarketingPageAcceptanceTests.Steps.Utils;
 using MarketingPageAcceptanceTests.TestData.Solutions;
 using MarketingPageAcceptanceTests.TestData.Suppliers;
-using MarketingPageAcceptanceTests.TestData.Utils;
-using MarketingPageAcceptanceTests.Steps.Utils;
-using System;
-using System.Linq;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation
@@ -13,11 +12,11 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation
     [Binding]
     public class EditAboutSupplier : TestBase
     {
-        string newDescription;
-        string newLink;
+        private string newDescription;
+        private string newLink;
+
         public EditAboutSupplier(UITest test, ScenarioContext context) : base(test, context)
         {
-
         }
 
         [Given(@"the About supplier section does not require Mandatory Data")]
@@ -25,17 +24,17 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation
         {
             _test.supplier.Summary = "";
             _test.supplier.SupplierUrl = "";
-            _test.supplier.Update(_test.connectionString);
-            _test.driver.Navigate().Refresh();
+            _test.supplier.Update(_test.ConnectionString);
+            _test.Driver.Navigate().Refresh();
         }
 
         [Given(@"that About Supplier data has been added to a Solution \(Solution A\)")]
         public void GivenThatAboutSupplierDataHasBeenAddedToASolutionSolutionA()
         {
             _test.supplier = GenerateSupplier.GenerateNewSupplier();
-            _test.supplier.Create(_test.connectionString);
+            _test.supplier.Create(_test.ConnectionString);
             _test.solution.SupplierId = _test.supplier.Id;
-            _test.solution.Update(_test.connectionString);
+            _test.solution.Update(_test.ConnectionString);
             _test.listOfSolutions.Add(_test.solution);
         }
 
@@ -44,13 +43,14 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation
         {
             _test.solution = GenerateSolution.GenerateNewSolution("SolB");
             _test.solution.SupplierId = _test.supplier.Id;
-            _test.solution.Create(_test.connectionString);
+            _test.solution.Create(_test.ConnectionString);
 
-            _test.solutionDetail = GenerateSolutionDetails.GenerateNewSolutionDetail(_test.solution.Id, Guid.NewGuid(), 0, false);
-            _test.solutionDetail.Create(_test.connectionString);
+            _test.solutionDetail =
+                GenerateSolutionDetails.GenerateNewSolutionDetail(_test.solution.Id, Guid.NewGuid(), 0, false);
+            _test.solutionDetail.Create(_test.ConnectionString);
 
             _test.solution.SolutionDetailId = _test.solutionDetail.SolutionDetailId;
-            _test.solution.Update(_test.connectionString);
+            _test.solution.Update(_test.ConnectionString);
 
             _test.listOfSolutions.Add(_test.solution);
         }
@@ -60,36 +60,38 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation
         {
             _test.SetUrl(_test.listOfSolutions.Last().Id, "supplier");
             _test.GoToUrl();
-            _test.pages.Dashboard.NavigateToSection("About supplier");
+            _test.Pages.Dashboard.NavigateToSection("About supplier");
         }
 
         [Then(@"the data will be populated in the About supplier Section")]
         public void ThenTheDataWillBePopulatedInTheAboutSupplierSection()
         {
-            _test.pages.AboutSupplier.GetDescriptionText().Should().Be(_test.supplier.Summary);
-            _test.pages.AboutSupplier.GetLinkText().Should().Be(_test.supplier.SupplierUrl);
+            _test.Pages.AboutSupplier.GetDescriptionText().Should().Be(_test.supplier.Summary);
+            _test.Pages.AboutSupplier.GetLinkText().Should().Be(_test.supplier.SupplierUrl);
         }
 
         [When(@"the About Supplier description data is changed for Solution B")]
         public void WhenTheAboutSupplierDescriptionDataIsChangedForSolutionB()
         {
-            newDescription = _test.pages.BrowserBasedSections.HardwareRequirements.EnterText(100);
-            _test.pages.Common.SectionSaveAndReturn();
+            newDescription = _test.Pages.BrowserBasedSections.HardwareRequirements.EnterText(100);
+            _test.Pages.Common.SectionSaveAndReturn();
         }
 
         [When(@"the About Supplier link data is changed for Solution B")]
         public void WhenTheAboutSupplierLinkDataIsChangedForSolutionB()
         {
             newLink = new Faker().Internet.Url();
-            _test.pages.SolutionDescription.LinkAddText(0, newLink);
-            _test.pages.Common.SectionSaveAndReturn();
+            _test.Pages.SolutionDescription.LinkAddText(0, newLink);
+            _test.Pages.Common.SectionSaveAndReturn();
         }
 
         [Then(@"the About Supplier data is changed for Solution A as well as for Solution B")]
         public void ThenTheAboutSupplierDataIsChangedForSolutionAAsWellAsForSolutionB()
         {
-            Supplier supplierForSolutionA = new Supplier().RetrieveSupplierForSolution(_test.connectionString,_test.listOfSolutions[0].Id);
-            Supplier supplierForSolutionB = new Supplier().RetrieveSupplierForSolution(_test.connectionString, _test.listOfSolutions[1].Id);
+            var supplierForSolutionA =
+                new Supplier().RetrieveSupplierForSolution(_test.ConnectionString, _test.listOfSolutions[0].Id);
+            var supplierForSolutionB =
+                new Supplier().RetrieveSupplierForSolution(_test.ConnectionString, _test.listOfSolutions[1].Id);
 
             if (newDescription != null)
                 supplierForSolutionA.Summary.Should().Be(newDescription);
@@ -98,7 +100,5 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation
 
             supplierForSolutionA.Should().BeEquivalentTo(supplierForSolutionB);
         }
-
-
     }
 }

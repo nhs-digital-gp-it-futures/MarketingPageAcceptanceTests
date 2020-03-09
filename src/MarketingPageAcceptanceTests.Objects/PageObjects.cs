@@ -1,4 +1,5 @@
 ﻿using MarketingPageAcceptanceTests.Objects.Collections;
+using MarketingPageAcceptanceTests.Objects.Pages;
 
 namespace MarketingPageAcceptanceTests.Objects
 {
@@ -8,40 +9,40 @@ namespace MarketingPageAcceptanceTests.Objects
         {
             Pages = new PageCollection
             {
-                Dashboard = new Pages.Dashboard(),
-                EditFeatures = new Pages.EditFeatures(),
-                SolutionDescription = new Pages.SolutionDescription(),
-                Common = new Pages.Common(),
-                PreviewPage = new Pages.PreviewPage(),
-                ClientApplicationTypes = new Pages.ClientApplicationTypes(),
-                BrowserBasedDashboard = new Pages.BrowserBasedDashboard(),
-                BrowserBasedSections = new BrowserBasedSections()
+                Dashboard = new Dashboard(),
+                EditFeatures = new EditFeatures(),
+                SolutionDescription = new SolutionDescription(),
+                Common = new Common(),
+                PreviewPage = new PreviewPage(),
+                ClientApplicationTypes = new ClientApplicationTypes(),
+                BrowserBasedDashboard = new BrowserBasedDashboard(),
+                BrowserBasedSections = new BrowserBasedSections
                 {
-                    BrowsersSupported = new Pages.BrowsersSupported(),
-                    PluginsOrExtensions = new Pages.PluginsOrExtensions(),
-                    HardwareRequirements = new Pages.HardwareRequirements(),
-                    ConnectivityAndResolution = new Pages.ConnectivityAndResolution(),
-                    MobileFirst = new Pages.MobileFirst(),
+                    BrowsersSupported = new BrowsersSupported(),
+                    PluginsOrExtensions = new PluginsOrExtensions(),
+                    HardwareRequirements = new HardwareRequirements(),
+                    ConnectivityAndResolution = new ConnectivityAndResolution(),
+                    MobileFirst = new MobileFirst()
                 },
-                NativeMobileSections = new NativeMobileSections()
+                NativeMobileSections = new NativeMobileSections
                 {
-                    SupportedOperatingSystems = new Pages.SupportedOperatingSystems(),
-                    MemoryAndStorage = new Pages.MemoryAndStorage(),
-                    ThirdPartyComponentsAndDevices = new Pages.ThirdPartyComponentsAndDevices()
+                    SupportedOperatingSystems = new SupportedOperatingSystems(),
+                    MemoryAndStorage = new MemoryAndStorage(),
+                    ThirdPartyComponentsAndDevices = new ThirdPartyComponentsAndDevices()
                 },
-                NativeDesktopSections = new NativeDesktopSections()
+                NativeDesktopSections = new NativeDesktopSections
                 {
-                    SupportedOperatingSystems = new Pages.SupportedOperatingSystems(),
-                    MemoryAndStorage = new Pages.NativeDesktopMemoryStorage()
+                    SupportedOperatingSystems = new SupportedOperatingSystems(),
+                    MemoryAndStorage = new NativeDesktopMemoryStorage()
                 },
-                HostingTypeSections = new HostingTypeSections()
+                HostingTypeSections = new HostingTypeSections
                 {
-                    PublicCloud = new Pages.PublicCloud(),
-                    PrivateCloud = new Pages.PrivateCloud()
+                    PublicCloud = new PublicCloud(),
+                    PrivateCloud = new PrivateCloud()
                 },
-                AboutSupplier = new Pages.AboutSupplier(),
-                ContactDetails = new Pages.ContactDetails(),
-                Capabilities = new Pages.Capabilities()
+                AboutSupplier = new AboutSupplier(),
+                ContactDetails = new ContactDetails(),
+                Capabilities = new Capabilities()
             };
         }
 

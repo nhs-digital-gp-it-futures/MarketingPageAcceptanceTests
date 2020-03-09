@@ -15,6 +15,5 @@ namespace MarketingPageAcceptanceTests.Objects.Pages
         public By Contact2PhoneNumber => By.Id("contact-2[phone-number]");
         public By Contact2EmailAddress => By.Id("contact-2[email-address]");
         public By Contact2JobSector => By.Id("contact-2[department-name]");
-
     }
 }

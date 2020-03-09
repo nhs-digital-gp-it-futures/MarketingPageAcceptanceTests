@@ -13,7 +13,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeMobil
         [Given(@"the User selects a memory requirement")]
         public void GivenTheUserSelectsAMemoryRequirement()
         {
-            _test.pages.NativeMobileSections.MemoryAndStorage.SelectRequirementFromList();
+            _test.Pages.NativeMobileSections.MemoryAndStorage.SelectRequirementFromList();
         }
     }
 }

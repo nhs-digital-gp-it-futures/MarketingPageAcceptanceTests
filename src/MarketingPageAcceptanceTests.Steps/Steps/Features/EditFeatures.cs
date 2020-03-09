@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using MarketingPageAcceptanceTests.TestData.Utils;
 using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
 
@@ -17,26 +16,26 @@ namespace MarketingPageAcceptanceTests.Steps
         [Given(@"the Supplier has entered a Feature")]
         public void GivenTheSupplierHasEnteredAFeature()
         {
-            _test.pages.Dashboard.NavigateToSection("Features");
+            _test.Pages.Dashboard.NavigateToSection("Features");
         }
 
         [Given(@"it does not exceed the maximum character count")]
         public void GivenItDoesNotExceedTheMaximumCharacterCount()
         {
-            featureString = _test.pages.EditFeatures.AddTextToFeature(50);
+            featureString = _test.Pages.EditFeatures.AddTextToFeature(50);
         }
 
         [Given(@"it does exceed the maximum character count")]
         public void GivenItDoesExceedTheMaximumCharacterCount()
         {
-            featureString = _test.pages.EditFeatures.AddTextToFeature(101);
+            featureString = _test.Pages.EditFeatures.AddTextToFeature(101);
         }
 
         [Given(@"the Features Section has no Mandatory Data")]
         public void GivenTheFeaturesSectionHasNoMandatoryData()
         {
-            _test.pages.Dashboard.NavigateToSection("Features");
-            _test.pages.EditFeatures.PageDisplayed();
+            _test.Pages.Dashboard.NavigateToSection("Features");
+            _test.Pages.EditFeatures.PageDisplayed();
         }
 
         [Given(@"a Supplier has saved any data on the Features Section")]
@@ -44,33 +43,33 @@ namespace MarketingPageAcceptanceTests.Steps
         {
             GivenItDoesNotExceedTheMaximumCharacterCount();
             WhenTheSupplierAttemptsToSave();
-            _test.pages.Dashboard.PageDisplayed();
+            _test.Pages.Dashboard.PageDisplayed();
         }
 
         [Given(@"a Supplier has not saved any data on the Features Section")]
         public void GivenASupplierHasNotSavedAnyDataOnTheFeaturesSection()
         {
-            _test.pages.EditFeatures.ClearAllFields();
-            _test.pages.EditFeatures.ClickSaveAndReturn();
+            _test.Pages.EditFeatures.ClearAllFields();
+            _test.Pages.EditFeatures.ClickSaveAndReturn();
         }
 
         [When(@"the Supplier attempts to save")]
         public void WhenTheSupplierAttemptsToSave()
         {
-            _test.pages.Common.SectionSaveAndReturn();
+            _test.Pages.Common.SectionSaveAndReturn();
         }
 
         [Then(@"the (.*) is saved")]
         public void ThenTheSectionIsSaved(string section)
         {
-            _test.pages.Dashboard.PageDisplayed();
-            _test.pages.Dashboard.ShouldDisplaySections();
+            _test.Pages.Dashboard.PageDisplayed();
+            _test.Pages.Dashboard.ShouldDisplaySections();
         }
 
         [Then(@"the database contains the Feature Text")]
         public void ThenTheDatabaseContainsTheFeatureText()
         {
-            var features = _test.solutionDetail.Retrieve(_test.connectionString).Features;
+            var features = _test.solutionDetail.Retrieve(_test.ConnectionString).Features;
             features.Should().Contain(featureString);
         }
 
@@ -88,14 +87,14 @@ namespace MarketingPageAcceptanceTests.Steps
         [Then(@"the database does not contain the Feature Text")]
         public void ThenTheDatabaseDoesNotContainTheFeatureText()
         {
-            var features = _test.solutionDetail.Retrieve(_test.connectionString).Features;
+            var features = _test.solutionDetail.Retrieve(_test.ConnectionString).Features;
             features.Should().NotContain(featureString);
         }
 
         [Then(@"the Features Section is marked as (Complete|Incomplete)")]
         public void ThenTheFeaturesSectionIsMarkedAsComplete(string status)
         {
-            _test.pages.Dashboard.AssertSectionStatus("Features", status.ToUpper());
+            _test.Pages.Dashboard.AssertSectionStatus("Features", status.ToUpper());
         }
     }
 }

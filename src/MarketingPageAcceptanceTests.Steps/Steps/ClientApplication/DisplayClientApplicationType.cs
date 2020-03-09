@@ -20,21 +20,20 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
         [Given(@"the Section has a content validation status")]
         public void GivenTheSectionHasAContentValidationStatus()
         {
-            _test.pages.Dashboard.AllSectionsContainStatus();
+            _test.Pages.Dashboard.AllSectionsContainStatus();
         }
 
         [Then(@"there is a list of Marketing Page Form Sections")]
         public void ThenThereIsAListOfMarketingPageFormSections()
         {
-            _test.pages.Dashboard.PageDisplayed();
+            _test.Pages.Dashboard.PageDisplayed();
         }
 
         [Then(@"the Supplier is able to manage the Client Application Type Marketing Page Form Section")]
         public void ThenTheSupplierIsAbleToManageTheClientApplicationTypeMarketingPageFormSection()
         {
-            _test.pages.Dashboard.NavigateToSection("Client application type");
-            _test.pages.ClientApplicationTypes.PageDisplayed().Should().BeTrue();
+            _test.Pages.Dashboard.NavigateToSection("Client application type");
+            _test.Pages.ClientApplicationTypes.PageDisplayed().Should().BeTrue();
         }
-
     }
 }

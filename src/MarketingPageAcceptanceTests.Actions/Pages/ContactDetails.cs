@@ -8,7 +8,6 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
     {
         public ContactDetails(IWebDriver driver) : base(driver)
         {
-
         }
 
         public bool PageDisplayed()
@@ -16,14 +15,12 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             return new Common(driver).PageTitleEquals("Contact details");
         }
 
-        public void EnterAllData(IContactDetail firstContact, IContactDetail secondContact = null, bool clearFirst = false)
+        public void EnterAllData(IContactDetail firstContact, IContactDetail secondContact = null,
+            bool clearFirst = false)
         {
             FirstContactComplete(firstContact, clearFirst);
 
-            if (!(secondContact is null))
-            {
-                SecondContactComplete(secondContact, clearFirst);
-            }
+            if (!(secondContact is null)) SecondContactComplete(secondContact, clearFirst);
         }
 
         private void FirstContactComplete(IContactDetail contact, bool clearFirst)

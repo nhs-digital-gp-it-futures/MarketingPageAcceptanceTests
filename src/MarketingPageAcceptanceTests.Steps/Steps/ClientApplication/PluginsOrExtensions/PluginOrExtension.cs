@@ -1,6 +1,6 @@
-﻿using MarketingPageAcceptanceTests.TestData.Information;
+﻿using System;
 using MarketingPageAcceptanceTests.Steps.Utils;
-using System;
+using MarketingPageAcceptanceTests.TestData.Information;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.PluginsOrExtensions
@@ -15,18 +15,20 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.PluginsOrEx
         [Given(@"that an answer is provided to the Plug-ins or extensions mandatory question")]
         public void GivenThatAnAnswerIsProvidedToThePlug_InsOrExtensionsMandatoryQuestion()
         {
-            _test.pages.Dashboard.NavigateToSection("Browser-based", true);
-            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection("Plug-ins or extensions required");
+            _test.Pages.Dashboard.NavigateToSection("Browser-based", true);
+            _test.Pages.BrowserBasedSections.BrowserSubDashboard.OpenSection("Plug-ins or extensions required");
 
-            var choice = new Random().Next() > (int.MaxValue / 2) ? "Yes" : "No";
+            var choice = new Random().Next() > int.MaxValue / 2 ? "Yes" : "No";
 
-            _test.pages.BrowserBasedSections.PluginsOrExtensions.SelectRadioButton(choice);
+            _test.Pages.BrowserBasedSections.PluginsOrExtensions.SelectRadioButton(choice);
         }
 
         [Given(@"the Supplier has entered Plug-in or extensions description with character count (.*)")]
-        public void GivenTheSupplierHasEnteredPlug_InOrExtensionsDescriptionThatDoesExceedTheMaximumCharacterCount(int count)
+        public void GivenTheSupplierHasEnteredPlug_InOrExtensionsDescriptionThatDoesExceedTheMaximumCharacterCount(
+            int count)
         {
-            _test.pages.BrowserBasedSections.PluginsOrExtensions.EnterPluginInformation(RandomInformation.RandomString(count));
+            _test.Pages.BrowserBasedSections.PluginsOrExtensions.EnterPluginInformation(
+                RandomInformation.RandomString(count));
         }
     }
 }

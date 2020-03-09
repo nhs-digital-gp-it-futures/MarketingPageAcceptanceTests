@@ -2,16 +2,15 @@
 using MarketingPageAcceptanceTests.Actions.Utils;
 using MarketingPageAcceptanceTests.TestData.Information;
 using MarketingPageAcceptanceTests.TestData.Solutions;
-using MarketingPageAcceptanceTests.TestData.Utils;
 using OpenQA.Selenium;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
     public sealed class SolutionDescription : PageAction
     {
-        string summary = "";
-        string description = "";
-        string link = "";
+        private string description = "";
+        private string link = "";
+        private string summary = "";
 
         public SolutionDescription(IWebDriver driver) : base(driver)
         {

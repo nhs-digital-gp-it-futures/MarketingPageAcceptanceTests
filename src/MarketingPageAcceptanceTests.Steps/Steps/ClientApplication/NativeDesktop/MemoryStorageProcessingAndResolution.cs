@@ -10,12 +10,14 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeDeskt
         {
         }
 
-        [Given(@"that Memory, storage, processing and resolution has been completed for Native desktop with (.*) characters")]
-        public void GivenThatMemoryStorageProcessingAndAspectRatioHasBeenCompletedForNativeDesktopWithCharacters(int chars)
+        [Given(
+            @"that Memory, storage, processing and resolution has been completed for Native desktop with (.*) characters")]
+        public void GivenThatMemoryStorageProcessingAndAspectRatioHasBeenCompletedForNativeDesktopWithCharacters(
+            int chars)
         {
-            _test.pages.Dashboard.NavigateToSection("Native desktop", true);
-            _test.pages.Dashboard.NavigateToSection("Memory, storage, processing and resolution");
-            _test.pages.NativeDesktopSections.MemoryAndStorage.CompleteAllFields(chars);
+            _test.Pages.Dashboard.NavigateToSection("Native desktop", true);
+            _test.Pages.Dashboard.NavigateToSection("Memory, storage, processing and resolution");
+            _test.Pages.NativeDesktopSections.MemoryAndStorage.CompleteAllFields(chars);
         }
     }
 }

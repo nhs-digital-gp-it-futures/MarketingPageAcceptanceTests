@@ -8,17 +8,19 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeDeskt
     {
         public EditNativeDesktop_SupportedOperatingSystems(UITest test, ScenarioContext context) : base(test, context)
         {
-
         }
 
-        [Given(@"that a User has provided a value for the mandatory information for (Supported operating systems) section on (Native desktop) sub dashboard")]
-        public void GivenThatAUserHasProvidedAValueForTheMandatoryInformationForSupportedOperatingSystemsSectionOnNativeDesktopSubDashboard(string section, string subDashboard)
+        [Given(
+            @"that a User has provided a value for the mandatory information for (Supported operating systems) section on (Native desktop) sub dashboard")]
+        public void
+            GivenThatAUserHasProvidedAValueForTheMandatoryInformationForSupportedOperatingSystemsSectionOnNativeDesktopSubDashboard(
+                string section, string subDashboard)
         {
-            _test.pages.Dashboard.NavigateToSection(subDashboard, true);
-            _test.pages.BrowserBasedSections.BrowserSubDashboard.OpenSection(section);
+            _test.Pages.Dashboard.NavigateToSection(subDashboard, true);
+            _test.Pages.BrowserBasedSections.BrowserSubDashboard.OpenSection(section);
 
-            _test.pages.NativeDesktopSections.OperatingSystems.TextAreaSendText(501);
-            _test.pages.Common.SectionSaveAndReturn();
+            _test.Pages.NativeDesktopSections.OperatingSystems.TextAreaSendText(501);
+            _test.Pages.Common.SectionSaveAndReturn();
         }
     }
 }

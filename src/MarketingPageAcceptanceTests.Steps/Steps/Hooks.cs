@@ -1,8 +1,6 @@
-﻿using MarketingPageAcceptanceTests.TestData.Solutions;
-using MarketingPageAcceptanceTests.TestData.Utils;
+﻿using System.Threading.Tasks;
 using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
-using System.Threading.Tasks;
 
 namespace MarketingPageAcceptanceTests.Steps.Steps
 {
@@ -16,28 +14,23 @@ namespace MarketingPageAcceptanceTests.Steps.Steps
         [AfterScenario]
         public async Task AfterScenario()
         {
-            _test.driver.Quit();
+            _test.Driver.Quit();
 
-            _test.solution.Delete(_test.connectionString);
+            _test.solution.Delete(_test.ConnectionString);
 
             _test.listOfSolutions.Remove(_test.solution);
             try
             {
-                foreach (Solution solution in _test.listOfSolutions)
-                {
-                    solution.Delete(_test.connectionString);
-                }
+                foreach (var solution in _test.listOfSolutions) solution.Delete(_test.ConnectionString);
             }
             finally
             {
                 _test.listOfSolutions = null;
             }
+
             try
             {
-                if (_test.supplier != null)
-                {
-                    _test.supplier.Delete(_test.connectionString);
-                }
+                if (_test.supplier != null) _test.supplier.Delete(_test.ConnectionString);
             }
             finally
             {

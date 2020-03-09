@@ -7,7 +7,6 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
     {
         public PublicCloud(IWebDriver driver) : base(driver)
         {
-
         }
 
         public void ClickRequiresHscnN3ConnectivityCheckbox()

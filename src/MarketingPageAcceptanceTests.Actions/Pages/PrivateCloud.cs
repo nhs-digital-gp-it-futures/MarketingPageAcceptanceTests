@@ -9,11 +9,11 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
     {
         public PrivateCloud(IWebDriver driver) : base(driver)
         {
-
         }
+
         public void EnterText(int characters)
         {
-            string randomText = RandomInformation.RandomString(characters);
+            var randomText = RandomInformation.RandomString(characters);
             driver.EnterTextViaJS(wait, pages.HostingTypeSections.PrivateCloud.HostingModel, randomText);
         }
     }

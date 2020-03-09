@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
+using MarketingPageAcceptanceTests.Steps.Utils;
 using MarketingPageAcceptanceTests.TestData.ContactDetails;
 using MarketingPageAcceptanceTests.TestData.Information;
-using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation
@@ -9,33 +9,32 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation
     [Binding]
     public class EditContactDetails : TestBase
     {
-        IContactDetail firstContact;
+        private IContactDetail firstContact;
+
         public EditContactDetails(UITest test, ScenarioContext context) : base(test, context)
         {
         }
 
         [Given(@"the (Supplier|Authority User) has entered any Contact Detail")]
-
         public void GivenTheUserHasEnteredAnyContactDetail(string userType)
         {
             _test.SetUrl(userType: userType);
             _test.GoToUrl();
 
-            firstContact = GenerateContactDetails.NewContactDetail(_test.solution.Id);            
+            firstContact = GenerateContactDetails.NewContactDetail(_test.solution.Id);
 
-            _test.pages.Dashboard.NavigateToSection("Contact details");
-            _test.pages.ContactDetails.EnterAllData(firstContact);
+            _test.Pages.Dashboard.NavigateToSection("Contact details");
+            _test.Pages.ContactDetails.EnterAllData(firstContact);
         }
 
         [Given(@"the User has entered two Contact Details")]
-
         public void GivenTheUserHasEnteredTwoContactDetails()
         {
-            firstContact = GenerateContactDetails.NewContactDetail(_test.solution.Id);            
+            firstContact = GenerateContactDetails.NewContactDetail(_test.solution.Id);
             var secondContact = GenerateContactDetails.NewContactDetail(_test.solution.Id);
 
-            _test.pages.Dashboard.NavigateToSection("Contact details");
-            _test.pages.ContactDetails.EnterAllData(firstContact, secondContact);
+            _test.Pages.Dashboard.NavigateToSection("Contact details");
+            _test.Pages.ContactDetails.EnterAllData(firstContact, secondContact);
         }
 
         [Given(@"a User has saved any data on the Contact Details Section")]
@@ -43,7 +42,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation
         {
             GivenTheUserHasEnteredAnyContactDetail("supplier");
 
-            _test.pages.Common.SectionSaveAndReturn();
+            _test.Pages.Common.SectionSaveAndReturn();
         }
 
         [Given(@"the Contact Details does exceed the maximum for both contacts")]
@@ -55,7 +54,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation
             updatedContact1.LastName = RandomInformation.RandomString(36);
             updatedContact2.FirstName = RandomInformation.RandomString(36);
             updatedContact2.LastName = RandomInformation.RandomString(36);
-            _test.pages.ContactDetails.EnterAllData(updatedContact1, updatedContact2, true);
+            _test.Pages.ContactDetails.EnterAllData(updatedContact1, updatedContact2, true);
         }
 
         [Given(@"the Contact Details Section has no Mandatory Data")]
@@ -66,33 +65,33 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation
         [Then(@"the Contact Details Section is marked as Complete")]
         public void ThenTheContactDetailsSectionIsMarkedAsComplete()
         {
-            _test.pages.Dashboard.SectionCompleteStatus("Contact details");
+            _test.Pages.Dashboard.SectionCompleteStatus("Contact details");
         }
 
         [Then(@"the Contact Details Section is marked as Incomplete")]
         public void ThenTheContactDetailsSectionIsMarkedAsIncomplete()
         {
-            _test.pages.Dashboard.SectionIncompleteStatus("Contact details");
+            _test.Pages.Dashboard.SectionIncompleteStatus("Contact details");
         }
 
         [StepDefinition(@"the contact is saved to the database")]
         public void ThenTheContectIsSavedToTheDatabase()
-        {   
-            var dbContact = firstContact.Retrieve(_test.connectionString);
+        {
+            var dbContact = firstContact.Retrieve(_test.ConnectionString);
             dbContact.Should().BeEquivalentTo(firstContact);
         }
 
         [Then(@"there (is|are) (.*) (record|records) in the contact table")]
         public void ThenThereIsRecordInTheContactTable(string ignore1, int expected, string ignore2)
         {
-            var actual = firstContact.RetrieveCount(_test.connectionString);
+            var actual = firstContact.RetrieveCount(_test.ConnectionString);
             actual.Should().Be(expected);
         }
 
         [Then(@"the correct contact details for the solution is displayed")]
         public void ThenTheCorrectContactDetailsForTheSolutionIsDisplayed()
         {
-            _test.pages.PreviewPage.ContactDisplayedOnPreview().Should().BeEquivalentTo(firstContact);
+            _test.Pages.PreviewPage.ContactDisplayedOnPreview().Should().BeEquivalentTo(firstContact);
         }
     }
 }

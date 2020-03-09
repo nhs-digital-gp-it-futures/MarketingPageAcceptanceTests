@@ -10,7 +10,8 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ProductRoadmap
     [Binding]
     public class SupplierData_DownloadRoadmapAttachment : TestBase
     {
-        const string roadmapDownloadFile = "downloadedRoadmap.pdf";
+        private const string roadmapDownloadFile = "downloadedRoadmap.pdf";
+
         public SupplierData_DownloadRoadmapAttachment(UITest test, ScenarioContext context) : base(test, context)
         {
         }
@@ -18,7 +19,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ProductRoadmap
         [When(@"the User chooses to download the Roadmap attachment")]
         public void WhenTheUserChoosesToDownloadTheRoadmapAttachment()
         {
-            var url = _test.pages.PreviewPage.GetRoadmapDownloadLinkUrl();            
+            var url = _test.Pages.PreviewPage.GetRoadmapDownloadLinkUrl();
             DownloadFileUtility.DownloadFile(roadmapDownloadFile, _test.downloadPath, url);
         }
 
@@ -33,7 +34,8 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ProductRoadmap
         [Then(@"the attachment contains the Supplier's Roadmap")]
         public void ThenTheAttachmentContainsTheSupplierSRoadmap()
         {
-            var sourceFile = Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory), "Azure", "SampleData", "roadmap.pdf");
+            var sourceFile = Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory), "Azure",
+                "SampleData", "roadmap.pdf");
             var downloadedFile = Path.Combine(_test.downloadPath, roadmapDownloadFile);
             DownloadFileUtility.CompareTwoFiles(downloadedFile, sourceFile).Should().BeTrue();
         }

@@ -4,8 +4,8 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
 {
     public abstract class TestBase
     {
-        public readonly UITest _test;
         public readonly ScenarioContext _context;
+        public readonly UITest _test;
 
         public TestBase(UITest test, ScenarioContext context)
         {

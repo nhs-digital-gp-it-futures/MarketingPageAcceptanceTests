@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using System.Net;
 
@@ -11,7 +10,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
         {
             downloadLink = TransformLocalHost(downloadLink);
             Directory.CreateDirectory(downloadPath);
-            using WebClient client = new WebClient();
+            using var client = new WebClient();
             client.DownloadFile(downloadLink, Path.Combine(downloadPath, fileName));
         }
 
@@ -25,7 +24,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
         public static bool CompareTwoFiles(string filePath1, string filePath2)
         {
             return new FileInfo(filePath1).Length == new FileInfo(filePath2).Length &&
-                File.ReadAllBytes(filePath1).SequenceEqual(File.ReadAllBytes(filePath2));
+                   File.ReadAllBytes(filePath1).SequenceEqual(File.ReadAllBytes(filePath2));
         }
     }
 }

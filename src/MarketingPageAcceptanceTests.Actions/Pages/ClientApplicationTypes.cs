@@ -1,9 +1,9 @@
-﻿using MarketingPageAcceptanceTests.Actions.Pages.Utils;
-using MarketingPageAcceptanceTests.Actions.Utils;
-using OpenQA.Selenium;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+using MarketingPageAcceptanceTests.Actions.Utils;
+using OpenQA.Selenium;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
@@ -20,7 +20,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void SelectRandomCheckbox()
         {
-            Random rand = new Random();
+            var rand = new Random();
             var checkboxes = driver.FindElements(pages.ClientApplicationTypes.Checkboxes);
             checkboxes[rand.Next(3)].Click();
         }

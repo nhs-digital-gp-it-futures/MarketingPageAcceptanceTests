@@ -1,10 +1,9 @@
+using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
 using MarketingPageAcceptanceTests.Actions.Pages.Utils;
 using MarketingPageAcceptanceTests.TestData.ContactDetails;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
@@ -12,11 +11,10 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
     {
         public PreviewPage(IWebDriver driver) : base(driver)
         {
-
         }
 
         /// <summary>
-        /// Assures the page is displayed
+        ///     Assures the page is displayed
         /// </summary>
         public void PageDisplayed()
         {
@@ -83,10 +81,8 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void OpenCapabilityAccordians()
         {
             var capabilities = driver.FindElements(pages.PreviewPage.Capabilities);
-            foreach(var capability in capabilities)
-            {
+            foreach (var capability in capabilities)
                 capability.FindElement(pages.PreviewPage.CapabilityAccordian).Click();
-            }
         }
 
         public void EpicsHaveStatusSymbols(int expected)
@@ -103,12 +99,10 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void EpicIdsDisplayed(IEnumerable<string> epicIds)
         {
             var epicTitles = driver.FindElements(pages.PreviewPage.EpicTitles)
-                .Select(s => s.Text.Split('(').Last().Trim(')')).OrderBy(s => s).ToList(); // Strip the Epic Id from the string for comparison
-            
-            foreach(var id in epicIds)
-            {
-                epicTitles.Should().Contain(id);
-            }
+                .Select(s => s.Text.Split('(').Last().Trim(')')).OrderBy(s => s)
+                .ToList(); // Strip the Epic Id from the string for comparison
+
+            foreach (var id in epicIds) epicTitles.Should().Contain(id);
         }
 
         public void MustSectionCount(int expected)
@@ -124,7 +118,8 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// <returns>list of features</returns>
         public IList<string> GetFeaturesText()
         {
-            var features = driver.FindElement(pages.PreviewPage.FeaturesSection).FindElements(By.CssSelector("li label.nhsuk-label")).Select(s => s.Text);
+            var features = driver.FindElement(pages.PreviewPage.FeaturesSection)
+                .FindElements(By.CssSelector("li label.nhsuk-label")).Select(s => s.Text);
             return features.ToList();
         }
 
@@ -168,7 +163,6 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                     By.CssSelector(ConvertToSectionCssSelector(sectionName)))
                 .FindElements(pages.PreviewPage.SectionTitle)
                 .Count;
-
         }
 
         private string ConvertToSectionCssSelector(string sectionName)
@@ -191,7 +185,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             return driver.FindElement(pages.PreviewPage.DesktopResolutionRequirement).Text;
         }
 
-        public bool IsRequiresHscnDisplayed(String section)
+        public bool IsRequiresHscnDisplayed(string section)
         {
             return driver.FindElements(pages.PreviewPage.ExpandingSections)
                 .Single(s => s.Text.Contains(section))
@@ -201,7 +195,8 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public bool MainSectionDisplayed(string section)
         {
-            return driver.FindElements(pages.PreviewPage.PreviewHeaders).Select(s => s.Text.ToLower()).Contains(section.ToLower());
+            return driver.FindElements(pages.PreviewPage.PreviewHeaders).Select(s => s.Text.ToLower())
+                .Contains(section.ToLower());
         }
 
         public void AboutSupplierSectionDisplayed()
@@ -234,11 +229,13 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             return driver.FindElement(pages.PreviewPage.DownloadNHSAssuredIntegrationsDocumentLink)
                 .GetAttribute("href");
         }
+
         public string GetRoadmapDownloadLinkUrl()
         {
             return driver.FindElement(pages.PreviewPage.DownloadRoadmapDocumentLink)
                 .GetAttribute("href");
         }
+
         public string GetAuthorityProvidedDataDownloadLinkUrl()
         {
             return driver.FindElement(pages.PreviewPage.DownloadAuthorityProvidedDataDocumentLink)

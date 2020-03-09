@@ -1,8 +1,8 @@
-﻿using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+﻿using System;
+using MarketingPageAcceptanceTests.Actions.Pages.Utils;
 using MarketingPageAcceptanceTests.TestData.Information;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using System;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
@@ -16,10 +16,10 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             SelectRandomMinimumMemory();
 
-            string storageString = RandomInformation.RandomString(stringLength);
+            var storageString = RandomInformation.RandomString(stringLength);
             EnterStorageRequirements(storageString);
 
-            string cpuString = RandomInformation.RandomString(stringLength);
+            var cpuString = RandomInformation.RandomString(stringLength);
             EnterCpuRequirements(cpuString);
 
             SelectRandomResolution();
@@ -27,7 +27,8 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void SelectRandomMinimumMemory()
         {
-            var minimumMemory = new SelectElement(driver.FindElement(pages.NativeMobileSections.MemoryAndStorage.MinimumMemory));
+            var minimumMemory =
+                new SelectElement(driver.FindElement(pages.NativeMobileSections.MemoryAndStorage.MinimumMemory));
             SelectRandomOption(minimumMemory);
         }
 
@@ -43,7 +44,9 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void SelectRandomResolution()
         {
-            var resolution = new SelectElement(driver.FindElement(pages.NativeDesktopSections.MemoryAndStorage.RecommendedResolution));
+            var resolution =
+                new SelectElement(
+                    driver.FindElement(pages.NativeDesktopSections.MemoryAndStorage.RecommendedResolution));
             SelectRandomOption(resolution);
         }
 

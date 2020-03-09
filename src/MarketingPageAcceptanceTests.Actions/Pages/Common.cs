@@ -1,16 +1,15 @@
-﻿using FluentAssertions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using FluentAssertions;
 using MarketingPageAcceptanceTests.Actions.Pages.Utils;
 using MarketingPageAcceptanceTests.Actions.Utils;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
     public sealed class Common : PageAction
     {
-
         public Common(IWebDriver driver) : base(driver)
         {
         }
@@ -53,7 +52,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         }
 
         /// <summary>
-        /// Validate that an error message is displayed (does not validate text within message)
+        ///     Validate that an error message is displayed (does not validate text within message)
         /// </summary>
         public void ErrorMessageDisplayed()
         {
@@ -106,13 +105,9 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             {
                 // Using Submit() directly to the form instead of Click() on the button prevents HTTP timeouts to Selenium server errors in 95% of cases                
                 if (IsDisplayed(By.TagName("form")))
-                {
                     driver.FindElement(By.TagName("form")).Submit();
-                }
                 else
-                {
                     driver.FindElement(pages.Common.SectionSaveAndReturn).Click();
-                }
             });
         }
 

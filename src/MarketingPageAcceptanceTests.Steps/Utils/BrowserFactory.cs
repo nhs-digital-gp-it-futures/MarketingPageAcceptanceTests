@@ -1,88 +1,88 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using System.Diagnostics;
+using System.IO;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
-using System;
-using System.IO;
 
 namespace MarketingPageAcceptanceTests.Steps.Utils
 {
     public sealed class BrowserFactory
     {
-        public IWebDriver Driver { get; }
-
         public BrowserFactory()
         {
-            var browser = EnvironmentVariables.GetBrowser();
-            var hubUrl = EnvironmentVariables.GetHubUrl();
-            Driver = GetBrowser(browser, hubUrl);
+            var browser = EnvironmentVariables.Browser();
+            var hubUrl = EnvironmentVariables.HubUrl();
+            Driver = Browser(browser, hubUrl);
         }
 
-        private IWebDriver GetBrowser(string browser, string hubUrl)
+        public IWebDriver Driver { get; }
+
+        private IWebDriver Browser(string browser, string hubUrl)
         {
-            IWebDriver driver;
+            Enum.TryParse(browser, out BrowserTypes browserType);
 
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                driver = LocalChromeDriver();
-            }
-            else
-            {
-                switch (browser.ToLower())
-                {
-                    case "chrome":
-                    case "googlechrome":
-                        driver = ChromeDriver(hubUrl);
-                        break;
-                    case "firefox":
-                    case "ff":
-                    case "mozilla":
-                        driver = FirefoxDriver(hubUrl);
-                        break;
-                    case "chrome-local":
-                        driver = LocalChromeDriver();
-                        break;
-                    default:
-                        throw new WebDriverException($"Browser {browser} not supported");
-                }
-            }
+            if (Debugger.IsAttached)
+                browserType = BrowserTypes.ChromeLocal;
 
-            return driver;
+            return browserType switch
+            {
+                BrowserTypes.Chrome => ChromeDriver(hubUrl),
+                BrowserTypes.Firefox => FirefoxDriver(hubUrl),
+                BrowserTypes.ChromeLocal => LocalChromeDriver(),
+                _ => LocalChromeDriver()
+            };
         }
 
         private static IWebDriver LocalChromeDriver()
         {
-            var options = new ChromeOptions();
-            options.AddArguments("start-maximized", "no-sandbox", "auto-open-devtools-for-tabs");
+            var options = DefaultChromeOptions(false);
 
             return new ChromeDriver(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory), options);
         }
 
-        private static IWebDriver ChromeDriver(string hubURL)
+        private static IWebDriver ChromeDriver(string hubUrl)
         {
-            var options = new ChromeOptions();
-            options.AddArguments("headless", "window-size=1920,1080", "no-sandbox", "disable-dev-shm-usage");
+            var options = DefaultChromeOptions(true);
 
-            return RemoteDriver(new Uri(hubURL), options);
+            return RemoteDriver(new Uri(hubUrl), options);
         }
 
-        private static IWebDriver FirefoxDriver(string hubURL)
+        private static IWebDriver FirefoxDriver(string hubUrl)
         {
             var options = new FirefoxOptions();
             options.AddArguments("headless", "window-size=1920,1080", "no-sandbox");
 
-            return RemoteDriver(new Uri(hubURL), options);
+            return RemoteDriver(new Uri(hubUrl), options);
         }
+
         private static IWebDriver RemoteDriver(Uri uri, DriverOptions options)
         {
             IWebDriver driver = null;
 
-            Policies.GetPolicy().Execute(() =>
-            {
-                driver = new RemoteWebDriver(uri, options);
-            });
+            Policies.GetPolicy().Execute(() => { driver = new RemoteWebDriver(uri, options); });
 
             return driver;
         }
+
+        private static ChromeOptions DefaultChromeOptions(bool headless)
+        {
+            var options = new ChromeOptions();
+            options.AddArguments("no-sandbox", "disable-dev-shm-usage");
+            if (headless)
+                options.AddArguments("headless", "window-size=1920,1080");
+            else
+                options.AddArguments("start-maximized", "auto-open-devtools-for-tabs");
+
+            return options;
+        }
+    }
+
+    internal enum BrowserTypes
+    {
+        Chrome,
+        Firefox,
+        ChromeLocal
     }
 }

@@ -18,7 +18,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.Features
         [Then(@"the Features section content validation status is displayed")]
         public void ThenTheFeaturesSectionContentValidationStatusIsDisplayed()
         {
-            _test.pages.Dashboard.SectionHasStatus("Features");
+            _test.Pages.Dashboard.SectionHasStatus("Features");
         }
     }
 }

@@ -31,7 +31,6 @@ namespace MarketingPageAcceptanceTests.Objects.Collections
 
     public sealed class NativeMobileSections
     {
-
         public SupportedOperatingSystems SupportedOperatingSystems { get; set; }
         public MemoryAndStorage MemoryAndStorage { get; set; }
         public ThirdPartyComponentsAndDevices ThirdPartyComponentsAndDevices { get; set; }

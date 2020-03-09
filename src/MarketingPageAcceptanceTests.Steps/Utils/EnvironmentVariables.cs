@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json.Linq;
 
 namespace MarketingPageAcceptanceTests.Steps.Utils
 {
@@ -10,64 +11,65 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
     {
         internal static (string, string, string, string, string, string, string) Get()
         {
-            var url = GetUrl();
-            var hubUrl = GetHubUrl();
-            var browser = GetBrowser();
+            var url = Url();
+            var hubUrl = HubUrl();
+            var browser = Browser();
 
-            var (serverUrl, databaseName, dbUser, dbPassword) = GetDbConnectionDetails();
+            var (serverUrl, databaseName, dbUser, dbPassword) = DbConnectionDetails();
 
             return (url, hubUrl, browser, serverUrl, databaseName, dbUser, dbPassword);
         }
 
-        internal static string GetHubUrl()
+        internal static string HubUrl()
         {
             return Environment.GetEnvironmentVariable("HUBURL") ?? "http://localhost:4444/wd/hub";
         }
 
-        internal static string GetUrl()
+        internal static string Url()
         {
-            string uri = Environment.GetEnvironmentVariable("MPURL") ?? GetUri();
+            var uri = Environment.GetEnvironmentVariable("MPURL") ?? DefaultUri();
             return uri.TrimEnd('/');
-        }        
-
-        internal static string GetBrowser()
-        {
-            return Environment.GetEnvironmentVariable("BROWSER") ?? "chrome-local";
         }
 
-        internal static (string serverUrl, string databaseName, string dbUser, string dbPassword) GetDbConnectionDetails()
+        internal static string Browser()
+        {
+            return Environment.GetEnvironmentVariable("BROWSER") ?? "ChromeLocal";
+        }
+
+        internal static (string serverUrl, string databaseName, string dbUser, string dbPassword) DbConnectionDetails()
         {
             var serverUrl = Environment.GetEnvironmentVariable("SERVERURL") ?? "127.0.0.1,1450";
             var databaseName = Environment.GetEnvironmentVariable("DATABASENAME") ?? "buyingcatalogue";
-            var dbUser = GetJsonConfigValues("user", "NHSD");
-            var dbPassword = GetJsonConfigValues("password", "DisruptTheMarket1!");
+            var dbUser = JsonConfigValues("user", "NHSD");
+            var dbPassword = JsonConfigValues("password", "DisruptTheMarket1!");
 
             return (serverUrl, databaseName, dbUser, dbPassword);
         }
 
-        internal static string GetDbConnectionString()
+        internal static string DbConnectionString()
         {
-            var (serverUrl, databaseName, dbUser, dbPassword) = GetDbConnectionDetails();
+            var (serverUrl, databaseName, dbUser, dbPassword) = DbConnectionDetails();
 
             return string.Format(ConnectionString.GPitFutures, serverUrl, databaseName, dbUser, dbPassword);
         }
 
-        internal static string GetAzureBlobStorageConnectionString()
+        internal static string AzureBlobStorageConnectionString()
         {
-            return GetJsonConfigValues("AzureBlobStorageConnectionString", @"UseDevelopmentStorage=true");
+            return JsonConfigValues("AzureBlobStorageConnectionString", @"UseDevelopmentStorage=true");
         }
 
-        internal static string GetAzureContainerName()
+        internal static string AzureContainerName()
         {
             return Environment.GetEnvironmentVariable("CONTAINER_NAME") ?? "container-1";
         }
 
-        private static string GetJsonConfigValues(string section, string defaultValue)
+        private static string JsonConfigValues(string section, string defaultValue)
         {
-            var path = Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory), "Utils", "tokens.json");
+            var path = Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory), "Utils",
+                "tokens.json");
             var jsonSection = JObject.Parse(File.ReadAllText(path))[section];
 
-            Dictionary<string, string> dbValues = jsonSection.ToObject<Dictionary<string, string>>();
+            var dbValues = jsonSection.ToObject<Dictionary<string, string>>();
 
             var result = dbValues.Values
                 .FirstOrDefault(s => !s.Contains("#{"));
@@ -75,13 +77,11 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
             return string.IsNullOrEmpty(result) ? defaultValue : result;
         }
 
-        private static string GetUri()
+        private static string DefaultUri()
         {
             var uri = "http://gpitfutures-bc-mp.buyingcatalogue:3002/supplier/solution/";
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
+            if (Debugger.IsAttached)
                 uri = uri.Replace("gpitfutures-bc-mp.buyingcatalogue", "localhost");
-            }
             return uri;
         }
     }
@@ -89,6 +89,7 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
 
     public static class ConnectionString
     {
-        internal const string GPitFutures = @"Server={0};Initial Catalog={1};Persist Security Info=false;User Id={2};Password={3}";
+        internal const string GPitFutures =
+            @"Server={0};Initial Catalog={1};Persist Security Info=false;User Id={2};Password={3}";
     }
 }

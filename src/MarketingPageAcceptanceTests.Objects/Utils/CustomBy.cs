@@ -1,12 +1,11 @@
 ﻿using OpenQA.Selenium;
-using System;
 
 namespace MarketingPageAcceptanceTests.Objects.Utils
 {
     internal sealed class CustomBy : By
     {
         /// <summary>
-        /// Custom selector that finds elements using the data-test-id attribute
+        ///     Custom selector that finds elements using the data-test-id attribute
         /// </summary>
         /// <param name="locator">string that must be contained within the data-test-id attribute</param>
         /// <returns>By clause that can be used to find one or more elements with the data-test-id attribute</returns>
@@ -17,7 +16,7 @@ namespace MarketingPageAcceptanceTests.Objects.Utils
 
         public static By PartialDataTestId(string partialLocator, string substitution, string childTag = null)
         {
-            var replaced = String.Format(partialLocator, substitution);
+            var replaced = string.Format(partialLocator, substitution);
             return DataTestId(replaced, childTag);
         }
     }

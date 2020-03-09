@@ -16,26 +16,26 @@ namespace MarketingPageAcceptanceTests.Actions
                 SolutionDescription = new SolutionDescription(driver),
                 PreviewPage = new PreviewPage(driver),
                 ClientApplicationTypes = new ClientApplicationTypes(driver),
-                BrowserBasedSections = new BrowserBasedSections()
+                BrowserBasedSections = new BrowserBasedSections
                 {
                     BrowserSubDashboard = new BrowserSubDashboard(driver),
                     BrowsersSupported = new BrowsersSupported(driver),
                     PluginsOrExtensions = new PluginsOrExtensions(driver),
                     HardwareRequirements = new HardwareRequirements(driver),
                     ConnectivityAndResolution = new ConnectivityAndResolution(driver),
-                    MobileFirst = new MobileFirst(driver),
+                    MobileFirst = new MobileFirst(driver)
                 },
-                NativeMobileSections = new NativeMobileSections()
+                NativeMobileSections = new NativeMobileSections
                 {
                     OperatingSystems = new NativeMobileOperatingSystems(driver),
                     MemoryAndStorage = new MemoryAndStorage(driver)
                 },
-                NativeDesktopSections = new NativeDesktopSections()
+                NativeDesktopSections = new NativeDesktopSections
                 {
                     OperatingSystems = new NativeDesktopOperatingSystems(driver),
                     MemoryAndStorage = new NativeDesktopMemoryAndStorage(driver)
                 },
-                HostingTypeSections = new HostingTypeSections()
+                HostingTypeSections = new HostingTypeSections
                 {
                     PublicCloud = new PublicCloud(driver),
                     PrivateCloud = new PrivateCloud(driver)

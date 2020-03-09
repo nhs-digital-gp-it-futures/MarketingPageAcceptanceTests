@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Azure.Storage.Blobs;
@@ -10,26 +9,21 @@ namespace MarketingPageAcceptanceTests.TestData.Azure
 {
     public sealed class AzureBlobStorage
     {
+        private readonly BlobServiceClient blobServiceClient;
+        private readonly List<string> listOfBlobContainerNames = new List<string>();
         public List<string> listOfSolutionIds = new List<string>();
-        private List<string> listOfBlobContainerNames = new List<string>();
-        private BlobServiceClient blobServiceClient;
 
         public AzureBlobStorage(string connectionString)
         {
-            blobServiceClient = new BlobServiceClient(connectionString);            
+            blobServiceClient = new BlobServiceClient(connectionString);
         }
 
-        public async Task InsertFileToStorage(string containerName, string solutionId, string fileName, string fullFilePath)
+        public async Task InsertFileToStorage(string containerName, string solutionId, string fileName,
+            string fullFilePath)
         {
-            if(!listOfSolutionIds.Contains(solutionId))
-            {
-                listOfSolutionIds.Add(solutionId);
-            }
+            if (!listOfSolutionIds.Contains(solutionId)) listOfSolutionIds.Add(solutionId);
 
-            if (!listOfBlobContainerNames.Contains(containerName))
-            {
-                listOfBlobContainerNames.Add(containerName);
-            }
+            if (!listOfBlobContainerNames.Contains(containerName)) listOfBlobContainerNames.Add(containerName);
 
             var currentContainer = blobServiceClient.GetBlobContainerClient(containerName);
             currentContainer.CreateIfNotExists();
@@ -40,21 +34,17 @@ namespace MarketingPageAcceptanceTests.TestData.Azure
                 .UploadAsync(uploadFileStream, new BlobHttpHeaders())
                 .ConfigureAwait(false);
 
-            response.GetRawResponse().Status.Should().Be(201);            
+            response.GetRawResponse().Status.Should().Be(201);
         }
 
         public async Task ClearStorage()
         {
             foreach (var directory in listOfSolutionIds)
+            foreach (var container in listOfBlobContainerNames)
             {
-                foreach (var container in listOfBlobContainerNames)
-                {
-                    var currentContainer = blobServiceClient.GetBlobContainerClient(container);
-                    foreach (var blob in currentContainer.GetBlobs(prefix: directory))
-                    {
-                        await currentContainer.DeleteBlobAsync(blob.Name);
-                    }
-                }
+                var currentContainer = blobServiceClient.GetBlobContainerClient(container);
+                foreach (var blob in currentContainer.GetBlobs(prefix: directory))
+                    await currentContainer.DeleteBlobAsync(blob.Name);
             }
         }
     }

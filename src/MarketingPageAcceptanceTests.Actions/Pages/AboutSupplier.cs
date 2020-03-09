@@ -7,7 +7,6 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
     {
         public AboutSupplier(IWebDriver driver) : base(driver)
         {
-
         }
 
         public string GetDescriptionText()

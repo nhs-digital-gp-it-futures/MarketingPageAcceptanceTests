@@ -1,6 +1,6 @@
-﻿using MarketingPageAcceptanceTests.TestData.Utils;
-using System;
+﻿using System;
 using System.Linq;
+using MarketingPageAcceptanceTests.TestData.Utils;
 
 namespace MarketingPageAcceptanceTests.TestData.Suppliers
 {
@@ -53,7 +53,7 @@ namespace MarketingPageAcceptanceTests.TestData.Suppliers
                         FROM [dbo].[Supplier] 
                         LEFT JOIN Solution on Solution.SupplierId = Supplier.Id 
                         WHERE Solution.Id=@solutionId";
-            return SqlExecutor.Execute<Supplier>(connectionString, query, new { solutionId }).Single();
+            return SqlExecutor.Execute<Supplier>(connectionString, query, new {solutionId}).Single();
         }
 
         public void Update(string connectionString)
