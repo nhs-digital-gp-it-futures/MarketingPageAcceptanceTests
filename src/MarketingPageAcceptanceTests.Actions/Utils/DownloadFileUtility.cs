@@ -8,6 +8,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
     {
         public static void DownloadFile(string fileName, string downloadPath, string downloadLink)
         {
+            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             downloadLink = TransformLocalHost(downloadLink);
             Directory.CreateDirectory(downloadPath);
             using var client = new WebClient();
