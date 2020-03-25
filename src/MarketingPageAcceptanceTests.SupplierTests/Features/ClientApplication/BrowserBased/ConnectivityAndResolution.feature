@@ -14,8 +14,7 @@ Scenario: Connectivity and Resolution - Mandatory - Yes
 Scenario: Connectivity and Resolution - Mandatory - No
 	Given that an answer has not been provided to the Connectivity and resolution mandatory question on the Browser-based section
 	When the User exits the page
-	Then on the Browser-based dashboard
-	And the Connectivity and resolution section is marked as INCOMPLETE on the Browser-based Client Type Sub-Form	
+	Then the Connectivity and resolution section is marked as INCOMPLETE on the Browser-based Client Type Sub-Form	
 
 Scenario: Connectivity and Resolution - Mandatory Data Missing Validation
 	Given that an answer has not been provided to the Connectivity and resolution mandatory question on the Browser-based section

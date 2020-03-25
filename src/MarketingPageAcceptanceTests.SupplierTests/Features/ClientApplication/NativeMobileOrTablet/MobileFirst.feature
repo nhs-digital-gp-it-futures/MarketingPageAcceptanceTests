@@ -16,8 +16,7 @@ Scenario: Native Mobile Mobile First - Data Saved
 Scenario: Native Mobile Mobile First - Data not Saved
 	Given that an answer has not been provided to the Mobile first approach mandatory question on the Native mobile or tablet section
 	When the User exits the page
-	Then on the Native mobile or tablet dashboard
-	And the Mobile first approach section is marked as INCOMPLETE on the Browser-based Client Type Sub-Form
+	Then the Mobile first approach section is marked as INCOMPLETE on the Browser-based Client Type Sub-Form
 
 Scenario: Native Mobile Mobile First - Mandatory Data Missing Validation
 	Given that an answer has not been provided to the Mobile first approach mandatory question on the Native mobile or tablet section
