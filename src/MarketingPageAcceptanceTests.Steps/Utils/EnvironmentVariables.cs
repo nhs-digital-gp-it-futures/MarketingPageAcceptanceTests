@@ -79,9 +79,8 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
 
         private static string DefaultUri()
         {
-            var uri = "http://gpitfutures-bc-mp.buyingcatalogue:3002/supplier/solution/";
-            if (Debugger.IsAttached)
-                uri = uri.Replace("gpitfutures-bc-mp.buyingcatalogue", "localhost");
+            var uri = "https://host.docker.internal/marketing/supplier/solution/";
+            
             return uri;
         }
     }
