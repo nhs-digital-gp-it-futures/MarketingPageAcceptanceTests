@@ -14,8 +14,7 @@ Scenario: Browser-based Plugin or Extension - Data Saved
 Scenario: Browser-based Plugin or Extension - Data not Saved
 	Given that an answer has not been provided to the Plug-ins or extensions required mandatory question on the Browser-based section
 	When the User exits the page
-	Then on the Browser-based dashboard
-	And the Plug-ins or extensions required section is marked as INCOMPLETE on the Browser-based Client Type Sub-Form
+	Then the Plug-ins or extensions required section is marked as INCOMPLETE on the Browser-based Client Type Sub-Form
 
 Scenario: Browser-based Plugin or Extension - Plug in or Extension Description does not exceed maximum
 	Given that an answer is provided to the Plug-ins or extensions mandatory question
