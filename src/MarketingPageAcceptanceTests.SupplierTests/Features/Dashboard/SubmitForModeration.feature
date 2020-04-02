@@ -1,4 +1,6 @@
-﻿Feature: Suppliers - Submit for Moderation
+﻿#ignored as part of 5869
+@ignore
+Feature: Suppliers - Submit for Moderation
 	As a Supplier
 	I want to submit my Marketing Page for Moderation
 	So that my Marketing Page can be approved and published

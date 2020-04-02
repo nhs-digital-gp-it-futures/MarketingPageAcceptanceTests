@@ -8,6 +8,8 @@ Scenario: Browser Supported - Data Saved
 	When a User saves the page
 	Then the Supported browsers section is marked as COMPLETE on the Browser-based Client Type Sub-Form
 
+#ignored as part of 5869
+@ignore
 Scenario: Browser Supported - Validation on Submission
 	Given that an answer is not provided to both questions for Browsers supported
 	When the User submits their Marketing Page for moderation
