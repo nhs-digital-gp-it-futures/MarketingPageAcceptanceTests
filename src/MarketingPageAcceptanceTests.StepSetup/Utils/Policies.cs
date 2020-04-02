@@ -1,8 +1,8 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using Polly;
+using System;
 
-namespace MarketingPageAcceptanceTests.Steps.Utils
+namespace MarketingPageAcceptanceTests.StepSetup.Utils
 {
     internal static class Policies
     {

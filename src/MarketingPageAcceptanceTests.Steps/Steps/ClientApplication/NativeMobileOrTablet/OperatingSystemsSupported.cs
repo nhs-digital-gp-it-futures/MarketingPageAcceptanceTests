@@ -1,5 +1,5 @@
-﻿using System;
-using MarketingPageAcceptanceTests.Steps.Utils;
+﻿using MarketingPageAcceptanceTests.StepSetup.Utils;
+using System;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeMobileOrTablet

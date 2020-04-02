@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
-using Azure.Storage.Blobs;
+﻿using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using FluentAssertions;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace MarketingPageAcceptanceTests.TestData.Azure
 {
@@ -40,12 +40,12 @@ namespace MarketingPageAcceptanceTests.TestData.Azure
         public async Task ClearStorage()
         {
             foreach (var directory in listOfSolutionIds)
-            foreach (var container in listOfBlobContainerNames)
-            {
-                var currentContainer = blobServiceClient.GetBlobContainerClient(container);
-                foreach (var blob in currentContainer.GetBlobs(prefix: directory))
-                    await currentContainer.DeleteBlobAsync(blob.Name);
-            }
+                foreach (var container in listOfBlobContainerNames)
+                {
+                    var currentContainer = blobServiceClient.GetBlobContainerClient(container);
+                    foreach (var blob in currentContainer.GetBlobs(prefix: directory))
+                        await currentContainer.DeleteBlobAsync(blob.Name);
+                }
         }
     }
 }

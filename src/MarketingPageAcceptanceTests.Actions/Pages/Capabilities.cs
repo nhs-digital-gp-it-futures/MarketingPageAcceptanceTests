@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+﻿using MarketingPageAcceptanceTests.Actions.Pages.Utils;
 using MarketingPageAcceptanceTests.Actions.Utils;
 using OpenQA.Selenium;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {

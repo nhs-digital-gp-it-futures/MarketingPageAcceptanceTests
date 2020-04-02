@@ -1,6 +1,6 @@
-﻿using System;
+﻿using MarketingPageAcceptanceTests.TestData.Utils;
+using System;
 using System.Collections.Generic;
-using MarketingPageAcceptanceTests.TestData.Utils;
 
 namespace MarketingPageAcceptanceTests.TestData.Capabilities
 {
@@ -14,7 +14,7 @@ namespace MarketingPageAcceptanceTests.TestData.Capabilities
         {
             var query = "SELECT * FROM Epic WHERE CapabilityId=@Id";
 
-            return SqlExecutor.Execute<Epic>(connectionString, query, new {Id = capId});
+            return SqlExecutor.Execute<Epic>(connectionString, query, new { Id = capId });
         }
     }
 }

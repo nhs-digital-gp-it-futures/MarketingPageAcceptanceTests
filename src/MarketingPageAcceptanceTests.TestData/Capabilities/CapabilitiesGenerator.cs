@@ -1,8 +1,8 @@
-﻿using System;
+﻿using MarketingPageAcceptanceTests.TestData.Information;
+using MarketingPageAcceptanceTests.TestData.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using MarketingPageAcceptanceTests.TestData.Information;
-using MarketingPageAcceptanceTests.TestData.Utils;
 
 namespace MarketingPageAcceptanceTests.TestData.Capabilities
 {
@@ -19,7 +19,7 @@ namespace MarketingPageAcceptanceTests.TestData.Capabilities
 
             for (var i = 0; i < length; i++)
                 solCaps.Add(new SolutionCapabilities
-                    {SolutionID = solutionId, CapabilityId = capabilities[i].CapabilityRef});
+                { SolutionID = solutionId, CapabilityId = capabilities[i].CapabilityRef });
 
             return solCaps.OrderBy(s => s.CapabilityId);
         }

@@ -1,8 +1,8 @@
-﻿using System;
-using System.IO;
-using FluentAssertions;
+﻿using FluentAssertions;
 using MarketingPageAcceptanceTests.Actions.Utils;
-using MarketingPageAcceptanceTests.Steps.Utils;
+using MarketingPageAcceptanceTests.StepSetup.Utils;
+using System;
+using System.IO;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTests.Steps.Steps.AuthorityProvidedDataDocument

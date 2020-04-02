@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using MarketingPageAcceptanceTests.TestData.Utils;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using MarketingPageAcceptanceTests.TestData.Utils;
 
 namespace MarketingPageAcceptanceTests.TestData.Capabilities
 {
@@ -14,7 +14,7 @@ namespace MarketingPageAcceptanceTests.TestData.Capabilities
         internal IEnumerable<EpicDto> GetAllByIdPrefix(string connectionString, string id)
         {
             var query = "SELECT * FROM Epic WHERE Id LIKE @ID";
-            return SqlExecutor.Execute<EpicDto>(connectionString, query, new {Id = id + "%"});
+            return SqlExecutor.Execute<EpicDto>(connectionString, query, new { Id = id + "%" });
         }
     }
 }

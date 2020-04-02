@@ -1,8 +1,8 @@
-﻿using System;
+﻿using FluentAssertions;
+using MarketingPageAcceptanceTests.StepSetup.Utils;
+using System;
 using System.IO;
 using System.Threading.Tasks;
-using FluentAssertions;
-using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTests.Steps.Steps

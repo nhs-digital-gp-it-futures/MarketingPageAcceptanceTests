@@ -1,7 +1,7 @@
-﻿using System;
+﻿using MarketingPageAcceptanceTests.TestData.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using MarketingPageAcceptanceTests.TestData.Utils;
 
 namespace MarketingPageAcceptanceTests.TestData.ContactDetails
 {
@@ -40,25 +40,25 @@ namespace MarketingPageAcceptanceTests.TestData.ContactDetails
         public void Delete(string connectionString)
         {
             var query = "DELETE FROM MarketingContact where SolutionId=@solutionId";
-            SqlExecutor.Execute<ContactDetail>(connectionString, query, new {SolutionId});
+            SqlExecutor.Execute<ContactDetail>(connectionString, query, new { SolutionId });
         }
 
         public IContactDetail Retrieve(string connectionString)
         {
             var query = @"SELECT * FROM MarketingContact WHERE SolutionId=@solutionId";
-            return SqlExecutor.Execute<ContactDetail>(connectionString, query, new {SolutionId}).Single();
+            return SqlExecutor.Execute<ContactDetail>(connectionString, query, new { SolutionId }).Single();
         }
 
         public IEnumerable<IContactDetail> RetrieveAll(string connectionString)
         {
             var query = @"SELECT * FROM MarketingContact WHERE SolutionId=@solutionId";
-            return SqlExecutor.Execute<ContactDetail>(connectionString, query, new {SolutionId});
+            return SqlExecutor.Execute<ContactDetail>(connectionString, query, new { SolutionId });
         }
 
         public int RetrieveCount(string connectionString)
         {
             var query = @"SELECT COUNT(*) FROM [dbo].[MarketingContact] WHERE SolutionId=@solutionId";
-            return SqlExecutor.ExecuteScalar(connectionString, query, new {SolutionId});
+            return SqlExecutor.ExecuteScalar(connectionString, query, new { SolutionId });
         }
 
         public void Update(string connectionString)
