@@ -1,8 +1,6 @@
 ﻿@SmokeTest
+@authority
 Feature: Authority Dashboard Display
-
-Background:
-	Given a user has chosen to manage Authority added data
 
 Scenario Outline: Display On Authority Dashboard - Form sections presented
 	When the Marketing Page Form is presented

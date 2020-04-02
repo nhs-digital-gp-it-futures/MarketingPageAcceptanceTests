@@ -1,6 +1,7 @@
-﻿Feature: DashboardDisplay
+﻿@SmokeTest
+@supplier
+Feature: DashboardDisplay
 
-@SmokeTest
 Scenario Outline: Display On Supplier Dashboard - Form sections presented
 	Given that a User has chosen to manage Marketing Page Information
 	When the Marketing Page Form is presented

@@ -10,10 +10,22 @@ namespace MarketingPageAcceptanceTests.SmokeTests
         {
         }
 
-        [BeforeScenario]
-        public void BeforeScenario()
+        [BeforeScenario("supplier")]
+        public void BeforeSupplierScenario()
         {
             _test.UserType = "supplier";
+            BeforeShared();
+        }
+
+        [BeforeScenario("authority")]
+        public void BeforeAuthorityScenario()
+        {
+            _test.UserType = "authority";
+            BeforeShared();
+        }
+
+        private void BeforeShared()
+        {
             _test.SetUrl();
             _test.GoToUrl();
         }
