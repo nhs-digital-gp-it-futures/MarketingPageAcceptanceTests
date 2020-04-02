@@ -1,4 +1,6 @@
-﻿Feature: Supplier Data - Download Roadmap Attachment
+﻿#storage accounts have split
+@ignore
+Feature: Supplier Data - Download Roadmap Attachment
 	As a Public User
 	I want to download a Roadmap attachment
 	So that I can view the Roadmap attachment

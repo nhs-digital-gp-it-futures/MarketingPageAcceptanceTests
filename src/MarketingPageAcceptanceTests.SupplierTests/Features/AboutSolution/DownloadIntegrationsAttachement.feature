@@ -1,4 +1,6 @@
-﻿Feature: Supplier Data - Download NHS Assured Integrations Attachment
+﻿#storage accounts have split
+@ignore
+Feature: Supplier Data - Download NHS Assured Integrations Attachment
 	As a Public User
 	I want to download an NHS Assured Integrations attachment
 	So that I can view the NHS Assured Integrations attachment

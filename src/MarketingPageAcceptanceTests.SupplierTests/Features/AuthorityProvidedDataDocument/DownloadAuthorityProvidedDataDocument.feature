@@ -1,4 +1,6 @@
-﻿Feature: DownloadAuthorityProvidedDataDocument
+﻿#storage accounts have split
+@ignore
+Feature: DownloadAuthorityProvidedDataDocument
 	As a Public User
 	I want to download a document that contains Authority Provided Data
 	So that I can view information about the Solution, its Associated and Additional Services
