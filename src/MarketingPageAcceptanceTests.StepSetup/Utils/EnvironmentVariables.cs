@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using Newtonsoft.Json.Linq;
 
-namespace MarketingPageAcceptanceTests.Steps.Utils
+namespace MarketingPageAcceptanceTests.StepSetup.Utils
 {
     internal static class EnvironmentVariables
     {
@@ -80,7 +79,7 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
         private static string DefaultUri()
         {
             var uri = "https://host.docker.internal/marketing/supplier/solution/";
-            
+
             return uri;
         }
     }

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using MarketingPageAcceptanceTests.TestData.Utils;
+using System;
 using System.Linq;
-using MarketingPageAcceptanceTests.TestData.Utils;
 
 namespace MarketingPageAcceptanceTests.TestData.Solutions
 {

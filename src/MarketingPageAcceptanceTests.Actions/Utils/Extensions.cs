@@ -1,6 +1,6 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using System;
 
 namespace MarketingPageAcceptanceTests.Actions.Utils
 {
@@ -32,7 +32,7 @@ namespace MarketingPageAcceptanceTests.Actions.Utils
             int index = 0)
         {
             wait.Until(s => s.FindElements(elementBy)[index].Enabled);
-            ((IJavaScriptExecutor) driver).ExecuteScript("arguments[0].value=arguments[1];",
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].value=arguments[1];",
                 driver.FindElements(elementBy)[index], value);
         }
 

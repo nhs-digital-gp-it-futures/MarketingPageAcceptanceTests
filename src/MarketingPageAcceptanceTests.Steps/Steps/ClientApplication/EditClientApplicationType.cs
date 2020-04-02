@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using FluentAssertions;
-using MarketingPageAcceptanceTests.Steps.Utils;
+﻿using FluentAssertions;
+using MarketingPageAcceptanceTests.StepSetup.Utils;
+using System.Collections.Generic;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
@@ -20,7 +20,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
         {
             _test.Pages.Dashboard.NavigateToSection("Client application type");
             _test.Pages.ClientApplicationTypes.PageDisplayed().Should().BeTrue();
-            checkboxesSelected = new List<string> {clientApplicationType};
+            checkboxesSelected = new List<string> { clientApplicationType };
             _test.Pages.ClientApplicationTypes.SelectCheckbox(clientApplicationType);
         }
 

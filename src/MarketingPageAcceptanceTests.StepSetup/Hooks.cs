@@ -1,8 +1,8 @@
-﻿using System.Threading.Tasks;
-using MarketingPageAcceptanceTests.Steps.Utils;
+﻿using MarketingPageAcceptanceTests.StepSetup.Utils;
+using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 
-namespace MarketingPageAcceptanceTests.Steps.Steps
+namespace MarketingPageAcceptanceTests.StepSetup
 {
     [Binding]
     public sealed class Hooks : TestBase

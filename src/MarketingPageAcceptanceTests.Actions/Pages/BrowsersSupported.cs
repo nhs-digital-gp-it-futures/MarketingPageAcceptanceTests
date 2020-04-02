@@ -1,7 +1,7 @@
-﻿using System;
-using System.Linq;
-using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+﻿using MarketingPageAcceptanceTests.Actions.Pages.Utils;
 using OpenQA.Selenium;
+using System;
+using System.Linq;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
@@ -18,7 +18,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             var checkboxes = driver.FindElements(pages.BrowserBasedSections.BrowsersSupported.BrowserCheckboxes);
 
             // randomise order of list
-            var randomised = checkboxes.Select(x => new {value = x, order = rand.Next()})
+            var randomised = checkboxes.Select(x => new { value = x, order = rand.Next() })
                 .OrderBy(x => x.order).Select(x => x.value).ToList();
 
             for (var i = 0; i < browsersSupported; i++) randomised[i].FindElement(By.TagName("input")).Click();

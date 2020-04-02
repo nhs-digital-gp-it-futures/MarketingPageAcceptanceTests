@@ -1,29 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using MarketingPageAcceptanceTests.Actions;
+﻿using MarketingPageAcceptanceTests.Actions;
 using MarketingPageAcceptanceTests.Actions.Collections;
 using MarketingPageAcceptanceTests.TestData.Azure;
 using MarketingPageAcceptanceTests.TestData.Solutions;
 using MarketingPageAcceptanceTests.TestData.Suppliers;
 using OpenQA.Selenium;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
-namespace MarketingPageAcceptanceTests.Steps.Utils
+namespace MarketingPageAcceptanceTests.StepSetup.Utils
 {
     public sealed class UITest
     {
-        internal AzureBlobStorage azureBlobStorage;
-        internal string ConnectionString;
-        internal string defaultAzureBlobStorageContainerName;
-        internal string downloadPath;
-        internal IWebDriver Driver;
-        internal string ExpectedSectionLinkInErrorMessage;
-        internal List<Solution> listOfSolutions = new List<Solution>();
-        internal PageActionCollection Pages;
-        internal Solution solution;
-        internal SolutionDetail solutionDetail;
-        internal Supplier supplier;
-        internal string url;
+        public AzureBlobStorage azureBlobStorage;
+        public string ConnectionString;
+        public string defaultAzureBlobStorageContainerName;
+        public string downloadPath;
+        public IWebDriver Driver;
+        public string ExpectedSectionLinkInErrorMessage;
+        public List<Solution> listOfSolutions = new List<Solution>();
+        public PageActionCollection Pages;
+        public Solution solution;
+        public SolutionDetail solutionDetail;
+        public Supplier supplier;
+        public string url;
 
         public UITest()
         {
