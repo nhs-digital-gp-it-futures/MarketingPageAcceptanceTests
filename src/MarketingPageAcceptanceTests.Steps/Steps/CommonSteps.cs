@@ -26,6 +26,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps
         public void GivenTheUserHasSetBrowserBasedApplicationType(string clientType)
         {
             _test.Pages.Dashboard.NavigateToSection("Client application type");
+            _test.Pages.ClientApplicationTypes.PageDisplayed().Should().BeTrue();
             _test.Pages.ClientApplicationTypes.SelectCheckbox(clientType);
             _test.Pages.ClientApplicationTypes.SaveAndReturn();
         }
