@@ -54,6 +54,10 @@ namespace MarketingPageAcceptanceTests.StepSetup.Utils
                     GetExistingSolution();
                 }
             }
+            else
+            {
+                solution = new Solution() { Id = solutionId }.Retrieve(ConnectionString);
+            }
 
             // If param is not null, set the UserType property to be the provided usertype
             if (userType != null) UserType = userType;
