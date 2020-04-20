@@ -13,6 +13,7 @@ namespace MarketingPageAcceptanceTests.SmokeTests
         [BeforeScenario("supplier")]
         public void BeforeSupplierScenario()
         {
+            _test.CreateSolution = false;
             _test.UserType = "supplier";
             BeforeShared();
         }
@@ -20,6 +21,7 @@ namespace MarketingPageAcceptanceTests.SmokeTests
         [BeforeScenario("authority")]
         public void BeforeAuthorityScenario()
         {
+            _test.CreateSolution = false;
             _test.UserType = "authority";
             BeforeShared();
         }
