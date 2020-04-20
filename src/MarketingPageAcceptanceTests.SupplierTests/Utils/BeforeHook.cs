@@ -13,6 +13,7 @@ namespace MarketingPageAcceptanceTests.SupplierTests.Utils
         [BeforeScenario]
         public void BeforeScenario()
         {
+            _test.CreateSolution = true;
             _test.UserType = "supplier";
             _test.SetUrl();
             _test.GoToUrl();
