@@ -1,4 +1,5 @@
 ﻿using MarketingPageAcceptanceTests.SmokeTests.Utils;
+using MarketingPageAcceptanceTests.StepSetup.Utils;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTests.SmokeTests
