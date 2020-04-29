@@ -41,7 +41,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation
         [Given(@"the User has created a new solution for the same supplier \(Solution B\)")]
         public void GivenTheUserHasCreatedANewSolutionForTheSameSupplierSolutionB()
         {
-            _test.solution = GenerateSolution.GenerateNewSolution("SolB");
+            _test.solution = GenerateSolution.GenerateNewSolution(_test.solutionIdPrefix + "SolB");
             _test.solution.SupplierId = _test.supplier.Id;
             _test.solution.Create(_test.ConnectionString);
 

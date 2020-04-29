@@ -25,8 +25,9 @@ namespace MarketingPageAcceptanceTests.StepSetup.Utils
         public SolutionDetail solutionDetail;
         public Supplier supplier;
         public string url;
+		public string solutionIdPrefix = "Auto";
 
-        public UITest()
+		public UITest()
         {
             ConnectionString = EnvironmentVariables.DbConnectionString();
             azureBlobStorage =
@@ -47,7 +48,7 @@ namespace MarketingPageAcceptanceTests.StepSetup.Utils
             {
                 if (CreateSolution)
                 {
-                    CreateNewSolution();
+                    CreateNewSolution(solutionIdPrefix);
                 }
                 else
                 {
@@ -72,9 +73,9 @@ namespace MarketingPageAcceptanceTests.StepSetup.Utils
             solution = new Solution() { Id = solutionId }.Retrieve(ConnectionString);
         }
 
-        private void CreateNewSolution()
+        private void CreateNewSolution(string prefix)
         {
-            solution = GenerateSolution.GenerateNewSolution(checkForUnique: true, connectionString: ConnectionString);
+            solution = GenerateSolution.GenerateNewSolution(prefix: prefix, checkForUnique: true, connectionString: ConnectionString);
             solution.Create(ConnectionString);
             solutionDetail = GenerateSolutionDetails.GenerateNewSolutionDetail(solution.Id, Guid.NewGuid(), 0, false);
             solutionDetail.Create(ConnectionString);

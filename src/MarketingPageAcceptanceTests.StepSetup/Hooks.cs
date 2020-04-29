@@ -16,12 +16,20 @@ namespace MarketingPageAcceptanceTests.StepSetup
         {
             _test.Driver.Quit();
 
-            _test.solution.Delete(_test.ConnectionString);
+            if (_test.solution.Id.Contains(_test.solutionIdPrefix)) 
+            {
+                _test.solution.Delete(_test.ConnectionString);
+            }                       
 
-            _test.listOfSolutions.Remove(_test.solution);
             try
             {
-                foreach (var solution in _test.listOfSolutions) solution.Delete(_test.ConnectionString);
+                foreach (var solution in _test.listOfSolutions)
+                {
+                    if (solution.Id.Contains(_test.solutionIdPrefix))
+                    {
+                        solution.Delete(_test.ConnectionString);
+                    }
+                }                    
             }
             finally
             {

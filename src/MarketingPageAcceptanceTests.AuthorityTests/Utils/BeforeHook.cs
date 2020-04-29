@@ -12,9 +12,8 @@ namespace MarketingPageAcceptanceTests.SupplierTests.Utils
 
         [BeforeScenario]
         public void BeforeScenario()
-        {
-            _test.UserType = "authority";
-            _test.SetUrl();
+        {   
+            _test.SetUrl(userType: "authority");
             _test.GoToUrl();
         }
     }

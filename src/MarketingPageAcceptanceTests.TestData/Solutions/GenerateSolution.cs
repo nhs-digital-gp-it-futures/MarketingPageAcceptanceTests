@@ -9,7 +9,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
     public static class GenerateSolution
     {
-        public static Solution GenerateNewSolution(string prefix = "Auto", bool checkForUnique = false,
+        public static Solution GenerateNewSolution(string prefix, bool checkForUnique = false,
             string connectionString = null)
         {
             var faker = new Faker();

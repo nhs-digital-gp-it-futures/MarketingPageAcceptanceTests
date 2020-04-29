@@ -19,12 +19,12 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public IList<IWebElement> GetCapabilityVersions()
         {
-            return driver.FindElements(pages.Capabilities.CapabilityTitle).ToList();
+            return driver.FindElements(pages.Capabilities.CapabilitySection).Select(s => s.FindElement(pages.Capabilities.CapabilityTitle)).ToList();
         }
 
         public IList<IWebElement> GetCapabilityDescriptions()
         {
-            return driver.FindElements(pages.Capabilities.Description).ToList();
+            return driver.FindElements(pages.Capabilities.CapabilitySection).Select(s => s.FindElement(pages.Capabilities.Description)).ToList();
         }
 
         public IList<IWebElement> GetCapabilityUrls()
@@ -34,7 +34,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public IList<IWebElement> GetCapabilityNames()
         {
-            return driver.FindElements(pages.Capabilities.CapabilityTitle).ToList();
+            return driver.FindElements(pages.Capabilities.CapabilitySection).Select(s => s.FindElement(pages.Capabilities.CapabilityTitle)).ToList();
         }
     }
 }
