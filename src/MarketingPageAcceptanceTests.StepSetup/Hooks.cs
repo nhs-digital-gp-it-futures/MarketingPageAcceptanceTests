@@ -19,8 +19,7 @@ namespace MarketingPageAcceptanceTests.StepSetup
             if (_test.solution.Id.Contains(_test.solutionIdPrefix)) 
             {
                 _test.solution.Delete(_test.ConnectionString);
-            }            
-            _test.listOfSolutions.Remove(_test.solution);            
+            }                       
 
             try
             {

@@ -25,7 +25,7 @@ namespace MarketingPageAcceptanceTests.StepSetup.Utils
         public SolutionDetail solutionDetail;
         public Supplier supplier;
         public string url;
-		internal string solutionIdPrefix = "Auto";
+		public string solutionIdPrefix = "Auto";
 
 		public UITest()
         {
