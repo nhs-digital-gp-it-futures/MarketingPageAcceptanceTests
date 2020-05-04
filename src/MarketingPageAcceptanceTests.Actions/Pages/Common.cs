@@ -62,7 +62,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void ErrorSectionDisplayed()
         {
-            wait.Until(s => s.FindElement(pages.Common.ErrorSection).Displayed);
+            wait.Until(s => s.FindElements(pages.Common.ErrorSection).Count == 1);
         }
 
         public void ErrorMessagesDisplayed(int numSections)
