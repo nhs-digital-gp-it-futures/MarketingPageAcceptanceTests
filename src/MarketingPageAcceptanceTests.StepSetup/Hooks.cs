@@ -19,6 +19,7 @@ namespace MarketingPageAcceptanceTests.StepSetup
             if (_test.solution.Id.Contains(_test.solutionIdPrefix)) 
             {
                 _test.solution.Delete(_test.ConnectionString);
+                _test.catalogueItem.Delete(_test.ConnectionString);
             }                       
 
             try
@@ -28,6 +29,7 @@ namespace MarketingPageAcceptanceTests.StepSetup
                     if (solution.Id.Contains(_test.solutionIdPrefix))
                     {
                         solution.Delete(_test.ConnectionString);
+                        _test.catalogueItem.Delete(_test.ConnectionString);
                     }
                 }                    
             }

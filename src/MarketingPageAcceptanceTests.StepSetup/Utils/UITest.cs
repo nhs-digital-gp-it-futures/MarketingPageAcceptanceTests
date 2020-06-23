@@ -22,7 +22,7 @@ namespace MarketingPageAcceptanceTests.StepSetup.Utils
         public List<Solution> listOfSolutions = new List<Solution>();
         public PageActionCollection Pages;
         public Solution solution;
-        public SolutionDetail solutionDetail;
+        public CatalogueItem catalogueItem;
         public Supplier supplier;
         public string url;
 		public string solutionIdPrefix = "Auto";
@@ -75,12 +75,10 @@ namespace MarketingPageAcceptanceTests.StepSetup.Utils
 
         private void CreateNewSolution(string prefix)
         {
-            solution = GenerateSolution.GenerateNewSolution(prefix: prefix, checkForUnique: true, connectionString: ConnectionString);
+            catalogueItem = GenerateCatalogueItem.GenerateNewCatalogueItem(prefix: prefix, checkForUnique: true, connectionString: ConnectionString);
+            catalogueItem.Create(ConnectionString);
+            solution = GenerateSolution.GenerateNewSolution(catalogueItem.CatalogueItemId);
             solution.Create(ConnectionString);
-            solutionDetail = GenerateSolutionDetails.GenerateNewSolutionDetail(solution.Id, Guid.NewGuid(), 0, false);
-            solutionDetail.Create(ConnectionString);
-            solution.SolutionDetailId = solutionDetail.SolutionDetailId;
-            solution.Update(ConnectionString);
         }
 
         public void GoToUrl()
