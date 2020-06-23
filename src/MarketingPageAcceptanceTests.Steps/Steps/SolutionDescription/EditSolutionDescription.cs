@@ -63,6 +63,7 @@ namespace MarketingPageAcceptanceTests.Steps
         [Given(@"that a Supplier has not provided a Summary Description")]
         public void GivenThatASupplierHasNotProvidedASummaryDescription()
         {
+            GivenThePre_PopulatedDataIsNotPresent();
             _test.Pages.Dashboard.NavigateToSection("Solution description");
         }
 

@@ -77,7 +77,7 @@ namespace MarketingPageAcceptanceTests.StepSetup.Utils
         {
             catalogueItem = GenerateCatalogueItem.GenerateNewCatalogueItem(prefix: prefix, checkForUnique: true, connectionString: ConnectionString);
             catalogueItem.Create(ConnectionString);
-            solution = GenerateSolution.GenerateNewSolution(catalogueItem.CatalogueItemId);
+            solution = GenerateSolution.GenerateNewSolution(catalogueItem.CatalogueItemId, clientApplication: false);
             solution.Create(ConnectionString);
         }
 

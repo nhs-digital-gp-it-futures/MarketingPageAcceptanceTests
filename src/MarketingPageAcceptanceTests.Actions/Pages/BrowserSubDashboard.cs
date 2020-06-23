@@ -33,6 +33,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void OpenSection(string sectionName)
         {
+            wait.Until(d => d.FindElements(By.LinkText(sectionName)).Count == 1);
             driver.FindElement(By.LinkText(sectionName)).Click();
             wait.Until(s =>
                 s.FindElement(pages.Common.PageTitle).Text
