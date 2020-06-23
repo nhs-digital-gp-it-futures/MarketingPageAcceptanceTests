@@ -46,3 +46,4 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
             return SqlExecutor.Execute<CatalogueItem>(connectionString, query, null).Select(c => c.CatalogueItemId);
         }
     }
+}

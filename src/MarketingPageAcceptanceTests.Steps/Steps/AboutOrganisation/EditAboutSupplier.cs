@@ -33,7 +33,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation
         {
             _test.supplier = GenerateSupplier.GenerateNewSupplier();
             _test.supplier.Create(_test.ConnectionString);
-            _test.solution.SupplierId = _test.supplier.Id;
+            _test.catalogueItem.SupplierId = _test.supplier.Id;
             _test.solution.Update(_test.ConnectionString);
             _test.listOfSolutions.Add(_test.solution);
         }
@@ -41,17 +41,11 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation
         [Given(@"the User has created a new solution for the same supplier \(Solution B\)")]
         public void GivenTheUserHasCreatedANewSolutionForTheSameSupplierSolutionB()
         {
-            _test.solution = GenerateSolution.GenerateNewSolution(_test.solutionIdPrefix + "SolB");
-            _test.solution.SupplierId = _test.supplier.Id;
+            _test.catalogueItem = GenerateCatalogueItem.GenerateNewCatalogueItem(_test.solutionIdPrefix + "SolB");
+            _test.solution = GenerateSolution.GenerateNewSolution(_test.catalogueItem.CatalogueItemId);
+            _test.catalogueItem.SupplierId = _test.supplier.Id;
+            _test.catalogueItem.Create(_test.ConnectionString);
             _test.solution.Create(_test.ConnectionString);
-
-            _test.solutionDetail =
-                GenerateSolutionDetails.GenerateNewSolutionDetail(_test.solution.Id, Guid.NewGuid(), 0, false);
-            _test.solutionDetail.Create(_test.ConnectionString);
-
-            _test.solution.SolutionDetailId = _test.solutionDetail.SolutionDetailId;
-            _test.solution.Update(_test.ConnectionString);
-
             _test.listOfSolutions.Add(_test.solution);
         }
 

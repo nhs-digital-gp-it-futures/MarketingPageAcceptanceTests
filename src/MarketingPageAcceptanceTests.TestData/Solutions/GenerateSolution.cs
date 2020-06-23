@@ -38,7 +38,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
             return solution;
         }
 
-        public static Solution CreateCompleteSolution(string solutionId, int numFeatures = 5)
+        public static Solution GenerateCompleteSolution(string solutionId, int numFeatures = 5)
         {           
             var solution = GenerateNewSolution(solutionId, numFeatures, true, true, true, true, true);
             solution.ClientApplication = ClientApplicationStringBuilder.GetClientAppString(clientApplicationTypes: "Browser-based, Native mobile or tablet, Native desktop");

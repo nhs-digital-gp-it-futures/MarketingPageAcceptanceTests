@@ -15,9 +15,9 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.Dashboard
         [Given(@"that a Supplier has provided all mandatory data on the Marketing Page")]
         public void GivenThatASupplierHasProvidedAllMandatoryDataOnTheMarketingPage()
         {
-            _test.solutionDetail =
-                GenerateSolution.GenerateCompleteSolutionDetail(_test.solution, _test.solutionDetail);
-            _test.solutionDetail.Update(_test.ConnectionString);
+            _test.solution.Delete(_test.ConnectionString);
+            _test.solution = GenerateSolution.GenerateCompleteSolution(_test.catalogueItem.CatalogueItemId);
+            _test.solution.Create(_test.ConnectionString);
             _test.Driver.Navigate().Refresh();
             _test.Pages.Dashboard.NavigateToSection("Solution description");
             _test.Pages.SolutionDescription.SummaryAddText(100);
@@ -45,7 +45,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.Dashboard
         [Then(@"the Marketing Page will be submitted for Moderation")]
         public void ThenTheMarketingPageWillBeSubmittedForModeration()
         {
-            _test.solution.Retrieve(_test.ConnectionString).SupplierStatusId.Should().Be(2);
+            _test.catalogueItem.Retrieve(_test.ConnectionString).PublishedStatusId.Should().Be(2);
         }
 
         [Then(@"the User will be informed that Submission was successful")]
@@ -58,7 +58,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.Dashboard
         public void ThenTheMarketingPageWillNotBeSubmittedForModeration()
         {
             _test.Pages.Dashboard.SubmitForModeration();
-            _test.solution.Retrieve(_test.ConnectionString).SupplierStatusId.Should().NotBe(2);
+            _test.catalogueItem.Retrieve(_test.ConnectionString).PublishedStatusId.Should().NotBe(2);
         }
 
         [Then(@"the User remains on the Marketing Page Dashboard")]

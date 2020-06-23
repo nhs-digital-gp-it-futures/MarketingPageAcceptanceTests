@@ -29,7 +29,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AboutSolution
         public void GivenThatTheAboutSolutionURLIsUpdated()
         {
             GivenThatTheSolutionSummaryIsUpdated();
-            _test.Pages.SolutionDescription.LinkAddText(0, _test.solutionDetail.AboutUrl);
+            _test.Pages.SolutionDescription.LinkAddText(0, _test.solution.AboutUrl);
         }
 
         [Given(@"that the Contact details are updated")]

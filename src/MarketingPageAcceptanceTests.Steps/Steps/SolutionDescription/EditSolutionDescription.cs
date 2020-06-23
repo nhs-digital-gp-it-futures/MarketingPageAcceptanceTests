@@ -80,9 +80,9 @@ namespace MarketingPageAcceptanceTests.Steps
         [Then(@"the non mandatory data is saved to the database")]
         public void ThenTheNonMandatoryDataIsSavedToTheDatabase()
         {
-            _test.Pages.SolutionDescription.DbContainsDescription(_test.solutionDetail, _test.ConnectionString).Should()
+            _test.Pages.SolutionDescription.DbContainsDescription(_test.solution, _test.ConnectionString).Should()
                 .BeTrue();
-            _test.Pages.SolutionDescription.DbContainsLink(_test.solutionDetail, _test.ConnectionString).Should()
+            _test.Pages.SolutionDescription.DbContainsLink(_test.solution, _test.ConnectionString).Should()
                 .BeTrue();
         }
 

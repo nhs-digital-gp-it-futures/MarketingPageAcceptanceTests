@@ -97,10 +97,10 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
         public void GivenASupplierHasSavedAllMandatoryDataOnTheClientApplicationTypeSub_Sections(
             string clientApplicationType)
         {
-            _test.solutionDetail.ClientApplication =
+            _test.solution.ClientApplication =
                 ClientApplicationStringBuilder.GetClientAppString(null, clientApplicationType);
 
-            _test.solutionDetail.Update(_test.ConnectionString);
+            _test.solution.Update(_test.ConnectionString);
             _test.Driver.Navigate().Refresh();
         }
 
@@ -109,9 +109,9 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
         public void GivenASupplierHasSavedAllMandatoryDataOnTheClientApplicationTypeSub_SectionsExceptForX(
             string clientApplicationType, string section)
         {
-            _test.solutionDetail.ClientApplication =
+            _test.solution.ClientApplication =
                 ClientApplicationStringBuilder.GetClientAppString(section, clientApplicationType);
-            _test.solutionDetail.Update(_test.ConnectionString);
+            _test.solution.Update(_test.ConnectionString);
 
             _test.Driver.Navigate().Refresh();
         }

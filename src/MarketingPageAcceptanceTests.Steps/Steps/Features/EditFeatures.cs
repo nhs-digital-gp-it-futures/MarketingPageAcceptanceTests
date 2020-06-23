@@ -69,7 +69,7 @@ namespace MarketingPageAcceptanceTests.Steps
         [Then(@"the database contains the Feature Text")]
         public void ThenTheDatabaseContainsTheFeatureText()
         {
-            var features = _test.solutionDetail.Retrieve(_test.ConnectionString).Features;
+            var features = _test.solution.Retrieve(_test.ConnectionString).Features;
             features.Should().Contain(featureString);
         }
 
@@ -87,7 +87,7 @@ namespace MarketingPageAcceptanceTests.Steps
         [Then(@"the database does not contain the Feature Text")]
         public void ThenTheDatabaseDoesNotContainTheFeatureText()
         {
-            var features = _test.solutionDetail.Retrieve(_test.ConnectionString).Features;
+            var features = _test.solution.Retrieve(_test.ConnectionString).Features;
             features.Should().NotContain(featureString);
         }
 
