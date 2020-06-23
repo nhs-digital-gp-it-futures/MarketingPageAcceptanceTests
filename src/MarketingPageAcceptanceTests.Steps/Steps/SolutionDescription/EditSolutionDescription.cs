@@ -41,6 +41,11 @@ namespace MarketingPageAcceptanceTests.Steps
         [Given(@"the pre-populated data is not present")]
         public void GivenThePre_PopulatedDataIsNotPresent()
         {
+            _test.solution.Summary = null;
+            _test.solution.FullDescription = null;
+            _test.solution.AboutUrl = null;
+            _test.solution.Update(_test.ConnectionString);
+            _test.Driver.Navigate().Refresh();
         }
 
         [Given(@"the Solution Description Section has completed data saved")]
