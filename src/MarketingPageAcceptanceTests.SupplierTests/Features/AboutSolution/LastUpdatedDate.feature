@@ -7,12 +7,12 @@
 Scenario: Last Updated Date - Updated solution summary changes the last updated date
 	Given that the Solution Summary is updated
 	When the content has been updated
-	Then the Last Changed Date is updated in the SolutionDetail table
+	Then the Last Changed Date is updated in the Solution table
 
 Scenario: Last Updated Date - Updated about solution URL changes the last updated date
 	Given that the About Solution URL is updated
 	When the content has been updated
-	Then the Last Changed Date is updated in the SolutionDetail table
+	Then the Last Changed Date is updated in the Solution table
 
 Scenario: Last Updated Date - Updated contact details changes the last updated date
 	Given that the Contact details are updated

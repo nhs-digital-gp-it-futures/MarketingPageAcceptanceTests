@@ -16,7 +16,7 @@ namespace MarketingPageAcceptanceTests.Steps
         public void ThenThePublicCloudSectionContainsThisSolutionRequiresAHSCNNConnectionOnThePreviewOfTheMarketingPage(
             string hostingTypeSection, string assertionText)
         {
-            _test.Pages.PreviewPage.IsRequiresHscnDisplayed(hostingTypeSection).Should()
+             _test.Pages.PreviewPage.IsRequiresHscnDisplayed(hostingTypeSection).Should()
                 .Be(assertionText == "contains");
         }
 

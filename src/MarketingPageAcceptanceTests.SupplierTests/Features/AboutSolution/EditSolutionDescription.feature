@@ -30,7 +30,8 @@ Scenario: Solution Description - Marked as Complete
 	Then the Solution description section is marked as Complete
 
 Scenario: Solution Description - Validation Error Message Anchors
-	Given validation has been triggered on Solution description section
+	Given the pre-populated data is not present
+	And validation has been triggered on Solution description section
 	When the User selects an error link in the Error Summary
 	Then the User will be navigated to the relevant section on the page
 

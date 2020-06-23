@@ -9,15 +9,18 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
     {
         public string Id { get; set; }
         public string SolutionId => Id;
-        public string Name { get; set; }
-        public string SolutionName => Name;
         public string Version { get; set; }
         public string SolutionVersion => Version;
-        public string SupplierId { get; set; } = "100000";
-        public int PublishedStatusId { get; set; } = 1;
-        public int AuthorityStatusId { get; set; } = 1;
-        public int SupplierStatusId { get; set; } = 1;
-        public Guid SolutionDetailId { get; set; }
+        public string Summary { get; set; }
+        public string FullDescription { get; set; }
+        public string Features { get; set; }
+        public string ClientApplication { get; set; }
+        public string Hosting { get; set; }
+        public string ImplementationDetail { get; set; }
+        public string RoadMap { get; set; }
+        public string IntegrationsUrl { get; set; }
+        public string AboutUrl { get; set; }
+        public string ServiceLevelAgreement { get; set; }
         public DateTime LastUpdated { get; set; }
         public Guid LastUpdatedBy { get; set; }
 
@@ -30,44 +33,13 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 
         public void Create(string connectionString)
         {
-            var query = @"INSERT INTO Solution (
-                            Id, 
-                            SupplierId, 
-                            Name, 
-                            Version, 
-                            PublishedStatusId, 
-                            AuthorityStatusId, 
-                            SupplierStatusId, 
-                            OnCatalogueVersion, 
-                            LastUpdatedBy, 
-                            LastUpdated) 
-                        VALUES (
-                            @SolutionId, 
-                            @SupplierId, 
-                            @SolutionName, 
-                            @SolutionVersion, 
-                            @PublishedStatusId,
-                            @AuthorityStatusId,
-                            @SupplierStatusId, 
-                            0, 
-                            @LastUpdatedBy, 
-                            @LastUpdated
-                        )";
+            var query = @"INSERT INTO Solution (Id, Version, Summary, FullDescription, Features, ClientApplication, Hosting, ImplementationDetail, RoadMap, IntegrationsUrl, AboutUrl, ServiceLevelAgreement, LastUpdatedBy, LastUpdated) values (@SolutionId, @Version, @Summary, @FullDescription, @Features, @ClientApplication, @Hosting, @ImplementationDetail, @RoadMap, @IntegrationsUrl, @AboutUrl, @ServiceLevelAgreement, @LastUpdatedBy, @LastUpdated)";
             SqlExecutor.Execute<Solution>(connectionString, query, this);
         }
 
         public void Update(string connectionString)
         {
-            var query = @"UPDATE Solution 
-                        SET 
-                            SolutionDetailId=@solutionDetailId, 
-                            SupplierId=@supplierId, 
-                            Name=@solutionName, 
-                            Version=@solutionVersion, 
-                            PublishedStatusId=@publishedStatusId,  
-                            AuthorityStatusId=@authorityStatusId, 
-                            SupplierStatusId=@supplierStatusId 
-                        WHERE Id=@solutionId";
+            var query = @"UPDATE Solution SET Version=@solutionVersion, Summary=@Summary, FullDescription=@FullDescription, Features=@Features, ClientApplication=@ClientApplication, Hosting=@Hosting, ImplementationDetail=@ImplementationDetail, RoadMap=@RoadMap, IntegrationsUrl=@IntegrationsUrl, AboutUrl=@AboutUrl, ServiceLevelAgreement=@ServiceLevelAgreement, LastUpdatedBy=@LastUpdatedBy, LastUpdated=@LastUpdated WHERE Id=@solutionId";
             SqlExecutor.Execute<Solution>(connectionString, query, this);
         }
 

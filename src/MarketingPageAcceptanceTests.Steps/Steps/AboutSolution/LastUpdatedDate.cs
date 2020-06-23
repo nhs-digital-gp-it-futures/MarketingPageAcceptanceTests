@@ -19,7 +19,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AboutSolution
         [Given(@"that the Solution Summary is updated")]
         public void GivenThatTheSolutionSummaryIsUpdated()
         {
-            LastUpdatedHelper.UpdateLastUpdated(oldDate, "SolutionDetail", "SolutionId", _test.solution.Id,
+            LastUpdatedHelper.UpdateLastUpdated(oldDate, "Solution", "Id", _test.solution.Id,
                 _test.ConnectionString);
             _test.Pages.Dashboard.NavigateToSection("Solution description");
             _test.Pages.SolutionDescription.SummaryAddText(300);
@@ -29,7 +29,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AboutSolution
         public void GivenThatTheAboutSolutionURLIsUpdated()
         {
             GivenThatTheSolutionSummaryIsUpdated();
-            _test.Pages.SolutionDescription.LinkAddText(0, _test.solutionDetail.AboutUrl);
+            _test.Pages.SolutionDescription.LinkAddText(0, _test.solution.AboutUrl);
         }
 
         [Given(@"that the Contact details are updated")]
@@ -51,8 +51,16 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AboutSolution
             _test.Pages.Common.WaitUntilSectionPageNotShownAnymore();
         }
 
-        [Then(@"the Last Changed Date is updated in the (.*) table")]
-        public void ThenTheLastChangedDateIsUpdated(string tableName)
+        [Then(@"the Last Changed Date is updated in the (Solution) table")]
+        public void ThenTheLastChangedDateSolutionIsUpdated(string tableName)
+        {
+            var actualValueFromDB =
+                LastUpdatedHelper.GetLastUpdated(tableName, "Id", _test.solution.Id, _test.ConnectionString);
+            actualValueFromDB.Should().BeAfter(oldDate);
+        }
+
+        [Then(@"the Last Changed Date is updated in the (MarketingContact) table")]
+        public void ThenTheLastChangedDateMarketingContactIsUpdated(string tableName)
         {
             var actualValueFromDB =
                 LastUpdatedHelper.GetLastUpdated(tableName, "SolutionId", _test.solution.Id, _test.ConnectionString);

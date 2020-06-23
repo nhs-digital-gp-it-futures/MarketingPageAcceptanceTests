@@ -41,6 +41,11 @@ namespace MarketingPageAcceptanceTests.Steps
         [Given(@"the pre-populated data is not present")]
         public void GivenThePre_PopulatedDataIsNotPresent()
         {
+            _test.solution.Summary = null;
+            _test.solution.FullDescription = null;
+            _test.solution.AboutUrl = null;
+            _test.solution.Update(_test.ConnectionString);
+            _test.Driver.Navigate().Refresh();
         }
 
         [Given(@"the Solution Description Section has completed data saved")]
@@ -58,6 +63,7 @@ namespace MarketingPageAcceptanceTests.Steps
         [Given(@"that a Supplier has not provided a Summary Description")]
         public void GivenThatASupplierHasNotProvidedASummaryDescription()
         {
+            GivenThePre_PopulatedDataIsNotPresent();
             _test.Pages.Dashboard.NavigateToSection("Solution description");
         }
 
@@ -80,9 +86,9 @@ namespace MarketingPageAcceptanceTests.Steps
         [Then(@"the non mandatory data is saved to the database")]
         public void ThenTheNonMandatoryDataIsSavedToTheDatabase()
         {
-            _test.Pages.SolutionDescription.DbContainsDescription(_test.solutionDetail, _test.ConnectionString).Should()
+            _test.Pages.SolutionDescription.DbContainsDescription(_test.solution, _test.ConnectionString).Should()
                 .BeTrue();
-            _test.Pages.SolutionDescription.DbContainsLink(_test.solutionDetail, _test.ConnectionString).Should()
+            _test.Pages.SolutionDescription.DbContainsLink(_test.solution, _test.ConnectionString).Should()
                 .BeTrue();
         }
 

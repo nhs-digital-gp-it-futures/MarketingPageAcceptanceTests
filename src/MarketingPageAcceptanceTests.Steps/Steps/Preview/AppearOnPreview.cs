@@ -16,14 +16,13 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.Preview
         [Given(@"a solution has been created with all data complete")]
         public void GivenASolutionHasBeenCreatedWithAllDataComplete()
         {
-            _test.solutionDetail =
-                GenerateSolutionDetails.CreateCompleteSolutionDetail(_test.solution.Id,
-                    _test.solutionDetail.SolutionDetailId);
-            _test.solutionDetail.Update(_test.ConnectionString);
+            _test.solution.Delete(_test.ConnectionString);
+            _test.solution = GenerateSolution.GenerateCompleteSolution(_test.catalogueItem.CatalogueItemId);
+            _test.solution.Create(_test.ConnectionString);
             var contactDetails = GenerateContactDetails.NewContactDetail(_test.solution.Id);
             contactDetails.Create(_test.ConnectionString);
-            _test.solution.PublishedStatusId = 3;
-            _test.solution.Update(_test.ConnectionString);
+            _test.catalogueItem.PublishedStatusId = 3;
+            _test.catalogueItem.Update(_test.ConnectionString);
         }
 
 
