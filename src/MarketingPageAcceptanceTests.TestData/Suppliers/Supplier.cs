@@ -51,8 +51,8 @@ namespace MarketingPageAcceptanceTests.TestData.Suppliers
                             Supplier.[LastUpdated],
                             Supplier.[LastUpdatedBy]
                         FROM [dbo].[Supplier] 
-                        LEFT JOIN Solution on Solution.SupplierId = Supplier.Id 
-                        WHERE Solution.Id=@solutionId";
+                        LEFT JOIN CatalogueItem on CatalogueItem.SupplierId = Supplier.Id 
+                        WHERE CatalogueItem.CatalogueItemId=@solutionId";
             return SqlExecutor.Execute<Supplier>(connectionString, query, new { solutionId }).Single();
         }
 

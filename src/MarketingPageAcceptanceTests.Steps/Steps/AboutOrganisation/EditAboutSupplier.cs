@@ -34,7 +34,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation
             _test.supplier = GenerateSupplier.GenerateNewSupplier();
             _test.supplier.Create(_test.ConnectionString);
             _test.catalogueItem.SupplierId = _test.supplier.Id;
-            _test.solution.Update(_test.ConnectionString);
+            _test.catalogueItem.Update(_test.ConnectionString);
             _test.listOfSolutions.Add(_test.solution);
         }
 

@@ -1,4 +1,6 @@
 ﻿using MarketingPageAcceptanceTests.StepSetup.Utils;
+using MarketingPageAcceptanceTests.TestData.Solutions;
+using System.Data.Common;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 
@@ -29,7 +31,7 @@ namespace MarketingPageAcceptanceTests.StepSetup
                     if (solution.Id.Contains(_test.solutionIdPrefix))
                     {
                         solution.Delete(_test.ConnectionString);
-                        _test.catalogueItem.Delete(_test.ConnectionString);
+                        new CatalogueItem { CatalogueItemId = solution.Id }.Delete(_test.ConnectionString);
                     }
                 }                    
             }
