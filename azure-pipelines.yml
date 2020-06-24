@@ -105,7 +105,9 @@ jobs:
     dependsOn: Setup
     steps:
     - script: |
-        domain=`echo "$(MPURL)" | awk -F[/:] '{print $4}'`        
+        pwd
+        ls
+        domain=`echo "$(MPURL)" | awk -F[/:] '{print $4}'`
         if [[ "$(MPURL)" == *"-dev.buyingcatalogue.digital.nhs.uk"* ]]
         then
           ip="51.11.46.27"
