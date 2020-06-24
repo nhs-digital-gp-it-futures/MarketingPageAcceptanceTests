@@ -5,6 +5,8 @@ services:
     container_name: selenium-hub
     ports:
       - "4444:4444"
+    extra_hosts:
+      - "buyingcatalogue-development-helm-dev.buyingcatalogue.digital.nhs.uk:51.11.46.27"
   chrome:
     image: selenium/node-chrome
     volumes:
@@ -14,6 +16,8 @@ services:
     environment:
       - HUB_HOST=selenium-hub
       - HUB_PORT=4444
+    extra_hosts:
+      - "buyingcatalogue-development-helm-dev.buyingcatalogue.digital.nhs.uk:51.11.46.27"
   firefox:
     image: selenium/node-firefox
     volumes:
@@ -23,3 +27,5 @@ services:
     environment:
       - HUB_HOST=selenium-hub
       - HUB_PORT=4444
+    extra_hosts:
+      - "buyingcatalogue-development-helm-dev.buyingcatalogue.digital.nhs.uk:51.11.46.27"
