@@ -39,16 +39,25 @@ jobs:
     dependsOn: Setup
     steps:
     - script: |
-        domain=`echo "$(MPURL)" | awk -F[/:] '{print $4}'`
+        domain=`echo "$(MPURL)" | awk -F[/:] '{print $4}'`        
         if [[ "$(MPURL)" == *"-dev.buyingcatalogue.digital.nhs.uk"* ]]
         then
-          echo "51.11.46.27       $domain" | sudo tee -a /etc/hosts
+          ip="51.11.46.27"
         elif [[ "$(MPURL)" == *"private-test.buyingcatalogue.digital.nhs.uk"* ]]
         then
-          echo "51.132.54.44       $domain" | sudo tee -a /etc/hosts
+          ip="51.132.54.44"
         elif [[ "$(MPURL)" == *"public-test.buyingcatalogue.digital.nhs.uk"* ]]
         then
-          echo "51.132.53.156       $domain" | sudo tee -a /etc/hosts
+          ip="51.132.53.156"
+        fi
+        if [[ -n "$ip" ]]
+        then
+          echo "$ip        $domain" | sudo tee -a /etc/hosts
+          cat domain-template.yaml | sed -i "s/DOMAIN/$domain/g" | sed -i "s/IP/$ip/g" > domain.yaml
+          cat domain.yaml
+          cat /etc/hosts
+        else
+          touch domain.yaml
         fi
       displayName: 'Resolve domain'
     - task: UseDotNet@2
@@ -96,16 +105,25 @@ jobs:
     dependsOn: Setup
     steps:
     - script: |
-        domain=`echo "$(MPURL)" | awk -F[/:] '{print $4}'`
+        domain=`echo "$(MPURL)" | awk -F[/:] '{print $4}'`        
         if [[ "$(MPURL)" == *"-dev.buyingcatalogue.digital.nhs.uk"* ]]
         then
-          echo "51.11.46.27       $domain" | sudo tee -a /etc/hosts
+          ip="51.11.46.27"
         elif [[ "$(MPURL)" == *"private-test.buyingcatalogue.digital.nhs.uk"* ]]
         then
-          echo "51.132.54.44       $domain" | sudo tee -a /etc/hosts
+          ip="51.132.54.44"
         elif [[ "$(MPURL)" == *"public-test.buyingcatalogue.digital.nhs.uk"* ]]
         then
-          echo "51.132.53.156       $domain" | sudo tee -a /etc/hosts
+          ip="51.132.53.156"
+        fi
+        if [[ -n "$ip" ]]
+        then
+          echo "$ip        $domain" | sudo tee -a /etc/hosts
+          cat domain-template.yaml | sed -i "s/DOMAIN/$domain/g" | sed -i "s/IP/$ip/g" > domain.yaml
+          cat domain.yaml
+          cat /etc/hosts
+        else
+          touch domain.yaml
         fi
       displayName: 'Resolve domain'
     - task: UseDotNet@2
@@ -141,7 +159,7 @@ jobs:
         script: |
           docker-compose stop &&
           docker-compose rm -f &&
-          docker-compose up --scale chrome=4 --scale firefox=4  -d
+          docker-compose up --scale chrome=4 --scale firefox=4  -d -f domain.yaml
     - task: DotNetCoreCLI@2
       displayName: "Run Authority Acceptance Tests"
       inputs:

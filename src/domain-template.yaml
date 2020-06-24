@@ -1,0 +1,10 @@
+services:
+  selenium-hub:
+    extra_hosts:
+      - "DOMAIN:IP"
+  chrome:
+    extra_hosts:
+      - "DOMAIN:IP"
+  firefox:
+    extra_hosts:
+      - "DOMAIN:IP"
