@@ -17,9 +17,11 @@ jobs:
   - job : Setup
     steps:
       - bash: | 
+          echo "$(MPURL)"
           if [[ "$(MPURL)" == "*-dev.buyingcatalogue.digital.nhs.uk" ]]
           then
-              echo "51.11.46.27  $(MPURL)" >> /etc/hosts
+            echo "51.11.46.27  $(MPURL)" >> /etc/hosts
+            cat /etc/hosts
           elif [[ "$(MPURL)" == "*-test.buyingcatalogue.digital.nhs.uk" ]]
           then
             echo "51.132.54.44  private-test.buyingcatalogue.digital.nhs.uk" >> /etc/hosts
