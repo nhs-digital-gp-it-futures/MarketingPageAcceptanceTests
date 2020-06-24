@@ -35,78 +35,10 @@ jobs:
         displayName: 'Check URL is reachable'    
     
 
-  # - job: SupplierAcceptanceTests
-  #   dependsOn: Setup
-  #   steps:
-  #   - script: |
-  #       domain=`echo "$(MPURL)" | awk -F[/:] '{print $4}'`        
-  #       if [[ "$(MPURL)" == *"-dev.buyingcatalogue.digital.nhs.uk"* ]]
-  #       then
-  #         ip="51.11.46.27"
-  #       elif [[ "$(MPURL)" == *"private-test.buyingcatalogue.digital.nhs.uk"* ]]
-  #       then
-  #         ip="51.132.54.44"
-  #       elif [[ "$(MPURL)" == *"public-test.buyingcatalogue.digital.nhs.uk"* ]]
-  #       then
-  #         ip="51.132.53.156"
-  #       fi
-  #       if [[ -n "$ip" ]]
-  #       then
-  #         echo "$ip        $domain" | sudo tee -a /etc/hosts
-  #         cat domain-template.yaml | sed -i "s/DOMAIN/$domain/g" | sed -i "s/IP/$ip/g" > domain.yaml
-  #         cat domain.yaml
-  #         cat /etc/hosts
-  #       else
-  #         touch domain.yaml
-  #       fi
-  #     displayName: 'Resolve domain'
-  #   - task: UseDotNet@2
-  #     displayName: 'Use DotNet Core 3.1.x'
-  #     inputs:
-  #       packageType: 'sdk'
-  #       version: '3.1.101'
-  #       includePreviewVersions: false
-  #       installationPath: '$(Agent.ToolsDirectory)'
-
-  #   - task: AzureKeyVault@1
-  #     inputs:
-  #       azureSubscription: 'NHSAPP-BuyingCatalogue (Non-Prod)'
-  #       KeyVaultName: 'gpitfutures-dev-kv'
-  #       SecretsFilter: "*"
-
-  #   - task: A8515EC8-7254-4FFD-912C-86772E2B5962@3
-  #     displayName: 'Replace tokens'
-  #     inputs:
-  #       targetFiles: '**/*.json'
-  #       encoding: 'auto'
-  #       writeBOM: true
-  #       actionOnMissing: 'continue'
-  #       keepToken: true
-  #       tokenPrefix: '#{'
-  #       tokenSuffix: '}#'
-  #       emptyValue: 
-    
-  #   - task: Bash@3
-  #     displayName: Selenium Grid Setup
-  #     inputs:
-  #       targetType: 'inline'
-  #       script: |
-  #         docker-compose stop &&
-  #         docker-compose rm -f &&
-  #         docker-compose up --scale chrome=4 --scale firefox=4  -d
-  #   - task: DotNetCoreCLI@2
-  #     displayName: "Run Supplier Acceptance Tests"
-  #     inputs:
-  #       command: 'test'
-  #       projects: 'src/MarketingPageAcceptanceTests.SupplierTests/*csproj'
-  #       arguments: '-v n'        
-
-  - job: AuthorityAcceptanceTests
+  - job: SupplierAcceptanceTests
     dependsOn: Setup
     steps:
     - script: |
-        pwd
-        ls
         domain=`echo "$(MPURL)" | awk -F[/:] '{print $4}'`
         if [[ "$(MPURL)" == *"-dev.buyingcatalogue.digital.nhs.uk"* ]]
         then
@@ -122,8 +54,70 @@ jobs:
         then
           echo "$ip        $domain" | sudo tee -a /etc/hosts
           cat domain-template.yaml | sed "s/DOMAIN/$domain/g;s/IP/$ip/g" > domain.yml
-          cat domain.yml
-          cat /etc/hosts
+        else
+          touch domain.yml
+        fi
+      displayName: 'Resolve domain'
+    - task: UseDotNet@2
+      displayName: 'Use DotNet Core 3.1.x'
+      inputs:
+        packageType: 'sdk'
+        version: '3.1.101'
+        includePreviewVersions: false
+        installationPath: '$(Agent.ToolsDirectory)'
+
+    - task: AzureKeyVault@1
+      inputs:
+        azureSubscription: 'NHSAPP-BuyingCatalogue (Non-Prod)'
+        KeyVaultName: 'gpitfutures-dev-kv'
+        SecretsFilter: "*"
+
+    - task: A8515EC8-7254-4FFD-912C-86772E2B5962@3
+      displayName: 'Replace tokens'
+      inputs:
+        targetFiles: '**/*.json'
+        encoding: 'auto'
+        writeBOM: true
+        actionOnMissing: 'continue'
+        keepToken: true
+        tokenPrefix: '#{'
+        tokenSuffix: '}#'
+        emptyValue: 
+    
+    - task: Bash@3
+      displayName: Selenium Grid Setup
+      inputs:
+        targetType: 'inline'
+        script: |
+          docker-compose stop &&
+          docker-compose rm -f &&
+          docker-compose -f docker-compose.yml -f domain.yml up --scale chrome=4 --scale firefox=4  -d
+    - task: DotNetCoreCLI@2
+      displayName: "Run Supplier Acceptance Tests"
+      inputs:
+        command: 'test'
+        projects: 'src/MarketingPageAcceptanceTests.SupplierTests/*csproj'
+        arguments: '-v n'        
+
+  - job: AuthorityAcceptanceTests
+    dependsOn: Setup
+    steps:
+    - script: |
+        domain=`echo "$(MPURL)" | awk -F[/:] '{print $4}'`
+        if [[ "$(MPURL)" == *"-dev.buyingcatalogue.digital.nhs.uk"* ]]
+        then
+          ip="51.11.46.27"
+        elif [[ "$(MPURL)" == *"private-test.buyingcatalogue.digital.nhs.uk"* ]]
+        then
+          ip="51.132.54.44"
+        elif [[ "$(MPURL)" == *"public-test.buyingcatalogue.digital.nhs.uk"* ]]
+        then
+          ip="51.132.53.156"
+        fi
+        if [[ -n "$ip" ]]
+        then
+          echo "$ip        $domain" | sudo tee -a /etc/hosts
+          cat domain-template.yaml | sed "s/DOMAIN/$domain/g;s/IP/$ip/g" > domain.yml
         else
           touch domain.yml
         fi
