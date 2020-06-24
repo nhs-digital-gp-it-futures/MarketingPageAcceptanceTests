@@ -121,7 +121,7 @@ jobs:
         if [[ -n "$ip" ]]
         then
           echo "$ip        $domain" | sudo tee -a /etc/hosts
-          cat domain-template.yaml | sed -i "s/DOMAIN/$domain/g" | sed -i "s/IP/$ip/g" > domain.yml
+          cat domain-template.yaml | sed "s/DOMAIN/$domain/g" | sed "s/IP/$ip/g" > domain.yml
           cat domain.yml
           cat /etc/hosts
         else
