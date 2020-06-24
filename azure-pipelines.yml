@@ -16,20 +16,23 @@ variables:
 jobs:
   - job : Setup
     steps:
-      - bash: | 
+      - bash: |
           echo "$(MPURL)"
+          domain=`echo "$(MPURL)" | awk -F[/:] '{print $4}'`
+          echo "$domain"
           if [[ "$(MPURL)" == *"-dev.buyingcatalogue.digital.nhs.uk"* ]]
           then
-            sudo echo "51.11.46.27  $(MPURL)" >> /etc/hosts
-            cat /etc/hosts
-          elif [[ "$(MPURL)" == *"-test.buyingcatalogue.digital.nhs.uk"* ]]
+            curl -k -i $(MPURL) --fail --connect-timeout 30 --resolve $domain:443:51.11.46.27
+          elif [[ "$(MPURL)" == *"private-test.buyingcatalogue.digital.nhs.uk"* ]]
           then
-            sudo echo "51.132.54.44  private-test.buyingcatalogue.digital.nhs.uk" >> /etc/hosts
-            sudo echo "51.132.53.156  public-test.buyingcatalogue.digital.nhs.uk" >> /etc/hosts
+            curl -k -i $(MPURL) --fail --connect-timeout 30 --resolve $domain:443:51.132.54.44
+          elif [[ "$(MPURL)" == *"public-test.buyingcatalogue.digital.nhs.uk"* ]]
+          then
+            curl -k -i $(MPURL) --fail --connect-timeout 30 --resolve $domain:443:51.132.53.156
+          else
+            curl -k -i $(MPURL) --fail --connect-timeout 30
           fi
-        displayName: 'add hosts entries'
-      - bash: 
-          "curl -k -i $(MPURL) --fail --connect-timeout 30"
+        
         displayName: 'Check URL is reachable'    
     
 
