@@ -57,6 +57,9 @@ jobs:
         else
           touch domain.yml
         fi
+        curl -k -i $(MPURL) --fail --connect-timeout 30
+        cat domain.yml
+        cat /etc/hosts
       displayName: 'Resolve domain'
     - task: UseDotNet@2
       displayName: 'Use DotNet Core 3.1.x'
@@ -121,6 +124,9 @@ jobs:
         else
           touch domain.yml
         fi
+        curl -k -i $(MPURL) --fail --connect-timeout 30
+        cat domain.yml
+        cat /etc/hosts
       displayName: 'Resolve domain'
     - task: UseDotNet@2
       displayName: 'Use DotNet Core 3.1.x'
