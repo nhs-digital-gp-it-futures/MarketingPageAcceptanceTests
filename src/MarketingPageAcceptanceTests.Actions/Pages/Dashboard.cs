@@ -101,7 +101,6 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                 .Single(s => s.Text.Contains(sectionTitle))
                 .FindElement(By.TagName("a"))
                 .Click();
-
             if (subDashboard)
                 wait.Until(s => s.FindElement(pages.Common.SubDashboardTitle).Text.Contains(sectionTitle));
             else
