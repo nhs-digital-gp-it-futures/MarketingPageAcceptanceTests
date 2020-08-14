@@ -3,6 +3,7 @@ using MarketingPageAcceptanceTests.Actions.Collections;
 using MarketingPageAcceptanceTests.TestData.Solutions;
 using MarketingPageAcceptanceTests.TestData.Suppliers;
 using OpenQA.Selenium;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,10 +23,13 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
         public string solutionIdPrefix = "Auto";
         public string CompleteUrl;
 
+        private readonly Settings _settings;
+
         public UITest(Settings settings, BrowserFactory browserFactory)
         {
-            ConnectionString = settings.DatabaseSettings.ConnectionString;
-            Url = settings.MarketingPageUrl;
+            _settings = settings;
+
+            ConnectionString = _settings.DatabaseSettings.ConnectionString;
             Driver = browserFactory.Driver;
             Pages = new PageActions(Driver).PageActionCollection;
         }
@@ -54,7 +58,9 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
             // If param is not null, set the UserType property to be the provided usertype
             if (userType != null) UserType = userType;
 
-            CompleteUrl = $"{Url}/{solution.Id}".Replace("supplier", UserTypeConvert());
+            var url = new Uri(GetUrl());
+
+            CompleteUrl = new Uri(url, solution.Id).ToString();
         }
 
         private void GetExistingSolution()
@@ -77,14 +83,14 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
             Driver.Navigate().GoToUrl(CompleteUrl);
         }
 
-        private string UserTypeConvert()
+        private string GetUrl()
         {
             return UserType.ToLower() switch
             {
-                "supplier" => "supplier",
-                "authority" => "authority",
-                "authority user" => "authority",
-                _ => "supplier"
+                "supplier" => _settings.SupplierMarketingPageUrl,
+                "authority" => _settings.AuthorityMarketingPageUrl,
+                "authority user" => _settings.AuthorityMarketingPageUrl,
+                _ => _settings.SupplierMarketingPageUrl
             };
         }
     }

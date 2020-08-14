@@ -6,7 +6,8 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
     {
         public string HubUrl { get; set; }
 
-        public string MarketingPageUrl { get; set; }
+        public string SupplierMarketingPageUrl { get; set; }
+        public string AuthorityMarketingPageUrl { get; set; }
 
         public string Browser { get; set; }
 
@@ -18,9 +19,9 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
 
         public Settings(IConfiguration config)
         {
-            HubUrl = config.GetValue<string>("hubUrl");
-            var envUrl = config.GetValue<string>("pbUrl");
-            MarketingPageUrl = $"{envUrl}/marketing/supplier/solution";
+            HubUrl = config.GetValue<string>("hubUrl");            
+            SupplierMarketingPageUrl = config.GetValue<string>("mpSupplierUrl");
+            AuthorityMarketingPageUrl = config.GetValue<string>("mpAuthorityUrl");
             Browser = config.GetValue<string>("browser");
             DatabaseSettings = SetUpDatabaseSettings(config);
         }
