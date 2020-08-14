@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using MarketingPageAcceptanceTests.StepSetup.Utils;
+using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTests.Steps
@@ -16,8 +16,8 @@ namespace MarketingPageAcceptanceTests.Steps
         public void ThenThePublicCloudSectionContainsThisSolutionRequiresAHSCNNConnectionOnThePreviewOfTheMarketingPage(
             string hostingTypeSection, string assertionText)
         {
-             _test.Pages.PreviewPage.IsRequiresHscnDisplayed(hostingTypeSection).Should()
-                .Be(assertionText == "contains");
+            _test.Pages.PreviewPage.IsRequiresHscnDisplayed(hostingTypeSection).Should()
+               .Be(assertionText == "contains");
         }
 
         [Given(@"that (Public cloud|Private cloud|Hybrid|On premise) has been completed in the Hosting type section")]

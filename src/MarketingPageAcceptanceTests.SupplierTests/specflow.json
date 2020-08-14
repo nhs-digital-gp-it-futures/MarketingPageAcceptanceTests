@@ -1,6 +1,5 @@
 ﻿{
   "stepAssemblies": [
-    { "assembly": "MarketingPageAcceptanceTests.Steps" },
-    { "assembly": "MarketingPageAcceptanceTests.StepSetup" }
+    { "assembly": "MarketingPageAcceptanceTests.Steps" }
   ]
 }

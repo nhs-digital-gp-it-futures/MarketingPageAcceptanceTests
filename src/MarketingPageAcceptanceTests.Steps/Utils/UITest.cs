@@ -1,22 +1,17 @@
 ﻿using MarketingPageAcceptanceTests.Actions;
 using MarketingPageAcceptanceTests.Actions.Collections;
-using MarketingPageAcceptanceTests.TestData.Azure;
 using MarketingPageAcceptanceTests.TestData.Solutions;
 using MarketingPageAcceptanceTests.TestData.Suppliers;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
-namespace MarketingPageAcceptanceTests.StepSetup.Utils
+namespace MarketingPageAcceptanceTests.Steps.Utils
 {
     public sealed class UITest
     {
-        public AzureBlobStorage azureBlobStorage;
         public string ConnectionString;
-        public string defaultAzureBlobStorageContainerName;
-        public string downloadPath;
         public IWebDriver Driver;
         public string ExpectedSectionLinkInErrorMessage;
         public List<Solution> listOfSolutions = new List<Solution>();
@@ -24,18 +19,18 @@ namespace MarketingPageAcceptanceTests.StepSetup.Utils
         public Solution solution;
         public CatalogueItem catalogueItem;
         public Supplier supplier;
-        public string url;
-		public string solutionIdPrefix = "Auto";
+        public string Url;
+        public string solutionIdPrefix = "Auto";
+        public string CompleteUrl;
 
-		public UITest()
+        private readonly Settings _settings;
+
+        public UITest(Settings settings, BrowserFactory browserFactory)
         {
-            ConnectionString = EnvironmentVariables.DbConnectionString();
-            azureBlobStorage =
-                new AzureBlobStorage(EnvironmentVariables.AzureBlobStorageConnectionString());
-            defaultAzureBlobStorageContainerName = EnvironmentVariables.AzureContainerName();
-            downloadPath = Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory), "downloads");
+            _settings = settings;
 
-            Driver = new BrowserFactory().Driver;
+            ConnectionString = _settings.DatabaseSettings.ConnectionString;
+            Driver = browserFactory.Driver;
             Pages = new PageActions(Driver).PageActionCollection;
         }
 
@@ -63,7 +58,9 @@ namespace MarketingPageAcceptanceTests.StepSetup.Utils
             // If param is not null, set the UserType property to be the provided usertype
             if (userType != null) UserType = userType;
 
-            url = $"{EnvironmentVariables.Url()}/{solution.Id}".Replace("supplier", UserTypeConvert());
+            var url = new Uri(GetUrl());
+
+            CompleteUrl = new Uri(url, solution.Id).ToString();
         }
 
         private void GetExistingSolution()
@@ -83,17 +80,17 @@ namespace MarketingPageAcceptanceTests.StepSetup.Utils
 
         public void GoToUrl()
         {
-            Driver.Navigate().GoToUrl(url);
+            Driver.Navigate().GoToUrl(CompleteUrl);
         }
 
-        private string UserTypeConvert()
+        private string GetUrl()
         {
             return UserType.ToLower() switch
             {
-                "supplier" => "supplier",
-                "authority" => "authority",
-                "authority user" => "authority",
-                _ => "supplier"
+                "supplier" => _settings.SupplierMarketingPageUrl,
+                "authority" => _settings.AuthorityMarketingPageUrl,
+                "authority user" => _settings.AuthorityMarketingPageUrl,
+                _ => _settings.SupplierMarketingPageUrl
             };
         }
     }

@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using MarketingPageAcceptanceTests.StepSetup.Utils;
+using MarketingPageAcceptanceTests.Steps.Utils;
 using System;
 using TechTalk.SpecFlow;
 
@@ -70,7 +70,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.BrowserSupp
         [When(@"the User submits their Marketing Page for moderation")]
         public void WhenTheUserSubmitsTheirMarketingPageForModeration()
         {
-            _test.Driver.Navigate().GoToUrl(_test.url);
+            _test.Driver.Navigate().GoToUrl(_test.Url);
             _test.Pages.Dashboard.SubmitForModeration();
         }
 

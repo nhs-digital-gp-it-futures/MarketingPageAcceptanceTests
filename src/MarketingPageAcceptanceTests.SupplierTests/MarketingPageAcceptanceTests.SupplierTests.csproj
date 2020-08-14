@@ -21,7 +21,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\MarketingPageAcceptanceTests.StepSetup\MarketingPageAcceptanceTests.StepSetup.csproj" />
     <ProjectReference Include="..\MarketingPageAcceptanceTests.Steps\MarketingPageAcceptanceTests.Steps.csproj" />
   </ItemGroup>
 

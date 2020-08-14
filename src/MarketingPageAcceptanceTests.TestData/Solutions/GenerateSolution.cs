@@ -1,9 +1,6 @@
 ﻿using Bogus;
-using MarketingPageAcceptanceTests.TestData.Information;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 
 namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
@@ -39,7 +36,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         }
 
         public static Solution GenerateCompleteSolution(string solutionId, int numFeatures = 5)
-        {           
+        {
             var solution = GenerateNewSolution(solutionId, numFeatures, true, true, true, true, true);
             solution.ClientApplication = ClientApplicationStringBuilder.GetClientAppString(clientApplicationTypes: "Browser-based, Native mobile or tablet, Native desktop");
             return solution;

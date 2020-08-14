@@ -2,7 +2,7 @@
 using Polly;
 using System;
 
-namespace MarketingPageAcceptanceTests.StepSetup.Utils
+namespace MarketingPageAcceptanceTests.Steps.Utils
 {
     internal static class Policies
     {

@@ -1,5 +1,4 @@
-﻿using MarketingPageAcceptanceTests.SmokeTests.Utils;
-using MarketingPageAcceptanceTests.StepSetup.Utils;
+﻿using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTests.SmokeTests
@@ -16,7 +15,7 @@ namespace MarketingPageAcceptanceTests.SmokeTests
         {
             _test.UserType = dashboard.ToLower();
             _test.SetUrl();
-            _test.Driver.Navigate().GoToUrl(_test.url);
+            _test.GoToUrl();
         }
 
     }

@@ -1,6 +1,6 @@
 ﻿using TechTalk.SpecFlow;
 
-namespace MarketingPageAcceptanceTests.StepSetup.Utils
+namespace MarketingPageAcceptanceTests.Steps.Utils
 {
     public abstract class TestBase
     {
