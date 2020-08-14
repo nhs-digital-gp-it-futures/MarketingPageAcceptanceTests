@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using MarketingPageAcceptanceTests.StepSetup.Utils;
+using MarketingPageAcceptanceTests.Steps.Utils;
 using MarketingPageAcceptanceTests.TestData.ContactDetails;
 using MarketingPageAcceptanceTests.TestData.Solutions;
 using TechTalk.SpecFlow;

@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using MarketingPageAcceptanceTests.StepSetup.Utils;
+using MarketingPageAcceptanceTests.Steps.Utils;
 using MarketingPageAcceptanceTests.TestData.Capabilities;
 using MarketingPageAcceptanceTests.TestData.Utils;
 using System.Collections.Generic;

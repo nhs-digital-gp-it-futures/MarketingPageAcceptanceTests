@@ -1,8 +1,5 @@
 ﻿using FluentAssertions;
-using MarketingPageAcceptanceTests.StepSetup.Utils;
-using System;
-using System.IO;
-using System.Threading.Tasks;
+using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTests.Steps.Steps
@@ -146,20 +143,6 @@ namespace MarketingPageAcceptanceTests.Steps.Steps
         [Given(@"a (.*) attachment has not been provided for the Solution")]
         public void GivenARoadmapAttachmentHasNotBeenProvidedForTheSolution(string documentType)
         {
-        }
-
-        [Given(
-            @"(a|an) (Roadmap|NHS Assured Integrations|Authority Provided Solution Document) attachment has been provided for the Solution")]
-        public async Task GivenAnAttachmentHasBeenProvidedForTheSolution(string s1, string documentType)
-        {
-            string fileName;
-            if (documentType.Equals("NHS Assured Integrations", StringComparison.OrdinalIgnoreCase))
-                documentType = "Integrations";
-            fileName = documentType.ToLower() + ".pdf";
-            var path = Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory), "Azure", "SampleData",
-                fileName);
-            await _test.azureBlobStorage.InsertFileToStorage(_test.defaultAzureBlobStorageContainerName,
-                _test.solution.Id, fileName, path);
         }
     }
 }

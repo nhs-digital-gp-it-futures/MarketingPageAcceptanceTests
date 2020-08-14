@@ -1,28 +1,35 @@
-﻿using MarketingPageAcceptanceTests.StepSetup.Utils;
+﻿using MarketingPageAcceptanceTests.Steps.Utils;
 using MarketingPageAcceptanceTests.TestData.Solutions;
-using System.Data.Common;
-using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 
-namespace MarketingPageAcceptanceTests.StepSetup
+namespace MarketingPageAcceptanceTests.SupplierTests.Utils
 {
     [Binding]
-    public sealed class Hooks : TestBase
+    public sealed class Hooks
     {
-        public Hooks(UITest test, ScenarioContext context) : base(test, context)
+        private readonly UITest _test;
+
+        public Hooks(UITest test)
         {
+            _test = test;
+        }
+
+        [BeforeScenario(Order = 1)]
+        public void BeforeScenario()
+        {
+            _test.CreateSolution = true;
+            _test.SetUrl(userType: "authority");
+            _test.GoToUrl();
         }
 
         [AfterScenario]
-        public async Task AfterScenario()
+        public void AfterScenario()
         {
-            _test.Driver.Quit();
-
-            if (_test.solution.Id.Contains(_test.solutionIdPrefix)) 
+            if (_test.solution.Id.Contains(_test.solutionIdPrefix))
             {
                 _test.solution.Delete(_test.ConnectionString);
                 _test.catalogueItem.Delete(_test.ConnectionString);
-            }                       
+            }
 
             try
             {
@@ -33,7 +40,7 @@ namespace MarketingPageAcceptanceTests.StepSetup
                         solution.Delete(_test.ConnectionString);
                         new CatalogueItem { CatalogueItemId = solution.Id }.Delete(_test.ConnectionString);
                     }
-                }                    
+                }
             }
             finally
             {
@@ -49,7 +56,8 @@ namespace MarketingPageAcceptanceTests.StepSetup
                 _test.supplier = null;
             }
 
-            await _test.azureBlobStorage.ClearStorage();
+            _test.Driver.Close();
+            _test.Driver.Quit();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using MarketingPageAcceptanceTests.StepSetup.Utils;
+﻿using MarketingPageAcceptanceTests.Steps.Utils;
 using MarketingPageAcceptanceTests.TestData.Information;
 using System;
 using TechTalk.SpecFlow;

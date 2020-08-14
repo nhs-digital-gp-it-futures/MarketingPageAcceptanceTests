@@ -1,38 +1,42 @@
-﻿using MarketingPageAcceptanceTests.StepSetup.Utils;
+﻿using MarketingPageAcceptanceTests.Steps.Utils;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTests.SmokeTests
 {
     [Binding]
-    public sealed class Hooks : TestBase
+    public sealed class Hooks
     {
-        public Hooks(UITest test, ScenarioContext context) : base(test, context)
+        private readonly UITest _test;
+
+        public Hooks(UITest test)
         {
+            _test = test;
         }
 
-        [BeforeScenario("supplier")]
+        [BeforeScenario("supplier", Order = 1)]
         public void BeforeSupplierScenario()
         {
-            _test.CreateSolution = false;            
             BeforeShared("supplier");
         }
 
-        [BeforeScenario("authority")]
+        [BeforeScenario("authority", Order = 1)]
         public void BeforeAuthorityScenario()
         {
-            _test.CreateSolution = false;            
             BeforeShared("authority");
         }
 
         private void BeforeShared(string userType)
         {
-            _test.SetUrl(userType: userType);
+            _test.CreateSolution = false;
+            _test.UserType = userType;
+            _test.SetUrl();
             _test.GoToUrl();
         }
 
         [AfterScenario]
         public void AfterScenario()
         {
+            _test.Driver.Close();
             _test.Driver.Quit();
         }
     }
