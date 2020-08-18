@@ -38,12 +38,12 @@ steps:
     includePreviewVersions: false
 
 - bash: |
-    echo "##vso[task.setvariable variable=MPSUPPLIERHOSTURL]$(echo "${MPSUPPLIERURL#'https://'}")"
+    echo "##vso[task.setvariable variable=PBHOSTURL]$(echo "${PBHOSTURL#'https://'}")"
   displayName: Set up MP Supplier Host URL
 
 - bash: |
-    echo "51.11.46.27    $MPSUPPLIERHOSTURL" | sudo tee -a /etc/hosts
-    curl -k -i $(MPSUPPLIERHOSTURL) --fail --connect-timeout 30
+    echo "51.11.46.27    $PBHOSTURL" | sudo tee -a /etc/hosts
+    curl -k -i $(PBHOSTURL) --fail --connect-timeout 30
   displayName: 'Check URL is reachable'
 
 - bash: |
