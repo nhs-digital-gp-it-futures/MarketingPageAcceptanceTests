@@ -39,7 +39,7 @@ steps:
 
 - bash: |
     echo "##vso[task.setvariable variable=MPSUPPLIERURL]$(echo "${MPSUPPLIERURL#'https://'}")"
-  displayName: Set up PB Host URL
+  displayName: Set up MP Supplier Host URL
 
 - bash: |
     echo "51.11.46.27    $MPSUPPLIERURL" | sudo tee -a /etc/hosts
