@@ -3,18 +3,18 @@
 timeout=${SETUP_TIMEOUT:-600}
 additionalDotnetArgs=""
 
-echo "Waiting for $PBURL to be ready..."
+echo "Waiting for $MPSUPPLIERURL to be ready..."
 
 n=0
 until [ "$n" -ge "$timeout" ]; do
-  httpStatusCode=$(curl -I -s --insecure $PBURL | cat | head -n 1 | cut -d" " -f2)
+  httpStatusCode=$(curl -I -s --insecure $MPSUPPLIERURL | cat | head -n 1 | cut -d" " -f2)
 
-  if [ "$httpStatusCode" = "200" ]; then echo "$PBURL was ready in $n seconds" && break; fi
+  if [ "$httpStatusCode" = "200" ]; then echo "$MPSUPPLIERURL was ready in $n seconds" && break; fi
   n=$((n+1)) 
   sleep 1
 done
 
-if [ "$n" -eq "$timeout" ]; then echo "$PBURL is not ready after $n seconds" && exit 1; fi
+if [ "$n" -eq "$timeout" ]; then echo "$MPSUPPLIERURL is not ready after $n seconds" && exit 1; fi
 
 
 if [ -n "${TEST_RESULT_DIR}" ]; then
