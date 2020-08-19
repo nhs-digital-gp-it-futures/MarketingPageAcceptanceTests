@@ -62,7 +62,7 @@ steps:
   displayName: Build and push docker image
   inputs:
     containerRegistry: 'gpitfuturesdevacr'
-    repository: 'nhsd/buying-catalogue/pb-ac-tests'
+    repository: 'nhsd/buying-catalogue/mp-ac-tests'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
     tags: "$(GitVersion.SemVer)"
@@ -87,7 +87,7 @@ steps:
 
 - bash: |
     cd charts
-    chartPackage=$(ls pb-ac-tests-*.tgz)
+    chartPackage=$(ls mp-ac-tests-*.tgz)
     az acr helm push --force \
         -n "gpitfuturesdevacr" \
         -u "gpitfuturesdevacr" \
