@@ -43,7 +43,7 @@ steps:
 
 - bash: |
     echo "51.11.46.27    $PBHOSTURL" | sudo tee -a /etc/hosts
-    curl -k -i $(PBURL) --fail --connect-timeout 30
+    curl -k -i $(MPSUPPLIERURL) --fail --connect-timeout 30
   displayName: 'Check URL is reachable'
 
 - bash: |
