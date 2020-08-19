@@ -37,14 +37,14 @@ steps:
     version: $(dotnetVersion)
     includePreviewVersions: false
 
-#- bash: |
-#    echo "##vso[task.setvariable variable=PBHOSTURL]$(echo "${PBHOSTURL#'https://'}")"
-#  displayName: Set up MP Supplier Host URL
+- bash: |
+    echo "##vso[task.setvariable variable=PBHOSTURL]$(echo "${PBURL#'https://'}")"
+  displayName: Set up MP Supplier Host URL
 
-#- bash: |
-#    echo "51.11.46.27    $PBHOSTURL" | sudo tee -a /etc/hosts
-#    curl -k -i $(PBHOSTURL) --fail --connect-timeout 30
-#  displayName: 'Check URL is reachable'
+- bash: |
+    echo "51.11.46.27    $PBHOSTURL" | sudo tee -a /etc/hosts
+    curl -k -i $(MPSUPPLIERURL) --fail --connect-timeout 30
+  displayName: 'Check URL is reachable'
 
 - bash: |
     ./selenium-grid-setup.sh
@@ -62,7 +62,7 @@ steps:
   displayName: Build and push docker image
   inputs:
     containerRegistry: 'gpitfuturesdevacr'
-    repository: 'nhsd/buying-catalogue/pb-ac-tests'
+    repository: 'nhsd/buying-catalogue/mp-ac-tests'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
     tags: "$(GitVersion.SemVer)"
@@ -87,7 +87,7 @@ steps:
 
 - bash: |
     cd charts
-    chartPackage=$(ls pb-ac-tests-*.tgz)
+    chartPackage=$(ls mp-ac-tests-*.tgz)
     az acr helm push --force \
         -n "gpitfuturesdevacr" \
         -u "gpitfuturesdevacr" \
