@@ -1,0 +1,76 @@
+# Default values for mp-ac-tests.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+useLocalImage: false
+
+image:
+  repository: gpitfuturesdevacr.azurecr.io/nhsd/buying-catalogue/mp-ac-tests
+  pullPolicy: Always
+
+imagePullSecrets: 
+nameOverride: "mp-ac-tests"
+fullnameOverride: "gpitfutures-bc-mp-ac-tests"
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name:
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+resources: 
+  requests:
+    cpu: 25m
+    memory: 64Mi
+  limits:
+    cpu: 1000m
+    memory: 500Mi
+
+hostAliases:
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+browser: chrome
+hubUrl:
+mpSupplierUrlConfig:
+  name:
+  key:
+mpAuthorityUrlConfig:
+  name:
+  key:
+db: 
+  nameConfig:
+    name:
+    key:
+  serverConfig:
+    name: 
+    key:
+  passwordSecret:
+    name: 
+    key:
+testFilter:
+testResultDirectory:
+env:
+  configmap:
+  secrets:
+  values:    
