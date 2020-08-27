@@ -1,6 +1,7 @@
 #!/bin/bash
-
+runId=${RUN_ID:-0.1.0}
 timeout=${SETUP_TIMEOUT:-600}
+timestamp=$(date +%d-%m-%Y-%H-%M-%S)
 additionalDotnetArgs=""
 
 CURLMPURL=$(echo $MPSUPPLIERURL | sed 's:/*$::')
@@ -21,7 +22,7 @@ if [ "$n" -eq "$timeout" ]; then echo "$CURLMPURL is not ready after $n seconds"
 
 if [ -n "${TEST_RESULT_DIR}" ]; then
   echo "Directing test results to '$TEST_RESULT_DIR'"
-  additionalDotnetArgs+="--logger trx --results-directory $TEST_RESULT_DIR "
+  additionalDotnetArgs+="--logger \"trx;LogFileName=mp-$runId-$timestamp.trx\" --results-directory $TEST_RESULT_DIR "
 fi
 
 if [ -n "${TEST_FILTER}" ]; then

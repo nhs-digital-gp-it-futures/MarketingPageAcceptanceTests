@@ -37,6 +37,11 @@ spec:
               configMapKeyRef:
                 name: {{ .Values.mpAuthorityUrlConfig.name }}
                 key: {{ .Values.mpAuthorityUrlConfig.key }}
+          - name: RUN_ID
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.runIdConfig.name }}
+                key: {{ .Values.runIdConfig.key }}
           {{- with .Values.db }}
           - name: DB__SERVERURL
             valueFrom:
