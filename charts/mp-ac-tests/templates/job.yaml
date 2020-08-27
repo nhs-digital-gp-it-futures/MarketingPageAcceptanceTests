@@ -15,6 +15,10 @@ spec:
       serviceAccountName: {{ include "mp-ac-tests.serviceAccountName" . }}
       securityContext: {{- toYaml .Values.podSecurityContext | nindent 8 }}
       hostAliases: {{- toYaml .Values.hostAliases | nindent 8 }}
+      volumes:
+        - name: test-result-storage
+          persistentVolumeClaim:
+            claimName: "bc-test-result-pvc"
       containers:
       - name: {{ .Chart.Name }}
         securityContext:
@@ -22,6 +26,9 @@ spec:
         {{- include "mp-ac-tests.image.properties" . | nindent 8 }}
         resources:
             {{- toYaml .Values.resources | nindent 12 }}
+        volumeMounts:
+          - mountPath: {{ .Values.testResultDirectory | quote }}
+            name: test-result-storage
         env:
           - name: BROWSER
             value: {{ .Values.browser | quote }}
