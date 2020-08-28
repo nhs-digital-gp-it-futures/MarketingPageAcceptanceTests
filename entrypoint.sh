@@ -1,9 +1,20 @@
 #!/bin/bash
-
+runId=${RUN_ID:-0.1.0}
 timeout=${SETUP_TIMEOUT:-600}
-additionalDotnetArgs=""
-
+timestamp=$(date +%d-%m-%Y-%H-%M-%S)
 CURLMPURL=$(echo $MPSUPPLIERURL | sed 's:/*$::')
+
+setAdditionalArgs () {
+  additionalDotnetArgs=""  
+
+  if [ -n "${TEST_RESULT_DIR}" ]; then
+    >&2 echo "Directing test results to '$TEST_RESULT_DIR'"  
+    additionalDotnetArgs+="--logger \"trx;LogFileName=mp-$1-$runId-$timestamp.trx\" --results-directory $TEST_RESULT_DIR "
+  fi
+
+  echo $additionalDotnetArgs
+  return 0
+}
 
 echo "Waiting for $CURLMPURL to be ready..."
 
@@ -19,24 +30,17 @@ done
 if [ "$n" -eq "$timeout" ]; then echo "$CURLMPURL is not ready after $n seconds" && exit 1; fi
 
 
-if [ -n "${TEST_RESULT_DIR}" ]; then
-  echo "Directing test results to '$TEST_RESULT_DIR'"
-  additionalDotnetArgs+="--logger trx --results-directory $TEST_RESULT_DIR "
-fi
 
 if [ -n "${TEST_FILTER}" ]; then
-  echo "Running only tests annotated with '@$TEST_FILTER'"
-  additionalDotnetArgs+="--filter TestCategory=$TEST_FILTER "
+  cmd="dotnet test out/MarketingPageAcceptanceTests.SmokeTests.dll -v n $(setAdditionalArgs smoke-tests)"
+  echo -e "\n Running '$cmd' \n"
+  eval $cmd
+else
+  cmd="dotnet test out/MarketingPageAcceptanceTests.AuthorityTests.dll -v n $(setAdditionalArgs authority)"
+  echo -e "\n Running '$cmd' \n"
+  eval $cmd
+
+  cmd="dotnet test out/MarketingPageAcceptanceTests.SupplierTests.dll -v n $(setAdditionalArgs supplier)"
+  echo -e "\n Running '$cmd' \n"
+  eval $cmd
 fi
-
-cmd="dotnet test out/MarketingPageAcceptanceTests.AuthorityTests.dll -v n $additionalDotnetArgs"
-echo -e "\n Running '$cmd' \n"
-eval $cmd
-
-cmd="dotnet test out/MarketingPageAcceptanceTests.SupplierTests.dll -v n $additionalDotnetArgs"
-echo -e "\n Running '$cmd' \n"
-eval $cmd
-
-cmd="dotnet test out/MarketingPageAcceptanceTests.SmokeTests.dll -v n $additionalDotnetArgs"
-echo -e "\n Running '$cmd' \n"
-eval $cmd

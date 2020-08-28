@@ -68,6 +68,9 @@ db:
   passwordSecret:
     name: 
     key:
+runIdConfig:
+  name:
+  key:
 testFilter:
 testResultDirectory:
 env:
