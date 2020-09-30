@@ -24,7 +24,7 @@ To set a process level environment variable in a CLI see the below table
 | `cmd` | `set` | `set BROWSER=chrome`|
 | `PowerShell` | `$env:` | `$env:BROWSER = "chrome"` |
 
-<sup>1</sup> - `chrome-local` should only be used for debugging. It will use the local instance of chrome rather than the Selenium Grid nodes to run the tests
+<sup>1</sup> - `chrome-local` should only be used for debugging. It will use the local instance of chrome rather than the Selenium Grid nodes to run the tests.
 
 <sup>2</sup> - `hosts.docker.internal` is a reference to the external IP of the local machine set up by Docker automatically on docker start. It is stable across Windows and MacOS and ensures that less configuration is required to run the tests locally.
 
