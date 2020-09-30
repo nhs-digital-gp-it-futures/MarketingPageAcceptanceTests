@@ -14,7 +14,7 @@ If release name contains chart name it will be used as a full name.
 {{- define "mp-ac-tests.fullname" -}}
 {{- $name := include "mp-ac-tests.chart" . -}}
 
-{{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-"  -}}
+{{- printf "%s-%s-revision-%d" .Release.Name $name .Release.Revision | trunc 63 | trimSuffix "-"  -}}
 {{- end -}}
 
 {{/*
