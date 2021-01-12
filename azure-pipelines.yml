@@ -11,7 +11,7 @@ variables:
   - name: buildConfiguration
     value: 'Release'
   - name: dotnetVersion
-    value: '3.1.x'
+    value: '5.0.x'
   - name: MSBUILDSINGLELOADCONTEXT
     value: '1'
   - name: BROWSER

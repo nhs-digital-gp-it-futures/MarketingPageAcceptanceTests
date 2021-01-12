@@ -23,7 +23,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         public static string GetClientAppString(string ignoredSection = null,
             string clientApplicationTypes = "Browser-based")
         {
-            var clientAppString = new List<string>();
+            List<string> clientAppString = new();
 
             var finishedString = string.Empty;
 
@@ -46,7 +46,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 
         private static string BuildClientApplicationString(string clientApplicationType, string clientAppString)
         {
-            var converted = new List<string>();
+            List<string> converted = new();
 
             foreach (var key in clientAppTypes.Keys)
                 if (clientApplicationType.Contains(key))

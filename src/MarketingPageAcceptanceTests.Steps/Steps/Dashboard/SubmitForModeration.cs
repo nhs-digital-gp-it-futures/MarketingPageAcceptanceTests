@@ -25,7 +25,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.Dashboard
         }
 
         [Given(@"that a Supplier has not provided all mandatory data on the Marketing Page")]
-        public void GivenThatASupplierHasNotProvidedAllMandatoryDataOnTheMarketingPage()
+        public static void GivenThatASupplierHasNotProvidedAllMandatoryDataOnTheMarketingPage()
         {
         }
 
@@ -49,7 +49,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.Dashboard
         }
 
         [Then(@"the User will be informed that Submission was successful")]
-        public void ThenTheUserWillBeInformedThatSubmissionWasSuccessful()
+        public static void ThenTheUserWillBeInformedThatSubmissionWasSuccessful()
         {
             // Awaiting completion of user info
         }

@@ -19,23 +19,28 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         internal const string NativeDesktopComplete =
             "\"NativeDesktopHardwareRequirements\":\"Hardware requirements\",\"NativeDesktopOperatingSystemsDescription\":\"Windows 7,8,10\r\nUbuntu\",\"NativeDesktopMinimumConnectionSpeed\":\"0.5Mbps\",\"NativeDesktopThirdParty\":{\"ThirdPartyComponents\":\"Third party\",\"DeviceCapabilities\":\"Device Capabilities\"},\"NativeDesktopMemoryAndStorage\":{\"MinimumMemoryRequirement\":\"256MB\",\"StorageRequirementsDescription\":\"approximately 10MB, plus additional for cache\",\"MinimumCpu\":\"0.98hz\",\"RecommendedResolution\":\"16:9 - 640 x 360\"},\"NativeDesktopAdditionalInformation\":\"Additional Information\"";
 
-        internal static Dictionary<string, string> BrowserSections = new Dictionary<string, string>
-        {
-            {"Supported browsers", "\"BrowsersSupported\":[\"Google Chrome\"],\"MobileResponsive\":true,"},
-            {
-                "Plug-ins or extensions required",
-                "\"Plugins\":{\"Required\":false,\"AdditionalInformation\":\"Plugins additional info\"},"
-            },
-            {
-                "Connectivity and resolution",
-                "\"MinimumConnectionSpeed\":\"1Mbps\",\"MinimumDesktopResolution\":\"21:9-2560 x 1080\","
-            },
-            {"Mobile first approach", "\"MobileFirstDesign\":true"},
-            {"Hardware requirements", "\"HardwareRequirements\":\"Hardware Requirements\","},
-            {"Additional information", "\"AdditionalInformation\":\"Additional Information\","}
+        internal static Dictionary<string, string> BrowserSections = new() 
+        { 
+            { 
+                "Supported browsers", "\"BrowsersSupported\":[\"Google Chrome\"],\"MobileResponsive\":true," 
+            }, 
+            { 
+                "Plug-ins or extensions required", "\"Plugins\":{\"Required\":false,\"AdditionalInformation\":\"Plugins additional info\"}," 
+            }, 
+            { 
+                "Connectivity and resolution", "\"MinimumConnectionSpeed\":\"1Mbps\",\"MinimumDesktopResolution\":\"21:9-2560 x 1080\"," 
+            }, 
+            { 
+                "Mobile first approach", "\"MobileFirstDesign\":true" 
+            }, 
+            { 
+                "Hardware requirements", "\"HardwareRequirements\":\"Hardware Requirements\"," 
+            }, 
+            { "Additional information", "\"AdditionalInformation\":\"Additional Information\"," 
+            } 
         };
 
-        internal static Dictionary<string, string> NativeMobileSections = new Dictionary<string, string>
+        internal static Dictionary<string, string> NativeMobileSections = new()
         {
             {"Mobile first approach", "\"NativeMobileFirstDesign\":true,"},
             {
@@ -54,7 +59,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
             }
         };
 
-        internal static Dictionary<string, string> NativeDesktopSections = new Dictionary<string, string>
+        internal static Dictionary<string, string> NativeDesktopSections = new()
         {
             {
                 "Supported operating systems",

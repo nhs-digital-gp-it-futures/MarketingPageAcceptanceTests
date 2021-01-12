@@ -26,7 +26,7 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
             DatabaseSettings = SetUpDatabaseSettings(config);
         }
 
-        private DatabaseSettings SetUpDatabaseSettings(IConfiguration config)
+        private static DatabaseSettings SetUpDatabaseSettings(IConfiguration config)
         {
             var databaseSettings = config.GetSection("db").Get<DatabaseSettings>();
             databaseSettings.ConnectionString = ConstructDatabaseConnectionString(

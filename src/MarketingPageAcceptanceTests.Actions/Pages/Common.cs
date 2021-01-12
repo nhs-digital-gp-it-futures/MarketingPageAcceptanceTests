@@ -90,7 +90,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public string ClickOnErrorLink()
         {
             var errorMessages = GetErrorMessages().ToList();
-            var index = new Random().Next(errorMessages.Count());
+            var index = new Random().Next(errorMessages.Count);
 
             var linkHref = errorMessages[index].GetAttribute("href");
 

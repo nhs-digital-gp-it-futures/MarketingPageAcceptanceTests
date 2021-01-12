@@ -13,7 +13,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.BrowserBase
         }
 
         [Given(@"that a (Supplier|Authority User) has chosen to manage the .* Client Application Type Section")]
-        public void GivenThatASupplierHasChosenToManageTheBrowserBasedClientApplicationTypeSection(string userType)
+        public static void GivenThatASupplierHasChosenToManageTheBrowserBasedClientApplicationTypeSection(string userType)
         {
         }
 
@@ -47,9 +47,8 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.BrowserBase
             _test.Pages.BrowserBasedSections.BrowserSubDashboard.SectionsHaveStatusIndicators();
         }
 
-        [Given(
-            @"a Supplier has not saved Mandatory data on all the Browser-based Client Application Type Sub-Sections")]
-        public void GivenASupplierHasNotSavedMandatoryDataOnAllTheBrowserBasedClientApplicationTypeSub_Sections()
+        [Given(@"a Supplier has not saved Mandatory data on all the Browser-based Client Application Type Sub-Sections")]
+        public static void GivenASupplierHasNotSavedMandatoryDataOnAllTheBrowserBasedClientApplicationTypeSub_Sections()
         {
         }
     }

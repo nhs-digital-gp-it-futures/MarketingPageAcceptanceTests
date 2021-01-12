@@ -82,7 +82,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.BrowserSupp
         }
 
         [Then(@"the Section is not saved because it is mandatory to answer both questions")]
-        public void ThenTheSectionIsNotSavedBecauseItIsMandatoryToAnswerBothQuestions()
+        public static void ThenTheSectionIsNotSavedBecauseItIsMandatoryToAnswerBothQuestions()
         {
         }
     }

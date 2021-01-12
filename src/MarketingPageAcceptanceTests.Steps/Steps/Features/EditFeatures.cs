@@ -74,14 +74,8 @@ namespace MarketingPageAcceptanceTests.Steps
         }
 
         [Then(@"the Section is not saved")]
-        public void ThenTheSectionIsNotSaved()
+        public static void ThenTheSectionIsNotSaved()
         {
-        }
-
-        [Then(@"the User is provided with a validation error message")]
-        public void ThenTheUserIsProvidedWithAValidationErrorMessage()
-        {
-            _context.Pending();
         }
 
         [Then(@"the database does not contain the Feature Text")]

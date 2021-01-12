@@ -86,14 +86,12 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
             _test.Pages.Common.SectionSaveAndReturn();
         }
 
-        [Given(
-            @"the (Browser-based|Native mobile or tablet|Native desktop) Client Application Type Section requires Mandatory Data")]
-        public void GivenTheBrowserBasedClientApplicationTypeSectionRequiresMandatoryData(string section)
+        [Given(@"the (Browser-based|Native mobile or tablet|Native desktop) Client Application Type Section requires Mandatory Data")]
+        public static void GivenTheBrowserBasedClientApplicationTypeSectionRequiresMandatoryData(string section)
         {
         }
 
-        [Given(
-            @"a Supplier has saved all mandatory data on the (Browser-based|Native mobile or tablet|Native desktop) Client Application Type Sub-Sections")]
+        [Given(@"a Supplier has saved all mandatory data on the (Browser-based|Native mobile or tablet|Native desktop) Client Application Type Sub-Sections")]
         public void GivenASupplierHasSavedAllMandatoryDataOnTheClientApplicationTypeSub_Sections(
             string clientApplicationType)
         {
@@ -104,8 +102,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
             _test.Driver.Navigate().Refresh();
         }
 
-        [Given(
-            @"a Supplier has saved all mandatory data on the (Browser-based) Client Application Type Sub-Sections except for (Supported browsers|Plug-ins or extensions required|Connectivity and resolution|Mobile first approach)")]
+        [Given(@"a Supplier has saved all mandatory data on the (Browser-based) Client Application Type Sub-Sections except for (Supported browsers|Plug-ins or extensions required|Connectivity and resolution|Mobile first approach)")]
         public void GivenASupplierHasSavedAllMandatoryDataOnTheClientApplicationTypeSub_SectionsExceptForX(
             string clientApplicationType, string section)
         {
@@ -116,8 +113,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
             _test.Driver.Navigate().Refresh();
         }
 
-        [Given(
-            @"a Supplier has saved all mandatory data on the (Native mobile or tablet) Client Application Type Sub-Sections except for (Supported operating systems|Memory and storage|Mobile first approach)")]
+        [Given(@"a Supplier has saved all mandatory data on the (Native mobile or tablet) Client Application Type Sub-Sections except for (Supported operating systems|Memory and storage|Mobile first approach)")]
         public void GivenASupplierHasSavedAllMandatoryDataOnTheNativeMobileClientApplicationTypeSub_SectionsExceptForX(
             string clientApplicationType, string section)
         {
@@ -125,8 +121,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
                 clientApplicationType, section);
         }
 
-        [Given(
-            @"a Supplier has saved all mandatory data on the (Native desktop) Client Application Type Sub-Sections except for (Supported operating systems|Connectivity|Memory, storage, processing and resolution)")]
+        [Given(@"a Supplier has saved all mandatory data on the (Native desktop) Client Application Type Sub-Sections except for (Supported operating systems|Connectivity|Memory, storage, processing and resolution)")]
         public void GivenASupplierHasSavedAllMandatoryDataOnTheNativeDesktopClientApplicationTypeSub_SectionsExceptForX(
             string clientApplicationType, string section)
         {

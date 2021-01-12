@@ -12,7 +12,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
         }
 
         [Given(@"that a Supplier has chosen to manage Client Application Type Information")]
-        public void GivenThatASupplierHasChosenToManageClientApplicationTypeInformation()
+        public static void GivenThatASupplierHasChosenToManageClientApplicationTypeInformation()
         {
         }
 

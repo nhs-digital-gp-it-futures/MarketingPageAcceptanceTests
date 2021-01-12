@@ -16,7 +16,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeDeskt
         [Then(@"there is a list of Native Desktop Client Application Type Sub-Sections")]
         public void ThenThereIsAListOfNativeDesktopClientApplicationTypeSub_Sections()
         {
-            IList<string> subSectionsExpected = new List<string>
+            List<string> subSectionsExpected = new()
             {
                 "Supported operating systems",
                 "Connectivity",

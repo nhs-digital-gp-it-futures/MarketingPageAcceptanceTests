@@ -34,7 +34,7 @@ namespace MarketingPageAcceptanceTests.Steps
         }
 
         [Given(@"the Solution Description Section requires Mandatory Data")]
-        public void GivenTheSolutionDescriptionSectionRequiresMandatoryData()
+        public static void GivenTheSolutionDescriptionSectionRequiresMandatoryData()
         {
         }
 
@@ -93,7 +93,7 @@ namespace MarketingPageAcceptanceTests.Steps
         }
 
         [Then(@"the Section is not saved because it is mandatory")]
-        public void ThenTheSectionIsNotSavedBecauseItIsMandatory()
+        public static void ThenTheSectionIsNotSavedBecauseItIsMandatory()
         {
         }
     }
