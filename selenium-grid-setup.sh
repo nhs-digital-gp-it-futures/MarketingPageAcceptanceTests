@@ -18,5 +18,5 @@ do
   sleep 1
 done
 
-echo "Selenium grid cannot access $MPSUPPLIERURL"
+echo "Selenium grid cannot access $PBURL"
 exit 1
