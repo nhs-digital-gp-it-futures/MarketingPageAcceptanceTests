@@ -1,9 +1,7 @@
 trigger:
-- development
 - master
 
 pr:
-- development
 - master
 
 pool:
@@ -60,7 +58,7 @@ steps:
   displayName: Run All Acceptance Tests
   
 - task: Docker@2
-  condition: and(always(), or(eq(variables['Build.SourceBranch'], 'refs/heads/development'),eq(variables['Build.SourceBranch'], 'refs/heads/master')))
+  condition: and(always(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   displayName: Build and push docker image
   inputs:
     containerRegistry: 'gpitfuturesdevacr'
@@ -72,7 +70,7 @@ steps:
 
 - task: HelmInstaller@1
   displayName: 'Install helm'
-  condition: and(always(), or(eq(variables['Build.SourceBranch'], 'refs/heads/development'),eq(variables['Build.SourceBranch'], 'refs/heads/master')))
+  condition: and(always(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   inputs:
     helmVersionToInstall: 'latest'
 
@@ -83,7 +81,7 @@ steps:
         --app-version $(GitVersion.SemVer) \
         mp-ac-tests
   failOnStderr: true
-  condition: and(always(), or(eq(variables['Build.SourceBranch'], 'refs/heads/development'),eq(variables['Build.SourceBranch'], 'refs/heads/master')))
+  condition: and(always(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   name: helmPackage
   displayName: 'Helm package'
 
@@ -96,7 +94,7 @@ steps:
         -p $(gpitfuturesdevacr-pass) \
         $chartPackage
   failOnStderr: false
-  condition: and(always(), or(eq(variables['Build.SourceBranch'], 'refs/heads/development'),eq(variables['Build.SourceBranch'], 'refs/heads/master')))
+  condition: and(always(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   name: helmPush
   displayName: 'Push helm chart to acr'
 
