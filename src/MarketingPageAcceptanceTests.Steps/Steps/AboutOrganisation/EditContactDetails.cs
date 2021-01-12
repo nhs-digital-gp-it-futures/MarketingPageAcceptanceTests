@@ -58,7 +58,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation
         }
 
         [Given(@"the Contact Details Section has no Mandatory Data")]
-        public void GivenTheContactDetailsSectionHasNoMandatoryData()
+        public static void GivenTheContactDetailsSectionHasNoMandatoryData()
         {
         }
 

@@ -65,7 +65,7 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
 
         private void GetExistingSolution()
         {
-            var solutionId = new Solution().RetrieveAll(ConnectionString).First();
+            var solutionId = Solution.RetrieveAll(ConnectionString).First();
 
             solution = new Solution() { Id = solutionId }.Retrieve(ConnectionString);
         }

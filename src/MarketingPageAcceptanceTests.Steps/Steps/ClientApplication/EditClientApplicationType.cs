@@ -35,7 +35,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
         }
 
         [Given(@"the Client Application Type Section requires Mandatory Data")]
-        public void GivenTheClientApplicationTypeSectionRequiresMandatoryData()
+        public static void GivenTheClientApplicationTypeSectionRequiresMandatoryData()
         {
         }
 
@@ -79,7 +79,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
         }
 
         [Then(@"no Client Application Type sub-category is available on the Marketing Page Form")]
-        public void ThenNoClientApplicationTypeSub_CategoryIsAvailableOnTheMarketingPageForm()
+        public static void ThenNoClientApplicationTypeSub_CategoryIsAvailableOnTheMarketingPageForm()
         {
         }
 

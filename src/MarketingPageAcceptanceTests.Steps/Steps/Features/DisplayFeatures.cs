@@ -11,7 +11,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.Features
         }
 
         [Given(@"that a (Supplier|User) has chosen to manage Marketing Page Information")]
-        public void GivenThatASupplierHasChosenToManageMarketingPageInformation(string user)
+        public static void GivenThatASupplierHasChosenToManageMarketingPageInformation(string user)
         {
         }
 

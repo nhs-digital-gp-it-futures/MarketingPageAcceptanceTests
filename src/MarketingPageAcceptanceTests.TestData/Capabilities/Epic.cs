@@ -10,7 +10,7 @@ namespace MarketingPageAcceptanceTests.TestData.Capabilities
         public string Name { get; set; }
         public string Level { get; set; }
 
-        internal IEnumerable<Epic> GetAllByCapabilityId(string connectionString, Guid capId)
+        internal static IEnumerable<Epic> GetAllByCapabilityId(string connectionString, Guid capId)
         {
             var query = "SELECT * FROM Epic WHERE CapabilityId=@Id";
 

@@ -16,7 +16,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeMobil
         [Then(@"there is a list of Native Mobile or Tablet Client Application Type Sub-Sections")]
         public void ThenThereIsAListOfNativeMobileOrTabletClientApplicationTypeSub_Sections()
         {
-            IList<string> subSectionsExpected = new List<string>
+            List<string> subSectionsExpected = new()
             {
                 "Supported operating systems",
                 "Mobile first approach",

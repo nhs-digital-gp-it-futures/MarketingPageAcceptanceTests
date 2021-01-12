@@ -39,7 +39,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         private static string GetRandomCharacter()
         {
             var faker = new Faker();
-            var randomChars = new List<string>();
+            List<string> randomChars = new();
             for (var i = 0; i < 10; i++) randomChars.Add(faker.Random.AlphaNumeric(1));
 
             return RandomInformation.GetRandomItem(randomChars);
@@ -48,7 +48,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         private static string GetTruncatedTimestamp(string prefix)
         {
             var timestamp = DateTimeOffset.Now.ToUnixTimeMilliseconds().ToString();
-            timestamp = timestamp.Substring(timestamp.Length - prefix.Length);
+            timestamp = timestamp[^prefix.Length..];
 
             return prefix + timestamp;
         }
@@ -63,7 +63,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         {
             var solution = new Solution();
 
-            var existingSolIds = solution.RetrieveAll(connectionString).ToList();
+            var existingSolIds = Solution.RetrieveAll(connectionString).ToList();
 
             existingSolIds = existingSolIds.Where(s => s.StartsWith(prefix)).ToList();
 

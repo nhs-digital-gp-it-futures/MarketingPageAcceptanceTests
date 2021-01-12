@@ -50,7 +50,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             SelectRandomOption(resolution);
         }
 
-        private void SelectRandomOption(SelectElement element)
+        private static void SelectRandomOption(SelectElement element)
         {
             var index = new Random().Next(1, element.Options.Count);
             element.SelectByIndex(index);

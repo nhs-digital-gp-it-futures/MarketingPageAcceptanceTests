@@ -82,9 +82,9 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation
         public void ThenTheAboutSupplierDataIsChangedForSolutionAAsWellAsForSolutionB()
         {
             var supplierForSolutionA =
-                new Supplier().RetrieveSupplierForSolution(_test.ConnectionString, _test.listOfSolutions[0].Id);
+                Supplier.RetrieveSupplierForSolution(_test.ConnectionString, _test.listOfSolutions[0].Id);
             var supplierForSolutionB =
-                new Supplier().RetrieveSupplierForSolution(_test.ConnectionString, _test.listOfSolutions[1].Id);
+                Supplier.RetrieveSupplierForSolution(_test.ConnectionString, _test.listOfSolutions[1].Id);
 
             if (newDescription != null)
                 supplierForSolutionA.Summary.Should().Be(newDescription);

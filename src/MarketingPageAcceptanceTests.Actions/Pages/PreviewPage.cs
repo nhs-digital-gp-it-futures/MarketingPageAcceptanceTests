@@ -165,7 +165,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                 .Count;
         }
 
-        private string ConvertToSectionCssSelector(string sectionName)
+        private static string ConvertToSectionCssSelector(string sectionName)
         {
             return $"[data-test-id=preview-{sectionName.ToLower().Replace(" ", "-")}";
         }

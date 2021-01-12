@@ -11,7 +11,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         {
             var faker = new Faker();
 
-            var md = new MarketingDetail
+            MarketingDetail md = new()
             {
                 SolutionId = slnId,
                 AboutUrl = faker.Internet.Url(),

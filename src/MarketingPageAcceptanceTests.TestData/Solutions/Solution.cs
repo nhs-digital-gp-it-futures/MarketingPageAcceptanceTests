@@ -49,7 +49,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
             SqlExecutor.Execute<Solution>(connectionString, query, this);
         }
 
-        public IEnumerable<string> RetrieveAll(string connectionString)
+        public static IEnumerable<string> RetrieveAll(string connectionString)
         {
             var query = @"SELECT * FROM [dbo].[Solution]";
 

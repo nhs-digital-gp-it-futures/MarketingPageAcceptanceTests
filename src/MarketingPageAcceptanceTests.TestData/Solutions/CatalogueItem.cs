@@ -39,7 +39,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
             SqlExecutor.Execute<CatalogueItem>(connectionString, query, this);
         }
 
-        public IEnumerable<string> RetrieveAll(string connectionString)
+        public static IEnumerable<string> RetrieveAll(string connectionString)
         {
             var query = "SELECT * FROM [dbo].[CatalogueItem]";
             return SqlExecutor.Execute<CatalogueItem>(connectionString, query, null).Select(c => c.CatalogueItemId);

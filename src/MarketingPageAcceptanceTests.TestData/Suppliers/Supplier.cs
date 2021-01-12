@@ -41,7 +41,7 @@ namespace MarketingPageAcceptanceTests.TestData.Suppliers
             return SqlExecutor.Execute<Supplier>(connectionString, query, this).Single();
         }
 
-        public Supplier RetrieveSupplierForSolution(string connectionString, string solutionId)
+        public static Supplier RetrieveSupplierForSolution(string connectionString, string solutionId)
         {
             var query = @"SELECT 
                             Supplier.[Id],

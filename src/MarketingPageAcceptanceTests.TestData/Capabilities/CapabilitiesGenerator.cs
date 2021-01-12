@@ -13,7 +13,7 @@ namespace MarketingPageAcceptanceTests.TestData.Capabilities
         {
             var solCaps = new List<SolutionCapabilities>();
 
-            var capabilities = new Capability().GetAll(connectionString) // Get list of Capabilities
+            var capabilities = Capability.GetAll(connectionString) // Get list of Capabilities
                 .OrderBy(s => Guid.NewGuid()) // Reorder them randomly                
                 .ToList();
 
@@ -31,7 +31,7 @@ namespace MarketingPageAcceptanceTests.TestData.Capabilities
 
             foreach (var capability in capabilities.Select(s => s.CapabilityId))
             {
-                var epics = new EpicDto().GetAllByIdPrefix(connectionString, $"{capability}E");
+                var epics = EpicDto.GetAllByIdPrefix(connectionString, $"{capability}E");
 
                 foreach (var epic in epics)
                 {
@@ -48,11 +48,11 @@ namespace MarketingPageAcceptanceTests.TestData.Capabilities
         {
             var solEpics = new List<EpicDto>();
 
-            var allCaps = new Capability().GetAll(connectionString).Select(s => s.CapabilityRef);
+            var allCaps = Capability.GetAll(connectionString).Select(s => s.CapabilityRef);
 
             foreach (var capability in capabilities.Select(s => s.CapabilityId))
             {
-                var epics = new EpicDto().GetAllByIdPrefix(connectionString, $"{allCaps.First(s => s != capability)}E");
+                var epics = EpicDto.GetAllByIdPrefix(connectionString, $"{allCaps.First(s => s != capability)}E");
 
                 foreach (var epic in epics)
                 {

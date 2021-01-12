@@ -27,7 +27,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             return driver.FindElements(pages.Capabilities.CapabilitySection).Select(s => s.FindElement(pages.Capabilities.Description)).ToList();
         }
 
-        public IList<IWebElement> GetCapabilityUrls()
+        public static IList<IWebElement> GetCapabilityUrls()
         {
             return null;
         }

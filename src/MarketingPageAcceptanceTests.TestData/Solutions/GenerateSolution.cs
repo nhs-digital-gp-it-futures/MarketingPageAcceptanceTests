@@ -12,7 +12,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         {
             var faker = new Faker();
 
-            var solution = new Solution
+            Solution solution = new()
             {
                 Id = solutionId,
                 Version = faker.System.Semver(),

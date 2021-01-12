@@ -52,7 +52,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.Authority.Capabilities
         [Then(@"'(.*)' Capability URL")]
         public void ThenCapabilityURL(string p0)
         {
-            _test.Pages.Capabilities.GetCapabilityUrls().Should().HaveCount(solutionCaps.Count());
+            Actions.Pages.Capabilities.GetCapabilityUrls().Should().HaveCount(solutionCaps.Count());
         }
 
         [Then(@"the Capability URL will direct to a page that contains more content about the Capability")]
