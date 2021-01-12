@@ -17,9 +17,9 @@ variables:
   - name: BROWSER
     value: chrome
   - name: DB__SERVERURL
-    value: gpitfutures-dev-sql-pri.database.windows.net
+    value: $(SERVERURL)
   - name: DB__DATABASENAME
-    value: bc-buyingcatalogue-development-helm-bapi
+    value: bc-development-bapi
   - name: AZUREBLOBSTORAGE__CONTAINERNAME
     value: buyingcatalogue-development-helm-documents
   - group: dev-secrets
