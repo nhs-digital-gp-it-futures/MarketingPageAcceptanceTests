@@ -9,7 +9,7 @@ Scenario: Implementation Timescales Section - Field does not exceed maximum
 	Then the Implementation timescales is saved
 
 Scenario: Implementation Timescales Section - Field does exceed maximum
-	Given the Supplier has entered 1001 characters on the Implementation timescales page in the Implementation timescales section
+	Given the Supplier has entered 1101 characters on the Implementation timescales page in the Implementation timescales section
 	When the User attempts to save 
 	Then the Section is not saved 
 	And an indication is given to the User as to why

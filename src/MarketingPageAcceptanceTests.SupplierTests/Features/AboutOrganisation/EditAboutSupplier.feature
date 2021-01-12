@@ -13,8 +13,8 @@ Scenario: About Supplier Section - Does not exceed maximum
 	Then the About supplier is saved
 
 Scenario: About Supplier Section - Does exceed maximum
-	Given the Supplier has entered 1001 characters on the About supplier page in the About supplier section
-	And I enter 1001 characters into the link field
+	Given the Supplier has entered 1101 characters on the About supplier page in the About supplier section
+	And I enter 1101 characters into the link field
 	When the User attempts to save 
 	Then the Section is not saved 
 	And an indication is given to the User as to why

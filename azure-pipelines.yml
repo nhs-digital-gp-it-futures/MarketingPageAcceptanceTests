@@ -17,9 +17,9 @@ variables:
   - name: BROWSER
     value: chrome
   - name: DB__SERVERURL
-    value: gpitfutures-dev-sql-pri.database.windows.net
+    value: $(SERVERURL)
   - name: DB__DATABASENAME
-    value: bc-buyingcatalogue-development-helm-bapi
+    value: bc-development-bapi
   - name: AZUREBLOBSTORAGE__CONTAINERNAME
     value: buyingcatalogue-development-helm-documents
   - group: dev-secrets
@@ -38,13 +38,26 @@ steps:
     includePreviewVersions: false
 
 - bash: |
-    echo "##vso[task.setvariable variable=PBHOSTURL]$(echo "${PBURL#'https://'}")"
-  displayName: Set up MP Supplier Host URL
+    echo "##vso[task.setvariable variable=PBHOSTURL]$(echo "${PBURL##*://}")"  
+  displayName: Set up Host URL
 
-- bash: |
-    echo "51.11.46.27    $PBHOSTURL" | sudo tee -a /etc/hosts
-    curl -k -i $(MPSUPPLIERURL) --fail --connect-timeout 30
-  displayName: 'Check URL is reachable'
+# - bash: |
+#     echo "51.11.46.27    $PBHOSTURL" | sudo tee -a /etc/hosts
+#     curl -k -i $(PBURL) --fail --connect-timeout 30
+#   displayName: 'Check URL is reachable'
+
+- task: AzureCLI@2
+  name: checkURL
+  displayName: Check URL is reachable
+  inputs:
+    azureSubscription: 'NHSAPP-BuyingCatalogue (Non-Prod)'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+        appgwPip=$(az network public-ip show --name gpitfutures-development-pip --resource-group gpitfutures-development-rg-appgw --query ipAddress -o tsv)
+        echo "DEBUG: $appgwPip    $PBHOSTURL"
+        echo "$appgwPip    $PBHOSTURL" | sudo tee -a /etc/hosts
+        curl -k -i $(PBURL) --fail --connect-timeout 30
 
 - bash: |
     ./selenium-grid-setup.sh
