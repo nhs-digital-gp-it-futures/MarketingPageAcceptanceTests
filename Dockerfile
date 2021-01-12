@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/dotnet/sdk:5.0-alpine
+FROM mcr.microsoft.com/dotnet/sdk:5.0-alpine
 ENV MSBUILDSINGLELOADCONTEXT=1
 WORKDIR /app
 COPY ./src ./entrypoint.sh ./
