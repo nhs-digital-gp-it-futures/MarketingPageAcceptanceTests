@@ -1,8 +1,8 @@
-﻿using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+﻿using System;
+using MarketingPageAcceptanceTests.Actions.Pages.Utils;
 using MarketingPageAcceptanceTests.TestData.Information;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using System;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
@@ -14,11 +14,11 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void SelectRequirementFromList(int index = -1)
         {
-            var optionsCount = driver.FindElement(pages.NativeMobileSections.MemoryAndStorage.MinimumMemory)
+            var optionsCount = driver.FindElement(Objects.Pages.MemoryAndStorage.MinimumMemory)
                 .FindElements(By.TagName("option")).Count;
             if (index == -1) index = new Random().Next(1, optionsCount);
 
-            new SelectElement(driver.FindElement(pages.NativeMobileSections.MemoryAndStorage.MinimumMemory))
+            new SelectElement(driver.FindElement(Objects.Pages.MemoryAndStorage.MinimumMemory))
                 .SelectByIndex(index);
         }
 
@@ -26,7 +26,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             var text = RandomInformation.RandomString(characters);
 
-            driver.FindElement(pages.NativeMobileSections.MemoryAndStorage.DescriptionStorageRequirements)
+            driver.FindElement(Objects.Pages.MemoryAndStorage.DescriptionStorageRequirements)
                 .SendKeys(text);
         }
     }

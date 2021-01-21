@@ -2,10 +2,10 @@
 
 namespace MarketingPageAcceptanceTests.Objects.Pages
 {
-    public class MemoryAndStorage
+    public static class MemoryAndStorage
     {
-        public By MinimumMemory => By.CssSelector("select#minimum-memory-requirement");
+        public static By MinimumMemory => By.CssSelector("select#minimum-memory-requirement");
 
-        public By DescriptionStorageRequirements => By.Id("storage-requirements-description");
+        public static By DescriptionStorageRequirements => By.Id("storage-requirements-description");
     }
 }

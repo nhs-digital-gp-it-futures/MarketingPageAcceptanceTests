@@ -1,9 +1,9 @@
-﻿using Bogus;
-using MarketingPageAcceptanceTests.TestData.Information;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Bogus;
+using MarketingPageAcceptanceTests.TestData.Information;
 
 namespace MarketingPageAcceptanceTests.TestData.Solutions
 {

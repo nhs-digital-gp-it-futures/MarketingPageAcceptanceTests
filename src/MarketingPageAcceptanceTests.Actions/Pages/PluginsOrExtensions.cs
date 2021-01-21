@@ -1,6 +1,6 @@
-﻿using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+﻿using System.Linq;
+using MarketingPageAcceptanceTests.Actions.Pages.Utils;
 using OpenQA.Selenium;
-using System.Linq;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
@@ -12,7 +12,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void SelectRadioButton(string choice)
         {
-            driver.FindElements(pages.BrowserBasedSections.PluginsOrExtensions.PluginsRequired)
+            driver.FindElements(Objects.Pages.PluginsOrExtensions.PluginsRequired)
                 .Single(s => s.FindElement(By.TagName("label")).Text.Contains(choice))
                 .FindElement(By.TagName("input"))
                 .Click();
@@ -20,7 +20,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void EnterPluginInformation(string information)
         {
-            var infoArea = driver.FindElement(pages.BrowserBasedSections.PluginsOrExtensions.PluginDetail);
+            var infoArea = driver.FindElement(Objects.Pages.PluginsOrExtensions.PluginDetail);
             infoArea.SendKeys(information);
         }
     }

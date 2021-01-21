@@ -1,10 +1,10 @@
-﻿using FluentAssertions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using FluentAssertions;
 using MarketingPageAcceptanceTests.Actions.Pages.Utils;
 using MarketingPageAcceptanceTests.Actions.Utils;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
@@ -16,8 +16,8 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public IList<string> GetSections()
         {
-            return driver.FindElements(pages.BrowserBasedDashboard.Sections)
-                .Select(s => s.FindElement(pages.BrowserBasedDashboard.SectionTitle).Text)
+            return driver.FindElements(Objects.Pages.Dashboard.Sections)
+                .Select(s => s.FindElement(Objects.Pages.Dashboard.SectionTitle).Text)
                 .ToList();
         }
 
@@ -26,9 +26,9 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             var sections = GetSections();
 
             foreach (var section in sections)
-                driver.FindElements(pages.BrowserBasedDashboard.Sections)
-                    .Single(s => s.FindElement(pages.BrowserBasedDashboard.SectionTitle).Text == section)
-                    .ContainsElement(pages.BrowserBasedDashboard.StatusIndicator).Should().BeTrue();
+                driver.FindElements(Objects.Pages.Dashboard.Sections)
+                    .Single(s => s.FindElement(Objects.Pages.BrowserBasedDashboard.SectionTitle).Text == section)
+                    .ContainsElement(Objects.Pages.BrowserBasedDashboard.StatusIndicator).Should().BeTrue();
         }
 
         public void OpenSection(string sectionName)
@@ -36,7 +36,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             wait.Until(d => d.FindElements(By.LinkText(sectionName)).Count == 1);
             driver.FindElement(By.LinkText(sectionName)).Click();
             wait.Until(s =>
-                s.FindElement(pages.Common.PageTitle).Text
+                s.FindElement(Objects.Pages.Common.PageTitle).Text
                     .Contains(sectionName, StringComparison.OrdinalIgnoreCase));
         }
     }

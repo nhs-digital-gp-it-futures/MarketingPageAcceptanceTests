@@ -1,8 +1,8 @@
-﻿using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+﻿using System;
+using MarketingPageAcceptanceTests.Actions.Pages.Utils;
 using MarketingPageAcceptanceTests.Actions.Utils;
 using MarketingPageAcceptanceTests.TestData.Information;
 using OpenQA.Selenium;
-using System;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
@@ -19,8 +19,8 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public string AddTextToFeature(int characterCount = 100)
         {
             var randomString = RandomInformation.RandomString(characterCount);
-            var randomIndex = new Random().Next(driver.FindElements(pages.EditFeatures.FeatureText).Count);
-            driver.EnterTextViaJS(wait, pages.EditFeatures.FeatureText, randomString, randomIndex);
+            var randomIndex = new Random().Next(driver.FindElements(Objects.Pages.EditFeatures.FeatureText).Count);
+            driver.EnterTextViaJS(wait, Objects.Pages.EditFeatures.FeatureText, randomString, randomIndex);
             return randomString;
         }
 
@@ -29,7 +29,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// </summary>
         public void ClickSaveAndReturn()
         {
-            driver.FindElement(pages.EditFeatures.SaveAndReturn).Click();
+            driver.FindElement(Objects.Pages.EditFeatures.SaveAndReturn).Click();
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// </summary>
         public void PageDisplayed()
         {
-            wait.Until(s => s.FindElements(pages.EditFeatures.FeatureText).Count == 10);
+            wait.Until(s => s.FindElements(Objects.Pages.EditFeatures.FeatureText).Count == 10);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         /// </summary>
         public void ClearAllFields()
         {
-            var features = driver.FindElements(pages.EditFeatures.FeatureText);
+            var features = driver.FindElements(Objects.Pages.EditFeatures.FeatureText);
 
             foreach (var feature in features) feature.Clear();
         }

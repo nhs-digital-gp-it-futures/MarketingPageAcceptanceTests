@@ -1,8 +1,8 @@
-﻿using MarketingPageAcceptanceTests.TestData.Information;
-using MarketingPageAcceptanceTests.TestData.Utils;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MarketingPageAcceptanceTests.TestData.Information;
+using MarketingPageAcceptanceTests.TestData.Utils;
 
 namespace MarketingPageAcceptanceTests.TestData.Capabilities
 {

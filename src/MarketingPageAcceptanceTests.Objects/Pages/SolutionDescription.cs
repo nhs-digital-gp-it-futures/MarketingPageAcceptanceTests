@@ -3,20 +3,20 @@ using OpenQA.Selenium;
 
 namespace MarketingPageAcceptanceTests.Objects.Pages
 {
-    public sealed class SolutionDescription
+    public static class SolutionDescription
     {
-        public By Summary => By.Id("summary");
+        public static By Summary => By.Id("summary");
 
-        public By SummaryError => By.Id("summary-error");
+        public static By SummaryError => By.Id("summary-error");
 
-        public By Description => By.Id("description");
+        public static By Description => By.Id("description");
 
-        public By Link => By.Id("link");
+        public static By Link => By.Id("link");
 
-        public By SaveAndReturn => CustomBy.DataTestId("section-submit-button", "button[type=submit]");
+        public static By SaveAndReturn => CustomBy.DataTestId("section-submit-button", "button[type=submit]");
 
-        public By DescriptionError => By.Id("description-error");
+        public static By DescriptionError => By.Id("description-error");
 
-        public By LinkError => By.Id("link-error");
+        public static By LinkError => By.Id("link-error");
     }
 }

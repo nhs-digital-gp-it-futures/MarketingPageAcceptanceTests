@@ -2,9 +2,9 @@
 
 namespace MarketingPageAcceptanceTests.Objects.Pages
 {
-    public class SupportedOperatingSystems
+    public static class SupportedOperatingSystems
     {
-        public By OperatingSystems => By.ClassName("nhsuk-checkboxes__item");
-        public By OperatingSystemsDescription => By.CssSelector("textarea.govuk-textarea");
+        public static By OperatingSystems => By.ClassName("nhsuk-checkboxes__item");
+        public static By OperatingSystemsDescription => By.CssSelector("textarea.govuk-textarea");
     }
 }

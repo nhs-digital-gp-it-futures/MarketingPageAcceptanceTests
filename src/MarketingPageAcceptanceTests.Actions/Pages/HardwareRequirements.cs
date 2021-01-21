@@ -20,7 +20,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public string EnterText(int characters, int fieldIndex = 0)
         {
             var randomText = RandomInformation.RandomString(characters);
-            driver.EnterTextViaJS(wait, pages.BrowserBasedSections.HardwareRequirements.HardwareRequirementsDescription,
+            driver.EnterTextViaJS(wait, Objects.Pages.HardwareRequirements.HardwareRequirementsDescription,
                 randomText, fieldIndex);
             return randomText;
         }

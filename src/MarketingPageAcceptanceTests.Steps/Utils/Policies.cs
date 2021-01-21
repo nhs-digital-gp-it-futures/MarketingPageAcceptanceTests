@@ -1,6 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using OpenQA.Selenium;
 using Polly;
-using System;
 
 namespace MarketingPageAcceptanceTests.Steps.Utils
 {

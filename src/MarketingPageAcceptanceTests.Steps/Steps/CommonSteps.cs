@@ -106,7 +106,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps
 
         [Given(@"the (Public cloud|Private cloud|Hybrid|On premise) section does not require Mandatory Data")]
         [Given(@"the (Roadmap|Integrations|Implementation timescales) section does not require Mandatory Data")]
-        public void GivenTheSectionDoesNotRequireMandatoryData(string section)
+        public static void GivenTheSectionDoesNotRequireMandatoryData(string section)
         {
             //add any new pages as necessary
             //can't wildcard it as some pages need to do something
@@ -115,7 +115,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps
         [Given(@"a .* has not saved any data in any field within the Sub-Section")]
         [Given(@"a User has not saved any data on the .* section")]
         [Given(@"a Supplier has not saved any data on the Client Application Type section")]
-        public void GivenAUserHasNotSavedAnyDataOnTheSection()
+        public static void GivenAUserHasNotSavedAnyDataOnTheSection()
         {
         }
 
@@ -141,7 +141,7 @@ namespace MarketingPageAcceptanceTests.Steps.Steps
         }
 
         [Given(@"a (.*) attachment has not been provided for the Solution")]
-        public void GivenARoadmapAttachmentHasNotBeenProvidedForTheSolution(string documentType)
+        public static void GivenARoadmapAttachmentHasNotBeenProvidedForTheSolution(string documentType)
         {
         }
     }

@@ -2,9 +2,9 @@
 
 namespace MarketingPageAcceptanceTests.Objects.Pages
 {
-    public sealed class PluginsOrExtensions
+    public static class PluginsOrExtensions
     {
-        public By PluginsRequired => By.CssSelector("div.nhsuk-radios__item");
-        public By PluginDetail => By.Id("plugins-detail");
+        public static By PluginsRequired => By.CssSelector("div.nhsuk-radios__item");
+        public static By PluginDetail => By.Id("plugins-detail");
     }
 }

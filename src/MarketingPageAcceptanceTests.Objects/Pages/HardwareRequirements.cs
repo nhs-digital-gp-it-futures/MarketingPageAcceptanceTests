@@ -2,8 +2,8 @@
 
 namespace MarketingPageAcceptanceTests.Objects.Pages
 {
-    public sealed class HardwareRequirements
+    public static class HardwareRequirements
     {
-        public By HardwareRequirementsDescription => By.CssSelector("textarea.govuk-textarea");
+        public static By HardwareRequirementsDescription => By.CssSelector("textarea.govuk-textarea");
     }
 }

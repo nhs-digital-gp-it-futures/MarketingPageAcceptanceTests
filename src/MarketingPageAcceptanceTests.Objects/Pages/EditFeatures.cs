@@ -3,10 +3,10 @@ using OpenQA.Selenium;
 
 namespace MarketingPageAcceptanceTests.Objects.Pages
 {
-    public sealed class EditFeatures
+    public static class EditFeatures
     {
-        public By FeatureText => By.ClassName("nhsuk-input");
+        public static By FeatureText => By.ClassName("nhsuk-input");
 
-        public By SaveAndReturn => CustomBy.DataTestId("section-submit-button", "button");
+        public static By SaveAndReturn => CustomBy.DataTestId("section-submit-button", "button");
     }
 }

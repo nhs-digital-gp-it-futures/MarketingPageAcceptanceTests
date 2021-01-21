@@ -2,10 +2,10 @@
 
 namespace MarketingPageAcceptanceTests.Objects.Pages
 {
-    public sealed class ConnectivityAndResolution
+    public static class ConnectivityAndResolution
     {
-        public By MinimumConnectionSpeed => By.CssSelector("select#minimum-connection-speed");
+        public static By MinimumConnectionSpeed => By.CssSelector("select#minimum-connection-speed");
 
-        public By MinimumDesktopResolution => By.CssSelector("select#minimum-desktop-resolution");
+        public static By MinimumDesktopResolution => By.CssSelector("select#minimum-desktop-resolution");
     }
 }

@@ -3,10 +3,10 @@ using OpenQA.Selenium;
 
 namespace MarketingPageAcceptanceTests.Objects.Pages
 {
-    public class BrowserBasedDashboard : Dashboard
+    public static class BrowserBasedDashboard
     {
-        public new By SectionTitle => CustomBy.DataTestId("dashboard-section-title");
+        public static By SectionTitle => CustomBy.DataTestId("dashboard-section-title");
 
-        public By StatusIndicator => CustomBy.DataTestId("dashboard-section-status");
+        public static By StatusIndicator => CustomBy.DataTestId("dashboard-section-status");
     }
 }

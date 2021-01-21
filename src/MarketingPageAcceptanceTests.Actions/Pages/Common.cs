@@ -1,10 +1,10 @@
-﻿using FluentAssertions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using FluentAssertions;
 using MarketingPageAcceptanceTests.Actions.Pages.Utils;
 using MarketingPageAcceptanceTests.Actions.Utils;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {
@@ -16,7 +16,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public bool PageTitleEquals(string expectedTitle)
         {
-            return driver.FindElement(pages.Common.PageTitle).Text == expectedTitle;
+            return driver.FindElement(Objects.Pages.Common.PageTitle).Text == expectedTitle;
         }
 
         public void GoBackOnePage()
@@ -41,13 +41,13 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void ClickSubDashboardBackLink()
         {
-            wait.Until(s => s.FindElement(pages.Common.SubDashboardBackLink).Displayed);
-            driver.FindElement(pages.Common.SubDashboardBackLink).Click();
+            wait.Until(s => s.FindElement(Objects.Pages.Common.SubDashboardBackLink).Displayed);
+            driver.FindElement(Objects.Pages.Common.SubDashboardBackLink).Click();
         }
 
         public void ClickSectionBackLink()
         {
-            driver.FindElement(pages.Common.SectionBackLink).Click();
+            driver.FindElement(Objects.Pages.Common.SectionBackLink).Click();
             new Dashboard(driver).PageDisplayed();
         }
 
@@ -57,12 +57,12 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void ErrorMessageDisplayed()
         {
             ErrorSectionDisplayed();
-            driver.FindElement(pages.Common.ErrorMessages).Text.Should().NotBeNullOrEmpty();
+            driver.FindElement(Objects.Pages.Common.ErrorMessages).Text.Should().NotBeNullOrEmpty();
         }
 
         public void ErrorSectionDisplayed()
         {
-            wait.Until(s => s.FindElements(pages.Common.ErrorSection).Count == 1);
+            wait.Until(s => s.FindElements(Objects.Pages.Common.ErrorSection).Count == 1);
         }
 
         public void ErrorMessagesDisplayed(int numSections)
@@ -79,12 +79,12 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         private IEnumerable<IWebElement> GetErrorMessages()
         {
-            return driver.FindElements(pages.Common.ErrorMessages);
+            return driver.FindElements(Objects.Pages.Common.ErrorMessages);
         }
 
         public string SubDashboardTitle()
         {
-            return driver.FindElement(pages.Common.SubDashboardTitle).Text;
+            return driver.FindElement(Objects.Pages.Common.SubDashboardTitle).Text;
         }
 
         public string ClickOnErrorLink()
@@ -107,7 +107,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
                 if (IsDisplayed(By.TagName("form")))
                     driver.FindElement(By.TagName("form")).Submit();
                 else
-                    driver.FindElement(pages.Common.SectionSaveAndReturn).Click();
+                    driver.FindElement(Objects.Pages.Common.SectionSaveAndReturn).Click();
             });
         }
 

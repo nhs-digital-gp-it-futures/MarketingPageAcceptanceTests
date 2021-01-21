@@ -1,11 +1,11 @@
-﻿using Bogus;
-using System;
+﻿using System;
+using Bogus;
 
 namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
     public sealed class CreateMarketingDetails
     {
-        private const string clientApplicationValue = "{ \"ClientApplicationTypes\":[\"browser-based\"],\"BrowsersSupported\":[\"google-chrome\", \"microsoft-edge\", \"mozilla-firefox\"],\"MobileResponsive\":true, \"Plugins\":{\"Required\":true,\"AdditionalInformation\":\"Additional info about plug-ins\"}}";
+        private const string ClientApplicationValue = "{ \"ClientApplicationTypes\":[\"browser-based\"],\"BrowsersSupported\":[\"google-chrome\", \"microsoft-edge\", \"mozilla-firefox\"],\"MobileResponsive\":true, \"Plugins\":{\"Required\":true,\"AdditionalInformation\":\"Additional info about plug-ins\"}}";
 
         public static MarketingDetail CreateNewMarketingDetail(string slnId, int numFeatures, bool clientApplication = true)
         {
@@ -16,7 +16,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
                 SolutionId = slnId,
                 AboutUrl = faker.Internet.Url(),
                 Features = GenerateFeatures(numFeatures, faker),
-                ClientApplication = clientApplication ? clientApplicationValue : string.Empty
+                ClientApplication = clientApplication ? ClientApplicationValue : string.Empty
             };
 
             if (System.Diagnostics.Debugger.IsAttached)

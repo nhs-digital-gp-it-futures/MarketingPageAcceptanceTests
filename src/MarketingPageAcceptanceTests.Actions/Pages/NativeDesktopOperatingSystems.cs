@@ -14,7 +14,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             var text = RandomInformation.RandomString(characters);
 
-            driver.FindElement(pages.NativeDesktopSections.SupportedOperatingSystems.OperatingSystemsDescription)
+            driver.FindElement(Objects.Pages.SupportedOperatingSystems.OperatingSystemsDescription)
                 .SendKeys(text);
         }
     }
