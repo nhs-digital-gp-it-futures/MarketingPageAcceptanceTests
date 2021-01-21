@@ -2,7 +2,7 @@
 
 [assembly: Parallelizable(ParallelScope.Fixtures)]
 #if DEBUG
-    [assembly: LevelOfParallelism(4)]
+[assembly: LevelOfParallelism(4)]
 #else
     [assembly: LevelOfParallelism(2)]
 #endif

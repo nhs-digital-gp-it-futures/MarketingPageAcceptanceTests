@@ -1,6 +1,6 @@
-﻿using Bogus;
-using System;
+﻿using System;
 using System.Diagnostics;
+using Bogus;
 
 namespace MarketingPageAcceptanceTests.TestData.Solutions
 {

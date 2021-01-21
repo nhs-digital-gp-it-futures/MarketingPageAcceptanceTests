@@ -1,7 +1,7 @@
-﻿using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+﻿using System;
+using MarketingPageAcceptanceTests.Actions.Pages.Utils;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using System;
 
 namespace MarketingPageAcceptanceTests.Actions.Pages
 {

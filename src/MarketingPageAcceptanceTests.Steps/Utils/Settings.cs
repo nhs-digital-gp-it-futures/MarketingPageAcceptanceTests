@@ -19,7 +19,7 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
 
         public Settings(IConfiguration config)
         {
-            HubUrl = config.GetValue<string>("hubUrl");            
+            HubUrl = config.GetValue<string>("hubUrl");
             SupplierMarketingPageUrl = config.GetValue<string>("mpSupplierUrl");
             AuthorityMarketingPageUrl = config.GetValue<string>("mpAuthorityUrl");
             Browser = config.GetValue<string>("browser");

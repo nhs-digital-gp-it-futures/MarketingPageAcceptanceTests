@@ -1,6 +1,6 @@
-﻿using FluentAssertions;
+﻿using System;
+using FluentAssertions;
 using MarketingPageAcceptanceTests.Steps.Utils;
-using System;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.BrowserSupported

@@ -1,11 +1,11 @@
-﻿using MarketingPageAcceptanceTests.Actions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using MarketingPageAcceptanceTests.Actions;
 using MarketingPageAcceptanceTests.Actions.Collections;
 using MarketingPageAcceptanceTests.TestData.Solutions;
 using MarketingPageAcceptanceTests.TestData.Suppliers;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace MarketingPageAcceptanceTests.Steps.Utils
 {

@@ -1,9 +1,9 @@
-﻿using Bogus;
+﻿using System.Linq;
+using Bogus;
 using FluentAssertions;
 using MarketingPageAcceptanceTests.Steps.Utils;
 using MarketingPageAcceptanceTests.TestData.Solutions;
 using MarketingPageAcceptanceTests.TestData.Suppliers;
-using System.Linq;
 using TechTalk.SpecFlow;
 
 namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation

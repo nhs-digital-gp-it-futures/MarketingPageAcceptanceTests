@@ -1,5 +1,5 @@
-﻿using Bogus;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Bogus;
 
 namespace MarketingPageAcceptanceTests.TestData.Information
 {
