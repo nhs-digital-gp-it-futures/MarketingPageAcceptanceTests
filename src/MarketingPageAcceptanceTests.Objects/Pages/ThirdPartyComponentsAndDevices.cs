@@ -2,10 +2,10 @@
 
 namespace MarketingPageAcceptanceTests.Objects.Pages
 {
-    public class ThirdPartyComponentsAndDevices
+    public static class ThirdPartyComponentsAndDevices
     {
-        public By ThirdPartyComponents => By.Id("third-party-components");
+        public static By ThirdPartyComponents => By.Id("third-party-components");
 
-        public By DeviceCapabilities => By.Id("device-capabilities");
+        public static By DeviceCapabilities => By.Id("device-capabilities");
     }
 }

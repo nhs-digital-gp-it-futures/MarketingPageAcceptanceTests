@@ -13,8 +13,8 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void SelectRadioButton(string choice)
         {
             wait.Until(s =>
-                s.FindElements(pages.BrowserBasedSections.MobileFirst.DesignedWithMobileFirstApproach).First().Enabled);
-            driver.FindElements(pages.BrowserBasedSections.MobileFirst.DesignedWithMobileFirstApproach)
+                s.FindElements(Objects.Pages.MobileFirst.DesignedWithMobileFirstApproach).First().Enabled);
+            driver.FindElements(Objects.Pages.MobileFirst.DesignedWithMobileFirstApproach)
                 .Single(s => s.FindElement(By.TagName("label")).Text.Contains(choice))
                 .FindElement(By.TagName("input"))
                 .Click();

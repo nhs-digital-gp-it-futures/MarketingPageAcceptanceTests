@@ -15,7 +15,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             var rand = new Random();
 
-            var checkboxes = driver.FindElements(pages.BrowserBasedSections.BrowsersSupported.BrowserCheckboxes);
+            var checkboxes = driver.FindElements(Objects.Pages.BrowsersSupported.BrowserCheckboxes);
 
             // randomise order of list
             var randomised = checkboxes.Select(x => new { value = x, order = rand.Next() })
@@ -28,14 +28,14 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             var rand = new Random();
 
-            var radioButtons = driver.FindElements(pages.BrowserBasedSections.BrowsersSupported.MobileResponsive);
+            var radioButtons = driver.FindElements(Objects.Pages.BrowsersSupported.MobileResponsive);
 
             radioButtons[rand.Next(radioButtons.Count)].FindElement(By.TagName("input")).Click();
         }
 
         public void SaveAndReturn()
         {
-            driver.FindElement(pages.BrowserBasedSections.BrowsersSupported.SaveAndReturn).Click();
+            driver.FindElement(Objects.Pages.BrowsersSupported.SaveAndReturn).Click();
         }
     }
 }

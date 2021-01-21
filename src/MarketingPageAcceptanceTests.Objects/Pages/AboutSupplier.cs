@@ -2,9 +2,9 @@
 
 namespace MarketingPageAcceptanceTests.Objects.Pages
 {
-    public class AboutSupplier
+    public static class AboutSupplier
     {
-        public By Description = By.Id("description");
-        public By Link = By.Id("link");
+        public static By Description => By.Id("description");
+        public static By Link => By.Id("link");
     }
 }

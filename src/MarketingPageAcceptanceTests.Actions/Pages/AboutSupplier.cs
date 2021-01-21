@@ -11,12 +11,12 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public string GetDescriptionText()
         {
-            return driver.FindElement(pages.AboutSupplier.Description).Text;
+            return driver.FindElement(Objects.Pages.AboutSupplier.Description).Text;
         }
 
         public string GetLinkText()
         {
-            return driver.FindElement(pages.AboutSupplier.Link).GetAttribute("value");
+            return driver.FindElement(Objects.Pages.AboutSupplier.Link).GetAttribute("value");
         }
     }
 }

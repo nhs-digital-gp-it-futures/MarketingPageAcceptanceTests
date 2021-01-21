@@ -3,64 +3,64 @@ using OpenQA.Selenium;
 
 namespace MarketingPageAcceptanceTests.Objects.Pages
 {
-    public sealed class PreviewPage
+    public static class PreviewPage
     {
         /// <summary>
         ///     contains Summary, About and Link section
         /// </summary>
-        public By SolutionDescriptionContainer => CustomBy.DataTestId("preview-solution-description");
+        public static By SolutionDescriptionContainer => CustomBy.DataTestId("preview-solution-description");
 
-        public By SolutionDescriptionSummarySection => CustomBy.DataTestId("preview-section-question-summary");
+        public static By SolutionDescriptionSummarySection => CustomBy.DataTestId("preview-section-question-summary");
 
-        public By SolutionDescriptionAboutSection =>
+        public static By SolutionDescriptionAboutSection =>
             CustomBy.DataTestId("preview-section-question-description");
 
-        public By SolutionDescriptionLinkSection => CustomBy.DataTestId("preview-section-question-link");
-        public By SectionTitle => CustomBy.DataTestId("preview-question-title");
-        public By SectionDataText => CustomBy.DataTestId("preview-question-data-text");
-        public By SectionDataLink => CustomBy.DataTestId("preview-question-data-link");
-        public By FeaturesSection => CustomBy.DataTestId("preview-features");
-        public By BrowserBasedSection => CustomBy.DataTestId("view-section-browser-based", "span");
+        public static By SolutionDescriptionLinkSection => CustomBy.DataTestId("preview-section-question-link");
+        public static By SectionTitle => CustomBy.DataTestId("preview-question-title");
+        public static By SectionDataText => CustomBy.DataTestId("preview-question-data-text");
+        public static By SectionDataLink => CustomBy.DataTestId("preview-question-data-link");
+        public static By FeaturesSection => CustomBy.DataTestId("preview-features");
+        public static By BrowserBasedSection => CustomBy.DataTestId("view-section-browser-based", "span");
 
-        public By PageTitle => CustomBy.DataTestId("view-solution-page-solution-name");
-        public By BrowserBasedSectionTitles => CustomBy.DataTestId("view-section-table-row-title");
+        public static By PageTitle => CustomBy.DataTestId("view-solution-page-solution-name");
+        public static By BrowserBasedSectionTitles => CustomBy.DataTestId("view-section-table-row-title");
 
-        public By SupportedBrowsers =>
+        public static By SupportedBrowsers =>
             CustomBy.DataTestId("preview-section-table-row-supported-browsers", "li > label");
 
-        public By RequiresHscn => CustomBy.DataTestId("view-question-data-text-requires-hscn");
+        public static By RequiresHscn => CustomBy.DataTestId("view-question-data-text-requires-hscn");
 
-        public By ContactName => CustomBy.DataTestId("view-question-data-text-contact-name");
-        public By ContactDepartment => CustomBy.DataTestId("view-question-data-text-department-name");
-        public By ContactEmail => CustomBy.DataTestId("view-question-data-text-email-address");
-        public By ContactPhoneNumber => CustomBy.DataTestId("view-question-data-text-phone-number");
+        public static By ContactName => CustomBy.DataTestId("view-question-data-text-contact-name");
+        public static By ContactDepartment => CustomBy.DataTestId("view-question-data-text-department-name");
+        public static By ContactEmail => CustomBy.DataTestId("view-question-data-text-email-address");
+        public static By ContactPhoneNumber => CustomBy.DataTestId("view-question-data-text-phone-number");
 
-        public By ConnectivityRequirement => CustomBy.DataTestId("view-question-data-text-minimum-connection-speed");
+        public static By ConnectivityRequirement => CustomBy.DataTestId("view-question-data-text-minimum-connection-speed");
 
-        public By DesktopResolutionRequirement =>
+        public static By DesktopResolutionRequirement =>
             CustomBy.DataTestId("view-question-data-text-minimum-desktop-resolution");
 
-        public By ExpandingSections => By.CssSelector("details.nhsuk-details");
-        public By PreviewHeaders => By.TagName("h3");
-        public By PreviewHeadersSectionContainer => By.CssSelector("div.nhsuk-width-container");
-        public By AboutSupplierDescription => CustomBy.DataTestId("view-question-data-text-description");
-        public By AboutSupplierUrl => CustomBy.DataTestId("view-question-data-link");
+        public static By ExpandingSections => By.CssSelector("details.nhsuk-details");
+        public static By PreviewHeaders => By.TagName("h3");
+        public static By PreviewHeadersSectionContainer => By.CssSelector("div.nhsuk-width-container");
+        public static By AboutSupplierDescription => CustomBy.DataTestId("view-question-data-text-description");
+        public static By AboutSupplierUrl => CustomBy.DataTestId("view-question-data-link");
 
-        public By DownloadNHSAssuredIntegrationsDocumentLink =>
+        public static By DownloadNHSAssuredIntegrationsDocumentLink =>
             CustomBy.DataTestId("view-question-data-text-link-authority-integrations", "a");
 
-        public By DownloadRoadmapDocumentLink => CustomBy.DataTestId("view-question-data-link-document-link", "a");
+        public static By DownloadRoadmapDocumentLink => CustomBy.DataTestId("view-question-data-link-document-link", "a");
 
-        public By DownloadAuthorityProvidedDataDocumentLink =>
+        public static By DownloadAuthorityProvidedDataDocumentLink =>
             CustomBy.DataTestId("view-section-question-document-link", "a");
 
-        public By CapabilityAccordian => By.ClassName("nhsuk-details__summary-text");
-        public By Capabilities => CustomBy.DataTestId("view-section-capabilities", "summary");
+        public static By CapabilityAccordian => By.ClassName("nhsuk-details__summary-text");
+        public static By Capabilities => CustomBy.DataTestId("view-section-capabilities", "summary");
 
-        public By EpicTitles => By.CssSelector(".bc-c-epic-list li span");
+        public static By EpicTitles => By.CssSelector(".bc-c-epic-list li span");
 
-        public By CapabilityEpicsMaySection => CustomBy.DataTestId("may-tag");
-        public By CapabilityEpicsMustSection => CustomBy.DataTestId("must-tag");
-        public By CapabilityEpicsStatusSymbol => By.CssSelector(".bc-c-epic-list svg");
+        public static By CapabilityEpicsMaySection => CustomBy.DataTestId("may-tag");
+        public static By CapabilityEpicsMustSection => CustomBy.DataTestId("must-tag");
+        public static By CapabilityEpicsStatusSymbol => By.CssSelector(".bc-c-epic-list svg");
     }
 }

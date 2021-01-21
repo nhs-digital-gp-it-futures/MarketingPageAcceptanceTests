@@ -2,11 +2,11 @@
 
 namespace MarketingPageAcceptanceTests.Objects.Pages
 {
-    public sealed class NativeDesktopMemoryStorage
+    public static class NativeDesktopMemoryStorage
     {
-        public By StorageRequirements => By.Id("storage-requirements-description");
-        public By MinimumCPU => By.Id("minimum-cpu");
+        public static By StorageRequirements => By.Id("storage-requirements-description");
+        public static By MinimumCPU => By.Id("minimum-cpu");
 
-        public By RecommendedResolution => By.CssSelector("select#recommended-resolution");
+        public static By RecommendedResolution => By.CssSelector("select#recommended-resolution");
     }
 }

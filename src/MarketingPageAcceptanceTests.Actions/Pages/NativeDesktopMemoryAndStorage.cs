@@ -28,25 +28,25 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void SelectRandomMinimumMemory()
         {
             var minimumMemory =
-                new SelectElement(driver.FindElement(pages.NativeMobileSections.MemoryAndStorage.MinimumMemory));
+                new SelectElement(driver.FindElement(Objects.Pages.MemoryAndStorage.MinimumMemory));
             SelectRandomOption(minimumMemory);
         }
 
         public void EnterStorageRequirements(string text)
         {
-            driver.FindElement(pages.NativeDesktopSections.MemoryAndStorage.StorageRequirements).SendKeys(text);
+            driver.FindElement(Objects.Pages.NativeDesktopMemoryStorage.StorageRequirements).SendKeys(text);
         }
 
         public void EnterCpuRequirements(string text)
         {
-            driver.FindElement(pages.NativeDesktopSections.MemoryAndStorage.MinimumCPU).SendKeys(text);
+            driver.FindElement(Objects.Pages.NativeDesktopMemoryStorage.MinimumCPU).SendKeys(text);
         }
 
         public void SelectRandomResolution()
         {
             var resolution =
                 new SelectElement(
-                    driver.FindElement(pages.NativeDesktopSections.MemoryAndStorage.RecommendedResolution));
+                    driver.FindElement(Objects.Pages.NativeDesktopMemoryStorage.RecommendedResolution));
             SelectRandomOption(resolution);
         }
 

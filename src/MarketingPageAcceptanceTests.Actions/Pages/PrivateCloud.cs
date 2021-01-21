@@ -14,7 +14,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void EnterText(int characters)
         {
             var randomText = RandomInformation.RandomString(characters);
-            driver.EnterTextViaJS(wait, pages.HostingTypeSections.PrivateCloud.HostingModel, randomText);
+            driver.EnterTextViaJS(wait, Objects.Pages.PrivateCloud.HostingModel, randomText);
         }
     }
 }

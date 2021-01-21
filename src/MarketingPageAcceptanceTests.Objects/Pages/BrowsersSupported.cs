@@ -3,12 +3,12 @@ using OpenQA.Selenium;
 
 namespace MarketingPageAcceptanceTests.Objects.Pages
 {
-    public class BrowsersSupported
+    public static class BrowsersSupported
     {
-        public By BrowserCheckboxes => By.CssSelector("div.nhsuk-checkboxes__item");
+        public static By BrowserCheckboxes => By.CssSelector("div.nhsuk-checkboxes__item");
 
-        public By MobileResponsive => By.CssSelector("div.nhsuk-radios__item");
+        public static By MobileResponsive => By.CssSelector("div.nhsuk-radios__item");
 
-        public By SaveAndReturn => CustomBy.DataTestId("section-submit-button", "button");
+        public static By SaveAndReturn => CustomBy.DataTestId("section-submit-button", "button");
     }
 }

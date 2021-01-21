@@ -27,36 +27,36 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             if (clearFirst)
             {
-                driver.FindElement(pages.ContactDetails.Contact1FirstName).Clear();
-                driver.FindElement(pages.ContactDetails.Contact1LastName).Clear();
-                driver.FindElement(pages.ContactDetails.Contact1EmailAddress).Clear();
-                driver.FindElement(pages.ContactDetails.Contact1PhoneNumber).Clear();
-                driver.FindElement(pages.ContactDetails.Contact1JobSector).Clear();
+                driver.FindElement(Objects.Pages.ContactDetails.Contact1FirstName).Clear();
+                driver.FindElement(Objects.Pages.ContactDetails.Contact1LastName).Clear();
+                driver.FindElement(Objects.Pages.ContactDetails.Contact1EmailAddress).Clear();
+                driver.FindElement(Objects.Pages.ContactDetails.Contact1PhoneNumber).Clear();
+                driver.FindElement(Objects.Pages.ContactDetails.Contact1JobSector).Clear();
             }
 
-            driver.FindElement(pages.ContactDetails.Contact1FirstName).SendKeys(contact.FirstName);
-            driver.FindElement(pages.ContactDetails.Contact1LastName).SendKeys(contact.LastName);
-            driver.FindElement(pages.ContactDetails.Contact1EmailAddress).SendKeys(contact.Email);
-            driver.FindElement(pages.ContactDetails.Contact1PhoneNumber).SendKeys(contact.PhoneNumber);
-            driver.FindElement(pages.ContactDetails.Contact1JobSector).SendKeys(contact.Department);
+            driver.FindElement(Objects.Pages.ContactDetails.Contact1FirstName).SendKeys(contact.FirstName);
+            driver.FindElement(Objects.Pages.ContactDetails.Contact1LastName).SendKeys(contact.LastName);
+            driver.FindElement(Objects.Pages.ContactDetails.Contact1EmailAddress).SendKeys(contact.Email);
+            driver.FindElement(Objects.Pages.ContactDetails.Contact1PhoneNumber).SendKeys(contact.PhoneNumber);
+            driver.FindElement(Objects.Pages.ContactDetails.Contact1JobSector).SendKeys(contact.Department);
         }
 
         private void SecondContactComplete(IContactDetail contact, bool clearFirst)
         {
             if (clearFirst)
             {
-                driver.FindElement(pages.ContactDetails.Contact2FirstName).Clear();
-                driver.FindElement(pages.ContactDetails.Contact2LastName).Clear();
-                driver.FindElement(pages.ContactDetails.Contact2EmailAddress).Clear();
-                driver.FindElement(pages.ContactDetails.Contact2PhoneNumber).Clear();
-                driver.FindElement(pages.ContactDetails.Contact2JobSector).Clear();
+                driver.FindElement(Objects.Pages.ContactDetails.Contact2FirstName).Clear();
+                driver.FindElement(Objects.Pages.ContactDetails.Contact2LastName).Clear();
+                driver.FindElement(Objects.Pages.ContactDetails.Contact2EmailAddress).Clear();
+                driver.FindElement(Objects.Pages.ContactDetails.Contact2PhoneNumber).Clear();
+                driver.FindElement(Objects.Pages.ContactDetails.Contact2JobSector).Clear();
             }
 
-            driver.FindElement(pages.ContactDetails.Contact2FirstName).SendKeys(contact.FirstName);
-            driver.FindElement(pages.ContactDetails.Contact2LastName).SendKeys(contact.LastName);
-            driver.FindElement(pages.ContactDetails.Contact2EmailAddress).SendKeys(contact.Email);
-            driver.FindElement(pages.ContactDetails.Contact2PhoneNumber).SendKeys(contact.PhoneNumber);
-            driver.FindElement(pages.ContactDetails.Contact2JobSector).SendKeys(contact.Department);
+            driver.FindElement(Objects.Pages.ContactDetails.Contact2FirstName).SendKeys(contact.FirstName);
+            driver.FindElement(Objects.Pages.ContactDetails.Contact2LastName).SendKeys(contact.LastName);
+            driver.FindElement(Objects.Pages.ContactDetails.Contact2EmailAddress).SendKeys(contact.Email);
+            driver.FindElement(Objects.Pages.ContactDetails.Contact2PhoneNumber).SendKeys(contact.PhoneNumber);
+            driver.FindElement(Objects.Pages.ContactDetails.Contact2JobSector).SendKeys(contact.Department);
         }
     }
 }

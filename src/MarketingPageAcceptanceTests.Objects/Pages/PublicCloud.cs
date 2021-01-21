@@ -2,8 +2,8 @@
 
 namespace MarketingPageAcceptanceTests.Objects.Pages
 {
-    public sealed class PublicCloud
+    public static class PublicCloud
     {
-        public By RequiresHscnN3Connectivity => By.Id("requires-hscn-1");
+        public static By RequiresHscnN3Connectivity => By.Id("requires-hscn-1");
     }
 }

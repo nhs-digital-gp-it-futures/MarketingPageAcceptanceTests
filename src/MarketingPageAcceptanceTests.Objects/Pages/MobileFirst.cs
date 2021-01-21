@@ -2,8 +2,8 @@
 
 namespace MarketingPageAcceptanceTests.Objects.Pages
 {
-    public sealed class MobileFirst
+    public static class MobileFirst
     {
-        public By DesignedWithMobileFirstApproach => By.CssSelector("div.nhsuk-radios__item");
+        public static By DesignedWithMobileFirstApproach => By.CssSelector("div.nhsuk-radios__item");
     }
 }

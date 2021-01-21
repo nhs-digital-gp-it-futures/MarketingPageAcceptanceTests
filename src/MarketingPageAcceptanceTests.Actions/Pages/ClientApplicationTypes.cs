@@ -15,21 +15,21 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public bool PageDisplayed()
         {
-            return driver.FindElement(pages.Common.PageTitle).Text == "Client application type";
+            return driver.FindElement(Objects.Pages.Common.PageTitle).Text == "Client application type";
         }
 
         public void SelectRandomCheckbox()
         {
             var rand = new Random();
-            var checkboxes = driver.FindElements(pages.ClientApplicationTypes.Checkboxes);
+            var checkboxes = driver.FindElements(Objects.Pages.ClientApplicationTypes.Checkboxes);
             checkboxes[rand.Next(3)].Click();
         }
 
         public void SelectCheckbox(string checkboxName)
         {
-            driver.FindElements(pages.ClientApplicationTypes.CheckboxGroups)
+            driver.FindElements(Objects.Pages.ClientApplicationTypes.CheckboxGroups)
                 .Single(s => s.FindElement(By.TagName("label")).Text.Contains(checkboxName))
-                .FindElement(pages.ClientApplicationTypes.Checkboxes).Click();
+                .FindElement(Objects.Pages.ClientApplicationTypes.Checkboxes).Click();
         }
 
         public void SaveAndReturn()
@@ -43,7 +43,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public IList<string> GetAppTypes()
         {
-            var appTypes = driver.FindElements(pages.ClientApplicationTypes.CheckboxGroups)
+            var appTypes = driver.FindElements(Objects.Pages.ClientApplicationTypes.CheckboxGroups)
                 .Select(s => s.FindElement(By.TagName("label")).Text);
 
             return appTypes.ToList();

@@ -2,11 +2,11 @@ using OpenQA.Selenium;
 
 namespace MarketingPageAcceptanceTests.Objects.Pages
 {
-    public sealed class ClientApplicationTypes
+    public static class ClientApplicationTypes
     {
-        public By Checkboxes => By.ClassName("nhsuk-checkboxes__input");
+        public static By Checkboxes => By.ClassName("nhsuk-checkboxes__input");
 
 
-        public By CheckboxGroups => By.ClassName("nhsuk-checkboxes__item");
+        public static By CheckboxGroups => By.ClassName("nhsuk-checkboxes__item");
     }
 }
