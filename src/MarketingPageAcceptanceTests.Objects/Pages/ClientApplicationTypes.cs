@@ -1,7 +1,7 @@
-﻿using OpenQA.Selenium;
-
-namespace MarketingPageAcceptanceTests.Objects.Pages
+﻿namespace MarketingPageAcceptanceTests.Objects.Pages
 {
+    using OpenQA.Selenium;
+
     public static class ClientApplicationTypes
     {
         public static By Checkboxes => By.ClassName("nhsuk-checkboxes__input");

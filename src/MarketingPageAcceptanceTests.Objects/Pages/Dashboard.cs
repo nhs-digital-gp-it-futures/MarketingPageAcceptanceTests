@@ -1,8 +1,8 @@
-﻿using MarketingPageAcceptanceTests.Objects.Utils;
-using OpenQA.Selenium;
-
-namespace MarketingPageAcceptanceTests.Objects.Pages
+﻿namespace MarketingPageAcceptanceTests.Objects.Pages
 {
+    using MarketingPageAcceptanceTests.Objects.Utils;
+    using OpenQA.Selenium;
+
     public static class Dashboard
     {
         public static By Sections => By.CssSelector("li.bc-c-section-list__item");

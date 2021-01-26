@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Data.SqlClient;
-using Dapper;
-
-namespace MarketingPageAcceptanceTests.TestData.Utils
+﻿namespace MarketingPageAcceptanceTests.TestData.Utils
 {
+    using System.Collections.Generic;
+    using System.Data.SqlClient;
+    using Dapper;
+
     internal static class SqlExecutor
     {
         internal static IEnumerable<T> Execute<T>(string connectionString, string query, object param)

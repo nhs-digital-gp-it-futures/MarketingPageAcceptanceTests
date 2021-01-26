@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using MarketingPageAcceptanceTests.TestData.Utils;
-
-namespace MarketingPageAcceptanceTests.TestData.Capabilities
+﻿namespace MarketingPageAcceptanceTests.TestData.Capabilities
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using MarketingPageAcceptanceTests.TestData.Utils;
+
     public sealed class EpicDto
     {
-        [Display(Name = "Epic ID")] public string Id { get; set; }
+        [Display(Name = "Epic ID")]
+        public string Id { get; set; }
 
         [Display(Name = "Epic Final Assessment Result")]
         public string EpicFinalAssessmentResult { get; set; }

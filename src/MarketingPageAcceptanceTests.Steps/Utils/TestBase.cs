@@ -1,16 +1,16 @@
-﻿using TechTalk.SpecFlow;
-
-namespace MarketingPageAcceptanceTests.Steps.Utils
+﻿namespace MarketingPageAcceptanceTests.Steps.Utils
 {
+    using TechTalk.SpecFlow;
+
     public abstract class TestBase
     {
-        public readonly ScenarioContext _context;
-        public readonly UITest _test;
+        protected readonly ScenarioContext context;
+        protected readonly UITest test;
 
         public TestBase(UITest test, ScenarioContext context)
         {
-            _test = test;
-            _context = context;
+            this.test = test;
+            this.context = context;
         }
     }
 }

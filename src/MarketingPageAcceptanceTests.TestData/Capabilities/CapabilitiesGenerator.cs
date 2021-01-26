@@ -1,30 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using MarketingPageAcceptanceTests.TestData.Information;
-using MarketingPageAcceptanceTests.TestData.Utils;
-
-namespace MarketingPageAcceptanceTests.TestData.Capabilities
+﻿namespace MarketingPageAcceptanceTests.TestData.Capabilities
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using MarketingPageAcceptanceTests.TestData.Information;
+    using MarketingPageAcceptanceTests.TestData.Utils;
+
     public static class CapabilitiesGenerator
     {
-        public static IEnumerable<SolutionCapabilities> GenerateListOfSolutionCapabilities(string connectionString,
-            string solutionId, int length = 5)
+        public static IEnumerable<SolutionCapabilities> GenerateListOfSolutionCapabilities(
+            string connectionString,
+            string solutionId,
+            int length = 5)
         {
             var solCaps = new List<SolutionCapabilities>();
 
             var capabilities = Capability.GetAll(connectionString) // Get list of Capabilities
-                .OrderBy(s => Guid.NewGuid()) // Reorder them randomly                
+                .OrderBy(s => Guid.NewGuid()) // Reorder them randomly
                 .ToList();
 
             for (var i = 0; i < length; i++)
+            {
                 solCaps.Add(new SolutionCapabilities
                 { SolutionID = solutionId, CapabilityId = capabilities[i].CapabilityRef });
+            }
 
             return solCaps.OrderBy(s => s.CapabilityId);
         }
 
-        public static IEnumerable<EpicDto> GenerateCapabilityEpics(string connectionString,
+        public static IEnumerable<EpicDto> GenerateCapabilityEpics(
+            string connectionString,
             IEnumerable<SolutionCapabilities> capabilities)
         {
             var solEpics = new List<EpicDto>();
@@ -43,7 +48,8 @@ namespace MarketingPageAcceptanceTests.TestData.Capabilities
             return solEpics;
         }
 
-        public static IEnumerable<EpicDto> GenerateEpicsForCapabilityNotSelected(string connectionString,
+        public static IEnumerable<EpicDto> GenerateEpicsForCapabilityNotSelected(
+            string connectionString,
             IEnumerable<SolutionCapabilities> capabilities)
         {
             var solEpics = new List<EpicDto>();

@@ -1,11 +1,15 @@
-﻿using System;
-using System.Linq;
-
-namespace MarketingPageAcceptanceTests.TestData.Utils
+﻿namespace MarketingPageAcceptanceTests.TestData.Utils
 {
+    using System;
+    using System.Linq;
+
     public static class LastUpdatedHelper
     {
-        public static void UpdateLastUpdated(DateTime lastUpdated, string table, string whereKey, string whereValue,
+        public static void UpdateLastUpdated(
+            DateTime lastUpdated,
+            string table,
+            string whereKey,
+            string whereValue,
             string connectionString)
         {
             var query = @"UPDATE @table SET LastUpdated=@lastUpdated WHERE @whereKey=@whereValue";

@@ -1,30 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using MarketingPageAcceptanceTests.Actions.Pages.Utils;
-using MarketingPageAcceptanceTests.Actions.Utils;
-using OpenQA.Selenium;
-
-namespace MarketingPageAcceptanceTests.Actions.Pages
+﻿namespace MarketingPageAcceptanceTests.Actions.Pages
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+    using MarketingPageAcceptanceTests.Actions.Utils;
+    using OpenQA.Selenium;
+
     public sealed class Capabilities : PageAction
     {
-        public Capabilities(IWebDriver driver) : base(driver)
+        public Capabilities(IWebDriver driver)
+            : base(driver)
         {
-        }
-
-        public void EnterText(string csv)
-        {
-            driver.EnterTextViaJS(wait, Objects.Pages.Capabilities.CsvTextArea, csv);
-        }
-
-        public IList<IWebElement> GetCapabilityVersions()
-        {
-            return driver.FindElements(Objects.Pages.Capabilities.CapabilitySection).Select(s => s.FindElement(Objects.Pages.Capabilities.CapabilityTitle)).ToList();
-        }
-
-        public IList<IWebElement> GetCapabilityDescriptions()
-        {
-            return driver.FindElements(Objects.Pages.Capabilities.CapabilitySection).Select(s => s.FindElement(Objects.Pages.Capabilities.Description)).ToList();
         }
 
         public static IList<IWebElement> GetCapabilityUrls()
@@ -32,9 +18,24 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
             return null;
         }
 
+        public void EnterText(string csv)
+        {
+            Driver.EnterTextViaJS(Wait, Objects.Pages.Capabilities.CsvTextArea, csv);
+        }
+
+        public IList<IWebElement> GetCapabilityVersions()
+        {
+            return Driver.FindElements(Objects.Pages.Capabilities.CapabilitySection).Select(s => s.FindElement(Objects.Pages.Capabilities.CapabilityTitle)).ToList();
+        }
+
+        public IList<IWebElement> GetCapabilityDescriptions()
+        {
+            return Driver.FindElements(Objects.Pages.Capabilities.CapabilitySection).Select(s => s.FindElement(Objects.Pages.Capabilities.Description)).ToList();
+        }
+
         public IList<IWebElement> GetCapabilityNames()
         {
-            return driver.FindElements(Objects.Pages.Capabilities.CapabilitySection).Select(s => s.FindElement(Objects.Pages.Capabilities.CapabilityTitle)).ToList();
+            return Driver.FindElements(Objects.Pages.Capabilities.CapabilitySection).Select(s => s.FindElement(Objects.Pages.Capabilities.CapabilityTitle)).ToList();
         }
     }
 }

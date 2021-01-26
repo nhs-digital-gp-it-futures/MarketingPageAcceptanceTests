@@ -1,13 +1,14 @@
-﻿using FluentAssertions;
-using MarketingPageAcceptanceTests.Steps.Utils;
-using TechTalk.SpecFlow;
-
-namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
+﻿namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
 {
+    using FluentAssertions;
+    using MarketingPageAcceptanceTests.Steps.Utils;
+    using TechTalk.SpecFlow;
+
     [Binding]
     public class DisplayClientApplicationType : TestBase
     {
-        public DisplayClientApplicationType(UITest test, ScenarioContext context) : base(test, context)
+        public DisplayClientApplicationType(UITest test, ScenarioContext context)
+            : base(test, context)
         {
         }
 
@@ -16,24 +17,23 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
         {
         }
 
-
         [Given(@"the Section has a content validation status")]
         public void GivenTheSectionHasAContentValidationStatus()
         {
-            _test.Pages.Dashboard.AllSectionsContainStatus();
+            test.Pages.Dashboard.AllSectionsContainStatus();
         }
 
         [Then(@"there is a list of Marketing Page Form Sections")]
         public void ThenThereIsAListOfMarketingPageFormSections()
         {
-            _test.Pages.Dashboard.PageDisplayed();
+            test.Pages.Dashboard.PageDisplayed();
         }
 
         [Then(@"the Supplier is able to manage the Client Application Type Marketing Page Form Section")]
         public void ThenTheSupplierIsAbleToManageTheClientApplicationTypeMarketingPageFormSection()
         {
-            _test.Pages.Dashboard.NavigateToSection("Client application type");
-            _test.Pages.ClientApplicationTypes.PageDisplayed().Should().BeTrue();
+            test.Pages.Dashboard.NavigateToSection("Client application type");
+            test.Pages.ClientApplicationTypes.PageDisplayed().Should().BeTrue();
         }
     }
 }

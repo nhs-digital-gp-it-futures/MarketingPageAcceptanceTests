@@ -1,17 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using MarketingPageAcceptanceTests.TestData.Utils;
-
-namespace MarketingPageAcceptanceTests.TestData.ContactDetails
+﻿namespace MarketingPageAcceptanceTests.TestData.ContactDetails
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using MarketingPageAcceptanceTests.TestData.Utils;
+
     public sealed class ContactDetail : IContactDetail
     {
         public string FirstName { get; set; }
+
         public string LastName { get; set; }
+
         public string PhoneNumber { get; set; }
+
         public string Email { get; set; }
+
         public string Department { get; set; }
+
         public string SolutionId { get; set; }
 
         public void Create(string connectionString)

@@ -1,16 +1,16 @@
-﻿using MarketingPageAcceptanceTests.Steps.Utils;
-using TechTalk.SpecFlow;
-
-namespace MarketingPageAcceptanceTests.SmokeTests
+﻿namespace MarketingPageAcceptanceTests.SmokeTests
 {
+    using MarketingPageAcceptanceTests.Steps.Utils;
+    using TechTalk.SpecFlow;
+
     [Binding]
     public sealed class Hooks
     {
-        private readonly UITest _test;
+        private readonly UITest test;
 
         public Hooks(UITest test)
         {
-            _test = test;
+            this.test = test;
         }
 
         [BeforeScenario("supplier", Order = 1)]
@@ -25,19 +25,19 @@ namespace MarketingPageAcceptanceTests.SmokeTests
             BeforeShared("authority");
         }
 
-        private void BeforeShared(string userType)
-        {
-            _test.CreateSolution = false;
-            _test.UserType = userType;
-            _test.SetUrl();
-            _test.GoToUrl();
-        }
-
         [AfterScenario]
         public void AfterScenario()
         {
-            _test.Driver.Close();
-            _test.Driver.Quit();
+            test.Driver.Close();
+            test.Driver.Quit();
+        }
+
+        private void BeforeShared(string userType)
+        {
+            test.CreateSolution = false;
+            test.UserType = userType;
+            test.SetUrl();
+            test.GoToUrl();
         }
     }
 }

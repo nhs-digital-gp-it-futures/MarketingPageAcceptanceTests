@@ -1,20 +1,21 @@
-﻿using MarketingPageAcceptanceTests.Actions.Pages.Utils;
-using MarketingPageAcceptanceTests.Actions.Utils;
-using MarketingPageAcceptanceTests.TestData.Information;
-using OpenQA.Selenium;
-
-namespace MarketingPageAcceptanceTests.Actions.Pages
+﻿namespace MarketingPageAcceptanceTests.Actions.Pages
 {
+    using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+    using MarketingPageAcceptanceTests.Actions.Utils;
+    using MarketingPageAcceptanceTests.TestData.Information;
+    using OpenQA.Selenium;
+
     public class PrivateCloud : PageAction
     {
-        public PrivateCloud(IWebDriver driver) : base(driver)
+        public PrivateCloud(IWebDriver driver)
+            : base(driver)
         {
         }
 
         public void EnterText(int characters)
         {
             var randomText = RandomInformation.RandomString(characters);
-            driver.EnterTextViaJS(wait, Objects.Pages.PrivateCloud.HostingModel, randomText);
+            Driver.EnterTextViaJS(Wait, Objects.Pages.PrivateCloud.HostingModel, randomText);
         }
     }
 }

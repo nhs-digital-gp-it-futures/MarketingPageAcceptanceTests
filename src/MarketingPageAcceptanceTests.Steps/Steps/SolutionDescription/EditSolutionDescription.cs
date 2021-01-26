@@ -1,36 +1,15 @@
-﻿using FluentAssertions;
-using MarketingPageAcceptanceTests.Steps.Utils;
-using TechTalk.SpecFlow;
-
-namespace MarketingPageAcceptanceTests.Steps
+﻿namespace MarketingPageAcceptanceTests.Steps
 {
+    using FluentAssertions;
+    using MarketingPageAcceptanceTests.Steps.Utils;
+    using TechTalk.SpecFlow;
+
     [Binding]
     public class EditSolutionDescription : TestBase
     {
-        public EditSolutionDescription(UITest test, ScenarioContext context) : base(test, context)
+        public EditSolutionDescription(UITest test, ScenarioContext context)
+            : base(test, context)
         {
-        }
-
-        [Given(@"the Supplier has entered data into any field")]
-        public void GivenTheSupplierHasEnteredDataIntoAnyField()
-        {
-            _test.Pages.Dashboard.NavigateToSection("Solution description");
-        }
-
-        [Given(@"it does not exceed the maximum")]
-        public void GivenItDoesNotExceedTheMaximum()
-        {
-            _test.Pages.SolutionDescription.SummaryAddText(300);
-            _test.Pages.SolutionDescription.DescriptionAddText(1000);
-            _test.Pages.SolutionDescription.LinkAddText(1000);
-        }
-
-        [Given(@"it does exceed the maximum")]
-        public void GivenItDoesExceedTheMaximum()
-        {
-            _test.Pages.SolutionDescription.SummaryAddText(301);
-            _test.Pages.SolutionDescription.DescriptionAddText(1001);
-            _test.Pages.SolutionDescription.LinkAddText(1001);
         }
 
         [Given(@"the Solution Description Section requires Mandatory Data")]
@@ -38,63 +17,80 @@ namespace MarketingPageAcceptanceTests.Steps
         {
         }
 
+        [Given(@"the Supplier has entered data into any field")]
+        public void GivenTheSupplierHasEnteredDataIntoAnyField()
+        {
+            test.Pages.Dashboard.NavigateToSection("Solution description");
+        }
+
+        [Given(@"it does not exceed the maximum")]
+        public void GivenItDoesNotExceedTheMaximum()
+        {
+            test.Pages.SolutionDescription.SummaryAddText(300);
+            test.Pages.SolutionDescription.DescriptionAddText(1000);
+            test.Pages.SolutionDescription.LinkAddText(1000);
+        }
+
+        [Given(@"it does exceed the maximum")]
+        public void GivenItDoesExceedTheMaximum()
+        {
+            test.Pages.SolutionDescription.SummaryAddText(301);
+            test.Pages.SolutionDescription.DescriptionAddText(1001);
+            test.Pages.SolutionDescription.LinkAddText(1001);
+        }
+
         [Given(@"the pre-populated data is not present")]
         public void GivenThePre_PopulatedDataIsNotPresent()
         {
-            _test.solution.Summary = null;
-            _test.solution.FullDescription = null;
-            _test.solution.AboutUrl = null;
-            _test.solution.Update(_test.ConnectionString);
-            _test.Driver.Navigate().Refresh();
+            test.Solution.Summary = null;
+            test.Solution.FullDescription = null;
+            test.Solution.AboutUrl = null;
+            test.Solution.Update(test.ConnectionString);
+            test.Driver.Navigate().Refresh();
         }
 
         [Given(@"the Solution Description Section has completed data saved")]
         public void GivenTheSolutionDescriptionSectionHasCompletedDataSaved()
         {
-            _test.Pages.Dashboard.NavigateToSection("Solution description");
-            _test.Pages.SolutionDescription.SummaryAddText(10);
-            _test.Pages.SolutionDescription.DescriptionAddText(10);
-            _test.Pages.SolutionDescription.LinkAddText(10);
-            _test.Pages.SolutionDescription.SaveAndReturn();
-            _test.Pages.Dashboard.PageDisplayed();
-            _test.Pages.Dashboard.SectionCompleteStatus("Solution description");
+            test.Pages.Dashboard.NavigateToSection("Solution description");
+            test.Pages.SolutionDescription.SummaryAddText(10);
+            test.Pages.SolutionDescription.DescriptionAddText(10);
+            test.Pages.SolutionDescription.LinkAddText(10);
+            test.Pages.SolutionDescription.SaveAndReturn();
+            test.Pages.Dashboard.PageDisplayed();
+            test.Pages.Dashboard.SectionCompleteStatus("Solution description");
         }
 
         [Given(@"that a Supplier has not provided a Summary Description")]
         public void GivenThatASupplierHasNotProvidedASummaryDescription()
         {
             GivenThePre_PopulatedDataIsNotPresent();
-            _test.Pages.Dashboard.NavigateToSection("Solution description");
+            test.Pages.Dashboard.NavigateToSection("Solution description");
         }
 
         [When(@"the Mandatory fields data is deleted")]
         public void WhenTheMandatoryFieldsDataIsDeleted()
         {
-            _test.Pages.Dashboard.NavigateToSection("Solution description");
-            _test.Pages.SolutionDescription.ClearMandatoryFields();
-            _test.Pages.SolutionDescription.SaveAndReturn();
-            _test.Pages.Dashboard.PageDisplayed();
+            test.Pages.Dashboard.NavigateToSection("Solution description");
+            test.Pages.SolutionDescription.ClearMandatoryFields();
+            test.Pages.SolutionDescription.SaveAndReturn();
+            test.Pages.Dashboard.PageDisplayed();
         }
 
         [Then(@"the Solution Description Section is marked as Incomplete")]
         [Then(@"the status is set to INCOMPLETE")]
         public void ThenTheSolutionDescriptionSectionIsMarkedAsIncomplete()
         {
-            _test.Pages.Dashboard.SectionIncompleteStatus("Solution description");
+            test.Pages.Dashboard.SectionIncompleteStatus("Solution description");
         }
 
         [Then(@"the non mandatory data is saved to the database")]
         public void ThenTheNonMandatoryDataIsSavedToTheDatabase()
         {
-            _test.Pages.SolutionDescription.DbContainsDescription(_test.solution, _test.ConnectionString).Should()
+            test.Pages.SolutionDescription.DbContainsDescription(test.Solution, test.ConnectionString).Should()
                 .BeTrue();
-            _test.Pages.SolutionDescription.DbContainsLink(_test.solution, _test.ConnectionString).Should()
+            test.Pages.SolutionDescription.DbContainsLink(test.Solution, test.ConnectionString).Should()
                 .BeTrue();
-        }
-
-        [Then(@"the Section is not saved because it is mandatory")]
-        public static void ThenTheSectionIsNotSavedBecauseItIsMandatory()
-        {
         }
     }
 }

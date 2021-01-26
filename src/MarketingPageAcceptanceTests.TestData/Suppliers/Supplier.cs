@@ -1,18 +1,39 @@
-﻿using System;
-using System.Linq;
-using MarketingPageAcceptanceTests.TestData.Utils;
-
-namespace MarketingPageAcceptanceTests.TestData.Suppliers
+﻿namespace MarketingPageAcceptanceTests.TestData.Suppliers
 {
+    using System;
+    using System.Linq;
+    using MarketingPageAcceptanceTests.TestData.Utils;
+
     public sealed class Supplier
     {
         public string Id { get; set; }
+
         public string Name { get; set; }
+
         public string LegalName { get; set; }
+
         public string Summary { get; set; }
+
         public string SupplierUrl { get; set; }
+
         public DateTime LastUpdated { get; set; } = DateTime.Now;
+
         public Guid LastUpdatedBy { get; set; } = Guid.Empty;
+
+        public static Supplier RetrieveSupplierForSolution(string connectionString, string solutionId)
+        {
+            var query = @"SELECT 
+                            Supplier.[Id],
+                            Supplier.[Name],
+                            Supplier.[Summary],
+                            Supplier.[SupplierUrl],
+                            Supplier.[LastUpdated],
+                            Supplier.[LastUpdatedBy]
+                        FROM [dbo].[Supplier] 
+                        LEFT JOIN CatalogueItem on CatalogueItem.SupplierId = Supplier.Id 
+                        WHERE CatalogueItem.CatalogueItemId=@solutionId";
+            return SqlExecutor.Execute<Supplier>(connectionString, query, new { solutionId }).Single();
+        }
 
         public void Create(string connectionString)
         {
@@ -39,21 +60,6 @@ namespace MarketingPageAcceptanceTests.TestData.Suppliers
         {
             var query = @"SELECT * FROM [dbo].[Supplier] WHERE [Id]=@Id";
             return SqlExecutor.Execute<Supplier>(connectionString, query, this).Single();
-        }
-
-        public static Supplier RetrieveSupplierForSolution(string connectionString, string solutionId)
-        {
-            var query = @"SELECT 
-                            Supplier.[Id],
-                            Supplier.[Name],
-                            Supplier.[Summary],
-                            Supplier.[SupplierUrl],
-                            Supplier.[LastUpdated],
-                            Supplier.[LastUpdatedBy]
-                        FROM [dbo].[Supplier] 
-                        LEFT JOIN CatalogueItem on CatalogueItem.SupplierId = Supplier.Id 
-                        WHERE CatalogueItem.CatalogueItemId=@solutionId";
-            return SqlExecutor.Execute<Supplier>(connectionString, query, new { solutionId }).Single();
         }
 
         public void Update(string connectionString)
