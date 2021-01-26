@@ -15,11 +15,6 @@
         {
         }
 
-        [Then(@"the Section is not saved because it is mandatory to answer both questions")]
-        public static void NoAction()
-        {
-        }
-
         [Given(@"that an answer is provided to all Browser supported questions")]
         public void GivenThatAnAnswerIsProvidedToAllQuestions()
         {

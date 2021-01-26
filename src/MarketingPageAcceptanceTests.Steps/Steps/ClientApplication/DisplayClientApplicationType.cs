@@ -12,11 +12,6 @@
         {
         }
 
-        [Given(@"that a Supplier has chosen to manage Client Application Type Information")]
-        public static void GivenThatASupplierHasChosenToManageClientApplicationTypeInformation()
-        {
-        }
-
         [Given(@"the Section has a content validation status")]
         public void GivenTheSectionHasAContentValidationStatus()
         {

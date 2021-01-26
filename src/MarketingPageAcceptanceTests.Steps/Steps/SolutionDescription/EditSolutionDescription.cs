@@ -12,11 +12,6 @@
         {
         }
 
-        [Given(@"the Solution Description Section requires Mandatory Data")]
-        public static void GivenTheSolutionDescriptionSectionRequiresMandatoryData()
-        {
-        }
-
         [Given(@"the Supplier has entered data into any field")]
         public void GivenTheSupplierHasEnteredDataIntoAnyField()
         {

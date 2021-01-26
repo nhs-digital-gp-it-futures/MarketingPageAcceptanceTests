@@ -11,11 +11,6 @@
         {
         }
 
-        [Given(@"that a (Supplier|User) has chosen to manage Marketing Page Information")]
-        public static void GivenThatASupplierHasChosenToManageMarketingPageInformation(string user)
-        {
-        }
-
         [Then(@"the Features section content validation status is displayed")]
         public void ThenTheFeaturesSectionContentValidationStatusIsDisplayed()
         {

@@ -16,11 +16,6 @@
         {
         }
 
-        [Given(@"the Contact Details Section has no Mandatory Data")]
-        public static void NoAction()
-        {
-        }
-
         [Given(@"the (Supplier|Authority User) has entered any Contact Detail")]
         public void GivenTheUserHasEnteredAnyContactDetail(string userType)
         {
@@ -82,8 +77,8 @@
             dbContact.Should().BeEquivalentTo(firstContact);
         }
 
-        [Then(@"there (is|are) (.*) (record|records) in the contact table")]
-        public void ThenThereIsRecordInTheContactTable(string ignore1, int expected, string ignore2)
+        [Then(@"there (?:is|are) (.*) (?:record|records) in the contact table")]
+        public void ThenThereIsRecordInTheContactTable(int expected)
         {
             var actual = firstContact.RetrieveCount(test.ConnectionString);
             actual.Should().Be(expected);

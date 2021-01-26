@@ -11,20 +11,19 @@
         {
         }
 
-        [Given(
-            @"the (Supplier|Authority user) has entered (\d{3,4}) characters on the Catalogue Solution integrations page in the (Integrations) section")]
+        [Given(@"the (?:Supplier|Authority user) has entered (\d{3,4}) characters on the Catalogue Solution integrations page in the (Integrations) section")]
         public void GivenTheUserHasEnteredCharactersOnTheCatalogueSolutionIntegrationsPageInTheIntegrationsSection(
-            string userType, int characters, string section)
+            int characters,
+            string section)
         {
             test.Pages.Dashboard.NavigateToSection(section);
             test.Pages.SolutionDescription.LinkAddText(characters);
         }
 
-        [Given(@"a (Supplier|Authority User) has saved any data on the Integrations page")]
-        public void GivenAUserHasSavedAnyDataOnTheIntegrationsPage(string userType)
+        [Given(@"a (?:Supplier|Authority User) has saved any data on the Integrations page")]
+        public void GivenAUserHasSavedAnyDataOnTheIntegrationsPage()
         {
             GivenTheUserHasEnteredCharactersOnTheCatalogueSolutionIntegrationsPageInTheIntegrationsSection(
-                userType,
                 100,
                 "Integrations");
             test.Pages.Common.SectionSaveAndReturn();

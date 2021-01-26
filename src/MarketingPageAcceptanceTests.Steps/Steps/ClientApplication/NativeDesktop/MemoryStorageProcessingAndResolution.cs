@@ -11,8 +11,7 @@
         {
         }
 
-        [Given(
-            @"that Memory, storage, processing and resolution has been completed for Native desktop with (.*) characters")]
+        [Given(@"that Memory, storage, processing and resolution has been completed for Native desktop with (.*) characters")]
         public void GivenThatMemoryStorageProcessingAndAspectRatioHasBeenCompletedForNativeDesktopWithCharacters(
             int chars)
         {

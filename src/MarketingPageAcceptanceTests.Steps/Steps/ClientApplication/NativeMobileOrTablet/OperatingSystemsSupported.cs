@@ -24,8 +24,8 @@
         }
 
         [Given(
-            @"that an answer has not been provided to the mandatory question for (.*) section on (.*) sub dashboard")]
-        public void GivenThatAnAnswerHasNotBeenProvidedToTheMandatoryQuestion(string section, string subDashboard)
+            @"that an answer has not been provided to the mandatory question for (?:.*) section on (.*) sub dashboard")]
+        public void GivenThatAnAnswerHasNotBeenProvidedToTheMandatoryQuestion(string subDashboard)
         {
             test.Pages.Dashboard.NavigateToSection(subDashboard, true);
         }

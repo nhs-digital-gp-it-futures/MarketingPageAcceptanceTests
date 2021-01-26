@@ -18,16 +18,21 @@
         [Then(@"the Section is not saved")]
         [Given(@"a Supplier has not saved Mandatory data on all the Browser-based Client Application Type Sub-Sections")]
         [Then(@"the Section is not saved because it is mandatory")]
+        [Given(@"the (?:Public cloud|Private cloud|Hybrid|On premise) section does not require Mandatory Data")]
+        [Given(@"the (?:Roadmap|Integrations|Implementation timescales) section does not require Mandatory Data")]
+        [Given(@"a (?:.*) attachment has not been provided for the Solution")]
+        [Given(@"that a (?:Supplier|Authority User) has chosen to manage the .* Client Application Type Section")]
+        [Given(@"the (?:Browser-based|Native mobile or tablet|Native desktop) Client Application Type Section requires Mandatory Data")]
+        [Given(@"the Contact Details Section has no Mandatory Data")]
+        [Then(@"the Section is not saved because it is mandatory to answer both questions")]
+        [Given(@"that a Supplier has chosen to manage Client Application Type Information")]
+        [Given(@"the Client Application Type Section requires Mandatory Data")]
+        [Then(@"no Client Application Type sub-category is available on the Marketing Page Form")]
+        [Given(@"that a Supplier has not provided all mandatory data on the Marketing Page")]
+        [Then(@"the User will be informed that Submission was successful")]
+        [Given(@"that a (?:Supplier|User) has chosen to manage Marketing Page Information")]
+        [Given(@"the Solution Description Section requires Mandatory Data")]
         public static void NoAction()
-        {
-        }
-
-        [Given(@"the (Public cloud|Private cloud|Hybrid|On premise) section does not require Mandatory Data")]
-        [Given(@"the (Roadmap|Integrations|Implementation timescales) section does not require Mandatory Data")]
-        [Given(@"a (.*) attachment has not been provided for the Solution")]
-        [Given(@"that a (Supplier|Authority User) has chosen to manage the .* Client Application Type Section")]
-        [Given(@"the (Browser-based|Native mobile or tablet|Native desktop) Client Application Type Section requires Mandatory Data")]
-        public static void NoAction(string parameter)
         {
         }
 
@@ -109,19 +114,17 @@
             test.Pages.Dashboard.SectionHasStatus(section).Should().BeTrue();
         }
 
-        [Then(@"the (Supplier|User) is able to manage the (.*) Marketing Page (Dashboard|Form Section)")]
+        [Then(@"the (?:Supplier|User) is able to manage the (.*) Marketing Page (Dashboard|Form Section)")]
         public void ThenTheSupplierIsAbleToManageTheMarketingPageFormSection(
-            string user,
             string section,
             string pageType)
         {
             test.Pages.Dashboard.NavigateToSection(section, pageType == "Dashboard");
         }
 
-        [Then(@"the (.*) (Sub-Section|section) is marked as (Incomplete|Complete)")]
+        [Then(@"the (.*) (?:Sub-Section|section) is marked as (Incomplete|Complete)")]
         public void ThenTheBrowserBasedClientApplicationTypeSub_SectionIsMarkedAsStatus(
             string sectionName,
-            string sectionOrSubSection,
             string status)
         {
             test.Pages.Dashboard.AssertSectionStatus(sectionName, status.ToUpper());
@@ -135,10 +138,10 @@
         }
 
         [Given(
-            @"the (Supplier|Authority User) has entered (\d{3,4}) characters on the (.*) page in the (Public cloud|Private cloud|Hybrid|On premise) section")]
+            @"the (Supplier|Authority User) has entered (\d{3,4}) characters on the (?:.*) page in the (Public cloud|Private cloud|Hybrid|On premise) section")]
         [Given(
-            @"the (Supplier|Authority User) has entered (\d{3,4}) characters on the (.*) page in the (Roadmap|About supplier|Implementation timescales) section")]
-        public void GivenTheSupplierHasEnteredText(string userType, int characters, string page, string section)
+            @"the (Supplier|Authority User) has entered (\d{3,4}) characters on the (?:.*) page in the (Roadmap|About supplier|Implementation timescales) section")]
+        public void GivenTheSupplierHasEnteredText(string userType, int characters, string section)
         {
             test.SetUrl(test.Solution.Id, userType);
             test.GoToUrl();

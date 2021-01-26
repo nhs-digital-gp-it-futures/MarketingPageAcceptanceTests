@@ -46,8 +46,8 @@
             test.Pages.Common.ErrorMessageDisplayed();
         }
 
-        [Then(@"an indication is given to the (Supplier|User) as to why")]
-        public void ThenAnIndicationIsGivenToTheSupplierAsToWhy(string user)
+        [Then(@"an indication is given to the (?:Supplier|User) as to why")]
+        public void ThenAnIndicationIsGivenToTheSupplierAsToWhy()
         {
             test.Pages.Common.ErrorMessageDisplayed();
         }

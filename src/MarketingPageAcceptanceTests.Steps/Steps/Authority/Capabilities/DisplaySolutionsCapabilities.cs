@@ -50,8 +50,8 @@
             test.Pages.Capabilities.GetCapabilityDescriptions().Should().HaveCount(solutionCaps.Count());
         }
 
-        [Then(@"'(.*)' Capability URL")]
-        public void ThenCapabilityURL(string p0)
+        [Then(@"'(?:.*)' Capability URL")]
+        public void ThenCapabilityURL()
         {
             Actions.Pages.Capabilities.GetCapabilityUrls().Should().HaveCount(solutionCaps.Count());
         }

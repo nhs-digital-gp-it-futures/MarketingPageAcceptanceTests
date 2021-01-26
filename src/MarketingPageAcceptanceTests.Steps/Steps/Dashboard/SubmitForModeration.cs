@@ -13,12 +13,6 @@
         {
         }
 
-        [Given(@"that a Supplier has not provided all mandatory data on the Marketing Page")]
-        [Then(@"the User will be informed that Submission was successful")]
-        public static void NoAction()
-        {
-        }
-
         [Given(@"that a Supplier has provided all mandatory data on the Marketing Page")]
         public void GivenThatASupplierHasProvidedAllMandatoryDataOnTheMarketingPage()
         {

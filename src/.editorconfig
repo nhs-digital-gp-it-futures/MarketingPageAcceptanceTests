@@ -60,9 +60,6 @@ dotnet_naming_symbols.constant_fields.required_modifiers          = const
 # C# Coding Conventions       #
 ###############################
 
-# IDE0060: Remove unused parameter
-dotnet_diagnostic.IDE0060.severity = none
-
 [*.cs]
 # var preferences
 csharp_style_var_for_built_in_types = true:silent

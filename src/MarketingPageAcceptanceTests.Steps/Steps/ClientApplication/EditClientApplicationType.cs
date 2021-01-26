@@ -16,12 +16,6 @@
         {
         }
 
-        [Given(@"the Client Application Type Section requires Mandatory Data")]
-        [Then(@"no Client Application Type sub-category is available on the Marketing Page Form")]
-        public static void NoAction()
-        {
-        }
-
         [Given(@"that a (Browser-based|Native mobile or tablet|Native desktop) Client Application Type is selected")]
         public void GivenThatAChosenClientApplicationTypeIsSelected(string clientApplicationType)
         {

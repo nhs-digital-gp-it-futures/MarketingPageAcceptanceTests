@@ -13,10 +13,6 @@
         {
         }
 
-        public static void NoAction(string userType)
-        {
-        }
-
         [Then(@"there is a list of Browser-based Client Application Type Sub-Sections")]
         public void ThenThereIsAListOfBrowserBasedClientApplicationTypeSub_Sections()
         {

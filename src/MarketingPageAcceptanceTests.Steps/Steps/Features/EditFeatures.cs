@@ -60,8 +60,8 @@
             test.Pages.Common.SectionSaveAndReturn();
         }
 
-        [Then(@"the (.*) is saved")]
-        public void ThenTheSectionIsSaved(string section)
+        [Then(@"the (?:.*) is saved")]
+        public void ThenTheSectionIsSaved()
         {
             test.Pages.Dashboard.PageDisplayed();
             test.Pages.Dashboard.ShouldDisplaySections();
