@@ -1,7 +1,7 @@
-﻿using Bogus;
-
-namespace MarketingPageAcceptanceTests.TestData.ContactDetails
+﻿namespace MarketingPageAcceptanceTests.TestData.ContactDetails
 {
+    using Bogus;
+
     public static class GenerateContactDetails
     {
         public static IContactDetail NewContactDetail(string solutionId)

@@ -1,31 +1,32 @@
-﻿using MarketingPageAcceptanceTests.Steps.Utils;
-using TechTalk.SpecFlow;
-
-namespace MarketingPageAcceptanceTests.Steps.Steps.AboutSolution
+﻿namespace MarketingPageAcceptanceTests.Steps.Steps.AboutSolution
 {
+    using MarketingPageAcceptanceTests.Steps.Utils;
+    using TechTalk.SpecFlow;
+
     [Binding]
     public class Suppliers_EditSupplierAssertedIntegrationsSection : TestBase
     {
-        public Suppliers_EditSupplierAssertedIntegrationsSection(UITest test, ScenarioContext context) : base(test,
-            context)
+        public Suppliers_EditSupplierAssertedIntegrationsSection(UITest test, ScenarioContext context)
+            : base(test, context)
         {
         }
 
-        [Given(
-            @"the (Supplier|Authority user) has entered (\d{3,4}) characters on the Catalogue Solution integrations page in the (Integrations) section")]
+        [Given(@"the (?:Supplier|Authority user) has entered (\d{3,4}) characters on the Catalogue Solution integrations page in the (Integrations) section")]
         public void GivenTheUserHasEnteredCharactersOnTheCatalogueSolutionIntegrationsPageInTheIntegrationsSection(
-            string userType, int characters, string section)
+            int characters,
+            string section)
         {
-            _test.Pages.Dashboard.NavigateToSection(section);
-            _test.Pages.SolutionDescription.LinkAddText(characters);
+            test.Pages.Dashboard.NavigateToSection(section);
+            test.Pages.SolutionDescription.LinkAddText(characters);
         }
 
-        [Given(@"a (Supplier|Authority User) has saved any data on the Integrations page")]
-        public void GivenAUserHasSavedAnyDataOnTheIntegrationsPage(string userType)
+        [Given(@"a (?:Supplier|Authority User) has saved any data on the Integrations page")]
+        public void GivenAUserHasSavedAnyDataOnTheIntegrationsPage()
         {
-            GivenTheUserHasEnteredCharactersOnTheCatalogueSolutionIntegrationsPageInTheIntegrationsSection(userType,
-                100, "Integrations");
-            _test.Pages.Common.SectionSaveAndReturn();
+            GivenTheUserHasEnteredCharactersOnTheCatalogueSolutionIntegrationsPageInTheIntegrationsSection(
+                100,
+                "Integrations");
+            test.Pages.Common.SectionSaveAndReturn();
         }
     }
 }

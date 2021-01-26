@@ -1,15 +1,15 @@
-﻿using System.Collections.Generic;
-using FluentAssertions;
-using MarketingPageAcceptanceTests.Steps.Utils;
-using TechTalk.SpecFlow;
-
-namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeMobileOrTablet
+﻿namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeMobileOrTablet
 {
+    using System.Collections.Generic;
+    using FluentAssertions;
+    using MarketingPageAcceptanceTests.Steps.Utils;
+    using TechTalk.SpecFlow;
+
     [Binding]
     public class DisplayMarketingPageForm_NativeMobileOrTabletClientType : TestBase
     {
-        public DisplayMarketingPageForm_NativeMobileOrTabletClientType(UITest test, ScenarioContext context) : base(
-            test, context)
+        public DisplayMarketingPageForm_NativeMobileOrTabletClientType(UITest test, ScenarioContext context)
+            : base(test, context)
         {
         }
 
@@ -24,10 +24,10 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeMobil
                 "Connectivity",
                 "Third-party components and device capabilities",
                 "Hardware requirements",
-                "Additional information"
+                "Additional information",
             };
 
-            _test.Pages.BrowserBasedSections.BrowserSubDashboard.GetSections().Should()
+            test.Pages.BrowserBasedSections.BrowserSubDashboard.GetSections().Should()
                 .BeEquivalentTo(subSectionsExpected);
         }
     }

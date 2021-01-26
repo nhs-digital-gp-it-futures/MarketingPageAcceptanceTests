@@ -1,12 +1,13 @@
-﻿using MarketingPageAcceptanceTests.Steps.Utils;
-using TechTalk.SpecFlow;
-
-namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeDesktop
+﻿namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeDesktop
 {
+    using MarketingPageAcceptanceTests.Steps.Utils;
+    using TechTalk.SpecFlow;
+
     [Binding]
     public class EditNativeDesktop_SupportedOperatingSystems : TestBase
     {
-        public EditNativeDesktop_SupportedOperatingSystems(UITest test, ScenarioContext context) : base(test, context)
+        public EditNativeDesktop_SupportedOperatingSystems(UITest test, ScenarioContext context)
+            : base(test, context)
         {
         }
 
@@ -16,11 +17,11 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeDeskt
             GivenThatAUserHasProvidedAValueForTheMandatoryInformationForSupportedOperatingSystemsSectionOnNativeDesktopSubDashboard(
                 string section, string subDashboard)
         {
-            _test.Pages.Dashboard.NavigateToSection(subDashboard, true);
-            _test.Pages.BrowserBasedSections.BrowserSubDashboard.OpenSection(section);
+            test.Pages.Dashboard.NavigateToSection(subDashboard, true);
+            test.Pages.BrowserBasedSections.BrowserSubDashboard.OpenSection(section);
 
-            _test.Pages.NativeDesktopSections.OperatingSystems.TextAreaSendText(501);
-            _test.Pages.Common.SectionSaveAndReturn();
+            test.Pages.NativeDesktopSections.OperatingSystems.TextAreaSendText(501);
+            test.Pages.Common.SectionSaveAndReturn();
         }
     }
 }

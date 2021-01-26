@@ -1,14 +1,15 @@
-﻿using FluentAssertions;
-using MarketingPageAcceptanceTests.Steps.Utils;
-using MarketingPageAcceptanceTests.TestData.Solutions;
-using TechTalk.SpecFlow;
-
-namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
+﻿namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
 {
+    using FluentAssertions;
+    using MarketingPageAcceptanceTests.Steps.Utils;
+    using MarketingPageAcceptanceTests.TestData.Solutions;
+    using TechTalk.SpecFlow;
+
     [Binding]
     public sealed class SharedClientApplicationTypesSteps : TestBase
     {
-        public SharedClientApplicationTypesSteps(UITest test, ScenarioContext context) : base(test, context)
+        public SharedClientApplicationTypesSteps(UITest test, ScenarioContext context)
+            : base(test, context)
         {
         }
 
@@ -16,14 +17,14 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
             @"the User has selected (Browser-based|Native mobile or tablet|Native desktop) Client Type as a Client Application Type")]
         public void WhenTheUserHasSelectedTheClientTypeAsAClientApplicationType(string clientType)
         {
-            new SharedClientApplicationTypesSteps(_test, _context).SelectClientType(clientType);
+            new SharedClientApplicationTypesSteps(test, context).SelectClientType(clientType);
         }
 
         [Then(
             @"the Authority User is able to access the (Browser-based|Native mobile or tablet|Native desktop) Client Type Type Sub-Dashboard")]
         public void ThenTheAuthorityUserIsAbleToAccessTheClientTypeTypeSub_Dashboard(string clientType)
         {
-            _test.Pages.Dashboard.NavigateToSection(clientType, true);
+            test.Pages.Dashboard.NavigateToSection(clientType, true);
         }
 
         [Given(
@@ -32,17 +33,17 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
         {
             SelectClientType(section);
 
-            _test.Pages.Dashboard.NavigateToSection(section, true);
+            test.Pages.Dashboard.NavigateToSection(section, true);
 
-            _test.Pages.BrowserBasedSections.BrowserSubDashboard.OpenSection(page);
+            test.Pages.BrowserBasedSections.BrowserSubDashboard.OpenSection(page);
 
-            _test.Pages.BrowserBasedSections.HardwareRequirements.EnterText(characters);
+            test.Pages.BrowserBasedSections.HardwareRequirements.EnterText(characters);
         }
 
         [Given(@"I enter (.*) characters into the second text field")]
         public void GivenIEnterCharactersIntoTheSecondTextField(int characters)
         {
-            _test.Pages.BrowserBasedSections.HardwareRequirements.EnterText(characters, 1);
+            test.Pages.BrowserBasedSections.HardwareRequirements.EnterText(characters, 1);
         }
 
         [Given(
@@ -58,59 +59,54 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
         [When(@"the (Browser-based|Native mobile or tablet|Native desktop) Client Application Sub-Form is presented")]
         public void WhenTheBrowserBasedClientApplicationSub_FormIsPresented(string sectionTitle)
         {
-            _test.Pages.Common.SubDashboardTitle().Should().ContainEquivalentOf(sectionTitle);
+            test.Pages.Common.SubDashboardTitle().Should().ContainEquivalentOf(sectionTitle);
         }
 
         [Given(@"that (.*) has been completed in the (Browser-based|Native mobile or tablet|Native desktop) section")]
         public void GivenThatSectionHasBeenCompleted(string sectionName, string section)
         {
             GivenTheSupplierHasEnteredText(100, sectionName, section);
-            _test.Pages.Common.SectionSaveAndReturn();
-            _test.Pages.Common.WaitUntilSectionPageNotShownAnymore();
-            _test.Pages.Common.ClickSubDashboardBackLink();
+            test.Pages.Common.SectionSaveAndReturn();
+            test.Pages.Common.WaitUntilSectionPageNotShownAnymore();
+            test.Pages.Common.ClickSubDashboardBackLink();
         }
 
         [StepDefinition(
             @"has navigated to the (Browser-based|Native mobile or tablet|Native desktop) Client Application Sub-Form")]
         public void WhenHasNavigatedToTheSpecifiedClientApplicationSub_Form(string desiredSubForm)
         {
-            _test.Pages.Dashboard.NavigateToSection(desiredSubForm, true);
+            test.Pages.Dashboard.NavigateToSection(desiredSubForm, true);
         }
 
         [Given(@"validation has been triggered on (.*) section (.*)")]
         public void GivenValidationHasBeenTriggeredOnNativeMobileOrTabletSectionSupportedOperatingSystems(
             string subDashboard, string section)
         {
-            _test.Pages.Dashboard.NavigateToSection(subDashboard, true);
-            _test.Pages.BrowserBasedSections.BrowserSubDashboard.OpenSection(section);
-            _test.Pages.Common.SectionSaveAndReturn();
-        }
-
-        [Given(@"the (Browser-based|Native mobile or tablet|Native desktop) Client Application Type Section requires Mandatory Data")]
-        public static void GivenTheBrowserBasedClientApplicationTypeSectionRequiresMandatoryData(string section)
-        {
+            test.Pages.Dashboard.NavigateToSection(subDashboard, true);
+            test.Pages.BrowserBasedSections.BrowserSubDashboard.OpenSection(section);
+            test.Pages.Common.SectionSaveAndReturn();
         }
 
         [Given(@"a Supplier has saved all mandatory data on the (Browser-based|Native mobile or tablet|Native desktop) Client Application Type Sub-Sections")]
         public void GivenASupplierHasSavedAllMandatoryDataOnTheClientApplicationTypeSub_Sections(
             string clientApplicationType)
         {
-            _test.solution.ClientApplication =
+            test.Solution.ClientApplication =
                 ClientApplicationStringBuilder.GetClientAppString(null, clientApplicationType);
 
-            _test.solution.Update(_test.ConnectionString);
-            _test.Driver.Navigate().Refresh();
+            test.Solution.Update(test.ConnectionString);
+            test.Driver.Navigate().Refresh();
         }
 
         [Given(@"a Supplier has saved all mandatory data on the (Browser-based) Client Application Type Sub-Sections except for (Supported browsers|Plug-ins or extensions required|Connectivity and resolution|Mobile first approach)")]
         public void GivenASupplierHasSavedAllMandatoryDataOnTheClientApplicationTypeSub_SectionsExceptForX(
             string clientApplicationType, string section)
         {
-            _test.solution.ClientApplication =
+            test.Solution.ClientApplication =
                 ClientApplicationStringBuilder.GetClientAppString(section, clientApplicationType);
-            _test.solution.Update(_test.ConnectionString);
+            test.Solution.Update(test.ConnectionString);
 
-            _test.Driver.Navigate().Refresh();
+            test.Driver.Navigate().Refresh();
         }
 
         [Given(@"a Supplier has saved all mandatory data on the (Native mobile or tablet) Client Application Type Sub-Sections except for (Supported operating systems|Memory and storage|Mobile first approach)")]
@@ -132,26 +128,26 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
         [Given(@"that (.*) has been completed for (Browser-based|Native mobile or tablet|Native desktop)")]
         public void GivenThatConnectionDetailsHasBeenCompletedForNativeDesktop(string subSection, string section)
         {
-            _test.Pages.Dashboard.NavigateToSection(section, true);
-            _test.Pages.Dashboard.NavigateToSection(subSection);
+            test.Pages.Dashboard.NavigateToSection(section, true);
+            test.Pages.Dashboard.NavigateToSection(subSection);
             switch (subSection)
             {
                 case "Connectivity":
-                    _test.Pages.BrowserBasedSections.ConnectivityAndResolution.SelectRandomConnectionSpeed();
+                    test.Pages.BrowserBasedSections.ConnectivityAndResolution.SelectRandomConnectionSpeed();
                     break;
                 case "Memory, storage, processing and resolution":
-                    _test.Pages.NativeDesktopSections.MemoryAndStorage.CompleteAllFields();
+                    test.Pages.NativeDesktopSections.MemoryAndStorage.CompleteAllFields();
                     break;
             }
 
-            _test.Pages.Common.SectionSaveAndReturn();
-            _test.Pages.Common.WaitUntilSectionPageNotShownAnymore();
-            _test.Pages.Common.ClickSubDashboardBackLink();
+            test.Pages.Common.SectionSaveAndReturn();
+            test.Pages.Common.WaitUntilSectionPageNotShownAnymore();
+            test.Pages.Common.ClickSubDashboardBackLink();
         }
 
         public void SelectClientType(string clientType)
         {
-            new CommonSteps(_test, _context).GivenTheUserHasSetBrowserBasedApplicationType(clientType);
+            new CommonSteps(test, context).GivenTheUserHasSetBrowserBasedApplicationType(clientType);
         }
     }
 }

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Data.SqlClient;
-using Polly;
-
-namespace MarketingPageAcceptanceTests.TestData.Utils
+﻿namespace MarketingPageAcceptanceTests.TestData.Utils
 {
+    using System;
+    using System.Data.SqlClient;
+    using Polly;
+
     internal static class Policies
     {
         internal static ISyncPolicy RetryPolicy()

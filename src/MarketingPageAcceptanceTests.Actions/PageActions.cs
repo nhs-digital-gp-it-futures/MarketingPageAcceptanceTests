@@ -1,9 +1,9 @@
-﻿using MarketingPageAcceptanceTests.Actions.Collections;
-using MarketingPageAcceptanceTests.Actions.Pages;
-using OpenQA.Selenium;
-
-namespace MarketingPageAcceptanceTests.Actions
+﻿namespace MarketingPageAcceptanceTests.Actions
 {
+    using MarketingPageAcceptanceTests.Actions.Collections;
+    using MarketingPageAcceptanceTests.Actions.Pages;
+    using OpenQA.Selenium;
+
     public sealed class PageActions
     {
         public PageActions(IWebDriver driver)
@@ -23,26 +23,26 @@ namespace MarketingPageAcceptanceTests.Actions
                     PluginsOrExtensions = new PluginsOrExtensions(driver),
                     HardwareRequirements = new HardwareRequirements(driver),
                     ConnectivityAndResolution = new ConnectivityAndResolution(driver),
-                    MobileFirst = new MobileFirst(driver)
+                    MobileFirst = new MobileFirst(driver),
                 },
                 NativeMobileSections = new NativeMobileSections
                 {
                     OperatingSystems = new NativeMobileOperatingSystems(driver),
-                    MemoryAndStorage = new MemoryAndStorage(driver)
+                    MemoryAndStorage = new MemoryAndStorage(driver),
                 },
                 NativeDesktopSections = new NativeDesktopSections
                 {
                     OperatingSystems = new NativeDesktopOperatingSystems(driver),
-                    MemoryAndStorage = new NativeDesktopMemoryAndStorage(driver)
+                    MemoryAndStorage = new NativeDesktopMemoryAndStorage(driver),
                 },
                 HostingTypeSections = new HostingTypeSections
                 {
                     PublicCloud = new PublicCloud(driver),
-                    PrivateCloud = new PrivateCloud(driver)
+                    PrivateCloud = new PrivateCloud(driver),
                 },
                 AboutSupplier = new AboutSupplier(driver),
                 ContactDetails = new ContactDetails(driver),
-                Capabilities = new Capabilities(driver)
+                Capabilities = new Capabilities(driver),
             };
         }
 

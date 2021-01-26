@@ -1,8 +1,8 @@
-﻿using System;
-using Bogus;
-
-namespace MarketingPageAcceptanceTests.TestData.Solutions
+﻿namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
+    using System;
+    using Bogus;
+
     public sealed class CreateMarketingDetails
     {
         private const string ClientApplicationValue = "{ \"ClientApplicationTypes\":[\"browser-based\"],\"BrowsersSupported\":[\"google-chrome\", \"microsoft-edge\", \"mozilla-firefox\"],\"MobileResponsive\":true, \"Plugins\":{\"Required\":true,\"AdditionalInformation\":\"Additional info about plug-ins\"}}";
@@ -16,7 +16,7 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
                 SolutionId = slnId,
                 AboutUrl = faker.Internet.Url(),
                 Features = GenerateFeatures(numFeatures, faker),
-                ClientApplication = clientApplication ? ClientApplicationValue : string.Empty
+                ClientApplication = clientApplication ? ClientApplicationValue : string.Empty,
             };
 
             if (System.Diagnostics.Debugger.IsAttached)
@@ -30,7 +30,9 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         private static string GenerateFeatures(int numFeatures, Faker faker)
         {
             if (numFeatures <= 0)
+            {
                 return string.Empty;
+            }
 
             string[] featuresArray = new string[numFeatures];
 

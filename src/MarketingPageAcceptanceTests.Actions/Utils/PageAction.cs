@@ -1,21 +1,24 @@
-﻿using System;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-
-namespace MarketingPageAcceptanceTests.Actions.Pages.Utils
+﻿namespace MarketingPageAcceptanceTests.Actions.Pages.Utils
 {
+    using System;
+    using OpenQA.Selenium;
+    using OpenQA.Selenium.Support.UI;
+
     public abstract class PageAction
     {
-        internal readonly IWebDriver driver;
-        internal readonly WebDriverWait wait;
+        protected readonly IWebDriver Driver;
+        protected readonly WebDriverWait Wait;
 
         protected PageAction(IWebDriver driver)
         {
-            this.driver = driver;
+            Driver = driver;
 
             // Initialize a WebDriverWait that can be reutilized by all that inherit from this class
             // Polls every 0.1 seconds for 10 seconds maximum
-            wait = new WebDriverWait(new SystemClock(), this.driver, TimeSpan.FromSeconds(10),
+            Wait = new WebDriverWait(
+                new SystemClock(),
+                Driver,
+                TimeSpan.FromSeconds(10),
                 TimeSpan.FromMilliseconds(100));
         }
     }

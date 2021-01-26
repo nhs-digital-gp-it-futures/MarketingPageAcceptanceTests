@@ -1,45 +1,46 @@
-﻿using MarketingPageAcceptanceTests.Actions.Pages.Utils;
-using MarketingPageAcceptanceTests.Actions.Utils;
-using MarketingPageAcceptanceTests.TestData.Information;
-using MarketingPageAcceptanceTests.TestData.Solutions;
-using OpenQA.Selenium;
-
-namespace MarketingPageAcceptanceTests.Actions.Pages
+﻿namespace MarketingPageAcceptanceTests.Actions.Pages
 {
+    using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+    using MarketingPageAcceptanceTests.Actions.Utils;
+    using MarketingPageAcceptanceTests.TestData.Information;
+    using MarketingPageAcceptanceTests.TestData.Solutions;
+    using OpenQA.Selenium;
+
     public sealed class SolutionDescription : PageAction
     {
-        private string description = "";
-        private string link = "";
-        private string summary = "";
+        private string description = string.Empty;
+        private string link = string.Empty;
+        private string summary = string.Empty;
 
-        public SolutionDescription(IWebDriver driver) : base(driver)
+        public SolutionDescription(IWebDriver driver)
+            : base(driver)
         {
         }
 
         public string SummaryAddText(int numChars)
         {
             summary = RandomInformation.RandomString(numChars);
-            driver.EnterTextViaJS(wait, Objects.Pages.SolutionDescription.Summary, summary);
+            Driver.EnterTextViaJS(Wait, Objects.Pages.SolutionDescription.Summary, summary);
             return summary;
         }
 
         public string DescriptionAddText(int numChars)
         {
             description = RandomInformation.RandomString(numChars);
-            driver.EnterTextViaJS(wait, Objects.Pages.SolutionDescription.Description, description);
+            Driver.EnterTextViaJS(Wait, Objects.Pages.SolutionDescription.Description, description);
             return description;
         }
 
         public string LinkAddText(int numChars, string input = null)
         {
             link = input ?? RandomInformation.RandomString(numChars);
-            driver.EnterTextViaJS(wait, Objects.Pages.SolutionDescription.Link, link);
+            Driver.EnterTextViaJS(Wait, Objects.Pages.SolutionDescription.Link, link);
             return link;
         }
 
         public void SaveAndReturn()
         {
-            driver.FindElement(Objects.Pages.SolutionDescription.SaveAndReturn).Click();
+            Driver.FindElement(Objects.Pages.SolutionDescription.SaveAndReturn).Click();
         }
 
         public bool DbContainsLink(Solution solution, string connectionString)
@@ -54,7 +55,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
 
         public void ClearMandatoryFields()
         {
-            driver.FindElement(Objects.Pages.SolutionDescription.Summary).Clear();
+            Driver.FindElement(Objects.Pages.SolutionDescription.Summary).Clear();
         }
     }
 }

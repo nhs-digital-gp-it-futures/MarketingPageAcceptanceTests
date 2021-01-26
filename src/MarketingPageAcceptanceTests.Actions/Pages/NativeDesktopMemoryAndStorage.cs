@@ -1,14 +1,15 @@
-﻿using System;
-using MarketingPageAcceptanceTests.Actions.Pages.Utils;
-using MarketingPageAcceptanceTests.TestData.Information;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-
-namespace MarketingPageAcceptanceTests.Actions.Pages
+﻿namespace MarketingPageAcceptanceTests.Actions.Pages
 {
+    using System;
+    using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+    using MarketingPageAcceptanceTests.TestData.Information;
+    using OpenQA.Selenium;
+    using OpenQA.Selenium.Support.UI;
+
     public sealed class NativeDesktopMemoryAndStorage : PageAction
     {
-        public NativeDesktopMemoryAndStorage(IWebDriver driver) : base(driver)
+        public NativeDesktopMemoryAndStorage(IWebDriver driver)
+            : base(driver)
         {
         }
 
@@ -28,25 +29,25 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         public void SelectRandomMinimumMemory()
         {
             var minimumMemory =
-                new SelectElement(driver.FindElement(Objects.Pages.MemoryAndStorage.MinimumMemory));
+                new SelectElement(Driver.FindElement(Objects.Pages.MemoryAndStorage.MinimumMemory));
             SelectRandomOption(minimumMemory);
         }
 
         public void EnterStorageRequirements(string text)
         {
-            driver.FindElement(Objects.Pages.NativeDesktopMemoryStorage.StorageRequirements).SendKeys(text);
+            Driver.FindElement(Objects.Pages.NativeDesktopMemoryStorage.StorageRequirements).SendKeys(text);
         }
 
         public void EnterCpuRequirements(string text)
         {
-            driver.FindElement(Objects.Pages.NativeDesktopMemoryStorage.MinimumCPU).SendKeys(text);
+            Driver.FindElement(Objects.Pages.NativeDesktopMemoryStorage.MinimumCPU).SendKeys(text);
         }
 
         public void SelectRandomResolution()
         {
             var resolution =
                 new SelectElement(
-                    driver.FindElement(Objects.Pages.NativeDesktopMemoryStorage.RecommendedResolution));
+                    Driver.FindElement(Objects.Pages.NativeDesktopMemoryStorage.RecommendedResolution));
             SelectRandomOption(resolution);
         }
 

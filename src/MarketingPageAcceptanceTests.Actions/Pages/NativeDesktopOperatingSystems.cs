@@ -1,12 +1,13 @@
-﻿using MarketingPageAcceptanceTests.Actions.Pages.Utils;
-using MarketingPageAcceptanceTests.TestData.Information;
-using OpenQA.Selenium;
-
-namespace MarketingPageAcceptanceTests.Actions.Pages
+﻿namespace MarketingPageAcceptanceTests.Actions.Pages
 {
+    using MarketingPageAcceptanceTests.Actions.Pages.Utils;
+    using MarketingPageAcceptanceTests.TestData.Information;
+    using OpenQA.Selenium;
+
     public class NativeDesktopOperatingSystems : PageAction
     {
-        public NativeDesktopOperatingSystems(IWebDriver driver) : base(driver)
+        public NativeDesktopOperatingSystems(IWebDriver driver)
+            : base(driver)
         {
         }
 
@@ -14,7 +15,7 @@ namespace MarketingPageAcceptanceTests.Actions.Pages
         {
             var text = RandomInformation.RandomString(characters);
 
-            driver.FindElement(Objects.Pages.SupportedOperatingSystems.OperatingSystemsDescription)
+            Driver.FindElement(Objects.Pages.SupportedOperatingSystems.OperatingSystemsDescription)
                 .SendKeys(text);
         }
     }

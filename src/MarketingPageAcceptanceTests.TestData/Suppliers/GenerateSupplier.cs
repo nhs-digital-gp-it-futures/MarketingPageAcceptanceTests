@@ -1,7 +1,7 @@
-﻿using Bogus;
-
-namespace MarketingPageAcceptanceTests.TestData.Suppliers
+﻿namespace MarketingPageAcceptanceTests.TestData.Suppliers
 {
+    using Bogus;
+
     public static class GenerateSupplier
     {
         public static Supplier GenerateNewSupplier()
@@ -13,7 +13,7 @@ namespace MarketingPageAcceptanceTests.TestData.Suppliers
                 Id = id,
                 Name = faker.Company.CompanyName(),
                 Summary = faker.Company.Bs(),
-                SupplierUrl = faker.Internet.Url()
+                SupplierUrl = faker.Internet.Url(),
             };
             supplier.LegalName = supplier.Name + " plc";
             return supplier;

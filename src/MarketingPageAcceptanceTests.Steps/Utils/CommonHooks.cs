@@ -1,17 +1,17 @@
-﻿using BoDi;
-using Microsoft.Extensions.Configuration;
-using TechTalk.SpecFlow;
-
-namespace MarketingPageAcceptanceTests.Steps.Utils
+﻿namespace MarketingPageAcceptanceTests.Steps.Utils
 {
+    using BoDi;
+    using Microsoft.Extensions.Configuration;
+    using TechTalk.SpecFlow;
+
     [Binding]
     public class CommonHooks
     {
-        private readonly IObjectContainer _objectContainer;
+        private readonly IObjectContainer objectContainer;
 
         public CommonHooks(IObjectContainer objectContainer)
         {
-            _objectContainer = objectContainer;
+            this.objectContainer = objectContainer;
         }
 
         [BeforeScenario(Order = 0)]
@@ -22,7 +22,7 @@ namespace MarketingPageAcceptanceTests.Steps.Utils
                 .AddEnvironmentVariables()
                 .Build();
 
-            _objectContainer.RegisterInstanceAs<IConfiguration>(configurationBuilder);
+            objectContainer.RegisterInstanceAs<IConfiguration>(configurationBuilder);
         }
     }
 }

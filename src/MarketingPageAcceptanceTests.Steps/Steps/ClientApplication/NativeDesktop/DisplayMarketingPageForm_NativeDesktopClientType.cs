@@ -1,15 +1,15 @@
-﻿using System.Collections.Generic;
-using FluentAssertions;
-using MarketingPageAcceptanceTests.Steps.Utils;
-using TechTalk.SpecFlow;
-
-namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeDesktop
+﻿namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeDesktop
 {
+    using System.Collections.Generic;
+    using FluentAssertions;
+    using MarketingPageAcceptanceTests.Steps.Utils;
+    using TechTalk.SpecFlow;
+
     [Binding]
     public class DisplayMarketingPageForm_NativeDesktopClientType : TestBase
     {
-        public DisplayMarketingPageForm_NativeDesktopClientType(UITest test, ScenarioContext context) : base(test,
-            context)
+        public DisplayMarketingPageForm_NativeDesktopClientType(UITest test, ScenarioContext context)
+            : base(test, context)
         {
         }
 
@@ -23,10 +23,10 @@ namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication.NativeDeskt
                 "Memory, storage, processing and resolution",
                 "Third-party components and device capabilities",
                 "Hardware requirements",
-                "Additional information"
+                "Additional information",
             };
 
-            _test.Pages.BrowserBasedSections.BrowserSubDashboard.GetSections().Should()
+            test.Pages.BrowserBasedSections.BrowserSubDashboard.GetSections().Should()
                 .BeEquivalentTo(subSectionsExpected);
         }
     }

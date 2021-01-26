@@ -1,8 +1,8 @@
-﻿using MarketingPageAcceptanceTests.Objects.Utils;
-using OpenQA.Selenium;
-
-namespace MarketingPageAcceptanceTests.Objects.Pages
+﻿namespace MarketingPageAcceptanceTests.Objects.Pages
 {
+    using MarketingPageAcceptanceTests.Objects.Utils;
+    using OpenQA.Selenium;
+
     public static class BrowsersSupported
     {
         public static By BrowserCheckboxes => By.CssSelector("div.nhsuk-checkboxes__item");

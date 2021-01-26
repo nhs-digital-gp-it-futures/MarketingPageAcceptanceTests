@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace MarketingPageAcceptanceTests.TestData.Solutions
+﻿namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
+    using System;
+    using System.Collections.Generic;
+
     public static class ClientApplicationStringBuilder
     {
-        private static readonly
-            Dictionary<string, (string conversion, string clientAppString, Func<string, string> parseString)>
-            clientAppTypes = new Dictionary<string, (string, string, Func<string, string>)>
+        private static readonly Dictionary<string, (string Conversion, string ClientAppString, Func<string, string> ParseString)>
+            ClientAppTypes = new()
             {
-                {"Browser-based", ("browser-based", ClientApplicationStrings.BrowserBasedComplete, ParseBrowserBased)},
+                { "Browser-based", ("browser-based", ClientApplicationStrings.BrowserBasedComplete, ParseBrowserBased) },
                 {
                     "Native mobile or tablet",
                     ("native-mobile", ClientApplicationStrings.NativeMobileComplete, ParseNativeMobile)
@@ -17,10 +16,11 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
                 {
                     "Native desktop",
                     ("native-desktop", ClientApplicationStrings.NativeDesktopComplete, ParseNativeDesktop)
-                }
+                },
             };
 
-        public static string GetClientAppString(string ignoredSection = null,
+        public static string GetClientAppString(
+            string ignoredSection = null,
             string clientApplicationTypes = "Browser-based")
         {
             List<string> clientAppString = new();
@@ -29,16 +29,25 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
 
             if (string.IsNullOrEmpty(ignoredSection))
             {
-                foreach (var appType in clientAppTypes)
+                foreach (var appType in ClientAppTypes)
+                {
                     if (clientApplicationTypes.Contains(appType.Key))
-                        clientAppString.Add(appType.Value.clientAppString);
+                    {
+                        clientAppString.Add(appType.Value.ClientAppString);
+                    }
+                }
+
                 finishedString = string.Join(',', clientAppString);
             }
             else
             {
-                foreach (var appType in clientAppTypes)
+                foreach (var appType in ClientAppTypes)
+                {
                     if (clientApplicationTypes.Contains(appType.Key))
-                        finishedString += appType.Value.parseString(ignoredSection);
+                    {
+                        finishedString += appType.Value.ParseString(ignoredSection);
+                    }
+                }
             }
 
             return BuildClientApplicationString(clientApplicationTypes, finishedString);
@@ -48,30 +57,36 @@ namespace MarketingPageAcceptanceTests.TestData.Solutions
         {
             List<string> converted = new();
 
-            foreach (var key in clientAppTypes.Keys)
+            foreach (var key in ClientAppTypes.Keys)
+            {
                 if (clientApplicationType.Contains(key))
-                    converted.Add($"\"{clientAppTypes[key].conversion}\"");
+                {
+                    converted.Add($"\"{ClientAppTypes[key].Conversion}\"");
+                }
+            }
 
-            return string.Format("{{\"ClientApplicationTypes\":[{0}],{1}}}", string.Join(',', converted),
+            return string.Format(
+                "{{\"ClientApplicationTypes\":[{0}],{1}}}",
+                string.Join(',', converted),
                 clientAppString);
         }
 
         private static string ParseBrowserBased(string ignoredSection)
         {
             return ClientApplicationStrings.BrowserBasedComplete.Replace(
-                ClientApplicationStrings.BrowserSections[ignoredSection], "");
+                ClientApplicationStrings.BrowserSections[ignoredSection], string.Empty);
         }
 
         private static string ParseNativeMobile(string ignoredSection)
         {
             return ClientApplicationStrings.NativeMobileComplete.Replace(
-                ClientApplicationStrings.NativeMobileSections[ignoredSection], "");
+                ClientApplicationStrings.NativeMobileSections[ignoredSection], string.Empty);
         }
 
         private static string ParseNativeDesktop(string ignoredSection)
         {
             return ClientApplicationStrings.NativeDesktopComplete.Replace(
-                ClientApplicationStrings.NativeDesktopSections[ignoredSection], "");
+                ClientApplicationStrings.NativeDesktopSections[ignoredSection], string.Empty);
         }
     }
 }

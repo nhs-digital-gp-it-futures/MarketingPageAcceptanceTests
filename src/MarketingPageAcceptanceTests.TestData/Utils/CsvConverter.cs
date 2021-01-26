@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-
-namespace MarketingPageAcceptanceTests.TestData.Utils
+﻿namespace MarketingPageAcceptanceTests.TestData.Utils
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+    using System.Reflection;
+    using System.Text;
+
     public static class CsvConverter
     {
         public static string ToCsv<T>(this IEnumerable<T> objectList, string separator = ",")
@@ -18,7 +18,10 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             var csvBuilder = new StringBuilder();
             csvBuilder.AppendLine(header);
 
-            foreach (var o in objectList) csvBuilder.AppendLine(ToCsvLines(separator, properties, o));
+            foreach (var o in objectList)
+            {
+                csvBuilder.AppendLine(ToCsvLines(separator, properties, o));
+            }
 
             return csvBuilder.ToString();
         }
@@ -28,6 +31,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
             var headers = new List<string>();
 
             foreach (var p in properties)
+            {
                 if (p.GetCustomAttributes(typeof(DisplayAttribute), false).Length > 0)
                 {
                     var header = p.GetCustomAttributes(typeof(DisplayAttribute), false).Cast<DisplayAttribute>()
@@ -39,6 +43,7 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
                 {
                     headers.Add(p.Name);
                 }
+            }
 
             return string.Join(separator, headers);
         }
@@ -49,11 +54,17 @@ namespace MarketingPageAcceptanceTests.TestData.Utils
 
             foreach (var p in properties)
             {
-                if (line.Length > 0) line.Append(separator);
+                if (line.Length > 0)
+                {
+                    line.Append(separator);
+                }
 
                 var lineValue = p.GetValue(o);
 
-                if (lineValue != null) line.Append(lineValue);
+                if (lineValue != null)
+                {
+                    line.Append(lineValue);
+                }
             }
 
             return line.ToString();

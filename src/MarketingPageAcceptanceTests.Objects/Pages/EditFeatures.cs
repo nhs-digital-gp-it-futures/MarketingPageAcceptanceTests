@@ -1,8 +1,8 @@
-﻿using MarketingPageAcceptanceTests.Objects.Utils;
-using OpenQA.Selenium;
-
-namespace MarketingPageAcceptanceTests.Objects.Pages
+﻿namespace MarketingPageAcceptanceTests.Objects.Pages
 {
+    using MarketingPageAcceptanceTests.Objects.Utils;
+    using OpenQA.Selenium;
+
     public static class EditFeatures
     {
         public static By FeatureText => By.ClassName("nhsuk-input");

@@ -1,9 +1,9 @@
-﻿using System.IO;
-using System.Linq;
-using System.Net;
-
-namespace MarketingPageAcceptanceTests.Actions.Utils
+﻿namespace MarketingPageAcceptanceTests.Actions.Utils
 {
+    using System.IO;
+    using System.Linq;
+    using System.Net;
+
     public static class DownloadFileUtility
     {
         public static void DownloadFile(string fileName, string downloadPath, string downloadLink)
