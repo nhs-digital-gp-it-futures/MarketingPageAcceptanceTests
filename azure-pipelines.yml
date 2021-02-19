@@ -41,11 +41,6 @@ steps:
     echo "##vso[task.setvariable variable=PBHOSTURL]$(echo "${PBURL##*://}")"  
   displayName: Set up Host URL
 
-# - bash: |
-#     echo "51.11.46.27    $PBHOSTURL" | sudo tee -a /etc/hosts
-#     curl -k -i $(PBURL) --fail --connect-timeout 30
-#   displayName: 'Check URL is reachable'
-
 - task: AzureCLI@2
   name: checkURL
   displayName: Check URL is reachable
@@ -64,11 +59,14 @@ steps:
     if [ $? -ne 0 ]; then exit 1; fi
   displayName: Selenium Grid Setup
 
-- bash: |
-    export DB__PASSWORD="$(gpitfuturesdevdbpassword)" 
-
-    dotnet test src/ -v n
-  displayName: Run All Acceptance Tests
+- task: DotNetCoreCLI@2
+  displayName: 'Run All Acceptance Tests'
+  inputs:
+    command: test
+    projects: '**/*.csproj'
+    arguments: '-v n'
+  env:
+    DB__PASSWORD: $(gpitfuturesdevdbpassword)
   
 - task: Docker@2
   condition: and(always(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
@@ -110,6 +108,3 @@ steps:
   condition: and(always(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   name: helmPush
   displayName: 'Push helm chart to acr'
-
-
-
