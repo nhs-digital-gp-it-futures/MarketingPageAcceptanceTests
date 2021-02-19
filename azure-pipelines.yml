@@ -60,11 +60,18 @@ steps:
   displayName: Selenium Grid Setup
 
 - task: DotNetCoreCLI@2
+  displayName: 'Run dotnet build'
+  inputs:
+    command: build
+    projects: '**/*.csproj'
+    arguments: '--no-restore'
+
+- task: DotNetCoreCLI@2
   displayName: 'Run All Acceptance Tests'
   inputs:
     command: test
     projects: '**/*.csproj'
-    arguments: '-v n'
+    arguments: '-v n --no-build'
   env:
     DB__PASSWORD: $(gpitfuturesdevdbpassword)
   
