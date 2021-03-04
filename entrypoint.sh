@@ -36,11 +36,7 @@ if [ -n "${TEST_FILTER}" ]; then
   echo -e "\n Running '$cmd' \n"
   eval $cmd
 else
-  cmd="dotnet test out/MarketingPageAcceptanceTests.AuthorityTests.dll -v n $(setAdditionalArgs authority)"
-  echo -e "\n Running '$cmd' \n"
-  eval $cmd
-
-  cmd="dotnet test out/MarketingPageAcceptanceTests.SupplierTests.dll -v n $(setAdditionalArgs supplier)"
+  cmd="dotnet test out/MarketingPageAcceptanceTests.AuthorityTests.dll out/MarketingPageAcceptanceTests.SupplierTests.dll -v n $(setAdditionalArgs full)"
   echo -e "\n Running '$cmd' \n"
   eval $cmd
 fi
