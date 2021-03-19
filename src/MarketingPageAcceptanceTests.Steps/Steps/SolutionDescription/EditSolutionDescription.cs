@@ -1,5 +1,6 @@
 ﻿namespace MarketingPageAcceptanceTests.Steps
 {
+    using System.Threading.Tasks;
     using FluentAssertions;
     using MarketingPageAcceptanceTests.Steps.Utils;
     using TechTalk.SpecFlow;
@@ -35,12 +36,12 @@
         }
 
         [Given(@"the pre-populated data is not present")]
-        public void GivenThePre_PopulatedDataIsNotPresent()
+        public async Task GivenThePre_PopulatedDataIsNotPresentAsync()
         {
             test.Solution.Summary = null;
             test.Solution.FullDescription = null;
             test.Solution.AboutUrl = null;
-            test.Solution.Update(test.ConnectionString);
+            await test.Solution.UpdateAsync(test.ConnectionString);
             test.Driver.Navigate().Refresh();
         }
 
@@ -57,9 +58,9 @@
         }
 
         [Given(@"that a Supplier has not provided a Summary Description")]
-        public void GivenThatASupplierHasNotProvidedASummaryDescription()
+        public async Task GivenThatASupplierHasNotProvidedASummaryDescriptionAsync()
         {
-            GivenThePre_PopulatedDataIsNotPresent();
+            await GivenThePre_PopulatedDataIsNotPresentAsync();
             test.Pages.Dashboard.NavigateToSection("Solution description");
         }
 
@@ -80,11 +81,11 @@
         }
 
         [Then(@"the non mandatory data is saved to the database")]
-        public void ThenTheNonMandatoryDataIsSavedToTheDatabase()
+        public async Task ThenTheNonMandatoryDataIsSavedToTheDatabaseAsync()
         {
-            test.Pages.SolutionDescription.DbContainsDescription(test.Solution, test.ConnectionString).Should()
+            (await test.Pages.SolutionDescription.DbContainsDescriptionAsync(test.Solution, test.ConnectionString)).Should()
                 .BeTrue();
-            test.Pages.SolutionDescription.DbContainsLink(test.Solution, test.ConnectionString).Should()
+            (await test.Pages.SolutionDescription.DbContainsLinkAsync(test.Solution, test.ConnectionString)).Should()
                 .BeTrue();
         }
     }

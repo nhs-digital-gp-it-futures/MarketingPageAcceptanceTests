@@ -1,5 +1,6 @@
 ﻿namespace MarketingPageAcceptanceTests.SmokeTests
 {
+    using System.Threading.Tasks;
     using MarketingPageAcceptanceTests.Steps.Utils;
     using TechTalk.SpecFlow;
 
@@ -14,15 +15,15 @@
         }
 
         [BeforeScenario("supplier", Order = 1)]
-        public void BeforeSupplierScenario()
+        public async Task BeforeSupplierScenarioAsync()
         {
-            BeforeShared("supplier");
+            await BeforeSharedAsync("supplier");
         }
 
         [BeforeScenario("authority", Order = 1)]
-        public void BeforeAuthorityScenario()
+        public async Task BeforeAuthorityScenarioAsync()
         {
-            BeforeShared("authority");
+            await BeforeSharedAsync("authority");
         }
 
         [AfterScenario]
@@ -32,11 +33,11 @@
             test.Driver.Quit();
         }
 
-        private void BeforeShared(string userType)
+        private async Task BeforeSharedAsync(string userType)
         {
             test.CreateSolution = false;
             test.UserType = userType;
-            test.SetUrl();
+            await test.SetUrlAsync();
             test.GoToUrl();
         }
     }

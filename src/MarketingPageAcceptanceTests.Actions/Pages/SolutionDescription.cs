@@ -1,5 +1,6 @@
 ﻿namespace MarketingPageAcceptanceTests.Actions.Pages
 {
+    using System.Threading.Tasks;
     using MarketingPageAcceptanceTests.Actions.Pages.Utils;
     using MarketingPageAcceptanceTests.Actions.Utils;
     using MarketingPageAcceptanceTests.TestData.Information;
@@ -43,14 +44,14 @@
             Driver.FindElement(Objects.Pages.SolutionDescription.SaveAndReturn).Click();
         }
 
-        public bool DbContainsLink(Solution solution, string connectionString)
+        public async Task<bool> DbContainsLinkAsync(Solution solution, string connectionString)
         {
-            return solution.Retrieve(connectionString).AboutUrl.Contains(description);
+            return (await solution.RetrieveAsync(connectionString)).AboutUrl.Contains(description);
         }
 
-        public bool DbContainsDescription(Solution solution, string connectionString)
+        public async Task<bool> DbContainsDescriptionAsync(Solution solution, string connectionString)
         {
-            return solution.Retrieve(connectionString).FullDescription.Contains(description);
+            return (await solution.RetrieveAsync(connectionString)).FullDescription.Contains(description);
         }
 
         public void ClearMandatoryFields()

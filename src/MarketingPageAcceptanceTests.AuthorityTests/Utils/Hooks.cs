@@ -1,5 +1,6 @@
 ﻿namespace MarketingPageAcceptanceTests.SupplierTests.Utils
 {
+    using System.Threading.Tasks;
     using MarketingPageAcceptanceTests.Steps.Utils;
     using MarketingPageAcceptanceTests.TestData.Solutions;
     using TechTalk.SpecFlow;
@@ -15,20 +16,20 @@
         }
 
         [BeforeScenario(Order = 1)]
-        public void BeforeScenario()
+        public async Task BeforeScenarioAsync()
         {
             test.CreateSolution = true;
-            test.SetUrl(userType: "authority");
+            await test.SetUrlAsync(userType: "authority");
             test.GoToUrl();
         }
 
         [AfterScenario]
-        public void AfterScenario()
+        public async Task AfterScenarioAsync()
         {
             if (test.Solution.Id.Contains(test.SolutionIdPrefix))
             {
-                test.Solution.Delete(test.ConnectionString);
-                test.CatalogueItem.Delete(test.ConnectionString);
+                await test.Solution.DeleteAsync(test.ConnectionString);
+                await test.CatalogueItem.DeleteAsync(test.ConnectionString);
             }
 
             try
@@ -37,8 +38,8 @@
                 {
                     if (solution.Id.Contains(test.SolutionIdPrefix))
                     {
-                        solution.Delete(test.ConnectionString);
-                        new CatalogueItem { CatalogueItemId = solution.Id }.Delete(test.ConnectionString);
+                        await solution.DeleteAsync(test.ConnectionString);
+                        await new CatalogueItem { CatalogueItemId = solution.Id }.DeleteAsync(test.ConnectionString);
                     }
                 }
             }
@@ -51,7 +52,7 @@
             {
                 if (test.Supplier != null)
                 {
-                    test.Supplier.Delete(test.ConnectionString);
+                    await test.Supplier.DeleteAsync(test.ConnectionString);
                 }
             }
             finally

@@ -1,6 +1,7 @@
 ﻿namespace MarketingPageAcceptanceTests.Steps.Steps.AboutSolution
 {
     using System;
+    using System.Threading.Tasks;
     using FluentAssertions;
     using MarketingPageAcceptanceTests.Steps.Utils;
     using MarketingPageAcceptanceTests.TestData.ContactDetails;
@@ -18,9 +19,9 @@
         }
 
         [Given(@"that the Solution Summary is updated")]
-        public void GivenThatTheSolutionSummaryIsUpdated()
+        public async Task GivenThatTheSolutionSummaryIsUpdatedAsync()
         {
-            LastUpdatedHelper.UpdateLastUpdated(
+            await LastUpdatedHelper.UpdateLastUpdatedAsync(
                 oldDate,
                 "Solution",
                 "Id",
@@ -31,18 +32,18 @@
         }
 
         [Given(@"that the About Solution URL is updated")]
-        public void GivenThatTheAboutSolutionURLIsUpdated()
+        public async Task GivenThatTheAboutSolutionURLIsUpdatedAsync()
         {
-            GivenThatTheSolutionSummaryIsUpdated();
+            await GivenThatTheSolutionSummaryIsUpdatedAsync();
             test.Pages.SolutionDescription.LinkAddText(0, test.Solution.AboutUrl);
         }
 
         [Given(@"that the Contact details are updated")]
-        public void GivenThatTheContactDetailsAreUpdated()
+        public async Task GivenThatTheContactDetailsAreUpdatedAsync()
         {
             var firstContact = GenerateContactDetails.NewContactDetail(test.Solution.Id);
-            firstContact.Create(test.ConnectionString);
-            LastUpdatedHelper.UpdateLastUpdated(
+            await firstContact.CreateAsync(test.ConnectionString);
+            await LastUpdatedHelper.UpdateLastUpdatedAsync(
                 oldDate,
                 "MarketingContact",
                 "SolutionId",
@@ -61,18 +62,18 @@
         }
 
         [Then(@"the Last Changed Date is updated in the (Solution) table")]
-        public void ThenTheLastChangedDateSolutionIsUpdated(string tableName)
+        public async Task ThenTheLastChangedDateSolutionIsUpdatedAsync(string tableName)
         {
             var actualValueFromDB =
-                LastUpdatedHelper.GetLastUpdated(tableName, "Id", test.Solution.Id, test.ConnectionString);
+                await LastUpdatedHelper.GetLastUpdatedAsync(tableName, "Id", test.Solution.Id, test.ConnectionString);
             actualValueFromDB.Should().BeAfter(oldDate);
         }
 
         [Then(@"the Last Changed Date is updated in the (MarketingContact) table")]
-        public void ThenTheLastChangedDateMarketingContactIsUpdated(string tableName)
+        public async Task ThenTheLastChangedDateMarketingContactIsUpdatedAsync(string tableName)
         {
             var actualValueFromDB =
-                LastUpdatedHelper.GetLastUpdated(tableName, "SolutionId", test.Solution.Id, test.ConnectionString);
+                await LastUpdatedHelper.GetLastUpdatedAsync(tableName, "SolutionId", test.Solution.Id, test.ConnectionString);
             actualValueFromDB.Should().BeAfter(oldDate);
         }
     }

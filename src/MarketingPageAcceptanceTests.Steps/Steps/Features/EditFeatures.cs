@@ -1,5 +1,6 @@
 ﻿namespace MarketingPageAcceptanceTests.Steps
 {
+    using System.Threading.Tasks;
     using FluentAssertions;
     using MarketingPageAcceptanceTests.Steps.Utils;
     using TechTalk.SpecFlow;
@@ -68,16 +69,16 @@
         }
 
         [Then(@"the database contains the Feature Text")]
-        public void ThenTheDatabaseContainsTheFeatureText()
+        public async Task ThenTheDatabaseContainsTheFeatureTextAsync()
         {
-            var features = test.Solution.Retrieve(test.ConnectionString).Features;
+            var features = (await test.Solution.RetrieveAsync(test.ConnectionString)).Features;
             features.Should().Contain(featureString);
         }
 
         [Then(@"the database does not contain the Feature Text")]
-        public void ThenTheDatabaseDoesNotContainTheFeatureText()
+        public async Task ThenTheDatabaseDoesNotContainTheFeatureTextAsync()
         {
-            var features = test.Solution.Retrieve(test.ConnectionString).Features;
+            var features = (await test.Solution.RetrieveAsync(test.ConnectionString)).Features;
             features.Should().NotContain(featureString);
         }
 

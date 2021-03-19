@@ -1,5 +1,6 @@
 ﻿namespace MarketingPageAcceptanceTests.Steps.Steps.Dashboard
 {
+    using System.Threading.Tasks;
     using FluentAssertions;
     using MarketingPageAcceptanceTests.Steps.Utils;
     using MarketingPageAcceptanceTests.TestData.Solutions;
@@ -14,11 +15,11 @@
         }
 
         [Given(@"that a Supplier has provided all mandatory data on the Marketing Page")]
-        public void GivenThatASupplierHasProvidedAllMandatoryDataOnTheMarketingPage()
+        public async Task GivenThatASupplierHasProvidedAllMandatoryDataOnTheMarketingPageAsync()
         {
-            test.Solution.Delete(test.ConnectionString);
+            await test.Solution.DeleteAsync(test.ConnectionString);
             test.Solution = GenerateSolution.GenerateCompleteSolution(test.CatalogueItem.CatalogueItemId);
-            test.Solution.Create(test.ConnectionString);
+            await test.Solution.CreateAsync(test.ConnectionString);
             test.Driver.Navigate().Refresh();
             test.Pages.Dashboard.NavigateToSection("Solution description");
             test.Pages.SolutionDescription.SummaryAddText(100);
@@ -26,9 +27,9 @@
         }
 
         [Given(@"validation has been triggered")]
-        public void GivenValidationHasBeenTriggered()
+        public async Task GivenValidationHasBeenTriggeredAsync()
         {
-            ThenTheMarketingPageWillNotBeSubmittedForModeration();
+            await ThenTheMarketingPageWillNotBeSubmittedForModerationAsync();
             ThenTheUserWillBeNotifiedThatTheSubmissionWasUnsuccessful();
         }
 
@@ -39,16 +40,16 @@
         }
 
         [Then(@"the Marketing Page will be submitted for Moderation")]
-        public void ThenTheMarketingPageWillBeSubmittedForModeration()
+        public async Task ThenTheMarketingPageWillBeSubmittedForModerationAsync()
         {
-            test.CatalogueItem.Retrieve(test.ConnectionString).PublishedStatusId.Should().Be(2);
+            (await test.CatalogueItem.RetrieveAsync(test.ConnectionString)).PublishedStatusId.Should().Be(2);
         }
 
         [Then(@"the Marketing Page will not be submitted for Moderation")]
-        public void ThenTheMarketingPageWillNotBeSubmittedForModeration()
+        public async Task ThenTheMarketingPageWillNotBeSubmittedForModerationAsync()
         {
             test.Pages.Dashboard.SubmitForModeration();
-            test.CatalogueItem.Retrieve(test.ConnectionString).PublishedStatusId.Should().NotBe(2);
+            (await test.CatalogueItem.RetrieveAsync(test.ConnectionString)).PublishedStatusId.Should().NotBe(2);
         }
 
         [Then(@"the User remains on the Marketing Page Dashboard")]

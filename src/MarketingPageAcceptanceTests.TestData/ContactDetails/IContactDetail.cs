@@ -1,6 +1,7 @@
 ﻿namespace MarketingPageAcceptanceTests.TestData.ContactDetails
 {
     using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     public interface IContactDetail
     {
@@ -16,16 +17,14 @@
 
         string SolutionId { get; set; }
 
-        IContactDetail Retrieve(string connectionString);
+        Task<IContactDetail> RetrieveAsync(string connectionString);
 
-        IEnumerable<IContactDetail> RetrieveAll(string connectionString);
+        Task<IEnumerable<IContactDetail>> RetrieveAllAsync(string connectionString);
 
-        void Create(string connectionString);
+        Task CreateAsync(string connectionString);
 
-        void Update(string connectionString);
+        Task DeleteAsync(string connectionString);
 
-        void Delete(string connectionString);
-
-        int RetrieveCount(string connectionString);
+        Task<int> RetrieveCountAsync(string connectionString);
     }
 }

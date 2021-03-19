@@ -1,5 +1,6 @@
 ﻿namespace MarketingPageAcceptanceTests.Steps.Steps.Preview
 {
+    using System.Threading.Tasks;
     using FluentAssertions;
     using MarketingPageAcceptanceTests.Steps.Utils;
     using MarketingPageAcceptanceTests.TestData.ContactDetails;
@@ -15,15 +16,18 @@
         }
 
         [Given(@"a solution has been created with all data complete")]
-        public void GivenASolutionHasBeenCreatedWithAllDataComplete()
+        public async Task GivenASolutionHasBeenCreatedWithAllDataCompleteAsync()
         {
-            test.Solution.Delete(test.ConnectionString);
+            await test.Solution.DeleteAsync(test.ConnectionString);
             test.Solution = GenerateSolution.GenerateCompleteSolution(test.CatalogueItem.CatalogueItemId);
-            test.Solution.Create(test.ConnectionString);
+            await test.Solution.CreateAsync(test.ConnectionString);
             var contactDetails = GenerateContactDetails.NewContactDetail(test.Solution.Id);
-            contactDetails.Create(test.ConnectionString);
+            await contactDetails.CreateAsync(test.ConnectionString);
             test.CatalogueItem.PublishedStatusId = 3;
-            test.CatalogueItem.Update(test.ConnectionString);
+            await test.CatalogueItem.UpdateAsync(test.ConnectionString);
+            await test.FrameworkSolution.Delete(test.ConnectionString);
+            test.FrameworkSolution = new FrameworkSolution { SolutionId = test.Solution.Id, FrameworkId = "NHSDGP001", IsFoundation = false };
+            await test.FrameworkSolution.Create(test.ConnectionString);
         }
 
         [StepDefinition(@"the (.*) section is presented")]

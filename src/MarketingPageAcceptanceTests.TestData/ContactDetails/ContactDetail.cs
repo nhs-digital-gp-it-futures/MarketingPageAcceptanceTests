@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
     using MarketingPageAcceptanceTests.TestData.Utils;
 
     public sealed class ContactDetail : IContactDetail
@@ -19,7 +20,7 @@
 
         public string SolutionId { get; set; }
 
-        public void Create(string connectionString)
+        public async Task CreateAsync(string connectionString)
         {
             var query = @"INSERT INTO [MarketingContact] (
                             SolutionId, 
@@ -39,36 +40,31 @@
                             @department, 
                             GETDATE(), 
                             '00000000-0000-0000-0000-000000000000')";
-            SqlExecutor.Execute<ContactDetail>(connectionString, query, this);
+            await SqlExecutor.ExecuteAsync<ContactDetail>(connectionString, query, this);
         }
 
-        public void Delete(string connectionString)
+        public async Task DeleteAsync(string connectionString)
         {
             var query = "DELETE FROM MarketingContact where SolutionId=@solutionId";
-            SqlExecutor.Execute<ContactDetail>(connectionString, query, new { SolutionId });
+            await SqlExecutor.ExecuteAsync<ContactDetail>(connectionString, query, new { SolutionId });
         }
 
-        public IContactDetail Retrieve(string connectionString)
+        public async Task<IContactDetail> RetrieveAsync(string connectionString)
         {
             var query = @"SELECT * FROM MarketingContact WHERE SolutionId=@solutionId";
-            return SqlExecutor.Execute<ContactDetail>(connectionString, query, new { SolutionId }).Single();
+            return (await SqlExecutor.ExecuteAsync<ContactDetail>(connectionString, query, new { SolutionId })).Single();
         }
 
-        public IEnumerable<IContactDetail> RetrieveAll(string connectionString)
+        public async Task<IEnumerable<IContactDetail>> RetrieveAllAsync(string connectionString)
         {
             var query = @"SELECT * FROM MarketingContact WHERE SolutionId=@solutionId";
-            return SqlExecutor.Execute<ContactDetail>(connectionString, query, new { SolutionId });
+            return await SqlExecutor.ExecuteAsync<ContactDetail>(connectionString, query, new { SolutionId });
         }
 
-        public int RetrieveCount(string connectionString)
+        public async Task<int> RetrieveCountAsync(string connectionString)
         {
             var query = @"SELECT COUNT(*) FROM [dbo].[MarketingContact] WHERE SolutionId=@solutionId";
-            return SqlExecutor.ExecuteScalar(connectionString, query, new { SolutionId });
-        }
-
-        public void Update(string connectionString)
-        {
-            throw new NotImplementedException();
+            return await SqlExecutor.ExecuteScalarAsync(connectionString, query, new { SolutionId });
         }
     }
 }
