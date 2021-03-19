@@ -15,7 +15,7 @@
         public void GivenAUserHasChosenToManageAuthorityAddedData(string dashboard)
         {
             test.UserType = dashboard.ToLower();
-            test.SetUrl();
+            test.SetUrlAsync();
             test.GoToUrl();
         }
     }

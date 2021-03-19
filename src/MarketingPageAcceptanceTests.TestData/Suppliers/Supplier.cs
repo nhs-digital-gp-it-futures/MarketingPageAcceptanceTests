@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+    using System.Threading.Tasks;
     using MarketingPageAcceptanceTests.TestData.Utils;
 
     public sealed class Supplier
@@ -20,7 +21,7 @@
 
         public Guid LastUpdatedBy { get; set; } = Guid.Empty;
 
-        public static Supplier RetrieveSupplierForSolution(string connectionString, string solutionId)
+        public static async Task<Supplier> RetrieveSupplierForSolutionAsync(string connectionString, string solutionId)
         {
             var query = @"SELECT 
                             Supplier.[Id],
@@ -32,10 +33,10 @@
                         FROM [dbo].[Supplier] 
                         LEFT JOIN CatalogueItem on CatalogueItem.SupplierId = Supplier.Id 
                         WHERE CatalogueItem.CatalogueItemId=@solutionId";
-            return SqlExecutor.Execute<Supplier>(connectionString, query, new { solutionId }).Single();
+            return (await SqlExecutor.ExecuteAsync<Supplier>(connectionString, query, new { solutionId })).Single();
         }
 
-        public void Create(string connectionString)
+        public async Task CreateAsync(string connectionString)
         {
             var query = @"INSERT INTO Supplier (
                             Id, 
@@ -53,16 +54,16 @@
                             @supplierUrl, 
                             @lastUpdated, 
                             @lastUpdatedBy)";
-            SqlExecutor.Execute<Supplier>(connectionString, query, this);
+            await SqlExecutor.ExecuteAsync<Supplier>(connectionString, query, this);
         }
 
-        public Supplier Retrieve(string connectionString)
+        public async Task<Supplier> RetrieveAsync(string connectionString)
         {
             var query = @"SELECT * FROM [dbo].[Supplier] WHERE [Id]=@Id";
-            return SqlExecutor.Execute<Supplier>(connectionString, query, this).Single();
+            return (await SqlExecutor.ExecuteAsync<Supplier>(connectionString, query, this)).Single();
         }
 
-        public void Update(string connectionString)
+        public async Task UpdateAsync(string connectionString)
         {
             var query = @"UPDATE Supplier 
                         SET 
@@ -73,13 +74,13 @@
                             LastUpdated=@lastUpdated, 
                             LastUpdatedBy=@lastUpdatedBy 
                         WHERE Id=@Id";
-            SqlExecutor.Execute<Supplier>(connectionString, query, this);
+            await SqlExecutor.ExecuteAsync<Supplier>(connectionString, query, this);
         }
 
-        public void Delete(string connectionString)
+        public async Task DeleteAsync(string connectionString)
         {
             var query = @"DELETE from Supplier where Id=@Id";
-            SqlExecutor.Execute<Supplier>(connectionString, query, this);
+            await SqlExecutor.ExecuteAsync<Supplier>(connectionString, query, this);
         }
     }
 }

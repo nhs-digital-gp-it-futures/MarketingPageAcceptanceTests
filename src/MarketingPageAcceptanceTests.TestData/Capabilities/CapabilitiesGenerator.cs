@@ -3,19 +3,20 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
     using MarketingPageAcceptanceTests.TestData.Information;
     using MarketingPageAcceptanceTests.TestData.Utils;
 
     public static class CapabilitiesGenerator
     {
-        public static IEnumerable<SolutionCapabilities> GenerateListOfSolutionCapabilities(
+        public static async Task<IEnumerable<SolutionCapabilities>> GenerateListOfSolutionCapabilitiesAsync(
             string connectionString,
             string solutionId,
             int length = 5)
         {
             var solCaps = new List<SolutionCapabilities>();
 
-            var capabilities = Capability.GetAll(connectionString) // Get list of Capabilities
+            var capabilities = (await Capability.GetAllAsync(connectionString)) // Get list of Capabilities
                 .OrderBy(s => Guid.NewGuid()) // Reorder them randomly
                 .ToList();
 
@@ -28,7 +29,7 @@
             return solCaps.OrderBy(s => s.CapabilityId);
         }
 
-        public static IEnumerable<EpicDto> GenerateCapabilityEpics(
+        public static async Task<IEnumerable<EpicDto>> GenerateCapabilityEpicsAsync(
             string connectionString,
             IEnumerable<SolutionCapabilities> capabilities)
         {
@@ -36,11 +37,11 @@
 
             foreach (var capability in capabilities.Select(s => s.CapabilityId))
             {
-                var epics = EpicDto.GetAllByIdPrefix(connectionString, $"{capability}E");
+                var epics = await EpicDto.GetAllByIdPrefixAsync(connectionString, $"{capability}E");
 
                 foreach (var epic in epics)
                 {
-                    epic.EpicFinalAssessmentResult = SelectRandomAssessmentResult(AssessmentStatuses(connectionString));
+                    epic.EpicFinalAssessmentResult = SelectRandomAssessmentResult(await AssessmentStatusesAsync(connectionString));
                     solEpics.Add(epic);
                 }
             }
@@ -48,21 +49,21 @@
             return solEpics;
         }
 
-        public static IEnumerable<EpicDto> GenerateEpicsForCapabilityNotSelected(
+        public static async Task<IEnumerable<EpicDto>> GenerateEpicsForCapabilityNotSelectedAsync(
             string connectionString,
             IEnumerable<SolutionCapabilities> capabilities)
         {
             var solEpics = new List<EpicDto>();
 
-            var allCaps = Capability.GetAll(connectionString).Select(s => s.CapabilityRef);
+            var allCaps = (await Capability.GetAllAsync(connectionString)).Select(s => s.CapabilityRef);
 
             foreach (var capability in capabilities.Select(s => s.CapabilityId))
             {
-                var epics = EpicDto.GetAllByIdPrefix(connectionString, $"{allCaps.First(s => s != capability)}E");
+                var epics = await EpicDto.GetAllByIdPrefixAsync(connectionString, $"{allCaps.First(s => s != capability)}E");
 
                 foreach (var epic in epics)
                 {
-                    epic.EpicFinalAssessmentResult = SelectRandomAssessmentResult(AssessmentStatuses(connectionString));
+                    epic.EpicFinalAssessmentResult = SelectRandomAssessmentResult(await AssessmentStatusesAsync(connectionString));
                     solEpics.Add(epic);
                 }
             }
@@ -75,11 +76,11 @@
             return RandomInformation.GetRandomItem(assessmentLevels);
         }
 
-        private static IEnumerable<string> AssessmentStatuses(string connectionString)
+        private static async Task<IEnumerable<string>> AssessmentStatusesAsync(string connectionString)
         {
             var assessmentLevelsQuery = "SELECT Name FROM SolutionEpicStatus";
 
-            return SqlExecutor.Execute<string>(connectionString, assessmentLevelsQuery, null);
+            return await SqlExecutor.ExecuteAsync<string>(connectionString, assessmentLevelsQuery, null);
         }
     }
 }

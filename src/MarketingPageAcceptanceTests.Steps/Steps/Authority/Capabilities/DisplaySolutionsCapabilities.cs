@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
     using FluentAssertions;
     using MarketingPageAcceptanceTests.Steps.Utils;
     using MarketingPageAcceptanceTests.TestData.Capabilities;
@@ -20,9 +21,9 @@
         }
 
         [Given(@"that Capabilities have been provided for the Solution")]
-        public void GivenThatCapabilitiesHaveBeenProvidedForTheSolution()
+        public async Task GivenThatCapabilitiesHaveBeenProvidedForTheSolutionAsync()
         {
-            GenerateCapabilitiesAndEpics();
+            await GenerateCapabilitiesAndEpicsAsync();
             var csv = solutionCaps.ToCsv();
 
             test.Pages.Dashboard.NavigateToSection("Capabilities");
@@ -64,9 +65,9 @@
 
         [Given(@"that Epics for the Capability are provided")]
         [Given(@"that Epic Pass or Fail Statuses have been provided for each Epic")]
-        public void GivenThatEpicsForTheCapabilityAreProvided()
+        public async Task GivenThatEpicsForTheCapabilityAreProvidedAsync()
         {
-            GivenThatCapabilitiesHaveBeenProvidedForTheSolution();
+            await GivenThatCapabilitiesHaveBeenProvidedForTheSolutionAsync();
             var csv = solutionEpics.ToCsv();
 
             test.Pages.Dashboard.NavigateToSection("Epics");
@@ -102,12 +103,12 @@
         }
 
         [Given(@"that Epics are provided for Capabilities not provided")]
-        public void GivenThatEpicsAreProvidedForCapabilitiesNotProvided()
+        public async Task GivenThatEpicsAreProvidedForCapabilitiesNotProvidedAsync()
         {
-            GenerateCapabilitiesAndEpics();
-            GivenThatCapabilitiesHaveBeenProvidedForTheSolution();
+            await GenerateCapabilitiesAndEpicsAsync();
+            await GivenThatCapabilitiesHaveBeenProvidedForTheSolutionAsync();
 
-            var csv = CapabilitiesGenerator.GenerateEpicsForCapabilityNotSelected(test.ConnectionString, solutionCaps)
+            var csv = (await CapabilitiesGenerator.GenerateEpicsForCapabilityNotSelectedAsync(test.ConnectionString, solutionCaps))
                 .ToCsv();
 
             test.Pages.Dashboard.NavigateToSection("Epics");
@@ -121,13 +122,13 @@
             test.Pages.Dashboard.SectionHasTitle("Epics");
         }
 
-        private void GenerateCapabilitiesAndEpics(int numCaps = 5)
+        private async Task GenerateCapabilitiesAndEpicsAsync(int numCaps = 5)
         {
-            solutionCaps = CapabilitiesGenerator.GenerateListOfSolutionCapabilities(
+            solutionCaps = await CapabilitiesGenerator.GenerateListOfSolutionCapabilitiesAsync(
                     test.ConnectionString,
                     test.Solution.Id,
                     numCaps);
-            solutionEpics = CapabilitiesGenerator.GenerateCapabilityEpics(test.ConnectionString, solutionCaps);
+            solutionEpics = await CapabilitiesGenerator.GenerateCapabilityEpicsAsync(test.ConnectionString, solutionCaps);
         }
     }
 }

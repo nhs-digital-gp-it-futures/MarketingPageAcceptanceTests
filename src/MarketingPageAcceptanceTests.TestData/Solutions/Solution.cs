@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
     using MarketingPageAcceptanceTests.TestData.Utils;
 
     public sealed class Solution
@@ -39,36 +40,36 @@
 
         public Guid LastUpdatedBy { get; set; }
 
-        public static IEnumerable<string> RetrieveAll(string connectionString)
+        public static async Task<IEnumerable<string>> RetrieveAllAsync(string connectionString)
         {
             var query = @"SELECT * FROM [dbo].[Solution]";
 
-            return SqlExecutor.Execute<Solution>(connectionString, query, null).Select(s => s.Id);
+            return (await SqlExecutor.ExecuteAsync<Solution>(connectionString, query, null)).Select(s => s.Id);
         }
 
-        public Solution Retrieve(string connectionString)
+        public async Task<Solution> RetrieveAsync(string connectionString)
         {
             var query = "SELECT * from [dbo].[Solution] WHERE Solution.Id=@solutionId";
 
-            return SqlExecutor.Execute<Solution>(connectionString, query, this).Single();
+            return (await SqlExecutor.ExecuteAsync<Solution>(connectionString, query, this)).Single();
         }
 
-        public void Create(string connectionString)
+        public async Task CreateAsync(string connectionString)
         {
             var query = @"INSERT INTO Solution (Id, Version, Summary, FullDescription, Features, ClientApplication, Hosting, ImplementationDetail, RoadMap, IntegrationsUrl, AboutUrl, ServiceLevelAgreement, LastUpdatedBy, LastUpdated) values (@SolutionId, @Version, @Summary, @FullDescription, @Features, @ClientApplication, @Hosting, @ImplementationDetail, @RoadMap, @IntegrationsUrl, @AboutUrl, @ServiceLevelAgreement, @LastUpdatedBy, @LastUpdated)";
-            SqlExecutor.Execute<Solution>(connectionString, query, this);
+            await SqlExecutor.ExecuteAsync<Solution>(connectionString, query, this);
         }
 
-        public void Update(string connectionString)
+        public async Task UpdateAsync(string connectionString)
         {
             var query = @"UPDATE Solution SET Version=@solutionVersion, Summary=@Summary, FullDescription=@FullDescription, Features=@Features, ClientApplication=@ClientApplication, Hosting=@Hosting, ImplementationDetail=@ImplementationDetail, RoadMap=@RoadMap, IntegrationsUrl=@IntegrationsUrl, AboutUrl=@AboutUrl, ServiceLevelAgreement=@ServiceLevelAgreement, LastUpdatedBy=@LastUpdatedBy, LastUpdated=@LastUpdated WHERE Id=@solutionId";
-            SqlExecutor.Execute<Solution>(connectionString, query, this);
+            await SqlExecutor.ExecuteAsync<Solution>(connectionString, query, this);
         }
 
-        public void Delete(string connectionString)
+        public async Task DeleteAsync(string connectionString)
         {
             var query = @"DELETE FROM Solution WHERE Id=@solutionId";
-            SqlExecutor.Execute<Solution>(connectionString, query, this);
+            await SqlExecutor.ExecuteAsync<Solution>(connectionString, query, this);
         }
     }
 }

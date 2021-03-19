@@ -1,5 +1,6 @@
 ﻿namespace MarketingPageAcceptanceTests.Steps.Steps.ClientApplication
 {
+    using System.Threading.Tasks;
     using FluentAssertions;
     using MarketingPageAcceptanceTests.Steps.Utils;
     using MarketingPageAcceptanceTests.TestData.Solutions;
@@ -88,40 +89,40 @@
         }
 
         [Given(@"a Supplier has saved all mandatory data on the (Browser-based|Native mobile or tablet|Native desktop) Client Application Type Sub-Sections")]
-        public void GivenASupplierHasSavedAllMandatoryDataOnTheClientApplicationTypeSub_Sections(
+        public async Task GivenASupplierHasSavedAllMandatoryDataOnTheClientApplicationTypeSub_SectionsAsync(
             string clientApplicationType)
         {
             test.Solution.ClientApplication =
                 ClientApplicationStringBuilder.GetClientAppString(null, clientApplicationType);
 
-            test.Solution.Update(test.ConnectionString);
+            await test.Solution.UpdateAsync(test.ConnectionString);
             test.Driver.Navigate().Refresh();
         }
 
         [Given(@"a Supplier has saved all mandatory data on the (Browser-based) Client Application Type Sub-Sections except for (Supported browsers|Plug-ins or extensions required|Connectivity and resolution|Mobile first approach)")]
-        public void GivenASupplierHasSavedAllMandatoryDataOnTheClientApplicationTypeSub_SectionsExceptForX(
+        public async Task GivenASupplierHasSavedAllMandatoryDataOnTheClientApplicationTypeSub_SectionsExceptForXAsync(
             string clientApplicationType, string section)
         {
             test.Solution.ClientApplication =
                 ClientApplicationStringBuilder.GetClientAppString(section, clientApplicationType);
-            test.Solution.Update(test.ConnectionString);
+            await test.Solution.UpdateAsync(test.ConnectionString);
 
             test.Driver.Navigate().Refresh();
         }
 
         [Given(@"a Supplier has saved all mandatory data on the (Native mobile or tablet) Client Application Type Sub-Sections except for (Supported operating systems|Memory and storage|Mobile first approach)")]
-        public void GivenASupplierHasSavedAllMandatoryDataOnTheNativeMobileClientApplicationTypeSub_SectionsExceptForX(
+        public async Task GivenASupplierHasSavedAllMandatoryDataOnTheNativeMobileClientApplicationTypeSub_SectionsExceptForXAsync(
             string clientApplicationType, string section)
         {
-            GivenASupplierHasSavedAllMandatoryDataOnTheClientApplicationTypeSub_SectionsExceptForX(
+            await GivenASupplierHasSavedAllMandatoryDataOnTheClientApplicationTypeSub_SectionsExceptForXAsync(
                 clientApplicationType, section);
         }
 
         [Given(@"a Supplier has saved all mandatory data on the (Native desktop) Client Application Type Sub-Sections except for (Supported operating systems|Connectivity|Memory, storage, processing and resolution)")]
-        public void GivenASupplierHasSavedAllMandatoryDataOnTheNativeDesktopClientApplicationTypeSub_SectionsExceptForX(
+        public async Task GivenASupplierHasSavedAllMandatoryDataOnTheNativeDesktopClientApplicationTypeSub_SectionsExceptForXAsync(
             string clientApplicationType, string section)
         {
-            GivenASupplierHasSavedAllMandatoryDataOnTheClientApplicationTypeSub_SectionsExceptForX(
+            await GivenASupplierHasSavedAllMandatoryDataOnTheClientApplicationTypeSub_SectionsExceptForXAsync(
                 clientApplicationType, section);
         }
 

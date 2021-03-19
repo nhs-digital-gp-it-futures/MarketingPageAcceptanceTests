@@ -36,7 +36,7 @@
         {
             test.CreateSolution = false;
             test.UserType = userType;
-            test.SetUrl();
+            test.SetUrlAsync();
             test.GoToUrl();
         }
     }

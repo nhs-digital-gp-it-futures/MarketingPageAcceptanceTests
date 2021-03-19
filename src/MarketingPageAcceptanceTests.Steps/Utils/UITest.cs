@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
     using MarketingPageAcceptanceTests.Actions;
     using MarketingPageAcceptanceTests.Actions.Collections;
     using MarketingPageAcceptanceTests.TestData.Solutions;
@@ -48,22 +49,28 @@
 
         public string CompleteUrl { get; set; }
 
-        public void SetUrl(string solutionId = null, string userType = null)
+        public FrameworkSolution FrameworkSolution { get; set; }
+
+        public bool DeleteSolution { get; private set; }
+
+        public async Task SetUrlAsync(string solutionId = null, string userType = null)
         {
             if (solutionId is null)
             {
                 if (CreateSolution)
                 {
-                    CreateNewSolution(SolutionIdPrefix);
+                    await CreateNewSolutionAsync();
+                    DeleteSolution = true;
                 }
                 else
                 {
-                    GetExistingSolution();
+                    await GetExistingSolutionAsync();
+                    DeleteSolution = false;
                 }
             }
             else
             {
-                Solution = new Solution() { Id = solutionId }.Retrieve(ConnectionString);
+                Solution = await new Solution() { Id = solutionId }.RetrieveAsync(ConnectionString);
             }
 
             // If param is not null, set the UserType property to be the provided usertype
@@ -82,19 +89,21 @@
             Driver.Navigate().GoToUrl(CompleteUrl);
         }
 
-        private void GetExistingSolution()
+        private async Task GetExistingSolutionAsync()
         {
-            var solutionId = Solution.RetrieveAll(ConnectionString).First();
+            var solutionId = (await Solution.RetrieveAllAsync(ConnectionString)).First();
 
-            Solution = new Solution() { Id = solutionId }.Retrieve(ConnectionString);
+            Solution = await new Solution() { Id = solutionId }.RetrieveAsync(ConnectionString);
         }
 
-        private void CreateNewSolution(string prefix)
+        private async Task CreateNewSolutionAsync()
         {
-            CatalogueItem = GenerateCatalogueItem.GenerateNewCatalogueItem(prefix: prefix, checkForUnique: true, connectionString: ConnectionString);
-            CatalogueItem.Create(ConnectionString);
+            CatalogueItem = GenerateCatalogueItem.GenerateNewCatalogueItem();
+            await CatalogueItem.CreateAsync(ConnectionString);
             Solution = GenerateSolution.GenerateNewSolution(CatalogueItem.CatalogueItemId, clientApplication: false);
-            Solution.Create(ConnectionString);
+            await Solution.CreateAsync(ConnectionString);
+            FrameworkSolution = new FrameworkSolution { SolutionId = Solution.Id, FrameworkId = "NHSDGP001", IsFoundation = false };
+            await FrameworkSolution.Create(ConnectionString);
         }
 
         private string GetUrl()

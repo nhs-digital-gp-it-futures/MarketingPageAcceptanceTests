@@ -1,5 +1,6 @@
 ﻿namespace MarketingPageAcceptanceTests.Steps.Steps
 {
+    using System.Threading.Tasks;
     using FluentAssertions;
     using MarketingPageAcceptanceTests.Steps.Utils;
     using TechTalk.SpecFlow;
@@ -37,9 +38,9 @@
         }
 
         [Given(@"the user has navigated to the (Supplier|Authority) pages")]
-        public void GivenTheUserHasNavigatedToTheSupplierPages(string userType)
+        public async Task GivenTheUserHasNavigatedToTheSupplierPages(string userType)
         {
-            test.SetUrl(test.Solution.Id, userType);
+            await test.SetUrlAsync(test.Solution.Id, userType);
             test.GoToUrl();
         }
 
@@ -141,9 +142,9 @@
             @"the (Supplier|Authority User) has entered (\d{3,4}) characters on the (?:.*) page in the (Public cloud|Private cloud|Hybrid|On premise) section")]
         [Given(
             @"the (Supplier|Authority User) has entered (\d{3,4}) characters on the (?:.*) page in the (Roadmap|About supplier|Implementation timescales) section")]
-        public void GivenTheSupplierHasEnteredText(string userType, int characters, string section)
+        public async Task GivenTheSupplierHasEnteredTextAsync(string userType, int characters, string section)
         {
-            test.SetUrl(test.Solution.Id, userType);
+            await test.SetUrlAsync(test.Solution.Id, userType);
             test.GoToUrl();
 
             test.Pages.Dashboard.NavigateToSection(section);

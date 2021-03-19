@@ -31,18 +31,3 @@ Scenario: About Supplier Section - Marked as Incomplete -  No Data
 	Given the About supplier section does not require Mandatory Data
 	When the Marketing Page Form is presented 
 	Then the About supplier section is marked as Incomplete
-
-Scenario: About Supplier Section - Pre-Populated Description & URL
-	Given the User has created a new solution for the same supplier (Solution B)
-	When the User is editing the About supplier section for Solution B
-	Then the data will be populated in the About supplier Section
-
-Scenario Outline: About Supplier Section - Changing About Supplier Data
-	Given the User has created a new solution for the same supplier (Solution B)
-	And the User is editing the About supplier section for Solution B
-	When the About Supplier <field> data is changed for Solution B 
-	Then the About Supplier data is changed for Solution A as well as for Solution B
-	Examples: 
-	| field       |
-	| description |
-	| link        |

@@ -1,6 +1,7 @@
 ﻿namespace MarketingPageAcceptanceTests.Steps.Steps.AboutOrganisation
 {
     using System.Linq;
+    using System.Threading.Tasks;
     using Bogus;
     using FluentAssertions;
     using MarketingPageAcceptanceTests.Steps.Utils;
@@ -20,39 +21,39 @@
         }
 
         [Given(@"the About supplier section does not require Mandatory Data")]
-        public void GivenTheAboutSupplierSectionDoesNotRequireMandatoryData()
+        public async Task GivenTheAboutSupplierSectionDoesNotRequireMandatoryDataAsync()
         {
             test.Supplier.Summary = string.Empty;
             test.Supplier.SupplierUrl = string.Empty;
-            test.Supplier.Update(test.ConnectionString);
+            await test.Supplier.UpdateAsync(test.ConnectionString);
             test.Driver.Navigate().Refresh();
         }
 
         [Given(@"that About Supplier data has been added to a Solution \(Solution A\)")]
-        public void GivenThatAboutSupplierDataHasBeenAddedToASolutionSolutionA()
+        public async Task GivenThatAboutSupplierDataHasBeenAddedToASolutionSolutionAAsync()
         {
             test.Supplier = GenerateSupplier.GenerateNewSupplier();
-            test.Supplier.Create(test.ConnectionString);
+            await test.Supplier.CreateAsync(test.ConnectionString);
             test.CatalogueItem.SupplierId = test.Supplier.Id;
-            test.CatalogueItem.Update(test.ConnectionString);
+            await test.CatalogueItem.UpdateAsync(test.ConnectionString);
             test.ListOfSolutions.Add(test.Solution);
         }
 
         [Given(@"the User has created a new solution for the same supplier \(Solution B\)")]
-        public void GivenTheUserHasCreatedANewSolutionForTheSameSupplierSolutionB()
+        public async Task GivenTheUserHasCreatedANewSolutionForTheSameSupplierSolutionBAsync()
         {
-            test.CatalogueItem = GenerateCatalogueItem.GenerateNewCatalogueItem(test.SolutionIdPrefix + "SolB");
+            test.CatalogueItem = GenerateCatalogueItem.GenerateNewCatalogueItem();
             test.Solution = GenerateSolution.GenerateNewSolution(test.CatalogueItem.CatalogueItemId);
             test.CatalogueItem.SupplierId = test.Supplier.Id;
-            test.CatalogueItem.Create(test.ConnectionString);
-            test.Solution.Create(test.ConnectionString);
+            await test.CatalogueItem.CreateAsync(test.ConnectionString);
+            await test.Solution.CreateAsync(test.ConnectionString);
             test.ListOfSolutions.Add(test.Solution);
         }
 
         [StepDefinition(@"the User is editing the About supplier section for Solution B")]
-        public void WhenTheUserIsEditingTheAboutSupplierSectionForSolutionB()
+        public async Task WhenTheUserIsEditingTheAboutSupplierSectionForSolutionBAsync()
         {
-            test.SetUrl(test.ListOfSolutions.Last().Id, "supplier");
+            await test.SetUrlAsync(test.ListOfSolutions.Last().Id, "supplier");
             test.GoToUrl();
             test.Pages.Dashboard.NavigateToSection("About supplier");
         }
@@ -80,12 +81,12 @@
         }
 
         [Then(@"the About Supplier data is changed for Solution A as well as for Solution B")]
-        public void ThenTheAboutSupplierDataIsChangedForSolutionAAsWellAsForSolutionB()
+        public async Task ThenTheAboutSupplierDataIsChangedForSolutionAAsWellAsForSolutionBAsync()
         {
             var supplierForSolutionA =
-                Supplier.RetrieveSupplierForSolution(test.ConnectionString, test.ListOfSolutions[0].Id);
+                await Supplier.RetrieveSupplierForSolutionAsync(test.ConnectionString, test.ListOfSolutions[0].Id);
             var supplierForSolutionB =
-                Supplier.RetrieveSupplierForSolution(test.ConnectionString, test.ListOfSolutions[1].Id);
+                await Supplier.RetrieveSupplierForSolutionAsync(test.ConnectionString, test.ListOfSolutions[1].Id);
 
             if (newDescription != null)
             {
