@@ -72,16 +72,16 @@
         }
 
         [StepDefinition(@"the contact is saved to the database")]
-        public void ThenTheContectIsSavedToTheDatabase()
+        public async Task ThenTheContectIsSavedToTheDatabaseAsync()
         {
-            var dbContact = firstContact.RetrieveAsync(test.ConnectionString);
+            var dbContact = await firstContact.RetrieveAsync(test.ConnectionString);
             dbContact.Should().BeEquivalentTo(firstContact);
         }
 
         [Then(@"there (?:is|are) (.*) (?:record|records) in the contact table")]
-        public void ThenThereIsRecordInTheContactTable(int expected)
+        public async Task ThenThereIsRecordInTheContactTableAsync(int expected)
         {
-            var actual = firstContact.RetrieveCountAsync(test.ConnectionString);
+            var actual = await firstContact.RetrieveCountAsync(test.ConnectionString);
             actual.Should().Be(expected);
         }
 
