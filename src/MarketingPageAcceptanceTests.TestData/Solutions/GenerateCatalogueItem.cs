@@ -19,7 +19,7 @@
                 PublishedStatusId = publishedStatus,
                 Created = DateTime.Now,
             };
-            catalogueItem.CatalogueItemId = RandomSolId(catalogueItem.SupplierId);
+            catalogueItem.CatalogueItemId = RandomSolutionId(catalogueItem.SupplierId);
 
             if (Debugger.IsAttached)
             {
@@ -29,7 +29,7 @@
             return catalogueItem;
         }
 
-        private static string RandomSolId(string supplierid)
+        private static string RandomSolutionId(string supplierid)
         {
             return $"{supplierid}-{new Random().Next(1, 100000):D5}";
         }

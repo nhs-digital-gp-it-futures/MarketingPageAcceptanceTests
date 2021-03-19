@@ -4,7 +4,7 @@
     using System.Threading.Tasks;
     using MarketingPageAcceptanceTests.TestData.Utils;
 
-    public class FrameworkSolution
+    public sealed class FrameworkSolution
     {
         public string FrameworkId { get; set; }
 
