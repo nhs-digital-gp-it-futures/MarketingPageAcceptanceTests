@@ -2,7 +2,6 @@
 {
     using System;
     using System.Data;
-    using System.Diagnostics;
     using System.Linq;
     using System.Threading.Tasks;
     using Bogus;
@@ -21,17 +20,12 @@
             };
             catalogueItem.CatalogueItemId = await RandomSolutionIdAsync(catalogueItem.SupplierId, connectionString);
 
-            if (Debugger.IsAttached)
-            {
-                Console.WriteLine(catalogueItem.ToString());
-            }
-
             return catalogueItem;
         }
 
         private static async Task<string> RandomSolutionIdAsync(string supplierid, string connectionString)
         {
-            var existingSolutions = await Solution.RetrieveAllAsync(connectionString);
+            var existingSolutions = await CatalogueItem.RetrieveAllAsync(connectionString);
 
             for (int i = 0; i < 3; i++)
             {
