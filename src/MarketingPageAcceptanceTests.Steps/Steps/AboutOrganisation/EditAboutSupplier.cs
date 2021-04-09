@@ -42,7 +42,7 @@
         [Given(@"the User has created a new solution for the same supplier \(Solution B\)")]
         public async Task GivenTheUserHasCreatedANewSolutionForTheSameSupplierSolutionBAsync()
         {
-            test.CatalogueItem = GenerateCatalogueItem.GenerateNewCatalogueItem();
+            test.CatalogueItem = await GenerateCatalogueItem.GenerateNewCatalogueItemAsync(test.ConnectionString);
             test.Solution = GenerateSolution.GenerateNewSolution(test.CatalogueItem.CatalogueItemId);
             test.CatalogueItem.SupplierId = test.Supplier.Id;
             await test.CatalogueItem.CreateAsync(test.ConnectionString);

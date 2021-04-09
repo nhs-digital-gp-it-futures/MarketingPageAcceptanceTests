@@ -98,7 +98,7 @@
 
         private async Task CreateNewSolutionAsync()
         {
-            CatalogueItem = GenerateCatalogueItem.GenerateNewCatalogueItem();
+            CatalogueItem = await GenerateCatalogueItem.GenerateNewCatalogueItemAsync(ConnectionString);
             await CatalogueItem.CreateAsync(ConnectionString);
             Solution = GenerateSolution.GenerateNewSolution(CatalogueItem.CatalogueItemId, clientApplication: false);
             await Solution.CreateAsync(ConnectionString);
