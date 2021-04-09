@@ -1,6 +1,7 @@
 ﻿namespace MarketingPageAcceptanceTests.TestData.Solutions
 {
     using System;
+    using System.Data;
     using System.Diagnostics;
     using System.Linq;
     using System.Threading.Tasks;
@@ -41,7 +42,7 @@
                 }
             }
 
-            throw new ArgumentException("Unable to generate unique solution ID in 3 iterations");
+            throw new DataException("Unable to generate unique solution ID in 3 iterations");
         }
     }
 }
