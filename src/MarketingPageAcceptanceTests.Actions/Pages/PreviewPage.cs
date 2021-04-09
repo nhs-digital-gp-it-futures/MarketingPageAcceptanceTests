@@ -1,5 +1,6 @@
 ﻿namespace MarketingPageAcceptanceTests.Actions.Pages
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using FluentAssertions;
@@ -49,9 +50,9 @@
                 .FindElement(Objects.Pages.PreviewPage.SectionDataLink).Text;
         }
 
-        public void SectionDisplayed(string section)
+        public void SectionDisplayed(string section, string subDashboard)
         {
-            Driver.FindElements(Objects.Pages.PreviewPage.BrowserBasedSectionTitles)
+            Driver.FindElements(GetPreviewSection(subDashboard))
                 .Count(s => s.Text.ToLower().Contains(section.ToLower()))
                 .Should().BeGreaterThan(0);
         }
@@ -228,6 +229,17 @@
         private static string ConvertToSectionCssSelector(string sectionName)
         {
             return $"[data-test-id=preview-{sectionName.ToLower().Replace(" ", "-")}";
+        }
+
+        private static By GetPreviewSection(string section)
+        {
+            return section.ToLower() switch
+            {
+                "browser" or "browser based" or "browser-based" => Objects.Pages.PreviewPage.BrowserBasedSectionTitles,
+                "native mobile" or "mobile" or "native mobile or tablet" => Objects.Pages.PreviewPage.NativeMobileSectionTitles,
+                "native desktop" or "desktop" => Objects.Pages.PreviewPage.NativeDesktopSectionTitles,
+                _ => Objects.Pages.PreviewPage.OtherSectionTitles,
+            };
         }
 
         private int GetSectionFieldsCount(string sectionName)

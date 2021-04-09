@@ -77,7 +77,7 @@
         public void ThenSectionWillBePresentedOnThePreviewOfTheMarketingPage(string section, string subSection)
         {
             test.Pages.PreviewPage.ExpandSection(subSection);
-            test.Pages.PreviewPage.SectionDisplayed(section);
+            test.Pages.PreviewPage.SectionDisplayed(section, subSection);
         }
 
         [Then(@"(.*) will be presented in (.*) on the Preview of the Marketing Page")]
@@ -85,7 +85,7 @@
             string section, string subDashboard)
         {
             test.Pages.PreviewPage.ExpandSection(subDashboard);
-            test.Pages.PreviewPage.SectionDisplayed(section);
+            test.Pages.PreviewPage.SectionDisplayed(section, subDashboard);
         }
 
         [Then(@"(.*) will not be presented in (.*) on the Preview of the Marketing Page")]
