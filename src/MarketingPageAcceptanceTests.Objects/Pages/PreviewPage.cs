@@ -26,7 +26,7 @@
 
         public static By PageTitle => CustomBy.DataTestId("view-solution-page-solution-name");
 
-        public static By BrowserBasedSectionTitles => CustomBy.DataTestId("view-section-table-row-title");
+        public static By BrowserBasedSectionTitles => CustomBy.DataTestId("view-section-dl-browser-based", "dt");
 
         public static By SupportedBrowsers =>
             CustomBy.DataTestId("preview-section-table-row-supported-browsers", "li > label");
@@ -75,5 +75,11 @@
         public static By CapabilityEpicsMustSection => CustomBy.DataTestId("must-tag");
 
         public static By CapabilityEpicsStatusSymbol => By.CssSelector(".bc-c-epic-list svg");
+
+        public static By NativeMobileSectionTitles => CustomBy.DataTestId("view-section-dl-native-mobile", "dt");
+
+        public static By NativeDesktopSectionTitles => CustomBy.DataTestId("view-section-dl-native-desktop", "dt");
+
+        public static By OtherSectionTitles => CustomBy.DataTestId("view-section-table-row-title");
     }
 }
